@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术成长之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.liuling123.com/"/>
-  <updated>2016-01-03T06:52:47.000Z</updated>
+  <updated>2016-01-03T14:05:41.000Z</updated>
   <id>http://www.liuling123.com/</id>
   
   <author>
@@ -13,6 +13,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[【译文】AppBarLayout的越界滚动行为]]></title>
+    <link href="http://www.liuling123.com/2016/01/overscroll-appBarLayout-behavior.html"/>
+    <id>http://www.liuling123.com/2016/01/overscroll-appBarLayout-behavior.html</id>
+    <published>2016-01-03T14:03:00.000Z</published>
+    <updated>2016-01-03T14:05:41.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<ul>
+<li>原文链接 : <a href="https://medium.com/@nullthemall/overscroll-appbarlayout-behavior-e58f1ee2807#.gtmxsk7sw" target="_blank" rel="external">Overscroll AppBarLayout Behavior</a></li>
+<li>原文作者 : <a href="https://medium.com/@nullthemall" target="_blank" rel="external">Nikola Despotoski</a></li>
+<li>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="external">开发技术前线 www.devtf.cn。未经允许，不得转载!</a></li>
+<li>译者 : <a href="https://github.com/liuling07" target="_blank" rel="external">liuling07</a> </li>
+<li>校对者: <a href="https://github.com/desmond1121" target="_blank" rel="external">desmond1121</a></li>
+<li>状态 :  完成 </li>
+</ul>
+</blockquote>
+<p>很不幸，Youtube音乐应用在我们国家不可使用，我尝试着通过各种盗版网站来获取该应用，但我仍然无法看到在这个应用上发生了什么。感谢这位<a href="https://www.reddit.com/user/IanSan5653" target="_blank" rel="external">redditor</a>，在我的请求下，他在<a href="https://www.reddit.com/r/materialdesign" target="_blank" rel="external">/r/materialdesign</a>打开了一个<a href="https://www.reddit.com/r/MaterialDesign/comments/3slct5/youtube_music_has_tons_of_animations_and/" target="_blank" rel="external">thread</a>并且发表一段录制的视频，我才有机会看到这个行为。</p>
+<p><img src="https://cdn-images-1.medium.com/max/1200/1*lEMS5RiBLGk3Q72FhXBwxA.gif" alt="Youtube视频app的真实截图，可能的行为"></p>
+<p>根据我所看到的，我首先想到的就是专辑封面是放到一个AppBarLayout里面，并且在滚动区域拖到边界的时候尺寸会发生变化。让我们假定这个猜想是正确的并且用“Behavior”这个术语表示它。依鄙人之见，如果我的猜想是正确的，谷歌应该会在Material Design文档的<a href="https://www.google.com/design/spec/patterns/scrolling-techniques.html" target="_blank" rel="external">滚动</a>部分提供一个越界滚动的使用说明。</p>
+<p>我们的目标就是保证AppBarLayout.Behavior的完整性，在此基础上再创建一个扩展的行为。因此：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class OverscrollScalingViewAppBarLayoutBehavior extends AppBarLayout.ScrollingViewBehavior</span><br></pre></td></tr></table></figure>
+<p>因为这是默认的AppBarLayout.Behavior，所以建议只有在依赖视图是AppBarLayout的时候起作用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override&#10;public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) &#123;&#10; return dependency instanceof AppBarLayout;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，我们需要获取想要在拖到边界时要改变尺寸的视图的一个实例。最好的方法就是在onLayoutChild()方法中获取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override&#10;public boolean onLayoutChild(CoordinatorLayout parent ....) &#123;&#10;    boolean superLayout = super.onLayoutChild(parent, abl, layoutDirection);&#10;    if (mTargetScalingView == null) &#123;&#10;        mTargetScalingView = parent.findViewByTag(TAG);&#10;        if(mTargetScalingView != null)&#123;&#10;             mScaleImpl.obtainInitialValues();&#10;         &#125;&#10;     &#125;&#10;    return superLayout;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>而且我们需要保证只有在垂直滚动的时候起作用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override&#10;public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout,... int nestedScrollAxes) &#123;&#10;    return nestedScrollAxes == View.SCROLL_AXIS_VERTICAL;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们先前没有在程序中显示设置，会设置ViewScaler为默认的Scaler。</p>
+<p>在内容滚动的瞬间，真正重要的问题就有头绪了。CoordinatorLayout.Behavior提供了一个onNestedScroll()方法，当滚动进行的时候这个方法会被调用，并且当内容滚动到边界的时候也会调用。最后两个参数dyUnconsumed和dxUnconsumed提供了未被该行为的目标视图填满的像素值。</p>
+<p>这个方法对我们实现尺寸改变来说太重要了。所以我列出了哪些情况需要改变尺寸，哪些情况不需要：</p>
+<h4 id="u9700_u8981_u6539_u53D8_u5C3A_u5BF8"><a href="#u9700_u8981_u6539_u53D8_u5C3A_u5BF8" class="headerlink" title="需要改变尺寸"></a>需要改变尺寸</h4><ol>
+<li>存在未填满的像素，如dyUnconsumed小于0  </li>
+<li>AppBarLayout是展开的，getTopAndBottomOffset() &gt;= mScaleImpl.getInitialParentBottom()</li>
+</ol>
+<h4 id="u4E0D_u9700_u8981_u6539_u53D8_u5C3A_u5BF8"><a href="#u4E0D_u9700_u8981_u6539_u53D8_u5C3A_u5BF8" class="headerlink" title="不需要改变尺寸"></a>不需要改变尺寸</h4><ol>
+<li>AppBarLayout中没有子视图可以改变尺寸</li>
+<li>有填充的像素，如dyConsumed不等于0</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override&#10;public void onNestedScroll(CoordinatorLayout ... int dxUnconsumed, int dyUnconsumed) &#123;&#10;    if (mTargetScalingView == null || dyConsumed != 0) &#123;&#10;        mScaleImpl.cancelAnimations();&#10;        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);&#10;        return;&#10;    &#125;&#10;&#10;    if (dyUnconsumed &#60; 0 &#38;&#38; getTopAndBottomOffset() &#62;= mScaleImpl.getInitialParentBottom()) &#123;&#10;        int absDyUnconsumed = Math.abs(dyUnconsumed);&#10;        mTotalDyUnconsumed += absDyUnconsumed;&#10;        mTotalDyUnconsumed = Math.min(mTotalDyUnconsumed, mTotalTargetDyUnconsumed);&#10;        mScaleImpl.updateViewScale();&#10;    &#125; else &#123;&#10;        mTotalDyUnconsumed = 0;&#10;        mScaleImpl.setShouldRestore(false);&#10;        if (dyConsumed != 0) &#123;&#10;            mScaleImpl.cancelAnimations();&#10;        &#125;&#10;        super.onNestedScroll(coordinatorLayout, .... dxUnconsumed, dyUnconsumed);&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>当嵌套的overscroll停止的时候，我们需要将视图的边界和大小重置到它们的原始值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override&#10;public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target) &#123;&#10;    mScaleImpl.retractScale();&#10;    super.onStopNestedScroll(coordinatorLayout, child, target);&#10;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="ViewScaler"><a href="#ViewScaler" class="headerlink" title="ViewScaler"></a>ViewScaler</h1><p>这个类实现了AppBarLayout应该如何改变它的底部以及视图应该如何改变尺寸的逻辑。大多数行为都依赖累积的未填充的像素。我们可以为最大累积值设置一个约束值，这样可以很容的找到要如何改变AppBarLayout底部和改变视图的尺寸。ParentScaler是ViewScaler的父类，它能让AppBarLayout近乎平滑的改变尺寸。我就不在这里贴大量代码了，如果你有兴趣，<a href="https://gist.github.com/NikolaDespotoski/7d6a019e5aafe60ebade" target="_blank" rel="external">可以从这里获取代码</a>。</p>
+<h4 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h4><p>大神们，这里有个MatrixScaler类，我没有时间去完成它。如果想要改变尺寸的视图是ImageView，并且设置了ScaleType为MATRIX，这个类将可以用使用矩阵的方式来改变图像的尺寸。  </p>
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p><a href="https://youtu.be/2udXoC8AXSM" target="_blank" rel="external">Demo演示地址</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote>
+<ul>
+<li>原文链接 : <a href="https://medium.com/@nullthemall/overscroll-appbarlayout-behavior-e58f1ee2807#.gtmxsk7sw" target="_blan]]>
+    </summary>
+    
+      <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
+    
+      <category term="译文" scheme="http://www.liuling123.com/tags/%E8%AF%91%E6%96%87/"/>
+    
+      <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Say bye to my 2015]]></title>
@@ -813,54 +872,6 @@
 </blockquote>
 <p>现在，我们就来说说如何查看是否有过度绘制，和如何避免它吧。</p>
 <p>&nbsp;<br>]]>
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
-    
-      <category term="布局" scheme="http://www.liuling123.com/tags/%E5%B8%83%E5%B1%80/"/>
-    
-      <category term="布局优化" scheme="http://www.liuling123.com/tags/%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96/"/>
-    
-      <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[【转】Android布局优化之ViewStub]]></title>
-    <link href="http://www.liuling123.com/2015/10/optimize-viewstub.html"/>
-    <id>http://www.liuling123.com/2015/10/optimize-viewstub.html</id>
-    <published>2015-10-07T20:26:00.000Z</published>
-    <updated>2016-01-03T07:37:01.000Z</updated>
-    <content type="html"><![CDATA[<p>ViewStub是Android布局优化中一个很不错的标签/控件，直接继承自View。虽然Android开发人员基本上都听说过，但是真正用的可能不多。</p>
-<p>ViewStub可以理解成一个非常轻量级的View，与其他的控件一样，有着自己的属性及特定的方法。当ViewStub使用在布局文件中时，当程序inflate布局文件时，ViewStub本身也会被解析，且占据内存控件，但是与其他控件相比，主要区别体现在以下几点：</p>
-<p>1.当布局文件inflate时，ViewStub控件虽然也占据内存，但是相相比于其他控件，ViewStub所占内存很小；</p>
-<p>2.布局文件inflate时，ViewStub主要是作为一个&ldquo;占位符&rdquo;的性质，放置于view tree中，且ViewStub本身是不可见的。ViewStub中有一个layout属性，指向ViewStub本身可能被替换掉的布局文件，在一定时机时，通过viewStub.inflate()完成此过程；</p>
-<p>3.ViewStub本身是不可见的，对ViewStub&nbsp;setVisibility(..)与其他控件不一样，ViewStub的setVisibility 成View.VISIBLE或INVISIBLE如果是首次使用，都会自动inflate其指向的布局文件，并替换ViewStub本身，再次使用则是相当于对其指向的布局文件设置可见性。</p>
-<p>这里需要注意的是：<br><a id="more"></a><br>1.ViewStub之所以常称之为&ldquo;延迟化加载&rdquo;，是因为在教多数情况下，程序无需显示ViewStub所指向的布局文件，只有在特定的某些较少条件下，此时ViewStub所指向的布局文件才需要被inflate，且此布局文件直接将当前ViewStub替换掉，具体是通过viewStub.infalte()或viewStub.setVisibility(View.VISIBLE)来完成；</p>
-<p>2.正确把握住ViewStub的应用场景非常重要，正如如1中所描述需求场景下，使用ViewStub可以优化布局；</p>
-<p>3.对ViewStub的inflate操作只能进行一次，因为inflate的时候是将其指向的布局文件解析inflate并替换掉当前ViewStub本身（由此体现出了ViewStub&ldquo;占位符&rdquo;性质），一旦替换后，此时原来的布局文件中就没有ViewStub控件了，因此，如果多次对ViewStub进行infalte，会出现错误信息：ViewStub must have a non-null ViewGroup viewParent。</p>
-<p>4.3中所讲到的ViewStub指向的布局文件解析inflate并替换掉当前ViewStub本身，并不是完全意义上的替换（与include标签还不太一样），替换时，布局文件的layout params是以ViewStub为准，其他布局属性是以布局文件自身为准。</p>
-<p>下面看一下简单的需求场景：在listview显示列表数据时，可能会出现服务端一条数据都没有的情况，此时显示一个EmptyView，提示用户暂无数据。此时考虑到实际应用中EmptyView显示出来的机会相当小，因此，可以在布局文件中使用ViewStub站位，然后确实没有数据时才viewStub.infalte()。</p>
-<p>相关部分代码如下：</p>
-<div class="cnblogs_code"><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/copycode.gif" alt="复制代码"></a></span></div><br><pre> 1 public void showEmptyView() {<br> 2     listview.setVisibility(View.GONE);<br> 3     if (noDataView == null) {<br> 4         ViewStub noDataViewStub = (ViewStub) view.findViewById(R.id.no_data_viewstub);<br> 5         noDataView = noDataViewStub.inflate();<br> 6     } else {<br> 7         noDataView.setVisibility(View.VISIBLE);<br> 8     }<br> 9 }<br>10<br>11 public void showListView(){<br>12     listview.setVisibility(View.VISIBLE);<br>13     if(noDataView != null){<br>14         noDataView.setVisibility(View.GONE);<br>15     }<br>16 }</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a title="复制代码"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/copycode.gif" alt="复制代码"></a></span></div><br></div>
-
-<p>特别需要注意的是对ViewStub是否已经inflate的判断。</p>
-<p>在Listview Item中，有时候可能遇到如下场景：在不同的列表页item的布局一部分不同，但相对于整个item布局来说又不是很多，此时最常见的有如下两种处理：</p>
-<p>1.对不同的部分都写出来，放到一个item文件中，然后逻辑分别处理不同部分的显示与否（View.VISIBLE和View.GONE）；</p>
-<p>2.对这两种不同的item整个部分都分别区分开，完全写成两个item文件，然后结合listView显示不同布局分别做逻辑处理（通过getItemType()等方式）。</p>
-<p>以上两种处理方式其实都可以，第一种方式逻辑清晰，非常灵活，只是在一定程度上增加了内存和资源消耗。第二种方式是的布局文件有重复（虽然相同部分可以通过include，但是逻辑上还是有重复的），包括逻辑上处理的代码实质上的重复。一般对于有较大不同的item布局推荐采用此种方式。</p>
-<p>有时候结合需求，可以在第一种方式的基础上，结合ViewStub&ldquo;占位符&rdquo;可以比较好的完成此类需求。也相当于是两种方式的一种折中形式，但同时兼顾了内存和资源消耗以及不同的布局逻辑控件。</p>
-<p>&nbsp;</p>
-<p>原文：<a href="http://www.cnblogs.com/lwbqqyumidi/p/4047108.html" title="http://www.cnblogs.com/lwbqqyumidi/p/4047108.html" target="_blank" rel="external">http://www.cnblogs.com/lwbqqyumidi/p/4047108.html</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>ViewStub是Android布局优化中一个很不错的标签/控件，直接继承自View。虽然Android开发人员基本上都听说过，但是真正用的可能不多。</p>
-<p>ViewStub可以理解成一个非常轻量级的View，与其他的控件一样，有着自己的属性及特定的方法。当ViewStub使用在布局文件中时，当程序inflate布局文件时，ViewStub本身也会被解析，且占据内存控件，但是与其他控件相比，主要区别体现在以下几点：</p>
-<p>1.当布局文件inflate时，ViewStub控件虽然也占据内存，但是相相比于其他控件，ViewStub所占内存很小；</p>
-<p>2.布局文件inflate时，ViewStub主要是作为一个&ldquo;占位符&rdquo;的性质，放置于view tree中，且ViewStub本身是不可见的。ViewStub中有一个layout属性，指向ViewStub本身可能被替换掉的布局文件，在一定时机时，通过viewStub.inflate()完成此过程；</p>
-<p>3.ViewStub本身是不可见的，对ViewStub&nbsp;setVisibility(..)与其他控件不一样，ViewStub的setVisibility 成View.VISIBLE或INVISIBLE如果是首次使用，都会自动inflate其指向的布局文件，并替换ViewStub本身，再次使用则是相当于对其指向的布局文件设置可见性。</p>
-<p>这里需要注意的是：<br>]]>
     
     </summary>
     
