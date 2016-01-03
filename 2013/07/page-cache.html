@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>页面的缓存与不缓存设置 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HTML的HTTP协议头信息中控制着页面在几个地方的缓存信息，包括浏览器端，中间缓存服务器端(如：squid等)，Web服务器端。本文讨论头信息 中带缓存控制信息的HTML页面(JSP/Servlet生成好出来的也是HTML页面)在中间缓存服务器中的缓存情况。
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; HTTP协议中关于缓存的信息头关键字包括Cache-Control(HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="页面的缓存与不缓存设置">
+<meta property="og:url" content="http://liuling07.github.io/2013/07/page-cache.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="HTML的HTTP协议头信息中控制着页面在几个地方的缓存信息，包括浏览器端，中间缓存服务器端(如：squid等)，Web服务器端。本文讨论头信息 中带缓存控制信息的HTML页面(JSP/Servlet生成好出来的也是HTML页面)在中间缓存服务器中的缓存情况。
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; HTTP协议中关于缓存的信息头关键字包括Cache-Control(HTTP">
+<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="页面的缓存与不缓存设置">
+<meta name="twitter:description" content="HTML的HTTP协议头信息中控制着页面在几个地方的缓存信息，包括浏览器端，中间缓存服务器端(如：squid等)，Web服务器端。本文讨论头信息 中带缓存控制信息的HTML页面(JSP/Servlet生成好出来的也是HTML页面)在中间缓存服务器中的缓存情况。
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; HTTP协议中关于缓存的信息头关键字包括Cache-Control(HTTP">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-page-cache" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      页面的缓存与不缓存设置
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/07/page-cache.html">
+      <time datetime="2013-07-24T23:42:00.000Z" itemprop="datePublished">2013-07-25</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>　　HTML的HTTP协议头信息中控制着页面在几个地方的缓存信息，包括浏览器端，中间缓存服务器端(如：squid等)，Web服务器端。本文讨论头信息 中带缓存控制信息的HTML页面(JSP/Servlet生成好出来的也是HTML页面)在中间缓存服务器中的缓存情况。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HTTP协议中关于缓存的信息头关键字包括Cache-Control(HTTP1.1)，Pragma(HTTP1.0)，last-Modified，Expires等。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HTTP1.0中通过<strong><span style="color: #ff00ff;">Pragma</span> </strong> 控制页面缓存，可以设置：Pragma或no-cache。网上有非常多的文章说明如何控制不让浏览器或中间缓存服务器缓存页面，通常设置的值为no- cache，不过这个值不这么保险，通常还加上Expires置为0来达到目的。但是如我们刻意需要浏览器或缓存服务器缓存住我们的页面这个值则要设置为 Pragma。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HTTP1.1中启用<strong><span style="color: #ff00ff;">Cache-Control</span> </strong> 来控制页面的缓存与否，这里介绍几个常用的参数：</p>
+<ul>
+<li>no-cache，浏览器和缓存服务器都不应该缓存页面信息；</li>
+<li>public，浏览器和缓存服务器都可以缓存页面信息；</li>
+<li>no-store，请求和响应的信息都不应该被存储在对方的磁盘系统中；</li>
+<li>must-revalidate，对于客户机的每次请求，代理服务器必须想服务器验证缓存是否过时；</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Last-Modified只页面的最后生成时间，GMT格式；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Expires过时期限值，GMT格式，指浏览器或缓存服务器在该时间点后必须从真正的服务器中获取新的页面信息；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 上面两个值在JSP中设置值为字符型的GMT格式，无法生效，设置long类型才生效；</p>
+<p>&nbsp;</p>
+<p>下面是一个测试例子：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.servlet;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.IOException;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.PrintWriter;<br></span><span style="color: #008080;"> 5</span><br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.servlet.ServletException;<br></span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.servlet.http.HttpServlet;<br></span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.servlet.http.HttpServletRequest;<br></span><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.servlet.http.HttpServletResponse;<br></span><span style="color: #008080;">10</span><br><span style="color: #008080;">11</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> ServletA <span style="color: #0000ff;">extends</span><span style="color: #000000;"> HttpServlet {<br></span><span style="color: #008080;">12</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;">13</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> service(HttpServletRequest request, HttpServletResponse response)<br></span><span style="color: #008080;">14</span>             <span style="color: #0000ff;">throws</span><span style="color: #000000;"> ServletException, IOException {<br></span><span style="color: #008080;">15</span>         response.setContentType(“text/html”<span style="color: #000000;">);<br></span><span style="color: #008080;">16</span>         <span style="color: #008000;">//</span><span style="color: #008000;">servlet页面默认是不缓存的<br></span><span style="color: #008080;">17</span>         <span style="color: #008000;">//</span><span style="color: #008000;">本页面允许在浏览器端或缓存服务器中缓存，时限为20秒。<br></span><span style="color: #008080;">18</span>         <span style="color: #008000;">//</span><span style="color: #008000;">20秒之内重新进入该页面的话不会进入该servlet的</span><br><span style="color: #008080;">19</span>         java.util.Date date = <span style="color: #0000ff;">new</span><span style="color: #000000;"> java.util.Date();<br></span><span style="color: #008080;">20</span>         response.setDateHeader(“Last-Modified”,date.getTime()); <span style="color: #008000;">//</span><span style="color: #008000;">Last-Modified:页面的最后生成时间 </span><br><span style="color: #008080;">21</span>         response.setDateHeader(“Expires”,date.getTime()+20000); <span style="color: #008000;">//</span><span style="color: #008000;">Expires:过时期限值 </span><br><span style="color: #008080;">22</span>         response.setHeader(“Cache-Control”, “public”); <span style="color: #008000;">//</span><span style="color: #008000;">Cache-Control来控制页面的缓存与否,public:浏览器和缓存服务器都可以缓存页面信息；</span><br><span style="color: #008080;">23</span>         response.setHeader(“Pragma”, “Pragma”); <span style="color: #008000;">//</span><span style="color: #008000;">Pragma:设置页面是否缓存，为Pragma则缓存，no-cache则不缓存<br></span><span style="color: #008080;">24</span><br><span style="color: #008080;">25</span>         <span style="color: #008000;">//</span><span style="color: #008000;">不允许浏览器端或缓存服务器缓存当前页面信息。</span><br><span style="color: #008080;">26</span>         <span style="color: #008000;">/<em></em></span><span style="color: #008000;">response.setHeader( “Pragma”, “no-cache” );<br></span><span style="color: #008080;">27</span> <span style="color: #008000;">        response.setDateHeader(“Expires”, 0);<br></span><span style="color: #008080;">28</span> <span style="color: #008000;">        response.addHeader( “Cache-Control”, “no-cache” );//浏览器和缓存服务器都不应该缓存页面信息<br></span><span style="color: #008080;">29</span> <span style="color: #008000;">        response.addHeader( “Cache-Control”, “no-store” );//请求和响应的信息都不应该被存储在对方的磁盘系统中；<br></span><span style="color: #008080;">30</span> <span style="color: #008000;">        response.addHeader( “Cache-Control”, “must-revalidate” );</span><span style="color: #008000;">///</span><span style="color: #008000;">于客户机的每次请求，代理服务器必须想服务器验证缓存是否过时；</span><br><span style="color: #008080;">31</span><br><span style="color: #008080;">32</span>         System.out.println(“进入了servlet”<span style="color: #000000;">);<br></span><span style="color: #008080;">33</span>         response.getWriter().write(“欢迎光临我的主页”<span style="color: #000000;">);<br></span><span style="color: #008080;">34</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">35</span><br><span style="color: #008080;">36</span><br><span style="color: #008080;">37</span> }</pre><br></div>
+
+<p>　　如果需要在html页面上设置不缓存，这在<head>标签中加入如下语句：</head></p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">http-equiv</span><span style="color: #0000ff;">=”pragma”</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">=”no-cache”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">2</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">http-equiv</span><span style="color: #0000ff;">=”cache-control”</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">=”no-cache”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">3</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">http-equiv</span><span style="color: #0000ff;">=”expires”</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">=”0”</span><span style="color: #0000ff;">&gt;</span>   </pre><br></div>
+
+<p>&nbsp;</p>
+<p><strong>附：html页面中meta的作用</strong></p>
+<p>　　meta是用来在HTML文档中模拟HTTP协议的响应头报文。meta 标签用于网页的<head>与</head>中，meta 标签的用处很多。meta 的属性有两种：name和http-equiv。name属性主要用于描述网页，对应于content（网页内容），以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）。这其中最重要的是description（站点在搜索引擎上的描述）和keywords（分类关键词），所以应该给每页加一个meta值。比较常用的有以下几个：</p>
+<p>　　<strong>name 属性</strong></p>
+<p>　　1、<meta name="Generator" contect="">用以说明生成工具（如Microsoft FrontPage 4.0）等；</p>
+<p>　　2、<meta name="KEYWords" contect="">向搜索引擎说明你的网页的关键词；</p>
+<p>　　3、<meta name="DEscription" contect="">告诉搜索引擎你的站点的主要内容；</p>
+<p>　　4、<meta name="Author" contect="你的姓名">告诉搜索引擎你的站点的制作的作者；</p>
+<p>　　5、<meta name="Robots" contect="all|none|index|noindex|follow|nofollow"></p>
+<p>　　其中的属性说明如下：</p>
+<p>　　设定为all：文件将被检索，且页面上的链接可以被查询；</p>
+<p>　　设定为none：文件将不被检索，且页面上的链接不可以被查询；</p>
+<p>　　设定为index：文件将被检索；</p>
+<p>　　设定为follow：页面上的链接可以被查询；</p>
+<p>　　设定为noindex：文件将不被检索，但页面上的链接可以被查询；</p>
+<p>　　设定为nofollow：文件将不被检索，页面上的链接可以被查询。</p>
+<p>　　<strong>http-equiv属性</strong></p>
+<p>　　1、&lt;meta http-equiv=”Content-Type” contect=”text/html”;charset=gb_2312-80”&gt;</p>
+<p>和 <meta http-equiv="Content-Language" contect="zh-CN">用以说明主页制作所使用的文字以及语言；</p>
+<p>　　又如英文是ISO-8859-1字符集，还有BIG5、utf-8、shift-Jis、Euc、Koi8-2等字符集；</p>
+<p>　　2、<meta http-equiv="Refresh" contect="n;url=http://yourlink">定时让网页在指定的时间n内，跳转到页面<a href="http://yourlink；" target="_blank" rel="external">http://yourlink；</a></p>
+<p>　　3、<meta http-equiv="Expires" contect="Mon,12 May 2001 00:20:00 GMT">可以用于设定网页的到期时间，一旦过期则必须到服务器上重新调用。需要注意的是必须使用GMT时间格式；</p>
+<p>　　4、<meta http-equiv="Pragma" contect="no-cache">是用于设定禁止浏览器从本地机的缓存中调阅页面内容，设定后一旦离开网页就无法从Cache中再调出；</p>
+<p>　　5、<meta http-equiv="set-cookie" contect="Mon,12 May 2001 00:20:00 GMT">cookie设定，如果网页过期，存盘的cookie将被删除。需要注意的也是必须使用GMT时间格式；</p>
+<p>　　6、<meta http-equiv="Pics-label" contect="">网页等级评定，在IE的internet选项中有一项内容设置，可以防止浏览一些受限制的网站，而网站的限制级别就是通过meta属性来设置的；</p>
+<p>　　7、<meta http-equiv="windows-Target" contect="_top">强制页面在当前窗口中以独立页面显示，可以防止自己的网页被别人当作一个frame页调用；</p>
+<p>　　8、<meta http-equiv="Page-Enter" contect="revealTrans(duration=10,transtion= 50)">和<meta http-equiv="Page-Exit" contect="revealTrans(duration=20，transtion=6)">设定进入和离开页面时的特殊效果，这个功能即FrontPage中的&ldquo;格式/网页过渡&rdquo;，不过所加的页面不能够是一个frame页面。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/07/page-cache.html" data-id="ciiy5f4rb003tq1d06lx73gck" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/07/page-cache.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/07/hibernate-mysql-proceduce.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          hibernate调用mysql存储过程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/07/order-java.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">各种排序算法的分析及java实现</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-page-cache" data-title="页面的缓存与不缓存设置" data-url="http://liuling07.github.io/2013/07/page-cache.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

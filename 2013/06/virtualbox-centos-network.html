@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>virtualbox虚拟机上安装centOS的网络配置 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近接触hadoop，需要在在Linux上面开发，所以我装了一个virtualbox虚拟机，在该虚拟机上面安装了一个centOS系统。linux系统是装好了，但是网络配置却另人头疼。我主要是想让宿主机和虚拟机能够互相访问。
+　　然后我就百度了一下，根据百度的结果一步一步的配置。
+　　安装virtualbox之后它会在宿主机上面安装一个虚拟网卡，如图
+　　
+双击它，查看详情，信息如图所示
+
+　　在虚">
+<meta property="og:type" content="article">
+<meta property="og:title" content="virtualbox虚拟机上安装centOS的网络配置">
+<meta property="og:url" content="http://liuling07.github.io/2013/06/virtualbox-centos-network.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="最近接触hadoop，需要在在Linux上面开发，所以我装了一个virtualbox虚拟机，在该虚拟机上面安装了一个centOS系统。linux系统是装好了，但是网络配置却另人头疼。我主要是想让宿主机和虚拟机能够互相访问。
+　　然后我就百度了一下，根据百度的结果一步一步的配置。
+　　安装virtualbox之后它会在宿主机上面安装一个虚拟网卡，如图
+　　
+双击它，查看详情，信息如图所示
+
+　　在虚">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/03223024-0039d1288826493ea4bc290cd562b0cb.jpg">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/03223147-ba39b13682814ee5a012c316a51254ad.jpg">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/03230410-3c0070be3fa54305920c20be3572ad7a.jpg">
+<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="virtualbox虚拟机上安装centOS的网络配置">
+<meta name="twitter:description" content="最近接触hadoop，需要在在Linux上面开发，所以我装了一个virtualbox虚拟机，在该虚拟机上面安装了一个centOS系统。linux系统是装好了，但是网络配置却另人头疼。我主要是想让宿主机和虚拟机能够互相访问。
+　　然后我就百度了一下，根据百度的结果一步一步的配置。
+　　安装virtualbox之后它会在宿主机上面安装一个虚拟网卡，如图
+　　
+双击它，查看详情，信息如图所示
+
+　　在虚">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-virtualbox-centos-network" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      virtualbox虚拟机上安装centOS的网络配置
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/06/virtualbox-centos-network.html">
+      <time datetime="2013-06-03T07:06:00.000Z" itemprop="datePublished">2013-06-03</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>　　最近接触hadoop，需要在在Linux上面开发，所以我装了一个virtualbox虚拟机，在该虚拟机上面安装了一个centOS系统。linux系统是装好了，但是网络配置却另人头疼。我主要是想让宿主机和虚拟机能够互相访问。</p>
+<p>　　然后我就百度了一下，根据百度的结果一步一步的配置。</p>
+<p>　　安装virtualbox之后它会在宿主机上面安装一个虚拟网卡，如图</p>
+<p>　　<img src="http://www.liuling123.com/wp-content/uploads/2015/11/03223024-0039d1288826493ea4bc290cd562b0cb.jpg" alt=""></p>
+<p>双击它，查看详情，信息如图所示</p>
+<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/03223147-ba39b13682814ee5a012c316a51254ad.jpg" alt=""></p>
+<p>　　在虚拟机上面配置网络我使用的是host-only方式，当然也可以使用桥接的方式，至于他们的区别，网上很多。虚拟机上面主要是使用这块虚拟网卡作为网关。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 进入centOS系统后主要有三个文件需要配置：</p>
+<p>　　1、修改ip地址</p>
+<p>　　使用命令&nbsp; vi /etc/sysconfig/network-scripts/ifcfg-eth0 修改该文件内容如下</p>
+<p>DEVICE=”eth0”<br>BOOTPROTO=”static”&nbsp;&nbsp; 这里改为使用静态ip<br>HWADDR=”08:00:27:0C:33:8F”<br>NM_CONTROLLED=”yes”<br>ONBOOT=”yes”&nbsp;&nbsp; 设置为自动启动<br>TYPE=”Ethernet”<br>UUID=”f4adafbc-322d-4dc8-b549-4291f1c04f01”<br>IPADDR=192.168.137.101&nbsp;&nbsp;&nbsp;&nbsp; 设置该虚拟机的ip地址，要与宿主机在一个网段，但是不能重名<br>NETMASK=255.255.255.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 设置子网掩码</p>
+<p>#GATEWAY=192.168.137.1&nbsp;&nbsp; 设置网关，也就是</p>
+<p>　　2、修改网关</p>
+<p>使用命令：vi /etc/sysconfig/network 修改该文件内容如下：</p>
+<p>NETWORKING=yes<br>HOSTNAME=localhost.localdomain<br>GATEWAY=192.168.137.1&nbsp;&nbsp; 这里设置网关，也就是那个虚拟网卡的ip</p>
+<p>　　3、修改DNS</p>
+<p>使用命令：vi /ect/resolv.conf&nbsp; 修改该文件内容如下：</p>
+<p>nameserver 192.168.137.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 增加一个域名服务器</p>
+<p>&nbsp;</p>
+<p>最后重启一下network服务就ok了，使用命令service network restart.</p>
+<p>&nbsp;</p>
+<p>开始，我按照这个步骤来，完成好配置。在宿主机上面ping虚拟机，没问题能ping通。但是在虚拟机上面ping宿主机和网关则出问题了，更不用说ping外网了。问题如下：</p>
+<p>ping宿主机和网关，并没有提示Ping不通，只是接收不到对方的信息，Packets:Sent = 4,Received = 0,Lost&nbsp;= 4(100% loss)。ping <a href="http://www.baidu.com/" target="_blank" rel="external">www.baidu.com</a> 结果为无效的主机名。 这问题困扰了我整整一天，百度也找不到结果。我知道问题肯定出在ip的配置上面，在今天晚上百度无果后，我想到了那块虚拟网卡，我用上面的方法配置，是用那块虚拟网卡作为网关的，但是那虚拟网卡根本就没有配置，它与我的电脑上的网卡没有一点关系，直接去用它肯定是不行的。后来我又想到我们可以使用宽带共享无线wifi,为什么不能把宽带连接共享给那块虚拟网卡呢？马上试一下，启动共享后，虚拟网卡的ip又改变了，然后重新在centos按照上面步骤配置一下网络信息，结果还真的可以了，困扰我一两天的问题终于解决了。</p>
+<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/03230410-3c0070be3fa54305920c20be3572ad7a.jpg" alt=""></p>
+<p>&nbsp;ping 宿主机，ok.</p>
+<p>&nbsp;ping <a href="http://www.baidu.com/" target="_blank" rel="external">www.baidu.com</a> 也ok.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/06/virtualbox-centos-network.html" data-id="ciiy5f4ox0006q1d02rqjmyf2" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/06/virtualbox-centos-network.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/06/linux-command.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux中常用命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/05/asm-java-multi-extends.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用 ASM 实现 Java 语言的“多重继承”</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-virtualbox-centos-network" data-title="virtualbox虚拟机上安装centOS的网络配置" data-url="http://liuling07.github.io/2013/06/virtualbox-centos-network.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

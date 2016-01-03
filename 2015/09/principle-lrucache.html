@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>内存缓存LruCache实现原理 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自己项目中一直都是用的开源的xUtils框架，包括BitmapUtils、DbUtils、ViewUtils和HttpUtils四大模块，这四大模块都是项目中比较常用的。最近决定研究一下xUtils的源码，用了这么久总得知道它的实现原理吧。我是先从先从BitmapUtils模块开始的。BitmapUtils和大多数图片加载框架一样，都是基于内存-文件-网络三级缓存。也就是加载图片的时候首先从内存缓">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内存缓存LruCache实现原理">
+<meta property="og:url" content="http://liuling07.github.io/2015/09/principle-lrucache.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="自己项目中一直都是用的开源的xUtils框架，包括BitmapUtils、DbUtils、ViewUtils和HttpUtils四大模块，这四大模块都是项目中比较常用的。最近决定研究一下xUtils的源码，用了这么久总得知道它的实现原理吧。我是先从先从BitmapUtils模块开始的。BitmapUtils和大多数图片加载框架一样，都是基于内存-文件-网络三级缓存。也就是加载图片的时候首先从内存缓">
+<meta property="og:updated_time" content="2016-01-03T03:48:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内存缓存LruCache实现原理">
+<meta name="twitter:description" content="自己项目中一直都是用的开源的xUtils框架，包括BitmapUtils、DbUtils、ViewUtils和HttpUtils四大模块，这四大模块都是项目中比较常用的。最近决定研究一下xUtils的源码，用了这么久总得知道它的实现原理吧。我是先从先从BitmapUtils模块开始的。BitmapUtils和大多数图片加载框架一样，都是基于内存-文件-网络三级缓存。也就是加载图片的时候首先从内存缓">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-principle-lrucache" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      内存缓存LruCache实现原理
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/09/principle-lrucache.html">
+      <time datetime="2015-09-24T02:35:00.000Z" itemprop="datePublished">2015-09-24</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>　　<span style="font-size: 16px;">自己项目中一直都是用的开源的xUtils框架，包括BitmapUtils、DbUtils、ViewUtils和HttpUtils四大模块，这四大模块都是项目中比较常用的。最近决定研究一下xUtils的源码，用了这么久总得知道它的实现原理吧。我是先从先从BitmapUtils模块开始的。BitmapUtils和大多数图片加载框架一样，都是基于内存-文件-网络三级缓存。也就是加载图片的时候首先从内存缓存中取，如果没有再从文件缓存中取，如果文件缓存没有取到，就从网络下载图片并且加入内存和文件缓存。</span></p>
+<div><span style="font-size: 16px;">　　这篇帖子先分析内存缓存是如何实现的。好吧开始进入正题。</span></div><br><div><span style="font-size: 16px;">　　BitmapUtils内存缓存的核心类LruMemoryCache，LruMemoryCache代码和v4包的LruCache一样，只是加了一个存储超期的处理，这里分析LruCache源码。LRU即Least Recently Used，近期最少使用算法。也就是当内存缓存达到设定的最大值时将内存缓存中近期最少使用的对象移除，有效的避免了OOM的出现。</span></div><br><div>&nbsp;</div><br><div><span style="font-size: 16px;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;讲到LruCache不得不提一下LinkedHashMap，因为LruCache中Lru算法的实现就是通过LinkedHashMap来实现的。LinkedHashMap继承于HashMap，它使用了一个双向链表来存储Map中的Entry顺序关系，这种顺序有两种，一种是LRU顺序，一种是插入顺序，这可以由其构造函数public LinkedHashMap(int initialCapacity,float loadFactor, boolean accessOrder)指定。所以，对于get、put、remove等操作，LinkedHashMap除了要做HashMap做的事情，还做些调整Entry顺序链表的工作。LruCache中将LinkedHashMap的顺序设置为LRU顺序来实现LRU缓存，每次调用get(也就是从内存缓存中取图片)，则将该对象移到链表的尾端。调用put插入新的对象也是存储在链表尾端，这样当内存缓存达到设定的最大值时，将链表头部的对象（近期最少用到的）移除。关于LinkedHashMap详解请前往<a href="http://www.cnblogs.com/children/archive/2012/10/02/2710624.html%E3%80%82" target="_blank" rel="external">http://www.cnblogs.com/children/archive/2012/10/02/2710624.html。</a></span></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="font-size: 16px;">下面看下LruCache的源码，我都注释的很详细了。</span></span></div><br><div><br><div class="cnblogs_code"><br><pre><span style="color: #008080;">  1</span> <span style="color: #008000;">/<em></em></span><br><span style="color: #008080;">  2</span> <span style="color: #008000;">  Copyright (C) 2011 The Android Open Source Project<br></span><span style="color: #008080;">  3</span> <span style="color: #008000;"> <em><br></em></span><span style="color: #008080;">  4</span> <span style="color: #008000;">  Licensed under the Apache License, Version 2.0 (the “License”);<br></span><span style="color: #008080;">  5</span> <span style="color: #008000;"> <em> you may not use this file except in compliance with the License.<br></em></span><span style="color: #008080;">  6</span> <span style="color: #008000;">  You may obtain a copy of the License at<br></span><span style="color: #008080;">  7</span> <span style="color: #008000;"> <em><br></em></span><span style="color: #008080;">  8</span> <span style="color: #008000;">       </span><span style="color: #008000; text-decoration: underline;"><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">http://www.apache.org/licenses/LICENSE-2.0</a></span><br><span style="color: #008080;">  9</span> <span style="color: #008000;"> <em><br></em></span><span style="color: #008080;"> 10</span> <span style="color: #008000;">  Unless required by applicable law or agreed to in writing, software<br></span><span style="color: #008080;"> 11</span> <span style="color: #008000;"> <em> distributed under the License is distributed on an “AS IS” BASIS,<br></em></span><span style="color: #008080;"> 12</span> <span style="color: #008000;">  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br></span><span style="color: #008080;"> 13</span> <span style="color: #008000;"> <em> See the License for the specific language governing permissions and<br></em></span><span style="color: #008080;"> 14</span> <span style="color: #008000;">  limitations under the License.<br></span><span style="color: #008080;"> 15</span>  <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;"> 16</span><br><span style="color: #008080;"> 17</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> android.support.v4.util;<br></span><span style="color: #008080;"> 18</span><br><span style="color: #008080;"> 19</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.LinkedHashMap;<br></span><span style="color: #008080;"> 20</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Map;<br></span><span style="color: #008080;"> 21</span><br><span style="color: #008080;"> 22</span> <span style="color: #008000;">/**</span><br><span style="color: #008080;"> 23</span> <span style="color: #008000;">  Static library version of {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> android.util.LruCache}. Used to write apps<br></span><span style="color: #008080;"> 24</span> <span style="color: #008000;"> <em> that run on API levels prior to 12. When running on API level 12 or above,<br></em></span><span style="color: #008080;"> 25</span> <span style="color: #008000;">  this implementation is still used; it does not try to switch to the<br></span><span style="color: #008080;"> 26</span> <span style="color: #008000;"> <em> framework’s implementation. See the framework SDK documentation for a class<br></em></span><span style="color: #008080;"> 27</span> <span style="color: #008000;">  overview.<br></span><span style="color: #008080;"> 28</span>  <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;"> 29</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> LruCache<k, v=""><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 30</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">final</span> LinkedHashMap<k, v=""><span style="color: #000000;"> map;<br></span><span style="color: #008080;"> 31</span><br><span style="color: #008080;"> 32</span>     <span style="color: #008000;">/**</span><span style="color: #008000;"> Size of this cache in units. Not necessarily the number of elements. </span><span style="color: #008000;">/</span><br><span style="color: #008080;"> 33</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> size;    <span style="color: #008000;">//</span><span style="color: #008000;">当前cache的大小</span><br><span style="color: #008080;"> 34</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> maxSize; <span style="color: #008000;">//</span><span style="color: #008000;">cache最大大小</span><br><span style="color: #008080;"> 35</span><br><span style="color: #008080;"> 36</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> putCount;       <span style="color: #008000;">//</span><span style="color: #008000;">put的次数</span><br><span style="color: #008080;"> 37</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> createCount;    <span style="color: #008000;">//</span><span style="color: #008000;">create的次数</span><br><span style="color: #008080;"> 38</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> evictionCount;  <span style="color: #008000;">//</span><span style="color: #008000;">回收的次数</span><br><span style="color: #008080;"> 39</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> hitCount;       <span style="color: #008000;">//</span><span style="color: #008000;">命中的次数</span><br><span style="color: #008080;"> 40</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> missCount;      <span style="color: #008000;">//</span><span style="color: #008000;">未命中次数</span><br><span style="color: #008080;"> 41</span><br><span style="color: #008080;"> 42</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;"> 43</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> maxSize for caches that do not override {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #sizeOf}, this is<br></span><span style="color: #008080;"> 44</span> <span style="color: #008000;">          the maximum number of entries in the cache. For all other caches,<br></span><span style="color: #008080;"> 45</span> <span style="color: #008000;">     <em>     this is the maximum sum of the sizes of the entries in this cache.<br></em></span><span style="color: #008080;"> 46</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 47</span>     <span style="color: #0000ff;">public</span> LruCache(<span style="color: #0000ff;">int</span><span style="color: #000000;"> maxSize) {<br></span><span style="color: #008080;"> 48</span>         <span style="color: #0000ff;">if</span> (maxSize &lt;= 0<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 49</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> IllegalArgumentException(“maxSize &lt;= 0”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 50</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 51</span>         <span style="color: #0000ff;">this</span>.maxSize =<span style="color: #000000;"> maxSize;<br></span><span style="color: #008080;"> 52</span>         <span style="color: #008000;">//</span><span style="color: #008000;">将LinkedHashMap的accessOrder设置为true来实现LRU</span><br><span style="color: #008080;"> 53</span>         <span style="color: #0000ff;">this</span>.map = <span style="color: #0000ff;">new</span> LinkedHashMap<k, v="">(0, 0.75f, <span style="color: #0000ff;">true</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 54</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 55</span><br><span style="color: #008080;"> 56</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;"> 57</span> <span style="color: #008000;">     <em> Returns the value for {</em></span><span style="color: #808080;">@code</span><span style="color: #008000;"> key} if it exists in the cache or can be<br></span><span style="color: #008080;"> 58</span> <span style="color: #008000;">      created by {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> #create}. If a value was returned, it is moved to the<br></span><span style="color: #008080;"> 59</span> <span style="color: #008000;">     <em> head of the queue. This returns null if a value is not cached and cannot<br></em></span><span style="color: #008080;"> 60</span> <span style="color: #008000;">      be created.<br></span><span style="color: #008080;"> 61</span> <span style="color: #008000;">     <em> 通过key获取相应的item，或者创建返回相应的item。相应的item会移动到队列的尾部，<br></em></span><span style="color: #008080;"> 62</span> <span style="color: #008000;">      如果item的value没有被cache或者不能被创建，则返回null。<br></span><span style="color: #008080;"> 63</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;"> 64</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span><span style="color: #000000;"> V get(K key) {<br></span><span style="color: #008080;"> 65</span>         <span style="color: #0000ff;">if</span> (key == <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 66</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> NullPointerException(“key == null”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 67</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 68</span><br><span style="color: #008080;"> 69</span> <span style="color: #000000;">        V mapValue;<br></span><span style="color: #008080;"> 70</span>         <span style="color: #0000ff;">synchronized</span> (<span style="color: #0000ff;">this</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 71</span>             mapValue =<span style="color: #000000;"> map.get(key);<br></span><span style="color: #008080;"> 72</span>             <span style="color: #0000ff;">if</span> (mapValue != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 73</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">mapValue不为空表示命中，hitCount+1并返回mapValue对象</span><br><span style="color: #008080;"> 74</span>                 hitCount++<span style="color: #000000;">;<br></span><span style="color: #008080;"> 75</span>                 <span style="color: #0000ff;">return</span><span style="color: #000000;"> mapValue;<br></span><span style="color: #008080;"> 76</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 77</span>             missCount++;  <span style="color: #008000;">//</span><span style="color: #008000;">未命中</span><br><span style="color: #008080;"> 78</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 79</span><br><span style="color: #008080;"> 80</span>         <span style="color: #008000;">/</span><br><span style="color: #008080;"> 81</span> <span style="color: #008000;">         <em> Attempt to create a value. This may take a long time, and the map<br></em></span><span style="color: #008080;"> 82</span> <span style="color: #008000;">          may be different when create() returns. If a conflicting value was<br></span><span style="color: #008080;"> 83</span> <span style="color: #008000;">         <em> added to the map while create() was working, we leave that value in<br></em></span><span style="color: #008080;"> 84</span> <span style="color: #008000;">          the map and release the created value.<br></span><span style="color: #008080;"> 85</span> <span style="color: #008000;">         <em> 如果未命中，则试图创建一个对象，这里create方法返回null,并没有实现创建对象的方法<br></em></span><span style="color: #008080;"> 86</span> <span style="color: #008000;">          如果需要事项创建对象的方法可以重写create方法。因为图片缓存时内存缓存没有命中会去<br></span><span style="color: #008080;"> 87</span> <span style="color: #008000;">         <em> 文件缓存中去取或者从网络下载，所以并不需要创建。<br></em></span><span style="color: #008080;"> 88</span>          <span style="color: #008000;">/</span><br><span style="color: #008080;"> 89</span>         V createdValue =<span style="color: #000000;"> create(key);<br></span><span style="color: #008080;"> 90</span>         <span style="color: #0000ff;">if</span> (createdValue == <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 91</span>             <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 92</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 93</span>         <span style="color: #008000;">//</span><span style="color: #008000;">假如创建了新的对象，则继续往下执行</span><br><span style="color: #008080;"> 94</span>         <span style="color: #0000ff;">synchronized</span> (<span style="color: #0000ff;">this</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 95</span>             createCount++<span style="color: #000000;">;<br></span><span style="color: #008080;"> 96</span>             <span style="color: #008000;">//</span><span style="color: #008000;">将createdValue加入到map中，并且将原来键为key的对象保存到mapValue</span><br><span style="color: #008080;"> 97</span>             mapValue =<span style="color: #000000;"> map.put(key, createdValue);<br></span><span style="color: #008080;"> 98</span>             <span style="color: #0000ff;">if</span> (mapValue != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 99</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> There was a conflict so undo that last put<br></span><span style="color: #008080;">100</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">如果mapValue不为空，则撤销上一步的put操作。</span><br><span style="color: #008080;">101</span> <span style="color: #000000;">                map.put(key, mapValue);<br></span><span style="color: #008080;">102</span>             } <span style="color: #0000ff;">else</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">103</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">加入新创建的对象之后需要重新计算size大小</span><br><span style="color: #008080;">104</span>                 size +=<span style="color: #000000;"> safeSizeOf(key, createdValue);<br></span><span style="color: #008080;">105</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">106</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">107</span><br><span style="color: #008080;">108</span>         <span style="color: #0000ff;">if</span> (mapValue != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">109</span>             entryRemoved(<span style="color: #0000ff;">false</span><span style="color: #000000;">, key, createdValue, mapValue);<br></span><span style="color: #008080;">110</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> mapValue;<br></span><span style="color: #008080;">111</span>         } <span style="color: #0000ff;">else</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">112</span>             <span style="color: #008000;">//</span><span style="color: #008000;">每次新加入对象都需要调用trimToSize方法看是否需要回收</span><br><span style="color: #008080;">113</span> <span style="color: #000000;">            trimToSize(maxSize);<br></span><span style="color: #008080;">114</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> createdValue;<br></span><span style="color: #008080;">115</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">116</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">117</span><br><span style="color: #008080;">118</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">119</span> <span style="color: #008000;">     <em> Caches {</em></span><span style="color: #808080;">@code</span><span style="color: #008000;"> value} for {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> key}. The value is moved to the head of<br></span><span style="color: #008080;">120</span> <span style="color: #008000;">      the queue.<br></span><span style="color: #008080;">121</span> <span style="color: #008000;">     <em><br></em></span><span style="color: #008080;">122</span> <span style="color: #008000;">      </span><span style="color: #808080;">@return</span><span style="color: #008000;"> the previous value mapped by {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> key}.<br></span><span style="color: #008080;">123</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;">124</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span><span style="color: #000000;"> V put(K key, V value) {<br></span><span style="color: #008080;">125</span>         <span style="color: #0000ff;">if</span> (key == <span style="color: #0000ff;">null</span> || value == <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">126</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> NullPointerException(“key == null || value == null”<span style="color: #000000;">);<br></span><span style="color: #008080;">127</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">128</span><br><span style="color: #008080;">129</span> <span style="color: #000000;">        V previous;<br></span><span style="color: #008080;">130</span>         <span style="color: #0000ff;">synchronized</span> (<span style="color: #0000ff;">this</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">131</span>             putCount++<span style="color: #000000;">;<br></span><span style="color: #008080;">132</span>             size += safeSizeOf(key, value);  <span style="color: #008000;">//</span><span style="color: #008000;">size加上预put对象的大小</span><br><span style="color: #008080;">133</span>             previous =<span style="color: #000000;"> map.put(key, value);<br></span><span style="color: #008080;">134</span>             <span style="color: #0000ff;">if</span> (previous != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">135</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">如果之前存在键为key的对象，则size应该减去原来对象的大小</span><br><span style="color: #008080;">136</span>                 size -=<span style="color: #000000;"> safeSizeOf(key, previous);<br></span><span style="color: #008080;">137</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">138</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">139</span><br><span style="color: #008080;">140</span>         <span style="color: #0000ff;">if</span> (previous != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">141</span>             entryRemoved(<span style="color: #0000ff;">false</span><span style="color: #000000;">, key, previous, value);<br></span><span style="color: #008080;">142</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">143</span>         <span style="color: #008000;">//</span><span style="color: #008000;">每次新加入对象都需要调用trimToSize方法看是否需要回收</span><br><span style="color: #008080;">144</span> <span style="color: #000000;">        trimToSize(maxSize);<br></span><span style="color: #008080;">145</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> previous;<br></span><span style="color: #008080;">146</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">147</span><br><span style="color: #008080;">148</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">149</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> maxSize the maximum size of the cache before returning. May be -1<br></span><span style="color: #008080;">150</span> <span style="color: #008000;">          to evict even 0-sized elements.<br></span><span style="color: #008080;">151</span> <span style="color: #008000;">     <em> 此方法根据maxSize来调整内存cache的大小，如果maxSize传入-1，则清空缓存中的所有对象<br></em></span><span style="color: #008080;">152</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">153</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span> trimToSize(<span style="color: #0000ff;">int</span><span style="color: #000000;"> maxSize) {<br></span><span style="color: #008080;">154</span>         <span style="color: #0000ff;">while</span> (<span style="color: #0000ff;">true</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">155</span> <span style="color: #000000;">            K key;<br></span><span style="color: #008080;">156</span> <span style="color: #000000;">            V value;<br></span><span style="color: #008080;">157</span>             <span style="color: #0000ff;">synchronized</span> (<span style="color: #0000ff;">this</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">158</span>                 <span style="color: #0000ff;">if</span> (size &lt; 0 || (map.isEmpty() &amp;&amp; size != 0<span style="color: #000000;">)) {<br></span><span style="color: #008080;">159</span>                     <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span><span style="color: #000000;"> IllegalStateException(getClass().getName()<br></span><span style="color: #008080;">160</span>                             + “.sizeOf() is reporting inconsistent results!”<span style="color: #000000;">);<br></span><span style="color: #008080;">161</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">162</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">如果当前size小于maxSize或者map没有任何对象,则结束循环</span><br><span style="color: #008080;">163</span>                 <span style="color: #0000ff;">if</span> (size &lt;= maxSize ||<span style="color: #000000;"> map.isEmpty()) {<br></span><span style="color: #008080;">164</span>                     <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">165</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">166</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">移除链表头部的元素，并进入下一次循环</span><br><span style="color: #008080;">167</span>                 Map.Entry<k, v=""> toEvict =<span style="color: #000000;"> map.entrySet().iterator().next();<br></span><span style="color: #008080;">168</span>                 key =<span style="color: #000000;"> toEvict.getKey();<br></span><span style="color: #008080;">169</span>                 value =<span style="color: #000000;"> toEvict.getValue();<br></span><span style="color: #008080;">170</span> <span style="color: #000000;">                map.remove(key);<br></span><span style="color: #008080;">171</span>                 size -=<span style="color: #000000;"> safeSizeOf(key, value);<br></span><span style="color: #008080;">172</span>                 evictionCount++;  <span style="color: #008000;">//</span><span style="color: #008000;">回收次数+1</span><br><span style="color: #008080;">173</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">174</span><br><span style="color: #008080;">175</span>             entryRemoved(<span style="color: #0000ff;">true</span>, key, value, <span style="color: #0000ff;">null</span><span style="color: #000000;">);<br></span><span style="color: #008080;">176</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">177</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">178</span><br><span style="color: #008080;">179</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">180</span> <span style="color: #008000;">     <em> Removes the entry for {</em></span><span style="color: #808080;">@code</span><span style="color: #008000;"> key} if it exists.<br></span><span style="color: #008080;">181</span> <span style="color: #008000;">     <br></span><span style="color: #008080;">182</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@return</span><span style="color: #008000;"> the previous value mapped by {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> key}.<br></span><span style="color: #008080;">183</span> <span style="color: #008000;">      从内存缓存中根据key值移除某个对象并返回该对象<br></span><span style="color: #008080;">184</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;">185</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span><span style="color: #000000;"> V remove(K key) {<br></span><span style="color: #008080;">186</span>         <span style="color: #0000ff;">if</span> (key == <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">187</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> NullPointerException(“key == null”<span style="color: #000000;">);<br></span><span style="color: #008080;">188</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">189</span><br><span style="color: #008080;">190</span> <span style="color: #000000;">        V previous;<br></span><span style="color: #008080;">191</span>         <span style="color: #0000ff;">synchronized</span> (<span style="color: #0000ff;">this</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">192</span>             previous =<span style="color: #000000;"> map.remove(key);<br></span><span style="color: #008080;">193</span>             <span style="color: #0000ff;">if</span> (previous != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">194</span>                 size -=<span style="color: #000000;"> safeSizeOf(key, previous);<br></span><span style="color: #008080;">195</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">196</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">197</span><br><span style="color: #008080;">198</span>         <span style="color: #0000ff;">if</span> (previous != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">199</span>             entryRemoved(<span style="color: #0000ff;">false</span>, key, previous, <span style="color: #0000ff;">null</span><span style="color: #000000;">);<br></span><span style="color: #008080;">200</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">201</span><br><span style="color: #008080;">202</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> previous;<br></span><span style="color: #008080;">203</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">204</span><br><span style="color: #008080;">205</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">206</span> <span style="color: #008000;">     <em> Called for entries that have been evicted or removed. This method is<br></em></span><span style="color: #008080;">207</span> <span style="color: #008000;">      invoked when a value is evicted to make space, removed by a call to<br></span><span style="color: #008080;">208</span> <span style="color: #008000;">     <em> {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #remove}, or replaced by a call to {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #put}. The default<br></span><span style="color: #008080;">209</span> <span style="color: #008000;">      implementation does nothing.<br></span><span style="color: #008080;">210</span> <span style="color: #008000;">     <em><br></em></span><span style="color: #008080;">211</span> <span style="color: #008000;">     <br><br>The method is called without synchronization: other threads may<br></span><span style="color: #008080;">212</span> <span style="color: #008000;">     <em> access the cache while this method is executing.<br></em></span><span style="color: #008080;">213</span> <span style="color: #008000;">     <br></span><span style="color: #008080;">214</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> evicted true if the entry is being removed to make space, false<br></span><span style="color: #008080;">215</span> <span style="color: #008000;">          if the removal was caused by a {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #put} or {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #remove}.<br></span><span style="color: #008080;">216</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> newValue the new value for {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> key}, if it exists. If non-null,<br></span><span style="color: #008080;">217</span> <span style="color: #008000;">          this removal was caused by a {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #put}. Otherwise it was caused by<br></span><span style="color: #008080;">218</span> <span style="color: #008000;">     <em>     an eviction or a {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #remove}.<br></span><span style="color: #008080;">219</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">220</span>     <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span> entryRemoved(<span style="color: #0000ff;">boolean</span><span style="color: #000000;"> evicted, K key, V oldValue, V newValue) {}<br></span><span style="color: #008080;">221</span><br><span style="color: #008080;">222</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">223</span> <span style="color: #008000;">     <em> Called after a cache miss to compute a value for the corresponding key.<br></em></span><span style="color: #008080;">224</span> <span style="color: #008000;">      Returns the computed value or null if no value can be computed. The<br></span><span style="color: #008080;">225</span> <span style="color: #008000;">     <em> default implementation returns null.<br></em></span><span style="color: #008080;">226</span> <span style="color: #008000;">     <br></span><span style="color: #008080;">227</span> <span style="color: #008000;">     <em> <p>The method is called without synchronization: other threads may<br></p></em></span><span style="color: #008080;">228</span> <span style="color: #008000;">      access the cache while this method is executing.<br></span><span style="color: #008080;">229</span> <span style="color: #008000;">     <em><br></em></span><span style="color: #008080;">230</span> <span style="color: #008000;">      <p>If a value for {</p></span><span style="color: #808080;">@code</span><span style="color: #008000;"> key} exists in the cache when this method<br></span><span style="color: #008080;">231</span> <span style="color: #008000;">     <em> returns, the created value will be released with {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #entryRemoved}<br></span><span style="color: #008080;">232</span> <span style="color: #008000;">      and discarded. This can occur when multiple threads request the same key<br></span><span style="color: #008080;">233</span> <span style="color: #008000;">     <em> at the same time (causing multiple values to be created), or when one<br></em></span><span style="color: #008080;">234</span> <span style="color: #008000;">      thread calls {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #put} while another is creating a value for the same<br></span><span style="color: #008080;">235</span> <span style="color: #008000;">     <em> key.<br></em></span><span style="color: #008080;">236</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">237</span>     <span style="color: #0000ff;">protected</span><span style="color: #000000;"> V create(K key) {<br></span><span style="color: #008080;">238</span>         <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;">239</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">240</span><br><span style="color: #008080;">241</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> safeSizeOf(K key, V value) {<br></span><span style="color: #008080;">242</span>         <span style="color: #0000ff;">int</span> result =<span style="color: #000000;"> sizeOf(key, value);<br></span><span style="color: #008080;">243</span>         <span style="color: #0000ff;">if</span> (result &lt; 0<span style="color: #000000;">) {<br></span><span style="color: #008080;">244</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> IllegalStateException(“Negative size: “ + key + “=” +<span style="color: #000000;"> value);<br></span><span style="color: #008080;">245</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">246</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> result;<br></span><span style="color: #008080;">247</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">248</span><br><span style="color: #008080;">249</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">250</span> <span style="color: #008000;">     <em> Returns the size of the entry for {</em></span><span style="color: #808080;">@code</span><span style="color: #008000;"> key} and {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> value} in<br></span><span style="color: #008080;">251</span> <span style="color: #008000;">      user-defined units.  The default implementation returns 1 so that size<br></span><span style="color: #008080;">252</span> <span style="color: #008000;">     <em> is the number of entries and max size is the maximum number of entries.<br></em></span><span style="color: #008080;">253</span> <span style="color: #008000;">     <br></span><span style="color: #008080;">254</span> <span style="color: #008000;">     <em> <p>An entry’s size must not change while it is in the cache.<br></p></em></span><span style="color: #008080;">255</span> <span style="color: #008000;">      用来计算单个对象的大小，这里默认返回1，一般需要重写该方法来计算对象的大小<br></span><span style="color: #008080;">256</span> <span style="color: #008000;">     <em> xUtils中创建LruMemoryCache时就重写了sizeOf方法来计算bitmap的大小<br></em></span><span style="color: #008080;">257</span> <span style="color: #008000;">      mMemoryCache = new LruMemoryCache<memorycachekey, bitmap="">(globalConfig.getMemoryCacheSize()) {<br></memorycachekey,></span><span style="color: #008080;">258</span> <span style="color: #008000;">     <em>       @Override<br></em></span><span style="color: #008080;">259</span> <span style="color: #008000;">            protected int sizeOf(MemoryCacheKey key, Bitmap bitmap) {<br></span><span style="color: #008080;">260</span> <span style="color: #008000;">     <em>           if (bitmap == null) return 0;<br></em></span><span style="color: #008080;">261</span> <span style="color: #008000;">                return bitmap.getRowBytes() <em> bitmap.getHeight();<br></em></span><span style="color: #008080;">262</span> <span style="color: #008000;">            }<br></span><span style="color: #008080;">263</span> <span style="color: #008000;">     <em>   };<br></em></span><span style="color: #008080;">264</span> <span style="color: #008000;">     <br></span><span style="color: #008080;">265</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">266</span>     <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> sizeOf(K key, V value) {<br></span><span style="color: #008080;">267</span>         <span style="color: #0000ff;">return</span> 1<span style="color: #000000;">;<br></span><span style="color: #008080;">268</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">269</span><br><span style="color: #008080;">270</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">271</span> <span style="color: #008000;">      Clear the cache, calling {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #entryRemoved} on each removed entry.<br></span><span style="color: #008080;">272</span> <span style="color: #008000;">     <em> 清空内存缓存<br></em></span><span style="color: #008080;">273</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">274</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> evictAll() {<br></span><span style="color: #008080;">275</span>         trimToSize(-1); <span style="color: #008000;">//</span><span style="color: #008000;"> -1 will evict 0-sized elements</span><br><span style="color: #008080;">276</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">277</span><br><span style="color: #008080;">278</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">279</span> <span style="color: #008000;">     <em> For caches that do not override {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #sizeOf}, this returns the number<br></span><span style="color: #008080;">280</span> <span style="color: #008000;">      of entries in the cache. For all other caches, this returns the sum of<br></span><span style="color: #008080;">281</span> <span style="color: #008000;">     <em> the sizes of the entries in this cache.<br></em></span><span style="color: #008080;">282</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">283</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> size() {<br></span><span style="color: #008080;">284</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> size;<br></span><span style="color: #008080;">285</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">286</span><br><span style="color: #008080;">287</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">288</span> <span style="color: #008000;">     <em> For caches that do not override {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #sizeOf}, this returns the maximum<br></span><span style="color: #008080;">289</span> <span style="color: #008000;">      number of entries in the cache. For all other caches, this returns the<br></span><span style="color: #008080;">290</span> <span style="color: #008000;">     <em> maximum sum of the sizes of the entries in this cache.<br></em></span><span style="color: #008080;">291</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">292</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> maxSize() {<br></span><span style="color: #008080;">293</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> maxSize;<br></span><span style="color: #008080;">294</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">295</span><br><span style="color: #008080;">296</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">297</span> <span style="color: #008000;">     <em> Returns the number of times {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #get} returned a value.<br></span><span style="color: #008080;">298</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">299</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> hitCount() {<br></span><span style="color: #008080;">300</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> hitCount;<br></span><span style="color: #008080;">301</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">302</span><br><span style="color: #008080;">303</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">304</span> <span style="color: #008000;">     <em> Returns the number of times {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #get} returned null or required a new<br></span><span style="color: #008080;">305</span> <span style="color: #008000;">      value to be created.<br></span><span style="color: #008080;">306</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">307</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> missCount() {<br></span><span style="color: #008080;">308</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> missCount;<br></span><span style="color: #008080;">309</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">310</span><br><span style="color: #008080;">311</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">312</span> <span style="color: #008000;">      Returns the number of times {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #create(Object)} returned a value.<br></span><span style="color: #008080;">313</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">314</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> createCount() {<br></span><span style="color: #008080;">315</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> createCount;<br></span><span style="color: #008080;">316</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">317</span><br><span style="color: #008080;">318</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">319</span> <span style="color: #008000;">      Returns the number of times {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #put} was called.<br></span><span style="color: #008080;">320</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">321</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> putCount() {<br></span><span style="color: #008080;">322</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> putCount;<br></span><span style="color: #008080;">323</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">324</span><br><span style="color: #008080;">325</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">326</span> <span style="color: #008000;">      Returns the number of values that have been evicted.<br></span><span style="color: #008080;">327</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">328</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> evictionCount() {<br></span><span style="color: #008080;">329</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> evictionCount;<br></span><span style="color: #008080;">330</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">331</span><br><span style="color: #008080;">332</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">333</span> <span style="color: #008000;">      Returns a copy of the current contents of the cache, ordered from least<br></span><span style="color: #008080;">334</span> <span style="color: #008000;">     <em> recently accessed to most recently accessed.<br></em></span><span style="color: #008080;">335</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">336</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> Map<k, v=""><span style="color: #000000;"> snapshot() {<br></span><span style="color: #008080;">337</span>         <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">new</span> LinkedHashMap<k, v=""><span style="color: #000000;">(map);<br></span><span style="color: #008080;">338</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">339</span><br><span style="color: #008080;">340</span>     @Override <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span><span style="color: #000000;"> String toString() {<br></span><span style="color: #008080;">341</span>         <span style="color: #0000ff;">int</span> accesses = hitCount +<span style="color: #000000;"> missCount;<br></span><span style="color: #008080;">342</span>         <span style="color: #0000ff;">int</span> hitPercent = accesses != 0 ? (100 * hitCount / accesses) : 0<span style="color: #000000;">;<br></span><span style="color: #008080;">343</span>         <span style="color: #0000ff;">return</span> String.format(“LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]”<span style="color: #000000;">,<br></span><span style="color: #008080;">344</span> <span style="color: #000000;">                maxSize, hitCount, missCount, hitPercent);<br></span><span style="color: #008080;">345</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">346</span> }</k,></k,></k,></k,></k,></k,></pre><br></div><br><p>　　<span style="font-size: 16px;">看完代码是不是觉得内存缓存的实现其实很简单？</span><br><br></p></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/09/principle-lrucache.html" data-id="ciiy5f4qz003eq1d0ro1esrj9" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/09/principle-lrucache.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LruCache/">LruCache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存缓存/">内存缓存</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/optimize-viewstub.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【转】Android布局优化之ViewStub
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/layer-list-rounded-rectangle.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">layer-list实现只有左、右和下边框的圆角矩形</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-principle-lrucache" data-title="内存缓存LruCache实现原理" data-url="http://liuling07.github.io/2015/09/principle-lrucache.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

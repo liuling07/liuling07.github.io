@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>动态代理的使用以及其实现机制 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、动态代理的使用
+　　动态代理可以提供对另一个对象的访问，同时隐藏实际对象的具体事实。代理一般会实现它所表示的实际对象的接口。代理可以访问实际对象，但是延迟实现实际对象的部分功能，实际对象实现系统的实际功能，代理对象对客户隐藏了实际对象。客户不知道它是与代理打交道还是与实际对象打交道。
+　　动态代理主要包含以下角色：
+　　动态代理类（以下简称为代理类）是一个实现在创建类时在运行时指定的接口列表的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态代理的使用以及其实现机制">
+<meta property="og:url" content="http://liuling07.github.io/2013/05/dynamic-proxy.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="一、动态代理的使用
+　　动态代理可以提供对另一个对象的访问，同时隐藏实际对象的具体事实。代理一般会实现它所表示的实际对象的接口。代理可以访问实际对象，但是延迟实现实际对象的部分功能，实际对象实现系统的实际功能，代理对象对客户隐藏了实际对象。客户不知道它是与代理打交道还是与实际对象打交道。
+　　动态代理主要包含以下角色：
+　　动态代理类（以下简称为代理类）是一个实现在创建类时在运行时指定的接口列表的">
+<meta property="og:updated_time" content="2016-01-03T04:02:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态代理的使用以及其实现机制">
+<meta name="twitter:description" content="一、动态代理的使用
+　　动态代理可以提供对另一个对象的访问，同时隐藏实际对象的具体事实。代理一般会实现它所表示的实际对象的接口。代理可以访问实际对象，但是延迟实现实际对象的部分功能，实际对象实现系统的实际功能，代理对象对客户隐藏了实际对象。客户不知道它是与代理打交道还是与实际对象打交道。
+　　动态代理主要包含以下角色：
+　　动态代理类（以下简称为代理类）是一个实现在创建类时在运行时指定的接口列表的">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-dynamic-proxy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      动态代理的使用以及其实现机制
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/05/dynamic-proxy.html">
+      <time datetime="2013-05-20T23:38:00.000Z" itemprop="datePublished">2013-05-21</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>　　<span style="font-size: 16px;"><strong>一、动态代理的使用</strong></span></p>
+<p><span style="font: 14px/19px Verdana, Geneva, Arial, Helvetica, sans-serif; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">　　动态代理可以提供对另一个对象的访问，同时隐藏实际对象的具体事实。代理一般会实现它所表示的实际对象的接口。代理可以访问实际对象，但是延迟实现实际对象的部分功能，实际对象实现系统的实际功能，代理对象对客户隐藏了实际对象。客户不知道它是与代理打交道还是与实际对象打交道。</span></p>
+<p><span style="font: 14px/19px Verdana, Geneva, Arial, Helvetica, sans-serif; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">　　动态代理主要包含以下角色：</span></p>
+<p><em>　　动态代理类</em>（以下简称为<em>代理类</em>）是一个实现在创建类时在运行时指定的接口列表的类，该类具有下面描述的行为。</p>
+<p>　　<em>代理接口</em> 是代理类实现的一个接口。</p>
+<p><em>　　代理实例</em> 是代理类的一个实例。</p>
+<p>　　每个代理实例都有一个关联的<em>调用处理程序</em> 对象，它可以实现接口 <a href="http://www.cnblogs.com/java/lang/reflect/InvocationHandler.html" title="java.lang.reflect 中的接口" target="_blank" rel="external"><code>InvocationHandler</code></a>。通过其中一个代理接口的代理实例上的方法调用将被指派到实例的调用处理程序的 <a href="http://www.cnblogs.com/java/lang/reflect/InvocationHandler.html#invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[]" target="_blank" rel="external"><code>Invoke</code></a>) 方法，并传递代理实例、识别调用方法的 <code>java.lang.reflect.Method</code> 对象以及包含参数的 <code>Object</code> 类型的数组。调用处理程序以适当的方式处理编码的方法调用，并且它返回的结果将作为代理实例上方法调用的结果返回。</p>
+<p><span style="color: #000000; font-size: 14px;">　　目前Java开发包中包含了对动态代理的支持，但是其实现只支持对<span style="line-height: 19px;"><strong>接口</strong></span>的的实现。 其实现主要通过java.lang.reflect.Proxy类和java.lang.reflect.InvocationHandler接口。&nbsp;</span><span style="color: #000000; font-size: 14px;">Proxy类主要用来获取动态代理对象，InvocationHandler接口用来约束调用者实现</span></p>
+<p><span style="color: #000000; font-size: 14px;">　　下面看一个例子：</span></p>
+<p><span style="color: #000000; font-size: 14px;">　　1.代理接口：IComputer.java</span></p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.proxy;<br></span><span style="color: #008080;">2</span><br><span style="color: #008080;">3</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">interface</span><span style="color: #000000;"> IComputer {<br></span><span style="color: #008080;">4</span>     <span style="color: #0000ff;">void</span><span style="color: #000000;"> execute();<br></span><span style="color: #008080;">5</span> }</pre><br></div>
+
+<p>　　2.被代理对象：Laptop.java</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.proxy;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #008000;">//</span><span style="color: #008000;">笔记本电脑</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> Laptop <span style="color: #0000ff;">implements</span><span style="color: #000000;"> IComputer {<br></span><span style="color: #008080;"> 5</span><br><span style="color: #008080;"> 6</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> execute() {<br></span><span style="color: #008080;"> 7</span>         System.out.println(“电脑正在执行中……”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 8</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 9</span><br><span style="color: #008080;">10</span> }</pre><br></div>
+
+<p>　　3.调用处理类：TimeHander.java</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.proxy;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.InvocationHandler;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Method;<br></span><span style="color: #008080;"> 5</span><br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> TimeHander <span style="color: #0000ff;">implements</span><span style="color: #000000;"> InvocationHandler {<br></span><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> Object object;<br></span><span style="color: #008080;"> 8</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> TimeHander(Object object) {<br></span><span style="color: #008080;"> 9</span>         <span style="color: #0000ff;">this</span>.object =<span style="color: #000000;"> object;<br></span><span style="color: #008080;">10</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">11</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Object invoke(Object proxy, Method method, Object[] args)<br></span><span style="color: #008080;">12</span>             <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Throwable {<br></span><span style="color: #008080;">13</span>         <span style="color: #0000ff;">long</span> start =<span style="color: #000000;"> System.currentTimeMillis();<br></span><span style="color: #008080;">14</span>         System.out.println(“start:”+<span style="color: #000000;">start);<br></span><span style="color: #008080;">15</span> <span style="color: #000000;">        method.invoke(object, args);<br></span><span style="color: #008080;">16</span>         Thread.sleep((<span style="color: #0000ff;">int</span>)(Math.random()*2000<span style="color: #000000;">));<br></span><span style="color: #008080;">17</span>         <span style="color: #0000ff;">long</span> end =<span style="color: #000000;"> System.currentTimeMillis();<br></span><span style="color: #008080;">18</span>         System.out.println(“end:”+<span style="color: #000000;">end);<br></span><span style="color: #008080;">19</span>         System.out.println(“total:”+(end-<span style="color: #000000;">start));<br></span><span style="color: #008080;">20</span>         <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">22</span><br><span style="color: #008080;">23</span> }</pre><br></div>
+
+<p>　　4.测试程序：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.proxy;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Proxy;<br></span><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ProxyTest {<br></span><span style="color: #008080;"> 6</span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;"> 8</span>         Laptop laptop = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Laptop();<br></span><span style="color: #008080;"> 9</span>         TimeHander hander = <span style="color: #0000ff;">new</span><span style="color: #000000;"> TimeHander(laptop);<br></span><span style="color: #008080;">10</span>         IComputer computer =<span style="color: #000000;"> (IComputer)Proxy.newProxyInstance(laptop.getClass().getClassLoader(), laptop.getClass().getInterfaces(), hander);<br></span><span style="color: #008080;">11</span> <span style="color: #000000;">        computer.execute();<br></span><span style="color: #008080;">12</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">13</span><br><span style="color: #008080;">14</span> }</pre><br></div>
+
+<p>程序运行结果：</p>
+<p>start:1369118281186<br>电脑正在执行中……<br>end:1369118282849<br>total:1663</p>
+<p>&nbsp;</p>
+<p>　<strong><span style="font-size: 16px;">　二、动态代理运行机制</span></strong></p>
+<p>　　Proxy.<code>&lt;span style=&quot;text-decoration: underline;&quot;&gt;**[newProxyInstance](http://www.cnblogs.com/java/lang/reflect/Proxy.html#newProxyInstance(java.lang.ClassLoader, java.lang.Class[], java.lang.reflect.InvocationHandler))**&lt;/span&gt;([ClassLoader](http://www.cnblogs.com/java/lang/ClassLoader.html &quot;java.lang 中的类&quot;) loader, [Class](http://www.cnblogs.com/java/lang/Class.html &quot;java.lang 中的类&quot;)&lt;?&gt;[] interfaces, [InvocationHandler](http://www.cnblogs.com/java/lang/reflect/InvocationHandler.html &quot;java.lang.reflect 中的接口&quot;) h)</code> 方法会返回一个代理对象类的实例。如上面例子中IComputer computer = (IComputer)Proxy.newProxyInstance(laptop.getClass().getClassLoader(), laptop.getClass().getInterfaces(), hander);执行这一句话的时候会通过反射机制动态的生成一个代理类，该类实现了IComputer接口，并且重写了接口里面的方法（也就是说代理类与被代理类有相同的接口），在该代理类里面有一个InvocationHandler类型的成员变量，也就是调用处理程序，通过调用处理程序来给被代理类增强功能。创建好代理类后就调用类加载器将该类加载到类存，然后再通过反射创建一个该代理类的实例对象。</p>
+<p><span style="color: #000000; font-size: 14px;">　　为了能够更加的理解动态代理的运行机制，我自己来实现了一个动态代理：</span></p>
+<p><span style="color: #000000; font-size: 14px;">　　1.代理接口：Moveable.java</span></p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.test;<br></span><span style="color: #008080;">2</span><br><span style="color: #008080;">3</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">interface</span><span style="color: #000000;"> Moveable {<br></span><span style="color: #008080;">4</span>     <span style="color: #0000ff;">void</span><span style="color: #000000;"> move();<br></span><span style="color: #008080;">5</span> }</pre><br></div>
+
+<p>　　2.被代理对象：Tank.java</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.test;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Random;<br></span><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> Tank <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Moveable {<br></span><span style="color: #008080;"> 6</span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> move() {<br></span><span style="color: #008080;"> 8</span>         System.out.println(“Tank moving…”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 9</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">10</span>             Thread.sleep(<span style="color: #0000ff;">new</span> Random().nextInt(10000<span style="color: #000000;">));<br></span><span style="color: #008080;">11</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">12</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">14</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">15</span><br><span style="color: #008080;">16</span> }</pre><br></div>
+
+<p>　　3.下面写一个Proxy类来为被代理对象产生一个代理类对象，来实现增加记录运行时间的功能。</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.test;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.File;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileWriter;<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Constructor;<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Method;<br></span><span style="color: #008080;"> 7</span><br><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.tools.JavaCompiler;<br></span><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.tools.StandardJavaFileManager;<br></span><span style="color: #008080;">10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.tools.ToolProvider;<br></span><span style="color: #008080;">11</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.tools.JavaCompiler.CompilationTask;<br></span><span style="color: #008080;">12</span><br><span style="color: #008080;">13</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Proxy {<br></span><span style="color: #008080;">14</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> Object newProxyInstance(Class interfaces,InvocationHandler h)<span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception{<br></span><span style="color: #008080;">15</span>         StringBuffer methodStr = <span style="color: #0000ff;">new</span><span style="color: #000000;"> StringBuffer();<br></span><span style="color: #008080;">16</span>         String tr = “\r\n”<span style="color: #000000;">;<br></span><span style="color: #008080;">17</span>         Method[] methods =<span style="color: #000000;"> interfaces.getMethods();<br></span><span style="color: #008080;">18</span>         <span style="color: #008000;">//</span><span style="color: #008000;">拼接代理类的方法</span><br><span style="color: #008080;">19</span>         <span style="color: #0000ff;">for</span><span style="color: #000000;"> (Method method : methods) {<br></span><span style="color: #008080;">20</span> <span style="color: #000000;">            methodStr.append(<br></span><span style="color: #008080;">21</span>             “    public “+ method.getReturnType()+ “ “ +method.getName()+”() {“ + tr +<br><span style="color: #008080;">22</span>             “        try {“ + tr +<br><span style="color: #008080;">23</span>             “            java.lang.reflect.Method md = “ + interfaces.getName() + “.” + “class.getMethod(\””  + method.getName() + “\”);” + tr +<br><span style="color: #008080;">24</span>             “            h.invoke(this,md);” + tr +<br><span style="color: #008080;">25</span>             “        }catch(Exception e) {e.printStackTrace();}” + tr +<br><span style="color: #008080;">26</span>             “    }” +<span style="color: #000000;"> tr<br></span><span style="color: #008080;">27</span> <span style="color: #000000;">            );<br></span><span style="color: #008080;">28</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">29</span><br><span style="color: #008080;">30</span>         <span style="color: #008000;">//</span><span style="color: #008000;">拼接代理类</span><br><span style="color: #008080;">31</span>         String src = “package com.test;” + tr +<br><span style="color: #008080;">32</span>         “import com.test.Moveable;” + tr +<br><span style="color: #008080;">33</span>         “public class TimeProxy implements “ + interfaces.getName() + “ {“ + tr +<br><span style="color: #008080;">34</span>         “    private com.test.InvocationHandler h;” + tr +<br><span style="color: #008080;">35</span>         “    public TimeProxy(com.test.InvocationHandler h) {“ + tr +<br><span style="color: #008080;">36</span>         “        this.h = h;” + tr +<br><span style="color: #008080;">37</span>         “    }” + tr +<br><span style="color: #008080;">38</span>         methodStr.toString() + tr +<br><span style="color: #008080;">39</span>         “}”<span style="color: #000000;">;<br></span><span style="color: #008080;">40</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建代理类</span><br><span style="color: #008080;">41</span>         String fileName = System.getProperty(“user.dir”) + “/src/com/test/TimeProxy.java”<span style="color: #000000;">;<br></span><span style="color: #008080;">42</span>         File file = <span style="color: #0000ff;">new</span><span style="color: #000000;"> File(fileName);<br></span><span style="color: #008080;">43</span>         FileWriter writer = <span style="color: #0000ff;">new</span><span style="color: #000000;"> FileWriter(file);<br></span><span style="color: #008080;">44</span> <span style="color: #000000;">        writer.write(src);<br></span><span style="color: #008080;">45</span> <span style="color: #000000;">        writer.flush();<br></span><span style="color: #008080;">46</span> <span style="color: #000000;">        writer.close();<br></span><span style="color: #008080;">47</span>         <span style="color: #008000;">//</span><span style="color: #008000;">编译</span><br><span style="color: #008080;">48</span>         JavaCompiler compiler =<span style="color: #000000;"> ToolProvider.getSystemJavaCompiler();<br></span><span style="color: #008080;">49</span>         StandardJavaFileManager fileMgr = compiler.getStandardFileManager(<span style="color: #0000ff;">null</span>, <span style="color: #0000ff;">null</span>, <span style="color: #0000ff;">null</span><span style="color: #000000;">);<br></span><span style="color: #008080;">50</span>         Iterable units =<span style="color: #000000;"> fileMgr.getJavaFileObjects(fileName);<br></span><span style="color: #008080;">51</span>         CompilationTask ct = compiler.getTask(<span style="color: #0000ff;">null</span>, fileMgr, <span style="color: #0000ff;">null</span>, <span style="color: #0000ff;">null</span>, <span style="color: #0000ff;">null</span><span style="color: #000000;">, units);<br></span><span style="color: #008080;">52</span> <span style="color: #000000;">        ct.call();<br></span><span style="color: #008080;">53</span> <span style="color: #000000;">        fileMgr.close();<br></span><span style="color: #008080;">54</span>         <span style="color: #008000;">//</span><span style="color: #008000;">加载类到内存：</span><br><span style="color: #008080;">55</span>         Class c = ClassLoader.getSystemClassLoader().loadClass(“com.test.TimeProxy”<span style="color: #000000;">);<br></span><span style="color: #008080;">56</span>         Constructor constructor = c.getConstructor(InvocationHandler.<span style="color: #0000ff;">class</span>); <span style="color: #008000;">//</span><span style="color: #008000;">得到参数为InvocationHandler类型的构造方法</span><br><span style="color: #008080;">57</span>         Object m = constructor.newInstance(h); <span style="color: #008000;">//</span><span style="color: #008000;">通过该构造方法得到实例</span><br><span style="color: #008080;">58</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> m;<br></span><span style="color: #008080;">59</span><br><span style="color: #008080;">60</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">61</span> }</pre><br></div>
+
+<p>　　4.TankProxy.java</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.test;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Method;<br></span><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> TankProxy {<br></span><span style="color: #008080;"> 6</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <t> T getBean(<span style="color: #0000ff;">final</span> Object tank) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception{<br></span><span style="color: #008080;"> 7</span>         <span style="color: #0000ff;">return</span> (T)Proxy.newProxyInstance(tank.getClass().getInterfaces()[0], <span style="color: #0000ff;">new</span><span style="color: #000000;"> InvocationHandler(){<br></span><span style="color: #008080;"> 8</span>             <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> invoke(Object proxy, Method method) {<br></span><span style="color: #008080;"> 9</span>                 <span style="color: #0000ff;">long</span> start =<span style="color: #000000;"> System.currentTimeMillis();<br></span><span style="color: #008080;">10</span>                 System.out.println(“start:”+<span style="color: #000000;">start);<br></span><span style="color: #008080;">11</span>                 <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">12</span>                     method.invoke(tank, <span style="color: #0000ff;">new</span><span style="color: #000000;"> Object[]{});<br></span><span style="color: #008080;">13</span>                 } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">14</span> <span style="color: #000000;">                    e.printStackTrace();<br></span><span style="color: #008080;">15</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">16</span>                 <span style="color: #0000ff;">long</span> end =<span style="color: #000000;"> System.currentTimeMillis();<br></span><span style="color: #008080;">17</span>                 System.out.println(“end:”+<span style="color: #000000;">end);<br></span><span style="color: #008080;">18</span>                 System.out.println(“time:”+(end-<span style="color: #000000;">start));<br></span><span style="color: #008080;">19</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">20</span><br><span style="color: #008080;">21</span> <span style="color: #000000;">        });<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">23</span> }    </t></pre><br></div>
+
+<p>　　5.测试程序：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.test;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> com.extend.Tank2;<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> com.extend.Tank3;<br></span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> com.juhe.LogProxy;<br></span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> com.juhe.TimeProxy;<br></span><span style="color: #008080;"> 9</span><br><span style="color: #008080;">10</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Test {<br></span><span style="color: #008080;">11</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {<br></span><span style="color: #008080;">12</span>         Tank tank = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Tank();<br></span><span style="color: #008080;">13</span>         Moveable m =<span style="color: #000000;">  TankProxy.getBean(tank);<br></span><span style="color: #008080;">14</span> <span style="color: #000000;">        m.move();<br></span><span style="color: #008080;">15</span><br><span style="color: #008080;">16</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">17</span><br><span style="color: #008080;">18</span> }</pre><br></div>
+
+<p>执行该程序的结果为：<br>start:1369121253400<br>Tank moving…<br>end:1369121260078<br>time:6678</p>
+<p>动态生成的代理类的内容如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.test;<br></span><span style="color: #008080;"> 2</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> com.test.Moveable;<br></span><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> TimeProxy <span style="color: #0000ff;">implements</span><span style="color: #000000;"> com.test.Moveable {<br></span><span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> com.test.InvocationHandler h;<br></span><span style="color: #008080;"> 5</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> TimeProxy(com.test.InvocationHandler h) {<br></span><span style="color: #008080;"> 6</span>         <span style="color: #0000ff;">this</span>.h =<span style="color: #000000;"> h;<br></span><span style="color: #008080;"> 7</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 8</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> move() {<br></span><span style="color: #008080;"> 9</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">10</span>             java.lang.reflect.Method md = com.test.Moveable.<span style="color: #0000ff;">class</span>.getMethod(“move”<span style="color: #000000;">);<br></span><span style="color: #008080;">11</span>             h.invoke(<span style="color: #0000ff;">this</span><span style="color: #000000;">,md);<br></span><span style="color: #008080;">12</span>         }<span style="color: #0000ff;">catch</span><span style="color: #000000;">(Exception e) {e.printStackTrace();}<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">14</span><br><span style="color: #008080;">15</span> }</pre><br></div>
+
+<p>　　看了这个例子，对动态代理的实现机制应该会有一定的了解了！</p>
+<p>&nbsp;　　小结：<span style="font: 14px/25.2px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #efefef; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">动态代理在运行期通过接口动态生成代理类，这为其带来了一定的灵活性，但这个灵活性却带来了两个问题，第一代理类必须实现一个接口，如果没实现接口会抛出一个异常。第二性能影响，因为动态代理使用反射的机制实现的，首先反射肯定比直接调用要慢，<span style="font: 14px/25.2px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #efefef; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">其次使用反射大量生成类文件可能引起Full GC造成性能影响，因为字节码文件加载后会存放在JVM运行时区的方法区（或者叫持久代）中，当方法区满的时候，会引起Full GC，所以当你大量使用动态代理时，可以将持久代设置大一些，减少Full GC次数。<span class="Apple-converted-space">&nbsp;</span></span></span></p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/05/dynamic-proxy.html" data-id="ciiy5f4w700blq1d0tb9qutjl" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/05/dynamic-proxy.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/05/aop-cglib.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AOP的另一种实现----cglib
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/05/lock-producer-comsumer.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用Lock来实现生产者和消费者问题</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-dynamic-proxy" data-title="动态代理的使用以及其实现机制" data-url="http://liuling07.github.io/2013/05/dynamic-proxy.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jsp静态化和伪静态化 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="首先说说为什么要静态化。对于现在的Web Application来说，动态页面是占有绝对高的地位的，正因为有了动态化，才有了现在Web的丰富多彩，但是如同所有别的事实一样，好处往往都是有 代价的。为了产生出动态的效果，每一次对页面的请求都会要求服务器对页面进行编译或者执行，这些操作都很消耗系统资源。如果这期间还有和数据库的 通讯，那么代价将会更大。如果一个页面在一定的时间内，其内容没有发生改变，那">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsp静态化和伪静态化">
+<meta property="og:url" content="http://liuling07.github.io/2013/03/jsp-staticize.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="首先说说为什么要静态化。对于现在的Web Application来说，动态页面是占有绝对高的地位的，正因为有了动态化，才有了现在Web的丰富多彩，但是如同所有别的事实一样，好处往往都是有 代价的。为了产生出动态的效果，每一次对页面的请求都会要求服务器对页面进行编译或者执行，这些操作都很消耗系统资源。如果这期间还有和数据库的 通讯，那么代价将会更大。如果一个页面在一定的时间内，其内容没有发生改变，那">
+<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jsp静态化和伪静态化">
+<meta name="twitter:description" content="首先说说为什么要静态化。对于现在的Web Application来说，动态页面是占有绝对高的地位的，正因为有了动态化，才有了现在Web的丰富多彩，但是如同所有别的事实一样，好处往往都是有 代价的。为了产生出动态的效果，每一次对页面的请求都会要求服务器对页面进行编译或者执行，这些操作都很消耗系统资源。如果这期间还有和数据库的 通讯，那么代价将会更大。如果一个页面在一定的时间内，其内容没有发生改变，那">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-jsp-staticize" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jsp静态化和伪静态化
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/03/jsp-staticize.html">
+      <time datetime="2013-03-16T04:29:00.000Z" itemprop="datePublished">2013-03-16</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <div><br><br>首先说说为什么要静态化。<br>对于现在的Web Application来说，动态页面是占有绝对高的地位的，正因为有了动态化，才有了现在Web的丰富多彩，但是如同所有别的事实一样，好处往往都是有 代价的。<br>为了产生出动态的效果，每一次对页面的请求都会要求服务器对页面进行编译或者执行，这些操作都很消耗系统资源。如果这期间还有和数据库的 通讯，那么代价将会更大。<br>如果一个页面在一定的时间内，其内容没有发生改变，那么就不必为每一次对它的访问进行一次&ldquo;新&rdquo;的编译或执行。我们可以 把它在这段没有发生改变的时间内的结果保存到一个静态的页面里面，然后每次访问这个页面时，就用刚才保存的静态页面进行回复。这样便能大大地减少系统资源 的消耗，并且提高对客户的响应速度。而这个过程就称之为页面静态化。<br><br>现在所面临的问题就是如何在JSP中将页面的内容保存下来。<br>在访问JSP页面的时候，服务器会先将JSP文件编译为Servlet文件，然 后对这个Servlet编译、执行，并最终把结果返回给客户端。而我们的任务就是要把这个最终生成的HTML静态页面保留下来，存放在服务器上。<br>解 决的方法其实很简单。普通的对于JSP的访问，最终的数据流是回写到客户端的，如果我们把它重定向，让它回写到服务器上一个本地的文件，这样就能把JSP 的执行结果保存起来，而这个文件就是我们想要得到的静态化的结果。<br><br>好了，说了那么多废话，现在说说具体怎么实现。<br>看过将JSP编译成的Servlet文件以后，可以知道这个Servlet是通过一 个”JspWriter”类型的对象将数据回写给客户端的，而这个对象正是JSP里面的内置对象”out”，现在我们只需要定义一个自己的类，让它继 承”JspWriter”类，覆盖里面的输出相关函数，让数据都输出到一个指定的文件就可以了。<br>例如（省略了部分重载函数）：<br><br>程序代码<br><br>import java.io.<em>;<br>import javax.servlet.jsp.</em>;<br>public class ConstPageWriter extends JspWriter {<br>&nbsp;&nbsp;&nbsp;&nbsp; private PrintWriter pw;<br>&nbsp;&nbsp;&nbsp;&nbsp; public ConstPageWriter(String fileName){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; super(JspWriter.DEFAULT_BUFFER, false);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pw = new PrintWriter(fileName, “UTF-8”);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }catch(Exception e){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e.printStackTrace();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp; public void print(String arg0) throws IOException {&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pw.print(arg0);<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; ……<br>&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp; public void println() throws IOException {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pw.println();<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp; public void println(Object arg0) throws IOException {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pw.println(arg0);<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; ……<br>&nbsp;&nbsp;&nbsp;&nbsp; @Override<br>&nbsp;&nbsp;&nbsp;&nbsp; public void write(char[] arg0, int arg1, int arg2) throws IOException {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pw.write(arg0, arg1, arg2);<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>}<br><br>然后将需要静态化的页面写成如下形式：<br><br>程序代码<br><br>&lt;%<br>String fileName = “ConstPageName”;&nbsp;&nbsp; // 生成的静态页面文件名<br>if (notNeedUpdate){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 判断是否需要更新<br>&nbsp;&nbsp;&nbsp;&nbsp; response.sendRedirect(fileName);<br>&nbsp;&nbsp;&nbsp;&nbsp; return;<br>}<br>out = new ConstPageWriter(pageContext.getServletContext().getRealPath(fileName));<br>%&gt;<br>&lt;%<br>&nbsp;&nbsp;&nbsp;&nbsp; // Build this page，更新页面<br>%&gt;<br>&lt;%<br>out.close();<br>response.sendRedirect(fileName);<br>%&gt;<br><br>这样页面静态化基本上就算完成了，余下的操作就是处理何时需要更新。至于何时更新是跟特定的应用程序相关的，这里就不详细分析了。<br><br>JSP使用URLRewirte实现url地址伪静态化<br><br>在网上找了很多关于URLRewirte的使用,基本都是关于asp的,jsp的相关文档很少,而且大多写的很模糊,看了之后也是不清不楚,而且在 项目中无法使用成功,鉴于此,自己整理了关于URLRewirte的用法.该方法只是实现了url的伪静态化,并不是真正的静态化.<br><br>工作环境:Eclipse3.2.2+MyEclipse_5.5.1+Tomcat5.0.28<br><br>URLRewirte版本:urlrewrite-2.6.0.jar<br><br>前提条件:有一个可以正常使用的web应用项目<br><br>URLRewirte的用处:<br><br>1.满足搜索引擎的要求<br><br>2.隐藏技术实现，提高网站的移植性<br><br>3.满足美感的要求(个人感觉这个用处太牵强)<br><br>项目部署<br><br>1.首先在<a href="http://tuckey.org/urlrewirte/" target="_blank" rel="external">http://tuckey.org/urlrewirte/</a>下 载urlrewirtefilter<br><br>2.解压所下载的文件,把urlrewrite-2.6.0.jar复制到项目的WebRoot/WEB-INF/lib/目录下,然后编译<br><br>3.把urlrewrite.xml复制到项目的WebRoot/WEB-INF/目录下<br><br>4.在web.xml文件中加入以下:<br><br><!-- 动态地址静态化 --><br><filter><br><filter-name>UrlRewriteFilter</filter-name><br>&nbsp;&nbsp; <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class><br>&nbsp;&nbsp; <init-param><br>&nbsp;&nbsp;&nbsp; <param-name>logLevel</param-name><br>&nbsp;&nbsp;&nbsp; <param-value>WARN</param-value><br>&nbsp;&nbsp; </init-param><br></filter><br><filter-mapping><br>&nbsp;&nbsp; <filter-name>UrlRewriteFilter</filter-name><br>&nbsp;&nbsp; <url-pattern>/*</url-pattern><br></filter-mapping><br><br>5.需要配置urlrewrite.xml文件来实现url静态化,下面将详细说明<br><br>到这里相关的配置已经完成,下面看如何把动态地址静态化<br><br>1.普通url静态化<br><br>例如:要把<a href="http://localhost/prjtest/user/list.jsp" target="_blank" rel="external">http://localhost/prjtest/user/list.jsp</a>转 换成<a href="http://localhost/prjtest/user/list.html" target="_blank" rel="external">http://localhost/prjtest/user/list.html</a><br><br>这种是最简单的,当一个servlet跳转到list.jsp页面列出user列表时,在urlrewrite.xml中这样配置:<br><br><rule><br><from>^/user/list.html</from><br>&nbsp;&nbsp; <to>/user/list.jsp</to><br></rule><br><br>当请求/user/list.html这个页面时,实际上相当于请求/user/list.jsp页面<br><br>在servlet的跳转要这样写:<br><br>response.sendRedirect(“./user/list.html”);<br><br>2.带参数的url静态化<br><br>例如:要把<a href="http://localhost/prjtest/user/view.jsp?cid=1&amp;cname=admin" target="_blank" rel="external">http://localhost/prjtest/user/view.jsp?cid=1&amp;cname=admin</a>转 换成<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://localhost/prjtest/user/view/1_admin.html" target="_blank" rel="external">http://localhost/prjtest/user/view/1_admin.html</a><br><br>在urlrewrite.xml中这样配置:<br><br><rule><br><from>^/user/view/([0-9]+)_([a-z]+).html$</from><br><to>/user/view.jsp?cid=$1&amp;cname=$2</to><br></rule><br><br>当请求/user/view/1<em>admin.html这个页面时,实际上相当于请求/user/list.jsp?cid=1&amp; cname=admin页面<br><br>在servlet的跳转要这样写(cid,cname为变量):<br><br>response.sendRedirect(“./user/view/“+ cid +”</em>“+ cname +”.html”);<br><br>注意:配置文件中用”&amp;”来代替”&amp;”<br><br></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/03/jsp-staticize.html" data-id="ciiy5f4t3006nq1d06zi945m6" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/03/jsp-staticize.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/03/com-sun-mail-smtp-smtpsendfailedexception.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          com.sun.mail.smtp.SMTPSendFailedException: 530 Authentication required 解决方案
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/02/jquery-ajax.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">详细解读Jquery各Ajax函数：$.get(),$.post(),$.ajax(),$.getJSON()</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-jsp-staticize" data-title="jsp静态化和伪静态化" data-url="http://liuling07.github.io/2013/03/jsp-staticize.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>AsyncTask源码分析 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于AsyncTask的用法可以参看前面一篇博客《AsyncTask实现断点续传》，本文只解析AsyncTask的源代码。&amp;nbsp;AsyncTask.execute方法：1     public final AsyncTask execute(Params… params) {2         return executeOnExecutor(sDefaultExecutor, params">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AsyncTask源码分析">
+<meta property="og:url" content="http://liuling07.github.io/2015/10/asynctask-source.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="关于AsyncTask的用法可以参看前面一篇博客《AsyncTask实现断点续传》，本文只解析AsyncTask的源代码。&amp;nbsp;AsyncTask.execute方法：1     public final AsyncTask execute(Params… params) {2         return executeOnExecutor(sDefaultExecutor, params">
+<meta property="og:updated_time" content="2016-01-03T03:54:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AsyncTask源码分析">
+<meta name="twitter:description" content="关于AsyncTask的用法可以参看前面一篇博客《AsyncTask实现断点续传》，本文只解析AsyncTask的源代码。&amp;nbsp;AsyncTask.execute方法：1     public final AsyncTask execute(Params… params) {2         return executeOnExecutor(sDefaultExecutor, params">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-asynctask-source" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AsyncTask源码分析
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/10/asynctask-source.html">
+      <time datetime="2015-10-10T08:19:00.000Z" itemprop="datePublished">2015-10-10</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <div>关于AsyncTask的用法可以参看前面一篇博客<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="AsyncTask实现断点续传" target="_blank" rel="external">《AsyncTask实现断点续传》</a>，本文只解析AsyncTask的源代码。</div><br><div>&nbsp;</div><br><div>AsyncTask.execute方法：</div><br><div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span> AsyncTask<params, progress,="" result=""><span style="color: #000000;"> execute(Params… params) {<br></span><span style="color: #008080;">2</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> executeOnExecutor(sDefaultExecutor, params);<br></span><span style="color: #008080;">3</span>     }</params,></pre><br></div><br></div><br></div><br></div><br><div>execute方法里面直接调用了executeOnexecute方法。</div><br></div><br><div>&nbsp;</div><br><div>AsyncTask.executeOnexecute方法：</div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span> AsyncTask<params, progress,="" result=""><span style="color: #000000;"> executeOnExecutor(Executor exec,<br></span><span style="color: #008080;"> 2</span> <span style="color: #000000;">            Params… params) {<br></span><span style="color: #008080;"> 3</span>         <span style="color: #0000ff;">if</span> (mStatus !=<span style="color: #000000;"> Status.PENDING) {<br></span><span style="color: #008080;"> 4</span>             <span style="color: #0000ff;">switch</span><span style="color: #000000;"> (mStatus) {<br></span><span style="color: #008080;"> 5</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> RUNNING:<br></span><span style="color: #008080;"> 6</span>                     <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> IllegalStateException(“Cannot execute task:”<br><span style="color: #008080;"> 7</span>                             + “ the task is already running.”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 8</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> FINISHED:<br></span><span style="color: #008080;"> 9</span>                     <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> IllegalStateException(“Cannot execute task:”<br><span style="color: #008080;">10</span>                             + “ the task has already been executed “<br><span style="color: #008080;">11</span>                             + “(a task can be executed only once)”<span style="color: #000000;">);<br></span><span style="color: #008080;">12</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">14</span>         mStatus =<span style="color: #000000;"> Status.RUNNING;<br></span><span style="color: #008080;">15</span> <span style="color: #000000;">        onPreExecute();<br></span><span style="color: #008080;">16</span>         mWorker.mParams =<span style="color: #000000;"> params;<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">        exec.execute(mFuture);<br></span><span style="color: #008080;">18</span>         <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">this</span><span style="color: #000000;">;<br></span><span style="color: #008080;">19</span>     }</params,></pre><br></div><br></div><br></div><br></div><br><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;3-13行是检测AsyncTask的状态，如果状态不为PENDING，则会抛异常，这也是为什么一个AsyncTask只能被执行一次的原因。14行将状态改为RUNNING，表示该任务正在运行。然后调用AsyncTask的onPreExecute()方法。</div><br><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;由下面代码可以看出，AsyncTask有三种状态：PENDING（未运行）、RUNNING（正在运行）、FINISHED（已运行完毕）。</div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">enum</span><span style="color: #000000;"> Status {<br></span><span style="color: #008080;"> 2</span>         <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;"> 3</span> <span style="color: #008000;">         <em> Indicates that the task has not been executed yet.<br></em></span><span style="color: #008080;"> 4</span>          <span style="color: #008000;">/</span><br><span style="color: #008080;"> 5</span> <span style="color: #000000;">        PENDING,<br></span><span style="color: #008080;"> 6</span>         <span style="color: #008000;">/</span><br><span style="color: #008080;"> 7</span> <span style="color: #008000;">         <em> Indicates that the task is running.<br></em></span><span style="color: #008080;"> 8</span>          <span style="color: #008000;">/</span><br><span style="color: #008080;"> 9</span> <span style="color: #000000;">        RUNNING,<br></span><span style="color: #008080;">10</span>         <span style="color: #008000;">/<em>*</em></span><br><span style="color: #008080;">11</span> <span style="color: #008000;">          Indicates that {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> AsyncTask#onPostExecute} has finished.<br></span><span style="color: #008080;">12</span>          <span style="color: #008000;">*/</span><br><span style="color: #008080;">13</span> <span style="color: #000000;">        FINISHED,<br></span><span style="color: #008080;">14</span>     }</pre><br></div><br></div><br></div><br></div><br><div>&nbsp;</div><br><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;FutureTask代码：</div><br><div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> FutureTask<v> <span style="color: #0000ff;">implements</span> RunnableFuture<v><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 2</span> <span style="color: #000000;">    ……<br></span><span style="color: #008080;"> 3</span>     <span style="color: #008000;">//</span><span style="color: #008000;">构造方法传入一个Callable对象</span><br><span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">public</span> FutureTask(Callable<v><span style="color: #000000;"> callable) {<br></span><span style="color: #008080;"> 5</span>         <span style="color: #0000ff;">if</span> (callable == <span style="color: #0000ff;">null</span><span style="color: #000000;">)<br></span><span style="color: #008080;"> 6</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span><span style="color: #000000;"> NullPointerException();<br></span><span style="color: #008080;"> 7</span>         <span style="color: #0000ff;">this</span>.callable =<span style="color: #000000;"> callable;<br></span><span style="color: #008080;"> 8</span>         <span style="color: #0000ff;">this</span>.state = NEW;       <span style="color: #008000;">//</span><span style="color: #008000;"> ensure visibility of callable</span><br><span style="color: #008080;"> 9</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">10</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;">11</span>         <span style="color: #0000ff;">if</span> (state != NEW ||<br><span style="color: #008080;">12</span>             !UNSAFE.compareAndSwapObject(<span style="color: #0000ff;">this</span><span style="color: #000000;">, runnerOffset,<br></span><span style="color: #008080;">13</span>                                          <span style="color: #0000ff;">null</span><span style="color: #000000;">, Thread.currentThread()))<br></span><span style="color: #008080;">14</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;">;<br></span><span style="color: #008080;">15</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">16</span>             Callable<v> c =<span style="color: #000000;"> callable;<br></span><span style="color: #008080;">17</span>             <span style="color: #0000ff;">if</span> (c != <span style="color: #0000ff;">null</span> &amp;&amp; state ==<span style="color: #000000;"> NEW) {<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">                V result;<br></span><span style="color: #008080;">19</span>                 <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> ran;<br></span><span style="color: #008080;">20</span>                 <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">21</span>                     result = c.call();<span style="color: #008000;">//</span><span style="color: #008000;">这里调用了callable.call()方法</span><br><span style="color: #008080;">22</span>                     ran = <span style="color: #0000ff;">true</span><span style="color: #000000;">;<br></span><span style="color: #008080;">23</span>                 } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Throwable ex) {<br></span><span style="color: #008080;">24</span>                     result = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;">25</span>                     ran = <span style="color: #0000ff;">false</span><span style="color: #000000;">;<br></span><span style="color: #008080;">26</span> <span style="color: #000000;">                    setException(ex);<br></span><span style="color: #008080;">27</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">28</span>                 <span style="color: #0000ff;">if</span><span style="color: #000000;"> (ran)<br></span><span style="color: #008080;">29</span> <span style="color: #000000;">                    set(result);<br></span><span style="color: #008080;">30</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">31</span>         } <span style="color: #0000ff;">finally</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">32</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> runner must be non-null until state is settled to<br></span><span style="color: #008080;">33</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> prevent concurrent calls to run()</span><br><span style="color: #008080;">34</span>             runner = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;">35</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> state must be re-read after nulling runner to prevent<br></span><span style="color: #008080;">36</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> leaked interrupts</span><br><span style="color: #008080;">37</span>             <span style="color: #0000ff;">int</span> s =<span style="color: #000000;"> state;<br></span><span style="color: #008080;">38</span>             <span style="color: #0000ff;">if</span> (s &gt;=<span style="color: #000000;"> INTERRUPTING)<br></span><span style="color: #008080;">39</span> <span style="color: #000000;">                handlePossibleCancellationInterrupt(s);<br></span><span style="color: #008080;">40</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">41</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">42</span> <span style="color: #000000;">    ……<br></span><span style="color: #008080;">43</span> }</v></v></v></v></pre><br></div>
+
+<p>&nbsp;</p>
+<p></p></div><br></div><br></div><br></div><p></p>
+<div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;AsyncTask构造方法：</div><br><div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">abstract</span> <span style="color: #0000ff;">class</span> AsyncTask<params, progress,="" result=""><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 2</span> <span style="color: #000000;">    ……<br></span><span style="color: #008080;"> 3</span>     <span style="color: #008000;">/<em>*</em></span><br><span style="color: #008080;"> 4</span> <span style="color: #008000;">      Creates a new asynchronous task. This constructor must be invoked on the UI thread.<br></span><span style="color: #008080;"> 5</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;"> 6</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> AsyncTask() {<br></span><span style="color: #008080;"> 7</span>         mWorker = <span style="color: #0000ff;">new</span> WorkerRunnable<params, result=""><span style="color: #000000;">() {<br></span><span style="color: #008080;"> 8</span>             <span style="color: #0000ff;">public</span> Result call() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Exception {<br></span><span style="color: #008080;"> 9</span>                 mTaskInvoked.set(<span style="color: #0000ff;">true</span><span style="color: #000000;">);<br></span><span style="color: #008080;">10</span> <span style="color: #000000;">                Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);<br></span><span style="color: #008080;">11</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">noinspection unchecked</span><br><span style="color: #008080;">12</span>                 <span style="color: #0000ff;">return</span><span style="color: #000000;"> postResult(doInBackground(mParams));<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">14</span> <span style="color: #000000;">        };<br></span><span style="color: #008080;">15</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建FutureTask对象的时候传入了mWorker作为Callable</span><br><span style="color: #008080;">16</span>         mFuture = <span style="color: #0000ff;">new</span> FutureTask<result><span style="color: #000000;">(mWorker) {<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">            @Override<br></span><span style="color: #008080;">18</span>             <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> done() {<br></span><span style="color: #008080;">19</span>                 <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">20</span> <span style="color: #000000;">                    postResultIfNotInvoked(get());<br></span><span style="color: #008080;">21</span>                 } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">                    android.util.Log.w(LOG_TAG, e);<br></span><span style="color: #008080;">23</span>                 } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (ExecutionException e) {<br></span><span style="color: #008080;">24</span>                     <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> RuntimeException(“An error occured while executing doInBackground()”<span style="color: #000000;">,<br></span><span style="color: #008080;">25</span> <span style="color: #000000;">                            e.getCause());<br></span><span style="color: #008080;">26</span>                 } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (CancellationException e) {<br></span><span style="color: #008080;">27</span>                     postResultIfNotInvoked(<span style="color: #0000ff;">null</span><span style="color: #000000;">);<br></span><span style="color: #008080;">28</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">29</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">30</span> <span style="color: #000000;">        };<br></span><span style="color: #008080;">31</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">32</span> <span style="color: #000000;">    ……<br></span><span style="color: #008080;">33</span> }</result></params,></params,></pre><br></div>
+
+<p>&nbsp;</p>
+<p></p></div><br></div><br></div><p></p>
+<div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;由FutureTask源码我们可以看出，run()方法里面调用了c.call()，而AsyncTask 中创建FutureTask的时候传入了mWorker，所以FutureTask.run()方法里面c.call()调用的是mWorker对象的call()方法，而AsyncTask里mWorker重写了call方法，即上面8-14行，所以c.call()会执行到mWorker.call()方法来。call方法里面11行将线程的优先级设置为后台线程，这样当多个线程并发后很多无关紧要的线程分配的CPU时间将会减少，有利于主线程的处理。</div><br></div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; 接下来11行执行了doInBackground(mParams)方法，通常我们会重写该方法来实现业务逻辑操作。然后执行postResult方法，并且将结果返回给</span>FutureTask（因为是FutureTask.run方法调用的此call方法，所以需要返回结果到FutureTask.run方法）。这里我们先看看postResult：</div><br><div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> Result postResult(Result result) {<br></span><span style="color: #008080;">2</span>         @SuppressWarnings(“unchecked”<span style="color: #000000;">)<br></span><span style="color: #008080;">3</span>         Message message =<span style="color: #000000;"> sHandler.obtainMessage(MESSAGE_POST_RESULT,<br></span><span style="color: #008080;">4</span>                 <span style="color: #0000ff;">new</span> AsyncTaskResult<result>(<span style="color: #0000ff;">this</span><span style="color: #000000;">, result));<br></span><span style="color: #008080;">5</span> <span style="color: #000000;">        message.sendToTarget();<br></span><span style="color: #008080;">6</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> result;<br></span><span style="color: #008080;">7</span>     }</result></pre><br></div><br><code>&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;
+&lt;/span&gt;&lt;/span&gt;</code></div>
+
+<p></p></div><p></p>
+<p></p></div><p></p>
+<div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; 这里的sHandler是InternalHandler对象。</span></div>
+
+<p></p></div><p></p>
+<div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">class</span> InternalHandler <span style="color: #0000ff;">extends</span><span style="color: #000000;"> Handler {<br></span><span style="color: #008080;"> 2</span>         @SuppressWarnings({“unchecked”, “RawUseOfParameterizedType”<span style="color: #000000;">})<br></span><span style="color: #008080;"> 3</span> <span style="color: #000000;">        @Override<br></span><span style="color: #008080;"> 4</span>         <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> handleMessage(Message msg) {<br></span><span style="color: #008080;"> 5</span>             AsyncTaskResult result =<span style="color: #000000;"> (AsyncTaskResult) msg.obj;<br></span><span style="color: #008080;"> 6</span>             <span style="color: #0000ff;">switch</span><span style="color: #000000;"> (msg.what) {<br></span><span style="color: #008080;"> 7</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> MESSAGE_POST_RESULT:<br></span><span style="color: #008080;"> 8</span>                     <span style="color: #008000;">//</span><span style="color: #008000;"> There is only one result</span><br><span style="color: #008080;"> 9</span>                     result.mTask.finish(result.mData[0<span style="color: #000000;">]);<br></span><span style="color: #008080;">10</span>                     <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">11</span>                 <span style="color: #0000ff;">case</span><span style="color: #000000;"> MESSAGE_POST_PROGRESS:<br></span><span style="color: #008080;">12</span> <span style="color: #000000;">                    result.mTask.onProgressUpdate(result.mData);<br></span><span style="color: #008080;">13</span>                     <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">14</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">15</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">16</span>     }</pre><br></div><br><code>&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;
+&lt;/span&gt;&lt;/span&gt;</code></div>
+
+<p></p></div><p></p>
+<p></p></div><p></p>
+<div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; 由第9行代码可知最终会执行AsyncTask的finish方法，代码如下：</span></div>
+
+<p></p></div><p></p>
+<div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> finish(Result result) {<br></span><span style="color: #008080;">2</span>         <span style="color: #0000ff;">if</span><span style="color: #000000;"> (isCancelled()) {<br></span><span style="color: #008080;">3</span> <span style="color: #000000;">            onCancelled(result);<br></span><span style="color: #008080;">4</span>         } <span style="color: #0000ff;">else</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">5</span> <span style="color: #000000;">            onPostExecute(result);<br></span><span style="color: #008080;">6</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">7</span>         mStatus =<span style="color: #000000;"> Status.FINISHED;<br></span><span style="color: #008080;">8</span>     }</pre><br></div><br><code>&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;
+&lt;/span&gt;&lt;/span&gt;</code></div>
+
+<p></p></div><p></p>
+<p></p></div><p></p>
+<div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; finish的作用是如果task被取消了就执行onCancelled方法，如果没有被取消而是正常执行完毕，则执行onPostExecute方法（这也是为什么task被调用了cancel方法，不会执行</span>onPostExecute的原因）。最后将task的状态标记为FINISHED。</div>
+
+<p></p></div><p></p>
+<div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; 上面说到mWorker.call会将执行结果返回给</span>FutureTask.run()方法并且继续往下执行，我们再次看看FutureTask.run方法（20-30行）：</div><br><div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> ran;<br></span><span style="color: #008080;"> 2</span> <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 3</span>      result =<span style="color: #000000;"> c.call();<br></span><span style="color: #008080;"> 4</span>      ran = <span style="color: #0000ff;">true</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 5</span> } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Throwable ex) {<br></span><span style="color: #008080;"> 6</span>      result = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 7</span>      ran = <span style="color: #0000ff;">false</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 8</span> <span style="color: #000000;">     setException(ex);<br></span><span style="color: #008080;"> 9</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">10</span> <span style="color: #0000ff;">if</span><span style="color: #000000;"> (ran)<br></span><span style="color: #008080;">11</span>      set(result);</pre><br></div><br><code>&lt;span class=&quot;kwd&quot;&gt;
+&lt;/span&gt;</code></div>
+
+<p></p></div><p></p>
+<p></p></div><p></p>
+<div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; 由上面代码可以看到，执行完c.call后，会执行set(result)方法。</span></div>
+
+<p></p></div><p></p>
+<div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span>     <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> set(V v) {<br></span><span style="color: #008080;">2</span>         <span style="color: #0000ff;">if</span> (UNSAFE.compareAndSwapInt(<span style="color: #0000ff;">this</span><span style="color: #000000;">, stateOffset, NEW, COMPLETING)) {<br></span><span style="color: #008080;">3</span>             outcome =<span style="color: #000000;"> v;<br></span><span style="color: #008080;">4</span>             UNSAFE.putOrderedInt(<span style="color: #0000ff;">this</span>, stateOffset, NORMAL); <span style="color: #008000;">//</span><span style="color: #008000;"> final state</span><br><span style="color: #008080;">5</span> <span style="color: #000000;">            finishCompletion();<br></span><span style="color: #008080;">6</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">7</span>     }</pre><br></div><br><code>&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;
+&lt;/span&gt;&lt;/span&gt;</code></div>
+
+<p></p></div><p></p>
+<p></p></div><p></p>
+<div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; 最终会执行finishCompletion()方法。</span></div>
+
+<p></p></div><p></p>
+<div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> finishCompletion() {<br></span><span style="color: #008080;"> 2</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> assert state &gt; COMPLETING;</span><br><span style="color: #008080;"> 3</span>         <span style="color: #0000ff;">for</span> (WaitNode q; (q = waiters) != <span style="color: #0000ff;">null</span><span style="color: #000000;">;) {<br></span><span style="color: #008080;"> 4</span>             <span style="color: #0000ff;">if</span> (UNSAFE.compareAndSwapObject(<span style="color: #0000ff;">this</span>, waitersOffset, q, <span style="color: #0000ff;">null</span><span style="color: #000000;">)) {<br></span><span style="color: #008080;"> 5</span>                 <span style="color: #0000ff;">for</span><span style="color: #000000;"> (;;) {<br></span><span style="color: #008080;"> 6</span>                     Thread t =<span style="color: #000000;"> q.thread;<br></span><span style="color: #008080;"> 7</span>                     <span style="color: #0000ff;">if</span> (t != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 8</span>                         q.thread = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 9</span> <span style="color: #000000;">                        LockSupport.unpark(t);<br></span><span style="color: #008080;">10</span> <span style="color: #000000;">                    }<br></span><span style="color: #008080;">11</span>                     WaitNode next =<span style="color: #000000;"> q.next;<br></span><span style="color: #008080;">12</span>                     <span style="color: #0000ff;">if</span> (next == <span style="color: #0000ff;">null</span><span style="color: #000000;">)<br></span><span style="color: #008080;">13</span>                         <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">14</span>                     q.next = <span style="color: #0000ff;">null</span>; <span style="color: #008000;">//</span><span style="color: #008000;"> unlink to help gc</span><br><span style="color: #008080;">15</span>                     q =<span style="color: #000000;"> next;<br></span><span style="color: #008080;">16</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">17</span>                 <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">19</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">20</span> <span style="color: #000000;">        done();<br></span><span style="color: #008080;">21</span>         callable = <span style="color: #0000ff;">null</span>;        <span style="color: #008000;">//</span><span style="color: #008000;"> to reduce footprint</span><br><span style="color: #008080;">22</span>     }</pre><br></div><br><code>&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;
+&lt;/span&gt;&lt;/span&gt;</code></div>
+
+<p></p></div><p></p>
+<p></p></div><p></p>
+<div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; 看到21行代码，会执行</span>FutureTask的done()方法，而这个方法在AsyncTask构造函数中初始化FutureTask对象的时候被重写了。</div>
+
+<p></p></div><p></p>
+<div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span>     mFuture = <span style="color: #0000ff;">new</span> FutureTask<result><span style="color: #000000;">(mWorker) {<br></span><span style="color: #008080;"> 2</span> <span style="color: #000000;">            @Override<br></span><span style="color: #008080;"> 3</span>             <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> done() {<br></span><span style="color: #008080;"> 4</span>                 <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 5</span> <span style="color: #000000;">                    postResultIfNotInvoked(get());<br></span><span style="color: #008080;"> 6</span>                 } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 7</span> <span style="color: #000000;">                    android.util.Log.w(LOG_TAG, e);<br></span><span style="color: #008080;"> 8</span>                 } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (ExecutionException e) {<br></span><span style="color: #008080;"> 9</span>                     <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> RuntimeException(“An error occured while executing doInBackground()”<span style="color: #000000;">,<br></span><span style="color: #008080;">10</span> <span style="color: #000000;">                            e.getCause());<br></span><span style="color: #008080;">11</span>                 } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (CancellationException e) {<br></span><span style="color: #008080;">12</span>                     postResultIfNotInvoked(<span style="color: #0000ff;">null</span><span style="color: #000000;">);<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">14</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">15</span>         };</result></pre><br></div><br></div><br></div><br></div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; 这里主要是验证postResult是否被调用了，如果没有被调用着调用</span>postResult函数，因为前面mWorker.call方法里面调用过了，所以这里不错操作。</div><br></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; 顺便提一下，在AsyncTask的doInBackground方法中如果需要更新UI的话，则调用</span>AsyncTask的publishProgress方法即可：</div><br><div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span>     <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> publishProgress(Progress… values) {<br></span><span style="color: #008080;">2</span>         <span style="color: #0000ff;">if</span> (!<span style="color: #000000;">isCancelled()) {<br></span><span style="color: #008080;">3</span> <span style="color: #000000;">            sHandler.obtainMessage(MESSAGE_POST_PROGRESS,<br></span><span style="color: #008080;">4</span>                     <span style="color: #0000ff;">new</span> AsyncTaskResult<progress>(<span style="color: #0000ff;">this</span><span style="color: #000000;">, values)).sendToTarget();<br></span><span style="color: #008080;">5</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">6</span>     }</progress></pre><br></div><br><code>&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;
+&lt;/span&gt;&lt;/span&gt;</code></div>
+
+<p></p></div><p></p>
+<p></p></div><p></p>
+<div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>publishProgress方法最终也会通过sHandler来调用AsyncTask的onProgressUpdate方法，一般我们如果需要获取进度的话都需要重写AsyncTask的onProgressUpdate。</div>
+
+<p></p></div><p></p>
+<div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; 好了，</span>AsyncTask的源码也分析完了。再次总结一下Asynctask使用的注意事项：</div><br><div><br><br>　　&nbsp;1.异步任务的实例必须在UI线程中创建。<br><br>　　2.execute(Params… params)方法必须在UI线程中调用。<br><br>　　3.不要手动调用onPreExecute()，doInBackground(Params… params)，onProgressUpdate(Progress… values)，onPostExecute(Result result)这几个方法。<br><br>　　4.不能在doInBackground(Params… params)中更改UI组件的信息。<br><br>　　5.一个任务实例只能执行一次，如果执行第二次将会抛出异常。<br><br><small><small>&nbsp;</small></small></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/10/asynctask-source.html" data-id="ciiy5f4xs00dzq1d0p88o9vl0" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/10/asynctask-source.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AsyncTask/">AsyncTask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/asynctask-multithread-download.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AsyncTask实现多线程断点续传
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/asynctask-download.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">AsyncTask实现断点续传</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-asynctask-source" data-title="AsyncTask源码分析" data-url="http://liuling07.github.io/2015/10/asynctask-source.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用 ASM 实现 Java 语言的“多重继承” | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题的提出
+在大部分情况下，需要多重继承往往意味着糟糕的设计。但在处理一些遗留项目的时候，多重继承可能是我们能做出的选择中代价最小的。由于 Java 语言本身不支持多重继承，这常常会给我们带来麻烦，最后的结果可能就是大量的重复代码。本文试图使用 ASM 框架来解决这一问题。在扩展类的功能的同时，不产生任何重复代码。
+考虑如下的实际情况：有一组类，名为 SubClass1、SubClass2、Sub">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 ASM 实现 Java 语言的“多重继承”">
+<meta property="og:url" content="http://liuling07.github.io/2013/05/asm-java-multi-extends.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="问题的提出
+在大部分情况下，需要多重继承往往意味着糟糕的设计。但在处理一些遗留项目的时候，多重继承可能是我们能做出的选择中代价最小的。由于 Java 语言本身不支持多重继承，这常常会给我们带来麻烦，最后的结果可能就是大量的重复代码。本文试图使用 ASM 框架来解决这一问题。在扩展类的功能的同时，不产生任何重复代码。
+考虑如下的实际情况：有一组类，名为 SubClass1、SubClass2、Sub">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/image003.jpg">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/image005.jpg">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/image006.png">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/image008.jpg">
+<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 ASM 实现 Java 语言的“多重继承”">
+<meta name="twitter:description" content="问题的提出
+在大部分情况下，需要多重继承往往意味着糟糕的设计。但在处理一些遗留项目的时候，多重继承可能是我们能做出的选择中代价最小的。由于 Java 语言本身不支持多重继承，这常常会给我们带来麻烦，最后的结果可能就是大量的重复代码。本文试图使用 ASM 框架来解决这一问题。在扩展类的功能的同时，不产生任何重复代码。
+考虑如下的实际情况：有一组类，名为 SubClass1、SubClass2、Sub">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-asm-java-multi-extends" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用 ASM 实现 Java 语言的“多重继承”
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/05/asm-java-multi-extends.html">
+      <time datetime="2013-05-31T05:50:00.000Z" itemprop="datePublished">2013-05-31</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p><span class="atitle" style="font-size: 1.5em; font-weight: bold;">问题的提出</span></p>
+<p><span style="font-size: 14px;">在大部分情况下，需要多重继承往往意味着糟糕的设计。但在处理一些遗留项目的时候，多重继承可能是我们能做出的选择中代价最小的。由于 Java 语言本身不支持多重继承，这常常会给我们带来麻烦，最后的结果可能就是大量的重复代码。本文试图使用 ASM 框架来解决这一问题。在扩展类的功能的同时，不产生任何重复代码。</span></p>
+<p><span style="font-size: 14px;">考虑如下的实际情况：有一组类，名为 SubClass1、SubClass2、SubClass3 和 SubClass4，它们共同继承了同一个父类 SuperClass。现在，我们需要这组类中的一部分，例如 SubClass1 和 SubClass2，这两个类还要实现另外两个接口，它们分别为：IFibonacciComputer 和 ITimeRetriever。然而，这两个接口已经有了各自的实现类 FibonacciComputer 和 TimeRetriever。并且这两个类的实现逻辑就是我们想要的，我们不想做任何改动，只希望在 SubClass1 和 SubClass2 两个类中包含这些实现逻辑。</span></p>
+<p><span style="font-size: 14px;">它们的结构如图 1 所示：</span></p>
+<p><strong>图 1. 结构类图</strong><br><img src="http://www.liuling123.com/wp-content/uploads/2015/11/image003.jpg" alt="图 1\. 结构类图"><span style="text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><span class="Apple-converted-space">&nbsp;</span></span></p>
+<p><span style="font-size: 14px;">由于 SubClass1,SubClass2 已经继承了 SuperClass，所以我们无法让它们再继承 FibonacciComputer 或 TimeRetriever。</span></p>
+<p><span style="font-size: 14px;">所以，想要它们再实现 IFibonacciComputer 和 ITimeRetriever 这两个接口，必然会产生重复代码。</span></p>
+<p><span style="font-size: 14px;">下面，我们就使用 ASM 来解决这个问题。</span></p>
+<div class="ibm-alternate-rule" style="height: 1px; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; clear: both; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; background-image: url('http://1.www.s81c.com/i/solid.gif'); background-repeat: repeat no-repeat; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</div>
+
+<p>&nbsp;</p>
+<p><span class="atitle" style="font-size: 1.5em; font-weight: bold;">Java class 文件格式以及类加载器介绍</span></p>
+<p><span style="font-size: 14px;">在后面的内容中，需要对 Java class 文件格式以及类加载器的知识有一定的了解，所以这里先对这些内容做一个简单介绍：</span></p>
+<p><span class="smalltitle" style="font-size: 14px; font-weight: bold;">class 文件格式</span></p>
+<p><span style="font-size: 14px;">Java class 文件的结构如图 2 所示（图中&ldquo;*&rdquo;表示出现 0 次或任意多次）：</span></p>
+<p><strong>图 2.Java class 文件结构</strong><br><img src="http://www.liuling123.com/wp-content/uploads/2015/11/image005.jpg" alt="图 2.Java class 文件结构"><span style="text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><span class="Apple-converted-space">&nbsp;</span></span></p>
+<p><span style="font-size: 14px;">详细说明如下：</span></p>
+<ul>
+<li><span style="font-size: 14px;"><strong>Magic Number</strong>: 每个 class 文件的前 4 个字节被称为&ldquo;魔数&rdquo;，它的内容为：0xCAFEBABE。魔数的作用在于可以轻松地分辨出一个文件是不是 class 文件。</span></li>
+<li><span style="font-size: 14px;"><strong>Version</strong>: 该项指明该 class 文件的版本号。</span></li>
+<li><span style="font-size: 14px;"><strong>Constant Pool</strong>: 常量池是 class 文件中结构最为复杂，也最为重要的部分。常量池包含了与文件中类和接口相关的常量。常量池中存储了诸如文字字符串，final 变量值。Java 虚拟机把常量池组织为入口列表的形式。常量池中许多入口都指向其他的常量入口，而且 class 文件中紧随着常量池的许多条目也都会指向常量池的入口。除了字面常量之外，常量池还可以容纳以下几种符号引用：类和接口的全限定名，字段的名称和描述符和方法的名称和描述符等。</span></li>
+<li><span style="font-size: 14px;"><strong>Modifiers</strong>: 该项指明该文件中定义的是类还是接口，以及声明中用了哪种修饰符，类或接口是私有的，还是公共的，类的类型是否是 final 的，等等。</span></li>
+<li><span style="font-size: 14px;"><strong>This class</strong>: 该项是对常量池的索引。在这个位置，Java 虚拟机能够找到一个容纳了类或接口全限定名的入口。这里需要注意的是：在 class 文件中，所有类的全限定名都是以内部名称形式表示的。内部名称是将原先类全限定名中的&ldquo;.&rdquo;替换为&ldquo;/&rdquo;。例如：java.lang.String 的内部名称为 java/lang/String。</span></li>
+<li><span style="font-size: 14px;"><strong>Super Class</strong>: 该项也是对常量池的索引，指明了该类超类的内部名称。</span></li>
+<li><span style="font-size: 14px;"><strong>Interfaces</strong>: 该项指明了由该类直接实现或由接口扩展的父接口的信息。</span></li>
+</ul>
+<p><span style="font-size: 14px;"><strong>注</strong>：Modifiers,This Class,Super Class 和 Interfaces 这四项的和就是一个类的声明部分。</span></p>
+<ul>
+<li><span style="font-size: 14px;"><strong>Annotation</strong>: 该项存储的是注解相关的内容，注解可能是关于类的，方法的以及字段的。</span></li>
+<li><span style="font-size: 14px;"><strong>Attribute</strong>: 该项用来存储关于类，字段以及方法的附加信息。在 Java 5 引入了注解之后，该部分内容几乎已经没有用处。</span></li>
+<li><p><span style="font-size: 14px;"><strong>Field</strong>: 该项用来存储类的字段信息。</span></p>
+</li>
+<li><p><span style="font-size: 14px;"><strong>Method</strong>: 该项用来存储类的方法信息。</span></p>
+</li>
+</ul>
+<p><span class="smalltitle" style="font-size: 14px; font-weight: bold;">类装载器介绍</span></p>
+<p><span style="font-size: 14px;">类装载器负责查找并装载类。每个类在被使用之前，都必须先通过类装载器装载到 Java 虚拟机当中。Java 虚拟机有两种类装载器 :</span></p>
+<ul>
+<li><span style="font-size: 14px;"><strong>启动类装载器</strong></span></li>
+</ul>
+<p><span style="font-size: 14px;">启动类装载器是 Java 虚拟机实现的一部分，每个 Java 虚拟机都必须有一个启动类装载器，它知道怎么装载受信任的类，比如 Java API 的 class 文件。</span></p>
+<ul>
+<li><span style="font-size: 14px;"><strong>用户自定义装载器</strong></span></li>
+</ul>
+<p><span style="font-size: 14px;">用户自定义装载器是普通的 Java 对象，它的类必须派生自 java.lang.ClassLoader 类。ClassLoader 类中定义的方法为程序提供了访问类装载机制的接口。</span></p>
+<div class="ibm-alternate-rule" style="height: 1px; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; clear: both; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; background-image: url('http://1.www.s81c.com/i/solid.gif'); background-repeat: repeat no-repeat; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</div>
+
+<p>&nbsp;</p>
+<p><span class="atitle" style="font-size: 1.5em; font-weight: bold;">ASM 简介以及编程模型</span></p>
+<p><span class="smalltitle" style="font-size: 14px; font-weight: bold;">ASM 简介</span></p>
+<p><span style="font-size: 14px;">ASM 是一个可以用来生成\转换和分析 Java 字节码的代码库。其他类似的工具还有<span class="Apple-converted-space">&nbsp;</span><a href="http://cglib.sourceforge.net/" target="_blank" rel="external">cglib</a>、<a href="http://www.ibm.com/developerworks/cn/java/j-lo-asm/serp.sourceforge.net" target="_blank" rel="external">serp</a>和<span class="Apple-converted-space">&nbsp;</span><a href="http://commons.apache.org/bcel/" target="_blank" rel="external">BCEL</a>等。相较于这些工具，ASM 有以下的优点 :</span></p>
+<ul>
+<li><span style="font-size: 14px;">ASM 具有简单、设计良好的 API，这些 API 易于使用。</span></li>
+<li><span style="font-size: 14px;">ASM 有非常良好的开发文档，以及可以帮助简化开发的 Eclipse 插件</span></li>
+<li><span style="font-size: 14px;">ASM 支持 Java 6</span></li>
+<li><span style="font-size: 14px;">ASM 很小、很快、很健壮</span></li>
+<li><span style="font-size: 14px;">ASM 有很大的用户群，可以帮助新手解决开发过程中遇到的问题</span></li>
+<li><span style="font-size: 14px;">ASM 的开源许可可以让你几乎以任何方式使用它</span></li>
+</ul>
+<p><span class="smalltitle" style="font-size: 14px; font-weight: bold;">编程模型</span></p>
+<p><span style="font-size: 14px;">ASM 提供了两种编程模型：</span></p>
+<ul>
+<li><span style="font-size: 14px;">Core API，提供了基于事件形式的编程模型。该模型不需要一次性将整个类的结构读取到内存中，因此这种方式更快，需要更少的内存。但这种编程方式难度较大。</span></li>
+<li><span style="font-size: 14px;">Tree API，提供了基于树形的编程模型。该模型需要一次性将一个类的完整结构全部读取到内存当中，所以这种方法需要更多的内存。这种编程方式较简单。</span></li>
+</ul>
+<p><span style="font-size: 14px;">下文中，我们将只使用 Core API，因此我们只介绍与其相关的类。</span></p>
+<p><span style="font-size: 14px;">Core API 中操纵字节码的功能基于 ClassVisitor 接口。这个接口中的每个方法对应了 class 文件中的每一项。Class 文件中的简单项的访问使用一个单独的方法，方法参数描述了这个项的内容。而那些具有任意长度和复杂度的项，使用另外一类方法，这类方法会返回一个辅助的 Visitor 接口，通过这些辅助接口的对象来完成具体内容的访问。例如 visitField 方法和 visitMethod 方法，分别返回 FieldVisitor 和 MethodVisitor 接口的对象。</span></p>
+<p><span style="font-size: 14px;">清单 1 为 ClassVisitor 中的方法列表：</span></p>
+<p><span style="font-size: 14px;"><strong>清单 1.ClassVisitor 接口中的方法</strong></span></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br> public interface ClassVisitor {<br>   // 访问类的声明部分<br>    void <strong>visit</strong>(int version, int access, String name, String<br> signature,String superName, String[] interfaces);<br>   // 访问类的代码<br>    void <strong>visitSource</strong>(String source, String debug);<br>   // 访问类的外部类<br>    void <strong>visitOuterClass</strong>(String owner, String name, String desc);<br>   // 访问类的注解<br>    AnnotationVisitor <strong>visitAnnotation</strong>(String desc, boolean visible);<br>   // 访问类的属性<br>    void <strong>visitAttribute</strong>(Attribute attr);<br>   // 访问类的内部类<br>    void <strong>visitInnerClass</strong>(String name, String outerName,<br> String innerName,int access);<br>   // 访问类的字段<br>    FieldVisitor <strong>visitField</strong>(int access, String name, String desc,<br> String signature, Object value);<br>   // 访问类的方法<br>    MethodVisitor <strong>visitMethod</strong>(int access, String name,<br> String desc,String signature, String[] exceptions);<br>   // 访问结束<br>    void <strong>visitEnd</strong>();<br> }<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">ClassVisitor 接口中的方法在被调用的时候是有严格顺序的，其顺序如清单 2 所示（其中&ldquo;？&rdquo;表示被调用 0 次或 1 次。&ldquo;*&rdquo;表示被调用 0 次或任意多次）：</span></p>
+<p><strong>清单 2.ClassVisitor 中方法调用的顺序</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br>  visit<br>  visitSource?<br>  visitOuterClass?<br>  ( visitAnnotation| visitAttribute)<em><br>  ( visitInnerClass| visitField| visitMethod)</em><br>  visitEnd<br>            </pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">这就是说，visit 方法必须最先被调用，然后是最多调用一次 visitSource 方法，然后是最多调用一次 visitOuterClass 方法。然后是 visitAnnotation 和 visitAttribute 方法以任意顺序被调用任意多次。再然后是以任任意顺序调用 visitInnerClass ,visitField 或 visitMethod 方法任意多次。最终，调用一次 visitEnd 方法。</span></p>
+<p><span style="font-size: 14px;">ASM 提供了三个基于 ClassVisitor 接口的类来实现 class 文件的生成和转换：</span></p>
+<ul>
+<li><span style="font-size: 14px;"><strong>ClassReader</strong>：ClassReader 解析一个类的 class 字节码，该类的 accept 方法接受一个 ClassVisitor 的对象，在 accept 方法中，会按上文描述的顺序逐个调用 ClassVisitor 对象的方法。它可以被看做事件的生产者。</span></li>
+<li><span style="font-size: 14px;"><strong>ClassAdapter</strong>：ClassAdapter 是 ClassVisitor 的实现类。它的构造方法中需要一个 ClassVisitor 对象，并保存为字段 protected ClassVisitor cv。在它的实现中，每个方法都是原封不动的直接调用 cv 的对应方法，并传递同样的参数。可以通过继承 ClassAdapter 并修改其中的部分方法达到过滤的作用。它可以看做是事件的过滤器。</span></li>
+<li><span style="font-size: 14px;"><strong>ClassWriter</strong>：ClassWriter 也是 ClassVisitor 的实现类。ClassWriter 可以用来以二进制的方式创建一个类的字节码。对于 ClassWriter 的每个方法的调用会创建类的相应部分。例如：调用 visit 方法就是创建一个类的声明部分，每调用一次 visitMethod 方法就会在这个类中创建一个新的方法。在调用 visitEnd 方法后即表明该类的创建已经完成。它最终生成一个字节数组，这个字节数组中包含了一个类的 class 文件的完整字节码内容 。可以通过 toByteArray 方法获取生成的字节数组。ClassWriter 可以看做事件的消费者。</span></li>
+</ul>
+<p><span style="font-size: 14px;">通常情况下，它们是组合起来使用的。</span></p>
+<p><span style="font-size: 14px;">下面举一个简单的例子：假设现在需要对 class 文件的版本号进行修改，将其改为 Java 1.5。操作方法如下：</span></p>
+<ol>
+<li><span style="font-size: 14px;">首先通过 ClassReader 读取这个类；</span></li>
+<li><p><span style="font-size: 14px;">然后创建一个 ClassAdapter 的子类 ChangeVersionAdapter。在 ChangeVersionAdapter 中，覆盖 visit 方法，在调用 ClassVisitor#visit 方法时修改其中关于版本号的参数。该方法的签名如下：visit(int version, int access, String name, String signature, String superName, String[] interfaces)，其中每个参数的含义如下：</span></p>
+<pre><code>1.  &lt;span style=&quot;font-size: 14px;&quot;&gt;version：class 文件的版本号，这就是我们需要修改的内容；&lt;/span&gt;
+</code></pre><ol>
+<li><span style="font-size: 14px;">access：该类的访问级别；</span></li>
+<li><span style="font-size: 14px;">name：该类的内部名称；</span></li>
+<li><span style="font-size: 14px;">signature：该类的签名，如果该类与泛型无关，这个参数就是 null;</span></li>
+<li><span style="font-size: 14px;">superName：父类的内部名称；</span></li>
+<li><span style="font-size: 14px;">interfaces：该类实现的接口的内部名称；</span></li>
+</ol>
+</li>
+</ol>
+<p><span style="font-size: 14px;">明白这些参数的含义之后，修改就很容易，只需要在调用 cv.visit 的时候，将 version 参数指定为 Opcodes.V1_5 即可（Opcodes 是 ASM 中的一个类），其他参数不加修改原样传递。这样，经过该 ClassAdapter 过滤后的类的版本号就都是 Java 1.5 了。</span></p>
+<ol>
+<li><span style="font-size: 14px;">在创建 ChangeVersionAdapter 对象时，构造方法传递一个 ClassWriter 的对象。该 ClassWriter 会随着 ChangeVersionAdapter 方法的调用按顺序创建出类的每一个部分。由于在 visit 方法中，version 参数已经被过滤为 Opcodes.V1_5，所以该 ClassWriter 最终产生的 class 字节码的版本号就是 V1.5 的；</span></li>
+<li><span style="font-size: 14px;">然后通过 ClassWriter#toByteArray 方法获取修改后的类的完整的字节码内容；</span></li>
+<li><span style="font-size: 14px;">当然，想要使用这个类，还需要通过一个自定义类加载器，将获得到的字节码加载到虚拟机当中，才可以创建这个类的实例；</span></li>
+</ol>
+<p><span style="font-size: 14px;">代码片段如清单 3 所示：</span></p>
+<p><strong>清单 3. 使用 ASM 的代码示例</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br>&hellip;<br> // 使用 ChangeVersionAdapter 修改 class 文件的版本<br> ClassReader cr = new ClassReader(className);<br> ClasssWriter cw = new ClassWriter(0);<br> // ChangeVersionAdapter 类是我们自定义用来修改 class 文件版本号的类<br> ClassAdapter ca = new ChangeVersionAdapter (cw);<br> cr.accept(ca, 0);<br> byte[] b2 = cw.toByteArray();<br>&hellip;<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">图 3 是相应的 Sequence 图：</span></p>
+<p><strong>图 3. 修改版本号的 Sequence 图</strong><br><img src="http://www.liuling123.com/wp-content/uploads/2015/11/image006.png" alt="图 3\. 修改版本号的 Sequence 图"><span style="text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><span class="Apple-converted-space">&nbsp;</span></span></p>
+<p><span class="smalltitle" style="font-size: 14px; font-weight: bold;">代码示例</span></p>
+<p><span style="font-size: 14px;">在了解了以上的知识之后再回到我们刚开始提出的问题中，我们希望 SubClass1 和 SubClass2 在继承自 SuperClass 的同时还要实现 IFibonacciComputer 以及 ITimeRetriever 两个接口。</span></p>
+<p><span style="font-size: 14px;">为了后文描述方便，这里先确定三个名词：</span></p>
+<ul>
+<li><span style="font-size: 14px;"><strong>实现类</strong>即完成了接口实现的类，这里为 FibonacciComputer 以及 TimeRetriever。</span></li>
+<li><span style="font-size: 14px;"><strong>待增强类</strong>即需要实现功能增强，加入实现逻辑的类，这里为 SubClass1 和 SubClass2。</span></li>
+<li><span style="font-size: 14px;"><strong>增强类</strong>即在待增强类的基础上，加入了接口实现的类。这个类目前没有实际的类与之对应。</span></li>
+</ul>
+<p><span style="font-size: 14px;">如果只能在源代码级别进行修改，我们能做的仅仅是将实现类的代码拷贝进待增强类。（当然，有稍微好一点的做法在每一个待增强类中包含一个实现类，以组合的方式实现接口。但这仍然不能避免多个待增强类中的代码重复。）</span></p>
+<p><span style="font-size: 14px;">在学习了 ASM 之后，我们可以直接从字节码的层次来进行修改。回忆一下上文中的内容：使用 ClassWrite 可以直接创建类的字节码，不同的方法创建了 class 文件的不同部分，尤其重要的是以下几个方法：</span></p>
+<ul>
+<li><span style="font-size: 14px;">visit 方法创建一个类的声明部分</span></li>
+<li><span style="font-size: 14px;">visitField 方法创建一个类的字段</span></li>
+<li><span style="font-size: 14px;">visitMethod 方法创建一个类的方法</span></li>
+<li><span style="font-size: 14px;">visitEnd 方法，表明该类已经创建完成</span></li>
+</ul>
+<p><span style="font-size: 14px;">所以，现在我们可以直接从字节码的层次完成这一需求：<strong>动态的创建一个新的类（即增强类）继承自待增强类，同时在该类中，将实现类的实现方法**</strong>添加<strong>**进来</strong>。</span></p>
+<p><span style="font-size: 14px;">完整的实现逻辑如下：</span></p>
+<ol>
+<li><span style="font-size: 14px;">创建一个 ClassAdapter 的子类 AddImplementClassAdapter，这个类将被用来访问待增强类。AddImplementClassAdapter 期待一个 ClassWriter 作为 ClassVisitor。该 ClassWriter 在访问待增强类的同时逐步完成增强类的创建。</span></li>
+<li><span style="font-size: 14px;">在 AddImplementClassAdapter 中覆盖 visitEnd 方法，在调用 ClassVisitor#visitEnd 方法之前，使用该 ClassVisitor 逐个访问每一个实现类。由于实现类中的内容也需要进行一定的过滤，所以这里的 ClassVisitor 在访问实现类的时候也需要经过一个 ClassAdapter 进行过滤。创建另一个 ClassAdapter 的子类 ImplementClassAdapter 来完成这个过滤。由于这个 ClassVisitor 是一个 ClassWriter。这样做的效果就是将实现类的内容添加到增强类中。</span></li>
+<li><span style="font-size: 14px;">在完成了所有实现类的访问之后，调用 ClassVisitor#visitEnd 方法表明增强类已经创建完成。</span></li>
+<li><span style="font-size: 14px;">使用一个 ClassReader 的对象读取待增强类。</span></li>
+<li><span style="font-size: 14px;">创建一个 AddImplementClassAdapter 的实例，同时提供一个 ClassWriter 作为 ClassVisitor。</span></li>
+<li><span style="font-size: 14px;">通过 accept 方法将前面创建的 AddImplementClassAdapter 对象传递给这个 ClassReader 对象。</span></li>
+<li><span style="font-size: 14px;">在访问完待增强类之后，ClassWriter 即完成了增强类的创建，所以最后通过 toByteArray 方法获取这个增强类的字节码。</span></li>
+<li><span style="font-size: 14px;">最后通过一个自定义类加载器将其加载到虚拟机当中。</span></li>
+</ol>
+<p><span style="font-size: 14px;">下面是代码示例与讲解：</span></p>
+<p><span style="font-size: 14px;">首先需要修改 SubClass1 以及 SubClass2 两个类，使其声明实现 IFibonacciComputer 和 ITimeRetriever 这两个接口。由于这两个类并没有真正的包含实现接口的代码，所以它们现在必须标记为抽象类。修改后的类结构如图 4 所示：</span></p>
+<p><strong>图 4. 修改后的类图</strong><br><img src="http://www.liuling123.com/wp-content/uploads/2015/11/image008.jpg" alt="图 4\. 修改后的类图"><span style="text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><span class="Apple-converted-space">&nbsp;</span></span></p>
+<p><span style="font-size: 14px;">然后创建以下几个类：</span></p>
+<ul>
+<li><span style="font-size: 14px;"><strong>AddImplementClassAdapter</strong>: 过滤待增强类，并引导 ClassWriter 创建增强类的适配器。</span></li>
+<li><span style="font-size: 14px;"><strong>ImplementClassAdapter</strong>: 实现类的适配器，过滤多余内容，将实现类中的内容通过 ClassWriter 添加到增强类中。</span></li>
+<li><span style="font-size: 14px;"><strong>ModifyInitMethodAdapter</strong>: 修改待增强类构造方法的适配器。</span></li>
+<li><span style="font-size: 14px;"><strong>SimpleClassLoader</strong>: 自定义类加载器，用来加载动态生成的增强类。</span></li>
+<li><span style="font-size: 14px;"><strong>EnhanceFactory</strong>: 提供对外接口，方便使用。</span></li>
+<li><span style="font-size: 14px;"><strong>EnhanceException</strong>: 对异常的统一包装，方便异常处理。</span></li>
+</ul>
+<p><span style="font-size: 14px;">下面，我们来逐一实现这些类：</span></p>
+<p><span style="font-size: 14px;"><strong>AddImplementClassAdapter</strong>： 首先在构造方法中，我们需要记录下待增强类的 Class 对象，增强类的类名，实现类的 Class 对象，以及一个 ClassWriter 对象，该构造方法代码如清单 4 所示：</span></p>
+<p><strong>清单 4.AddImpelementClassAdapter 构造方法代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br> public AddImplementClassAdapter( ClassWriter writer,<br> String enhancedClassName,Class&lt;?&gt; targetClass,<br> Class&lt;?&gt;… implementClasses) {<br>    super(writer);<br>    this.classWriter = writer;<br>    this.implementClasses = implementClasses;<br>    this.originalClassName = targetClass.getName();<br>    this.enhancedClassName = enhancedClassName;<br> }<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">在 visit 方法中需要完成增强类声明部分的创建，增强类继承自待增强类。该方法代码如清单 6 所示：</span></p>
+<p><strong>清单 5.visit 方法代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode">// 通过 visit 方法完成增强类的声明部分<br> public void visit(int version, int access, String name,<br> String signature,String superName, String[] interfaces) {<br>      cv.visit(version, Opcodes.ACC_PUBLIC,<br>     // 将 Java 代码中类的名称替换为虚拟机中使用的形式<br>      enhancedClassName.replace(‘.’, ‘/‘),<br>      signature, name,interfaces);<br> }<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">visitMethod 方法中需要对构造方法做单独处理，因为 class 文件中的构造方法与源代码中的构造方法有三点不一样的地方：</span></p>
+<ol>
+<li><span style="font-size: 14px;">每个 class 文件中至少有一个构造方法。即便你在类的源代码中没有编写构造方法，编译器也会为你生成一个默认构造方法 ;</span></li>
+<li><span style="font-size: 14px;">在 class 文件中与源代码中的构造方法名称不一样，class 文件的构造方法名称都为&ldquo;<init>&rdquo;;</init></span></li>
+<li><span style="font-size: 14px;">class 文件中每个构造方法都会最先调用一次父类的构造方法。</span></li>
+</ol>
+<p><span style="font-size: 14px;">鉴于这些原因，增强类的构造方法需要在待增强类构造方法的基础上进行修改。修改的内容就是对于父构造方法的调用，因为增强类和待增强类的父类是不一样的。</span></p>
+<p><span style="font-size: 14px;">visitMethod 方法中需要判断如果是构造方法就通过 ModifyInitMethodAdapter 修改构造方法。其他方法直接返回 null 丢弃（因为增强类已经从待增强类中继承了这些方法，所以这些方法不需要在增强类中再出现一遍），该方法代码如清单 7 所示：</span></p>
+<p><strong>清单 6.visitMethod 方法代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br> public MethodVisitor visitMethod(int access, String name,<br> String desc,String signature, String[] exceptions) {<br>    if (INTERNAL_INIT_METHOD_NAME.equals(name)) {<br>       // 通过 ModifyInitMethodAdapter 修改构造方法<br>        MethodVisitor mv = classWriter.visitMethod(access,<br>        INTERNAL_INIT_METHOD_NAME, desc, signature, exceptions);<br>        return new ModifyInitMethodAdapter(mv, originalClassName);<br>    }<br>    return null;<br> }<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">最后，在 visitEnd 方法，使用 ImplementClassAdapter 与 ClassWriter 将实现类的内容添加到增强类中，最后再调用 visitEnd 方法表明增强类已经创建完成：</span></p>
+<p><strong>清单 7.visitEnd 方法代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br> public void visitEnd() {<br> for (Class&lt;?&gt; clazz : implementClasses) {<br>    try {<br>      // 逐个将实现类的内容添加到增强类中。<br>      ClassReader reader = new ClassReader(clazz.getName());<br>      ClassAdapter adapter =<br>      new ImplementClassAdapter(classWriter);<br>      reader.accept(adapter, 0);<br>    } catch (IOException e) {<br>        e.printStackTrace();<br>    }<br> }<br> cv.visitEnd();<br> }<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;"><strong>ImplementClassAdapter</strong>：该类对实现类进行过滤。</span></p>
+<p><span style="font-size: 14px;">首先在 visit 方法中给于空实现将类的声明部分过滤掉，代码如清单 8 所示：</span></p>
+<p><strong>清单 8.visit 方法代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br> public void visit(int version, int access, String name,<br> String signature,String superName, String[] interfaces) {<br>    // 空实现，将该部分内容过滤掉<br> }<br><br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">然后在 visitMethod 中，将构造方法过滤掉，对于其他方法，调用 ClassVisitor#visitMethod 进行访问。由于这里的 ClassVisitor 是一个 ClassWriter，这就相当于在增强类中创建了该方法，代码如清单 9 所示：</span></p>
+<p><strong>清单 9.visitMethod 方法代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br> public MethodVisitor visitMethod(int access, String name,<br> String desc,String signature, String[] exceptions) {<br>    // 过滤掉实现类中的构造方法<br>    if (AddImplementClassAdapter.INTERNAL_INIT_METHOD_NAME.equals(name)){<br>        return null;<br>    }<br>    // 其他方法原样保留<br>    return cv.visitMethod(access, name, desc, signature, exceptions);<br> }<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;"><strong>ModifyInitMethodAdapter</strong>：上文中已经提到，ModifyInitMethodAdapter 是用来对增强类的构造方法进行修改的。MethodAdapter 中的 visitMethodInsn 是对方法调用指令的访问。该方法的参数含义如下：</span></p>
+<ul>
+<li><span style="font-size: 14px;">opcode 为调用方法的 JVM 指令，</span></li>
+<li><span style="font-size: 14px;">owner 为被调用方法的类名，</span></li>
+<li><span style="font-size: 14px;">name 为方法名，</span></li>
+<li><span style="font-size: 14px;">desc 为方法描述。</span></li>
+</ul>
+<p><span style="font-size: 14px;">所以，我们需要将对于待增强类父类构造方法的调用改为对于待增强类构造方法的调用（因为增强类的父类就是待增强类），其代码如清单 10 所示：</span></p>
+<p><strong>清单 10. ModifyInitMethodAdapter 类代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br>      /<em>*<br>         专门用来修改构造方法的方法适配器
+      </em>/<br> public class ModifyInitMethodAdapter extends MethodAdapter {<br> private String className;<br> public ModifyInitMethodAdapter(MethodVisitor mv, String name) {<br>    super(mv);<br>    this.className = name;<br> }<br> public void visitMethodInsn(int opcode, String owner,<br> String name,String desc) {<br>    // 将 Java 代码中的类全限定名替换为虚拟机中使用的形式<br>    if (name.equals(AddImplementClassAdapter.INTERNAL_INIT_METHOD_NAME)) {<br>    mv.visitMethodInsn(opcode, className.replace(“.”, “/“),<br>    name, desc);<br> }<br> }<br> }<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;"><strong>SimpleClassLoader</strong>：该自定义类装载器通过提供一个 defineClass 方法来装载动态生成的增强类。方法的实现是直接调用父类的 defineClass 方法，其代码如清单 11 所示：</span></p>
+<p><strong>清单 11. SimpleClassLoader 类代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br> public class SimpleClassLoader extends ClassLoader {<br> public Class&lt;?&gt; defineClass(String className, byte[] byteCodes) {<br>        // 直接通过父类的 defineClass 方法加载类的结构<br>    return super.defineClass(className, byteCodes,<br>    0, byteCodes.length);<br> }<br> }<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;"><strong>EnhanceException</strong>：这是一个异常包装类，其中包含了待增强类和实现类的信息，其逻辑很简单，代码如清单 12 所示：</span></p>
+<p><strong>清单 12. EnhanceException 类代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br>/<em>*<br> 异常类
+</em>/<br> public class EnhanceException extends Exception {<br> private Class&lt;?&gt; enhanceClass;<br> private Class&lt;?&gt; [] implementClasses;<br> // 异常类构造方法<br> public EnhanceException(Exception ex,Class&lt;?&gt; ec,Class&lt;?&gt;… imClazz){<br>    super(ex);<br>    this.enhanceClass = ec;<br>    this.implementClasses = imClazz;<br> }<br> public Class&lt;?&gt; getEnhanceClass() {<br>    return enhanceClass;<br> }<br> public Class&lt;?&gt;[] getImplementClasses() {<br>    return implementClasses;<br> }<br> }<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;"><strong>EnhanceFactory：</strong>最后，通过 EnhanceFactory 提供对外调用接口，调用接口有两个：</span></p>
+<ul>
+<li><span style="font-size: 14px;"><code>public static &lt;T&gt; Class&lt;T&gt; addImplementation(`` ``Class&lt;T&gt; clazz,Class&lt;?&gt;... implementClasses)</code></span></li>
+<li><span style="font-size: 14px;"><code>public static &lt;T&gt; T newInstance(Class&lt;T&gt; clazz,`` ``Class&lt;?&gt;... impls)</code></span></li>
+</ul>
+<p><span style="font-size: 14px;">为了方便使用，这两个方法都使用了泛型。它们的参数是一样的：第一个参数都是待增强类的 Class 对象，后面是任意多个实现类的 Class 对象，返回的类型和待增强类一致，用户在获取返回值之后不需要进行任何类型转换即可使用。</span></p>
+<p><span style="font-size: 14px;">第一个方法创建出增强类的 Class 对象，并通过自定义类加载器加载，其代码如清单 13 所示：</span></p>
+<p><strong>清单 13. addImplementation 方法代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br>/<em>*<br>静态工具方法，在待增强类中加入实现类的内容，返回增强类。
+</em>/<br> public static <t> Class<t> addImplementation(Class<t> clazz,<br> Class&lt;?&gt;… implementClasses) throws EnhanceException {<br>    String enhancedClassName = clazz.getName() + ENHANCED;<br>    try {<br>       // 尝试加载增强类<br>        return  (Class<t>) classLoader.loadClass(enhancedClassName);<br>        }<br>       // 如果没有找到增强类，则尝试直接在内存中构建出增强类的结构<br>    catch (ClassNotFoundException classNotFoundException) {<br>        ClassReader reader = null;<br>        try {<br>            reader = new ClassReader(clazz.getName());<br>        } catch (IOException ioexception) {<br>            throw new EnhanceException(ioexception,<br>            clazz, implementClasses);<br>        }<br>        ClassWriter writer = new ClassWriter(0);<br>       // 通过 AddImplementClassAdapter 完成实现类内容的织入<br>        ClassVisitor visitor = new AddImplementClassAdapter(<br>        enhancedClassName, clazz, writer, implementClasses);<br>        reader.accept(visitor, 0);<br>        byte[] byteCodes = writer.toByteArray();<br>        Class<t> result = (Class<t>) classLoader.defineClass(<br>        enhancedClassName, byteCodes);<br>        return result;<br>    }<br> }<br></t></t></t></t></t></t></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">第二个方法先调用前一个方法，获取<span class="Apple-converted-space">&nbsp;</span><code>增强类</code>的<span class="Apple-converted-space">&nbsp;</span><code>Class</code>对象，然后使用反射创建实例，其代码如清单 14 所示：</span></p>
+<p><strong>清单 14. newInstance 方法代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br>/<em>*<br>通过待增强类和实现类，得到增强类的实例对象
+</em>/<br> public static <t> T newInstance(Class<t> clazz, Class&lt;?&gt;… impls)<br> throws EnhanceException {<br> Class<t> c = addImplementation(clazz, impls);<br> if (c == null) {<br>    return null;<br> }<br> try {<br>       // 通过反射创建实例<br>    return c.newInstance();<br> } catch (InstantiationException e) {<br>    throw new EnhanceException(e, clazz, impls);<br> } catch (IllegalAccessException e) {<br>    throw new EnhanceException(e, clazz, impls);<br> }<br> }<br></t></t></t></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">下面是测试代码，先通过 EnhanceFactory 创建增强类的实例，然后就可以像普通对象一样的使用，代码如清单 15 所示：</span></p>
+<p><strong>清单 15. 使用演示代码</strong></p>
+<table style="font: 0.8em/normal Simsun; width: 100%; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" summary="This table contains a code listing." border="0" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td class="code-outline" style="padding: 2px 2px 5px; border: 1px solid #cccccc; font-family: arial, nsimsun, sans-serif; background-color: #f7f7f7 !important;"><br><pre class="displaycode"><br> // 不用 new 关键字，而使用 EnhanceFactory.newInstance 创建增强类的实例<br> SubClass1 obj1 = EnhanceFactory.newInstance(SubClass1.class,<br> TimeRetriever.class,FibonacciComputer.class);<br> // 调用待增强类中的方法<br> obj1.methodInSuperClass();<br> obj1.methodDefinedInSubClass1();<br> // 调用实现类中的方法<br> System.out.println(“The Fibonacci number of 10 is “+obj1.compute(10));<br> System.out.println(“Now is :”+obj1.tellMeTheTime());<br> System.out.println(“————————————–”);<br> // 对于 SubClass2 的增强类实例的创建也是一样的<br> SubClass2 obj2 = EnhanceFactory.newInstance(SubClass2.class,<br> TimeRetriever.class,FibonacciComputer.class);<br> // 调用待增强类中的方法<br> obj2.methodInSuperClass();<br> obj2.methodDefinedInSubClass2();<br> // 调用实现类中的方法<br> System.out.println(“The Fibonacci number of 10 is “+obj1.compute(10));<br> System.out.println(“Now is :”+obj1.tellMeTheTime());<br></pre><br></td><br></tr><br></tbody><br></table>
+
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">这里，我们演示了使用 ASM 创建一个新的类，并且修改该类中的内容的方法。而这一切都是在运行的环境中动态生成的，这一点相较于源代码级别的实现有以下的好处：</span></p>
+<ul>
+<li><span style="font-size: 14px;"><strong>没有重复代码</strong><span class="Apple-converted-space">&nbsp;</span>这是我们的主要目的，由于增强类是在运行的环境中生成的，并且动态的包含了实现类中的内容，所以，不会产生任何重复代码。</span></li>
+<li><span style="font-size: 14px;"><strong>灵活性</strong><span class="Apple-converted-space">&nbsp;</span>使用 EnhanceFactory# addImplementation 方法，对于接口的实现完全是在运行时确定的，因此可以灵活的选择。</span></li>
+<li><span style="font-size: 14px;"><strong>可复用性</strong><span class="Apple-converted-space">&nbsp;</span>EnhanceFactory# addImplementation 是一个可以完全复用的方法，我们可以在任何需要的地方使用它。</span></li>
+</ul>
+<p><span style="font-size: 14px;">需要注意的是，这里我们并没有真正的实现&ldquo;多重继承&rdquo;，由于 class 文件格式的限制，我们也不可能真正实现&ldquo;多重继承&rdquo;，我们只是在一个类中包含了多个实现类的内容而已。但是，如果你使用增强类的实例通过 instanceof 之类的方法来判断它是否是实现类的实例的时候，你会得到 false，因为增强类并没有真正的继承自实现类。</span></p>
+<p><span style="font-size: 14px;">另外，为了让演示代码足够的简单，对于这个功能的实现还存在一些问题，例如：</span></p>
+<ul>
+<li><span style="font-size: 14px;">FibonacciComputer 和 TimeRetriever 这两个类中，可能会包含一些其他方法，这些方法并非是为了实现接口的方法，而这些方法也会被增强类所包含。</span></li>
+<li><span style="font-size: 14px;">如果多个实现类与待增强类中包含了同样签名的方法时，在创建增强类的过程中会产生异常，因为一个类中不能包含同样方法签名的两个方法。</span></li>
+<li><span style="font-size: 14px;">如果实现类中包含了一些字段，并且实现类的构造方法中初始化了这些字段。但增强类中的这些字段并没有被初始化。因为实现类的构造方法被忽略了。</span></li>
+<li><span style="font-size: 14px;">无法对同一个类做多次不同类型的增强。</span></li>
+</ul>
+<p><span style="font-size: 14px;">不过，在理解了上文中的知识之后，这些问题也都是可以解决的。</span></p>
+<p><span style="font-size: 14px;">作为一个可以操作字节码的工具而言，ASM 的功能远不止于此。它还可以用来实现 AOP，实现性能监测，方法调用统计等功能。通过 Google，可以很容易的找到这类文章。</span></p>
+<p><span style="font-size: 14px;">示例代码包含在 ASMDemo.zip 中，该文件中包含了上文中提到的所有代码。</span></p>
+<p><span style="font-size: 14px;">该 zip 文件为 eclipse 项目的归档文件。可以通过 Eclipse 菜单导入至 Eclipse 中，导入方法：File -&gt; Import &hellip; -&gt; Existing Projects into Workspace, 然后选择该 zip 文件即可。</span></p>
+<p><span style="font-size: 14px;">想要编译该项目，还需要 ASM 框架的 jar 包。请在以下地址下载 ASM 框架：<a href="http://forge.ow2.org/projects/asm/" target="_blank" rel="external">http://forge.ow2.org/projects/asm/</a></span></p>
+<p><span style="font-size: 14px;">目前该框架正式版的版本号为：3.3.1。</span></p>
+<p><span style="font-size: 14px;">下载该框架归档文件后解压缩， 并通过 eclipse 将 asm-all-3.3.1.jar（可能是其他版本号）添加到项目编译的类路径中即可。</span></p>
+<p><span style="font-size: 14px;">代码中包含的 Main 类，是一个包含了 main 方法的可执行类，在 eclipse 中运行该类即可看到运行结果。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 14px;">源代码下载：<a href="http://files.cnblogs.com/liuling/ASMDemo.rar" target="_blank" rel="external">http://files.cnblogs.com/liuling/ASMDemo.rar</a></span></p>
+<p><span style="font-size: 14px;">本文出自：<a href="http://www.ibm.com/developerworks/cn/java/j-lo-asm/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-lo-asm/</a></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/05/asm-java-multi-extends.html" data-id="ciiy5f4y400elq1d0de24ap64" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/05/asm-java-multi-extends.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/06/virtualbox-centos-network.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          virtualbox虚拟机上安装centOS的网络配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/05/java-asm.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关于java字节码框架ASM的学习</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-asm-java-multi-extends" data-title="使用 ASM 实现 Java 语言的“多重继承”" data-url="http://liuling07.github.io/2013/05/asm-java-multi-extends.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

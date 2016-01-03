@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hadoop集群环境的搭建 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 今天终于把hadoop集群环境给搭建起来了，能够运行单词统计的示例程序了。
+集群信息如下：
+主机名Hadoop角色Hadoop jps命令结果Hadoop用户Hadoop安装目录masterMasterslavesNameNodeDataNodeJobTrackerTaskTrackerSecondaryNameNode创建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hadoop集群环境的搭建">
+<meta property="og:url" content="http://liuling07.github.io/2013/06/hadoop-install.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 今天终于把hadoop集群环境给搭建起来了，能够运行单词统计的示例程序了。
+集群信息如下：
+主机名Hadoop角色Hadoop jps命令结果Hadoop用户Hadoop安装目录masterMasterslavesNameNodeDataNodeJobTrackerTaskTrackerSecondaryNameNode创建">
+<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hadoop集群环境的搭建">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 今天终于把hadoop集群环境给搭建起来了，能够运行单词统计的示例程序了。
+集群信息如下：
+主机名Hadoop角色Hadoop jps命令结果Hadoop用户Hadoop安装目录masterMasterslavesNameNodeDataNodeJobTrackerTaskTrackerSecondaryNameNode创建">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-hadoop-install" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hadoop集群环境的搭建
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/06/hadoop-install.html">
+      <time datetime="2013-06-16T04:59:00.000Z" itemprop="datePublished">2013-06-16</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 今天终于把hadoop集群环境给搭建起来了，能够运行单词统计的示例程序了。</p>
+<p>集群信息如下：</p>
+<table style="width: 574px;" border="1" cellspacing="0" cellpadding="0"><br><tbody><br><tr><br><td valign="top" width="73"><br><br>主机名<br><br></td><br><td valign="top" width="94"><br><br>Hadoop角色<br><br></td><br><td valign="top" width="151"><br><br>Hadoop jps命令结果<br><br></td><br><td valign="top" width="132"><br><br>Hadoop用户<br><br></td><br><td valign="top" width="123"><br><br>Hadoop安装目录<br><br></td><br></tr><br><tr><br><td valign="top" width="73"><br><br>master<br><br></td><br><td valign="top" width="94"><br><br>Master<br><br>slaves<br><br></td><br><td valign="top" width="151"><br><br>NameNode<br><br>DataNode<br><br>JobTracker<br><br>TaskTracker<br><br>SecondaryNameNode<br><br></td><br><td rowspan="3" valign="top" width="132"><br><br>创建相同的用户的组名：hadoop。<br><br>安装hadoop-0.20.2时使用hadoop用户，并且hadoop的文件夹归属也是hadoop：hadoop<br><br></td><br><td rowspan="3" valign="top" width="123"><br><br>/opt/hadoop<br><br></td><br></tr><br><tr><br><td valign="top" width="73"><br><br>slave1<br><br></td><br><td valign="top" width="94"><br><br>slaves<br><br></td><br><td valign="top" width="151"><br><br>DataNode<br><br>TaskTracker<br><br></td><br></tr><br><tr><br><td valign="top" width="73"><br><br>slave2<br><br></td><br><td valign="top" width="94"><br><br>slaves<br><br></td><br><td valign="top" width="151"><br><br>DataNode<br><br>TaskTracker<br><br></td><br></tr><br></tbody><br></table>
+
+<p>　　注：master即使master又是slave.</p>
+<p>搭建步骤如下：</p>
+<p>　　一、首先是搞好master</p>
+<p>　　1、创建用户组</p>
+<p>　　　　groupadd hadoop&nbsp; 添加一个组</p>
+<p>　　　　useradd hadoop -g hadoop&nbsp; 添加用户</p>
+<p>　　2、jdk的安装</p>
+<p>　　　　这里安装的版本是jdk-7u9-linux-i586.tar.gz ，使用 tar -zsvf&nbsp;jdk-7u9-linux-i586.tar.gz&nbsp; -C /opt/&nbsp; 命令将其解压到/opt目录下，并将解压后的文件夹jdk-7u9-linux-i586改名为java.</p>
+<p>　　　　jdk安装好就要配置环境变量了，使用vi /etc/profile命令编辑添加如下内容：</p>
+<p>　　　　export JAVA_HOME=/opt/java/jdk<br>　　　　exprot PATH=$JAVA_HOME/bin:$PATH</p>
+<p>　　　　配置好之后要用命令source /etc/profile使配置文件生效，这样jdk就安装完毕了。安装完之后不要忘了将所有者设置为hadoop。</p>
+<p>使用命令chown -R hadoop:hadoop java/</p>
+<p>　　3.hadoop的安装</p>
+<p>　　　　hadoop的版本是hadoop-0.20.2.tar.gz，也把它解压到/opt目录下面，改名为hadoop。</p>
+<p>　　　　hadoop也要设置环境变量，使用vi /etc/profile命令编辑添加如下内容：</p>
+<p>　　　　export HADOOP_HOME=/opt/hadoop</p>
+<p>　　　　export PATH=$HADOOP_HOME/bin:$PATH</p>
+<p>　　　　同样也要执行source /etc/profile使配置文件生效,然后执行命令使用命令chown -R hadoop:hadoop hadoop/将其所有者改为hadoop</p>
+<p>　　4、修改地址解析文件/etc/hosts，加入</p>
+<p>　　　　192.168.137.110 master</p>
+<p>　　　　192.168.137.111 slave1</p>
+<p>　　　　192.168.137.112 slave2</p>
+<p>　　5、修改hadoop的配置文件</p>
+<p>　　首先切换到hadoop用户，su hadoop</p>
+<p>　　①修改hadoop目录下的conf/hadoop-env.sh文件</p>
+<p>　　　　加入java的安装路径export JAVA_HOME=/opt/java/jdk</p>
+<p>　　②把hadoop目录下的conf/core-site.xml文件修改成如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 2</span>   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>hadoop.tmp.dir<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 3</span>   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span>/hadoop<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 6</span>   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>fs.default.name<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 7</span>   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span>hdfs://master:9000<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">10</span>   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>dfs.name.dir<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">11</span>   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span>/hadoop/name<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">12</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span> </pre><br></div>
+
+<p>　　③把hadoop目录下的conf/ hdfs-site.xml文件修改成如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">2</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>dfs.replication<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">3</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span>3<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">4</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">5</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">6</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>dfs.data.dir<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">7</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span>/hadoop/data<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">8</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
+
+<p>　　④把hadoop目录下的conf/ mapred-site.xml文件修改成如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 2</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>mapred.job.tracker<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span>master:9001<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 6</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>mapred.system.dir<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span>/hadoop/mapred_system<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">10</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>mapred.local.dir<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">11</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span>/hadoop/mapred_local<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">value</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">12</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">property</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
+
+<p>　　⑤把hadoop目录下的conf/ masters文件修改成如下：</p>
+<p>　　　　master</p>
+<p>　　⑥把hadoop目录下的conf/ slaves文件修改成如下：</p>
+<p>　　　　master</p>
+<p>　　　　slave1</p>
+<p>　　　　slave2</p>
+<p>　　6、复制虚拟机</p>
+<p>　　　&nbsp;&nbsp;&nbsp;我使用Virtual Box的克隆功能，将主机master完全克隆两份:slave1和slave2，并修改相应的主机名和IP地址，这样就可以简单地保持hadoop环境基本配置相同。</p>
+<p>　　7、SSH设置无密码验证</p>
+<p>　　　&nbsp;&nbsp; 切换到Hadoop用户，在Hadoop家目录下面创建.ssh目录，并在master节点上生成密钥对：ssh-keygen -t rsa -P ‘’ -f ~/.ssh/id_rsa&nbsp;&nbsp;&nbsp;。然后一直按[Enter]键，按默认的选项生成密钥对保存在.ssh/id_rsa文件中。</p>
+<p>　　　　然后执行如下命令：</p>
+<p>$ ssh ~/.ssh</p>
+<p>$ cp id_rsa.pub authorized_keys</p>
+<p>$ scp authorized_keys slave1:/home/hadoop/.ssh</p>
+<p>$ scp authorized_keys slave2:/home/hadoop/.ssh</p>
+<p>　　　　执行远程复制文件的时候记得要把slave1和slave2的防火墙关掉。复制完毕后记得要到slave1和slave2去修改该文件的权限。</p>
+<p>从master向slave1和slave2发起SSH连接，第一次登录时需要输入密码，以后就不需要了。</p>
+<p>$ ssh slave1</p>
+<p>$ ssh slave2</p>
+<p>我们只需要配置从master向slaves发起SSH连接不需要密码就可以了，但这样只能在master（即在主机master）启动或关闭hadoop服务。</p>
+<p>　　8、运行hadoop</p>
+<p>　　　　使用Hadoop用户，切换到hadoop/bin目录下</p>
+<p>　　　　格式化分布式文件系统./hadoop namenode -format</p>
+<p>　　　　执行命令./start-all.sh启动hadoop</p>
+<p>　　　　在master上执行jps命令查看运行的进程如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #000000;">[hadoop@master hadoop]$ jps<br>3200 SecondaryNameNode<br>3271 JobTracker<br>3370 TaskTracker<br>3002 NameNode<br>3106 DataNode<br>5687 Jps</span></pre><br></div>
+
+<p>　　　　在slave1和slave2上执行jps结果如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #000000;">[hadoop@slave1 ~]$ jps<br>1477 DataNode<br>3337 Jps<br>1547 TaskTracker</span></pre><br></div>
+
+<p>　　　　访问<a href="http://ubuntu:50070/" target="_blank" rel="external">http://master:50070</a>可以查看分布式文件系统的状态</p>
+<p>　　9、运行单词统计程序</p>
+<p>　　　　WordCount是hadoop自带的实例，统计一批文本文件中各单词出现的资料，输出到指定的output目录中，输出目录如果已经存在会报错。</p>
+<div class="cnblogs_code"><br><pre><span style="color: #000000;">$ cd /opt/hadoop<br>$ hadoop fs -mkdir input<br>$ hadoop fs -copyFromLocal /opt/hadoop/<em>.txt input/<br>$ hadoop jar hadoop-0.20.2-examples.jar wordcount input output<br>$ hadoop fs -cat output/</em>    #最后查看结果</span></pre><br></div>
+
+<p>运行结果如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #000000;">13/06/16 19:32:26 INFO input.FileInputFormat: Total input paths to process : 4<br>13/06/16 19:32:26 INFO mapred.JobClient: Running job: job_201306161739_0002<br>13/06/16 19:32:27 INFO mapred.JobClient:  map 0% reduce 0%<br>13/06/16 19:32:35 INFO mapred.JobClient:  map 50% reduce 0%<br>13/06/16 19:32:36 INFO mapred.JobClient:  map 100% reduce 0%<br>13/06/16 19:32:47 INFO mapred.JobClient:  map 100% reduce 100%<br>13/06/16 19:32:49 INFO mapred.JobClient: Job complete: job_201306161739_0002<br>13/06/16 19:32:49 INFO mapred.JobClient: Counters: 18<br>13/06/16 19:32:49 INFO mapred.JobClient:   Job Counters<br>13/06/16 19:32:49 INFO mapred.JobClient:     Launched reduce tasks=1<br>13/06/16 19:32:49 INFO mapred.JobClient:     Rack-local map tasks=2<br>13/06/16 19:32:49 INFO mapred.JobClient:     Launched map tasks=4<br>13/06/16 19:32:49 INFO mapred.JobClient:     Data-local map tasks=2<br>13/06/16 19:32:49 INFO mapred.JobClient:   FileSystemCounters<br>13/06/16 19:32:49 INFO mapred.JobClient:     FILE_BYTES_READ=179182<br>13/06/16 19:32:49 INFO mapred.JobClient:     HDFS_BYTES_READ=363457<br>13/06/16 19:32:49 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=358510<br>13/06/16 19:32:49 INFO mapred.JobClient:     HDFS_BYTES_WRITTEN=133548<br>13/06/16 19:32:49 INFO mapred.JobClient:   Map-Reduce Framework<br>13/06/16 19:32:49 INFO mapred.JobClient:     Reduce input groups=10500<br>13/06/16 19:32:49 INFO mapred.JobClient:     Combine output records=10840<br>13/06/16 19:32:49 INFO mapred.JobClient:     Map input records=8968<br>13/06/16 19:32:49 INFO mapred.JobClient:     Reduce shuffle bytes=179200<br>13/06/16 19:32:49 INFO mapred.JobClient:     Reduce output records=10500<br>13/06/16 19:32:49 INFO mapred.JobClient:     Spilled Records=21680<br>13/06/16 19:32:49 INFO mapred.JobClient:     Map output bytes=524840<br>13/06/16 19:32:49 INFO mapred.JobClient:     Combine input records=47258<br>13/06/16 19:32:49 INFO mapred.JobClient:     Map output records=47258<br>13/06/16 19:32:49 INFO mapred.JobClient:     Reduce input records=10840</span></pre><br></div>
+
+<p>　　运行该程序一定得注意将slave1和slave2的防火墙给关闭，否则会报异常的。</p>
+<p>　　</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/06/hadoop-install.html" data-id="ciiy5f4vp00apq1d065mb2t88" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/06/hadoop-install.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/06/hdfs-javaapi.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HDFS中JAVA API的使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/06/hadoop-datanode-noroutetohostexception.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hadoop中datanode无法启动，报Caused by: java.net.NoRouteToHostException: No route to host</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-hadoop-install" data-title="hadoop集群环境的搭建" data-url="http://liuling07.github.io/2013/06/hadoop-install.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

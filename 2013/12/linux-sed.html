@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux sed命令详解 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. Sed简介&amp;nbsp; 
+sed 是一种在线编辑器，它一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，称为&amp;ldquo;模式空间&amp;rdquo;（pattern space），接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。接着处理下一行，这样不断重复，直到文件末尾。文件内容并没有 改变，除非你使用重定向存储输出。Sed主要用来自动编辑一个或多个文件；简化对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux sed命令详解">
+<meta property="og:url" content="http://liuling07.github.io/2013/12/linux-sed.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="1. Sed简介&amp;nbsp; 
+sed 是一种在线编辑器，它一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，称为&amp;ldquo;模式空间&amp;rdquo;（pattern space），接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。接着处理下一行，这样不断重复，直到文件末尾。文件内容并没有 改变，除非你使用重定向存储输出。Sed主要用来自动编辑一个或多个文件；简化对">
+<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux sed命令详解">
+<meta name="twitter:description" content="1. Sed简介&amp;nbsp; 
+sed 是一种在线编辑器，它一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，称为&amp;ldquo;模式空间&amp;rdquo;（pattern space），接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。接着处理下一行，这样不断重复，直到文件末尾。文件内容并没有 改变，除非你使用重定向存储输出。Sed主要用来自动编辑一个或多个文件；简化对">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-linux-sed" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux sed命令详解
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/12/linux-sed.html">
+      <time datetime="2013-12-07T07:20:00.000Z" itemprop="datePublished">2013-12-07</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <ul>
+<li><span><span class="number">1</span><span>. Sed简介&nbsp; </span></span></li>
+<li><span>sed 是一种在线编辑器，它一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，称为&ldquo;模式空间&rdquo;（pattern space），接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。接着处理下一行，这样不断重复，直到文件末尾。文件内容并没有 改变，除非你使用重定向存储输出。Sed主要用来自动编辑一个或多个文件；简化对文件的反复操作；编写转换程序等。以下介绍的是Gnu版本的Sed <span class="number">3.02</span><span>。&nbsp; </span></span></li>
+<li><span><span class="number">2</span><span>. 定址&nbsp; </span></span></li>
+<li><span>可以通过定址来定位你所希望编辑的行，该地址用数字构成，用逗号分隔的两个行数表示以这两行为起止的行的范围（包括行数表示的那两行）。如<span class="number">1</span><span>，</span><span class="number">3</span><span>表示</span><span class="number">1</span><span>，</span><span class="number">2</span><span>，</span><span class="number">3</span><span>行，美元符号($)表示最后一行。范围可以通过数据，正则表达式或者二者结合的方式确定 。&nbsp; </span></span></li>
+<li><span>&nbsp; </span></li>
+<li><span><span class="number">3</span><span>. Sed命令&nbsp; </span></span></li>
+<li><span>调用sed命令有两种形式：&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>sed [options] <span class="string">‘command’</span><span> file(s)&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>sed [options] -f scriptfile file(s)&nbsp; </span></li>
+<li><span>a\&nbsp; </span></li>
+<li><span>在当前行后面加入一行文本。&nbsp; </span></li>
+<li><span>b lable&nbsp; </span></li>
+<li><span>分支到脚本中带有标记的地方，如果分支不存在则分支到脚本的末尾。&nbsp; </span></li>
+<li><span>c\&nbsp; </span></li>
+<li><span>用新的文本改变本行的文本。&nbsp; </span></li>
+<li><span>d&nbsp; </span></li>
+<li><span>从模板块（Pattern space）位置删除行。&nbsp; </span></li>
+<li><span>D&nbsp; </span></li>
+<li><span>删除模板块的第一行。&nbsp; </span></li>
+<li><span>i\&nbsp; </span></li>
+<li><span>在当前行上面插入文本。&nbsp; </span></li>
+<li><span>h&nbsp; </span></li>
+<li><span>拷贝模板块的内容到内存中的缓冲区。&nbsp; </span></li>
+<li><span>H&nbsp; </span></li>
+<li><span>追加模板块的内容到内存中的缓冲区&nbsp; </span></li>
+<li><span>g&nbsp; </span></li>
+<li><span>获得内存缓冲区的内容，并替代当前模板块中的文本。&nbsp; </span></li>
+<li><span>G&nbsp; </span></li>
+<li><span>获得内存缓冲区的内容，并追加到当前模板块文本的后面。&nbsp; </span></li>
+<li><span>l&nbsp; </span></li>
+<li><span>列表不能打印字符的清单。&nbsp; </span></li>
+<li><span>n&nbsp; </span></li>
+<li><span>读取下一个输入行，用下一个命令处理新的行而不是用第一个命令。&nbsp; </span></li>
+<li><span>N&nbsp; </span></li>
+<li><span>追加下一个输入行到模板块后面并在二者间嵌入一个新行，改变当前行号码。&nbsp; </span></li>
+<li><span>p&nbsp; </span></li>
+<li><span>打印模板块的行。&nbsp; </span></li>
+<li><span>P（大写）&nbsp; </span></li>
+<li><span>打印模板块的第一行。&nbsp; </span></li>
+<li><span>q&nbsp; </span></li>
+<li><span>退出Sed。&nbsp; </span></li>
+<li><span>r file&nbsp; </span></li>
+<li><span>从file中读行。&nbsp; </span></li>
+<li><span>t label&nbsp; </span></li>
+<li><span><span class="keyword">if</span><span>分支，从最后一行开始，条件一旦满足或者T，t命令，将导致分支到带有标号的命令处，或者到脚本的末尾。&nbsp; </span></span></li>
+<li><span>T label&nbsp; </span></li>
+<li><span>错误分支，从最后一行开始，一旦发生错误或者T，t命令，将导致分支到带有标号的命令处，或者到脚本的末尾。&nbsp; </span></li>
+<li><span>w file&nbsp; </span></li>
+<li><span>写并追加模板块到file末尾。&nbsp; </span></li>
+<li><span>W file&nbsp; </span></li>
+<li><span>写并追加模板块的第一行到file末尾。&nbsp; </span></li>
+<li><span>!&nbsp; </span></li>
+<li><span>表示后面的命令对所有没有被选定的行发生作用。&nbsp; </span></li>
+<li><span>s/re/string&nbsp; </span></li>
+<li><span>用string替换正则表达式re。&nbsp; </span></li>
+<li><span>=&nbsp; </span></li>
+<li><span>打印当前行号码。&nbsp; </span></li>
+<li><span>#&nbsp; </span></li>
+<li><span>把注释扩展到下一个换行符以前。&nbsp; </span></li>
+<li><span>以下的是替换标记&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>g表示行内全面替换。&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>p表示打印行。&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>w表示把行写入一个文件。&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>x表示互换模板块中的文本和缓冲区中的文本。&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>y表示把一个字符翻译为另外的字符（但是不用于正则表达式）&nbsp; </span></li>
+<li><span>&nbsp; </span></li>
+<li><span><span class="number">4</span><span>. 选项&nbsp; </span></span></li>
+<li><span>-e command, –expression=command&nbsp; </span></li>
+<li><span>允许多台编辑。&nbsp; </span></li>
+<li><span>-h, –help&nbsp; </span></li>
+<li><span>打印帮助，并显示bug列表的地址。&nbsp; </span></li>
+<li><span>-n, –quiet, –silent&nbsp; </span></li>
+<li><span>&nbsp; </span></li>
+<li><span>取消默认输出。&nbsp; </span></li>
+<li><span>-f, –filer=script-file&nbsp; </span></li>
+<li><span>引导sed脚本文件名。&nbsp; </span></li>
+<li><span>-V, –version&nbsp; </span></li>
+<li><span>打印版本和版权信息。&nbsp; </span></li>
+<li><span>&nbsp; </span></li>
+<li><span><span class="number">5</span><span>. 元字符集^&nbsp; </span></span></li>
+<li><span>锚定行的开始 如：/^sed/匹配所有以sed开头的行。&nbsp;&nbsp; </span></li>
+<li><span>$&nbsp; </span></li>
+<li><span>锚定行的结束 如：/sed$/匹配所有以sed结尾的行。&nbsp;&nbsp; </span></li>
+<li><span>.&nbsp; </span></li>
+<li><span>匹配一个非换行符的字符 如：/s.d/匹配s后接一个任意字符，然后是d。&nbsp;&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>匹配零或多个字符 如：<span class="comment">/*sed/匹配所有模板是一个或多个空格后紧跟sed的行。 </span> </span></li>
+<li><span><span class="comment">[]</span> </span></li>
+<li><span><span class="comment">匹配一个指定范围内的字符，如/[Ss]ed/匹配sed和Sed。 </span> </span></li>
+<li><span><span class="comment">[^]</span> </span></li>
+<li><span><span class="comment">匹配一个不在指定范围内的字符，如：/[^A-RT-Z]ed/匹配不包含A-R和T-Z的一个字母开头，紧跟ed的行。 </span> </span></li>
+<li><span><span class="comment">(..)</span> </span></li>
+<li><span><span class="comment">保存匹配的字符，如s/(love)able/\1rs，loveable被替换成lovers。 </span> </span></li>
+<li><span><span class="comment">&amp;</span> </span></li>
+<li><span><span class="comment">保存搜索字符用来替换其他字符，如s/love/<strong>&amp;</strong>/</span><span>，love这成<strong>love</strong>。&nbsp;&nbsp; </span></span></li>
+<li><span>\&lt;&nbsp; </span></li>
+<li><span>锚定单词的开始，如:/\<love 匹配包含以love开头的单词的行。&nbsp;&nbsp;="" <="" span=""></love></span></li>
+<li><span>>&nbsp; </span></li>
+<li><span>锚定单词的结束，如/love>/匹配包含以love结尾的单词的行。&nbsp;&nbsp; </span></li>
+<li><span>x{m}&nbsp; </span></li>
+<li><span>重复字符x，m次，如：/<span class="number">0</span><span>{</span><span class="number">5</span><span>}/匹配包含</span><span class="number">5</span><span>个o的行。&nbsp;&nbsp; </span></span></li>
+<li><span>x{m,}&nbsp; </span></li>
+<li><span>重复字符x,至少m次，如：/o{<span class="number">5</span><span>,}/匹配至少有</span><span class="number">5</span><span>个o的行。&nbsp;&nbsp; </span></span></li>
+<li><span>x{m,n}&nbsp; </span></li>
+<li><span>重复字符x，至少m次，不多于n次，如：/o{<span class="number">5</span><span>,</span><span class="number">10</span><span>}/匹配</span><span class="number">5</span><span>–</span><span class="number">10</span><span>个o的行。&nbsp; </span></span></li>
+<li><span><span class="number">6</span><span>. 实例&nbsp; </span></span></li>
+<li><span>删除：d命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘2d’</span><span> example—–删除example文件的第二行。&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘2,$d’</span><span> example—–删除example文件的第二行到末尾所有行。&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘$d’</span><span> example—–删除example文件的最后一行。&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘/test/‘</span><span>d example—–删除example文件所有包含test的行。&nbsp; </span></span></li>
+<li><span>替换：s命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘s/test/mytest/g’</span><span> example—–在整行范围内把test替换为mytest。如果没有g标记，则只有每行第一个匹配的test被替换成mytest。&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed -n <span class="string">‘s/^test/mytest/p’</span><span> example—–(-n)选项和p标志一起使用表示只打印那些发生替换的行。也就是说，如果某一行开头的test被替换成mytest，就打印它。&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘s/^192.168.0.1/&amp;localhost/‘</span><span> example—–&amp;符号表示替换换字符串中被找到的部份。所有以</span><span class="number">192.168</span><span>.</span><span class="number">0.1</span><span>开头的行都会被替换成它自已加 localhost，变成</span><span class="number">192.168</span><span>.</span><span class="number">0</span><span>.1localhost。&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed -n <span class="string">‘s/(love)able/\1rs/p’</span><span> example—–love被标记为</span><span class="number">1</span><span>，所有loveable会被替换成lovers，而且替换的行会被打印出来。&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘s#10#100#g’</span><span> example—–不论什么字符，紧跟着s命令的都被认为是新的分隔符，所以，&ldquo;#&rdquo;在这里是分隔符，代替了默认的&ldquo;/&rdquo;分隔符。表示把所有</span><span class="number">10</span><span>替换成</span><span class="number">100</span><span>。&nbsp; </span></span></li>
+<li><span>选定行的范围：逗号&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed -n <span class="string">‘/test/,/check/p’</span><span> example—–所有在模板test和check所确定的范围内的行都被打印。&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed -n <span class="string">‘5,/^test/p’</span><span> example—–打印从第五行开始到第一个包含以test开始的行之间的所有行。&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘/test/,/check/s/$/sed test/‘</span><span> example—–对于模板test和west之间的行，每行的末尾用字符串sed test替换。&nbsp; </span></span></li>
+<li><span>多点编辑：e命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed -e <span class="string">‘1,5d’</span><span> -e </span><span class="string">‘s/test/check/‘</span><span> example—–(-e)选项允许在同一行里执行多条命令。如例子所示，第一条命令删除</span><span class="number">1</span><span>至</span><span class="number">5</span><span>行，第二条命令用check替换test。命令的执 行顺序对结果有影响。如果两个命令都是替换命令，那么第一个替换命令将影响第二个替换命令的结果。&nbsp; </span></span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed –expression=<span class="string">‘s/test/check/‘</span><span> –expression=</span><span class="string">‘/love/d’</span><span> example—–一个比-e更好的命令是–expression。它能给sed表达式赋值。&nbsp; </span></span></li>
+<li><span>从文件读入：r命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘/test/r file’</span><span> example—–file里的内容被读进来，显示在与test匹配的行后面，如果匹配多行，则file的内容将显示在所有匹配行的下面。&nbsp; </span></span></li>
+<li><span>写入文件：w命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed -n <span class="string">‘/test/w file’</span><span> example—–在example中所有包含test的行都被写入file里。&nbsp; </span></span></li>
+<li><span>追加命令：a命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘/^test/a\—&gt;this is a example’</span><span> example&lt;—–</span><span class="string">‘this is a example’</span><span>被追加到以test开头的行后面，sed要求命令a后面有一个反斜杠。&nbsp; </span></span></li>
+<li><span>插入：i命令&nbsp; </span></li>
+<li><span>$ sed ‘/test/i\&nbsp; </span></li>
+<li><span><span class="keyword">new</span><span> line&nbsp; </span></span></li>
+<li><span>————————-‘ example&nbsp; </span></li>
+<li><span>如果test被匹配，则把反斜杠后面的文本插入到匹配行的前面。&nbsp; </span></li>
+<li><span>下一个：n命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘/test/{ n; s/aa/bb/; }’</span><span> example—–如果test被匹配，则移动到匹配行的下一行，替换这一行的aa，变为bb，并打印该行，然后继续。&nbsp; </span></span></li>
+<li><span>变形：y命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘1,10y/abcde/ABCDE/‘</span><span> example—–把</span><span class="number">1</span><span>–</span><span class="number">10</span><span>行内所有abcde转变为大写，注意，正则表达式元字符不能使用这个命令。&nbsp; </span></span></li>
+<li><span>退出：q命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed <span class="string">‘10q’</span><span> example—–打印完第</span><span class="number">10</span><span>行后，退出sed。&nbsp; </span></span></li>
+<li><span>保持和获取：h命令和G命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed -e <span class="string">‘/test/h’</span><span> -e ‘$G example—–在sed处理文件的时候，每一行都被保存在一个叫模式空间的临时缓冲区中，除非行被删除或者输出被取消，否则所有被处理的行都将 打印在屏幕上。接着模式空间被清空，并存入新的一行等待处理。在这个例子里，匹配test的行被找到后，将存入模式空间，h命令将其复制并存入一个称为保 持缓存区的特殊缓冲区内。第二条语句的意思是，当到达最后一行后，G命令取出保持缓冲区的行，然后把它放回模式空间中，且追加到现在已经存在于模式空间中 的行的末尾。在这个例子中就是追加到最后一行。简单来说，任何包含test的行都被复制并追加到该文件的末尾。&nbsp; </span></span></li>
+<li><span>保持和互换：h命令和x命令&nbsp; </span></li>
+<li><span>*&nbsp; </span></li>
+<li><span>$ sed -e <span class="string">‘/test/h’</span><span> -e </span><span class="string">‘/check/x’</span><span> example —–互换模式空间和保持缓冲区的内容。也就是把包含test与check的行互换。&nbsp; </span></span></li>
+<li><span><span class="number">7</span><span>. 脚本&nbsp; </span></span></li>
+<li><span>Sed脚本是一个sed的命令清单，启动Sed时以-f选项引导脚本文件名。Sed对于脚本中输入的命令非常挑剔，在命令的末尾不能有任何空白或文本，如果在一行中有多个命令，要用分号分隔。以#开头的行为注释行，且不能跨行。 </span></li>
+</ul>
+<p><span>转自<a href="http://www.iteye.com/topic/587673" target="_blank" rel="external">http://www.iteye.com/topic/587673</a></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/12/linux-sed.html" data-id="ciiy5f4so005yq1d0cvfqfl91" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/12/linux-sed.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/12/linux-cut.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux cut命令用法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/11/mysql-my-ini.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MySQL配置文件my.ini参数注释说明</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-linux-sed" data-title="Linux sed命令详解" data-url="http://liuling07.github.io/2013/12/linux-sed.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>初学hibernate框架 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天初次学习了hibernate,学习了hibernate的一些原理性知识。hibernate是基于ORM的持久层框架，它对JDBC进行了非常轻量级的对象封装，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。ORM（Object Relation Map）即对象关系映射，其映射方式有两种：①注解映射，②xml配置文件映射，其中第一种方式比较简单，但是耦合对要高，第二种方式虽然要复杂一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学hibernate框架">
+<meta property="og:url" content="http://liuling07.github.io/2013/01/hibernate.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="今天初次学习了hibernate,学习了hibernate的一些原理性知识。hibernate是基于ORM的持久层框架，它对JDBC进行了非常轻量级的对象封装，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。ORM（Object Relation Map）即对象关系映射，其映射方式有两种：①注解映射，②xml配置文件映射，其中第一种方式比较简单，但是耦合对要高，第二种方式虽然要复杂一">
+<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初学hibernate框架">
+<meta name="twitter:description" content="今天初次学习了hibernate,学习了hibernate的一些原理性知识。hibernate是基于ORM的持久层框架，它对JDBC进行了非常轻量级的对象封装，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。ORM（Object Relation Map）即对象关系映射，其映射方式有两种：①注解映射，②xml配置文件映射，其中第一种方式比较简单，但是耦合对要高，第二种方式虽然要复杂一">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-hibernate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      初学hibernate框架
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/01/hibernate.html">
+      <time datetime="2013-01-13T07:16:00.000Z" itemprop="datePublished">2013-01-13</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>　　今天初次学习了hibernate,学习了hibernate的一些原理性知识。hibernate是基于ORM的持久层框架，它对JDBC进行了非常轻量级的对象封装，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。ORM（Object Relation Map）即对象关系映射，其映射方式有两种：①注解映射，②xml配置文件映射，其中第一种方式比较简单，但是耦合对要高，第二种方式虽然要复杂一点但是耦合度相对低了很多，因为我们开发系统都追求高内聚、低耦合，所以第二种方式较常用。</p>
+<p>　　使用hibernate要做到&ldquo;<span style="color: #ff0000;">三拷三配、六个准备，七个步骤</span>&rdquo;，这是口诀。</p>
+<p>　　三拷三配、六个准备：三拷是指拷JDBC驱动包、hibernate开发包、log4j包，三配是指配置pojo类、配置类与数据库表之间的映射、配置总配置文件（用于数据库连接的）。</p>
+<p>　　首先讲三拷三配、六个准备，拷JDBC驱动包不用多讲，因为hibernate也是基于JDBC的，只是对其进行了封装，所以JDBC驱动包必不可少。既然是使用hibernate,那hibernate开发包也必不可少，用来提供各种类的。log4j包用来记录日志信息的，这个也是非常有用的，因为以后做的系统都要发布到服务器上面去的，你不可能每时每刻都守在服务器旁边看有没有出问题，有了日志就可以省很多事了。只要定期去查看日志文件就好了，所有问题都会记录在日志文件中。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 三配中配置pojo也不用多讲，跟以前差不多，一个表对应一个pojo类就ok了。因为hibernate是基于对象关系映射的框架，所以pojo类对象与关系表的映射配置必不可少，需要配置三个东西:表和类的映射、属性和字段的映射、表和表的关系（如果两个表有主外键关系的话，这里只有一个表所以不用配置），配置代码如下：</p>
+<p>pojo中Student类</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.pojo;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.Serializable;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Date;<br></span><span style="color: #008080;"> 5</span><br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> Student <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Serializable {<br></span><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> sid;<br></span><span style="color: #008080;"> 8</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> String sname;<br></span><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> Date sage;<br></span><span style="color: #008080;">10</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> getSid() {<br></span><span style="color: #008080;">11</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> sid;<br></span><span style="color: #008080;">12</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">13</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> setSid(<span style="color: #0000ff;">int</span><span style="color: #000000;"> sid) {<br></span><span style="color: #008080;">14</span>         <span style="color: #0000ff;">this</span>.sid =<span style="color: #000000;"> sid;<br></span><span style="color: #008080;">15</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">16</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> String getSname() {<br></span><span style="color: #008080;">17</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> sname;<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">19</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> setSname(String sname) {<br></span><span style="color: #008080;">20</span>         <span style="color: #0000ff;">this</span>.sname =<span style="color: #000000;"> sname;<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">22</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Date getSage() {<br></span><span style="color: #008080;">23</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> sage;<br></span><span style="color: #008080;">24</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">25</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> setSage(Date sage) {<br></span><span style="color: #008080;">26</span>         <span style="color: #0000ff;">this</span>.sage =<span style="color: #000000;"> sage;<br></span><span style="color: #008080;">27</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">28</span><br><span style="color: #008080;">29</span> }</pre><br></div>
+
+<p>Student类与student表的映射student.hbm.xml代码：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> &lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br><span style="color: #008080;"> 2</span> &lt;!DOCTYPE hibernate-mapping PUBLIC “-//Hibernate/Hibernate Mapping DTD 3.0//EN”<br><span style="color: #008080;"> 3</span> “<a href="http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;&gt;" target="_blank" rel="external">http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;&gt;</a><br><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span><br><span style="color: #008080;"> 6</span> <hibernate-mapping><br><span style="color: #008080;"> 7</span>     <!-- 表与类的映射 --><br><span style="color: #008080;"> 8</span>     &lt;<span style="color: #0000ff;">class</span> name=”com.pojo.Student” table=”student”&gt;<br><span style="color: #008080;"> 9</span>         <!-- 字段与属性映射之主键映射 --><br><span style="color: #008080;">10</span>         <id name="sid" column="sid"><br><span style="color: #008080;">11</span>             <generator <span="" style="color: #0000ff;">class=”native”&gt;</generator><br><span style="color: #008080;">12</span>         </id><br><span style="color: #008080;">13</span>         <!-- 字段与属性映射 --><br><span style="color: #008080;">14</span>         <property name="sname" column="sname"></property><br><span style="color: #008080;">15</span>         <property name="sage" column="sage"></property><br><span style="color: #008080;">16</span>     &lt;/<span style="color: #0000ff;">class</span>&gt;<br><span style="color: #008080;">17</span> </hibernate-mapping></pre><br></div>
+
+<p>&nbsp;</p>
+<p>最后是总配置文件hibernate.cfg.xml的配置（有可视化界面操作的），该配置是用于建立数据库连接的，其代码如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> &lt;?xml version=’1.0’ encoding=’UTF-8’?&gt;<br><span style="color: #008080;"> 2</span> &lt;!DOCTYPE hibernate-<span style="color: #000000;">configuration PUBLIC<br></span><span style="color: #008080;"> 3</span>           “-//Hibernate/Hibernate Configuration DTD 3.0//EN”<br><span style="color: #008080;"> 4</span>           “<a href="http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd&quot;&gt;" target="_blank" rel="external">http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd&quot;&gt;</a><br><span style="color: #008080;"> 5</span><br><span style="color: #008080;"> 6</span> <hibernate-configuration><br><span style="color: #008080;"> 7</span> <session-factory><br><span style="color: #008080;"> 8</span>     <property name="myeclipse.connection.profile">Mysql</property><br><span style="color: #008080;"> 9</span>     <property name="connection.url"><br><span style="color: #008080;">10</span>         jdbc:mysql:<span style="color: #008000;">//</span><span style="color: #008000;">127.0.0.1:3306/test</span><br><span style="color: #008080;">11</span>     </property><br><span style="color: #008080;">12</span>     <property name="connection.username">root</property><br><span style="color: #008080;">13</span>     <property name="connection.password">admin</property><br><span style="color: #008080;">14</span>     <property name="connection.driver_class"><br><span style="color: #008080;">15</span> <span style="color: #000000;">        com.mysql.jdbc.Driver<br></span><span style="color: #008080;">16</span>     </property><br><span style="color: #008080;">17</span>     <property name="dialect"><br><span style="color: #008080;">18</span> <span style="color: #000000;">        org.hibernate.dialect.MySQLDialect<br></span><span style="color: #008080;">19</span>     </property><br><span style="color: #008080;">20</span>     <property name="show_sql"><span style="color: #0000ff;">true</span></property><br><span style="color: #008080;">21</span>     <mapping resource="com/pojo/student.hbm.xml"><br><span style="color: #008080;">22</span> </mapping></session-factory><br><span style="color: #008080;">23</span> </hibernate-configuration></pre><br></div>
+
+<p>到此为止准备工作已经完成了，接下来就是操纵数据库了。操作数据库有七个步骤：</p>
+<p>　　①读取配置文件</p>
+<p>　　②创建session工厂</p>
+<p>　　③打开session</p>
+<p>　　④开始事务：hibernate中增删改一定要用事务，查询可以不用</p>
+<p>　　⑤处理事务，对数据表的增(save)、删(delete)、改(update)</p>
+<p>　　⑥提交事务或者回滚事务</p>
+<p>　　⑦关闭session。</p>
+<p>下面是对表student插入数据的一个例子：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.test;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span><br><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.sql.Date;<br></span><span style="color: #008080;"> 6</span><br><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.hibernate.Session;<br></span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.hibernate.SessionFactory;<br></span><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.hibernate.Transaction;<br></span><span style="color: #008080;">10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.hibernate.cfg.Configuration;<br></span><span style="color: #008080;">11</span><br><span style="color: #008080;">12</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> com.pojo.Student;<br></span><span style="color: #008080;">13</span><br><span style="color: #008080;">14</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> 插入数据 {<br></span><span style="color: #008080;">15</span><br><span style="color: #008080;">16</span>     <span style="color: #008000;">/<em>*</em></span><br><span style="color: #008080;">17</span> <span style="color: #008000;">      </span><span style="color: #808080;">@param</span><span style="color: #008000;"> args<br></span><span style="color: #008080;">18</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;">19</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;">20</span>         <span style="color: #008000;">//</span><span style="color: #008000;">1.读取配置文件</span><br><span style="color: #008080;">21</span>         Configuration cfg = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Configuration().configure();<br></span><span style="color: #008080;">22</span><br><span style="color: #008080;">23</span>         <span style="color: #008000;">//</span><span style="color: #008000;">2.创建session工厂</span><br><span style="color: #008080;">24</span>         SessionFactory  factory =<span style="color: #000000;"> cfg.buildSessionFactory();<br></span><span style="color: #008080;">25</span><br><span style="color: #008080;">26</span>         <span style="color: #008000;">//</span><span style="color: #008000;">3.打开session</span><br><span style="color: #008080;">27</span>         Session session =<span style="color: #000000;"> factory.openSession();<br></span><span style="color: #008080;">28</span><br><span style="color: #008080;">29</span>         <span style="color: #008000;">//</span><span style="color: #008000;">4.新建事务：hibernate中增删改一定要用事务，查询可以不用</span><br><span style="color: #008080;">30</span>         Transaction tr =<span style="color: #000000;"> session.beginTransaction();<br></span><span style="color: #008080;">31</span><br><span style="color: #008080;">32</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">33</span>             <span style="color: #008000;">//</span><span style="color: #008000;">5.处理事务</span><br><span style="color: #008080;">34</span>             Student s = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Student();<br></span><span style="color: #008080;">35</span>             s.setSname(“xinxin”<span style="color: #000000;">);<br></span><span style="color: #008080;">36</span>             s.setSage(Date.valueOf(“1992-10-09”<span style="color: #000000;">));<br></span><span style="color: #008080;">37</span> <span style="color: #000000;">            session.save(s);<br></span><span style="color: #008080;">38</span>             <span style="color: #008000;">//</span><span style="color: #008000;">6.提交事务</span><br><span style="color: #008080;">39</span> <span style="color: #000000;">            tr.commit();<br></span><span style="color: #008080;">40</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">41</span>             <span style="color: #008000;">//</span><span style="color: #008000;">6.出现问题，事务回滚</span><br><span style="color: #008080;">42</span> <span style="color: #000000;">            tr.rollback();<br></span><span style="color: #008080;">43</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">44</span>         <span style="color: #008000;">//</span><span style="color: #008000;">7.关闭会话</span><br><span style="color: #008080;">45</span> <span style="color: #000000;">        session.close();<br></span><span style="color: #008080;">46</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">47</span><br><span style="color: #008080;">48</span> }</pre><br></div>
+
+<p>下面是对查询表student的例子：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.test;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.hibernate.Query;<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.hibernate.Session;<br></span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.hibernate.SessionFactory;<br></span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.hibernate.cfg.Configuration;<br></span><span style="color: #008080;"> 9</span><br><span style="color: #008080;">10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> com.pojo.Student;<br></span><span style="color: #008080;">11</span><br><span style="color: #008080;">12</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> 查询所有 {<br></span><span style="color: #008080;">13</span><br><span style="color: #008080;">14</span>     <span style="color: #008000;">/<em>*</em></span><br><span style="color: #008080;">15</span> <span style="color: #008000;">      </span><span style="color: #808080;">@param</span><span style="color: #008000;"> args<br></span><span style="color: #008080;">16</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;">17</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;">18</span>         <span style="color: #008000;">//</span><span style="color: #008000;">读取配置文件</span><br><span style="color: #008080;">19</span>         Configuration cfg = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Configuration().configure();<br></span><span style="color: #008080;">20</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建session工厂</span><br><span style="color: #008080;">21</span>         SessionFactory factory =<span style="color: #000000;"> cfg.buildSessionFactory();<br></span><span style="color: #008080;">22</span>         <span style="color: #008000;">//</span><span style="color: #008000;">打开session</span><br><span style="color: #008080;">23</span>         Session session =<span style="color: #000000;"> factory.openSession();<br></span><span style="color: #008080;">24</span>         <span style="color: #008000;">//</span><span style="color: #008000;">批量查询用HQL(表名改类名，字段名改属性名)</span><br><span style="color: #008080;">25</span>         Query query = session.createQuery(“from Student where sid=?”<span style="color: #000000;">);<br></span><span style="color: #008080;">26</span>         <span style="color: #008000;">//</span><span style="color: #008000;">这里给问号赋值时是从0开始的</span><br><span style="color: #008080;">27</span>         query.setInteger(0, 2<span style="color: #000000;">);<br></span><span style="color: #008080;">28</span>         List<student> list =<span style="color: #000000;"> query.list();<br></span><span style="color: #008080;">29</span>         <span style="color: #0000ff;">for</span><span style="color: #000000;"> (Student student : list) {<br></span><span style="color: #008080;">30</span> <span style="color: #000000;">            System.out.println(student.getSname());<br></span><span style="color: #008080;">31</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">32</span> <span style="color: #000000;">        session.close();<br></span><span style="color: #008080;">33</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">34</span><br><span style="color: #008080;">35</span> }</student></pre><br></div>
+
+<p>查询数据如果是根据主键查找一条记录的时候可以用session的get()方法，<span style="color: #ff0000;">查询多条记录则必须用HQL(Hibernate Query Language),HQL和SQL语句差不多，只是将表明改为类名、将字段名改为属性名。</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>　　</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/01/hibernate.html" data-id="ciiy5f4v7009qq1d09ujwp4qy" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/01/hibernate.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/01/hibernate-map-one-to-one.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          hibernate中一对多关系的映射
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/12/div-center.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">绝对定位的div的居中方法，下面的写法兼容IE系列浏览器和火狐浏览器。</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-hibernate" data-title="初学hibernate框架" data-url="http://liuling07.github.io/2013/01/hibernate.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

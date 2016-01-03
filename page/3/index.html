@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Hexo theme - Icarus">
+<meta property="og:type" content="website">
+<meta property="og:title" content="残剑博客">
+<meta property="og:url" content="http://liuling07.github.io/page/3/index.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="Hexo theme - Icarus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="残剑博客">
+<meta name="twitter:description" content="Hexo theme - Icarus">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main">
+      <article id="post-principle-lrucache" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/principle-lrucache.html">内存缓存LruCache实现原理</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/09/principle-lrucache.html">
+      <time datetime="2015-09-24T02:35:00.000Z" itemprop="datePublished">2015-09-24</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>　　<span style="font-size: 16px;">自己项目中一直都是用的开源的xUtils框架，包括BitmapUtils、DbUtils、ViewUtils和HttpUtils四大模块，这四大模块都是项目中比较常用的。最近决定研究一下xUtils的源码，用了这么久总得知道它的实现原理吧。我是先从先从BitmapUtils模块开始的。BitmapUtils和大多数图片加载框架一样，都是基于内存-文件-网络三级缓存。也就是加载图片的时候首先从内存缓存中取，如果没有再从文件缓存中取，如果文件缓存没有取到，就从网络下载图片并且加入内存和文件缓存。</span></p>
+<div><span style="font-size: 16px;">　　这篇帖子先分析内存缓存是如何实现的。好吧开始进入正题。</span></div><br><div><span style="font-size: 16px;">　　BitmapUtils内存缓存的核心类LruMemoryCache，LruMemoryCache代码和v4包的LruCache一样，只是加了一个存储超期的处理，这里分析LruCache源码。LRU即Least Recently Used，近期最少使用算法。也就是当内存缓存达到设定的最大值时将内存缓存中近期最少使用的对象移除，有效的避免了OOM的出现。</span></div><br><div>&nbsp;</div><br><div><span style="font-size: 16px;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;讲到LruCache不得不提一下LinkedHashMap，因为LruCache中Lru算法的实现就是通过LinkedHashMap来实现的。LinkedHashMap继承于HashMap，它使用了一个双向链表来存储Map中的Entry顺序关系，这种顺序有两种，一种是LRU顺序，一种是插入顺序，这可以由其构造函数public LinkedHashMap(int initialCapacity,float loadFactor, boolean accessOrder)指定。所以，对于get、put、remove等操作，LinkedHashMap除了要做HashMap做的事情，还做些调整Entry顺序链表的工作。LruCache中将LinkedHashMap的顺序设置为LRU顺序来实现LRU缓存，每次调用get(也就是从内存缓存中取图片)，则将该对象移到链表的尾端。调用put插入新的对象也是存储在链表尾端，这样当内存缓存达到设定的最大值时，将链表头部的对象（近期最少用到的）移除。关于LinkedHashMap详解请前往<a href="http://www.cnblogs.com/children/archive/2012/10/02/2710624.html%E3%80%82" target="_blank" rel="external">http://www.cnblogs.com/children/archive/2012/10/02/2710624.html。</a></span></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="font-size: 16px;">下面看下LruCache的源码，我都注释的很详细了。</span></span></div><br><div><br><div class="cnblogs_code"><br><pre><span style="color: #008080;">  1</span> <span style="color: #008000;">/<em></em></span><br><span style="color: #008080;">  2</span> <span style="color: #008000;">  Copyright (C) 2011 The Android Open Source Project<br></span><span style="color: #008080;">  3</span> <span style="color: #008000;"> <em><br></em></span><span style="color: #008080;">  4</span> <span style="color: #008000;">  Licensed under the Apache License, Version 2.0 (the “License”);<br></span><span style="color: #008080;">  5</span> <span style="color: #008000;"> <em> you may not use this file except in compliance with the License.<br></em></span><span style="color: #008080;">  6</span> <span style="color: #008000;">  You may obtain a copy of the License at<br></span><span style="color: #008080;">  7</span> <span style="color: #008000;"> <em><br></em></span><span style="color: #008080;">  8</span> <span style="color: #008000;">       </span><span style="color: #008000; text-decoration: underline;"><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="external">http://www.apache.org/licenses/LICENSE-2.0</a></span><br><span style="color: #008080;">  9</span> <span style="color: #008000;"> <em><br></em></span><span style="color: #008080;"> 10</span> <span style="color: #008000;">  Unless required by applicable law or agreed to in writing, software<br></span><span style="color: #008080;"> 11</span> <span style="color: #008000;"> <em> distributed under the License is distributed on an “AS IS” BASIS,<br></em></span><span style="color: #008080;"> 12</span> <span style="color: #008000;">  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br></span><span style="color: #008080;"> 13</span> <span style="color: #008000;"> <em> See the License for the specific language governing permissions and<br></em></span><span style="color: #008080;"> 14</span> <span style="color: #008000;">  limitations under the License.<br></span><span style="color: #008080;"> 15</span>  <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;"> 16</span><br><span style="color: #008080;"> 17</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> android.support.v4.util;<br></span><span style="color: #008080;"> 18</span><br><span style="color: #008080;"> 19</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.LinkedHashMap;<br></span><span style="color: #008080;"> 20</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Map;<br></span><span style="color: #008080;"> 21</span><br><span style="color: #008080;"> 22</span> <span style="color: #008000;">/**</span><br><span style="color: #008080;"> 23</span> <span style="color: #008000;">  Static library version of {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> android.util.LruCache}. Used to write apps<br></span><span style="color: #008080;"> 24</span> <span style="color: #008000;"> <em> that run on API levels prior to 12. When running on API level 12 or above,<br></em></span><span style="color: #008080;"> 25</span> <span style="color: #008000;">  this implementation is still used; it does not try to switch to the<br></span><span style="color: #008080;"> 26</span> <span style="color: #008000;"> <em> framework’s implementation. See the framework SDK documentation for a class<br></em></span><span style="color: #008080;"> 27</span> <span style="color: #008000;">  overview.<br></span><span style="color: #008080;"> 28</span>  <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;"> 29</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> LruCache<k, v=""><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 30</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">final</span> LinkedHashMap<k, v=""><span style="color: #000000;"> map;<br></span><span style="color: #008080;"> 31</span><br><span style="color: #008080;"> 32</span>     <span style="color: #008000;">/**</span><span style="color: #008000;"> Size of this cache in units. Not necessarily the number of elements. </span><span style="color: #008000;">/</span><br><span style="color: #008080;"> 33</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> size;    <span style="color: #008000;">//</span><span style="color: #008000;">当前cache的大小</span><br><span style="color: #008080;"> 34</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> maxSize; <span style="color: #008000;">//</span><span style="color: #008000;">cache最大大小</span><br><span style="color: #008080;"> 35</span><br><span style="color: #008080;"> 36</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> putCount;       <span style="color: #008000;">//</span><span style="color: #008000;">put的次数</span><br><span style="color: #008080;"> 37</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> createCount;    <span style="color: #008000;">//</span><span style="color: #008000;">create的次数</span><br><span style="color: #008080;"> 38</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> evictionCount;  <span style="color: #008000;">//</span><span style="color: #008000;">回收的次数</span><br><span style="color: #008080;"> 39</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> hitCount;       <span style="color: #008000;">//</span><span style="color: #008000;">命中的次数</span><br><span style="color: #008080;"> 40</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> missCount;      <span style="color: #008000;">//</span><span style="color: #008000;">未命中次数</span><br><span style="color: #008080;"> 41</span><br><span style="color: #008080;"> 42</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;"> 43</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> maxSize for caches that do not override {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #sizeOf}, this is<br></span><span style="color: #008080;"> 44</span> <span style="color: #008000;">          the maximum number of entries in the cache. For all other caches,<br></span><span style="color: #008080;"> 45</span> <span style="color: #008000;">     <em>     this is the maximum sum of the sizes of the entries in this cache.<br></em></span><span style="color: #008080;"> 46</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 47</span>     <span style="color: #0000ff;">public</span> LruCache(<span style="color: #0000ff;">int</span><span style="color: #000000;"> maxSize) {<br></span><span style="color: #008080;"> 48</span>         <span style="color: #0000ff;">if</span> (maxSize &lt;= 0<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 49</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> IllegalArgumentException(“maxSize &lt;= 0”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 50</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 51</span>         <span style="color: #0000ff;">this</span>.maxSize =<span style="color: #000000;"> maxSize;<br></span><span style="color: #008080;"> 52</span>         <span style="color: #008000;">//</span><span style="color: #008000;">将LinkedHashMap的accessOrder设置为true来实现LRU</span><br><span style="color: #008080;"> 53</span>         <span style="color: #0000ff;">this</span>.map = <span style="color: #0000ff;">new</span> LinkedHashMap<k, v="">(0, 0.75f, <span style="color: #0000ff;">true</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 54</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 55</span><br><span style="color: #008080;"> 56</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;"> 57</span> <span style="color: #008000;">     <em> Returns the value for {</em></span><span style="color: #808080;">@code</span><span style="color: #008000;"> key} if it exists in the cache or can be<br></span><span style="color: #008080;"> 58</span> <span style="color: #008000;">      created by {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> #create}. If a value was returned, it is moved to the<br></span><span style="color: #008080;"> 59</span> <span style="color: #008000;">     <em> head of the queue. This returns null if a value is not cached and cannot<br></em></span><span style="color: #008080;"> 60</span> <span style="color: #008000;">      be created.<br></span><span style="color: #008080;"> 61</span> <span style="color: #008000;">     <em> 通过key获取相应的item，或者创建返回相应的item。相应的item会移动到队列的尾部，<br></em></span><span style="color: #008080;"> 62</span> <span style="color: #008000;">      如果item的value没有被cache或者不能被创建，则返回null。<br></span><span style="color: #008080;"> 63</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;"> 64</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span><span style="color: #000000;"> V get(K key) {<br></span><span style="color: #008080;"> 65</span>         <span style="color: #0000ff;">if</span> (key == <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 66</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> NullPointerException(“key == null”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 67</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 68</span><br><span style="color: #008080;"> 69</span> <span style="color: #000000;">        V mapValue;<br></span><span style="color: #008080;"> 70</span>         <span style="color: #0000ff;">synchronized</span> (<span style="color: #0000ff;">this</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 71</span>             mapValue =<span style="color: #000000;"> map.get(key);<br></span><span style="color: #008080;"> 72</span>             <span style="color: #0000ff;">if</span> (mapValue != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 73</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">mapValue不为空表示命中，hitCount+1并返回mapValue对象</span><br><span style="color: #008080;"> 74</span>                 hitCount++<span style="color: #000000;">;<br></span><span style="color: #008080;"> 75</span>                 <span style="color: #0000ff;">return</span><span style="color: #000000;"> mapValue;<br></span><span style="color: #008080;"> 76</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 77</span>             missCount++;  <span style="color: #008000;">//</span><span style="color: #008000;">未命中</span><br><span style="color: #008080;"> 78</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 79</span><br><span style="color: #008080;"> 80</span>         <span style="color: #008000;">/</span><br><span style="color: #008080;"> 81</span> <span style="color: #008000;">         <em> Attempt to create a value. This may take a long time, and the map<br></em></span><span style="color: #008080;"> 82</span> <span style="color: #008000;">          may be different when create() returns. If a conflicting value was<br></span><span style="color: #008080;"> 83</span> <span style="color: #008000;">         <em> added to the map while create() was working, we leave that value in<br></em></span><span style="color: #008080;"> 84</span> <span style="color: #008000;">          the map and release the created value.<br></span><span style="color: #008080;"> 85</span> <span style="color: #008000;">         <em> 如果未命中，则试图创建一个对象，这里create方法返回null,并没有实现创建对象的方法<br></em></span><span style="color: #008080;"> 86</span> <span style="color: #008000;">          如果需要事项创建对象的方法可以重写create方法。因为图片缓存时内存缓存没有命中会去<br></span><span style="color: #008080;"> 87</span> <span style="color: #008000;">         <em> 文件缓存中去取或者从网络下载，所以并不需要创建。<br></em></span><span style="color: #008080;"> 88</span>          <span style="color: #008000;">/</span><br><span style="color: #008080;"> 89</span>         V createdValue =<span style="color: #000000;"> create(key);<br></span><span style="color: #008080;"> 90</span>         <span style="color: #0000ff;">if</span> (createdValue == <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 91</span>             <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 92</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 93</span>         <span style="color: #008000;">//</span><span style="color: #008000;">假如创建了新的对象，则继续往下执行</span><br><span style="color: #008080;"> 94</span>         <span style="color: #0000ff;">synchronized</span> (<span style="color: #0000ff;">this</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 95</span>             createCount++<span style="color: #000000;">;<br></span><span style="color: #008080;"> 96</span>             <span style="color: #008000;">//</span><span style="color: #008000;">将createdValue加入到map中，并且将原来键为key的对象保存到mapValue</span><br><span style="color: #008080;"> 97</span>             mapValue =<span style="color: #000000;"> map.put(key, createdValue);<br></span><span style="color: #008080;"> 98</span>             <span style="color: #0000ff;">if</span> (mapValue != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;"> 99</span>                 <span style="color: #008000;">//</span><span style="color: #008000;"> There was a conflict so undo that last put<br></span><span style="color: #008080;">100</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">如果mapValue不为空，则撤销上一步的put操作。</span><br><span style="color: #008080;">101</span> <span style="color: #000000;">                map.put(key, mapValue);<br></span><span style="color: #008080;">102</span>             } <span style="color: #0000ff;">else</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">103</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">加入新创建的对象之后需要重新计算size大小</span><br><span style="color: #008080;">104</span>                 size +=<span style="color: #000000;"> safeSizeOf(key, createdValue);<br></span><span style="color: #008080;">105</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">106</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">107</span><br><span style="color: #008080;">108</span>         <span style="color: #0000ff;">if</span> (mapValue != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">109</span>             entryRemoved(<span style="color: #0000ff;">false</span><span style="color: #000000;">, key, createdValue, mapValue);<br></span><span style="color: #008080;">110</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> mapValue;<br></span><span style="color: #008080;">111</span>         } <span style="color: #0000ff;">else</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">112</span>             <span style="color: #008000;">//</span><span style="color: #008000;">每次新加入对象都需要调用trimToSize方法看是否需要回收</span><br><span style="color: #008080;">113</span> <span style="color: #000000;">            trimToSize(maxSize);<br></span><span style="color: #008080;">114</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> createdValue;<br></span><span style="color: #008080;">115</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">116</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">117</span><br><span style="color: #008080;">118</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">119</span> <span style="color: #008000;">     <em> Caches {</em></span><span style="color: #808080;">@code</span><span style="color: #008000;"> value} for {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> key}. The value is moved to the head of<br></span><span style="color: #008080;">120</span> <span style="color: #008000;">      the queue.<br></span><span style="color: #008080;">121</span> <span style="color: #008000;">     <em><br></em></span><span style="color: #008080;">122</span> <span style="color: #008000;">      </span><span style="color: #808080;">@return</span><span style="color: #008000;"> the previous value mapped by {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> key}.<br></span><span style="color: #008080;">123</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;">124</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span><span style="color: #000000;"> V put(K key, V value) {<br></span><span style="color: #008080;">125</span>         <span style="color: #0000ff;">if</span> (key == <span style="color: #0000ff;">null</span> || value == <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">126</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> NullPointerException(“key == null || value == null”<span style="color: #000000;">);<br></span><span style="color: #008080;">127</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">128</span><br><span style="color: #008080;">129</span> <span style="color: #000000;">        V previous;<br></span><span style="color: #008080;">130</span>         <span style="color: #0000ff;">synchronized</span> (<span style="color: #0000ff;">this</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">131</span>             putCount++<span style="color: #000000;">;<br></span><span style="color: #008080;">132</span>             size += safeSizeOf(key, value);  <span style="color: #008000;">//</span><span style="color: #008000;">size加上预put对象的大小</span><br><span style="color: #008080;">133</span>             previous =<span style="color: #000000;"> map.put(key, value);<br></span><span style="color: #008080;">134</span>             <span style="color: #0000ff;">if</span> (previous != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">135</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">如果之前存在键为key的对象，则size应该减去原来对象的大小</span><br><span style="color: #008080;">136</span>                 size -=<span style="color: #000000;"> safeSizeOf(key, previous);<br></span><span style="color: #008080;">137</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">138</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">139</span><br><span style="color: #008080;">140</span>         <span style="color: #0000ff;">if</span> (previous != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">141</span>             entryRemoved(<span style="color: #0000ff;">false</span><span style="color: #000000;">, key, previous, value);<br></span><span style="color: #008080;">142</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">143</span>         <span style="color: #008000;">//</span><span style="color: #008000;">每次新加入对象都需要调用trimToSize方法看是否需要回收</span><br><span style="color: #008080;">144</span> <span style="color: #000000;">        trimToSize(maxSize);<br></span><span style="color: #008080;">145</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> previous;<br></span><span style="color: #008080;">146</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">147</span><br><span style="color: #008080;">148</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">149</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> maxSize the maximum size of the cache before returning. May be -1<br></span><span style="color: #008080;">150</span> <span style="color: #008000;">          to evict even 0-sized elements.<br></span><span style="color: #008080;">151</span> <span style="color: #008000;">     <em> 此方法根据maxSize来调整内存cache的大小，如果maxSize传入-1，则清空缓存中的所有对象<br></em></span><span style="color: #008080;">152</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">153</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span> trimToSize(<span style="color: #0000ff;">int</span><span style="color: #000000;"> maxSize) {<br></span><span style="color: #008080;">154</span>         <span style="color: #0000ff;">while</span> (<span style="color: #0000ff;">true</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">155</span> <span style="color: #000000;">            K key;<br></span><span style="color: #008080;">156</span> <span style="color: #000000;">            V value;<br></span><span style="color: #008080;">157</span>             <span style="color: #0000ff;">synchronized</span> (<span style="color: #0000ff;">this</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">158</span>                 <span style="color: #0000ff;">if</span> (size &lt; 0 || (map.isEmpty() &amp;&amp; size != 0<span style="color: #000000;">)) {<br></span><span style="color: #008080;">159</span>                     <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span><span style="color: #000000;"> IllegalStateException(getClass().getName()<br></span><span style="color: #008080;">160</span>                             + “.sizeOf() is reporting inconsistent results!”<span style="color: #000000;">);<br></span><span style="color: #008080;">161</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">162</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">如果当前size小于maxSize或者map没有任何对象,则结束循环</span><br><span style="color: #008080;">163</span>                 <span style="color: #0000ff;">if</span> (size &lt;= maxSize ||<span style="color: #000000;"> map.isEmpty()) {<br></span><span style="color: #008080;">164</span>                     <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">165</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">166</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">移除链表头部的元素，并进入下一次循环</span><br><span style="color: #008080;">167</span>                 Map.Entry<k, v=""> toEvict =<span style="color: #000000;"> map.entrySet().iterator().next();<br></span><span style="color: #008080;">168</span>                 key =<span style="color: #000000;"> toEvict.getKey();<br></span><span style="color: #008080;">169</span>                 value =<span style="color: #000000;"> toEvict.getValue();<br></span><span style="color: #008080;">170</span> <span style="color: #000000;">                map.remove(key);<br></span><span style="color: #008080;">171</span>                 size -=<span style="color: #000000;"> safeSizeOf(key, value);<br></span><span style="color: #008080;">172</span>                 evictionCount++;  <span style="color: #008000;">//</span><span style="color: #008000;">回收次数+1</span><br><span style="color: #008080;">173</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">174</span><br><span style="color: #008080;">175</span>             entryRemoved(<span style="color: #0000ff;">true</span>, key, value, <span style="color: #0000ff;">null</span><span style="color: #000000;">);<br></span><span style="color: #008080;">176</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">177</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">178</span><br><span style="color: #008080;">179</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">180</span> <span style="color: #008000;">     <em> Removes the entry for {</em></span><span style="color: #808080;">@code</span><span style="color: #008000;"> key} if it exists.<br></span><span style="color: #008080;">181</span> <span style="color: #008000;">     <br></span><span style="color: #008080;">182</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@return</span><span style="color: #008000;"> the previous value mapped by {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> key}.<br></span><span style="color: #008080;">183</span> <span style="color: #008000;">      从内存缓存中根据key值移除某个对象并返回该对象<br></span><span style="color: #008080;">184</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;">185</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span><span style="color: #000000;"> V remove(K key) {<br></span><span style="color: #008080;">186</span>         <span style="color: #0000ff;">if</span> (key == <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">187</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> NullPointerException(“key == null”<span style="color: #000000;">);<br></span><span style="color: #008080;">188</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">189</span><br><span style="color: #008080;">190</span> <span style="color: #000000;">        V previous;<br></span><span style="color: #008080;">191</span>         <span style="color: #0000ff;">synchronized</span> (<span style="color: #0000ff;">this</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">192</span>             previous =<span style="color: #000000;"> map.remove(key);<br></span><span style="color: #008080;">193</span>             <span style="color: #0000ff;">if</span> (previous != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">194</span>                 size -=<span style="color: #000000;"> safeSizeOf(key, previous);<br></span><span style="color: #008080;">195</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">196</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">197</span><br><span style="color: #008080;">198</span>         <span style="color: #0000ff;">if</span> (previous != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">199</span>             entryRemoved(<span style="color: #0000ff;">false</span>, key, previous, <span style="color: #0000ff;">null</span><span style="color: #000000;">);<br></span><span style="color: #008080;">200</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">201</span><br><span style="color: #008080;">202</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> previous;<br></span><span style="color: #008080;">203</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">204</span><br><span style="color: #008080;">205</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">206</span> <span style="color: #008000;">     <em> Called for entries that have been evicted or removed. This method is<br></em></span><span style="color: #008080;">207</span> <span style="color: #008000;">      invoked when a value is evicted to make space, removed by a call to<br></span><span style="color: #008080;">208</span> <span style="color: #008000;">     <em> {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #remove}, or replaced by a call to {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #put}. The default<br></span><span style="color: #008080;">209</span> <span style="color: #008000;">      implementation does nothing.<br></span><span style="color: #008080;">210</span> <span style="color: #008000;">     <em><br></em></span><span style="color: #008080;">211</span> <span style="color: #008000;">     <br><br>The method is called without synchronization: other threads may<br></span><span style="color: #008080;">212</span> <span style="color: #008000;">     <em> access the cache while this method is executing.<br></em></span><span style="color: #008080;">213</span> <span style="color: #008000;">     <br></span><span style="color: #008080;">214</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> evicted true if the entry is being removed to make space, false<br></span><span style="color: #008080;">215</span> <span style="color: #008000;">          if the removal was caused by a {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #put} or {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #remove}.<br></span><span style="color: #008080;">216</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> newValue the new value for {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> key}, if it exists. If non-null,<br></span><span style="color: #008080;">217</span> <span style="color: #008000;">          this removal was caused by a {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #put}. Otherwise it was caused by<br></span><span style="color: #008080;">218</span> <span style="color: #008000;">     <em>     an eviction or a {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #remove}.<br></span><span style="color: #008080;">219</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">220</span>     <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span> entryRemoved(<span style="color: #0000ff;">boolean</span><span style="color: #000000;"> evicted, K key, V oldValue, V newValue) {}<br></span><span style="color: #008080;">221</span><br><span style="color: #008080;">222</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">223</span> <span style="color: #008000;">     <em> Called after a cache miss to compute a value for the corresponding key.<br></em></span><span style="color: #008080;">224</span> <span style="color: #008000;">      Returns the computed value or null if no value can be computed. The<br></span><span style="color: #008080;">225</span> <span style="color: #008000;">     <em> default implementation returns null.<br></em></span><span style="color: #008080;">226</span> <span style="color: #008000;">     <br></span><span style="color: #008080;">227</span> <span style="color: #008000;">     <em> <p>The method is called without synchronization: other threads may<br></p></em></span><span style="color: #008080;">228</span> <span style="color: #008000;">      access the cache while this method is executing.<br></span><span style="color: #008080;">229</span> <span style="color: #008000;">     <em><br></em></span><span style="color: #008080;">230</span> <span style="color: #008000;">      <p>If a value for {</p></span><span style="color: #808080;">@code</span><span style="color: #008000;"> key} exists in the cache when this method<br></span><span style="color: #008080;">231</span> <span style="color: #008000;">     <em> returns, the created value will be released with {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #entryRemoved}<br></span><span style="color: #008080;">232</span> <span style="color: #008000;">      and discarded. This can occur when multiple threads request the same key<br></span><span style="color: #008080;">233</span> <span style="color: #008000;">     <em> at the same time (causing multiple values to be created), or when one<br></em></span><span style="color: #008080;">234</span> <span style="color: #008000;">      thread calls {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #put} while another is creating a value for the same<br></span><span style="color: #008080;">235</span> <span style="color: #008000;">     <em> key.<br></em></span><span style="color: #008080;">236</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">237</span>     <span style="color: #0000ff;">protected</span><span style="color: #000000;"> V create(K key) {<br></span><span style="color: #008080;">238</span>         <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;">239</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">240</span><br><span style="color: #008080;">241</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> safeSizeOf(K key, V value) {<br></span><span style="color: #008080;">242</span>         <span style="color: #0000ff;">int</span> result =<span style="color: #000000;"> sizeOf(key, value);<br></span><span style="color: #008080;">243</span>         <span style="color: #0000ff;">if</span> (result &lt; 0<span style="color: #000000;">) {<br></span><span style="color: #008080;">244</span>             <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> IllegalStateException(“Negative size: “ + key + “=” +<span style="color: #000000;"> value);<br></span><span style="color: #008080;">245</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">246</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> result;<br></span><span style="color: #008080;">247</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">248</span><br><span style="color: #008080;">249</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">250</span> <span style="color: #008000;">     <em> Returns the size of the entry for {</em></span><span style="color: #808080;">@code</span><span style="color: #008000;"> key} and {</span><span style="color: #808080;">@code</span><span style="color: #008000;"> value} in<br></span><span style="color: #008080;">251</span> <span style="color: #008000;">      user-defined units.  The default implementation returns 1 so that size<br></span><span style="color: #008080;">252</span> <span style="color: #008000;">     <em> is the number of entries and max size is the maximum number of entries.<br></em></span><span style="color: #008080;">253</span> <span style="color: #008000;">     <br></span><span style="color: #008080;">254</span> <span style="color: #008000;">     <em> <p>An entry’s size must not change while it is in the cache.<br></p></em></span><span style="color: #008080;">255</span> <span style="color: #008000;">      用来计算单个对象的大小，这里默认返回1，一般需要重写该方法来计算对象的大小<br></span><span style="color: #008080;">256</span> <span style="color: #008000;">     <em> xUtils中创建LruMemoryCache时就重写了sizeOf方法来计算bitmap的大小<br></em></span><span style="color: #008080;">257</span> <span style="color: #008000;">      mMemoryCache = new LruMemoryCache<memorycachekey, bitmap="">(globalConfig.getMemoryCacheSize()) {<br></memorycachekey,></span><span style="color: #008080;">258</span> <span style="color: #008000;">     <em>       @Override<br></em></span><span style="color: #008080;">259</span> <span style="color: #008000;">            protected int sizeOf(MemoryCacheKey key, Bitmap bitmap) {<br></span><span style="color: #008080;">260</span> <span style="color: #008000;">     <em>           if (bitmap == null) return 0;<br></em></span><span style="color: #008080;">261</span> <span style="color: #008000;">                return bitmap.getRowBytes() <em> bitmap.getHeight();<br></em></span><span style="color: #008080;">262</span> <span style="color: #008000;">            }<br></span><span style="color: #008080;">263</span> <span style="color: #008000;">     <em>   };<br></em></span><span style="color: #008080;">264</span> <span style="color: #008000;">     <br></span><span style="color: #008080;">265</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">266</span>     <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> sizeOf(K key, V value) {<br></span><span style="color: #008080;">267</span>         <span style="color: #0000ff;">return</span> 1<span style="color: #000000;">;<br></span><span style="color: #008080;">268</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">269</span><br><span style="color: #008080;">270</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">271</span> <span style="color: #008000;">      Clear the cache, calling {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #entryRemoved} on each removed entry.<br></span><span style="color: #008080;">272</span> <span style="color: #008000;">     <em> 清空内存缓存<br></em></span><span style="color: #008080;">273</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">274</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> evictAll() {<br></span><span style="color: #008080;">275</span>         trimToSize(-1); <span style="color: #008000;">//</span><span style="color: #008000;"> -1 will evict 0-sized elements</span><br><span style="color: #008080;">276</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">277</span><br><span style="color: #008080;">278</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">279</span> <span style="color: #008000;">     <em> For caches that do not override {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #sizeOf}, this returns the number<br></span><span style="color: #008080;">280</span> <span style="color: #008000;">      of entries in the cache. For all other caches, this returns the sum of<br></span><span style="color: #008080;">281</span> <span style="color: #008000;">     <em> the sizes of the entries in this cache.<br></em></span><span style="color: #008080;">282</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">283</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> size() {<br></span><span style="color: #008080;">284</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> size;<br></span><span style="color: #008080;">285</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">286</span><br><span style="color: #008080;">287</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">288</span> <span style="color: #008000;">     <em> For caches that do not override {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #sizeOf}, this returns the maximum<br></span><span style="color: #008080;">289</span> <span style="color: #008000;">      number of entries in the cache. For all other caches, this returns the<br></span><span style="color: #008080;">290</span> <span style="color: #008000;">     <em> maximum sum of the sizes of the entries in this cache.<br></em></span><span style="color: #008080;">291</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">292</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> maxSize() {<br></span><span style="color: #008080;">293</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> maxSize;<br></span><span style="color: #008080;">294</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">295</span><br><span style="color: #008080;">296</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">297</span> <span style="color: #008000;">     <em> Returns the number of times {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #get} returned a value.<br></span><span style="color: #008080;">298</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">299</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> hitCount() {<br></span><span style="color: #008080;">300</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> hitCount;<br></span><span style="color: #008080;">301</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">302</span><br><span style="color: #008080;">303</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">304</span> <span style="color: #008000;">     <em> Returns the number of times {</em></span><span style="color: #808080;">@link</span><span style="color: #008000;"> #get} returned null or required a new<br></span><span style="color: #008080;">305</span> <span style="color: #008000;">      value to be created.<br></span><span style="color: #008080;">306</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">307</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> missCount() {<br></span><span style="color: #008080;">308</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> missCount;<br></span><span style="color: #008080;">309</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">310</span><br><span style="color: #008080;">311</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">312</span> <span style="color: #008000;">      Returns the number of times {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #create(Object)} returned a value.<br></span><span style="color: #008080;">313</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">314</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> createCount() {<br></span><span style="color: #008080;">315</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> createCount;<br></span><span style="color: #008080;">316</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">317</span><br><span style="color: #008080;">318</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">319</span> <span style="color: #008000;">      Returns the number of times {</span><span style="color: #808080;">@link</span><span style="color: #008000;"> #put} was called.<br></span><span style="color: #008080;">320</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">321</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> putCount() {<br></span><span style="color: #008080;">322</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> putCount;<br></span><span style="color: #008080;">323</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">324</span><br><span style="color: #008080;">325</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">326</span> <span style="color: #008000;">      Returns the number of values that have been evicted.<br></span><span style="color: #008080;">327</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">328</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> evictionCount() {<br></span><span style="color: #008080;">329</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> evictionCount;<br></span><span style="color: #008080;">330</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">331</span><br><span style="color: #008080;">332</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">333</span> <span style="color: #008000;">      Returns a copy of the current contents of the cache, ordered from least<br></span><span style="color: #008080;">334</span> <span style="color: #008000;">     <em> recently accessed to most recently accessed.<br></em></span><span style="color: #008080;">335</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">336</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span> Map<k, v=""><span style="color: #000000;"> snapshot() {<br></span><span style="color: #008080;">337</span>         <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">new</span> LinkedHashMap<k, v=""><span style="color: #000000;">(map);<br></span><span style="color: #008080;">338</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">339</span><br><span style="color: #008080;">340</span>     @Override <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">final</span><span style="color: #000000;"> String toString() {<br></span><span style="color: #008080;">341</span>         <span style="color: #0000ff;">int</span> accesses = hitCount +<span style="color: #000000;"> missCount;<br></span><span style="color: #008080;">342</span>         <span style="color: #0000ff;">int</span> hitPercent = accesses != 0 ? (100 * hitCount / accesses) : 0<span style="color: #000000;">;<br></span><span style="color: #008080;">343</span>         <span style="color: #0000ff;">return</span> String.format(“LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]”<span style="color: #000000;">,<br></span><span style="color: #008080;">344</span> <span style="color: #000000;">                maxSize, hitCount, missCount, hitPercent);<br></span><span style="color: #008080;">345</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">346</span> }</k,></k,></k,></k,></k,></k,></pre><br></div><br><p>　　<span style="font-size: 16px;">看完代码是不是觉得内存缓存的实现其实很简单？</span><br><br></p></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/09/principle-lrucache.html" data-id="ciiy5f4qz003eq1d0ro1esrj9" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/09/principle-lrucache.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LruCache/">LruCache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存缓存/">内存缓存</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-layer-list-rounded-rectangle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/layer-list-rounded-rectangle.html">layer-list实现只有左、右和下边框的圆角矩形</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/09/layer-list-rounded-rectangle.html">
+      <time datetime="2015-09-23T00:27:00.000Z" itemprop="datePublished">2015-09-23</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>项目中需要实现如下效果的布局</p>
+<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150923161859912-342474285.png" alt=""></p>
+<p>也就是一个左右下角带圆角，上方不带圆角的白色背景矩形，而且只有左、右和下边框，颜色为浅灰色。</p>
+<p>当然，切一个.9图片作为背景也能实现，但是能用代码实现的还是尽量用代码实现，因为图片过多一个消耗内存，另一个还增加apk大小。</p>
+<p>这种效果可以通过layer-lsit来实现，在drawable文件夹下面建一个xml文件，具体代码如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">&lt;?</span><span style="color: #ff00ff;">xml version=”1.0” encoding=”utf-8”</span><span style="color: #0000ff;">?&gt;</span><br><span style="color: #008080;"> 2</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">layer-list </span><span style="color: #ff0000;">xmlns:android</span><span style="color: #0000ff;">=”<a href="http://schemas.android.com/apk/res/android" target="_blank" rel="external">http://schemas.android.com/apk/res/android</a>“</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 3</span>     <span style="color: #008000;"><!--</span> 
+<span style="color: #008080;"> 4</span> <span style="color: #008000;">        layer-list中的item是按照顺序从下往上叠加的，即先定义的item在下面，后面的依次往上面叠放
+</span><span style="color: #008080;"> 5</span>     <span style="color: #008000;">--></span><br><span style="color: #008080;"> 6</span>     <span style="color: #008000;"><!--</span><span style="color: #008000;"> 这里定义一个下面带圆角，上面不带圆角的矩形，边框颜色为@color/line_color </span><span style="color: #008000;">--></span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">item</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 8</span>          <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">shape</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 9</span>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">corners </span><span style="color: #ff0000;">android:bottomLeftRadius</span><span style="color: #0000ff;">=”5dp”</span><br><span style="color: #008080;">10</span> <span style="color: #ff0000;">                   android:bottomRightRadius</span><span style="color: #0000ff;">=”5dp”</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">11</span>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stroke </span><span style="color: #ff0000;">android:width</span><span style="color: #0000ff;">=”1px”</span><span style="color: #ff0000;"> android:color</span><span style="color: #0000ff;">=”@color/line_color”</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">12</span>          <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">shape</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">13</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">item</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">14</span>     <span style="color: #008000;"><!--</span> 
+<span style="color: #008080;">15</span> <span style="color: #008000;">        这里定义一个下面带圆角，上面不带圆角的矩形，背景为白色
+</span><span style="color: #008080;">16</span> <span style="color: #008000;">        这里设置了android:right="1px" android:left="1px" android:bottom="1px"属性
+</span><span style="color: #008080;">17</span> <span style="color: #008000;">        android:right="1px"表示该item右边往里面缩了1px
+</span><span style="color: #008080;">18</span> <span style="color: #008000;">        android:left="1px"表示该item左边往里面缩了1px
+</span><span style="color: #008080;">19</span> <span style="color: #008000;">        android:bottom="1px"表示该item下面往里面缩了1px
+</span><span style="color: #008080;">20</span> <span style="color: #008000;">        这样，左、右、下都比原来缩小了1px，这缩小出来的郑刚是上面一个item的边框的左、右、下边框
+</span><span style="color: #008080;">21</span> <span style="color: #008000;">        而top没有缩小，所以覆盖了上面一个item的边框的上边框。
+</span><span style="color: #008080;">22</span> <span style="color: #008000;">        所以这个item叠加上面一个item之后的效果就是一个只含左、右、下灰色边框，下面带圆角，上面不带圆角的白色背景矩形
+</span><span style="color: #008080;">23</span>      <span style="color: #008000;">--></span><br><span style="color: #008080;">24</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">item </span><span style="color: #ff0000;">android:right</span><span style="color: #0000ff;">=”1px”</span><span style="color: #ff0000;"> android:left</span><span style="color: #0000ff;">=”1px”</span><span style="color: #ff0000;"> android:bottom</span><span style="color: #0000ff;">=”1px”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">25</span>          <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">shape</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">26</span>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">corners </span><span style="color: #ff0000;">android:bottomLeftRadius</span><span style="color: #0000ff;">=”5dp”</span><br><span style="color: #008080;">27</span> <span style="color: #ff0000;">                   android:bottomRightRadius</span><span style="color: #0000ff;">=”5dp”</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">28</span>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">solid </span><span style="color: #ff0000;">android:color</span><span style="color: #0000ff;">=”@color/white”</span> <span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">29</span>          <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">shape</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">30</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">item</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">31</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">layer-list</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
+
+<p>layer-lsit的用法注释中也讲的比较详细。</p>
+<p>然后在View中设置背景为改drawable即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/09/layer-list-rounded-rectangle.html" data-id="ciiy5f4sz006fq1d0cqi8lyrf" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/09/layer-list-rounded-rectangle.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-solution-crash-activity-back" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/solution-crash-activity-back.html">Activity后台运行一段时间回来crash问题的分析与解决</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/09/solution-crash-activity-back.html">
+      <time datetime="2015-09-20T19:25:00.000Z" itemprop="datePublished">2015-09-21</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>最近做项目的时候碰到一个棘手的问题，花了不少时间才找到原因并解决。特此记录这个被我踩过的坑，希望其他朋友遇到此问题不要调到这坑里去了。</p>
+<p><strong>问题描述：</strong></p>
+<p>&nbsp; &nbsp; &nbsp; 1、背景：我的app中某个界面的Activity是继承FragmentActivity，因为此界面包含两个Fragment。这里我称为FragmentA和FragmentB吧。在Activity中有个刷新按钮，用来刷新ViewPager当前Fragment内容的刷新。点击Activity的刷新按钮之后，刷新按钮需要有简单的旋转动画，等Fragment里面的刷新结束之后，会使用getActivity通知Activity结束刷新按钮的刷新动画。以上就是我的业务场景，说简单点就是Fragment需要与它附属的Activity进行通信。</p>
+<p>　　2、问题：当应用程序运行到该Activity时，按Home键将该应用程序放置后台运行，去其他app转转。一段时间后，又回到该应用程序，还是在之前的那个Activity。这时我想刷新一下Fragment里面的内容，点击了Activity界面上的刷新按钮，结果程序crash了。</p>
+<p>&nbsp;</p>
+<p><strong>问题分析：</strong></p>
+<p>　　刚开始遇到该问题时，查看奔溃日志，发现是空指针异常。因为这种场景不多，所以只是简单的加上非空判断就没在意这个问题了。到后面换了个测试机器，配置不是很好（只有512M运行内存），结果此问题频繁地出现，开始引起我的重视了。由于经验不是很足，此问题不知道怎么重现，所以很难找出问题的根本原因。后来终于在网上找到了一篇和我遇到同样问题的朋友的帖子，才知道出现这个问题的原因所在。</p>
+<p>　　原来Activity切换到后台之后，由于内存不够，此Activity被系统回收了，一段时间之后回到该应用程序，Activity被重新实例化了。而Activity被系统销毁时，附属在该Activity的Fragment并没有被销毁，在Activity的onSaveInstanceState里面将Fragment状态保存起来了，所以Activity重新创建了，但是FragmentA和FragmentB还是之前的，而此时FragmentA和FragmentB所附属的Activity已经被系统回收了，这次再调用getActivity时返回了null，才导致上面问题的出现。</p>
+<p>　　我们看看FragmentActivity源码中的onSaveInstanceState方法：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> onSaveInstanceState(Bundle outState)<br></span><span style="color: #008080;">2</span> <span style="color: #000000;">   {<br></span><span style="color: #008080;">3</span>      <span style="color: #0000ff;">super</span><span style="color: #000000;">.onSaveInstanceState(outState);<br></span><span style="color: #008080;">4</span>      Parcelable p =<span style="color: #000000;"> mFragments.saveAllState();<br></span><span style="color: #008080;">5</span>      <span style="color: #0000ff;">if</span> (p != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">6</span>        outState.putParcelable(“android:support:fragments”<span style="color: #000000;">, p);<br></span><span style="color: #008080;">7</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">8</span>    }</pre><br></div>
+
+<p>　　由上面源码可以看出，FragmentActivity确实在onSaveInstanceState方法里面将Fragment的状态保存了。</p>
+<p>&nbsp;</p>
+<p><strong>问题解决：</strong></p>
+<p>　　知道问题的原因了，就好办了。解决方法其实很简单，我们只要让FragmentActivity被系统回收的时候，不保存Fragment的状态即可，即在FragmentActivity中重写onSaveInstanceState方法，并且注释掉super.onSaveInstanceState(outState)就行了。</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;">2</span>     <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> onSaveInstanceState(Bundle outState) {<br></span><span style="color: #008080;">3</span> <span style="color: #008000;">//</span><span style="color: #008000;">        super.onSaveInstanceState(outState);</span><br><span style="color: #008080;">4</span>     }</pre><br></div>
+
+<p>&nbsp;</p>
+<p><strong>总结：</strong></p>
+<p>　　1、程序出现问题时，要先找出出现此问题的原因，对症下药才能从根本上解决问题。</p>
+<p>　　2、对于Activity被系统回收导致的问题，可以使用切换横竖屏来模拟场景。</p>
+<p>&nbsp;</p>
+<p>最后感谢写<a href="http://my.oschina.net/u/1011854/blog/469138" target="_blank" rel="external">http://my.oschina.net/u/1011854/blog/469138</a>这篇帖子的朋友。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/09/solution-crash-activity-back.html" data-id="ciiy5f4q1001xq1d0pp79hfla" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/09/solution-crash-activity-back.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-androidstudio-github-import" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/androidstudio-github-import.html">Android Studio导入github下载的工程</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/09/androidstudio-github-import.html">
+      <time datetime="2015-09-16T02:42:00.000Z" itemprop="datePublished">2015-09-16</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>现在从github上面现在的项目大部分都是Android Studio工程，那么问题来了，从github上面down一个工程下来，怎么导入android studio呢？</p>
+<div>对刚从eclipse转Android Studio的童鞋来说，可能会遇到各种问题。下面方法可以简单快速的将github上的项目导入android studio并运行。</div><br><div>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;首先提一下，Android Studio是基于Gradle来构建项目的，这个与eclipse不同，所以想要熟练掌握Android Studio的用法，最好还是先熟悉Gradle。</div><br><div>这里只是介绍Android Studio如何导入工程，关于Gradle，可以自行百度。</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; 下面介绍Android Studio如何导入project。</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;<strong> 一、安装Android Sudio并新建project</strong></div><br><div>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;安装Android Studio后，创建Project，会自动下载Gradle。工程目录结构如下：</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;&nbsp;<img src="file:///C:/Users/Administrator/Documents/My%20Knowledge/temp/7f9dd589-ece7-48fa-a0e9-191d405b74f8.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150916183731633-1415692386.png" alt=""></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; <strong>二、将github下载的project中的gradle版本替换为本地的版本</strong></div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; 如果直接将project导入进Android Studio的话，会去下载工程相应版本的gradle，此过程非常慢，有时候还会出现各种错误。所以直接使用本地已有的gradle。</div><br><div><span style="font-family: 微软雅黑;">替换方法很简单，只需要将本地创建的工程中的相应文件夹复制到从github下载的project替换之。</span></div><br><div>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<img src="file:///C:/Users/Administrator/Documents/My%20Knowledge/temp/a045db65-0f6c-4418-8fea-5ef141f3578a.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150916183820476-1365139434.png" alt=""></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; <strong>三、导入project到Android Studio</strong></div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; File–&gt;new–&gt;import project，会弹出下面对话框，选中github下载下来的project后点击OK即可。我这里使用volley的demo作为示例。</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;&nbsp;<img src="file:///C:/Users/Administrator/Documents/My%20Knowledge/temp/5ea28fe3-a79f-44ae-a96f-8005f8c1037b.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150916183859633-2023890504.png" alt=""></div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; 导入后如下图：</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;&nbsp;<img src="file:///C:/Users/Administrator/Documents/My%20Knowledge/temp/2b0496be-64b6-41e3-9d19-ec18eafe750e.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150916183926289-1272467507.png" alt=""></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; <strong>四、替换Module的target SDK</strong></div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; 工程导入后有可能还会编译报错，原因有可能是app Module中gradle配置中target SDK高于你本地SDK的版本。解决办法很简单，打开app/build.gradle文件</div><br><div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_Highlighter"><br><pre class="brush:groovy;gutter:true;">apply plugin: ‘com.android.application’<br>android {<br>    compileSdkVersion 22<br>    buildToolsVersion “22.0.1”<br>    defaultConfig {<br>        applicationId “com.timliu.volleyactivity”<br>        minSdkVersion 21<br>        targetSdkVersion 22<br>        versionCode 1<br>        versionName “1.0”<br>    }<br>    buildTypes {<br>        release {<br>            minifyEnabled false<br>            proguardFiles getDefaultProguardFile(‘proguard-android.txt’), ‘proguard-rules.pro’<br>        }<br>    }<br>}<br>dependencies {<br>    compile project(‘:volleysrc’)<br>    compile fileTree(dir: ‘libs’, include: [‘*.jar’])<br>    compile ‘com.android.support:appcompat-v7:22.2.0’<br>}<br></pre><br></div>
+
+<p></p></div><br></div><br></div><p></p>
+<div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; 因为我本地的sdk版本最高为21，而此Module的targetSdkVersion为22，所以为编译出错。我们只要将文件稍微改动一下即可，改后的文件如下：</div><br></div><br><div><br><div><br><div class="linenums"><br><div class="L0"><br><div class="cnblogs_Highlighter"><br><pre class="brush:groovy;gutter:true;">apply plugin: ‘com.android.application’<br>android {<br>    compileSdkVersion 21<br>    buildToolsVersion “20.0.0”   //这里也需修改<br>   defaultConfig {<br>        applicationId “com.timliu.volleyactivity”<br>        minSdkVersion 21<br>        targetSdkVersion 21<br>        versionCode 1<br>        versionName “1.0”<br>    }<br>    buildTypes {<br>        release {<br>            minifyEnabled false<br>            proguardFiles getDefaultProguardFile(‘proguard-android.txt’), ‘proguard-rules.pro’<br>        }<br>    }<br>}<br>dependencies {<br>    compile project(‘:volleysrc’)<br>    compile fileTree(dir: ‘libs’, include: [‘*.jar’])<br>    compile ‘com.android.support:appcompat-v7:21.0.2’  //这里也需修改<br>}<br></pre><br></div>
+
+<p></p></div><br></div><br></div><p></p>
+<div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; 因为app Module依赖volleysrc Library，所以volleysrc/build.gradle文件也做同样的修改。</div><br></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; <strong>五、重新编译</strong></div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;点击<img src="file:///C:/Users/Administrator/Documents/My%20Knowledge/temp/950cedb7-4745-4f73-8fa6-c0d10505c882.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150916184014289-945874709.png" alt="">按钮对项目重新进行编译。此时编译就不会出错了。编译后，你会发现app目录的图标右下角多了个手机的图标，目录结构如下：</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;&nbsp;<img src="file:///C:/Users/Administrator/Documents/My%20Knowledge/temp/60b2f448-44dc-4d1a-bfd6-5083650dee8a.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150916184025539-332550232.png" alt=""></div><br><div>&nbsp;　　</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; 此时就可以正常运行github下载下来的项目了。</div><br><div>&nbsp;</div>
+
+<p>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/09/androidstudio-github-import.html" data-id="ciiy5f4yd00erq1d037pal6g7" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/09/androidstudio-github-import.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android-studio/">android studio</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-sqlite-optimize" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/sqlite-optimize.html">Android数据库大批量数据插入优化</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/09/sqlite-optimize.html">
+      <time datetime="2015-09-07T17:32:00.000Z" itemprop="datePublished">2015-09-08</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>对比在android中批量插入数据的3中方式对比（各插入1W条数据所花费的时间）：</p>
+<p><strong>1、 一个一个插入</strong></p>
+<p><div class="cnblogs_code"></div></p>
+<p><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> insert(SQLiteOpenHelper openHelper,<br></span><span style="color: #008080;"> 2</span> <span style="color: #000000;">            RemoteAppInfo appInfo) {<br></span><span style="color: #008080;"> 3</span>         <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> ==<span style="color: #000000;"> appInfo) {<br></span><span style="color: #008080;"> 4</span> <span style="color: #000000;">            returntrue;<br></span><span style="color: #008080;"> 5</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 6</span>         SQLiteDatabase db = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 7</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 8</span>             db =<span style="color: #000000;"> openHelper.getWritableDatabase();<br></span><span style="color: #008080;"> 9</span>             ContentValues values =<span style="color: #000000;"> appInfo.getContentValues();<br></span><span style="color: #008080;">10</span>             <span style="color: #0000ff;">return</span> -1 != db.insert(RemoteDBHelper.TABLE_APP_REMOTE, <span style="color: #0000ff;">null</span><span style="color: #000000;">,<br></span><span style="color: #008080;">11</span> <span style="color: #000000;">                    values);<br></span><span style="color: #008080;">12</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">14</span>         } <span style="color: #0000ff;">finally</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">15</span>             <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> !=<span style="color: #000000;"> db) {<br></span><span style="color: #008080;">16</span> <span style="color: #000000;">                db.close();<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">19</span> <span style="color: #000000;">        returnfalse;<br></span><span style="color: #008080;">20</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">21</span><br><span style="color: #008080;">22</span><br><span style="color: #008080;">23</span>     <span style="color: #0000ff;">for</span><span style="color: #000000;"> (RemoteAppInfo remoteAppInfo : list) {<br></span><span style="color: #008080;">24</span> <span style="color: #000000;">          RemoteDBUtil.insert(helper, remoteAppInfo);<br></span><span style="color: #008080;">25</span>         }</pre><br></p>
+<blockquote>
+<p>耗时：106524ms,也就是106s</p>
+</blockquote>
+<p><strong>2、 开启事务批量插入，使用SqliteDateBase中的insert(String table, String nullColumnHack, ContentValues values)方法</strong></p>
+<p><div class="cnblogs_code"></div></p>
+<p><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> insert(SQLiteOpenHelper openHelper,<br></span><span style="color: #008080;"> 2</span>         List<remoteappinfo><span style="color: #000000;"> list) {<br></span><span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">boolean</span> result = <span style="color: #0000ff;">true</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> == list || list.size() &lt;= 0<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 5</span> <span style="color: #000000;">        returntrue;<br></span><span style="color: #008080;"> 6</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 7</span>     SQLiteDatabase db = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 8</span><br><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">10</span>         db =<span style="color: #000000;"> openHelper.getWritableDatabase();<br></span><span style="color: #008080;">11</span> <span style="color: #000000;">        db.beginTransaction();<br></span><span style="color: #008080;">12</span>         <span style="color: #0000ff;">for</span><span style="color: #000000;"> (RemoteAppInfo remoteAppInfo : list) {<br></span><span style="color: #008080;">13</span>             ContentValues values =<span style="color: #000000;"> remoteAppInfo.getContentValues();<br></span><span style="color: #008080;">14</span>             <span style="color: #0000ff;">if</span> (db.insert(RemoteDBHelper.TABLE_APP_REMOTE, <span style="color: #0000ff;">null</span>, values) &lt; 0<span style="color: #000000;">) {<br></span><span style="color: #008080;">15</span>                 result = <span style="color: #0000ff;">false</span><span style="color: #000000;">;<br></span><span style="color: #008080;">16</span>                 <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">19</span>         <span style="color: #0000ff;">if</span><span style="color: #000000;"> (result) {<br></span><span style="color: #008080;">20</span> <span style="color: #000000;">            db.setTransactionSuccessful();<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">22</span>     } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">23</span> <span style="color: #000000;">        e.printStackTrace();<br></span><span style="color: #008080;">24</span> <span style="color: #000000;">        returnfalse;<br></span><span style="color: #008080;">25</span>     } <span style="color: #0000ff;">finally</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">26</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">27</span>             <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> !=<span style="color: #000000;"> db) {<br></span><span style="color: #008080;">28</span> <span style="color: #000000;">                db.endTransaction();<br></span><span style="color: #008080;">29</span> <span style="color: #000000;">                db.close();<br></span><span style="color: #008080;">30</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">31</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">32</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">33</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">34</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">35</span> <span style="color: #000000;">    returntrue;<br></span><span style="color: #008080;">36</span> }  </remoteappinfo></pre><br></p>
+<blockquote>
+<p>耗时：2968ms</p>
+</blockquote>
+<p><strong>3、 开启事务批量插入，使用SQLiteStatement</strong></p>
+<p><div class="cnblogs_code"></div></p>
+<p><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> insertBySql(SQLiteOpenHelper openHelper,<br></span><span style="color: #008080;"> 2</span>             List<remoteappinfo><span style="color: #000000;"> list) {<br></span><span style="color: #008080;"> 3</span>         <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> == openHelper || <span style="color: #0000ff;">null</span> == list || list.size() &lt;= 0<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 4</span> <span style="color: #000000;">            returnfalse;<br></span><span style="color: #008080;"> 5</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 6</span>         SQLiteDatabase db = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 7</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 8</span>             db =<span style="color: #000000;"> openHelper.getWritableDatabase();<br></span><span style="color: #008080;"> 9</span>             String sql = “insert into “ + RemoteDBHelper.TABLE_APP_REMOTE + “(“<br><span style="color: #008080;">10</span>                     + RemoteDBHelper.COL_PKG_NAME + “,”<span style="color: #008000;">//</span><span style="color: #008000;"> 包名  </span><br><span style="color: #008080;">11</span>                     + RemoteDBHelper.COL_USER_ACCOUNT + “,”<span style="color: #008000;">//</span><span style="color: #008000;"> 账号  </span><br><span style="color: #008080;">12</span>                     + RemoteDBHelper.COL_APP_SOURCE + “,”<span style="color: #008000;">//</span><span style="color: #008000;"> 来源  </span><br><span style="color: #008080;">13</span>                     + RemoteDBHelper.COL_SOURCE_UNIQUE + “,”<span style="color: #008000;">//</span><span style="color: #008000;"> PC mac 地址  </span><br><span style="color: #008080;">14</span>                     + RemoteDBHelper.COL_MOBILE_UNIQUE + “,”<span style="color: #008000;">//</span><span style="color: #008000;"> 手机唯一标识  </span><br><span style="color: #008080;">15</span>                     + RemoteDBHelper.COL_IMEI + “,”<span style="color: #008000;">//</span><span style="color: #008000;"> 手机IMEI  </span><br><span style="color: #008080;">16</span>                     + RemoteDBHelper.COL_INSTALL_STATUS + “,”<span style="color: #008000;">//</span><span style="color: #008000;"> 安装状态  </span><br><span style="color: #008080;">17</span>                     + RemoteDBHelper.COL_TRANSFER_RESULT + “,”<span style="color: #008000;">//</span><span style="color: #008000;"> 传输状态  </span><br><span style="color: #008080;">18</span>                     + RemoteDBHelper.COL_REMOTE_RECORD_ID <span style="color: #008000;">//</span><span style="color: #008000;"> 唯一标识  </span><br><span style="color: #008080;">19</span>                     + “) “ + “values(?,?,?,?,?,?,?,?,?)”<span style="color: #000000;">;<br></span><span style="color: #008080;">20</span>             SQLiteStatement stat =<span style="color: #000000;"> db.compileStatement(sql);<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">            db.beginTransaction();<br></span><span style="color: #008080;">22</span>             <span style="color: #0000ff;">for</span><span style="color: #000000;"> (RemoteAppInfo remoteAppInfo : list) {<br></span><span style="color: #008080;">23</span>                 stat.bindString(1<span style="color: #000000;">, remoteAppInfo.getPkgName());<br></span><span style="color: #008080;">24</span>                 stat.bindString(2<span style="color: #000000;">, remoteAppInfo.getAccount());<br></span><span style="color: #008080;">25</span>                 stat.bindLong(3<span style="color: #000000;">, remoteAppInfo.getFrom());<br></span><span style="color: #008080;">26</span>                 stat.bindString(4<span style="color: #000000;">, remoteAppInfo.getFromDeviceMd5());<br></span><span style="color: #008080;">27</span>                 stat.bindString(5<span style="color: #000000;">, remoteAppInfo.getMoblieMd5());<br></span><span style="color: #008080;">28</span>                 stat.bindString(6<span style="color: #000000;">, remoteAppInfo.getImei());<br></span><span style="color: #008080;">29</span>                 stat.bindLong(7<span style="color: #000000;">, remoteAppInfo.getInstallStatus());<br></span><span style="color: #008080;">30</span>                 stat.bindLong(8<span style="color: #000000;">, remoteAppInfo.getTransferResult());<br></span><span style="color: #008080;">31</span>                 stat.bindString(9<span style="color: #000000;">, remoteAppInfo.getRecordId());<br></span><span style="color: #008080;">32</span>                 <span style="color: #0000ff;">long</span> result =<span style="color: #000000;"> stat.executeInsert();<br></span><span style="color: #008080;">33</span>                 <span style="color: #0000ff;">if</span> (result &lt; 0<span style="color: #000000;">) {<br></span><span style="color: #008080;">34</span> <span style="color: #000000;">                    returnfalse;<br></span><span style="color: #008080;">35</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">36</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">37</span> <span style="color: #000000;">            db.setTransactionSuccessful();<br></span><span style="color: #008080;">38</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">39</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">40</span> <span style="color: #000000;">            returnfalse;<br></span><span style="color: #008080;">41</span>        } <span style="color: #0000ff;">finally</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">42</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">43</span>                 <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> !=<span style="color: #000000;"> db) {<br></span><span style="color: #008080;">44</span> <span style="color: #000000;">                    db.endTransaction();<br></span><span style="color: #008080;">45</span> <span style="color: #000000;">                    db.close();<br></span><span style="color: #008080;">46</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">47</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">48</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;">49</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">50</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">51</span> <span style="color: #000000;">        returntrue;<br></span><span style="color: #008080;">52</span>     }</remoteappinfo></pre><br></p>
+<blockquote>
+<p>耗时：1365ms</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/09/sqlite-optimize.html" data-id="ciiy5f4pi0013q1d0jokho7z4" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/09/sqlite-optimize.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlite/">sqlite</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-framework-compile-run" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/framework-compile-run.html">framework中编译anroid工程并在模拟器上运行</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/08/framework-compile-run.html">
+      <time datetime="2015-08-17T17:38:00.000Z" itemprop="datePublished">2015-08-18</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Framework/">Framework</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <div>1、在eclipse下创建android工程Hello并拷贝到&ldquo;<strong>源码目录/packages/experimental&rdquo;</strong>下面</div><br><div>&nbsp;</div><br><div>2、在Hello工程目录下面创建Android.mk文件，内容如下：</div><br><div><br><div><strong>LOCAL_PATH:= $(call my-dir)</strong></div><br><div><strong>include $(CLEAR_VARS)</strong></div><br><div><strong>LOCAL_MODULE_TAGS := optional</strong></div><br><div><strong>LOCAL_SRC_FILES := $(call all-subdir-java-files)</strong></div><br><div><strong>LOCAL_PACKAGE_NAME := Hello</strong></div><br><div><strong>include $(BUILD_PACKAGE)</strong></div><br></div><br><div>3、执行<strong>mmm&nbsp;**</strong>packages/experimental/Hello<strong>编译，注意：使用mmm命令前先执行</strong>. &nbsp;./build/envsetup.sh<strong></strong></div><br><div>编译成功后，便可以在out/target/product/generic/system/app目录下看到Hello.apk文件了。</div><br><div>运行截图：</div><br><div><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180933584103177.jpg" alt=""></div><br><div>&nbsp;</div><br><div>运行完截图：</div><br><div><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180935394726300.jpg" alt="">&nbsp;</div><br><div>&nbsp;</div><br><div>4、重新打包系统镜像文件system.img：<br><div>USER-NAME@MACHINE-NAME:~/Android$ make snod**<br>&nbsp;&nbsp; &nbsp;重新打包后的system.img文件就内置了Hello.apk文件了。</div><br><div>&nbsp;</div><br></div><br><div>5、运行Android模拟器：emulator</div><br><div><span style="color: #333333; font-family: Arial;">运行的模拟器系统里面就会附带Hello测试应用。如下图：</span></div><br><div><span style="color: #333333; font-family: Arial;"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180936089107708.jpg" alt=""></span></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/08/framework-compile-run.html" data-id="ciiy5f4vu00b0q1d03mbatm6v" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/08/framework-compile-run.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-jni-demo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/jni-demo.html">简单JNI使用demo</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/08/jni-demo.html">
+      <time datetime="2015-08-07T02:26:00.000Z" itemprop="datePublished">2015-08-07</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>android中使用JNI的小例子，直接上代码。</p>
+<p>首先是Java类JniClient，定义native方法，User实体类就不上代码了，就简单定义了三个属性，name、age、sex。</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.example.ndkdemo;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> JniClient {<br></span><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;"> 6</span> <span style="color: #008000;">     <em> 通过JNI简单输出字符串<br></em></span><span style="color: #008080;"> 7</span> <span style="color: #008000;">      </span><span style="color: #808080;">@return</span><br><span style="color: #008080;"> 8</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span><span style="color: #000000;"> String printStr();<br></span><span style="color: #008080;">10</span><br><span style="color: #008080;">11</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">12</span> <span style="color: #008000;">     <em> 通过JNI简单进行整形加法操作<br></em></span><span style="color: #008080;">13</span> <span style="color: #008000;">      </span><span style="color: #808080;">@param</span><span style="color: #008000;"> a<br></span><span style="color: #008080;">14</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> b<br></span><span style="color: #008080;">15</span> <span style="color: #008000;">      </span><span style="color: #808080;">@return</span><br><span style="color: #008080;">16</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">17</span>     <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span> <span style="color: #0000ff;">int</span> addInt(<span style="color: #0000ff;">int</span> a, <span style="color: #0000ff;">int</span><span style="color: #000000;"> b);<br></span><span style="color: #008080;">18</span><br><span style="color: #008080;">19</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">20</span> <span style="color: #008000;">      通过JNI输入JAVA对象信息<br></span><span style="color: #008080;">21</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> user<br></span><span style="color: #008080;">22</span> <span style="color: #008000;">      </span><span style="color: #808080;">@return</span><br><span style="color: #008080;">23</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">24</span>     <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span><span style="color: #000000;"> String printUser(User user);<br></span><span style="color: #008080;">25</span><br><span style="color: #008080;">26</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">27</span> <span style="color: #008000;">      通过JNI创建java对象<br></span><span style="color: #008080;">28</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> name<br></span><span style="color: #008080;">29</span> <span style="color: #008000;">      </span><span style="color: #808080;">@param</span><span style="color: #008000;"> age<br></span><span style="color: #008080;">30</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> sex<br></span><span style="color: #008080;">31</span> <span style="color: #008000;">      </span><span style="color: #808080;">@return</span><br><span style="color: #008080;">32</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">33</span>     <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span> User newUser(String name, <span style="color: #0000ff;">int</span><span style="color: #000000;"> age, String sex);<br></span><span style="color: #008080;">34</span><br><span style="color: #008080;">35</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">36</span> <span style="color: #008000;">      通过JNI调用无参构造函数创建java对象并且设置相应属性值<br></span><span style="color: #008080;">37</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> name<br></span><span style="color: #008080;">38</span> <span style="color: #008000;">      </span><span style="color: #808080;">@param</span><span style="color: #008000;"> age<br></span><span style="color: #008080;">39</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> sex<br></span><span style="color: #008080;">40</span> <span style="color: #008000;">      </span><span style="color: #808080;">@return</span><br><span style="color: #008080;">41</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;">42</span>     <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span> User newUserNoArgs(String name, <span style="color: #0000ff;">int</span><span style="color: #000000;"> age, String sex);<br></span><span style="color: #008080;">43</span> }</pre><br></div>
+
+<p>&nbsp;</p>
+<p>然后使用cmd进入工程的classes目录通过javah命令生成c代码的头文件，命令：javah&nbsp;com.example.ndkdemo.JniClient ，这里生成的文件名字为：com_example_ndkdemo_JniClient.h</p>
+<p>在工程下面新建一个jni目录，将生成的头文件拷贝到jni目录下面，创建com_example_ndkdemo_JniClient.c文件，在com_example_ndkdemo_JniClient.c文件里面实现各个native方法，代码如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">  1</span> #include <span style="color: #800000;">“</span><span style="color: #800000;">com_example_ndkdemo_JniClient.h</span><span style="color: #800000;">“</span><br><span style="color: #008080;">  2</span> #include <stdlib.h><br><span style="color: #008080;">  3</span> #include <stdio.h><br><span style="color: #008080;">  4</span><br><span style="color: #008080;">  5</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 引入log头文件</span><br><span style="color: #008080;">  6</span> #include <android log.h=""><br><span style="color: #008080;">  7</span> <span style="color: #008000;">//</span><span style="color: #008000;"> log标签</span><br><span style="color: #008080;">  8</span> <span style="color: #0000ff;">#define</span> TAG “jniCLient”<br><span style="color: #008080;">  9</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 定义info信息</span><br><span style="color: #008080;"> 10</span> <span style="color: #0000ff;">#define</span> LOGI(…) <strong>android_log_print(ANDROID_LOG_INFO,TAG,</strong>VA_ARGS<strong>)<br><span style="color: #008080;"> 11</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 定义debug信息</span><br><span style="color: #008080;"> 12</span> <span style="color: #0000ff;">#define</span> LOGD(…) </strong>android_log_print(ANDROID_LOG_DEBUG, TAG, <strong>VA_ARGS</strong>)<br><span style="color: #008080;"> 13</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 定义error信息</span><br><span style="color: #008080;"> 14</span> <span style="color: #0000ff;">#define</span> LOGE(…) <strong>android_log_print(ANDROID_LOG_ERROR,TAG,</strong>VA_ARGS<strong>)<br><span style="color: #008080;"> 15</span><br><span style="color: #008080;"> 16</span><br><span style="color: #008080;"> 17</span> <span style="color: #000000;">#ifdef </span></strong>cplusplus<br><span style="color: #008080;"> 18</span> <span style="color: #0000ff;">extern</span> <span style="color: #800000;">“</span><span style="color: #800000;">C</span><span style="color: #800000;">“</span><br><span style="color: #008080;"> 19</span> <span style="color: #000000;">{<br></span><span style="color: #008080;"> 20</span> <span style="color: #0000ff;">#endif</span><br><span style="color: #008080;"> 21</span> <span style="color: #008000;">/<em></em></span><br><span style="color: #008080;"> 22</span> <span style="color: #008000;">  Class:     com_example_ndkdemo_JniClient<br></span><span style="color: #008080;"> 23</span> <span style="color: #008000;"> <em> Method:    printStr<br></em></span><span style="color: #008080;"> 24</span> <span style="color: #008000;">  Signature: (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;<br></span><span style="color: #008080;"> 25</span>  <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;"> 26</span> <span style="color: #000000;">JNIEXPORT jstring JNICALL Java_com_example_ndkdemo_JniClient_printStr<br></span><span style="color: #008080;"> 27</span>   (JNIEnv <span style="color: #000000;">env, jclass arg)<br></span><span style="color: #008080;"> 28</span> <span style="color: #000000;">{<br></span><span style="color: #008080;"> 29</span>     jstring str = (<em>env)-&gt;NewStringUTF(env, <span style="color: #800000;">“</span><span style="color: #800000;">HelloWorld from JNI !</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 30</span>     LOGI(<span style="color: #800000;">“</span><span style="color: #800000;">log from jni</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 31</span>     <span style="color: #0000ff;">return</span><span style="color: #000000;"> str;<br></span><span style="color: #008080;"> 32</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 33</span><br><span style="color: #008080;"> 34</span> <span style="color: #008000;">/</span></em><br><span style="color: #008080;"> 35</span> <span style="color: #008000;"><em> Class:     com_example_ndkdemo_JniClient<br></em></span><span style="color: #008080;"> 36</span> <span style="color: #008000;"> Method:    AddInt<br></span><span style="color: #008080;"> 37</span> <span style="color: #008000;"><em> Signature: (II)I<br></em></span><span style="color: #008080;"> 38</span> <span style="color: #008000;">/</span><br><span style="color: #008080;"> 39</span> <span style="color: #000000;">JNIEXPORT jint JNICALL Java_com_example_ndkdemo_JniClient_addInt<br></span><span style="color: #008080;"> 40</span>   (JNIEnv <em><span style="color: #000000;">env, jclass arg, jint a, jint b)<br></span><span style="color: #008080;"> 41</span> <span style="color: #000000;">{<br></span><span style="color: #008080;"> 42</span>     <span style="color: #0000ff;">return</span> a +<span style="color: #000000;"> b;<br></span><span style="color: #008080;"> 43</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 44</span><br><span style="color: #008080;"> 45</span> <span style="color: #008000;">/</span></em><span style="color: #008000;"><em><br></em></span><span style="color: #008080;"> 46</span> <span style="color: #008000;">  printUser<br></span><span style="color: #008080;"> 47</span> <span style="color: #008000;"> <em> jclass arg:因为方法为static，所以需要传入jclass参数，表明是哪个类的方法<br></em></span><span style="color: #008080;"> 48</span>  <span style="color: #008000;">/</span><br><span style="color: #008080;"> 49</span> <span style="color: #008000;">/<em></em></span><span style="color: #008000;"><br></span><span style="color: #008080;"> 50</span> <span style="color: #008000;"> <em>1)如果是C++代码，则用(</em>env)，如果是C代码，则用env，否则报错： request for member ‘GetObjectClass’ in something not a structure or union<br></span><span style="color: #008080;"> 51</span> <span style="color: #008000;"> <em>2)所有方法都加了一个参数env，否则报错：too few arguments to function ‘(</em>env)-&gt;GetObjectClass’<br></span><span style="color: #008080;"> 52</span> <span style="color: #008000;"> <em>3)不能把.C文件改成.CPP文件，否则没有规则可以创建&ldquo;out/apps/JNI_0529/armeabi/objs/JNI_0529/android_jni_MyJNINative.o&rdquo;需要的目标&ldquo;apps/JNI_0529/proje</em>ct/jni/android_jni_MyJNINative.c&rdquo;<br></span><span style="color: #008080;"> 53</span> <span style="color: #008000;"> <em> 一个小例子错误真多啊！！NDK不简单啊！！<br></em></span><span style="color: #008080;"> 54</span>  <span style="color: #008000;">/</span><br><span style="color: #008080;"> 55</span> <span style="color: #000000;">JNIEXPORT jstring JNICALL Java_com_example_ndkdemo_JniClient_printUser<br></span><span style="color: #008080;"> 56</span>   (JNIEnv <em><span style="color: #000000;">env, jclass arg, jobject obj)<br></span><span style="color: #008080;"> 57</span> <span style="color: #000000;">{<br></span><span style="color: #008080;"> 58</span>     LOGI(<span style="color: #800000;">“</span><span style="color: #800000;">add from jni–打印用户信息–</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 59</span>     <span style="color: #008000;">//</span><span style="color: #008000;">获得obj对象的类</span><br><span style="color: #008080;"> 60</span>     jclass cls_objClass = (</em>env)-&gt;<span style="color: #000000;">GetObjectClass(env, obj);<br></span><span style="color: #008080;"> 61</span>     <span style="color: #008000;">/<em></em></span><span style="color: #008000;"><br></span><span style="color: #008080;"> 62</span> <span style="color: #008000;">     <em> 获得obj对象中特定方法getName的id<br></em></span><span style="color: #008080;"> 63</span> <span style="color: #008000;">      env<br></span><span style="color: #008080;"> 64</span> <span style="color: #008000;">     <em> cls_objClass         方法所属类<br></em></span><span style="color: #008080;"> 65</span> <span style="color: #008000;">      getName              方法名字<br></span><span style="color: #008080;"> 66</span> <span style="color: #008000;">     <em> ()Ljava/lang/String; 方法签名<br></em></span><span style="color: #008080;"> 67</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 68</span>     jmethodID nameMethodId = (<em>env)-&gt;GetMethodID(env, cls_objClass, <span style="color: #800000;">“</span><span style="color: #800000;">getName</span><span style="color: #800000;">“</span>, <span style="color: #800000;">“</span><span style="color: #800000;">()Ljava/lang/String;</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 69</span>     <span style="color: #008000;">/</span></em><span style="color: #008000;"><em><br></em></span><span style="color: #008080;"> 70</span> <span style="color: #008000;">      调用obj对象的特定方法getName<br></span><span style="color: #008080;"> 71</span> <span style="color: #008000;">     <em> obj      调用方法的目标对象<br></em></span><span style="color: #008080;"> 72</span> <span style="color: #008000;">      nameMethodId   调用方法的方法名<br></span><span style="color: #008080;"> 73</span> <span style="color: #008000;">     <em> …    后面还可以添加方法需要的参数<br></em></span><span style="color: #008080;"> 74</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 75</span>     jstring js_name = (jstring)(<em>env)-&gt;<span style="color: #000000;">CallObjectMethod(env, obj, nameMethodId);<br></span><span style="color: #008080;"> 76</span>     <span style="color: #008000;">//</span><span style="color: #008000;">将jstring转为c中的字符数组</span><br><span style="color: #008080;"> 77</span>     <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">char</span> </em> name = (<span style="color: #0000ff;">char</span> <em>)(</em>env)-&gt;GetStringUTFChars(env, js_name, <span style="color: #800080;">0</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 78</span><br><span style="color: #008080;"> 79</span>     jmethodID ageMethodId = (<em>env)-&gt;GetMethodID(env, cls_objClass, <span style="color: #800000;">“</span><span style="color: #800000;">getAge</span><span style="color: #800000;">“</span>, <span style="color: #800000;">“</span><span style="color: #800000;">()I</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 80</span>     jint ji_age = (</em>env)-&gt;<span style="color: #000000;">CallIntMethod(env, obj, ageMethodId);<br></span><span style="color: #008080;"> 81</span><br><span style="color: #008080;"> 82</span>     jmethodID sexMethodId = (<em>env)-&gt;GetMethodID(env, cls_objClass, <span style="color: #800000;">“</span><span style="color: #800000;">getSex</span><span style="color: #800000;">“</span>, <span style="color: #800000;">“</span><span style="color: #800000;">()Ljava/lang/String;</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 83</span>     jstring js_sex = (jstring)(</em>env)-&gt;<span style="color: #000000;">CallObjectMethod(env, obj, sexMethodId);<br></span><span style="color: #008080;"> 84</span>     <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">char</span> <em> sex = (<span style="color: #0000ff;">char</span> </em>)(<em>env)-&gt;GetStringUTFChars(env, js_sex, <span style="color: #800080;">0</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 85</span><br><span style="color: #008080;"> 86</span>     <span style="color: #008000;">//</span><span style="color: #008000;">打印信息</span><br><span style="color: #008080;"> 87</span>     LOGI(<span style="color: #800000;">“</span><span style="color: #800000;">user info—-name:%s, age:%d, sex:%s.</span><span style="color: #800000;">“</span><span style="color: #000000;">, name, ji_age, sex);<br></span><span style="color: #008080;"> 88</span><br><span style="color: #008080;"> 89</span>     <span style="color: #008000;">//</span><span style="color: #008000;">释放资源</span><br><span style="color: #008080;"> 90</span>     (</em>env)-&gt;<span style="color: #000000;">ReleaseStringUTFChars(env, js_name, name);<br></span><span style="color: #008080;"> 91</span>     (<em>env)-&gt;<span style="color: #000000;">ReleaseStringUTFChars(env, js_sex, sex);<br></span><span style="color: #008080;"> 92</span> <span style="color: #008000;">//</span><span style="color: #008000;">    printf(“%s”, str);</span><br><span style="color: #008080;"> 93</span>     <span style="color: #0000ff;">return</span><span style="color: #000000;"> js_name;<br></span><span style="color: #008080;"> 94</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 95</span><br><span style="color: #008080;"> 96</span> <span style="color: #008000;">/</span></em><span style="color: #008000;"><em><br></em></span><span style="color: #008080;"> 97</span> <span style="color: #008000;">  创建一个对象(调用有参构造函数)<br></span><span style="color: #008080;"> 98</span>  <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;"> 99</span> <span style="color: #000000;">JNIEXPORT jobject JNICALL Java_com_example_ndkdemo_JniClient_newUser<br></span><span style="color: #008080;">100</span>   (JNIEnv <span style="color: #000000;">env, jclass arg, jstring name, jint age, jstring sex)<br></span><span style="color: #008080;">101</span> <span style="color: #000000;">{<br></span><span style="color: #008080;">102</span>     <span style="color: #008000;">//</span><span style="color: #008000;">创建一个class的引用,使用类的全包名</span><br><span style="color: #008080;">103</span>     jclass cls = (<em>env)-&gt;FindClass(env, <span style="color: #800000;">“</span><span style="color: #800000;">com/example/ndkdemo/User</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">104</span>     <span style="color: #008000;">//</span><span style="color: #008000;">注意这里方法的名称是”<init>“，它表示这是一个构造函数</init></span><br><span style="color: #008080;">105</span>     jmethodID id = (</em>env)-&gt;GetMethodID(env, cls, <span style="color: #800000;">“</span><span style="color: #800000;"><init></init></span><span style="color: #800000;">“</span>, <span style="color: #800000;">“</span><span style="color: #800000;">(Ljava/lang/String;ILjava/lang/String;)V</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">106</span>     <span style="color: #008000;">//</span><span style="color: #008000;">获得一实例，后面接构造函数参数<br></span><span style="color: #008080;">107</span> <span style="color: #008000;">//</span><span style="color: #008000;">    jobject obj = (<em>env)-&gt;NewObject(env, cls, id, name, age, sex);</em></span><br><span style="color: #008080;">108</span>     jstring jname = (env)-&gt;NewStringUTF(env, <span style="color: #800000;">“</span><span style="color: #800000;">jni-liuling</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">109</span>     jstring jsex = (<em>env)-&gt;NewStringUTF(env, <span style="color: #800000;">“</span><span style="color: #800000;">jni-男</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">110</span>     jobject obj = (</em>env)-&gt;NewObject(env, cls, id, jname, <span style="color: #800080;">18L</span><span style="color: #000000;">, jsex);<br></span><span style="color: #008080;">111</span><br><span style="color: #008080;">112</span>     <span style="color: #0000ff;">return</span><span style="color: #000000;"> obj;<br></span><span style="color: #008080;">113</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">114</span><br><span style="color: #008080;">115</span> <span style="color: #008000;">/<em></em></span><span style="color: #008000;"><br></span><span style="color: #008080;">116</span> <span style="color: #008000;"> <em> 创建一个对象(调用无参构造函数)<br></em></span><span style="color: #008080;">117</span>  <span style="color: #008000;">/</span><br><span style="color: #008080;">118</span> <span style="color: #000000;">JNIEXPORT jobject JNICALL Java_com_example_ndkdemo_JniClient_newUserNoArgs<br></span><span style="color: #008080;">119</span>   (JNIEnv <em><span style="color: #000000;">env, jclass arg, jstring name, jint age, jstring sex)<br></span><span style="color: #008080;">120</span> <span style="color: #000000;">{<br></span><span style="color: #008080;">121</span>     <span style="color: #008000;">//</span><span style="color: #008000;">创建一个class的引用,使用类的全包名</span><br><span style="color: #008080;">122</span>     jclass cls = (</em>env)-&gt;FindClass(env, <span style="color: #800000;">“</span><span style="color: #800000;">com/example/ndkdemo/User</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">123</span>     <span style="color: #008000;">//</span><span style="color: #008000;">注意这里方法的名称是”<init>“，它表示这是一个构造函数</init></span><br><span style="color: #008080;">124</span>     jmethodID id = (<em>env)-&gt;GetMethodID(env, cls, <span style="color: #800000;">“</span><span style="color: #800000;"><init></init></span><span style="color: #800000;">“</span>, <span style="color: #800000;">“</span><span style="color: #800000;">()V</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">125</span>     <span style="color: #008000;">//</span><span style="color: #008000;">获得一实例，后面接构造函数参数</span><br><span style="color: #008080;">126</span>     jobject obj = (</em>env)-&gt;<span style="color: #000000;">NewObject(env, cls, id);<br></span><span style="color: #008080;">127</span>     jstring jname = (<em>env)-&gt;NewStringUTF(env, <span style="color: #800000;">“</span><span style="color: #800000;">jni-liuling</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">128</span>     jstring jsex = (</em>env)-&gt;NewStringUTF(env, <span style="color: #800000;">“</span><span style="color: #800000;">jni-男</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">129</span><br><span style="color: #008080;">130</span>     <span style="color: #008000;">//</span><span style="color: #008000;">获取jfieldID</span><br><span style="color: #008080;">131</span>     jfieldID nameId = (<em>env)-&gt;GetFieldID(env, cls, <span style="color: #800000;">“</span><span style="color: #800000;">name</span><span style="color: #800000;">“</span>, <span style="color: #800000;">“</span><span style="color: #800000;">Ljava/lang/String;</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">132</span>     jfieldID ageId = (</em>env)-&gt;GetFieldID(env, cls, <span style="color: #800000;">“</span><span style="color: #800000;">age</span><span style="color: #800000;">“</span>, <span style="color: #800000;">“</span><span style="color: #800000;">I</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">133</span>     jfieldID sexId = (<em>env)-&gt;GetFieldID(env, cls, <span style="color: #800000;">“</span><span style="color: #800000;">sex</span><span style="color: #800000;">“</span>, <span style="color: #800000;">“</span><span style="color: #800000;">Ljava/lang/String;</span><span style="color: #800000;">“</span><span style="color: #000000;">);<br></span><span style="color: #008080;">134</span>     (</em>env)-&gt;<span style="color: #000000;">SetObjectField(env, obj, nameId, jname);<br></span><span style="color: #008080;">135</span>     (<em>env)-&gt;SetIntField(env, obj, ageId, <span style="color: #800080;">18L</span><span style="color: #000000;">);<br></span><span style="color: #008080;">136</span>     (</em>env)-&gt;<span style="color: #000000;">SetObjectField(env, obj, sexId, jsex);<br></span><span style="color: #008080;">137</span><br><span style="color: #008080;">138</span>     <span style="color: #0000ff;">return</span><span style="color: #000000;"> obj;<br></span><span style="color: #008080;">139</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">140</span><br><span style="color: #008080;">141</span> <span style="color: #000000;">#ifdef __cplusplus<br></span><span style="color: #008080;">142</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">143</span> <span style="color: #0000ff;">#endif</span></android></stdio.h></stdlib.h></pre><br></div>
+
+<p>&nbsp;</p>
+<p>代码注释写的很详细，就不多讲了。</p>
+<p>下面创建在jni目录下面创建编译文件Android.mk，内容如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> LOCAL_PATH := $(call my-<span style="color: #000000;">dir)<br></span><span style="color: #008080;">2</span> <span style="color: #000000;">include $(CLEAR_VARS)<br></span><span style="color: #008080;">3</span> LOCAL_MODULE :=<span style="color: #000000;"> NDKDemo<br></span><span style="color: #008080;">4</span> LOCAL_SRC_FILES :=<span style="color: #000000;"> com_example_ndkdemo_JniClient.c<br></span><span style="color: #008080;">5</span> LOCAL_LDLIBS:=-L$(SYSROOT)/usr/lib -<span style="color: #000000;">llog<br></span><span style="color: #008080;">6</span> include $(BUILD_SHARED_LIBRARY)</pre><br></div>
+
+<p>编译过程可以参考网上的，网上很多。下面是在android中调用的代码：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.example.ndkdemo;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> android.os.Bundle;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> android.support.v7.app.ActionBarActivity;<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> android.util.Log;<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> android.view.View;<br></span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> android.view.View.OnClickListener;<br></span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> android.widget.Button;<br></span><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> android.widget.EditText;<br></span><span style="color: #008080;">10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> android.widget.Toast;<br></span><span style="color: #008080;">11</span><br><span style="color: #008080;">12</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> MainActivity <span style="color: #0000ff;">extends</span><span style="color: #000000;"> ActionBarActivity {<br></span><span style="color: #008080;">13</span><br><span style="color: #008080;">14</span>     <span style="color: #0000ff;">static</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">15</span>         System.loadLibrary(“NDKDemo”<span style="color: #000000;">);<br></span><span style="color: #008080;">16</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">17</span><br><span style="color: #008080;">18</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;">19</span>     <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> onCreate(Bundle savedInstanceState) {<br></span><span style="color: #008080;">20</span>         <span style="color: #0000ff;">super</span><span style="color: #000000;">.onCreate(savedInstanceState);<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">        setContentView(R.layout.activity_main);<br></span><span style="color: #008080;">22</span>         findViewById(R.id.button).setOnClickListener(<span style="color: #0000ff;">new</span><span style="color: #000000;"> OnClickListener() {<br></span><span style="color: #008080;">23</span> <span style="color: #000000;">            @Override<br></span><span style="color: #008080;">24</span>             <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> onClick(View v) {<br></span><span style="color: #008080;">25</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">调用jni返回字符串<br></span><span style="color: #008080;">26</span>                 <span style="color: #008000;">//</span><span style="color: #008000;">Toast.makeText(MainActivity.this, JniClient.printStr(), Toast.LENGTH_LONG).show();</span><br><span style="color: #008080;">27</span>                 User user = <span style="color: #0000ff;">new</span> User(“刘玲”, 25, “男hahaah”<span style="color: #000000;">);<br></span><span style="color: #008080;">28</span>                 String name =<span style="color: #000000;"> JniClient.printUser(user);<br></span><span style="color: #008080;">29</span>                 Log.e(“name”, name + “”<span style="color: #000000;">);<br></span><span style="color: #008080;">30</span> <span style="color: #008000;">//</span><span style="color: #008000;">                User user = JniClient.newUser(“liuling”, 18, “男”);<br></span><span style="color: #008080;">31</span> <span style="color: #008000;">//</span><span style="color: #008000;">                User user = JniClient.newUserNoArgs(“liuling”, 18, “男”);<br></span><span style="color: #008080;">32</span> <span style="color: #008000;">//</span><span style="color: #008000;">                Toast.makeText(MainActivity.this, user.toString(), Toast.LENGTH_LONG).show();</span><br><span style="color: #008080;">33</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">34</span> <span style="color: #000000;">        });<br></span><span style="color: #008080;">35</span>         <span style="color: #0000ff;">final</span> EditText num1 =<span style="color: #000000;"> (EditText) findViewById(R.id.num1);<br></span><span style="color: #008080;">36</span>         <span style="color: #0000ff;">final</span> EditText num2 =<span style="color: #000000;"> (EditText) findViewById(R.id.num2);<br></span><span style="color: #008080;">37</span>         <span style="color: #0000ff;">final</span> EditText result =<span style="color: #000000;"> (EditText) findViewById(R.id.result);<br></span><span style="color: #008080;">38</span>         Button addBtn =<span style="color: #000000;"> (Button) findViewById(R.id.addBtn);<br></span><span style="color: #008080;">39</span><br><span style="color: #008080;">40</span>         addBtn.setOnClickListener(<span style="color: #0000ff;">new</span><span style="color: #000000;"> OnClickListener() {<br></span><span style="color: #008080;">41</span> <span style="color: #000000;">            @Override<br></span><span style="color: #008080;">42</span>             <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> onClick(View v) {<br></span><span style="color: #008080;">43</span>                 <span style="color: #0000ff;">int</span> n1 =<span style="color: #000000;"> Integer.valueOf(num1.getText().toString().trim());<br></span><span style="color: #008080;">44</span>                 <span style="color: #0000ff;">int</span> n2 =<span style="color: #000000;"> Integer.valueOf(num2.getText().toString().trim());<br></span><span style="color: #008080;">45</span>                 <span style="color: #0000ff;">int</span> n3 =<span style="color: #000000;"> JniClient.addInt(n1, n2);<br></span><span style="color: #008080;">46</span>                 result.setText(n3 + “”<span style="color: #000000;">);<br></span><span style="color: #008080;">47</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">48</span> <span style="color: #000000;">        });<br></span><span style="color: #008080;">49</span><br><span style="color: #008080;">50</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">51</span><br><span style="color: #008080;">52</span><br><span style="color: #008080;">53</span> }</pre><br></div>
+
+<p>这里要注意14-16行，一定要加载so文件。</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/08/jni-demo.html" data-id="ciiy5f4tp007cq1d0axqsk6fd" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/08/jni-demo.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-javah-find-lib" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/javah-find-lib.html">解决javah生成c头文件时找不到android类库的问题</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/08/javah-find-lib.html">
+      <time datetime="2015-08-05T02:26:00.000Z" itemprop="datePublished">2015-08-05</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <div><strong>问题描述：</strong></div><br><div>cmd下面进入工程的bin/classes下面，执行 javah xxx.xxx.A 生成头文件，</div><br><div>一般来说都是可以成功执行的，但是如果xxx.xxx.A类里面引用了android类库里面的类的话，就会报异常，如下图：</div><br><div><br><div><img src="file:///C:/Users/Administrator/AppData/Local/YNote/data/qq30151A15E6E038A670248C336861EB12/6dcc07aa775b4f5f9640828e41a68e56/dy9ez8nthqtg.png" alt=""></div><br></div><br><div>上面因为引用了android.graphics.Bitmap，所以导致生成头文件失败。</div><br><div>&nbsp;<img src="file:///C:/Users/Administrator/AppData/Local/YNote/data/qq30151A15E6E038A670248C336861EB12/6dcc07aa775b4f5f9640828e41a68e56/dy9ez8nthqtg.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/051825381422804.png" alt=""></div><br><div>&nbsp;</div><br><div><strong>解决办法：</strong></div><br><div>执行javah命令的时候，可以指定classpath，将需要的jar包引入进去就可以了。如下</div><br><div>javah -classpath D:\ide\android-sdk\platforms\android-22\android.jar;. -jni&nbsp;&nbsp;javah xxx.xxx.A</div><br><div>这样就可以成功的编译了。</div><br><div>这里值得注意的是classpath后面一定要记得加上&ldquo;.&rdquo;，否则就找不到目标类了。</div><br><div><br><div><img src="file:///C:/Users/Administrator/AppData/Local/YNote/data/qq30151A15E6E038A670248C336861EB12/91d1350b2d694ab6970c6b4e16e3e9f3/j%60" alt="">~%5Baf7j7dp.png)</div>
+
+<p>&nbsp;<img src="http://www.liuling123.com/wp-content/uploads/2015/11/051825462362697.png" alt=""></p>
+<p></p></div><p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/08/javah-find-lib.html" data-id="ciiy5f4tz007rq1d0yuiqtjbu" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/08/javah-find-lib.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-jni-logcat" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/jni-logcat.html">JNI的native代码中打印日志到eclipse的logcat中</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/08/jni-logcat.html">
+      <time datetime="2015-08-05T00:52:00.000Z" itemprop="datePublished">2015-08-05</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p><strong>1 添加ndk对log支持</strong><br>若需要添加ndk对log的支持，只需要通过以下2步即可实现。</p>
+<p><strong>1.1 修改Android.mk
+</strong>如生成的库文件是&ldquo;.so文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-L$(SYSROOT)/usr/lib -llog<br>如生成的库文件是&ldquo;.a文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-llog</p>
+<p><strong>1.2 在.c或.cpp文件中引用log头文件
+</strong>添加如下内容：<br>// 引入log头文件</p>
+<p>#include &nbsp;<android log.h=""><br>// log标签</android></p>
+<p>#define&nbsp;&nbsp;TAG&nbsp;&nbsp;&nbsp;&nbsp;”这里填写日志的TAG”<br>// 定义info信息</p>
+<p>#define LOGI(…) <strong>android_log_print(ANDROID_LOG_INFO,TAG,</strong>VA_ARGS__)<br>// 定义debug信息</p>
+<p>#define LOGD(…) <strong>android_log_print(ANDROID_LOG_DEBUG, TAG, </strong>VA_ARGS__)<br>// 定义error信息</p>
+<p>#define LOGE(…) <strong>android_log_print(ANDROID_LOG_ERROR,TAG,</strong>VA_ARGS__)</p>
+<p>ANDROID_LOG_INFO：是日志级别；<br>TAG：是要过滤的标签，可以在LogCat视图中过滤。<br><strong>VA_ARGS</strong>：是实际的日志内容。<br>完成上面2步之后，我们就可以在.c/cpp文件中添加LOGI、LOGD、LOGE去打印信息！使用LOGI、LOGD、LOGE的方法和使用printf一样</p>
+<p><strong>1.3日志类型</strong><br>1）Log.v 的调试颜色为黑色的，任何消息都会输出，这里的v代表verbose啰嗦的意思，平时使用就是Log.v(,);<br>2）Log.d的输出颜色是蓝色的，仅输出debug调试的意思，但他会输出上层的信息，过滤起来可以通过DDMS的Logcat标签来选择<br>3）Log.i的输出为绿色，一般提示性的消息information，它不会输出Log.v和Log.d的信息，但会显示i、w和e的信息<br>4）Log.w的意思为橙色，可以看作为warning警告，一般需要我们注意优化Android代码，同时选择它后还会输出Log.e的信息。<br>5）Log.e为红色，可以想到error错误，这里仅显示红色的错误信息，这些错误就需要我们认真的分析，查看栈的信息了。</p>
+<p>&nbsp;</p>
+<p>如：</p>
+<p>LOGI(“user info—-name:%s, age:%d, sex:%s.”, “xxx”, 18, “男”);</p>
+<p>执行上句代码可以再logcat中打印出相应日志。</p>
+<p>注意：log打印的方法中不能传入jstring，必须将jstring转为c中的字符数组在传入到方法里面打印，否则会报错。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/08/jni-logcat.html" data-id="ciiy5f4tl0078q1d0vr0rugqj" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/08/jni-logcat.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-android-mk" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/android-mk.html">Android.mk简介</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/08/android-mk.html">
+      <time datetime="2015-08-05T00:42:00.000Z" itemprop="datePublished">2015-08-05</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Framework/">Framework</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <div>文章参照<span style="color: #003366;">：</span><a href="http://blog.sina.com.cn/s/blog_67d8d7060100q8un.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_67d8d7060100q8un.html</a></div><br><div><span style="color: #003366;">Android.mk文件是GNU Makefile的一小部分，它用来对Android程序进行编译。</span></div><br><div><span style="color: #003366;">因为所有的编译文件都在同一个 GNU MAKE 执行环境中进行执行，而Android.mk中所有的变量都是全局的。因此，您应尽量少声明变量，不要认为某些变量在解析过程中不会被定义。</span></div><br><div><span style="color: #003366;">一个Android.mk文件可以编译多个模块，</span><strong>每个模块属下列类型之一</strong><span style="color: #003366;">：</span></div><br><div><strong>1）APK程序</strong></div><br><div>&nbsp; 一般的Android程序，编译打包生成apk文件</div><br><div><strong>2）JAVA库</strong></div><br><div>&nbsp; java类库，编译打包生成jar文件</div><br><div><strong>3)C\C++应用程序</strong></div><br><div>&nbsp;可执行的C\C++应用程序</div><br><div><strong>4）C\C++静态库&nbsp;</strong></div><br><div>编译生成C\C++静态库，并打包成.a文件</div><br><div><strong>5）C\C++共享库</strong></div><br><div>编译生成共享库（动态链接库），并打包成.so文， 有且只有共享库才能被安装/复制到您的应用软件（APK）包中。</div><br><div><span style="color: #000080;">&nbsp; 可以在每一个Android.mk file 中定义一个或多个模块，你也可以在几个模块中使用同一个</span></div><br><div><span style="color: #000080;">源代码文件。&nbsp; 编译系统为你处理许多细节问题。例如，你不需要在你的 Android.mk 中列出头文件和依</span></div><br><div><span style="color: #000080;">赖文件。编译系统将会为你自动处理这些问题。这也意味着，在升级 NDK 后，你应该</span></div><br><div><span style="color: #000080;">得到新的toolchain/platform支持，而且不需要改变你的 Android.mk 文件。</span></div><br><div><strong>注意</strong>，NDK的Anroid.mk语法同公开发布的Android平台开源代码的Anroid.mk语法很接近，然而编译系统实现他们的</div><br><div>方式却是不同的，这是故意这样设计的，可以让程序开发人员重用外部库的源代码更容易。</div><br><div><span style="color: #000080;">在描述语法细节之前，咱们来看一个简单的”hello world”的例子，比如，下面的文件：</span></div><br><div><span style="color: #0000ff;">&nbsp;sources/helloworld/helloworld.c</span></div><br><div><span style="color: #0000ff;">&nbsp;sources/helloworld/Android.mk</span></div><br><div><span style="color: #000080;">&nbsp;’helloworld.c’是一个 JNI&nbsp;</span><span style="color: #0000ff;">共享库</span><span style="color: #000080;">，实现返回”hello world”字符串的原生方法。相应的</span></div><br><div><span style="color: #000080;">Android.mk 文件会象下面这样：</span></div><br><div><span style="color: #3366ff;">LOCAL_PATH := $(call my-dir)</span></div><br><div><span style="color: #3366ff;">include $(CLEAR_VARS)</span></div><br><div><span style="color: #3366ff;">LOCAL_MODULE:= helloworld</span></div><br><div><span style="color: #3366ff;">LOCAL_SRC_FILES := helloworld.c</span></div><br><div><span style="color: #3366ff;">include $(BUILD_SHARED_LIBRARY)</span></div><br><div>&nbsp; 解释一下几行代码：</div><br><div><span style="color: #ff6600;">&nbsp; LOCAL_PATH := $(call my-dir)</span></div><br><div><span style="color: #000080;">一个Android.mk file首先必须定义好LOCAL_PATH变量。它表示是当前文件的路径。</span></div><br><div><span style="color: #000080;">在这个例子中， 宏函数&lsquo;my-dir&rsquo;, &nbsp;由编译系统提供， 用于返回当前路径(即包含Android.mk file</span></div><br><div><span style="color: #000080;">文件的目录)</span>。</div><br><div><span style="color: #ff6600;">include $(CLEAR_VARS)</span></div><br><div><span style="color: #000080;">CLEAR_VARS 由编译系统提供(可以在 android 安装目录下的</span><span style="color: #0000ff;">/build/core/config.mk</span><span style="color: #000080;">&nbsp;文件看</span>到其定义，为 CLEAR_VARS:=&nbsp;<span style="color: #0000ff;">$(BUILD_SYSTEM)/clear_vars.mk</span>)，指定让<span style="color: #0000ff;">GNU MAKEFILE</span>该脚本为你清除许多 LOCAL_XXX 变量 ( 例如 LOCAL_MODULE ， LOCAL_SRC_FILES ，<span style="color: #000080;">LOCAL_STATIC_LIBRARIES，等等&hellip;)，除 LOCAL_PATH。这是必要的，因为所有的编译文件都在同一个 GNU MAKE 执行环境中，所有的变量都是全局的。</span>所以我们需要先清空这些变量（LOCAL_PATH除外）。又因为LOCAL_PATH总是要求在每个模块中都要进行设置，所以并需要清空它。</div><br><div><span style="color: #000080;">另外</span><strong>注意</strong><span style="color: #000080;">，该语句的意思就是把CLEAR_VARS变量所指向的脚本文件包含进来。</span></div><br><div><span style="color: #ff6600;">LOCAL_MODULE := helloworld</span></div><br><div><span style="color: #000080;">LOCAL_MODULE 变量必须定义，以标识你在 Android.mk 文件中描述的每个模块。名称必须是唯一的，而且不包含任何空格。注意编译系统会自动产生合适的前缀和后缀，换句话说，一个被命名为’foo’的共享库模块，将会生成’libfoo.so’文件。</span></div><br><div><strong>注意</strong><span style="color: #000080;">：如果把库命名为&lsquo;libhelloworld&rsquo;，编译系统将不会添加任何的 lib 前缀，也会生成 libhelloworld.so。</span></div><br><div><span style="color: #ff6600;">LOCAL_SRC_FILES := helloworld.c</span></div><br><div><span style="color: #000080;">&nbsp; LOCAL_SRC_FILES 变量必须包含将要编译打包进模块中的 C 或 C++源代码文件。不用</span></div><br><div><span style="color: #000080;">在这里列出头文件和包含文件，编译系统将会自动找出依赖型的文件，当然对于包含文件，你包含时指定的路径应该正确。</span></div><br><div><strong>注意</strong><span style="color: #000080;">，默认的 C++源码文件的扩展名是&lsquo;.cpp&rsquo; 。指定一个不同的扩展名也是可能的，只要定义</span>LOCAL_DEFAULT_CPP_EXTENSION 变量，不要忘记开始的小圆点(也就是定义为 &nbsp;&lsquo;.cxx&rsquo;,而不是&lsquo;cxx&rsquo;)</div><br><div><span style="color: #ff6600;">include $(BUILD_SHARED_LIBRARY)</span></div><br><div><span style="color: #000080;">BUILD_SHARED_LIBRARY 是编译系统提供的变量，指向一个 GNU Makefile 脚本(应该</span></div><br><div><span style="color: #000080;">就是在 build/core &nbsp;目录下的 shared_library.mk) ，将根据LOCAL_XXX系列变量中的值，来编译生成共享库（动态链接库）。</span></div><br><div><span style="color: #000080;">如果想生成静态库，则用BUILD_STATIC<em>LIBRARY</em></span></div><br><div><span style="color: #000080;">&nbsp; 在NDK的sources/samples目录下有更复杂一点的例子，写有注释的 Android.mk 文件。</span></div><br><div><strong>二、自定义变量</strong></div><br><div><span style="color: #003366;">&nbsp;以下是在 Android.mk中依赖或定义的变量列表， 可以定义其他变量为自己使用，但是NDK编译系统保留下列变量名：</span></div><br><div><span style="color: #0000ff;">&nbsp;-以 LOCAL开头的名字（例如 LOCAL<em>MODULE）</em></span></div><br><div><span style="color: #0000ff;">&nbsp;-以 PRIVATE, NDK<em> 或 APP</em>开头的名字（内部使用）</span></div><br><div><span style="color: #0000ff;">&nbsp;-小写名字（内部使用，例如&lsquo;my-dir&rsquo;）</span></div><br><div><span style="color: #000080;">如果为了方便在 Android.mk 中定义自己的变量，建议使用 MY_前缀，一个小例子</span>：</div><br><div><span style="color: #3366ff;">MY_SOURCES := foo.c</span></div><br><div><span style="color: #3366ff;">ifneq ($(MY_CONFIG_BAR),)</span></div><br><div><span style="color: #3366ff;">&nbsp;MY_SOURCES += bar.c</span></div><br><div><span style="color: #3366ff;">endif</span></div><br><div><span style="color: #3366ff;">LOCAL_SRC_FILES += $(MY_SOURCES)</span></div><br><div><strong>注意</strong>：&lsquo;:=&rsquo;是赋值的意思；’+=’是追加的意思；&lsquo;$&rsquo;表示引用某变量的值。</div><br><div><strong>三、GNU Make系统变量</strong></div><br><div><span style="color: #003366;">&nbsp; 这些 GNU Make变量在你的 Android.mk 文件解析之前，就由编译系统定义好了。注意在</span></div><br><div><span style="color: #003366;">某些情况下，NDK可能分析 Android.mk 几次，每一次某些变量的定义会有不同。</span></div><br><div><strong>（1）CLEAR_VARS</strong>:&nbsp;<span style="color: #000080;">&nbsp;指向一个编译脚本，几乎所有未定义的 LOCAL_XXX 变量都在”Module-description”节中列出。必须在开始一个新模块之前包含这个脚本：include$(CLEAR_VARS)，用于重置除LOCAL_PATH变量外的，所有LOCAL_XXX系列变量。</span></div><br><div><strong>（2）BUILD_SHARED_LIBRARY</strong>: &nbsp;<span style="color: #000080;">指向编译脚本，根据所有的在 LOCAL_XXX 变量把列出的源代码文件编译成一个共享库。</span></div><br><div><span style="color: #000080;">&nbsp; 注意，必须至少在包含这个文件之前定义 LOCAL_MODULE 和 LOCAL_SRC_FILES。</span></div><br><div><strong>（3） BUILD_STATIC_LIBRARY</strong>:<span style="color: #000080;">&nbsp;&nbsp;一个 BUILD_SHARED_LIBRARY 变量用于编译一个静态库。静态库不会复制到的APK包中，但是能够用于编译共享库。</span></div><br><div>示例<strong>：</strong>include $(<span style="color: #ff6600;">BUILD_STATIC_LIBRARY)</span></div><br><div>注意，这将会生成一个名为<span style="color: #ff6600;">&nbsp;lib$(LOCAL_MODULE).a</span>&nbsp;的文件</div><br><div><strong>（4）TARGET_ARCH:</strong><span style="color: #000080;">目标 CPU平台的名字, &nbsp;和 android 开放源码中指定的那样。如果是</span></div><br><div><span style="color: #000080;">arm，表示要生成 ARM 兼容的指令，与 CPU架构的修订版无关。</span></div><br><div><strong>（5）TARGET_PLATFORM</strong>:&nbsp;<span style="color: #000080;">Android.mk 解析的时候，目标 Android 平台的名字</span>.<span style="color: #000080;">详情可参考/development/ndk/docs/stable- apis.txt.</span></div><br><div><span style="color: #3366ff;">&nbsp;android-3 -&gt; Official Android 1.5 system images</span></div><br><div><span style="color: #3366ff;">&nbsp;android-4 -&gt; Official Android 1.6 system images</span></div><br><div><span style="color: #3366ff;">&nbsp;android-5 -&gt; Official Android 2.0 system images</span></div><br><div><strong>（6）TARGET_ARCH_ABI:</strong><span style="color: #000080;">暂时只支持两个 value，armeabi 和 armeabi-v7a。在现在的版本中一般把这两个值简单的定义为 arm， 通过 android &nbsp;平台内部对它重定义来获得更好的匹配。其他的 ABI 将在以后的 NDK 版本中介绍，它们会有不同的名字。注意虽然所有基于</span></div><br><div><span style="color: #000080;">ARM的ABI都会把 ‘TARGET_ARCH’定义成&lsquo;arm&rsquo;， 但是会有不同的&lsquo;TARGET_ARCH_ABI&rsquo;。&nbsp;</span></div><br><div><strong>（ 7 ） TARGET_ABI:&nbsp;</strong><span style="color: #000080;">目标平台和 ABI 的组合，它事实上被定义成$(TARGET_PLATFORM)-$(TARGET_ARCH_ABI) &nbsp;，在想要在真实的设备中针对一个特别的目标系统进行测试时，会有用。在默认的情况下，它会是’android-3-arm’。</span></div><br><div><strong>五、模块描述变量</strong></div><br><div><span style="color: #003366;">下面的变量用于向编译系统描述你的模块。你应该定义在’include &nbsp;$(CLEAR_VARS)’和’include $(BUILD_XXXXX)’之间。正如前面描写的那样，$(CLEAR_VARS)是一个脚本，清除所有这些变量</span>。</div><br><div><strong>（1） LOCAL_PATH:</strong><span style="color: #000080;">这个变量用于给出当前文件的路径。必须在 Android.mk 的开头定义，可以这样使用：LOCAL_PATH := $(call my-dir)&nbsp; 这个变量不会被$(CLEAR_VARS)清除，因此每个 Android.mk 只需要定义一次(即使在一个文件中定义了几个模块的情况下)。</span></div><br><div><strong>（2）LOCAL_MODULE</strong>:&nbsp;<span style="color: #000080;">这是模块的名字，它必须是唯一的，而且不能包含空格。必须在包含任一的$(BUILD_XXXX)脚本之前定义它。模块的名字决定了生成文件的名字。例如，如果一个一个共享库模块的名字是，那么生成文件的名字就是 lib.so。但是，在的 NDK 生成文</span></div><br><div><span style="color: #000080;">件中(或者 Android.mk 或者 Application.mk)，应该只涉及(引用)有正常名字的其他模块。</span></div><br><div><strong>（3）LOCAL_SRC_FILES</strong>: &nbsp;<span style="color: #000080;">这是要编译的源代码文件列表。只要列出要传递给编译器的文件，因为编译系统自动计算依赖。注意源代码文件名称都是相对于 LOCAL_PATH的，你可以使用路径部分，例如：</span></div><br><div><span style="color: #3366ff;">LOCAL_SRC_FILES := foo.c toto/bar.c\</span></div><br><div><span style="color: #3366ff;">Hello.c</span></div><br><div><span style="color: #000080;">&nbsp;文件之间可以用空格或Tab键进行分割,换行请用”\”.如果是追加源代码文件的话，请用LOCAL_SRC_FILES +=</span></div><br><div><strong>注意</strong>：<span style="color: #000080;">在生成文件中都要使用UNIX风格的斜杠(/).windows风格的反斜杠不会被正确的处理。</span></div><br><div><strong>注意：</strong><span style="color: #000080;">可以LOCAL_SRC_FILES := $(call all-subdir-java-files)这种形式来包含local_path目录下的所有java文件。</span></div><br><div><strong>（4） LOCAL_CPP_EXTENSION:</strong><span style="color: #000080;">这是一个可选变量， 用来指定C++代码文件的扩展名，默认是’.cpp’,但是可以改变它，比如：</span></div><br><div><span style="color: #000080;">LOCAL_CPP_EXTENSION := .cxx</span></div><br><div><strong>（5） LOCAL_C_INCLUDES: &nbsp;</strong><span style="color: #000080;">可选变量，表示头文件的搜索路径。默认的头文件的搜索路径是LOCAL_PATH目录。</span></div><br><div>&nbsp; 示例:<span style="color: #3366ff;">LOCAL_C_INCLUDES := sources/foo或LOCAL_C_INCLUDES := $(LOCAL_PATH)/../foo</span></div><br><div><span style="color: #000080;">LOCAL_C_INCLUDES需要在任何包含LOCAL_CFLAGS/LOCAL_CPPFLAGS标志之前进行设置。</span></div><br><div><strong>（6）LOCAL_CFLAGS</strong>: &nbsp;<span style="color: #000080;">可选的编译器选项，在编译 C 代码文件的时候使用。这可能是有</span></div><br><div><span style="color: #000080;">用的，指定一个附加的包含路径(相对于NDK的顶层目录)，宏定义，或者编译选项。</span></div><br><div><strong>注意</strong>：<span style="color: #000080;">不要在 Android.mk 中改变 optimization/debugging 级别，只要在 Application.mk 中指定合适的信息，就会自动地为你处理这个问题，在调试期间，会让 NDK自动生成有用的数据文件</span>。</div><br><div><strong>（7）LOCAL_CXXFLAGS</strong>:&nbsp;<span style="color: #000080;">&nbsp;与 LOCAL_CFLAGS同理，针对 C++源文件。</span></div><br><div><strong>（8）LOCAL_CPPFLAGS:</strong><span style="color: #000080;">与 LOCAL_CFLAGS同理，但是对 C 和 C++ source files都适</span>用。</div><br><div><strong>（9）LOCAL_STATIC_LIBRARIES:&nbsp;</strong><span style="color: #000080;">表示该模块需要使用哪些静态库，以便在编译时进行链接。</span></div><br><div><strong>（10）LOCAL_SHARED_LIBRARIES</strong>:&nbsp;<span style="color: #000080;">&nbsp;表示模块在运行时要依赖的共享库（动态库），在链接时就需要，以便在生成文件时嵌入其相应的信息。注意：它不会附加列出的模块到编译图，也就是仍然需要在Application.mk 中把它们添加到程序要求的模块中。</span></div><br><div><strong>（11）LOCAL_LDLIBS:</strong><span style="color: #000080;">&nbsp;编译模块时要使用的附加的链接器选项。这对于使用&lsquo;</span><span style="color: #0000ff;">-l&rsquo;</span><span style="color: #000080;">前缀传递指定库的名字是有用的。</span></div><br><div><span style="color: #000080;">例如，</span><span style="color: #0000ff;">LOCAL_LDLIBS := -lz</span><span style="color: #000080;">表示</span>告诉链接器生成的模块要在加载时刻链接到<span style="color: #0000ff;">/system/lib/libz.so</span></div><br><div><span style="color: #000080;">&nbsp; 可查看 docs/STABLE-APIS.TXT 获取使用 NDK发行版能链接到的开放的系统库列表。</span></div><br><div><strong>（12） LOCAL_ALLOW_UNDEFINED_SYMBOLS</strong>:&nbsp;<span style="color: #000080;">&nbsp;默认情况下， 在试图编译一个共享库时，任何未定义的引用将导致一个&ldquo;未定义的符号&rdquo;错误。这对于在源代码文件中捕捉错误会有很大的帮助。然而，如果因为某些原因，需要不启动这项检查，可把这个变量设为&lsquo;true&rsquo;。</span></div><br><div><span style="color: #000080;">注意相应的共享库可能在运行时加载失败。(这个一般尽量不要去设为 true)。</span></div><br><div><strong>（13） LOCAL_ARM_MODE</strong>:&nbsp;<span style="color: #000080;">默认情况下， arm目标二进制会以 thumb 的形式生成(16 位)，你可以通过设置这个变量为 arm如果你希望你的 module 是以 32 位指令的形式。</span></div><br><div><span style="color: #000080;">‘arm’ (32-bit instructions) mode. E.g.:</span></div><br><div><span style="color: #0000ff;">LOCAL_ARM_MODE := arm</span></div><br><div>注意<span style="color: #000080;">：可以在编译的时候告诉系统针对某个源码文件进行特定的类型的编译</span></div><br><div><span style="color: #000080;">比如，LOCAL_SRC_FILES := foo.c bar.c.arm &nbsp;这样就告诉系统总是将 bar.c 以</span>arm的模式编译。</div><br><div><strong>(14)LOCAL_MODULE_PATH 和 LOCAL_UNSTRIPPED_PATH</strong></div><br><div><span style="color: #003366;">在 Android.mk 文件中， 还可以用</span><span style="color: #0000ff;">LOCAL_MODULE_PATH</span><span style="color: #003366;">&nbsp;和</span><span style="color: #0000ff;">LOCAL_UNSTRIPPED_PATH</span><span style="color: #003366;">指定最后的目标安装路径.</span></div><br><div><span style="color: #003366;">不同的文件系统路径用以下的宏进行选择：</span></div><br><div><span style="color: #0000ff;">TARGET_ROOT_OUT</span>：表示根文件系统。</div><br><div><span style="color: #0000ff;">TARGET_OUT</span>：表示 system文件系统。</div><br><div><span style="color: #0000ff;">&nbsp;TARGET_OUT_DATA</span>：表示 data文件系统。</div><br><div>用法如：LOCAL_MODULE_PATH :=$(TARGET_ROOT_OUT)&nbsp;</div><br><div><span style="color: #000080;">至于LOCAL_MODULE_PATH 和LOCAL_UNSTRIPPED_PATH的区别，暂时还不清楚。</span></div><br><div><strong>七、GNU Make&lsquo;功能&rsquo;宏</strong></div><br><div><span style="color: #003366;">GNU Make&lsquo;功能&rsquo;宏，必须通过使用’$(call &nbsp;)’来调用，调用他们将返回文本化的信息。</span></div><br><div><strong>（1）my-dir</strong>:<span style="color: #000080;">返回当前 Android.mk 所在的目录的路径，相对于 NDK 编译系统的顶层。这是有用的，在 Android.mk 文件的开头如此定义：</span></div><br><div><span style="color: #000080;">LOCAL_PATH := $(call my-dir)</span></div><br><div><strong>（2）all-subdir-makefiles:</strong><span style="color: #000080;">返回一个位于当前’my-dir’路径的子目录中的所有Android.mk的列表</span>。</div><br><div>例如，看下面的目录层次：</div><br><div><span style="color: #0000ff;">sources/foo/Android.mk</span></div><br><div><span style="color: #0000ff;">sources/foo/lib1/Android.mk</span></div><br><div><span style="color: #0000ff;">sources/foo/lib2/Android.mk</span></div><br><div>&nbsp;如果 sources/foo/Android.mk 包含一行：</div><br><div><span style="color: #ff6600;">include $(call all-subdir-makefiles)</span></div><br><div><span style="color: #000080;">那么它就会自动包含 sources/foo/lib1/Android.mk 和 sources/foo/lib2/Android.mk。</span></div><br><div><span style="color: #000080;">这项功</span><span style="color: #000080;">能用于向编译系统提供深层次嵌套的代码目录层次。</span></div><br><div><strong>注意</strong>，<span style="color: #000080;">在默认情况下，NDK 将会只搜索在 sources/<em>/Android.mk 中的文件。</em></span></div><br><div><strong>（3）this-makefile:</strong><span style="color: #000080;">返回当前Makefile 的路径(即这个函数调用的地方)</span></div><br><div><strong>（4）parent-makefile:&nbsp;</strong><span style="color: #000080;">返回调用树中父 Makefile 路径。即包含当前Makefile的Makefile 路径。</span></div><br><div><strong>（5）grand-parent-makefile</strong>：<span style="color: #000080;">返回调用树中父Makefile的父Makefile的路径</span></div><br><div><strong>八、 Android.mk 使用模板</strong></div><br><div><span style="color: #003366;">在一个 Android.mk 中可以生成多个APK应用程序，JAVA库，C\C++可执行程序,C\C++动态库和C\C++静态库。</span></div><br><div>（<strong>1）编译APK应用程序模板。</strong></div><br><div><span style="color: #000080;">关于编译APK应用程序的模板请参照</span>《<a href="http://hubingforever.blog.163.com/blog/static/1710405792011656434982/" target="_blank" rel="external">Android.mk编译APK范例</a>》</div><br><div><strong>（2）编译JAVA库模板</strong></div><br><div><span style="color: #3366ff;">&nbsp; LOCAL_PATH := $(call my-dir)</span></div><br><div><span style="color: #3366ff;">&nbsp; include $(CLEAR_VARS)</span></div><br><div><span style="color: #3366ff;">&nbsp;<span style="font-size: xx-small;">&nbsp;# Build all java files in the java subdirectory</span></span></div><br><div><span style="color: #3366ff;">&nbsp; LOCAL_SRC_FILES := $(call all-subdir-java-files)</span></div><br><div><span style="color: #3366ff;">&nbsp;&nbsp;<span style="font-size: xx-small;"># Any libraries that this library depends on</span></span></div><br><div><span style="color: #3366ff;">&nbsp;&nbsp;</span><span style="color: #ff6600;">LOCAL_JAVA_LIBRARIES := android.test.runner</span></div><br><div><span style="color: #3366ff;">&nbsp;&nbsp;<span style="font-size: xx-small;"># The name of the jar file to create</span></span></div><br><div><span style="color: #3366ff;">&nbsp; LOCAL_MODULE := sample</span></div><br><div><span style="color: #3366ff;">&nbsp;<span style="font-size: xx-small;">&nbsp;# Build a static jar file.</span></span></div><br><div><span style="color: #3366ff;">&nbsp; include $(</span><span style="color: #ff6600;">BUILD_STATIC_JAVA_LIBRARY</span><span style="color: #3366ff;">)</span></div><br><div><strong>注</strong>：LOCAL_JAVA_LIBRARIES := android.test.runner表示生成的JAVA库的jar文件名</div><br><div><strong>（3）编译C/C++应用程序模板如下</strong>：</div><br><div><span style="color: #3366ff;">LOCAL_PATH := $(call my-dir)</span></div><br><div><span style="color: #3366ff; font-size: xx-small;">#include $(CLEAR_VARS)</span></div><br><div><span style="color: #3366ff;">LOCAL_SRC_FILES := main.c</span></div><br><div><span style="color: #3366ff;">LOCAL_MODULE := test_exe</span></div><br><div><span style="color: #3366ff; font-size: xx-small;">#LOCAL_C_INCLUDES :=</span></div><br><div><span style="color: #3366ff; font-size: xx-small;">#LOCAL_STATIC_LIBRARIES :=</span></div><br><div><span style="color: #3366ff; font-size: xx-small;">#LOCAL_SHARED_LIBRARIES :=</span></div><br><div><span style="color: #3366ff;">include $(</span><span style="color: #ff6600;">BUILD_EXECUTABLE</span><span style="color: #3366ff;">)</span></div><br><div><strong>注</strong>：&lsquo;:=&rsquo;是赋值的意思，’+=’是追加的意思，&lsquo;$&rsquo;表示引用某变量的值</div><br><div><span style="color: #000080;">LOCAL_SRC_FILES中加入源文件路径，LOCAL_C_INCLUDES中加入需要的头文件搜索路径</span></div><br><div><span style="color: #0000ff;">LOCAL_STATIC_LIBRARIES</span><span style="color: #000080;">&nbsp;加入所需要链接的</span><span style="color: #ff6600;">静态库(.a)</span><span style="color: #000080;">的名称，</span></div><br><div><span style="color: #0000ff;">LOCAL_SHARED_LIBRARIES</span><span style="color: #000080;">&nbsp;中加入所需要链接的</span><span style="color: #ff6600;">动态库(<em>.so)</em></span><span style="color: #000080;">的名称，</span></div><br><div><span style="color: #0000ff;">LOCAL_MODULE</span><span style="color: #000080;">表示模块最终的名称，</span><span style="color: #0000ff;">BUILD_EXECUTABLE</span><span style="color: #000080;">&nbsp;表示以一个可执行程序的方式进行编译。</span></div><br><div><strong>（4）编译C\C++静态库</strong></div><br><div><span style="color: #3366ff;">LOCAL_PATH := $(call my-dir)</span></div><br><div><span style="color: #3366ff;">include $(CLEAR_VARS)</span></div><br><div><span style="color: #3366ff;">LOCAL_SRC_FILES := \</span></div><br><div><span style="color: #3366ff;">&nbsp;helloworld.c</span></div><br><div><span style="color: #3366ff;">LOCAL_MODULE:= libtest_static</span></div><br><div><span style="color: #3366ff;">&nbsp;#LOCAL_C_INCLUDES :=</span></div><br><div><span style="color: #3366ff;">#LOCAL_STATIC_LIBRARIES :=</span></div><br><div><span style="color: #3366ff;">#LOCAL_SHARED_LIBRARIES :=</span></div><br><div><span style="color: #3366ff;">include $(</span><span style="color: #ff6600;">BUILD_STATIC_LIBRARY</span><span style="color: #3366ff;">)</span></div><br><div><span style="color: #000080;">和上面相似，BUILD_STATIC_LIBRARY 表示编译一个静态库。</span></div><br><div><em>*（5）编译C\C++动态库的模板</em></div><br><div><span style="color: #3366ff;">LOCAL_PATH := $(call my-dir)</span></div><br><div><span style="color: #3366ff;">include $(CLEAR_VARS)</span></div><br><div><span style="color: #3366ff;">LOCAL_SRC_FILES := helloworld.c</span></div><br><div><span style="color: #3366ff;">LOCAL_MODULE := libtest_shared</span></div><br><div><span style="color: #3366ff;">TARGET_PRELINK_MODULES := false</span></div><br><div><span style="color: #3366ff;">#LOCAL_C_INCLUDES :=</span></div><br><div><span style="color: #3366ff;">#LOCAL_STATIC_LIBRARIES :=</span></div><br><div><span style="color: #3366ff;">#LOCAL_SHARED_LIBRARIES :=</span></div><br><div><span style="color: #3366ff;">include $(</span><span style="color: #ff6600;">BUILD_SHARED_LIBRARY</span><span style="color: #3366ff;">)</span></div><br><div><span style="color: #000080;">和上面相似，BUILD_SHARED_LIBRARY 表示编译一个共享库。</span></div><br><div><span style="color: #003366;">以上三者的生成结果分别在如下目录中，generic 依具体 target 会变</span>：</div><br><div><span style="color: #0000ff;">out/target/product/generic/obj/APPS</span></div><br><div><span style="color: #0000ff;">out/target/product/generic/obj/JAVA_LIBRARIES</span></div><br><div><span style="color: #0000ff;">out/target/product/generic/obj/EXECUTABLE</span></div><br><div><span style="color: #0000ff;">out/target/product/generic/obj/STATIC_LIBRARY</span></div><br><div><span style="color: #0000ff;">out/target/product/generic/obj/SHARED_LIBRARY</span></div><br><div><span style="color: #000080;">每个模块的目标文件夹分别为</span>：</div><br><div><span style="color: #000080;">1）</span><span style="color: #0000ff;">APK程序</span><span style="color: #000080;">：XXX_intermediates</span></div><br><div><span style="color: #000080;">2）</span><span style="color: #0000ff;">JAVA库程序</span><span style="color: #000080;">：XXX_intermediates</span></div><br><div><span style="color: #000080;">这里的XXX</span></div><br><div><span style="color: #000080;">&nbsp;3）</span><span style="color: #0000ff;">C\C++可执行程序</span><span style="color: #000080;">：XXX_intermediates</span></div><br><div><span style="color: #000080;">&nbsp;4）</span><span style="color: #0000ff;">C\C++静态库</span><span style="color: #000080;">： XXX_static_intermediates</span></div><br><div><span style="color: #000080;">&nbsp;5）</span><span style="color: #0000ff;">C\C++动态库</span><span style="color: #000080;">： XXX_shared_intermediates</span></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2015/08/android-mk.html" data-id="ciiy5f4yn00f8q1d0dukzghny" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2015/08/android-mk.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      </nav>
+    </section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

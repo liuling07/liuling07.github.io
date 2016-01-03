@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java笔记六：线程间的协调 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="昨天重新学习了java多线程的使用，多线程的难点就在线程之间的协调。在《操作系统》一课中，我们学习了进程，其实多线程和多进程一样，都会涉及到多个进程或者线程对某一资源共享访问的问题，当多个线程都需要修改这个资源的时候就会出现线程安全问题。
+　　比如说在银行开个账户会有一个存折和一张卡，如果某一天同一时间丈夫拿着存折去柜台取钱，而妻子拿着银行卡去ATM取钱。当丈夫查询余额里面有3000元，正准备取2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java笔记六：线程间的协调">
+<meta property="og:url" content="http://liuling07.github.io/2013/04/thread-coordinate.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="昨天重新学习了java多线程的使用，多线程的难点就在线程之间的协调。在《操作系统》一课中，我们学习了进程，其实多线程和多进程一样，都会涉及到多个进程或者线程对某一资源共享访问的问题，当多个线程都需要修改这个资源的时候就会出现线程安全问题。
+　　比如说在银行开个账户会有一个存折和一张卡，如果某一天同一时间丈夫拿着存折去柜台取钱，而妻子拿着银行卡去ATM取钱。当丈夫查询余额里面有3000元，正准备取2">
+<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java笔记六：线程间的协调">
+<meta name="twitter:description" content="昨天重新学习了java多线程的使用，多线程的难点就在线程之间的协调。在《操作系统》一课中，我们学习了进程，其实多线程和多进程一样，都会涉及到多个进程或者线程对某一资源共享访问的问题，当多个线程都需要修改这个资源的时候就会出现线程安全问题。
+　　比如说在银行开个账户会有一个存折和一张卡，如果某一天同一时间丈夫拿着存折去柜台取钱，而妻子拿着银行卡去ATM取钱。当丈夫查询余额里面有3000元，正准备取2">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-thread-coordinate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java笔记六：线程间的协调
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/04/thread-coordinate.html">
+      <time datetime="2013-04-17T05:02:00.000Z" itemprop="datePublished">2013-04-17</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>　<span style="color: #000000;">　昨天重新学习了<a href="http://www.cnblogs.com/liuling/archive/2013/04/16/thread.html" target="_blank" rel="external">java多线程的使用</a>，多线程的难点就在线程之间的协调。在《操作系统》一课中，我们学习了进程，其实多线程和多进程一样，都会涉及到多个进程或者线程对某一资源共享访问的问题，当多个线程都需要修改这个资源的时候就会出现线程安全问题。</span></p>
+<p><span style="color: #000000;">　　比如说在银行开个账户会有一个存折和一张卡，如果某一天同一时间丈夫拿着存折去柜台取钱，而妻子拿着银行卡去ATM取钱。当丈夫查询余额里面有3000元，正准备取2000元，这时候妻子也到ATM里面查询也有3000，也取2000元。其实银行不可能让我们这么做，如果这样的话那我们天天取钱去了，还搞什么工作啊。其实在丈夫查询的时候已经对该账号上了锁，另外的银行卡要取钱的话必须等待该锁被释放。下面用一个程序模拟这个例子：</span></p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.sync;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> TestSync2 <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">public</span> BankCard bc = <span style="color: #0000ff;">new</span><span style="color: #000000;"> BankCard();<br></span><span style="color: #008080;"> 5</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;"> 6</span>         TestSync2 test = <span style="color: #0000ff;">new</span><span style="color: #000000;"> TestSync2();<br></span><span style="color: #008080;"> 7</span>         Thread wife = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(test);<br></span><span style="color: #008080;"> 8</span>         Thread husband = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(test);<br></span><span style="color: #008080;"> 9</span>         wife.setName(“wife”<span style="color: #000000;">);<br></span><span style="color: #008080;">10</span>         husband.setName(“husband”<span style="color: #000000;">);<br></span><span style="color: #008080;">11</span> <span style="color: #000000;">        wife.start();<br></span><span style="color: #008080;">12</span> <span style="color: #000000;">        husband.start();<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">14</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;">15</span>         bc.getMoney(Thread.currentThread().getName(), 2000<span style="color: #000000;">);<br></span><span style="color: #008080;">16</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">18</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> BankCard{<br></span><span style="color: #008080;">19</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">int</span> money = 3000;<span style="color: #008000;">//</span><span style="color: #008000;">模拟账户余额</span><br><span style="color: #008080;">20</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">void</span> getMoney(String name,<span style="color: #0000ff;">int</span><span style="color: #000000;"> m){<br></span><span style="color: #008080;">21</span>         <span style="color: #008000;">//</span><span style="color: #008000;">synchronized(this){</span><br><span style="color: #008080;">22</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">23</span>                 Thread.sleep(1<span style="color: #000000;">);<br></span><span style="color: #008080;">24</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">25</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;">26</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">27</span>             <span style="color: #0000ff;">if</span>(money &gt;<span style="color: #000000;"> m){<br></span><span style="color: #008080;">28</span>                 System.out.println(name+”取走了”+m+”元”<span style="color: #000000;">);<br></span><span style="color: #008080;">29</span>                 money = money -<span style="color: #000000;"> m;<br></span><span style="color: #008080;">30</span>             }<span style="color: #0000ff;">else</span><span style="color: #000000;">{<br></span><span style="color: #008080;">31</span>                 System.out.println(“对不起，您的余额不足！”<span style="color: #000000;">);<br></span><span style="color: #008080;">32</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">33</span>         <span style="color: #008000;">//</span><span style="color: #008000;">}</span><br><span style="color: #008080;">34</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">35</span> }</pre><br></div>
+
+<p><span style="color: #000000;">　　上面的例子如果在getMoney()方法上面不加synchronized关键字的话，输出结果为：</span></p>
+<p><span style="color: #000000;">wife取走了2000元</span><br><span style="color: #000000;">husband取走了2000元</span></p>
+<p><span style="color: #000000;">　　而加上synchronized后，输出结果为：</span></p>
+<p><span style="color: #000000;">wife取走了2000元</span><br><span style="color: #000000;">对不起，您的余额不足！</span></p>
+<p><span style="color: #000000;">　　上面两种情况说明，如果多个线程同时访问某个资源，而不给该资源枷锁的话，就会出现问题。而加上synchronized关键字后就可以避免这种错误发生了。它能够保证只有一个线程能够访问getMoney()这个方法，其他药访问该方法的线程必须等待。</span></p>
+<p><span style="color: #000000;">锁住某个资源可以用synchronized关键字来修饰一个方法或者同步代码块，这样能保证同一时间只能由一个线程访问该资源。</span></p>
+<p>&nbsp; 　　<span style="color: #000000;">①、当两个并发线程访问同一个对象object中的这个synchronized(this)同步代码块时，一个时间内只能有一个线程得到执行。另一个线程必须等待当前线程执行完这个代码块以后才能执行该代码块。</span></p>
+<p><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;　 ②、然而，当一个线程访问object的一个synchronized(this)同步代码块时，另一个线程仍然可以访问该object中的非synchronized(this)同步代码块。</span></p>
+<p><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ③、尤其关键的是，当一个线程访问object的一个synchronized(this)同步代码块时，其他线程对object中所有其它synchronized(this)同步代码块的访问将被阻塞。</span></p>
+<p><span style="color: #000000;">　　我们都知道，操作系统中多个进程之间如果不进行协调就很容易出现死锁的情况，死锁的四个条件：互斥、占有等待、非剥夺、循环等待。我们只要破坏其中一个条件就能避免死锁发生。线程之间也容易出现死锁，下面这个例子就演示了死锁的情况：</span></p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.sync;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> com.thread.SleepTest;<br></span><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span><br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> TestDeadLock <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">int</span> flag = 1<span style="color: #000000;">;<br></span><span style="color: #008080;"> 8</span>     <span style="color: #0000ff;">static</span> Object o1 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Object();<br></span><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">static</span> Object o2 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Object();<br></span><span style="color: #008080;">10</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;">11</span> <span style="color: #000000;">        System.out.println(flag);<br></span><span style="color: #008080;">12</span>         <span style="color: #0000ff;">if</span>(flag == 1<span style="color: #000000;">){<br></span><span style="color: #008080;">13</span>             <span style="color: #0000ff;">synchronized</span><span style="color: #000000;"> (o1) {<br></span><span style="color: #008080;">14</span>                 <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">15</span>                     Thread.sleep(1000<span style="color: #000000;">);<br></span><span style="color: #008080;">16</span>                 } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">                    e.printStackTrace();<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">19</span>                 <span style="color: #0000ff;">synchronized</span><span style="color: #000000;"> (o2) {<br></span><span style="color: #008080;">20</span>                     System.out.println(“1”<span style="color: #000000;">);<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">23</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">24</span>         <span style="color: #0000ff;">if</span>(flag == 0<span style="color: #000000;">){<br></span><span style="color: #008080;">25</span>             <span style="color: #0000ff;">synchronized</span> (o2) {<span style="color: #008000;">//</span><span style="color: #008000;">锁住某个对象，相当于占有该对象不让其他人使用</span><br><span style="color: #008080;">26</span>                 <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">27</span>                     Thread.sleep(1000<span style="color: #000000;">);<br></span><span style="color: #008080;">28</span>                 } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">29</span> <span style="color: #000000;">                    e.printStackTrace();<br></span><span style="color: #008080;">30</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">31</span>                 <span style="color: #0000ff;">synchronized</span><span style="color: #000000;"> (o1) {<br></span><span style="color: #008080;">32</span>                     System.out.println(“0”<span style="color: #000000;">);<br></span><span style="color: #008080;">33</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">34</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">35</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">36</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">37</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;">38</span>         TestDeadLock t1 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> TestDeadLock();<br></span><span style="color: #008080;">39</span>         TestDeadLock t2 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> TestDeadLock();<br></span><span style="color: #008080;">40</span>         t1.flag = 1<span style="color: #000000;">;<br></span><span style="color: #008080;">41</span>         t2.flag = 0<span style="color: #000000;">;<br></span><span style="color: #008080;">42</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(t1).start();<br></span><span style="color: #008080;">43</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(t2).start();<br></span><span style="color: #008080;">44</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">45</span> }</pre><br></div>
+
+<p><span style="color: #000000;">　　运行程序输出1&nbsp;&nbsp;&nbsp; 0后就进入死锁状态，该程序永远也不会停止，因为两个线程同时处于等待状态。线程t1锁住了o1对象，等待o2对象，而线程t2锁住o2等待o2对象，谁也不让谁，这就进入了一个循环占有等待的情况了，死锁也就出现了。</span></p>
+<p><span style="color: #000000;">　　所以，如果多个线程如果不进行协调的话很容易出现死锁的问题。操作系统中使用进程调度来协调各个进程，那么java重如何对各个线程进行协调呢？</span></p>
+<p><span style="color: #000000;">　　java中主要使用Object类中的wait()、notify()、notifyAll()方法来协调各个线程。典型的例子有哲学家吃饭问题、生产者和消费者问题、理发师问题。下面一个用一个例子来演示生产者和消费者问题。</span></p>
+<p><span style="color: #000000;">　　问题描述：生产者负责做馒头，做好馒头后放进指定的篓子里面，消费者消费该篓子里面的馒头。篓子里只能装一定量的馒头，满了以后生产者必须进入等待状态，消费者吃完馒头后也必须进入等待状态。</span></p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.sync;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ProductAndConsumer {<br></span><span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;"> 5</span>         Basket b = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Basket();<br></span><span style="color: #008080;"> 6</span>         Product p = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Product(b);<br></span><span style="color: #008080;"> 7</span>         Consumer c = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Consumer(b);<br></span><span style="color: #008080;"> 8</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(p).start();<br></span><span style="color: #008080;"> 9</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(c).start();<br></span><span style="color: #008080;">10</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">11</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">12</span><br><span style="color: #008080;">13</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ManTou{<br></span><span style="color: #008080;">14</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> id;<br></span><span style="color: #008080;">15</span>     <span style="color: #0000ff;">public</span> ManTou(<span style="color: #0000ff;">int</span><span style="color: #000000;"> id) {<br></span><span style="color: #008080;">16</span>         <span style="color: #0000ff;">this</span>.id =<span style="color: #000000;"> id;<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;">19</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> String toString() {<br></span><span style="color: #008080;">20</span>         <span style="color: #0000ff;">return</span> “ManTou”+<span style="color: #000000;">id;<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">23</span><br><span style="color: #008080;">24</span> <span style="color: #008000;">//</span><span style="color: #008000;">装馒头的篮子</span><br><span style="color: #008080;">25</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Basket{<br></span><span style="color: #008080;">26</span>     <span style="color: #0000ff;">int</span> index = 0; <span style="color: #008000;">//</span><span style="color: #008000;">相当于栈顶指针</span><br><span style="color: #008080;">27</span>     ManTou[] manTous = <span style="color: #0000ff;">new</span> ManTou[6<span style="color: #000000;">];<br></span><span style="color: #008080;">28</span>     <span style="color: #008000;">//</span><span style="color: #008000;">往篮子里面放馒头</span><br><span style="color: #008080;">29</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> push(ManTou m){<br></span><span style="color: #008080;">30</span>         <span style="color: #0000ff;">while</span>(index ==<span style="color: #000000;"> manTous.length){<br></span><span style="color: #008080;">31</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">32</span>                 <span style="color: #0000ff;">this</span><span style="color: #000000;">.wait();<br></span><span style="color: #008080;">33</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">34</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;">35</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">36</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">37</span>         <span style="color: #0000ff;">this</span><span style="color: #000000;">.notify();<br></span><span style="color: #008080;">38</span>         manTous[index] =<span style="color: #000000;"> m;<br></span><span style="color: #008080;">39</span>         index++<span style="color: #000000;">;<br></span><span style="color: #008080;">40</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">41</span>     <span style="color: #008000;">//</span><span style="color: #008000;">往篮子里面取馒头</span><br><span style="color: #008080;">42</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span><span style="color: #000000;"> ManTou pop(){<br></span><span style="color: #008080;">43</span>         <span style="color: #0000ff;">while</span>(index == 0<span style="color: #000000;">){<br></span><span style="color: #008080;">44</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">45</span>                 <span style="color: #0000ff;">this</span><span style="color: #000000;">.wait();<br></span><span style="color: #008080;">46</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">47</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;">48</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">49</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">50</span>         <span style="color: #0000ff;">this</span><span style="color: #000000;">.notify();<br></span><span style="color: #008080;">51</span>         index–<span style="color: #000000;">;<br></span><span style="color: #008080;">52</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> manTous[index];<br></span><span style="color: #008080;">53</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">54</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">55</span> <span style="color: #008000;">//</span><span style="color: #008000;">生产者</span><br><span style="color: #008080;">56</span> <span style="color: #0000ff;">class</span> Product <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;">57</span> <span style="color: #000000;">    Basket basket;<br></span><span style="color: #008080;">58</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Product(Basket basket) {<br></span><span style="color: #008080;">59</span>         <span style="color: #0000ff;">this</span>.basket =<span style="color: #000000;"> basket;<br></span><span style="color: #008080;">60</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">61</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;">62</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; 20; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;">63</span>             ManTou m = <span style="color: #0000ff;">new</span><span style="color: #000000;"> ManTou(i);<br></span><span style="color: #008080;">64</span> <span style="color: #000000;">            basket.push(m);<br></span><span style="color: #008080;">65</span>             System.out.println(“生产了”+<span style="color: #000000;">m);<br></span><span style="color: #008080;">66</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">67</span>                 Thread.sleep(1<span style="color: #000000;">);<br></span><span style="color: #008080;">68</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">69</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;">70</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">71</span><br><span style="color: #008080;">72</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">73</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">74</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">75</span><br><span style="color: #008080;">76</span> <span style="color: #008000;">//</span><span style="color: #008000;">消费者</span><br><span style="color: #008080;">77</span> <span style="color: #0000ff;">class</span> Consumer <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;">78</span> <span style="color: #000000;">    Basket basket;<br></span><span style="color: #008080;">79</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Consumer(Basket basket) {<br></span><span style="color: #008080;">80</span>         <span style="color: #0000ff;">this</span>.basket =<span style="color: #000000;"> basket;<br></span><span style="color: #008080;">81</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">82</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;">83</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; 20; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;">84</span>             ManTou m =<span style="color: #000000;"> basket.pop();<br></span><span style="color: #008080;">85</span>             System.out.println(“消费了”+<span style="color: #000000;">m);<br></span><span style="color: #008080;">86</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">87</span>                 Thread.sleep((<span style="color: #0000ff;">int</span>)(Math.random()*1000<span style="color: #000000;">));<br></span><span style="color: #008080;">88</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">89</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;">90</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">91</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">92</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">93</span> }</pre><br></div>
+
+<p><span style="color: #000000;">　　wait()、notify()、notifyAll()方法的作用：</span></p>
+<p><span style="color: #000000;">　　　　wait():导致当前的线程等待，直到其他线程调用此对象的 <a href="http://www.cnblogs.com/java/lang/Object.html#notify(" target="_blank" rel="external"><code>notify()</code></a>) 方法或 <a href="http://www.cnblogs.com/java/lang/Object.html#notifyAll(" target="_blank" rel="external"><code>notifyAll()</code></a>) 方法。</span></p>
+<p><span style="color: #000000;">　　　　notify():唤醒在此对象监视器上等待的单个线程。</span></p>
+<p>　　　　notifyAll():唤醒在此对象监视器上等待的所有线程。</p>
+<p><span style="color: #000000;">　　wait()与sleep()的区别：</span></p>
+<p><span style="color: #000000;">　　　　两个方法的共同点就是让当前线程进入等待状态。</span></p>
+<p><span style="color: #000000;">　　　　不同点：</span></p>
+<p><span style="color: #000000;">　　　　wait()之后，锁就不归我所有了，必须等醒过来后才能拥有该锁，并且必须要有人唤醒它才会醒过来<br>　　　　sleep()不同，锁还是归我所有，一段时间后会自动醒过来</span></p>
+<p><span style="color: #000000;">　　</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/04/thread-coordinate.html" data-id="ciiy5f4p5000iq1d08fpy9rgr" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/04/thread-coordinate.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/04/observer.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          设计模式之观察者模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/04/java-multi-thread.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">java笔记五：多线程的使用</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-thread-coordinate" data-title="java笔记六：线程间的协调" data-url="http://liuling07.github.io/2013/04/thread-coordinate.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

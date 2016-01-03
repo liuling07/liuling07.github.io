@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>dom4j解析xml文件 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、利用dom4j创建一个内容如下的xml文件SqlMapConfig.xml
+ 1 &amp;lt;?xml version=”1.0” encoding=”UTF-8” ?&amp;gt; 2 &amp;lt;!DOCTYPE configuration PUBLIC “-//ibatis.apache.org//DTD Config 3.0//EN” 3                        “ibatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dom4j解析xml文件">
+<meta property="og:url" content="http://liuling07.github.io/2013/02/dom4j-xml.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="一、利用dom4j创建一个内容如下的xml文件SqlMapConfig.xml
+ 1 &amp;lt;?xml version=”1.0” encoding=”UTF-8” ?&amp;gt; 2 &amp;lt;!DOCTYPE configuration PUBLIC “-//ibatis.apache.org//DTD Config 3.0//EN” 3                        “ibatis">
+<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dom4j解析xml文件">
+<meta name="twitter:description" content="一、利用dom4j创建一个内容如下的xml文件SqlMapConfig.xml
+ 1 &amp;lt;?xml version=”1.0” encoding=”UTF-8” ?&amp;gt; 2 &amp;lt;!DOCTYPE configuration PUBLIC “-//ibatis.apache.org//DTD Config 3.0//EN” 3                        “ibatis">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-dom4j-xml" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      dom4j解析xml文件
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/02/dom4j-xml.html">
+      <time datetime="2013-02-05T07:21:00.000Z" itemprop="datePublished">2013-02-05</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>一、利用dom4j创建一个内容如下的xml文件SqlMapConfig.xml</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">&lt;?</span><span style="color: #ff00ff;">xml version=”1.0” encoding=”UTF-8” </span><span style="color: #0000ff;">?&gt;</span><br><span style="color: #008080;"> 2</span> <span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE configuration PUBLIC “-//ibatis.apache.org//DTD Config 3.0//EN”<br></span><span style="color: #008080;"> 3</span> <span style="color: #ff00ff;">                       “ibatis-3-config.dtd”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">configuration</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 5</span>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">environments </span><span style="color: #ff0000;">default</span><span style="color: #0000ff;">=”development”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 6</span>       <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">environment </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">=”MySQL”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 7</span>          <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">transactionManager </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">=”JDBC”</span><span style="color: #0000ff;">&gt;</span>123<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">transactionManager</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 8</span>          <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">dataSource </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">=”POOLED”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 9</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”driver”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”com.mysql.jdbc.Driver”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">10</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”url”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”jdbc:mysql://127.0.0.1:3306/test”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">11</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”username”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”root”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">12</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”password”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”admin”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">13</span>          <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">dataSource</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">14</span>       <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">environment</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">15</span>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">environments</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">16</span><br><span style="color: #008080;">17</span>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">mappers</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">18</span>       <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">mapper </span><span style="color: #ff0000;">resource</span><span style="color: #0000ff;">=”com/pojo/sql/DepMap.xml”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">19</span>       <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">mapper </span><span style="color: #ff0000;">resource</span><span style="color: #0000ff;">=”com/pojo/sql/EmpMap.xml”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">20</span>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">mappers</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">21</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">configuration</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
+
+<p>步骤：<br>&nbsp;1.创建一个输出流，指定创建的SqlMapConfig.xml文件的位置——-OutputStream<br>&nbsp;&nbsp;&nbsp; OutputStream os = new FileOutputStream(“d:/SqlMapConfig.xml”);<br>&nbsp;2.创建一个xml编写器——-XMLWriter<br>&nbsp;&nbsp;&nbsp; XMLWriter writer = new XMLWriter(os,OutputFormat.createPrettyPrint());<br>&nbsp;&nbsp;&nbsp; 这里os是前面新建的一个输出流，OutputFormat.createPrettyPrint()是指定输出的格式的，这里代表内容缩进。<br>&nbsp;3.创建xml文档——-Document、DocumentHelper<br>&nbsp;&nbsp;&nbsp; Document document = DocumentHelper.createDocument();<br>&nbsp;4.创建里面的所有结点元素——-Elemenet<br>&nbsp;&nbsp;&nbsp; Element configuration = document.addElement(“configuration”);<br>&nbsp;&nbsp;&nbsp;…………..<br>&nbsp;&nbsp;&nbsp; 新建结点元素的形式是：Element 子结点 = 父节点.addElement(“子结点名”);<br>&nbsp;&nbsp;&nbsp; 给结点元素添加属性是：结点.addAttribute(“属性名”, “属性值”);<br>&nbsp;5.保存xml<br>&nbsp;&nbsp;&nbsp; writer.write(document);<br>代码如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> CreateXML {<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span>     <span style="color: #008000;">/<em>*</em></span><br><span style="color: #008080;"> 4</span> <span style="color: #008000;">      </span><span style="color: #808080;">@param</span><span style="color: #008000;"> args<br></span><span style="color: #008080;"> 5</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@throws</span><span style="color: #008000;"> IOException<br></span><span style="color: #008080;"> 6</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException {<br></span><span style="color: #008080;"> 8</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建一个输出流，指定创建的xml文件的位置</span><br><span style="color: #008080;"> 9</span>         OutputStream os = <span style="color: #0000ff;">new</span> FileOutputStream(“d:/SqlMapConfig.xml”<span style="color: #000000;">);<br></span><span style="color: #008080;">10</span><br><span style="color: #008080;">11</span>         XMLWriter writer = <span style="color: #0000ff;">new</span><span style="color: #000000;"> XMLWriter(os,OutputFormat.createPrettyPrint());<br></span><span style="color: #008080;">12</span><br><span style="color: #008080;">13</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建Document</span><br><span style="color: #008080;">14</span>         Document document =<span style="color: #000000;"> DocumentHelper.createDocument();<br></span><span style="color: #008080;">15</span><br><span style="color: #008080;">16</span>         Element configuration = document.addElement(“configuration”<span style="color: #000000;">);<br></span><span style="color: #008080;">17</span><br><span style="color: #008080;">18</span>         Element environments = configuration.addElement(“environments”<span style="color: #000000;">);<br></span><span style="color: #008080;">19</span>         environments.addAttribute(“default”, “development”<span style="color: #000000;">);<br></span><span style="color: #008080;">20</span><br><span style="color: #008080;">21</span>         Element environment = environments.addElement(“environment”<span style="color: #000000;">);<br></span><span style="color: #008080;">22</span>         environment.addAttribute(“id”, “MySQL”<span style="color: #000000;">);<br></span><span style="color: #008080;">23</span>         Element transactionManager = environment.addElement(“transactionManager”<span style="color: #000000;">);<br></span><span style="color: #008080;">24</span>         transactionManager.addAttribute(“type”, “JDBC”<span style="color: #000000;">);<br></span><span style="color: #008080;">25</span>         transactionManager.setText(“123”<span style="color: #000000;">);<br></span><span style="color: #008080;">26</span><br><span style="color: #008080;">27</span>         Element dataSource = environment.addElement(“dataSource”<span style="color: #000000;">);<br></span><span style="color: #008080;">28</span>         dataSource.addAttribute(“type”, “POOLED”<span style="color: #000000;">);<br></span><span style="color: #008080;">29</span>         Element driver = dataSource.addElement(“property”<span style="color: #000000;">);<br></span><span style="color: #008080;">30</span>         driver.addAttribute(“name”, “driver”<span style="color: #000000;">);<br></span><span style="color: #008080;">31</span>         driver.addAttribute(“value”, “com.mysql.jdbc.Driver”<span style="color: #000000;">);<br></span><span style="color: #008080;">32</span>         Element url = dataSource.addElement(“property”<span style="color: #000000;">);<br></span><span style="color: #008080;">33</span>         url.addAttribute(“name”, “url”<span style="color: #000000;">);<br></span><span style="color: #008080;">34</span>         url.addAttribute(“value”, “jdbc:mysql://127.0.0.1:3306/test”<span style="color: #000000;">);<br></span><span style="color: #008080;">35</span>         Element username = dataSource.addElement(“property”<span style="color: #000000;">);<br></span><span style="color: #008080;">36</span>         username.addAttribute(“name”, “username”<span style="color: #000000;">);<br></span><span style="color: #008080;">37</span>         username.addAttribute(“value”, “root”<span style="color: #000000;">);<br></span><span style="color: #008080;">38</span>         Element password = dataSource.addElement(“property”<span style="color: #000000;">);<br></span><span style="color: #008080;">39</span>         password.addAttribute(“name”, “password”<span style="color: #000000;">);<br></span><span style="color: #008080;">40</span>         password.addAttribute(“value”, “admin”<span style="color: #000000;">);<br></span><span style="color: #008080;">41</span><br><span style="color: #008080;">42</span>         Element mappers = configuration.addElement(“mappers”<span style="color: #000000;">);<br></span><span style="color: #008080;">43</span>         Element mapper1 = mappers.addElement(“mapper”<span style="color: #000000;">);<br></span><span style="color: #008080;">44</span>         mapper1.addAttribute(“resource”, “com/pojo/sql/DepMap.xml”<span style="color: #000000;">);<br></span><span style="color: #008080;">45</span>         Element mapper2 = mappers.addElement(“mapper”<span style="color: #000000;">);<br></span><span style="color: #008080;">46</span>         mapper2.addAttribute(“resource”, “com/pojo/sql/EmpMap.xml”<span style="color: #000000;">);<br></span><span style="color: #008080;">47</span>         <span style="color: #008000;">//</span><span style="color: #008000;">保存xml</span><br><span style="color: #008080;">48</span> <span style="color: #000000;">        writer.write(document);<br></span><span style="color: #008080;">49</span> <span style="color: #000000;">        writer.close();<br></span><span style="color: #008080;">50</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">51</span> }</pre><br></div>
+
+<p>二、查找xml文件的内容<br>&nbsp;&nbsp;&nbsp; 查找xml文件内容有两种情况，第一种就是查找出所有同名的结点元素然后遍历、第二种就是直接找到某个结点元素<br>&nbsp;&nbsp;&nbsp; 比如遍历SqlMapConfig.xml,将driver、url、username、password的值读取出来就有两种方法，代码如下<br>方法一：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> GetNodes {<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span>     <span style="color: #008000;">/<em>*</em></span><span style="color: #008000;">方法一：<br></span><span style="color: #008080;"> 4</span> <span style="color: #008000;">      遍历新建的xml,将driver、url、username、password的值读取出来<br></span><span style="color: #008080;"> 5</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> args<br></span><span style="color: #008080;"> 6</span> <span style="color: #008000;">      </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> IOException<br></span><span style="color: #008080;"> 7</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@throws</span><span style="color: #008000;"> DocumentException<br></span><span style="color: #008080;"> 8</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException, DocumentException {<br></span><span style="color: #008080;">10</span>         SAXReader reader = <span style="color: #0000ff;">new</span><span style="color: #000000;"> SAXReader();<br></span><span style="color: #008080;">11</span>         Document document = reader.read(“d:/SqlMapConfig.xml”<span style="color: #000000;">);<br></span><span style="color: #008080;">12</span>         List<element> elements = document.selectNodes(“/configuration/environments/environment/dataSource/property”<span style="color: #000000;">);<br></span><span style="color: #008080;">13</span>         String driver = “”<span style="color: #000000;">;<br></span><span style="color: #008080;">14</span>         String url = “”<span style="color: #000000;">;<br></span><span style="color: #008080;">15</span>         String username = “”<span style="color: #000000;">;<br></span><span style="color: #008080;">16</span>         String password = “”<span style="color: #000000;">;<br></span><span style="color: #008080;">17</span>         <span style="color: #0000ff;">for</span><span style="color: #000000;"> (Element e : elements) {<br></span><span style="color: #008080;">18</span>             String name = e.attributeValue(“name”<span style="color: #000000;">);<br></span><span style="color: #008080;">19</span>             String value = e.attributeValue(“value”<span style="color: #000000;">);<br></span><span style="color: #008080;">20</span>             <span style="color: #0000ff;">if</span>(“driver”<span style="color: #000000;">.equals(name)){<br></span><span style="color: #008080;">21</span>                 driver =<span style="color: #000000;"> value;<br></span><span style="color: #008080;">22</span>             }<span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span>(“url”<span style="color: #000000;">.equals(name)){<br></span><span style="color: #008080;">23</span>                 url =<span style="color: #000000;"> value;<br></span><span style="color: #008080;">24</span>             }<span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span>(“username”<span style="color: #000000;">.equals(name)){<br></span><span style="color: #008080;">25</span>                 username =<span style="color: #000000;"> value;<br></span><span style="color: #008080;">26</span>             }<span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span>(“password”<span style="color: #000000;">.equals(name)){<br></span><span style="color: #008080;">27</span>                 password =<span style="color: #000000;"> value;<br></span><span style="color: #008080;">28</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">29</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">30</span>         System.out.println(“driver:”+driver+”,url:”+url+”,username:”+username+”,password:”+<span style="color: #000000;">password);<br></span><span style="color: #008080;">31</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">32</span> }</element></pre><br></div>
+
+<p>　　这里List<element> elements = document.selectNodes(“/configuration/environments/environment/dataSource/property”)是指将名为property的结点元素全部找出来，用一个List接收。<br>方法二：</element></p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> GetNodes1 {<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span>     <span style="color: #008000;">/<em>*</em></span><span style="color: #008000;">方法二：<br></span><span style="color: #008080;"> 4</span> <span style="color: #008000;">      将driver、url、username、password的值读取出来<br></span><span style="color: #008080;"> 5</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> args<br></span><span style="color: #008080;"> 6</span> <span style="color: #008000;">      </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> IOException<br></span><span style="color: #008080;"> 7</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@throws</span><span style="color: #008000;"> DocumentException<br></span><span style="color: #008080;"> 8</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException, DocumentException {<br></span><span style="color: #008080;">10</span>         SAXReader reader = <span style="color: #0000ff;">new</span><span style="color: #000000;"> SAXReader();<br></span><span style="color: #008080;">11</span>         Document document = reader.read(“d:/SqlMapConfig.xml”<span style="color: #000000;">);<br></span><span style="color: #008080;">12</span>         Element driverElement = (Element)document.selectSingleNode(“/configuration/environments/environment/dataSource/property[@name=’driver’]”<span style="color: #000000;">);<br></span><span style="color: #008080;">13</span>         Element urlElement = (Element)document.selectSingleNode(“/configuration/environments/environment/dataSource/property[@name=’url’]”<span style="color: #000000;">);<br></span><span style="color: #008080;">14</span>         Element usernameElement = (Element)document.selectSingleNode(“/configuration/environments/environment/dataSource/property[@name=’username’]”<span style="color: #000000;">);<br></span><span style="color: #008080;">15</span>         Element passwordElement = (Element)document.selectSingleNode(“/configuration/environments/environment/dataSource/property[@name=’password’]”<span style="color: #000000;">);<br></span><span style="color: #008080;">16</span>         String driver = driverElement.attributeValue(“value”<span style="color: #000000;">);<br></span><span style="color: #008080;">17</span>         String url = urlElement.attributeValue(“value”<span style="color: #000000;">);<br></span><span style="color: #008080;">18</span>         String username = usernameElement.attributeValue(“value”<span style="color: #000000;">);<br></span><span style="color: #008080;">19</span>         String password = passwordElement.attributeValue(“value”<span style="color: #000000;">);<br></span><span style="color: #008080;">20</span><br><span style="color: #008080;">21</span>         System.out.println(“driver:”+driver+”,url:”+url+”,username:”+username+”,password:”+<span style="color: #000000;">password);<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">23</span> }</pre><br></div>
+
+<p>　　这种方法就没有遍历了，就是直接将要查找的结点找出来，用selectSingleNode()函数。这里的[@name=’driver’]是指名找到哪一个property结点，相当于一个键值对，表示找有name=”driver”属性的property结点。<br>形式为[@属性名=’属性值’]。</p>
+<p>三、修改XML文件<br>&nbsp;&nbsp;&nbsp; 步骤：<br>&nbsp;&nbsp;&nbsp; 1.读取要修改的xml文件<br>&nbsp;&nbsp;&nbsp; 2.查找到要修改的结点<br>&nbsp;&nbsp;&nbsp; 3.保存<br>代码如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> UpdateNode {<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span>     <span style="color: #008000;">/<em>*</em></span><br><span style="color: #008080;"> 4</span> <span style="color: #008000;">      修改密码为123456<br></span><span style="color: #008080;"> 5</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> args<br></span><span style="color: #008080;"> 6</span> <span style="color: #008000;">      </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> DocumentException<br></span><span style="color: #008080;"> 7</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@throws</span><span style="color: #008000;"> IOException<br></span><span style="color: #008080;"> 8</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> DocumentException, IOException {<br></span><span style="color: #008080;">10</span>         <span style="color: #008000;">//</span><span style="color: #008000;">读取并修改</span><br><span style="color: #008080;">11</span>         SAXReader reader = <span style="color: #0000ff;">new</span><span style="color: #000000;"> SAXReader();<br></span><span style="color: #008080;">12</span>         Document document = reader.read(“d:/SqlMapConfig.xml”<span style="color: #000000;">);<br></span><span style="color: #008080;">13</span>         Element passwordElement = (Element)document.selectSingleNode(“/configuration/environments/environment/dataSource/property[@name=’password’]”<span style="color: #000000;">);<br></span><span style="color: #008080;">14</span>         passwordElement.addAttribute(“value”, “123456”<span style="color: #000000;">);<br></span><span style="color: #008080;">15</span>         <span style="color: #008000;">//</span><span style="color: #008000;">保存</span><br><span style="color: #008080;">16</span>         OutputStream os = <span style="color: #0000ff;">new</span> FileOutputStream(“d:/SqlMapConfig.xml”<span style="color: #000000;">);<br></span><span style="color: #008080;">17</span>         XMLWriter writer = <span style="color: #0000ff;">new</span><span style="color: #000000;"> XMLWriter(os,OutputFormat.createPrettyPrint());<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">        writer.write(document);<br></span><span style="color: #008080;">19</span> <span style="color: #000000;">        writer.close();<br></span><span style="color: #008080;">20</span> <span style="color: #000000;">        os.close();<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">22</span><br><span style="color: #008080;">23</span> }</pre><br></div>
+
+<p>四、删除XML文件的某个结点元素<br>　　删除和修改一样，也是要先找到要删除的结点，然后删除之，最后保存修改过的文件。删除结点的形式为：父节点.remove(子节点);<br>代码如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> DeleteNode {<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span>     <span style="color: #008000;">/<em>*</em></span><br><span style="color: #008080;"> 4</span> <span style="color: #008000;">      删除密码结点<br></span><span style="color: #008080;"> 5</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> args<br></span><span style="color: #008080;"> 6</span> <span style="color: #008000;">      </span><span style="color: #808080;">@throws</span><span style="color: #008000;"> DocumentException<br></span><span style="color: #008080;"> 7</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@throws</span><span style="color: #008000;"> IOException<br></span><span style="color: #008080;"> 8</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> DocumentException, IOException {<br></span><span style="color: #008080;">10</span>         <span style="color: #008000;">//</span><span style="color: #008000;">找到结点并删除</span><br><span style="color: #008080;">11</span>         SAXReader reader = <span style="color: #0000ff;">new</span><span style="color: #000000;"> SAXReader();<br></span><span style="color: #008080;">12</span>         Document document = reader.read(“d:/SqlMapConfig.xml”<span style="color: #000000;">);<br></span><span style="color: #008080;">13</span>         Element passwordElement = (Element) document.selectSingleNode(“/configuration/environments/environment/dataSource/property[@name=’password’]”<span style="color: #000000;">);<br></span><span style="color: #008080;">14</span> <span style="color: #000000;">        passwordElement.getParent().remove(passwordElement);<br></span><span style="color: #008080;">15</span><br><span style="color: #008080;">16</span>         <span style="color: #008000;">//</span><span style="color: #008000;">保存</span><br><span style="color: #008080;">17</span>         OutputStream os = <span style="color: #0000ff;">new</span> FileOutputStream(“d:/SqlMapConfig.xml”<span style="color: #000000;">);<br></span><span style="color: #008080;">18</span>         XMLWriter writer = <span style="color: #0000ff;">new</span><span style="color: #000000;"> XMLWriter(os,OutputFormat.createPrettyPrint());<br></span><span style="color: #008080;">19</span> <span style="color: #000000;">        writer.write(document);<br></span><span style="color: #008080;">20</span> <span style="color: #000000;">        writer.close();<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">        os.close();<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">23</span> }</pre><br></div>
+
+<p>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/02/dom4j-xml.html" data-id="ciiy5f4wb00bsq1d0fr4gxfor" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/02/dom4j-xml.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/02/nosuchmethoderror-asm.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          java.lang.NoSuchMethodError: org.objectweb.asm.ClassVisitor.visit(IILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V错误解决方案
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/02/design-partten-factory.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">抽象工厂之更换皮肤</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-dom4j-xml" data-title="dom4j解析xml文件" data-url="http://liuling07.github.io/2013/02/dom4j-xml.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

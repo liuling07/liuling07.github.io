@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>shell语法使用 | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这两天初次接触shell编程，所谓shell编程其实就是用一定的语法将各种基本的命令组合起来，让shell程序去解释执行。如果对windows的dos有了解，可以这样理解，其实shell脚本文件和.bat批处理文件差不多，不过linux下的shell比起windows的dos强大很多。
+　　shell有很多种，如bash、sh 、tcsh、 ksh等，linux系统里面默认使用的是bash。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell语法使用">
+<meta property="og:url" content="http://liuling07.github.io/2013/08/shell.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="这两天初次接触shell编程，所谓shell编程其实就是用一定的语法将各种基本的命令组合起来，让shell程序去解释执行。如果对windows的dos有了解，可以这样理解，其实shell脚本文件和.bat批处理文件差不多，不过linux下的shell比起windows的dos强大很多。
+　　shell有很多种，如bash、sh 、tcsh、 ksh等，linux系统里面默认使用的是bash。">
+<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell语法使用">
+<meta name="twitter:description" content="这两天初次接触shell编程，所谓shell编程其实就是用一定的语法将各种基本的命令组合起来，让shell程序去解释执行。如果对windows的dos有了解，可以这样理解，其实shell脚本文件和.bat批处理文件差不多，不过linux下的shell比起windows的dos强大很多。
+　　shell有很多种，如bash、sh 、tcsh、 ksh等，linux系统里面默认使用的是bash。">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-shell" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shell语法使用
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/08/shell.html">
+      <time datetime="2013-08-03T08:48:00.000Z" itemprop="datePublished">2013-08-03</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>　　这两天初次接触shell编程，所谓shell编程其实就是用一定的语法将各种基本的命令组合起来，让shell程序去解释执行。如果对windows的dos有了解，可以这样理解，其实shell脚本文件和.bat批处理文件差不多，不过linux下的shell比起windows的dos强大很多。</p>
+<p>　　shell有很多种，如bash、sh 、tcsh、 ksh等，linux系统里面默认使用的是bash。</p>
+<p>　　下面看一下学习shell的第一个程序：</p>
+<p>　　输入命令vi my_01.sh，创建一个my_01.sh文件并用vi编辑器打开。编辑内容如下：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;">2</span> <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">aaaa</span><span style="color: #800000;">“</span><br><span style="color: #008080;">3</span> <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">第一次接触shell</span><span style="color: #800000;">“</span></pre><br></div>
+
+<p>　　这里第一行是指让bash这个shell去执行这个shell程序。echo是用来输出的，第二行和第三行分别输出两句话。</p>
+<p>执行这个shell程序可以用如下几种方法：</p>
+<p>　　1&nbsp; ./my_01.sh</p>
+<p>　　2&nbsp; . my_01.sh</p>
+<p>　　3&nbsp; bash my_01.sh</p>
+<p><span style="color: #ff0000;">注：新创建的文件默认是没有执行权限的，所以必须给该文件授予执行权限后才能执行。授权命令：chmod u+x my_01.sh或者chmod 755 my_01.sh</span></p>
+<p>　　下面是第二个shell程序：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;">2</span> #my_02.<span style="color: #0000ff;">sh</span><br><span style="color: #008080;">3</span> read -p <span style="color: #800000;">“</span><span style="color: #800000;">please input your name:</span><span style="color: #800000;">“</span><span style="color: #000000;"> name<br></span><span style="color: #008080;">4</span> <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">$name,welcome!</span><span style="color: #800000;">“</span></pre><br></div>
+
+<p>　　这里第三行read命令是指等待用户输入，-p后面是指提示，它还有一个参数-t是设置等待时间的。这个程序运行结果如下：</p>
+<p>[liuling@bogon test]$ ./my_02.sh<br>please input your name:liuling<br>liuling,welcome!</p>
+<p>　<span style="background-color: #ffffff;">　<span style="color: #ff0000;">注：第四行echo使用的是双引号，如果使用单引号的话，则这句就会直接输出 $name,welcome! 。双引号是可以解析里面的变量的，而单引号则不行。</span></span></p>
+<p><strong><span style="color: #808080; background-color: #ffffff;"><span style="color: #000000;">下面看看shell脚本的语法：</span></span></strong></p>
+<p><span style="color: #808080; background-color: #ffffff;"><span style="color: #000000;">一、条件判断if else的使用</span></span></p>
+<p><span style="color: #808080; background-color: #ffffff;"><span style="color: #000000;">if分支语句的写法：</span></span></p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">if</span><span style="color: #000000;"> 条件测试<br>    </span><span style="color: #0000ff;">then</span><span style="color: #000000;"> 满足条件执行什么<br>    </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> 不满足条件执行什么<br></span><span style="color: #0000ff;">fi</span></pre><br></div>
+
+<p><span style="color: #808080; background-color: #ffffff;"><span style="color: #000000;">多分支写法：</span></span></p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">if</span><span style="color: #000000;"> 条件1<br>    </span><span style="color: #0000ff;">then</span><span style="color: #000000;"><br>    执行命令2<br></span><span style="color: #0000ff;">elif</span><span style="color: #000000;"> 条件1<br>    </span><span style="color: #0000ff;">then</span><span style="color: #000000;"><br>    执行命令2<br></span><span style="color: #0000ff;">else</span><span style="color: #000000;"><br>    执行命令3<br></span><span style="color: #0000ff;">fi</span></pre><br></div>
+
+<p><span style="color: #808080; background-color: #ffffff;"><span style="color: #000000;">　　　<span style="color: #ff0000;">注：if和fi要配对，以fi结束这个条件判断。在不满足第一个条件下再判断使用的是elif，而不是else if。then必须独占一行。</span></span></span></p>
+<p>&nbsp;下面看几个例子：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;"> 2</span> #my_03.<span style="color: #0000ff;">sh</span><br><span style="color: #008080;"> 3</span><br><span style="color: #008080;"> 4</span> read -p <span style="color: #800000;">“</span><span style="color: #800000;">pelease input your name:</span><span style="color: #800000;">“</span><span style="color: #000000;"> name<br></span><span style="color: #008080;"> 5</span> read -p <span style="color: #800000;">“</span><span style="color: #800000;">pleaase input your password:</span><span style="color: #800000;">“</span> <span style="color: #0000ff;">passwd</span><br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">#if</span> test $name = “liuling”<br><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">if</span> [ $name = <span style="color: #800000;">“</span><span style="color: #800000;">liuling</span><span style="color: #800000;">“</span> -a $<span style="color: #0000ff;">passwd</span> = <span style="color: #800000;">“</span><span style="color: #800000;">lz19921009</span><span style="color: #800000;">“</span><span style="color: #000000;"> ]<br></span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">then</span><br><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">登录成功！</span><span style="color: #800000;">“</span><br><span style="color: #008080;">10</span> <span style="color: #0000ff;">else</span><br><span style="color: #008080;">11</span>     <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">登录失败！</span><span style="color: #800000;">“</span><br><span style="color: #008080;">12</span> <span style="color: #0000ff;">fi</span></pre><br></div><br><div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;"> 2</span> #my_04.<span style="color: #0000ff;">sh</span><br><span style="color: #008080;"> 3</span><br><span style="color: #008080;"> 4</span> read -p <span style="color: #800000;">“</span><span style="color: #800000;">please input your score:</span><span style="color: #800000;">“</span><span style="color: #000000;"> score<br></span><span style="color: #008080;"> 5</span><br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">if</span> [ $score -gt <span style="color: #800080;">90</span><span style="color: #000000;"> ]<br></span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">then</span><br><span style="color: #008080;"> 8</span>     <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">优秀！</span><span style="color: #800000;">“</span><br><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">elif</span> [ $score -gt <span style="color: #800080;">80</span> -a $score -le <span style="color: #800080;">90</span><span style="color: #000000;"> ]<br></span><span style="color: #008080;">10</span> <span style="color: #0000ff;">then</span><br><span style="color: #008080;">11</span>     <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">良好！</span><span style="color: #800000;">“</span><br><span style="color: #008080;">12</span> <span style="color: #0000ff;">else</span><br><span style="color: #008080;">13</span>     <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">一般！</span><span style="color: #800000;">“</span><br><span style="color: #008080;">14</span> <span style="color: #0000ff;">fi</span></pre><br></div><br><div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;"> 2</span> #my_05.<span style="color: #0000ff;">sh</span><br><span style="color: #008080;"> 3</span><br><span style="color: #008080;"> 4</span> read -p <span style="color: #800000;">“</span><span style="color: #800000;">please input your score:</span><span style="color: #800000;">“</span><span style="color: #000000;"> score<br></span><span style="color: #008080;"> 5</span> #如果使用(())的话，只能用&lt; &gt; &gt;= &lt;=<br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">if</span> (( $score &gt; <span style="color: #800080;">90</span><span style="color: #000000;"> ))<br></span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">then</span><br><span style="color: #008080;"> 8</span>     <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">优秀！</span><span style="color: #800000;">“</span><br><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">elif</span> [[ $score -gt <span style="color: #800080;">80</span> &amp;&amp; $score -le <span style="color: #800080;">90</span><span style="color: #000000;"> ]]<br></span><span style="color: #008080;">10</span> <span style="color: #0000ff;">then</span><br><span style="color: #008080;">11</span>     <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">良好！</span><span style="color: #800000;">“</span><br><span style="color: #008080;">12</span> <span style="color: #0000ff;">else</span><br><span style="color: #008080;">13</span>     <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">一般！</span><span style="color: #800000;">“</span><br><span style="color: #008080;">14</span> <span style="color: #0000ff;">fi</span></pre><br></div>
+
+<p>　　测试用户输入的文件名是目录还是文件：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;"> 2</span> #my_06.<span style="color: #0000ff;">sh</span><br><span style="color: #008080;"> 3</span><br><span style="color: #008080;"> 4</span> read -p <span style="color: #800000;">“</span><span style="color: #800000;">请输入一个目录或者文件名：</span><span style="color: #800000;">“</span><span style="color: #000000;"> name<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">if</span> [ -<span style="color: #000000;">z $name ]<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">then</span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">你输入的信息为空！</span><span style="color: #800000;">“</span><br><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">else</span><br><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">if</span> [ -<span style="color: #000000;">f $name ]<br></span><span style="color: #008080;">10</span>     <span style="color: #0000ff;">then</span><br><span style="color: #008080;">11</span>         <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">这是一个文件！</span><span style="color: #800000;">“</span><br><span style="color: #008080;">12</span>     <span style="color: #0000ff;">elif</span> [ -<span style="color: #000000;">d $name ]<br></span><span style="color: #008080;">13</span>     <span style="color: #0000ff;">then</span><br><span style="color: #008080;">14</span>         <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">这是一个目录！</span><span style="color: #800000;">“</span><br><span style="color: #008080;">15</span>     <span style="color: #0000ff;">else</span><br><span style="color: #008080;">16</span>         <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">不存在这样一个目录或者文件！</span><span style="color: #800000;">“</span><br><span style="color: #008080;">17</span>     <span style="color: #0000ff;">fi</span><br><span style="color: #008080;">18</span> <span style="color: #0000ff;">fi</span></pre><br></div>
+
+<p>&nbsp;</p>
+<p>　　这三个例子都是关于if条件判断的用法。条件有这么几种写法:[ 条件 ]、test 条件、[[ 条件 ]]、(( 条件 ))，用的最多的是第一种。常用判断符号如下</p>
+<p>①、逻辑运算符</p>
+<p>　　-a　　expr1 -a expr2　　逻辑与</p>
+<p>　　-o　　expr1 -o expr2　　逻辑或</p>
+<p>　　！　　!expr1　　　　　　逻辑非</p>
+<p>②、数值判断</p>
+<p>　　-eq　　num1 -eq num2　　是否相等</p>
+<p>　　-ne　　num1 -ne num2　　是否不相等</p>
+<p>　　-gt　　num1 -gt num2　　是否大于</p>
+<p>　　-ge　　num1 -ge num2　　是否大于等于</p>
+<p>　　-lt　　num1 -lt num2　　是否小于</p>
+<p>　　-le　　num1 -le num2　　是否小于等于</p>
+<p>③、字符串判断</p>
+<p>　　=　　str1 = str2　　字符串是否相等</p>
+<p>　　!=　　str1 != str2　　字符串是否不等</p>
+<p>　　-n　　-n str1　　　　字符串长度是否不等于0</p>
+<p>　　-z　　-z str2　　　　字符串长度是否等于0</p>
+<p>④、文件判断</p>
+<p>　　-r　　-r filename　　文件是否存在且可读</p>
+<p>　　-w　　-w filename　　文件是否存在且可写</p>
+<p>　　-s　　-s filename　　文件是否存在且长度非0</p>
+<p>　　-f　　-f filename　　文件是否存在且是普通文件</p>
+<p>　　-d　　-d filename　　文件是否存在且是一个目录</p>
+<p>&nbsp;</p>
+<p>　　<span style="color: #ff0000;">在使用条件判断的时候一定要注意空格，如if [ $name = “liuling” -a $passwd = “lz19921009” ]，[]里面前后要有一个空格，所有的判断符号以及逻辑运算符号前后都要有空格，否则会报错。使用[[&nbsp;条件 ]]的时候只能使用”&amp;&amp;”符号作为逻辑与来代替”-a”，如果使用(( 条件 ))的话，只能用&lt; &gt; &gt;= &lt;=符号，而不能使用&ldquo;-eq&rdquo;等符号。</span></p>
+<p><span style="color: #000000;">二、case的用法</span></p>
+<p><span style="color: #000000;">　　这里的case优点类似于java中的swith case</span></p>
+<p><span style="color: #000000;">case语法如下:</span></p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">case</span> var <span style="color: #0000ff;">in</span><span style="color: #000000;"><br>pattern </span><span style="color: #800080;">1</span><span style="color: #000000;">)<br>    执行语句1<br>    ;;<br>pattern </span><span style="color: #800080;">2</span><span style="color: #000000;">)<br>    执行语句2<br>    ;;<br>pattern </span><span style="color: #800080;">3</span><span style="color: #000000;">)<br>    执行语句3<br>    ;;<br></span>*<span style="color: #000000;">)<br>    执行语句4<br>    ;;<br></span><span style="color: #0000ff;">esac</span></pre><br></div>
+
+<p><span style="color: #ff0000;">注意：*）指匹配其他任意字符串</span><br><span style="color: #ff0000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 每种情况都以;;结束</span></p>
+<p>下面是几个case用法的例子</p>
+<p>　　1.模拟菜单的选择</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;"> 2</span> #my_07.<span style="color: #0000ff;">sh</span><br><span style="color: #008080;"> 3</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">1 - 普通显示</span><span style="color: #800000;">“</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">2 - 详细显示</span><span style="color: #800000;">“</span><br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">3 - 显示隐藏文件</span><span style="color: #800000;">“</span><br><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">4 - 推出</span><span style="color: #800000;">“</span><br><span style="color: #008080;"> 8</span><br><span style="color: #008080;"> 9</span> read -p <span style="color: #800000;">“</span><span style="color: #800000;">请选择操作号：</span><span style="color: #800000;">“</span><span style="color: #000000;"> num<br></span><span style="color: #008080;">10</span> <span style="color: #0000ff;">case</span> $num <span style="color: #0000ff;">in</span><br><span style="color: #008080;">11</span>     <span style="color: #800080;">1</span><span style="color: #000000;">)<br></span><span style="color: #008080;">12</span>         <span style="color: #0000ff;">ls</span><span style="color: #000000;"> ;;<br></span><span style="color: #008080;">13</span>     <span style="color: #800080;">2</span><span style="color: #000000;">)<br></span><span style="color: #008080;">14</span>         <span style="color: #0000ff;">ls</span> -<span style="color: #000000;">l ;;<br></span><span style="color: #008080;">15</span>     <span style="color: #800080;">3</span><span style="color: #000000;">)<br></span><span style="color: #008080;">16</span>         <span style="color: #0000ff;">ls</span> -<span style="color: #000000;">al ;;<br></span><span style="color: #008080;">17</span>     <span style="color: #800080;">4</span><span style="color: #000000;">)<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">        exit ;;<br></span><span style="color: #008080;">19</span>     *<span style="color: #000000;">)<br></span><span style="color: #008080;">20</span>         <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">请输入正确的操作（1–4）</span><span style="color: #800000;">“</span><br><span style="color: #008080;">21</span> <span style="color: #000000;">        exit ;;<br></span><span style="color: #008080;">22</span> <span style="color: #0000ff;">esac</span></pre><br></div>
+
+<p>&nbsp;</p>
+<p>三、循环语句的使用</p>
+<p>1、for循环</p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">for</span> 变量名 <span style="color: #0000ff;">in</span><span style="color: #000000;"> 取值列表<br></span><span style="color: #0000ff;">do</span><span style="color: #000000;"><br>    命令序列<br></span><span style="color: #0000ff;">done</span></pre><br></div>
+
+<p>下面是for循环使用的小例子：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;"> 2</span> #my_08.<span style="color: #0000ff;">sh</span><br><span style="color: #008080;"> 3</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">for</span> a <span style="color: #0000ff;">in</span> <code>&lt;span style=&quot;color: #0000ff;&quot;&gt;seq&lt;/span&gt; &lt;span style=&quot;color: #800080;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #800080;&quot;&gt;3&lt;/span&gt; &lt;span style=&quot;color: #800080;&quot;&gt;10&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;</code><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">do</span><br><span style="color: #008080;"> 6</span>     <span style="color: #0000ff;">echo</span><span style="color: #000000;"> $a<br></span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">done</span><br><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">——————-</span><span style="color: #800000;">“</span><br><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">for</span> ((i=<span style="color: #800080;">1</span>;i&lt;=<span style="color: #800080;">10</span>;i++<span style="color: #000000;">))<br></span><span style="color: #008080;">10</span> <span style="color: #0000ff;">do</span><br><span style="color: #008080;">11</span>     <span style="color: #0000ff;">echo</span><span style="color: #000000;"> $i<br></span><span style="color: #008080;">12</span> <span style="color: #0000ff;">done</span></pre><br></div>
+
+<p>　　<span style="color: #ff0000;">这里第四行使用了<code>seq 1 3 10</code>，<code>是反引号，也就是键盘上Esc下面的一个键，</code>里面可以写执行命令，把执行后的结果返回。</span></p>
+<p><span style="color: #ff0000;">　　seq命令是指序列，seq start size max，start是起始，size是步长，max就是限制的数，比如seq 1 3 10，则返回的是1 4 7 10。</span></p>
+<p><span style="color: #ff0000;">　　第9行代码也有点特别，有点像java里面的for循环，不过是双重小括号，在shell中这样也是可以的。</span></p>
+<p>　　下面是一个统计文件数目的小程序：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;"> 2</span> #my_09.<span style="color: #0000ff;">sh</span><br><span style="color: #008080;"> 3</span><br><span style="color: #008080;"> 4</span> i=<span style="color: #800080;">0</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">for</span> name1 <span style="color: #0000ff;">in</span> <code>&lt;span style=&quot;color: #0000ff;&quot;&gt;ls&lt;/span&gt; /&lt;span style=&quot;color: #000000;&quot;&gt;etc</code><br><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">do</span><br><span style="color: #008080;"> 7</span>    # i=<code>&lt;span style=&quot;color: #0000ff;&quot;&gt;expr&lt;/span&gt; $i + &lt;span style=&quot;color: #800080;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;</code><br><span style="color: #008080;"> 8</span>    # let i++<br><span style="color: #008080;"> 9</span>    # i=$[$i + <span style="color: #800080;">1</span><span style="color: #000000;">]<br></span><span style="color: #008080;">10</span>    # i=$(($i + <span style="color: #800080;">1</span><span style="color: #000000;">))<br></span><span style="color: #008080;">11</span>    ((i++<span style="color: #000000;">))<br></span><span style="color: #008080;">12</span><br><span style="color: #008080;">13</span> <span style="color: #0000ff;">done</span><br><span style="color: #008080;">14</span> <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">文件总数为：$i</span><span style="color: #800000;">“</span></pre><br></div>
+
+<p>　　<span style="color: #ff0000;">注：7、8、9、10、11行是数字自增的不同写法，都可以。</span></p>
+<p><span style="color: #000000;">2、while循环</span></p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">while</span><span style="color: #000000;"> 条件<br></span><span style="color: #0000ff;">do</span><span style="color: #000000;"><br>    命令序列<br></span><span style="color: #0000ff;">done</span></pre><br></div>
+
+<p>下面是一个录入客户资料的shell脚本：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;"> 2</span> #my_10.<span style="color: #0000ff;">sh</span><br><span style="color: #008080;"> 3</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">while</span> <span style="color: #0000ff;">true</span><br><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">do</span><br><span style="color: #008080;"> 6</span>         <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">登记客户资料(c继续，q退出)：</span><span style="color: #800000;">“</span><br><span style="color: #008080;"> 7</span> <span style="color: #000000;">        read choice<br></span><span style="color: #008080;"> 8</span><br><span style="color: #008080;"> 9</span>         <span style="color: #0000ff;">case</span> $choice <span style="color: #0000ff;">in</span><br><span style="color: #008080;">10</span> <span style="color: #000000;">                c)<br></span><span style="color: #008080;">11</span>                         <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">请输入客户名字:</span><span style="color: #800000;">“</span><br><span style="color: #008080;">12</span> <span style="color: #000000;">                        read name1<br></span><span style="color: #008080;">13</span>                         <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">请输入客户年龄:</span><span style="color: #800000;">“</span><br><span style="color: #008080;">14</span> <span style="color: #000000;">                        read age1<br></span><span style="color: #008080;">15</span>                         <span style="color: #0000ff;">echo</span> <span style="color: #800000;">“</span><span style="color: #800000;">姓名:</span><span style="color: #800000;">“</span>${name1}<span style="color: #800000;">“</span><span style="color: #800000;"> - 年龄:</span><span style="color: #800000;">“</span>${age1} &gt;&gt;<span style="color: #000000;">customer.txt<br></span><span style="color: #008080;">16</span> <span style="color: #000000;">                        ;;<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">                q)<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">                        exit<br></span><span style="color: #008080;">19</span> <span style="color: #000000;">                        ;;<br></span><span style="color: #008080;">20</span>         <span style="color: #0000ff;">esac</span><br><span style="color: #008080;">21</span> <span style="color: #0000ff;">done</span></pre><br></div>
+
+<p><span style="color: #ff0000;">注：</span><br><span style="color: #ff0000;">&gt;&gt;是指重定向，将标准输出重定向到其他的输出流中，如上面15行是指将标准输出重定向到customer.txt文件。所以echo输出的内容会输出到customer.txt文件中去。</span></p>
+<p><span style="color: #ff0000;">&gt;&gt; 和 &gt; 区别</span></p>
+<p><span style="color: #ff0000;">&gt;&gt;customer.txt 追加保存到customer.txt文件中， 如果文件不存在会自动创建。</span></p>
+<p><span style="color: #ff0000;">&gt;customer.txt 就会重新写入， 覆盖原有的数据</span></p>
+<p>&nbsp;</p>
+<p>四、函数的应用</p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">function</span><span style="color: #000000;"> 函数名(){<br><br>}<br>or<br>函数名(){<br><br>}<br><br>函数调用：<br>函数名<br>函数名 参数1 参数2</span></pre><br></div>
+
+<p>下面是一个小例子程序：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> #!/bin/<span style="color: #000000;">bash<br></span><span style="color: #008080;">2</span> #fun.<span style="color: #0000ff;">sh</span><br><span style="color: #008080;">3</span> <span style="color: #0000ff;">function</span><span style="color: #000000;"> add(){<br></span><span style="color: #008080;">4</span>     <span style="color: #0000ff;">echo</span> $(($<span style="color: #800080;">1</span>+$<span style="color: #800080;">2</span><span style="color: #000000;">))<br></span><span style="color: #008080;">5</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">6</span> add <span style="color: #800080;">20</span> <span style="color: #800080;">30</span><br><span style="color: #008080;">7</span> add <span style="color: #800080;">20</span> <span style="color: #800080;">90</span></pre><br></div>
+
+<p>&nbsp;</p>
+<p>　　</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2013/08/shell.html" data-id="ciiy5f4q40021q1d0n4d7x50k" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2013/08/shell.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/08/struts2-source.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          struts2请求过程源码分析
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/07/hibernate-mysql-proceduce.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hibernate调用mysql存储过程</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-shell" data-title="shell语法使用" data-url="http://liuling07.github.io/2013/08/shell.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

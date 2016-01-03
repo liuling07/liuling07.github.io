@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>一致性hash算法 - consistent hashing | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="consistent hashing&amp;nbsp;算法早在&amp;nbsp;1997&amp;nbsp;年就在论文&amp;nbsp;Consistent hashing and random trees&amp;nbsp;中被提出，目前在cache&amp;nbsp;系统中应用越来越广泛；
+1&amp;nbsp;基本场景比如你有&amp;nbsp;N&amp;nbsp;个&amp;nbsp;cache&amp;nbsp;服务器（后面简称&amp;nbsp;cache&amp;nbsp;），">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一致性hash算法 - consistent hashing">
+<meta property="og:url" content="http://liuling07.github.io/2014/04/consistenthashing.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="consistent hashing&amp;nbsp;算法早在&amp;nbsp;1997&amp;nbsp;年就在论文&amp;nbsp;Consistent hashing and random trees&amp;nbsp;中被提出，目前在cache&amp;nbsp;系统中应用越来越广泛；
+1&amp;nbsp;基本场景比如你有&amp;nbsp;N&amp;nbsp;个&amp;nbsp;cache&amp;nbsp;服务器（后面简称&amp;nbsp;cache&amp;nbsp;），">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/202352423226135.jpg">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/202352578697452.jpg">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/202353098698386.jpg">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/202353260415346.jpg">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/202353366975023.jpg">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/202353497445771.jpg">
+<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/202353585888736.jpg">
+<meta property="og:updated_time" content="2016-01-03T04:04:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一致性hash算法 - consistent hashing">
+<meta name="twitter:description" content="consistent hashing&amp;nbsp;算法早在&amp;nbsp;1997&amp;nbsp;年就在论文&amp;nbsp;Consistent hashing and random trees&amp;nbsp;中被提出，目前在cache&amp;nbsp;系统中应用越来越广泛；
+1&amp;nbsp;基本场景比如你有&amp;nbsp;N&amp;nbsp;个&amp;nbsp;cache&amp;nbsp;服务器（后面简称&amp;nbsp;cache&amp;nbsp;），">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        135
+        <span>posts</span>
+      </div>
+      <div class="article-info-block">
+        32
+        <span>tags</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-consistenthashing" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一致性hash算法 - consistent hashing
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/04/consistenthashing.html">
+      <time datetime="2014-04-20T07:56:00.000Z" itemprop="datePublished">2014-04-20</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>consistent hashing&nbsp;算法早在&nbsp;1997&nbsp;年就在论文&nbsp;<strong><a href="http://portal.acm.org/citation.cfm?id=258660" target="_blank" rel="external">Consistent hashing and random trees</a>&nbsp;</strong>中被提出，目前在cache&nbsp;系统中应用越来越广泛；</p>
+<h2 id="1_26nbsp_3B_u57FA_u672C_u573A_u666F"><a href="#1_26nbsp_3B_u57FA_u672C_u573A_u666F" class="headerlink" title="1&nbsp;基本场景"></a>1&nbsp;基本场景</h2><p>比如你有&nbsp;N&nbsp;个&nbsp;cache&nbsp;服务器（后面简称&nbsp;cache&nbsp;），那么如何将一个对象&nbsp;object&nbsp;映射到&nbsp;N&nbsp;个&nbsp;cache&nbsp;上呢，你很可能会采用类似下面的通用方法计算&nbsp;object&nbsp;的&nbsp;hash&nbsp;值，然后均匀的映射到到&nbsp;N&nbsp;个&nbsp;cache&nbsp;；</p>
+<p>hash(object)%N</p>
+<p>一切都运行正常，再考虑如下的两种情况；</p>
+<p>1&nbsp;一个&nbsp;cache&nbsp;服务器&nbsp;m down&nbsp;掉了（在实际应用中必须要考虑这种情况），这样所有映射到&nbsp;cache m&nbsp;的对象都会失效，怎么办，需要把&nbsp;cache m&nbsp;从&nbsp;cache&nbsp;中移除，这时候&nbsp;cache&nbsp;是&nbsp;N-1&nbsp;台，映射公式变成了&nbsp;hash(object)%(N-1)&nbsp;；</p>
+<p>2&nbsp;由于访问加重，需要添加&nbsp;cache&nbsp;，这时候&nbsp;cache&nbsp;是&nbsp;N+1&nbsp;台，映射公式变成了&nbsp;hash(object)%(N+1)&nbsp;；</p>
+<p>1&nbsp;和&nbsp;2&nbsp;意味着什么？这意味着突然之间几乎所有的&nbsp;cache&nbsp;都失效了。对于服务器而言，这是一场灾难，洪水般的访问都会直接冲向后台服务器；</p>
+<p>再来考虑第三个问题，由于硬件能力越来越强，你可能想让后面添加的节点多做点活，显然上面的&nbsp;hash&nbsp;算法也做不到。</p>
+<p>&nbsp;&nbsp;有什么方法可以改变这个状况呢，这就是&nbsp;consistent hashing…</p>
+<h2 id="2_hash_26nbsp_3B_u7B97_u6CD5_u548C_u5355_u8C03_u6027"><a href="#2_hash_26nbsp_3B_u7B97_u6CD5_u548C_u5355_u8C03_u6027" class="headerlink" title="2 hash&nbsp;算法和单调性"></a>2 hash&nbsp;算法和单调性</h2><p>　　&nbsp;Hash&nbsp;算法的一个衡量指标是单调性（&nbsp;Monotonicity&nbsp;），定义如下：</p>
+<p>　　单调性是指如果已经有一些内容通过哈希分派到了相应的缓冲中，又有新的缓冲加入到系统中。哈希的结果应能够保证原有已分配的内容可以被映射到新的缓冲中去，而不会被映射到旧的缓冲集合中的其他缓冲区。</p>
+<p>容易看到，上面的简单&nbsp;hash&nbsp;算法&nbsp;hash(object)%N&nbsp;难以满足单调性要求。</p>
+<h2 id="3_consistent_hashing_26nbsp_3B_u7B97_u6CD5_u7684_u539F_u7406"><a href="#3_consistent_hashing_26nbsp_3B_u7B97_u6CD5_u7684_u539F_u7406" class="headerlink" title="3 consistent hashing&nbsp;算法的原理"></a>3 consistent hashing&nbsp;算法的原理</h2><p>consistent hashing&nbsp;是一种&nbsp;hash&nbsp;算法，简单的说，在移除&nbsp;/&nbsp;添加一个&nbsp;cache&nbsp;时，它能够尽可能小的改变已存在&nbsp;key&nbsp;映射关系，尽可能的满足单调性的要求。</p>
+<p>下面就来按照&nbsp;5&nbsp;个步骤简单讲讲&nbsp;consistent hashing&nbsp;算法的基本原理。</p>
+<h3 id="3-1_26nbsp_3B_u73AF_u5F62hash_26nbsp_3B_u7A7A_u95F4"><a href="#3-1_26nbsp_3B_u73AF_u5F62hash_26nbsp_3B_u7A7A_u95F4" class="headerlink" title="3.1&nbsp;环形hash&nbsp;空间"></a>3.1&nbsp;环形hash&nbsp;空间</h3><p>考虑通常的&nbsp;hash&nbsp;算法都是将&nbsp;value&nbsp;映射到一个&nbsp;32&nbsp;为的&nbsp;key&nbsp;值，也即是&nbsp;0~2^32-1&nbsp;次方的数值空间；我们可以将这个空间想象成一个首（&nbsp;0&nbsp;）尾（&nbsp;2^32-1&nbsp;）相接的圆环，如下面图&nbsp;1&nbsp;所示的那样。</p>
+<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/202352423226135.jpg" alt="">&nbsp;</p>
+<p>图&nbsp;1&nbsp;环形&nbsp;hash&nbsp;空间</p>
+<h3 id="3-2_26nbsp_3B_u628A_u5BF9_u8C61_u6620_u5C04_u5230hash_26nbsp_3B_u7A7A_u95F4"><a href="#3-2_26nbsp_3B_u628A_u5BF9_u8C61_u6620_u5C04_u5230hash_26nbsp_3B_u7A7A_u95F4" class="headerlink" title="3.2&nbsp;把对象映射到hash&nbsp;空间"></a>3.2&nbsp;把对象映射到hash&nbsp;空间</h3><p>接下来考虑&nbsp;4&nbsp;个对象&nbsp;object1~object4&nbsp;，通过&nbsp;hash&nbsp;函数计算出的&nbsp;hash&nbsp;值&nbsp;key&nbsp;在环上的分布如图&nbsp;2&nbsp;所示。</p>
+<p>hash(object1) = key1;</p>
+<p>&hellip; &hellip;</p>
+<p>hash(object4) = key4;</p>
+<p>&nbsp;<img src="http://www.liuling123.com/wp-content/uploads/2015/11/202352578697452.jpg" alt=""></p>
+<p>图&nbsp;2 4&nbsp;个对象的&nbsp;key&nbsp;值分布</p>
+<h3 id="3-3_26nbsp_3B_u628Acache_26nbsp_3B_u6620_u5C04_u5230hash_26nbsp_3B_u7A7A_u95F4"><a href="#3-3_26nbsp_3B_u628Acache_26nbsp_3B_u6620_u5C04_u5230hash_26nbsp_3B_u7A7A_u95F4" class="headerlink" title="3.3&nbsp;把cache&nbsp;映射到hash&nbsp;空间"></a>3.3&nbsp;把cache&nbsp;映射到hash&nbsp;空间</h3><p>Consistent hashing&nbsp;的基本思想就是将对象和&nbsp;cache&nbsp;都映射到同一个&nbsp;hash&nbsp;数值空间中，并且使用相同的&nbsp;hash算法。</p>
+<p>假设当前有&nbsp;A,B&nbsp;和&nbsp;C&nbsp;共&nbsp;3&nbsp;台&nbsp;cache&nbsp;，那么其映射结果将如图&nbsp;3&nbsp;所示，他们在&nbsp;hash&nbsp;空间中，以对应的&nbsp;hash&nbsp;值排列。</p>
+<p>hash(cache A) = key A;</p>
+<p>&hellip; &hellip;</p>
+<p>hash(cache C) = key C;</p>
+<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/202353098698386.jpg" alt="">&nbsp;</p>
+<p>图&nbsp;3 cache&nbsp;和对象的&nbsp;key&nbsp;值分布</p>
+<p>&nbsp;</p>
+<p>说到这里，顺便提一下&nbsp;cache&nbsp;的&nbsp;hash&nbsp;计算，一般的方法可以使用&nbsp;cache&nbsp;机器的&nbsp;IP&nbsp;地址或者机器名作为&nbsp;hash输入。</p>
+<h3 id="3-4_26nbsp_3B_u628A_u5BF9_u8C61_u6620_u5C04_u5230cache"><a href="#3-4_26nbsp_3B_u628A_u5BF9_u8C61_u6620_u5C04_u5230cache" class="headerlink" title="3.4&nbsp;把对象映射到cache"></a>3.4&nbsp;把对象映射到cache</h3><p>现在&nbsp;cache&nbsp;和对象都已经通过同一个&nbsp;hash&nbsp;算法映射到&nbsp;hash&nbsp;数值空间中了，接下来要考虑的就是如何将对象映射到&nbsp;cache&nbsp;上面了。</p>
+<p>在这个环形空间中，如果沿着顺时针方向从对象的&nbsp;key&nbsp;值出发，直到遇见一个&nbsp;cache&nbsp;，那么就将该对象存储在这个&nbsp;cache&nbsp;上，因为对象和&nbsp;cache&nbsp;的&nbsp;hash&nbsp;值是固定的，因此这个&nbsp;cache&nbsp;必然是唯一和确定的。这样不就找到了对象和&nbsp;cache&nbsp;的映射方法了吗？！</p>
+<p>依然继续上面的例子（参见图&nbsp;3&nbsp;），那么根据上面的方法，对象&nbsp;object1&nbsp;将被存储到&nbsp;cache A&nbsp;上；&nbsp;object2&nbsp;和object3&nbsp;对应到&nbsp;cache C&nbsp;；&nbsp;object4&nbsp;对应到&nbsp;cache B&nbsp;；</p>
+<h3 id="3-5_26nbsp_3B_u8003_u5BDFcache_26nbsp_3B_u7684_u53D8_u52A8"><a href="#3-5_26nbsp_3B_u8003_u5BDFcache_26nbsp_3B_u7684_u53D8_u52A8" class="headerlink" title="3.5&nbsp;考察cache&nbsp;的变动"></a>3.5&nbsp;考察cache&nbsp;的变动</h3><p>前面讲过，通过&nbsp;hash&nbsp;然后求余的方法带来的最大问题就在于不能满足单调性，当&nbsp;cache&nbsp;有所变动时，&nbsp;cache会失效，进而对后台服务器造成巨大的冲击，现在就来分析分析&nbsp;consistent hashing&nbsp;算法。</p>
+<p><strong>3.5.1&nbsp;**</strong>移除&nbsp;cache**</p>
+<p>考虑假设&nbsp;cache B&nbsp;挂掉了，根据上面讲到的映射方法，这时受影响的将仅是那些沿&nbsp;cache B&nbsp;逆时针遍历直到下一个&nbsp;cache&nbsp;（&nbsp;cache C&nbsp;）之间的对象，也即是本来映射到&nbsp;cache B&nbsp;上的那些对象。</p>
+<p>因此这里仅需要变动对象&nbsp;object4&nbsp;，将其重新映射到&nbsp;cache C&nbsp;上即可；参见图&nbsp;4&nbsp;。</p>
+<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/202353260415346.jpg" alt="">&nbsp;</p>
+<p>图&nbsp;4 Cache B&nbsp;被移除后的&nbsp;cache&nbsp;映射</p>
+<p><strong>3.5.2&nbsp;**</strong>添加&nbsp;cache**</p>
+<p>再考虑添加一台新的&nbsp;cache D&nbsp;的情况，假设在这个环形&nbsp;hash&nbsp;空间中，&nbsp;cache D&nbsp;被映射在对象&nbsp;object2&nbsp;和object3&nbsp;之间。这时受影响的将仅是那些沿&nbsp;cache D&nbsp;逆时针遍历直到下一个&nbsp;cache&nbsp;（&nbsp;cache B&nbsp;）之间的对象（它们是也本来映射到&nbsp;cache C&nbsp;上对象的一部分），将这些对象重新映射到&nbsp;cache D&nbsp;上即可。</p>
+<p>&nbsp;</p>
+<p>因此这里仅需要变动对象&nbsp;object2&nbsp;，将其重新映射到&nbsp;cache D&nbsp;上；参见图&nbsp;5&nbsp;。</p>
+<p>&nbsp;<img src="http://www.liuling123.com/wp-content/uploads/2015/11/202353366975023.jpg" alt=""></p>
+<p>图&nbsp;5&nbsp;添加&nbsp;cache D&nbsp;后的映射关系</p>
+<h2 id="4_26nbsp_3B_u865A_u62DF_u8282_u70B9"><a href="#4_26nbsp_3B_u865A_u62DF_u8282_u70B9" class="headerlink" title="4&nbsp;虚拟节点"></a>4&nbsp;虚拟节点</h2><p>考量&nbsp;Hash&nbsp;算法的另一个指标是平衡性&nbsp;(Balance)&nbsp;，定义如下：</p>
+<p>平衡性</p>
+<p>　　平衡性是指哈希的结果能够尽可能分布到所有的缓冲中去，这样可以使得所有的缓冲空间都得到利用。</p>
+<p>hash&nbsp;算法并不是保证绝对的平衡，如果&nbsp;cache&nbsp;较少的话，对象并不能被均匀的映射到&nbsp;cache&nbsp;上，比如在上面的例子中，仅部署&nbsp;cache A&nbsp;和&nbsp;cache C&nbsp;的情况下，在&nbsp;4&nbsp;个对象中，&nbsp;cache A&nbsp;仅存储了&nbsp;object1&nbsp;，而&nbsp;cache C&nbsp;则存储了object2&nbsp;、&nbsp;object3&nbsp;和&nbsp;object4&nbsp;；分布是很不均衡的。</p>
+<p>为了解决这种情况，&nbsp;consistent hashing&nbsp;引入了&ldquo;虚拟节点&rdquo;的概念，它可以如下定义：</p>
+<p>&ldquo;虚拟节点&rdquo;（&nbsp;virtual node&nbsp;）是实际节点在&nbsp;hash&nbsp;空间的复制品（&nbsp;replica&nbsp;），一实际个节点对应了若干个&ldquo;虚拟节点&rdquo;，这个对应个数也成为&ldquo;复制个数&rdquo;，&ldquo;虚拟节点&rdquo;在&nbsp;hash&nbsp;空间中以&nbsp;hash&nbsp;值排列。</p>
+<p>仍以仅部署&nbsp;cache A&nbsp;和&nbsp;cache C&nbsp;的情况为例，在图&nbsp;4&nbsp;中我们已经看到，&nbsp;cache&nbsp;分布并不均匀。现在我们引入虚拟节点，并设置&ldquo;复制个数&rdquo;为&nbsp;2&nbsp;，这就意味着一共会存在&nbsp;4&nbsp;个&ldquo;虚拟节点&rdquo;，&nbsp;cache A1, cache A2&nbsp;代表了cache A&nbsp;；&nbsp;cache C1, cache C2&nbsp;代表了&nbsp;cache C&nbsp;；假设一种比较理想的情况，参见图&nbsp;6&nbsp;。</p>
+<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/202353497445771.jpg" alt="">&nbsp;</p>
+<p>图&nbsp;6&nbsp;引入&ldquo;虚拟节点&rdquo;后的映射关系</p>
+<p>&nbsp;</p>
+<p>此时，对象到&ldquo;虚拟节点&rdquo;的映射关系为：</p>
+<p>objec1-&gt;cache A2&nbsp;；&nbsp;objec2-&gt;cache A1&nbsp;；&nbsp;objec3-&gt;cache C1&nbsp;；&nbsp;objec4-&gt;cache C2&nbsp;；</p>
+<p>因此对象&nbsp;object1&nbsp;和&nbsp;object2&nbsp;都被映射到了&nbsp;cache A&nbsp;上，而&nbsp;object3&nbsp;和&nbsp;object4&nbsp;映射到了&nbsp;cache C&nbsp;上；平衡性有了很大提高。</p>
+<p>引入&ldquo;虚拟节点&rdquo;后，映射关系就从&nbsp;{&nbsp;对象&nbsp;-&gt;&nbsp;节点&nbsp;}&nbsp;转换到了&nbsp;{&nbsp;对象&nbsp;-&gt;&nbsp;虚拟节点&nbsp;}&nbsp;。查询物体所在&nbsp;cache&nbsp;时的映射关系如图&nbsp;7&nbsp;所示。</p>
+<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/202353585888736.jpg" alt="">&nbsp;</p>
+<p>图&nbsp;7&nbsp;查询对象所在&nbsp;cache</p>
+<p>&nbsp;</p>
+<p>&ldquo;虚拟节点&rdquo;的&nbsp;hash&nbsp;计算可以采用对应节点的&nbsp;IP&nbsp;地址加数字后缀的方式。例如假设&nbsp;cache A&nbsp;的&nbsp;IP&nbsp;地址为202.168.14.241&nbsp;。</p>
+<p>引入&ldquo;虚拟节点&rdquo;前，计算&nbsp;cache A&nbsp;的&nbsp;hash&nbsp;值：</p>
+<p>Hash(&ldquo;202.168.14.241&rdquo;);</p>
+<p>引入&ldquo;虚拟节点&rdquo;后，计算&ldquo;虚拟节&rdquo;点&nbsp;cache A1&nbsp;和&nbsp;cache A2&nbsp;的&nbsp;hash&nbsp;值：</p>
+<p>Hash(&ldquo;202.168.14.241#1&rdquo;);&nbsp;&nbsp;// cache A1</p>
+<p>Hash(&ldquo;202.168.14.241#2&rdquo;);&nbsp;&nbsp;// cache A2</p>
+<p>&nbsp;</p>
+<p>转自：<a href="http://blog.csdn.net/sparkliang/article/details/5279393" title="http://blog.csdn.net/sparkliang/article/details/5279393" target="_blank" rel="external">http://blog.csdn.net/sparkliang/article/details/5279393</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuling07.github.io/2014/04/consistenthashing.html" data-id="ciiy5f4xb00daq1d0y4xavs2u" class="article-share-link">Share</a>
+      
+        <a href="http://liuling07.github.io/2014/04/consistenthashing.html#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/04/shardedjedispool-demo.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ShardedJedisPool的使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/04/jedis-redis.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java中使用Jedis操作Redis</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-consistenthashing" data-title="一致性hash算法 - consistent hashing" data-url="http://liuling07.github.io/2014/04/consistenthashing.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/人生感悟/">人生感悟</a></p>
+              <p class="item-title"><a href="/2015/12/say-bye-to-my-2015.html" class="title">Say bye to my 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-25T09:25:10.000Z" itemprop="datePublished">2015-12-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/mvp-pattern-android.html" class="title">MVP模式在Android项目中的使用</a></p>
+              <p class="item-date"><time datetime="2015-12-23T14:16:04.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
+              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
+              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2015/11/android-multi-photo-picker.html" class="title">Android带多选功能的PhotoPicker</a></p>
+              <p class="item-date"><time datetime="2015-11-21T07:46:03.000Z" itemprop="datePublished">2015-11-21</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 10.77px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2000 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling07"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
