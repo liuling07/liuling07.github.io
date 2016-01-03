@@ -9,11 +9,11 @@
  1 package com.others; 2 3 import java.util.ArrayList; 4 import java.util.Iterator; 5 import java.util.List">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用迭代器遍历List的时候修改List报ConcurrentModificationException异常原因分析">
-<meta property="og:url" content="http://liuling07.github.io/2013/08/list-concurrentmodificationexception.html">
+<meta property="og:url" content="http://localhost:4000/2013/08/list-concurrentmodificationexception.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="在使用Iterator来迭代遍历List的时候如果修改该List对象，则会报java.util.ConcurrentModificationException异常，下面看一个例子演示：
  1 package com.others; 2 3 import java.util.ArrayList; 4 import java.util.Iterator; 5 import java.util.List">
-<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:35:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用迭代器遍历List的时候修改List报ConcurrentModificationException异常原因分析">
 <meta name="twitter:description" content="在使用Iterator来迭代遍历List的时候如果修改该List对象，则会报java.util.ConcurrentModificationException异常，下面看一个例子演示：
@@ -63,7 +63,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -84,7 +84,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -101,16 +101,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -177,10 +177,7 @@
       
                 
         <p>　　在使用Iterator来迭代遍历List的时候如果修改该List对象，则会报java.util.ConcurrentModificationException异常，下面看一个例子演示：</p>
-<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.others;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.ArrayList;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Iterator;<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.CopyOnWriteArrayList;<br></span><span style="color: #008080;"> 7</span><br><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ArrayListTest {<br></span><span style="color: #008080;"> 9</span><br><span style="color: #008080;">10</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;">11</span>         List<string> list = <span style="color: #0000ff;">new</span> ArrayList<string><span style="color: #000000;">();<br></span><span style="color: #008080;">12</span>         <span style="color: #008000;">//</span><span style="color: #008000;">CopyOnWriteArrayList<string> list = new CopyOnWriteArrayList<string>();</string></string></span><br><span style="color: #008080;">13</span>         list.add(“a”<span style="color: #000000;">);<br></span><span style="color: #008080;">14</span>         list.add(“b”<span style="color: #000000;">);<br></span><span style="color: #008080;">15</span>         list.add(“c”<span style="color: #000000;">);<br></span><span style="color: #008080;">16</span>         list.add(“d”<span style="color: #000000;">);<br></span><span style="color: #008080;">17</span>         list.add(“e”<span style="color: #000000;">);<br></span><span style="color: #008080;">18</span>         Iterator iterator =<span style="color: #000000;"> list.iterator();<br></span><span style="color: #008080;">19</span>         <span style="color: #0000ff;">while</span><span style="color: #000000;">(iterator.hasNext()){<br></span><span style="color: #008080;">20</span>             String str =<span style="color: #000000;"> (String) iterator.next();<br></span><span style="color: #008080;">21</span>             <span style="color: #0000ff;">if</span>(str.equals(“c”<span style="color: #000000;">)){<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">                list.remove(str);<br></span><span style="color: #008080;">23</span>             }<span style="color: #0000ff;">else</span><span style="color: #000000;">{<br></span><span style="color: #008080;">24</span> <span style="color: #000000;">                System.out.println(str);<br></span><span style="color: #008080;">25</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">26</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">27</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">28</span><br><span style="color: #008080;">29</span> }</string></string></pre><br></div>
-
-<p>　　结果为：</p>
-<div class="cnblogs_code"><br><pre><span style="color: #000000;">a<br>b<br>Exception in thread </span>“main”<span style="color: #000000;"> java.util.ConcurrentModificationException<br>    at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:</span>819<span style="color: #000000;">)<br>    at java.util.ArrayList$Itr.next(ArrayList.java:</span>791<span style="color: #000000;">)<br>    at com.others.ArrayListTest.main(ArrayListTest.java:</span>20)</pre><br></div>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.others;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.ArrayList;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Iterator;<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.CopyOnWriteArrayList;<br></span><span style="color: #008080;"> 7</span><br><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ArrayListTest {<br></span><span style="color: #008080;"> 9</span><br><span style="color: #008080;">10</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;">11</span>         List<string> list = <span style="color: #0000ff;">new</span> ArrayList<string><span style="color: #000000;">();<br></span><span style="color: #008080;">12</span>         <span style="color: #008000;">//</span><span style="color: #008000;">CopyOnWriteArrayList<string> list = new CopyOnWriteArrayList<string>();</string></string></span><br><span style="color: #008080;">13</span>         list.add(“a”<span style="color: #000000;">);<br></span><span style="color: #008080;">14</span>         list.add(“b”<span style="color: #000000;">);<br></span><span style="color: #008080;">15</span>         list.add(“c”<span style="color: #000000;">);<br></span><span style="color: #008080;">16</span>         list.add(“d”<span style="color: #000000;">);<br></span><span style="color: #008080;">17</span>         list.add(“e”<span style="color: #000000;">);<br></span><span style="color: #008080;">18</span>         Iterator iterator =<span style="color: #000000;"> list.iterator();<br></span><span style="color: #008080;">19</span>         <span style="color: #0000ff;">while</span><span style="color: #000000;">(iterator.hasNext()){<br></span><span style="color: #008080;">20</span>             String str =<span style="color: #000000;"> (String) iterator.next();<br></span><span style="color: #008080;">21</span>             <span style="color: #0000ff;">if</span>(str.equals(“c”<span style="color: #000000;">)){<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">                list.remove(str);<br></span><span style="color: #008080;">23</span>             }<span style="color: #0000ff;">else</span><span style="color: #000000;">{<br></span><span style="color: #008080;">24</span> <span style="color: #000000;">                System.out.println(str);<br></span><span style="color: #008080;">25</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">26</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">27</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">28</span><br><span style="color: #008080;">29</span> }</string></string></pre><br></div><br><a id="more"></a><br>　　结果为：<br><br><div class="cnblogs_code"><br><pre><span style="color: #000000;">a<br>b<br>Exception in thread </span>“main”<span style="color: #000000;"> java.util.ConcurrentModificationException<br>    at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:</span>819<span style="color: #000000;">)<br>    at java.util.ArrayList$Itr.next(ArrayList.java:</span>791<span style="color: #000000;">)<br>    at com.others.ArrayListTest.main(ArrayListTest.java:</span>20)</pre><br></div>
 
 <p>&nbsp;</p>
 <p>　　当调用list的iterator()方法的时候，返回的是一个Itr对象（实现了Iterator接口）：</p>
@@ -205,9 +202,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2013/08/list-concurrentmodificationexception.html" data-id="ciiy5f4sl005uq1d0dlmaomnd" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2013/08/list-concurrentmodificationexception.html" data-id="ciiyffupb005uuwd00prxmve2" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2013/08/list-concurrentmodificationexception.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2013/08/list-concurrentmodificationexception.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
@@ -219,7 +216,7 @@
 <nav id="article-nav">
   
     <a href="/2013/08/hashmap-source.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           HashMap源码剖析
@@ -229,7 +226,7 @@
   
   
     <a href="/2013/08/reentrantreadwritelock.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">ReentrantReadWriteLock读写锁的使用</div>
     </a>
   
@@ -242,7 +239,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-list-concurrentmodificationexception" data-title="使用迭代器遍历List的时候修改List报ConcurrentModificationException异常原因分析" data-url="http://liuling07.github.io/2013/08/list-concurrentmodificationexception.html"></div>
+  <div class="ds-thread" data-thread-key="post-list-concurrentmodificationexception" data-title="使用迭代器遍历List的时候修改List报ConcurrentModificationException异常原因分析" data-url="http://localhost:4000/2013/08/list-concurrentmodificationexception.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -341,7 +338,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -398,7 +395,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -406,7 +403,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

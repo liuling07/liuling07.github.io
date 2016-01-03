@@ -10,12 +10,12 @@
 　　表单提交分为GET和POST两种提交方式。两种方式的乱码解决又不一样，用POST提交只需要在接受的时候加上request.setCharacterEncoding(“utf-8”);而GET方法处理应该将接收过来的值打碎成ISO-8859">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA WEB开发中处理乱码汇总">
-<meta property="og:url" content="http://liuling07.github.io/2013/03/javaweb-messy-code.html">
+<meta property="og:url" content="http://localhost:4000/2013/03/javaweb-messy-code.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="在开发中难免会遇到中文显示乱码的问题，乱码问题是一个很棘手的问题，常常令程序员抓狂。现在把我使用的几种解决乱码的方案和大家共享！
 　　一、表单提交的乱码处理
 　　表单提交分为GET和POST两种提交方式。两种方式的乱码解决又不一样，用POST提交只需要在接受的时候加上request.setCharacterEncoding(“utf-8”);而GET方法处理应该将接收过来的值打碎成ISO-8859">
-<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:31:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA WEB开发中处理乱码汇总">
 <meta name="twitter:description" content="在开发中难免会遇到中文显示乱码的问题，乱码问题是一个很棘手的问题，常常令程序员抓狂。现在把我使用的几种解决乱码的方案和大家共享！
@@ -66,7 +66,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -87,7 +87,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -104,16 +104,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -183,8 +183,7 @@
 <p>　　一、表单提交的乱码处理</p>
 <p>　　表单提交分为GET和POST两种提交方式。两种方式的乱码解决又不一样，用POST提交只需要在接受的时候加上request.setCharacterEncoding(“utf-8”);而GET方法处理应该将接收过来的值打碎成ISO-8859-1编码的，然后再组装成UTF-8的，new String(request.getParameter(param).getBytes(“iso8859-1”<span style="color: #000000;">),”UTF-8”</span>);</p>
 <p>　　二、过滤器处理乱码问题</p>
-<p>　　如果每次接收都像上面那样去处理的话肯定是太麻烦了，用过滤器来处理请求的乱码问题很方便，只需要写一个过滤器，就可以过滤所有请求页面的乱码问题了。至于如何用过滤器处理乱码请参考<a href="http://www.cnblogs.com/liuling/archive/2012/12/17/asdfsdfa.html" target="_blank" rel="external">《用过滤器来解决JSP中文乱码问题》</a>。不过值得注意的是，<span style="color: #ff0000;">如果使用Struts的话，在web.xml里面处理编码的过滤器必须在struts过滤器前面注册，否则所有页面都不会经过过滤器。</span></p>
-<p><span style="color: #ff0000;">　　<span style="color: #000000;">三、ajax请求的乱码问题</span></span></p>
+<p>　　如果每次接收都像上面那样去处理的话肯定是太麻烦了，用过滤器来处理请求的乱码问题很方便，只需要写一个过滤器，就可以过滤所有请求页面的乱码问题了。至于如何用过滤器处理乱码请参考<a href="http://www.cnblogs.com/liuling/archive/2012/12/17/asdfsdfa.html" target="_blank" rel="external">《用过滤器来解决JSP中文乱码问题》</a>。不过值得注意的是，<span style="color: #ff0000;">如果使用Struts的话，在web.xml里面处理编码的过滤器必须在struts过滤器前面注册，否则所有页面都不会经过过滤器。</span><br><a id="more"></a><br><span style="color: #ff0000;">　　<span style="color: #000000;">三、ajax请求的乱码问题</span></span></p>
 <p><span style="color: #ff0000;"><span style="color: #000000;">　　如果使用ajax出现了乱码问题这样解决：前端ajax函数的请求的url里面中文参数用两个encodeURI()函数处理，<span style="widows: 2; text-transform: none; text-indent: 0px; display: inline !important; font: 15px 微软雅黑, 'MS Sans Serif', sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #000000; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">var&nbsp;url&nbsp;=&nbsp;”user.do？p=checkUser&amp;name=”&nbsp;+&nbsp;encodeURI(encodeURI(username.value))；而服务器端则用&nbsp;URLDecoder.decode()函数去接收，s<span style="line-height: normal; widows: 2; text-transform: none; font-variant: normal; font-style: normal; text-indent: 0px; display: inline !important; font-family: 微软雅黑, 'MS Sans Serif', sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #000000; font-weight: normal; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">tring&nbsp;userName&nbsp;=&nbsp;URLDecoder.decode(request.getParameter(“name”),”utf-8”);&nbsp;&nbsp; 这样就能够解决ajax请求中乱码的问题了。</span></span></span></span></p>
 <p><span style="color: #ff0000;"><span style="color: #000000;"><span style="widows: 2; text-transform: none; text-indent: 0px; display: inline !important; font: 15px 微软雅黑, 'MS Sans Serif', sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #000000; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><span style="line-height: normal; widows: 2; text-transform: none; font-variant: normal; font-style: normal; text-indent: 0px; display: inline !important; font-family: 微软雅黑, 'MS Sans Serif', sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #000000; font-weight: normal; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">　　四、链接请求中乱码问题(IE6)</span></span></span></span></p>
 <p><span style="color: #ff0000;"><span style="color: #000000;"><span style="widows: 2; text-transform: none; text-indent: 0px; display: inline !important; font: 15px 微软雅黑, 'MS Sans Serif', sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #000000; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><span style="line-height: normal; widows: 2; text-transform: none; font-variant: normal; font-style: normal; text-indent: 0px; display: inline !important; font-family: 微软雅黑, 'MS Sans Serif', sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #000000; font-weight: normal; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">　　使用链接请求传递中文参数时在IE6里面会出现乱码,解决方法如下：使用encodeURI(param)对中文参数处理一下就行了，如location = “users.do?p=login&amp;&amp;username=”+encodeURI(username)+”&amp;password=”+encodeURI(password);</span></span></span></span></p>
@@ -193,9 +192,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2013/03/javaweb-messy-code.html" data-id="ciiy5f4tv007lq1d0nubd3mj4" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2013/03/javaweb-messy-code.html" data-id="ciiyffuqe007luwd05p9afw8b" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2013/03/javaweb-messy-code.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2013/03/javaweb-messy-code.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
@@ -207,7 +206,7 @@
 <nav id="article-nav">
   
     <a href="/2013/04/java-init-order.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           java笔记一：类成员的初始化顺序
@@ -217,7 +216,7 @@
   
   
     <a href="/2013/03/java-excel.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">JAVA操作Excel表格</div>
     </a>
   
@@ -230,7 +229,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-javaweb-messy-code" data-title="JAVA WEB开发中处理乱码汇总" data-url="http://liuling07.github.io/2013/03/javaweb-messy-code.html"></div>
+  <div class="ds-thread" data-thread-key="post-javaweb-messy-code" data-title="JAVA WEB开发中处理乱码汇总" data-url="http://localhost:4000/2013/03/javaweb-messy-code.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -329,7 +328,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -386,7 +385,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -394,7 +393,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

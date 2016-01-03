@@ -9,12 +9,12 @@
 　　其实Android提供Intent让我们打开系统的相机，但是系统相机跟自己app风格不搭，而且用起来体验不好。所以我使用了SDK提供的camera API自定义了一个相机，并且在相机界面上面添加了参考线，有助于用户将">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android自定义相机拍照、图片裁剪的实现">
-<meta property="og:url" content="http://liuling07.github.io/2015/10/custom-camera.html">
+<meta property="og:url" content="http://localhost:4000/2015/10/custom-camera.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="最近项目里面又要加一个拍照搜题的功能，也就是用户对着不会做的题目拍一张照片，将照片的文字使用ocr识别出来，再调用题库搜索接口搜索出来展示给用户，类似于小猿搜题、学霸君等app。
 　　其实Android提供Intent让我们打开系统的相机，但是系统相机跟自己app风格不搭，而且用起来体验不好。所以我使用了SDK提供的camera API自定义了一个相机，并且在相机界面上面添加了参考线，有助于用户将">
 <meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20151028225216372-729805796.png">
-<meta property="og:updated_time" content="2016-01-03T03:57:56.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:09:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android自定义相机拍照、图片裁剪的实现">
 <meta name="twitter:description" content="最近项目里面又要加一个拍照搜题的功能，也就是用户对着不会做的题目拍一张照片，将照片的文字使用ocr识别出来，再调用题库搜索接口搜索出来展示给用户，类似于小猿搜题、学霸君等app。
@@ -64,7 +64,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -85,7 +85,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -102,16 +102,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -178,8 +178,7 @@
       
                 
         <p>　　<span style="font-size: 15px;">最近项目里面又要加一个拍照搜题的功能，也就是用户对着不会做的题目拍一张照片，将照片的文字使用ocr识别出来，再调用题库搜索接口搜索出来展示给用户，类似于小猿搜题、学霸君等app。<br></span></p>
-<p>　　<span style="font-size: 15px;">其实Android提供Intent让我们打开系统的相机，但是系统相机跟自己app风格不搭，而且用起来体验不好。所以我使用了SDK提供的camera API自定义了一个相机，并且在相机界面上面添加了参考线，有助于用户将题目拍正，提高ocr的识别率。</span></p>
-<p><span style="font-size: 15px;">　　1、绘制参考线的代码</span></p>
+<p>　　<span style="font-size: 15px;">其实Android提供Intent让我们打开系统的相机，但是系统相机跟自己app风格不搭，而且用起来体验不好。所以我使用了SDK提供的camera API自定义了一个相机，并且在相机界面上面添加了参考线，有助于用户将题目拍正，提高ocr的识别率。</span><br><a id="more"></a><br><span style="font-size: 15px;">　　1、绘制参考线的代码</span></p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> ReferenceLine <span style="color: #0000ff;">extends</span><span style="color: #000000;"> View {<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> Paint mLinePaint;<br></span><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> ReferenceLine(Context context) {<br></span><span style="color: #008080;"> 6</span>         <span style="color: #0000ff;">super</span><span style="color: #000000;">(context);<br></span><span style="color: #008080;"> 7</span> <span style="color: #000000;">        init();<br></span><span style="color: #008080;"> 8</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 9</span><br><span style="color: #008080;">10</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> ReferenceLine(Context context, AttributeSet attrs) {<br></span><span style="color: #008080;">11</span>         <span style="color: #0000ff;">super</span><span style="color: #000000;">(context, attrs);<br></span><span style="color: #008080;">12</span> <span style="color: #000000;">        init();<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">14</span><br><span style="color: #008080;">15</span>     <span style="color: #0000ff;">public</span> ReferenceLine(Context context, AttributeSet attrs, <span style="color: #0000ff;">int</span><span style="color: #000000;"> defStyleAttr) {<br></span><span style="color: #008080;">16</span>         <span style="color: #0000ff;">super</span><span style="color: #000000;">(context, attrs, defStyleAttr);<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">        init();<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">19</span><br><span style="color: #008080;">20</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> init() {<br></span><span style="color: #008080;">21</span>         mLinePaint = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Paint();<br></span><span style="color: #008080;">22</span>         mLinePaint.setAntiAlias(<span style="color: #0000ff;">true</span><span style="color: #000000;">);<br></span><span style="color: #008080;">23</span>         mLinePaint.setColor(Color.parseColor(“#45e0e0e0”<span style="color: #000000;">));<br></span><span style="color: #008080;">24</span>         mLinePaint.setStrokeWidth(1<span style="color: #000000;">);<br></span><span style="color: #008080;">25</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">26</span><br><span style="color: #008080;">27</span><br><span style="color: #008080;">28</span><br><span style="color: #008080;">29</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;">30</span>     <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> onDraw(Canvas canvas) {<br></span><span style="color: #008080;">31</span>         <span style="color: #0000ff;">int</span> screenWidth =<span style="color: #000000;"> Utils.getScreenWH(getContext()).widthPixels;<br></span><span style="color: #008080;">32</span>         <span style="color: #0000ff;">int</span> screenHeight =<span style="color: #000000;"> Utils.getScreenWH(getContext()).heightPixels;<br></span><span style="color: #008080;">33</span><br><span style="color: #008080;">34</span>         <span style="color: #0000ff;">int</span> width = screenWidth/3<span style="color: #000000;">;<br></span><span style="color: #008080;">35</span>         <span style="color: #0000ff;">int</span> height = screenHeight/3<span style="color: #000000;">;<br></span><span style="color: #008080;">36</span><br><span style="color: #008080;">37</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = width, j = 0;i &lt; screenWidth &amp;&amp; j<2;i +="width," j++<span="" style="color: #000000;">) {<br><span style="color: #008080;">38</span>             canvas.drawLine(i, 0<span style="color: #000000;">, i, screenHeight, mLinePaint);<br></span><span style="color: #008080;">39</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">40</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> j = height,i = 0;j &lt; screenHeight &amp;&amp; i &lt; 2;j += height,i++<span style="color: #000000;">) {<br></span><span style="color: #008080;">41</span>             canvas.drawLine(0<span style="color: #000000;">, j, screenWidth, j, mLinePaint);<br></span><span style="color: #008080;">42</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">43</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">44</span><br><span style="color: #008080;">45</span><br><span style="color: #008080;">46</span> }</2;i></pre><br></div>
 
 <p>&nbsp;</p>
@@ -205,9 +204,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2015/10/custom-camera.html" data-id="ciiy5f4x100crq1d0p47hc6vp" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2015/10/custom-camera.html" data-id="ciiyffutk00cruwd0kkg0wbmw" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2015/10/custom-camera.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2015/10/custom-camera.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/camera/">camera</a></li></ul>
@@ -219,7 +218,7 @@
 <nav id="article-nav">
   
     <a href="/2015/11/recyclerview-example.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           RecyclerView的使用
@@ -229,7 +228,7 @@
   
   
     <a href="/2015/10/listview-partial-refresh.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">ListView实现Item局部刷新</div>
     </a>
   
@@ -242,7 +241,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-custom-camera" data-title="Android自定义相机拍照、图片裁剪的实现" data-url="http://liuling07.github.io/2015/10/custom-camera.html"></div>
+  <div class="ds-thread" data-thread-key="post-custom-camera" data-title="Android自定义相机拍照、图片裁剪的实现" data-url="http://localhost:4000/2015/10/custom-camera.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -341,7 +340,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -398,7 +397,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -406,7 +405,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

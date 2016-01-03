@@ -11,13 +11,13 @@ Serializable与Parcelable的区别
 　　2、Serializable序列化是基于磁盘的，而Pa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android中Parcelable接口的使用">
-<meta property="og:url" content="http://liuling07.github.io/2015/10/parcelable-example.html">
+<meta property="og:url" content="http://localhost:4000/2015/10/parcelable-example.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="在做开发的过程中，序列化是非常常见的。比如要将对象保存本地磁盘或者在网络上传输等。实现序列化有两种方式，一种是实现Serializable接口，第二种是实现Parcelable。
 Serializable与Parcelable的区别
 　　1、Serializable是JDK提供的接口，而Parcelable是Android SDK提供的。
 　　2、Serializable序列化是基于磁盘的，而Pa">
-<meta property="og:updated_time" content="2016-01-03T03:50:49.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:37:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android中Parcelable接口的使用">
 <meta name="twitter:description" content="在做开发的过程中，序列化是非常常见的。比如要将对象保存本地磁盘或者在网络上传输等。实现序列化有两种方式，一种是实现Serializable接口，第二种是实现Parcelable。
@@ -69,7 +69,7 @@ Serializable与Parcelable的区别
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -90,7 +90,7 @@ Serializable与Parcelable的区别
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -107,16 +107,16 @@ Serializable与Parcelable的区别
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -196,8 +196,7 @@ Serializable与Parcelable的区别
 <p><span style="font-size: 15px;">&nbsp;&nbsp; 　　3.静态的Parcelable.Creator接口，本接口有两个方法：</span></p>
 <p><span style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;　　　　createFromParcel(Parcel in)&nbsp; 从Parcel容器中读取传递数据值，封装成Parcelable对象返回逻辑层。</span></p>
 <p><span style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;　　　　newArray(int size) 创建一个类型为T，长度为size的数组，仅一句话（return new T[size])即可。方法是供外部类反序列化本类数组使用。</span></p>
-<p>&nbsp;</p>
-<p><strong>Parcelable的使用</strong></p>
+<p>&nbsp;<br><a id="more"></a><br><strong>Parcelable的使用</strong></p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> AppContent <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Serializable, Parcelable {<br></span><span style="color: #008080;"> 2</span>     <span style="color: #008000;">//</span><span style="color: #008000;">应用名字</span><br><span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> String name;<br></span><span style="color: #008080;"> 4</span>     <span style="color: #008000;">//</span><span style="color: #008000;">应用下载链接</span><br><span style="color: #008080;"> 5</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> String url;<br></span><span style="color: #008080;"> 6</span><br><span style="color: #008080;"> 7</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">int</span> downloadPercent = 0<span style="color: #000000;">;<br></span><span style="color: #008080;"> 8</span><br><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">private</span> Status status =<span style="color: #000000;"> Status.PENDING;<br></span><span style="color: #008080;">10</span><br><span style="color: #008080;">11</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> AppContent(String name, String url) {<br></span><span style="color: #008080;">12</span>         <span style="color: #0000ff;">this</span>.name =<span style="color: #000000;"> name;<br></span><span style="color: #008080;">13</span>         <span style="color: #0000ff;">this</span>.url =<span style="color: #000000;"> url;<br></span><span style="color: #008080;">14</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">15</span><br><span style="color: #008080;">16</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> String getName() {<br></span><span style="color: #008080;">17</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> name;<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">19</span><br><span style="color: #008080;">20</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> setName(String name) {<br></span><span style="color: #008080;">21</span>         <span style="color: #0000ff;">this</span>.name =<span style="color: #000000;"> name;<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">23</span><br><span style="color: #008080;">24</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> String getUrl() {<br></span><span style="color: #008080;">25</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> url;<br></span><span style="color: #008080;">26</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">27</span><br><span style="color: #008080;">28</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> setUrl(String url) {<br></span><span style="color: #008080;">29</span>         <span style="color: #0000ff;">this</span>.url =<span style="color: #000000;"> url;<br></span><span style="color: #008080;">30</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">31</span><br><span style="color: #008080;">32</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> getDownloadPercent() {<br></span><span style="color: #008080;">33</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> downloadPercent;<br></span><span style="color: #008080;">34</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">35</span><br><span style="color: #008080;">36</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> setDownloadPercent(<span style="color: #0000ff;">int</span><span style="color: #000000;"> downloadPercent) {<br></span><span style="color: #008080;">37</span>         <span style="color: #0000ff;">this</span>.downloadPercent =<span style="color: #000000;"> downloadPercent;<br></span><span style="color: #008080;">38</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">39</span><br><span style="color: #008080;">40</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Status getStatus() {<br></span><span style="color: #008080;">41</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> status;<br></span><span style="color: #008080;">42</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">43</span><br><span style="color: #008080;">44</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> setStatus(Status status) {<br></span><span style="color: #008080;">45</span>         <span style="color: #0000ff;">this</span>.status =<span style="color: #000000;"> status;<br></span><span style="color: #008080;">46</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">47</span><br><span style="color: #008080;">48</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;">49</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> String toString() {<br></span><span style="color: #008080;">50</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> name;<br></span><span style="color: #008080;">51</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">52</span><br><span style="color: #008080;">53</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;">54</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> describeContents() {<br></span><span style="color: #008080;">55</span>         <span style="color: #0000ff;">return</span> 0<span style="color: #000000;">;<br></span><span style="color: #008080;">56</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">57</span><br><span style="color: #008080;">58</span>     <span style="color: #008000;">//</span><span style="color: #008000;">实现Parcel接口必须覆盖实现的方法</span><br><span style="color: #008080;">59</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;">60</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> writeToParcel(Parcel dest, <span style="color: #0000ff;">int</span><span style="color: #000000;"> flags) {<br></span><span style="color: #008080;">61</span>         <span style="color: #008000;">/<em></em></span><span style="color: #008000;">将AppContent的成员写入Parcel，<br></span><span style="color: #008080;">62</span> <span style="color: #008000;">          注：Parcel中的数据是按顺序写入和读取的，即先被写入的就会先被读取出来<br></span><span style="color: #008080;">63</span>          <span style="color: #008000;">*/</span><br><span style="color: #008080;">64</span> <span style="color: #000000;">        dest.writeString(name);<br></span><span style="color: #008080;">65</span> <span style="color: #000000;">        dest.writeString(url);<br></span><span style="color: #008080;">66</span> <span style="color: #000000;">        dest.writeInt(downloadPercent);<br></span><span style="color: #008080;">67</span> <span style="color: #000000;">        dest.writeValue(status);<br></span><span style="color: #008080;">68</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">69</span><br><span style="color: #008080;">70</span>     <span style="color: #008000;">//</span><span style="color: #008000;">该静态域是必须要有的，而且名字必须是CREATOR，否则会出错</span><br><span style="color: #008080;">71</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">final</span> Parcelable.Creator<appcontent> CREATOR =<br><span style="color: #008080;">72</span>             <span style="color: #0000ff;">new</span> Parcelable.Creator<appcontent><span style="color: #000000;">() {<br></span><span style="color: #008080;">73</span><br><span style="color: #008080;">74</span> <span style="color: #000000;">                @Override<br></span><span style="color: #008080;">75</span>                 <span style="color: #0000ff;">public</span><span style="color: #000000;"> AppContent createFromParcel(Parcel source) {<br></span><span style="color: #008080;">76</span>                     <span style="color: #008000;">//</span><span style="color: #008000;">从Parcel读取通过writeToParcel方法写入的AppContent的相关成员信息</span><br><span style="color: #008080;">77</span>                     String name =<span style="color: #000000;"> source.readString();<br></span><span style="color: #008080;">78</span>                     String url =<span style="color: #000000;"> source.readString();<br></span><span style="color: #008080;">79</span>                     <span style="color: #0000ff;">int</span> downloadPercent =<span style="color: #000000;"> source.readInt();<br></span><span style="color: #008080;">80</span>                     Status status = (Status)source.readValue(<span style="color: #0000ff;">new</span><span style="color: #000000;"> ClassLoader(){});<br></span><span style="color: #008080;">81</span>                     AppContent appContent = <span style="color: #0000ff;">new</span><span style="color: #000000;"> AppContent(name, url);<br></span><span style="color: #008080;">82</span> <span style="color: #000000;">                    appContent.setDownloadPercent(downloadPercent);<br></span><span style="color: #008080;">83</span> <span style="color: #000000;">                    appContent.setStatus(status);<br></span><span style="color: #008080;">84</span>                     <span style="color: #008000;">//</span><span style="color: #008000;">更加读取到的信息，创建返回Person对象</span><br><span style="color: #008080;">85</span>                     <span style="color: #0000ff;">return</span><span style="color: #000000;"> appContent;<br></span><span style="color: #008080;">86</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">87</span><br><span style="color: #008080;">88</span> <span style="color: #000000;">                @Override<br></span><span style="color: #008080;">89</span>                 <span style="color: #0000ff;">public</span> AppContent[] newArray(<span style="color: #0000ff;">int</span><span style="color: #000000;"> size)<br></span><span style="color: #008080;">90</span> <span style="color: #000000;">                {<br></span><span style="color: #008080;">91</span>                     <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated method stub<br></span><span style="color: #008080;">92</span>                     <span style="color: #008000;">//</span><span style="color: #008000;">返回AppContent对象数组</span><br><span style="color: #008080;">93</span>                     <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">new</span><span style="color: #000000;"> AppContent[size];<br></span><span style="color: #008080;">94</span> <span style="color: #000000;">                }<br></span><span style="color: #008080;">95</span> <span style="color: #000000;">            };<br></span><span style="color: #008080;">96</span><br><span style="color: #008080;">97</span> }</appcontent></appcontent></pre><br></div>
 
 <p>　　通过Intent进行传递：</p>
@@ -209,9 +208,9 @@ Serializable与Parcelable的区别
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2015/10/parcelable-example.html" data-id="ciiy5f4r7003qq1d0j067707u" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2015/10/parcelable-example.html" data-id="ciiyffunv003quwd0z4wog0jk" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2015/10/parcelable-example.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2015/10/parcelable-example.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -223,7 +222,7 @@ Serializable与Parcelable的区别
 <nav id="article-nav">
   
     <a href="/2015/10/customview-download-percent.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           Android中使用自定义View实现下载进度的显示
@@ -233,7 +232,7 @@ Serializable与Parcelable的区别
   
   
     <a href="/2015/10/asynctask-multithread-download.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">AsyncTask实现多线程断点续传</div>
     </a>
   
@@ -246,7 +245,7 @@ Serializable与Parcelable的区别
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-parcelable-example" data-title="Android中Parcelable接口的使用" data-url="http://liuling07.github.io/2015/10/parcelable-example.html"></div>
+  <div class="ds-thread" data-thread-key="post-parcelable-example" data-title="Android中Parcelable接口的使用" data-url="http://localhost:4000/2015/10/parcelable-example.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -345,7 +344,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -402,7 +401,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -410,7 +409,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

@@ -10,7 +10,7 @@
 　　redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)和zset(有序集合)。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，redis支持各种不同方式的排序。与memcached一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis安装及主从配置">
-<meta property="og:url" content="http://liuling07.github.io/2014/04/redis-install.html">
+<meta property="og:url" content="http://localhost:4000/2014/04/redis-install.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="一、何为Redis
 
@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/191700306034200.jpg">
 <meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/191730374786356.png">
 <meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/191733402605850.png">
-<meta property="og:updated_time" content="2016-01-03T04:12:00.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:39:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis安装及主从配置">
 <meta name="twitter:description" content="一、何为Redis
@@ -71,7 +71,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -92,7 +92,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -109,16 +109,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -186,7 +186,7 @@
                 
         <div style="width: 100%; height: 35px; background-color: #2eb1e8; line-height: 35px;"><span style="color: #ffffff; font-size: 16px;"><strong>一、何为Redis</strong></span></div>
 
-<p>　　<span style="font-size: 16px;">redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)和zset(有序集合)。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，redis支持各种不同方式的排序。与memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。Redis 是一个高性能的key-value数据库。 redis的出现，很大程度补偿了memcached这类keyvalue存储的不足，在部分场合可以对关系数据库起到很好的补充作用。</span></p>
+<p>　　<span style="font-size: 16px;">redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)和zset(有序集合)。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，redis支持各种不同方式的排序。与memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。Redis 是一个高性能的key-value数据库。 redis的出现，很大程度补偿了memcached这类keyvalue存储的不足，在部分场合可以对关系数据库起到很好的补充作用。</span><br><a id="more"></a></p>
 <div style="width: 100%; height: 35px; background-color: #2eb1e8; line-height: 35px;"><span style="color: #ffffff; font-size: 16px;"><strong>二、安装Redis</strong></span></div>
 
 <p><span style="font-size: 16px;"><strong>1、安装前环境说明</strong></span></p>
@@ -238,9 +238,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/04/redis-install.html" data-id="ciiy5f4qo002wq1d0wjkjv08t" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/04/redis-install.html" data-id="ciiyffunb002wuwd0hqr3barn" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/04/redis-install.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/04/redis-install.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
@@ -252,7 +252,7 @@
 <nav id="article-nav">
   
     <a href="/2014/04/redis-command.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           Redis中常用命令
@@ -262,7 +262,7 @@
   
   
     <a href="/2014/04/redis-config.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">Redis配置文件参数说明</div>
     </a>
   
@@ -275,7 +275,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-redis-install" data-title="Redis安装及主从配置" data-url="http://liuling07.github.io/2014/04/redis-install.html"></div>
+  <div class="ds-thread" data-thread-key="post-redis-install" data-title="Redis安装及主从配置" data-url="http://localhost:4000/2014/04/redis-install.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -374,7 +374,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -431,7 +431,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -439,7 +439,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

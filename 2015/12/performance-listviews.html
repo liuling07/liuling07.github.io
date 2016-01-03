@@ -9,11 +9,11 @@
 译文连接：高性能ListViews列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Androi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【译文】高性能ListViews">
-<meta property="og:url" content="http://liuling07.github.io/2015/12/performance-listviews.html">
+<meta property="og:url" content="http://localhost:4000/2015/12/performance-listviews.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="原文链接 : Performance ListViews原文作者 : Brandon译文出自 : 开发技术前线 www.devtf.cn。未经允许，不得转载!译者 : liuling07校对者: desmond1121状态 : 完成
 译文连接：高性能ListViews列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Androi">
-<meta property="og:updated_time" content="2016-01-03T05:30:38.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:37:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【译文】高性能ListViews">
 <meta name="twitter:description" content="原文链接 : Performance ListViews原文作者 : Brandon译文出自 : 开发技术前线 www.devtf.cn。未经允许，不得转载!译者 : liuling07校对者: desmond1121状态 : 完成
@@ -63,7 +63,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -84,7 +84,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -101,16 +101,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -179,6 +179,7 @@
         <p>原文链接 : <a href="http://willowtreeapps.com/blog/performance-listviews/?utm_source=Android+Weekly&amp;utm_campaign=038d344835-Android_Weekly_178&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-038d344835-337955857" target="_blank" rel="external">Performance ListViews</a><br>原文作者 : <a href="http://willowtreeapps.com/blog/" target="_blank" rel="external">Brandon</a><br>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="external">开发技术前线 www.devtf.cn。未经允许，不得转载!</a><br>译者 : <a href="https://github.com/liuling07" target="_blank" rel="external">liuling07</a><br>校对者: <a href="https://github.com/desmond1121" target="_blank" rel="external">desmond1121</a><br>状态 : 完成</p>
 <h2 id="u8BD1_u6587_u8FDE_u63A5_uFF1A_u9AD8_u6027_u80FDListViews"><a href="#u8BD1_u6587_u8FDE_u63A5_uFF1A_u9AD8_u6027_u80FDListViews" class="headerlink" title="译文连接：高性能ListViews"></a>译文连接：<a href="https://github.com/bboyfeiyu/android-tech-frontier/blob/master/androidweekly/高性能ListViews/高性能ListViews.md" target="_blank" rel="external">高性能ListViews</a></h2><p>列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示列表数据的方式，它非常高效，因为它重用视图而不是每一行出现在屏幕上都重新创建。在RecyclerView出现之前，我们可以使用ListView，即使到了现在，ListView也是广泛的被开发者所使用。虽然ListView也是可以回收视图的，但它也一直都是Android中最容易被错误使用的一个控件。我们知道在此之前这个话题已经被写过无数遍了，但是今天我还是要在博客中提出来，因为我们仍然发现很多app在错误的使用它们。</p>
 <p>关于ListView中ArrayAdapter的用法，标准的新手写法是这样子的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override&#10;public View getView(int position, View convertView, ViewGroup parent) &#123;&#10; &#10;    LayoutInflater inflater = (LayoutInflater) context&#10;            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);&#10;    View rowView = inflater.inflate(R.layout.view_test_row, parent, false);&#10; &#10;    TextView testName = (TextView)rowView.findViewById(R.id.text_view_test_name);&#10;    TextView testDesc = (TextView)rowView.findViewById(R.id.text_view_test_desc);&#10; &#10;    //modify TextViews, in some arbitrary way&#10; &#10;    return rowView;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>当所有列表项都能够一次性在一屏中显示的时候，这种写法并没有什么问题，但这样你就创建了一个基本视图，并完全避免了ArrayAdapter的麻烦了吗？当ListView需要显示一个很大的列表集，而且列表子项是一个非常复杂的视图的时候，上面的方式会消耗大量的性能。当用户滑动屏幕的时候，每个视图都会被inflate并且调用findViewById()方法。当findViewById()方法被调用的时候，会遍历整个视图层级，直到找到正确的Id。每个子视图都要执行上述过程！并且用户滑动的越快，卡顿现象愈加明显。为了解决这个问题，我们可以使用一个静态类来绑定还没被使用的convertView。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static class ViewHolder()&#123;&#10; &#10;        TextView testName;&#10;        TextView testDesc;&#10; &#10;&#125;&#10; &#10;@Override&#10; public View getView(int position, View convertView, ViewGroup parent) &#123;&#10; &#10;    View rowView = convertView;  //reference to one of the previous Views in the list that we can reuse.&#10; &#10;    if(convertView == null) &#123;&#10; &#10;        LayoutInflater inflater = (LayoutInflater) context&#10;                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);&#10;        rowView = inflater.inflate(R.layout.view_test_row, parent, false);&#10; &#10;        ViewHolder viewHolder = new ViewHolder();&#10;        viewHolder.testName = (TextView) rowView.findViewById(R.id.text_view_test_name);&#10;        viewHolder.testDesc = (TextView) rowView.findViewById(R.id.text_view_test_desc);&#10; &#10;        rowView.setTag(viewHolder);&#10;    &#125;&#10; &#10;    ViewHolder holder = (ViewHolder) rowView.getTag();&#10; &#10;    //in real code these strings should be in res&#10;    holder.testName.setText(&#34;Test&#34;+position);&#10;    holder.testDesc.setText(&#34;This is number &#34;+position);&#10; &#10;    return rowView;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p>那convertView又是什么呢？它可以让ListView跳过一些显示一行内容所需要的设置。如果某一行的视图不在屏幕中显示，我们可以重复使用这个视图来显示一个新行。当ListView刚开始显示的时候，一切都是正常的。既然没有视图可以被用来复用，convertView为空。视图也像前面版本一样被inflate，但是TextViews会被找到且它的引用被保存在一个ViewHolder中。然后我们可以调用setTag()方法将ViewHolder存储在视图中。正如修订过后的getView()方法中后半段代码所示，我们可以在视图中存储后面我们需要用到的数据。</p>
@@ -187,9 +188,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2015/12/performance-listviews.html" data-id="ciiy5f4r3003lq1d08dotwrw6" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2015/12/performance-listviews.html" data-id="ciiyffunr003luwd0c5tw9y4y" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2015/12/performance-listviews.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2015/12/performance-listviews.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译文/">译文</a></li></ul>
@@ -201,7 +202,7 @@
 <nav id="article-nav">
   
     <a href="/2015/12/intent-resolving-in-android-m.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           【译文】Android M中Intent的解析
@@ -211,7 +212,7 @@
   
   
     <a href="/2015/11/android-multi-photo-picker.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">Android带多选功能的PhotoPicker</div>
     </a>
   
@@ -224,7 +225,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-performance-listviews" data-title="【译文】高性能ListViews" data-url="http://liuling07.github.io/2015/12/performance-listviews.html"></div>
+  <div class="ds-thread" data-thread-key="post-performance-listviews" data-title="【译文】高性能ListViews" data-url="http://localhost:4000/2015/12/performance-listviews.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -323,7 +324,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -380,7 +381,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -388,7 +389,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

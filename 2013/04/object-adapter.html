@@ -9,11 +9,11 @@
 　　使用适配器就可以解决这个问题：生产一种&amp;ldquo;A型螺母适配器&amp;rdquo;，这种A型螺母适配器的前端符合A型螺母标准">
 <meta property="og:type" content="article">
 <meta property="og:title" content="适配器模式之对象适配器">
-<meta property="og:url" content="http://liuling07.github.io/2013/04/object-adapter.html">
+<meta property="og:url" content="http://localhost:4000/2013/04/object-adapter.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="问题导入：比如有A型螺母和B型螺母，那么用户可以再A型螺母上直接使用按着A型螺母生产的A型螺丝，同样也可以在B型螺母上直接使用按着B型螺母标准生产的B型螺丝。但是由于A型螺母和B型螺母的标准不一样，用户在A型螺母上不能直接使用B型的螺丝，反之也一样。该如何达到这个目的呢？
 　　使用适配器就可以解决这个问题：生产一种&amp;ldquo;A型螺母适配器&amp;rdquo;，这种A型螺母适配器的前端符合A型螺母标准">
-<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:35:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="适配器模式之对象适配器">
 <meta name="twitter:description" content="问题导入：比如有A型螺母和B型螺母，那么用户可以再A型螺母上直接使用按着A型螺母生产的A型螺丝，同样也可以在B型螺母上直接使用按着B型螺母标准生产的B型螺丝。但是由于A型螺母和B型螺母的标准不一样，用户在A型螺母上不能直接使用B型的螺丝，反之也一样。该如何达到这个目的呢？
@@ -63,7 +63,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -84,7 +84,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -101,16 +101,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -178,8 +178,7 @@
                 
         <p>　　问题导入：比如有A型螺母和B型螺母，那么用户可以再A型螺母上直接使用按着A型螺母生产的A型螺丝，同样也可以在B型螺母上直接使用按着B型螺母标准生产的B型螺丝。但是由于A型螺母和B型螺母的标准不一样，用户在A型螺母上不能直接使用B型的螺丝，反之也一样。该如何达到这个目的呢？</p>
 <p>　　使用适配器就可以解决这个问题：生产一种&ldquo;A型螺母适配器&rdquo;，这种A型螺母适配器的前端符合A型螺母标准要求，可以拧在A型螺母上，后端又焊接了一个B型螺母。这样用户就可以借助A型螺母适配器在A型螺母上使用B型的螺丝了。</p>
-<p>　　适配器模式又称为包装器，是用来将一个类的接口转换成客户希望的另外一个接口。这可以使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。适配器模式的关键是建立一个适配器，这个适配器实现了目标接口并且包含了被适配者的引用。</p>
-<p>　　适配器模式的三种角色：</p>
+<p>　　适配器模式又称为包装器，是用来将一个类的接口转换成客户希望的另外一个接口。这可以使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。适配器模式的关键是建立一个适配器，这个适配器实现了目标接口并且包含了被适配者的引用。<br><a id="more"></a><br>　　适配器模式的三种角色：</p>
 <p>　　一、目标：目标是一个接口，该接口是客户想要使用的接口。</p>
 <p>　　二、被适配者：被适配者是一个已经存在的接口或抽象类，这个接口接口或者抽象类需要适配。</p>
 <p>　　三、适配器：适配器是一个类，该类实现了目标接口并且包含有被适配者的引用，即适配器的职责是对适配者接口或抽象类与目标接口进行适配。</p>
@@ -223,9 +222,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2013/04/object-adapter.html" data-id="ciiy5f4rr004kq1d08loteftw" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2013/04/object-adapter.html" data-id="ciiyffuog004kuwd0ytwtfpqx" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2013/04/object-adapter.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2013/04/object-adapter.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -237,7 +236,7 @@
 <nav id="article-nav">
   
     <a href="/2013/04/design-pattern-adapter.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           适配器模式之单接口适配器
@@ -247,7 +246,7 @@
   
   
     <a href="/2013/04/insert-map.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">在网页中插入百度地图</div>
     </a>
   
@@ -260,7 +259,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-object-adapter" data-title="适配器模式之对象适配器" data-url="http://liuling07.github.io/2013/04/object-adapter.html"></div>
+  <div class="ds-thread" data-thread-key="post-object-adapter" data-title="适配器模式之对象适配器" data-url="http://localhost:4000/2013/04/object-adapter.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -359,7 +358,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -416,7 +415,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -424,7 +423,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

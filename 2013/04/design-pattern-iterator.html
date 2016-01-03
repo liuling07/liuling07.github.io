@@ -11,13 +11,13 @@
 　　二、具体集合：具体集合石实现了集合接口的一个实例，具体的集合按照一定的结构存储对象。具体集合应该有一个方法，该方法返回一个针对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="迭代器模式">
-<meta property="og:url" content="http://liuling07.github.io/2013/04/design-pattern-iterator.html">
+<meta property="og:url" content="http://localhost:4000/2013/04/design-pattern-iterator.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="迭代器模式遍历集合的成熟模式，迭代器模式的关键是将遍历集合的任务交给一个叫做迭代器的对象，它的工作时遍历并选择序列中的对象，而客户端程序员不必知道或关心该集合序列底层的结构。
 　　迭代器模式的结构中包括四种角色。
 　　一、集合：一个接口，规定了具体集合需要实现的操作。
 　　二、具体集合：具体集合石实现了集合接口的一个实例，具体的集合按照一定的结构存储对象。具体集合应该有一个方法，该方法返回一个针对">
-<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:12:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="迭代器模式">
 <meta name="twitter:description" content="迭代器模式遍历集合的成熟模式，迭代器模式的关键是将遍历集合的任务交给一个叫做迭代器的对象，它的工作时遍历并选择序列中的对象，而客户端程序员不必知道或关心该集合序列底层的结构。
@@ -69,7 +69,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -90,7 +90,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -107,16 +107,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -187,8 +187,7 @@
 <p>　　一、集合：一个接口，规定了具体集合需要实现的操作。</p>
 <p>　　二、具体集合：具体集合石实现了集合接口的一个实例，具体的集合按照一定的结构存储对象。具体集合应该有一个方法，该方法返回一个针对该集合的具体迭代器。</p>
 <p>　　三、迭代器：一个接口，规定了遍历具体集合的方法，比如next()方法。</p>
-<p>　　四、具体迭代器：实现了迭代器接口的类的实例。具体迭代器在实现迭代器接口所规定的遍历集合的方法时，比如next()方法，要保证首次调用将按着集合的数据结构找到该集合的一个对象，并且每当找到集合中的一个对象，立即根据该集合的存储结构得到待遍历的后继对象的引用，并保证一次调用next()方法可以遍历集合。</p>
-<p>　　下列应用程序中，使用了迭代器模式中所涉及的类。该应用程序模拟点钞，使用HashSet类的实例，即一个集合模拟保险箱HashSet类的实例调用iterator()方法返回一个迭代器，用该迭代器模拟点钞机，而且在点钞过程中销毁假钞。</p>
+<p>　　四、具体迭代器：实现了迭代器接口的类的实例。具体迭代器在实现迭代器接口所规定的遍历集合的方法时，比如next()方法，要保证首次调用将按着集合的数据结构找到该集合的一个对象，并且每当找到集合中的一个对象，立即根据该集合的存储结构得到待遍历的后继对象的引用，并保证一次调用next()方法可以遍历集合。<br><a id="more"></a><br>　　下列应用程序中，使用了迭代器模式中所涉及的类。该应用程序模拟点钞，使用HashSet类的实例，即一个集合模拟保险箱HashSet类的实例调用iterator()方法返回一个迭代器，用该迭代器模拟点钞机，而且在点钞过程中销毁假钞。</p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.iterator;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Collection;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.HashSet;<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Iterator;<br></span><span style="color: #008080;"> 6</span><br><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Application {<br></span><span style="color: #008080;"> 8</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;"> 9</span>         <span style="color: #0000ff;">int</span> n = 20<span style="color: #000000;">;<br></span><span style="color: #008080;">10</span>         <span style="color: #0000ff;">int</span> sum = 0<span style="color: #000000;">;<br></span><span style="color: #008080;">11</span>         Collection<renminmony> set = <span style="color: #0000ff;">new</span> HashSet<renminmony>();<span style="color: #008000;">//</span><span style="color: #008000;">集合对象</span><br><span style="color: #008080;">12</span>         <span style="color: #0000ff;">for</span>(<span style="color: #0000ff;">int</span> i=1;i&lt;=n;i++<span style="color: #000000;">){<br></span><span style="color: #008080;">13</span>             <span style="color: #0000ff;">if</span>(i==n/2 || i==n/5 || i==n/6<span style="color: #000000;">){<br></span><span style="color: #008080;">14</span>                 set.add(<span style="color: #0000ff;">new</span> RenMinMony(100,<span style="color: #0000ff;">false</span><span style="color: #000000;">));<br></span><span style="color: #008080;">15</span>             }<span style="color: #0000ff;">else</span><span style="color: #000000;">{<br></span><span style="color: #008080;">16</span>                 set.add(<span style="color: #0000ff;">new</span> RenMinMony(100,<span style="color: #0000ff;">true</span><span style="color: #000000;">));<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">19</span>         Iterator<renminmony> iterator =<span style="color: #000000;"> set.iterator();<br></span><span style="color: #008080;">20</span>         <span style="color: #0000ff;">int</span> jia = 0, zhen = 0<span style="color: #000000;">;<br></span><span style="color: #008080;">21</span>         System.out.println(“保险箱共有”+set.size()+”张人民币！”<span style="color: #000000;">);<br></span><span style="color: #008080;">22</span>         <span style="color: #0000ff;">int</span> k = 0<span style="color: #000000;">;<br></span><span style="color: #008080;">23</span>         <span style="color: #0000ff;">while</span><span style="color: #000000;">(iterator.hasNext()){<br></span><span style="color: #008080;">24</span>             RenMinMony money =<span style="color: #000000;"> iterator.next();<br></span><span style="color: #008080;">25</span>             k++<span style="color: #000000;">;<br></span><span style="color: #008080;">26</span>             <span style="color: #0000ff;">if</span>(money.isTure() == <span style="color: #0000ff;">false</span><span style="color: #000000;">){<br></span><span style="color: #008080;">27</span>                 System.out.println(“第”+k+”张是假币，被销毁”<span style="color: #000000;">);<br></span><span style="color: #008080;">28</span>                 iterator.remove();<span style="color: #008000;">//</span><span style="color: #008000;">移除掉最近一次本next()返回的对象</span><br><span style="color: #008080;">29</span>                 k++<span style="color: #000000;">;<br></span><span style="color: #008080;">30</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">31</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">32</span>         System.out.println(“保险箱现有真人民币”+set.size()+”张，总价值是：”<span style="color: #000000;">);<br></span><span style="color: #008080;">33</span>         iterator =<span style="color: #000000;"> set.iterator();<br></span><span style="color: #008080;">34</span>         <span style="color: #0000ff;">while</span><span style="color: #000000;">(iterator.hasNext()){<br></span><span style="color: #008080;">35</span>             RenMinMony money =<span style="color: #000000;"> iterator.next();<br></span><span style="color: #008080;">36</span>             sum = sum +<span style="color: #000000;"> money.getValue();<br></span><span style="color: #008080;">37</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">38</span>         System.out.println(sum+”元”<span style="color: #000000;">);<br></span><span style="color: #008080;">39</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">40</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">41</span><br><span style="color: #008080;">42</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> RenMinMony{<br></span><span style="color: #008080;">43</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> value;<br></span><span style="color: #008080;">44</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> isTure;<br></span><span style="color: #008080;">45</span>     <span style="color: #0000ff;">public</span> RenMinMony(<span style="color: #0000ff;">int</span> value,<span style="color: #0000ff;">boolean</span><span style="color: #000000;"> isTure) {<br></span><span style="color: #008080;">46</span>         <span style="color: #0000ff;">this</span>.value =<span style="color: #000000;"> value;<br></span><span style="color: #008080;">47</span>         <span style="color: #0000ff;">this</span>.isTure =<span style="color: #000000;"> isTure;<br></span><span style="color: #008080;">48</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">49</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">int</span><span style="color: #000000;"> getValue() {<br></span><span style="color: #008080;">50</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> value;<br></span><span style="color: #008080;">51</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">52</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> isTure() {<br></span><span style="color: #008080;">53</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> isTure;<br></span><span style="color: #008080;">54</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">55</span> }</renminmony></renminmony></renminmony></pre><br></div>
 
 <p>运行结果如下：<br>保险箱共有20张人民币！<br>第6张是假币，被销毁<br>第12张是假币，被销毁<br>第17张是假币，被销毁<br>保险箱现有真人民币17张，总价值是：<br>1700元</p>
@@ -211,9 +210,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2013/04/design-pattern-iterator.html" data-id="ciiy5f4we00bzq1d0fed7keck" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2013/04/design-pattern-iterator.html" data-id="ciiyffut400bzuwd0oylucljd" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2013/04/design-pattern-iterator.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2013/04/design-pattern-iterator.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -225,7 +224,7 @@
 <nav id="article-nav">
   
     <a href="/2013/04/e7-ae-97-e6-b3-95-e7-9a-84-e6-97-b6-e9-97-b4-e5-a4-8d-e6-9d-82-e5-ba-a6-e5-92-8c-e7-a9-ba-e9-97-b4-e5-a4-8d-e6-9d-82-e5-ba-a6.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           算法的时间复杂度和空间复杂度
@@ -235,7 +234,7 @@
   
   
     <a href="/2013/04/spring-beanfactory.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">spring之BeanFactory</div>
     </a>
   
@@ -248,7 +247,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-design-pattern-iterator" data-title="迭代器模式" data-url="http://liuling07.github.io/2013/04/design-pattern-iterator.html"></div>
+  <div class="ds-thread" data-thread-key="post-design-pattern-iterator" data-title="迭代器模式" data-url="http://localhost:4000/2013/04/design-pattern-iterator.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -347,7 +346,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -404,7 +403,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -412,7 +411,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

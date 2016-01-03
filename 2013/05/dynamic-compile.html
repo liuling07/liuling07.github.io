@@ -12,14 +12,14 @@
 　　③、对创建的java文件进行编译。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java笔记十一：动态编译">
-<meta property="og:url" content="http://liuling07.github.io/2013/05/dynamic-compile.html">
+<meta property="og:url" content="http://localhost:4000/2013/05/dynamic-compile.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="JDK6.0推出了动态编译的新功能，能够在程序中动态的写一个类，再对之进行编译。编译成class文件后就可以通过类加载方式把动态编译的类加载到内存中。当然也能通过RunTime类调用javac命令来动态编译。
 　　动态编译类的主要步骤：
 　　①、写一个字符串，这个字符串就是要编译的类的全部内容。
 　　②、通过输出流，把该字符串的内容写到工程下面指定的包中。
 　　③、对创建的java文件进行编译。">
-<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:12:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java笔记十一：动态编译">
 <meta name="twitter:description" content="JDK6.0推出了动态编译的新功能，能够在程序中动态的写一个类，再对之进行编译。编译成class文件后就可以通过类加载方式把动态编译的类加载到内存中。当然也能通过RunTime类调用javac命令来动态编译。
@@ -72,7 +72,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -93,7 +93,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -110,16 +110,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -191,7 +191,7 @@
 <p>　　②、通过输出流，把该字符串的内容写到工程下面指定的包中。</p>
 <p>　　③、对创建的java文件进行编译。</p>
 <p>　　　　动态编译涉及的类有JavaCompiler、StandardJavaFileManager，具体如何编译看下面的例子。</p>
-<p>　　④、把编译后的字节码加载到内存，然后对其进行操作。</p>
+<p>　　④、把编译后的字节码加载到内存，然后对其进行操作。<br><a id="more"></a></p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.compiler;<br></span><span style="color: #008080;"> 2</span> <span style="color: #0000ff;">import</span> java.io.<em><span style="color: #000000;">;<br></span><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.InvocationTargetException;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.net.URI;<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.net.URL;<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.net.URLClassLoader;<br></span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Arrays;<br></span><span style="color: #008080;"> 8</span><br><span style="color: #008080;"> 9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.tools.JavaCompiler;<br></span><span style="color: #008080;">10</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.tools.SimpleJavaFileObject;<br></span><span style="color: #008080;">11</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.tools.StandardJavaFileManager;<br></span><span style="color: #008080;">12</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.tools.JavaFileObject;<br></span><span style="color: #008080;">13</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.tools.ToolProvider;<br></span><span style="color: #008080;">14</span><br><span style="color: #008080;">15</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> CompilerAPITester {<br></span><span style="color: #008080;">16</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String JAVA_SOURCE_FILE = “DynamicObject.java”<span style="color: #000000;">;<br></span><span style="color: #008080;">17</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String JAVA_CLASS_FILE = “DynamicObject.class”<span style="color: #000000;">;<br></span><span style="color: #008080;">18</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String JAVA_CLASS_NAME = “DynamicObject”<span style="color: #000000;">;<br></span><span style="color: #008080;">19</span><br><span style="color: #008080;">20</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException, InterruptedException {<br></span><span style="color: #008080;">21</span>         <span style="color: #008000;">//</span><span style="color: #008000;">创建java文件</span><br><span style="color: #008080;">22</span>         String tr = “\r\n”<span style="color: #000000;">;<br></span><span style="color: #008080;">23</span>         String source = “package com.compiler;” + tr +<br><span style="color: #008080;">24</span>                 “public class “+JAVA_CLASS_NAME+ “{ “ + tr +<br><span style="color: #008080;">25</span>                 “    public static void main(String[] args) {“ + tr +<br><span style="color: #008080;">26</span>                 “        System.out.println(\”Hello World!\”);” + tr +<br><span style="color: #008080;">27</span>                 “    } “ + tr +<br><span style="color: #008080;">28</span>                 “}”<span style="color: #000000;">;<br></span><span style="color: #008080;">29</span>         String fileName = System.getProperty(“user.dir”)+”\src\com\compiler\“+<span style="color: #000000;">JAVA_SOURCE_FILE;<br></span><span style="color: #008080;">30</span>         FileWriter fw = <span style="color: #0000ff;">new</span> FileWriter(fileName); <span style="color: #008000;">//</span><span style="color: #008000;">字符输出流</span><br><span style="color: #008080;">31</span>         PrintWriter pw = <span style="color: #0000ff;">new</span> PrintWriter(fw);     <span style="color: #008000;">//</span><span style="color: #008000;">将字节输出流转为PrintWriter</span><br><span style="color: #008080;">32</span> <span style="color: #000000;">        pw.write(source);<br></span><span style="color: #008080;">33</span> <span style="color: #000000;">        pw.close();<br></span><span style="color: #008080;">34</span>         <span style="color: #008000;">//</span><span style="color: #008000;">编译java文件</span><br><span style="color: #008080;">35</span>         JavaCompiler compiler =<span style="color: #000000;"> ToolProvider.getSystemJavaCompiler();<br></span><span style="color: #008080;">36</span>         StandardJavaFileManager fileManager = compiler.getStandardFileManager(<span style="color: #0000ff;">null</span>, <span style="color: #0000ff;">null</span>, <span style="color: #0000ff;">null</span><span style="color: #000000;">);<br></span><span style="color: #008080;">37</span>         Iterable sourcefiles =<span style="color: #000000;"> fileManager.getJavaFileObjects(fileName);<br></span><span style="color: #008080;">38</span>         <span style="color: #008000;">//</span><span style="color: #008000;">指定编译文件存放位置,如果不指定的话，编译的文件会和java源文件在一个文件夹中<br></span><span style="color: #008080;">39</span>          <span style="color: #008000;">//</span><span style="color: #008000;">这样的话加载类的时候会报java.lang.ClassNotFoundException</span><br><span style="color: #008080;">40</span>         Iterable<string> options = Arrays.asList(“-d”, System.getProperty(“user.dir”)+”\WebRoot\WEB-INF\classes”<span style="color: #000000;">);<br></span><span style="color: #008080;">41</span>         compiler.getTask(<span style="color: #0000ff;">null</span>, fileManager, <span style="color: #0000ff;">null</span>, options, <span style="color: #0000ff;">null</span><span style="color: #000000;">, sourcefiles).call();<br></span><span style="color: #008080;">42</span> <span style="color: #000000;">        fileManager.close();<br></span><span style="color: #008080;">43</span>         <span style="color: #008000;">//</span><span style="color: #008000;">方法二：</span><br><span style="color: #008080;">44</span>         <span style="color: #008000;">/</span></string></em><span style="color: #008000;">Runtime runtime = Runtime.getRuntime();<br></span><span style="color: #008080;">45</span> <span style="color: #008000;">        runtime.exec(“javac -d “+ System.getProperty(“user.dir”)+”\WebRoot\WEB-INF\classes “ +fileName);<br></span><span style="color: #008080;">46</span> <span style="color: #008000;">        Thread.sleep(1000);</span><span style="color: #008000;">*/</span> <span style="color: #008000;">//</span><span style="color: #008000;">因为这种方法时调用一个线程取编译，所以要让主线程睡一会儿，否则还没编译完主线程就加载类了，会导致报类无法找到的异常</span><br><span style="color: #008080;">47</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">48</span>             <span style="color: #008000;">//</span><span style="color: #008000;">加载类到内存<br></span><span style="color: #008080;">49</span>             <span style="color: #008000;">//</span><span style="color: #008000;">方法一：<br></span><span style="color: #008080;">50</span>             <span style="color: #008000;">//</span><span style="color: #008000;">Class c = Class.forName(“com.compiler.”+JAVA_CLASS_NAME);<br></span><span style="color: #008080;">51</span>             <span style="color: #008000;">//</span><span style="color: #008000;">方法二：<br></span><span style="color: #008080;">52</span>             <span style="color: #008000;">//</span><span style="color: #008000;">Class c = ClassLoader.getSystemClassLoader().loadClass(“com.compiler.”+JAVA_CLASS_NAME);<br></span><span style="color: #008080;">53</span>             <span style="color: #008000;">//</span><span style="color: #008000;">方法三：</span><br><span style="color: #008080;">54</span>             URL[] urls = <span style="color: #0000ff;">new</span> URL[] {<span style="color: #0000ff;">new</span> URL(“file:/“+System.getProperty(“user.dir”)+”/src”<span style="color: #000000;">)};<br></span><span style="color: #008080;">55</span>             URLClassLoader loader = <span style="color: #0000ff;">new</span><span style="color: #000000;"> URLClassLoader(urls);<br></span><span style="color: #008080;">56</span>             Class c = loader.loadClass(“com.compiler.”+<span style="color: #000000;">JAVA_CLASS_NAME);<br></span><span style="color: #008080;">57</span>             <span style="color: #008000;">//</span><span style="color: #008000;">调用加载类的main方法</span><br><span style="color: #008080;">58</span>             c.getMethod(“main”,String[].<span style="color: #0000ff;">class</span>).invoke(<span style="color: #0000ff;">null</span>, (Object)<span style="color: #0000ff;">new</span> String[]{“a”<span style="color: #000000;">});<br></span><span style="color: #008080;">59</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">60</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated catch block</span><br><span style="color: #008080;">61</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">62</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">63</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">64</span><br><span style="color: #008080;">65</span> } </pre><br></div>
 
 <p>&nbsp;</p>
@@ -199,9 +199,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2013/05/dynamic-compile.html" data-id="ciiy5f4w900bpq1d0bg3wcvbo" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2013/05/dynamic-compile.html" data-id="ciiyffusy00bpuwd04p7r4dzf" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2013/05/dynamic-compile.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2013/05/dynamic-compile.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -213,7 +213,7 @@
 <nav id="article-nav">
   
     <a href="/2013/05/lock-producer-comsumer.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           使用Lock来实现生产者和消费者问题
@@ -223,7 +223,7 @@
   
   
     <a href="/2013/05/java-reflex.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">java笔记十：java中的反射</div>
     </a>
   
@@ -236,7 +236,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-dynamic-compile" data-title="java笔记十一：动态编译" data-url="http://liuling07.github.io/2013/05/dynamic-compile.html"></div>
+  <div class="ds-thread" data-thread-key="post-dynamic-compile" data-title="java笔记十一：动态编译" data-url="http://localhost:4000/2013/05/dynamic-compile.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -335,7 +335,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -392,7 +392,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -400,7 +400,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

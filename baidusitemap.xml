@@ -1,0 +1,2900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/10/asynctask-source.html</loc>
+    <lastmod>2016-01-03T08:01:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>AsyncTask源码分析</title>
+        <pubTime>2015-10-10T08:19:00.000Z</pubTime>
+        
+        <tag>AsyncTask</tag>
+         
+        <tag>android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/stack.html</loc>
+    <lastmod>2016-01-03T07:41:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>利用栈实现迷宫的求解</title>
+        <pubTime>2013-04-28T09:10:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据结构和算法" url="http://localhost:4000/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/string-summarize.html</loc>
+    <lastmod>2016-01-03T07:41:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>对字符串操作的各种笔试题</title>
+        <pubTime>2013-08-11T01:00:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/02/struts-file-download.html</loc>
+    <lastmod>2016-01-03T07:41:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>struts实现文件下载</title>
+        <pubTime>2013-02-03T07:27:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/struts2-source.html</loc>
+    <lastmod>2016-01-03T07:41:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>struts2请求过程源码分析</title>
+        <pubTime>2013-08-09T19:15:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/thread-coordinate.html</loc>
+    <lastmod>2016-01-03T07:41:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记六：线程间的协调</title>
+        <pubTime>2013-04-17T05:02:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/virtualbox-centos-network.html</loc>
+    <lastmod>2016-01-03T07:41:08.000Z</lastmod>
+    <data>
+        <display>
+        <title>virtualbox虚拟机上安装centOS的网络配置</title>
+        <pubTime>2013-06-03T07:06:00.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://localhost:4000/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/03/springmvc-requestprocessingfailed.html</loc>
+    <lastmod>2016-01-03T07:40:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>Spring MVC报异常：org.springframework.web.util.NestedServletException: Request processing failed</title>
+        <pubTime>2014-03-05T17:12:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/02/springmvc-use.html</loc>
+    <lastmod>2016-01-03T07:40:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用springMVC的详细步骤</title>
+        <pubTime>2013-02-06T20:27:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/09/sqlite-optimize.html</loc>
+    <lastmod>2016-01-03T07:40:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android数据库大批量数据插入优化</title>
+        <pubTime>2015-09-07T17:32:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>sqlite</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/shell.html</loc>
+    <lastmod>2016-01-03T07:40:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>shell语法使用</title>
+        <pubTime>2013-08-03T08:48:00.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://localhost:4000/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/09/solution-crash-activity-back.html</loc>
+    <lastmod>2016-01-03T07:40:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>Activity后台运行一段时间回来crash问题的分析与解决</title>
+        <pubTime>2015-09-20T19:25:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/spring-beanfactory.html</loc>
+    <lastmod>2016-01-03T07:40:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>spring之BeanFactory</title>
+        <pubTime>2013-04-13T08:14:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/07/servlet-demo.html</loc>
+    <lastmod>2016-01-03T07:40:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>Servlet做的一个小项目</title>
+        <pubTime>2012-07-13T04:10:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/07/servlet-life.html</loc>
+    <lastmod>2016-01-03T07:39:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>Servlet的生命周期</title>
+        <pubTime>2012-07-13T23:00:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/07/servlet.html</loc>
+    <lastmod>2016-01-03T07:39:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>Servlet</title>
+        <pubTime>2012-07-12T20:42:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/04/redis-install.html</loc>
+    <lastmod>2016-01-03T07:39:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>Redis安装及主从配置</title>
+        <pubTime>2014-04-19T01:38:00.000Z</pubTime>
+        
+        <tag>NoSQL</tag>
+         
+        <tag>java</tag>
+         
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="NoSQL" url="http://localhost:4000/categories/NoSQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/reentrantreadwritelock.html</loc>
+    <lastmod>2016-01-03T07:39:08.000Z</lastmod>
+    <data>
+        <display>
+        <title>ReentrantReadWriteLock读写锁的使用</title>
+        <pubTime>2013-08-20T19:12:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/semaphore-demo.html</loc>
+    <lastmod>2016-01-03T07:38:57.000Z</lastmod>
+    <data>
+        <display>
+        <title>Semaphore的使用</title>
+        <pubTime>2013-08-20T07:20:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/09/principle-lrucache.html</loc>
+    <lastmod>2016-01-03T07:38:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>内存缓存LruCache实现原理</title>
+        <pubTime>2015-09-24T02:35:00.000Z</pubTime>
+        
+        <tag>LruCache</tag>
+         
+        <tag>android</tag>
+         
+        <tag>内存缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/11/recyclerview-example.html</loc>
+    <lastmod>2016-01-03T07:38:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>RecyclerView的使用</title>
+        <pubTime>2015-11-04T05:31:59.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/04/redis-command.html</loc>
+    <lastmod>2016-01-03T07:38:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>Redis中常用命令</title>
+        <pubTime>2014-04-19T04:08:00.000Z</pubTime>
+        
+        <tag>NoSQL</tag>
+         
+        <tag>java</tag>
+         
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="NoSQL" url="http://localhost:4000/categories/NoSQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/04/redis-config.html</loc>
+    <lastmod>2016-01-03T07:37:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>Redis配置文件参数说明</title>
+        <pubTime>2014-04-19T00:35:00.000Z</pubTime>
+        
+        <tag>NoSQL</tag>
+         
+        <tag>java</tag>
+         
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="NoSQL" url="http://localhost:4000/categories/NoSQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/10/overdraw.html</loc>
+    <lastmod>2016-01-03T07:37:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android布局优化之过度绘制</title>
+        <pubTime>2015-10-07T22:38:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>布局</tag>
+         
+        <tag>布局优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/07/page-cache.html</loc>
+    <lastmod>2016-01-03T07:37:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>页面的缓存与不缓存设置</title>
+        <pubTime>2013-07-24T23:42:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://localhost:4000/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/10/parcelable-example.html</loc>
+    <lastmod>2016-01-03T07:37:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android中Parcelable接口的使用</title>
+        <pubTime>2015-10-13T22:46:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/12/performance-listviews.html</loc>
+    <lastmod>2016-01-03T07:37:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>【译文】高性能ListViews</title>
+        <pubTime>2015-12-02T10:22:14.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>译文</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/observer.html</loc>
+    <lastmod>2016-01-03T07:37:07.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式之观察者模式</title>
+        <pubTime>2013-04-20T04:11:00.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://localhost:4000/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/10/optimize-viewstub.html</loc>
+    <lastmod>2016-01-03T07:37:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>【转】Android布局优化之ViewStub</title>
+        <pubTime>2015-10-07T20:26:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>布局</tag>
+         
+        <tag>布局优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/07/order-java.html</loc>
+    <lastmod>2016-01-03T07:36:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>各种排序算法的分析及java实现</title>
+        <pubTime>2013-07-24T02:04:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据结构和算法" url="http://localhost:4000/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/11/mysql-my-ini.html</loc>
+    <lastmod>2016-01-03T07:36:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL配置文件my.ini参数注释说明</title>
+        <pubTime>2013-11-28T20:49:00.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/02/net-sf-json-jsonexception.html</loc>
+    <lastmod>2016-01-03T07:36:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>net.sf.json.JSONException: There is a cycle in the hierarchy!错误解决方案</title>
+        <pubTime>2013-02-07T00:22:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/02/nosuchmethoderror-asm.html</loc>
+    <lastmod>2016-01-03T07:36:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>java.lang.NoSuchMethodError: org.objectweb.asm.ClassVisitor.visit(IILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V错误解决方案</title>
+        <pubTime>2013-02-06T19:43:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/object-adapter.html</loc>
+    <lastmod>2016-01-03T07:35:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>适配器模式之对象适配器</title>
+        <pubTime>2013-04-12T06:07:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://localhost:4000/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/multi-thread-salt.html</loc>
+    <lastmod>2016-01-03T07:35:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>多线程之儿子买盐问题</title>
+        <pubTime>2013-04-20T06:16:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/07/mvc.html</loc>
+    <lastmod>2016-01-03T07:35:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>浅谈MVC架构模式</title>
+        <pubTime>2012-07-15T20:09:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://localhost:4000/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/12/mvp-pattern-android.html</loc>
+    <lastmod>2016-01-03T07:35:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>MVP模式在Android项目中的使用</title>
+        <pubTime>2015-12-23T14:16:04.000Z</pubTime>
+        
+        <tag>MVP</tag>
+         
+        <tag>android</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/01/myeclipse-webservice.html</loc>
+    <lastmod>2016-01-03T07:35:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用MyEclipse构建webService简单案例</title>
+        <pubTime>2013-01-31T07:08:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/list-concurrentmodificationexception.html</loc>
+    <lastmod>2016-01-03T07:35:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用迭代器遍历List的时候修改List报ConcurrentModificationException异常原因分析</title>
+        <pubTime>2013-08-21T03:20:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/10/listview-partial-refresh.html</loc>
+    <lastmod>2016-01-03T07:34:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>ListView实现Item局部刷新</title>
+        <pubTime>2015-10-20T05:44:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>布局</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/lock-producer-comsumer.html</loc>
+    <lastmod>2016-01-03T07:34:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用Lock来实现生产者和消费者问题</title>
+        <pubTime>2013-05-18T01:55:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/linux-command.html</loc>
+    <lastmod>2016-01-03T07:34:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>Linux中常用命令</title>
+        <pubTime>2013-06-05T00:14:00.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://localhost:4000/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/12/linux-cut.html</loc>
+    <lastmod>2016-01-03T07:34:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>Linux cut命令用法</title>
+        <pubTime>2013-12-08T06:27:00.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://localhost:4000/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/linux-java.html</loc>
+    <lastmod>2016-01-03T07:34:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>linux中搭建java开发环境</title>
+        <pubTime>2013-06-07T05:59:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>linux</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://localhost:4000/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/12/linux-sed.html</loc>
+    <lastmod>2016-01-03T07:34:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>Linux sed命令详解</title>
+        <pubTime>2013-12-07T07:20:00.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://localhost:4000/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/03/jsp-staticize.html</loc>
+    <lastmod>2016-01-03T07:33:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>jsp静态化和伪静态化</title>
+        <pubTime>2013-03-16T04:29:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/09/layer-list-rounded-rectangle.html</loc>
+    <lastmod>2016-01-03T07:33:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>layer-list实现只有左、右和下边框的圆角矩形</title>
+        <pubTime>2015-09-23T00:27:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>布局</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/02/jquery-ajax.html</loc>
+    <lastmod>2016-01-03T07:33:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>详细解读Jquery各Ajax函数：$.get(),$.post(),$.ajax(),$.getJSON()</title>
+        <pubTime>2013-02-07T00:46:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://localhost:4000/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/07/jsp-demo.html</loc>
+    <lastmod>2016-01-03T07:33:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>用JSP实现学生查询</title>
+        <pubTime>2012-07-15T00:47:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/07/jsp-pages.html</loc>
+    <lastmod>2016-01-03T07:33:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>JSP实现分页显示</title>
+        <pubTime>2012-07-22T23:03:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/07/jsp-run-principle.html</loc>
+    <lastmod>2016-01-03T07:32:57.000Z</lastmod>
+    <data>
+        <display>
+        <title>JSP的运行原理</title>
+        <pubTime>2012-07-14T19:18:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/04/jedis-redis.html</loc>
+    <lastmod>2016-01-03T07:32:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java中使用Jedis操作Redis</title>
+        <pubTime>2014-04-19T04:55:00.000Z</pubTime>
+        
+        <tag>NoSQL</tag>
+         
+        <tag>java</tag>
+         
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="NoSQL" url="http://localhost:4000/categories/NoSQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/08/jni-demo.html</loc>
+    <lastmod>2016-01-03T07:32:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>简单JNI使用demo</title>
+        <pubTime>2015-08-07T02:26:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>jni</tag>
+         
+         
+           
+             
+              <breadCrumb title="JNI&amp;amp;NDK" url="http://localhost:4000/categories/JNI-amp-NDK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/08/jni-logcat.html</loc>
+    <lastmod>2016-01-03T07:32:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>JNI的native代码中打印日志到eclipse的logcat中</title>
+        <pubTime>2015-08-05T00:52:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>jni</tag>
+         
+         
+           
+             
+              <breadCrumb title="JNI&amp;amp;NDK" url="http://localhost:4000/categories/JNI-amp-NDK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/12/jni-summary.html</loc>
+    <lastmod>2016-01-03T07:32:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>JNI学习小结</title>
+        <pubTime>2013-12-22T06:18:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>jni</tag>
+         
+         
+           
+             
+              <breadCrumb title="JNI&amp;amp;NDK" url="http://localhost:4000/categories/JNI-amp-NDK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/java-transient.html</loc>
+    <lastmod>2016-01-03T07:31:57.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java transient关键字使用小结</title>
+        <pubTime>2013-05-04T21:25:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/03/javamail.html</loc>
+    <lastmod>2016-01-03T07:31:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>javaMail发邮件</title>
+        <pubTime>2013-03-25T05:10:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/03/javaweb-messy-code.html</loc>
+    <lastmod>2016-01-03T07:31:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>JAVA WEB开发中处理乱码汇总</title>
+        <pubTime>2013-03-31T07:10:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/java-reflex.html</loc>
+    <lastmod>2016-01-03T07:31:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记十：java中的反射</title>
+        <pubTime>2013-05-08T20:16:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>反射</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/java-serialize.html</loc>
+    <lastmod>2016-01-03T07:31:12.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记九：对象序列化与反序列化</title>
+        <pubTime>2013-05-08T05:26:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/java-set.html</loc>
+    <lastmod>2016-01-03T07:31:08.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记四：Set接口</title>
+        <pubTime>2013-04-16T00:30:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/12/java-jni.html</loc>
+    <lastmod>2016-01-03T07:30:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java通过JNI调用C++程序</title>
+        <pubTime>2013-12-20T07:10:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>jni</tag>
+         
+         
+           
+             
+              <breadCrumb title="JNI&amp;amp;NDK" url="http://localhost:4000/categories/JNI-amp-NDK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/08/java-lang-classcastexception.html</loc>
+    <lastmod>2016-01-03T07:30:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>java.lang.ClassCastException: com.sun.proxy.$Proxy27 cannot be cast to com.bbk.n002.service.QuestionService</title>
+        <pubTime>2014-08-22T16:33:00.000Z</pubTime>
+        
+        <tag>spring</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/java-list.html</loc>
+    <lastmod>2016-01-03T07:30:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记三：List接口</title>
+        <pubTime>2013-04-14T21:23:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/java-multi-thread.html</loc>
+    <lastmod>2016-01-03T07:30:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记五：多线程的使用</title>
+        <pubTime>2013-04-16T06:54:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/java-final.html</loc>
+    <lastmod>2016-01-03T07:30:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记二：final关键字用法总结</title>
+        <pubTime>2013-04-08T21:02:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/java-init-order.html</loc>
+    <lastmod>2016-01-03T07:30:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记一：类成员的初始化顺序</title>
+        <pubTime>2013-04-06T20:57:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/java-io-stream-buffer.html</loc>
+    <lastmod>2016-01-03T07:30:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记七：IO流之字节流与字节缓冲流</title>
+        <pubTime>2013-05-07T06:08:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/java-io-stream.html</loc>
+    <lastmod>2016-01-03T07:30:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记八：IO流之字符流与字符缓冲流</title>
+        <pubTime>2013-05-08T04:48:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/12/intent-resolving-in-android-m.html</loc>
+    <lastmod>2016-01-03T07:29:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>【译文】Android M中Intent的解析</title>
+        <pubTime>2015-12-04T06:52:06.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>译文</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/09/java-10times-abc.html</loc>
+    <lastmod>2016-01-03T07:29:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java多线程：用三个线程控制循环输出10次ABC</title>
+        <pubTime>2013-09-13T04:53:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/java-asm.html</loc>
+    <lastmod>2016-01-03T07:29:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>关于java字节码框架ASM的学习</title>
+        <pubTime>2013-05-24T08:19:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/03/java-excel.html</loc>
+    <lastmod>2016-01-03T07:29:41.000Z</lastmod>
+    <data>
+        <display>
+        <title>JAVA操作Excel表格</title>
+        <pubTime>2013-03-27T05:55:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/01/hibernate.html</loc>
+    <lastmod>2016-01-03T07:29:28.000Z</lastmod>
+    <data>
+        <display>
+        <title>初学hibernate框架</title>
+        <pubTime>2013-01-13T07:16:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/12/ie-margin-auto.html</loc>
+    <lastmod>2016-01-03T07:29:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>IE下margin:0 auto不居中解决方法</title>
+        <pubTime>2012-12-23T18:05:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://localhost:4000/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/insert-map.html</loc>
+    <lastmod>2016-01-03T07:29:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>在网页中插入百度地图</title>
+        <pubTime>2013-04-10T07:44:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://localhost:4000/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/integer-int.html</loc>
+    <lastmod>2016-01-03T07:29:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>Integer与int的种种比较你知道多少？</title>
+        <pubTime>2013-05-04T19:13:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/hdfs-javaapi.html</loc>
+    <lastmod>2016-01-03T07:29:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>HDFS中JAVA API的使用</title>
+        <pubTime>2013-06-17T06:21:00.000Z</pubTime>
+        
+        <tag>hadoop</tag>
+         
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://localhost:4000/categories/Hadoop/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/hdfs-pathfilter.html</loc>
+    <lastmod>2016-01-03T07:28:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>HDFS中PathFilter类</title>
+        <pubTime>2013-06-18T06:04:00.000Z</pubTime>
+        
+        <tag>hadoop</tag>
+         
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://localhost:4000/categories/Hadoop/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/01/hibernate-map-one-to-one.html</loc>
+    <lastmod>2016-01-03T07:28:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>hibernate中一对多关系的映射</title>
+        <pubTime>2013-01-14T06:59:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/07/hibernate-mysql-proceduce.html</loc>
+    <lastmod>2016-01-03T07:28:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>hibernate调用mysql存储过程</title>
+        <pubTime>2013-07-29T00:08:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/hadoop-install.html</loc>
+    <lastmod>2016-01-03T07:27:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>hadoop集群环境的搭建</title>
+        <pubTime>2013-06-16T04:59:00.000Z</pubTime>
+        
+        <tag>hadoop</tag>
+         
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://localhost:4000/categories/Hadoop/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/hashmap-source.html</loc>
+    <lastmod>2016-01-03T07:27:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>HashMap源码剖析</title>
+        <pubTime>2013-08-22T04:21:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/hdfs-file-zip.html</loc>
+    <lastmod>2016-01-03T07:27:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>HDFS中文件的压缩与解压</title>
+        <pubTime>2013-06-19T04:28:00.000Z</pubTime>
+        
+        <tag>hadoop</tag>
+         
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://localhost:4000/categories/Hadoop/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/hdfs-filestatus.html</loc>
+    <lastmod>2016-01-03T07:27:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>HDFS之FileStatus</title>
+        <pubTime>2013-06-17T17:25:00.000Z</pubTime>
+        
+        <tag>hadoop</tag>
+         
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://localhost:4000/categories/Hadoop/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/12/filter-jsp-messy-code.html</loc>
+    <lastmod>2016-01-03T07:26:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>用过滤器来解决JSP中文乱码问题</title>
+        <pubTime>2012-12-16T21:23:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/first-interview.html</loc>
+    <lastmod>2016-01-03T07:25:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>我的第一次面试经历</title>
+        <pubTime>2013-04-24T07:34:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="人生感悟" url="http://localhost:4000/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/08/framework-compile-run.html</loc>
+    <lastmod>2016-01-03T07:25:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>framework中编译anroid工程并在模拟器上运行</title>
+        <pubTime>2015-08-17T17:38:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>framework</tag>
+         
+         
+           
+             
+              <breadCrumb title="Framework" url="http://localhost:4000/categories/Framework/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/hadoop-datanode-noroutetohostexception.html</loc>
+    <lastmod>2016-01-03T07:25:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>hadoop中datanode无法启动，报Caused by: java.net.NoRouteToHostException: No route to host</title>
+        <pubTime>2013-06-10T10:42:00.000Z</pubTime>
+        
+        <tag>hadoop</tag>
+         
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://localhost:4000/categories/Hadoop/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/dynamic-proxy.html</loc>
+    <lastmod>2016-01-03T07:13:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>动态代理的使用以及其实现机制</title>
+        <pubTime>2013-05-20T23:38:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/e7-ae-97-e6-b3-95-e7-9a-84-e6-97-b6-e9-97-b4-e5-a4-8d-e6-9d-82-e5-ba-a6-e5-92-8c-e7-a9-ba-e9-97-b4-e5-a4-8d-e6-9d-82-e5-ba-a6.html</loc>
+    <lastmod>2016-01-03T07:13:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>算法的时间复杂度和空间复杂度</title>
+        <pubTime>2013-04-14T04:48:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数据结构和算法" url="http://localhost:4000/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/exchanger-demo.html</loc>
+    <lastmod>2016-01-03T07:13:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>Exchanger的使用</title>
+        <pubTime>2013-08-20T18:33:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/extends-assemble.html</loc>
+    <lastmod>2016-01-03T07:12:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>继承与组合的优缺点</title>
+        <pubTime>2013-04-30T09:45:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/design-pattern-iterator.html</loc>
+    <lastmod>2016-01-03T07:12:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>迭代器模式</title>
+        <pubTime>2013-04-14T04:28:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://localhost:4000/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/02/dom4j-xml.html</loc>
+    <lastmod>2016-01-03T07:12:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>dom4j解析xml文件</title>
+        <pubTime>2013-02-05T07:21:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/dynamic-compile.html</loc>
+    <lastmod>2016-01-03T07:12:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>java笔记十一：动态编译</title>
+        <pubTime>2013-05-09T06:55:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/07/date-string-timestamp.html</loc>
+    <lastmod>2016-01-03T07:11:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>Date、String、Timestamp之间的转换</title>
+        <pubTime>2012-07-13T02:58:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/02/design-partten-factory.html</loc>
+    <lastmod>2016-01-03T07:11:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>抽象工厂之更换皮肤</title>
+        <pubTime>2013-02-04T01:43:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://localhost:4000/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/design-pattern-adapter.html</loc>
+    <lastmod>2016-01-03T07:11:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>适配器模式之单接口适配器</title>
+        <pubTime>2013-04-12T06:48:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://localhost:4000/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/design-pattern-command.html</loc>
+    <lastmod>2016-01-03T07:11:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式之命令模式</title>
+        <pubTime>2013-04-15T04:41:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://localhost:4000/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/01/cronexpression-quartz-spring.html</loc>
+    <lastmod>2016-01-03T07:09:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>Quartz在Spring中动态设置cronExpression （spring设置动态定时任务）------转帖</title>
+        <pubTime>2013-01-31T06:14:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/10/custom-camera.html</loc>
+    <lastmod>2016-01-03T07:09:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android自定义相机拍照、图片裁剪的实现</title>
+        <pubTime>2015-10-28T07:00:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>camera</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/10/customview-download-percent.html</loc>
+    <lastmod>2016-01-03T07:09:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android中使用自定义View实现下载进度的显示</title>
+        <pubTime>2015-10-15T02:09:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>自定义控件</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/cyclicbarrier-demo.html</loc>
+    <lastmod>2016-01-03T07:09:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>CyclicBarrier的用法</title>
+        <pubTime>2013-08-20T18:10:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/04/consistenthashing.html</loc>
+    <lastmod>2016-01-03T07:08:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>一致性hash算法 - consistent hashing</title>
+        <pubTime>2014-04-20T07:56:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据结构和算法" url="http://localhost:4000/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/countdownlatch-demo.html</loc>
+    <lastmod>2016-01-03T07:08:05.000Z</lastmod>
+    <data>
+        <display>
+        <title>CountDownLatch的使用</title>
+        <pubTime>2013-08-20T06:28:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/11/cpp-study.html</loc>
+    <lastmod>2016-01-03T07:07:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>C++学习随笔</title>
+        <pubTime>2015-11-10T11:28:33.000Z</pubTime>
+        
+        <tag>c++</tag>
+         
+         
+           
+             
+              <breadCrumb title="其他技术" url="http://localhost:4000/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/centos-mysql-install.html</loc>
+    <lastmod>2016-01-03T07:07:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS中安装MySQL数据库</title>
+        <pubTime>2013-08-30T18:19:00.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://localhost:4000/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/class.html</loc>
+    <lastmod>2016-01-03T07:07:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>类与类之间的几种关系</title>
+        <pubTime>2013-05-02T19:30:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/03/com-sun-mail-smtp-smtpsendfailedexception.html</loc>
+    <lastmod>2016-01-03T07:06:51.000Z</lastmod>
+    <data>
+        <display>
+        <title>com.sun.mail.smtp.SMTPSendFailedException: 530 Authentication required 解决方案</title>
+        <pubTime>2013-03-25T05:00:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/10/asynctask-download.html</loc>
+    <lastmod>2016-01-03T07:06:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>AsyncTask实现断点续传</title>
+        <pubTime>2015-10-09T19:34:00.000Z</pubTime>
+        
+        <tag>AsyncTask</tag>
+         
+        <tag>android</tag>
+         
+        <tag>断点续传</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/08/blockingqueue-demo.html</loc>
+    <lastmod>2016-01-03T07:05:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>BlockingQueue的使用</title>
+        <pubTime>2013-08-20T05:44:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/10/asynctask-multithread-download.html</loc>
+    <lastmod>2016-01-03T07:04:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>AsyncTask实现多线程断点续传</title>
+        <pubTime>2015-10-13T04:11:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>多线程</tag>
+         
+        <tag>断点续传</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/10/asynctask-multi-task-thread.html</loc>
+    <lastmod>2016-01-03T07:04:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>AsyncTask实现多任务多线程断点续传下载</title>
+        <pubTime>2015-10-16T05:29:00.000Z</pubTime>
+        
+        <tag>AsyncTask</tag>
+         
+        <tag>android</tag>
+         
+        <tag>多线程</tag>
+         
+        <tag>断点续传</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/asm-java-multi-extends.html</loc>
+    <lastmod>2016-01-03T07:03:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用 ASM 实现 Java 语言的“多重继承”</title>
+        <pubTime>2013-05-31T05:50:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/05/aop-cglib.html</loc>
+    <lastmod>2016-01-03T07:03:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>AOP的另一种实现----cglib</title>
+        <pubTime>2013-05-21T07:16:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/09/androidstudio-github-import.html</loc>
+    <lastmod>2016-01-03T07:03:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android Studio导入github下载的工程</title>
+        <pubTime>2015-09-16T02:42:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>android studio</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/11/android-photo-picker.html</loc>
+    <lastmod>2016-01-03T07:02:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android高仿微信图片选择功能的PhotoPicker</title>
+        <pubTime>2015-11-15T12:25:01.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>图片选择</tag>
+         
+        <tag>开源</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/11/android-multi-photo-picker.html</loc>
+    <lastmod>2016-01-03T07:01:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android带多选功能的PhotoPicker</title>
+        <pubTime>2015-11-21T07:46:03.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>图片选择</tag>
+         
+        <tag>开源</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://localhost:4000/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/08/android-mk.html</loc>
+    <lastmod>2016-01-03T07:01:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android.mk简介</title>
+        <pubTime>2015-08-05T00:42:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>framework</tag>
+         
+         
+           
+             
+              <breadCrumb title="Framework" url="http://localhost:4000/categories/Framework/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/12/say-bye-to-my-2015.html</loc>
+    <lastmod>2016-01-03T06:52:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>Say bye to my 2015</title>
+        <pubTime>2015-12-25T09:25:10.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="人生感悟" url="http://localhost:4000/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/04/shardedjedispool-demo.html</loc>
+    <lastmod>2016-01-03T04:11:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>ShardedJedisPool的使用</title>
+        <pubTime>2014-04-21T05:02:00.000Z</pubTime>
+        
+        <tag>NoSQL</tag>
+         
+        <tag>java</tag>
+         
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="NoSQL" url="http://localhost:4000/categories/NoSQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/calltomaster-connection-refused.html</loc>
+    <lastmod>2016-01-03T04:00:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>Call to master/192.168.137.101:9001 failed on connection exception: java.net.ConnectException: Connection refused</title>
+        <pubTime>2013-06-06T05:35:00.000Z</pubTime>
+        
+        <tag>hadoop</tag>
+         
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://localhost:4000/categories/Hadoop/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/03/org-hibernate-propertyaccessexception.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>org.hibernate.PropertyAccessException: Null value was assigned to a property of primitive type setter of com.*.Paper.totalTime</title>
+        <pubTime>2014-03-20T06:09:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/11/lantern.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>科学上网工具Lantern，轻松访问Google、Facebook等被墙网站</title>
+        <pubTime>2015-11-11T14:13:18.000Z</pubTime>
+        
+        <tag>科学上网</tag>
+         
+         
+           
+             
+              <breadCrumb title="其他技术" url="http://localhost:4000/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/03/springmvc-upload.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>Spring MVC实现上传文件报错解决方案</title>
+        <pubTime>2014-03-04T23:38:00.000Z</pubTime>
+        
+        <tag>spring</tag>
+         
+        <tag>web后端</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/12/div-center.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>绝对定位的div的居中方法，下面的写法兼容IE系列浏览器和火狐浏览器。</title>
+        <pubTime>2012-12-23T18:07:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://localhost:4000/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/11/tomcat-connectexception.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>tomcat启动报错 java.net.ConnectException: Connection refused: connect</title>
+        <pubTime>2012-11-23T05:56:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/06/linux-64-32.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>查看系统是64位还是32位</title>
+        <pubTime>2013-06-07T04:22:00.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://localhost:4000/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/12/cookie-messy-code.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>读cookie中文字符乱码问题</title>
+        <pubTime>2012-12-16T21:09:00.000Z</pubTime>
+        
+        <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://localhost:4000/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2013/04/java-open-application.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>java打开本地应用程序</title>
+        <pubTime>2013-04-10T05:58:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java基础" url="http://localhost:4000/categories/Java%E5%9F%BA%E7%A1%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/11/max-allowed-packet.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL导入数据报Got a packet bigger than‘max_allowed_packet’bytes错误的解决方法</title>
+        <pubTime>2015-11-11T13:00:54.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="其他技术" url="http://localhost:4000/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2015/08/javah-find-lib.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>解决javah生成c头文件时找不到android类库的问题</title>
+        <pubTime>2015-08-05T02:26:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>jni</tag>
+         
+         
+           
+             
+              <breadCrumb title="JNI&amp;amp;NDK" url="http://localhost:4000/categories/JNI-amp-NDK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2014/04/centos6-5-update-yum.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS6.5中修改yum源</title>
+        <pubTime>2014-04-14T07:40:00.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://localhost:4000/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://localhost:4000/2012/08/span.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>span 换行与不换行</title>
+        <pubTime>2012-08-20T20:28:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://localhost:4000/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+</urlset>

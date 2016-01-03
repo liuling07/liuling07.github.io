@@ -9,13 +9,13 @@
 既然大部分app都要用到图片选择器，为啥我不自己写一个呢？难不成每次都用系统自带的？那显得太没水平。所以，我就有了一个自己编写">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android高仿微信图片选择功能的PhotoPicker">
-<meta property="og:url" content="http://liuling07.github.io/2015/11/android-photo-picker.html">
+<meta property="og:url" content="http://localhost:4000/2015/11/android-photo-picker.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="类似于微信修改头像的功能基本上每个app都会有，以前公司开发的项目就有修改头像的功能，但是用的Android系统自带的图片选择器。用Android系统的图片选择器有个好处就是稳定，不会有什么问题。但也有它的缺点，比如不可定制，我们想要修改一下符合自己app的风格无法做到。
 既然大部分app都要用到图片选择器，为啥我不自己写一个呢？难不成每次都用系统自带的？那显得太没水平。所以，我就有了一个自己编写">
 <meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/photo-picker-sample01.png?watermark/1/image/aHR0cDovLzd4bnFtNC5jb20xLnowLmdsYi5jbG91ZGRuLmNvbS93YXRlcm1hcmsucG5n/dissolve/50/gravity/SouthEast">
 <meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/photo-picker-sample02.png?watermark/1/image/aHR0cDovLzd4bnFtNC5jb20xLnowLmdsYi5jbG91ZGRuLmNvbS93YXRlcm1hcmsucG5n/dissolve/50/gravity/SouthEast">
-<meta property="og:updated_time" content="2016-01-03T03:55:29.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:02:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android高仿微信图片选择功能的PhotoPicker">
 <meta name="twitter:description" content="类似于微信修改头像的功能基本上每个app都会有，以前公司开发的项目就有修改头像的功能，但是用的Android系统自带的图片选择器。用Android系统的图片选择器有个好处就是稳定，不会有什么问题。但也有它的缺点，比如不可定制，我们想要修改一下符合自己app的风格无法做到。
@@ -65,7 +65,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -86,7 +86,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -103,16 +103,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -181,6 +181,7 @@
         <p>类似于微信修改头像的功能基本上每个app都会有，以前公司开发的项目就有修改头像的功能，但是用的Android系统自带的图片选择器。用Android系统的图片选择器有个好处就是稳定，不会有什么问题。但也有它的缺点，比如不可定制，我们想要修改一下符合自己app的风格无法做到。</p>
 <p>既然大部分app都要用到图片选择器，为啥我不自己写一个呢？难不成每次都用系统自带的？那显得太没水平。所以，我就有了一个自己编写一个图片选择器的想法，以后只要有项目需要这个功能，直接拿来用就行了，这多爽！</p>
 <p>其实github上也有很多大牛写的图片选择开源库，虽然大家一直都推崇不要重复造轮子这个观念，但是我却不这么认为，同样是轮子，也有不同价格、不同品牌的呢，难不成有了一个制造商生产了轮子，其他厂商就没必要做了吗？所以说，重复造轮子也是有意义的，至少你知道轮子是怎么造的。</p>
+<a id="more"></a>
 <p>好了，闲话不多说，先看看效果图：</p>
 <p>1、图片选择效果<br><img src="http://7xnqm4.com1.z0.glb.clouddn.com/photo-picker-sample01.png?watermark/1/image/aHR0cDovLzd4bnFtNC5jb20xLnowLmdsYi5jbG91ZGRuLmNvbS93YXRlcm1hcmsucG5n/dissolve/50/gravity/SouthEast" alt="Android高仿微信图片选择功能的PhotoPicker示例图片1" title="Android高仿微信图片选择功能的PhotoPicker示例图片1"></p>
 <p>2、弹出文件夹选择效果：<br><img src="http://7xnqm4.com1.z0.glb.clouddn.com/photo-picker-sample02.png?watermark/1/image/aHR0cDovLzd4bnFtNC5jb20xLnowLmdsYi5jbG91ZGRuLmNvbS93YXRlcm1hcmsucG5n/dissolve/50/gravity/SouthEast" alt="Android高仿微信图片选择功能的PhotoPicker示例图片2" title="Android高仿微信图片选择功能的PhotoPicker示例图片2"></p>
@@ -192,9 +193,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2015/11/android-photo-picker.html" data-id="ciiy5f4yf00ewq1d0dowf4ld3" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2015/11/android-photo-picker.html" data-id="ciiyffuv700ewuwd080gn1njx" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2015/11/android-photo-picker.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2015/11/android-photo-picker.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片选择/">图片选择</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开源/">开源</a></li></ul>
@@ -206,7 +207,7 @@
 <nav id="article-nav">
   
     <a href="/2015/11/android-multi-photo-picker.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           Android带多选功能的PhotoPicker
@@ -216,7 +217,7 @@
   
   
     <a href="/2015/11/lantern.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">科学上网工具Lantern，轻松访问Google、Facebook等被墙网站</div>
     </a>
   
@@ -229,7 +230,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-android-photo-picker" data-title="Android高仿微信图片选择功能的PhotoPicker" data-url="http://liuling07.github.io/2015/11/android-photo-picker.html"></div>
+  <div class="ds-thread" data-thread-key="post-android-photo-picker" data-title="Android高仿微信图片选择功能的PhotoPicker" data-url="http://localhost:4000/2015/11/android-photo-picker.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -328,7 +329,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -385,7 +386,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -393,7 +394,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

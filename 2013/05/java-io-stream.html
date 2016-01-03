@@ -12,7 +12,7 @@
  1 package com.iotest; 2 3 import java.io.FileInputStream; 4 import java.io.FileNotFoundException; 5 import java.io.FileOutputStream; 6 i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java笔记八：IO流之字符流与字符缓冲流">
-<meta property="og:url" content="http://liuling07.github.io/2013/05/java-io-stream.html">
+<meta property="og:url" content="http://localhost:4000/2013/05/java-io-stream.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="java中字符流主要都是继承于Reader和Writer两个抽象类。用于对字符文本的读写操作。
 &amp;nbsp;
@@ -20,7 +20,7 @@
 一、转换类流
  1 package com.iotest; 2 3 import java.io.FileInputStream; 4 import java.io.FileNotFoundException; 5 import java.io.FileOutputStream; 6 i">
 <meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/08203936-dc361b9f212443099f04b5670feb7d16.png">
-<meta property="og:updated_time" content="2016-01-03T03:00:03.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:30:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java笔记八：IO流之字符流与字符缓冲流">
 <meta name="twitter:description" content="java中字符流主要都是继承于Reader和Writer两个抽象类。用于对字符文本的读写操作。
@@ -73,7 +73,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -94,7 +94,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -111,16 +111,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -192,8 +192,7 @@
 <p>一、转换类流</p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.iotest;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileInputStream;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileNotFoundException;<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileOutputStream;<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.IOException;<br></span><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.InputStreamReader;<br></span><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.OutputStreamWriter;<br></span><span style="color: #008080;"> 9</span><br><span style="color: #008080;">10</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ConverseStreamDemo {<br></span><span style="color: #008080;">11</span><br><span style="color: #008080;">12</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;">13</span>         String s = “F:\shar\test\test3.txt”<span style="color: #000000;">;<br></span><span style="color: #008080;">14</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">15</span>             <span style="color: #008000;">//</span><span style="color: #008000;">将字节流转为字符流</span><br><span style="color: #008080;">16</span>             OutputStreamWriter osw = <span style="color: #0000ff;">new</span> OutputStreamWriter(<span style="color: #0000ff;">new</span><span style="color: #000000;"> FileOutputStream(s));<br></span><span style="color: #008080;">17</span>             osw.write(“中国北京”<span style="color: #000000;">);<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">            System.out.println(osw.getEncoding());<br></span><span style="color: #008080;">19</span> <span style="color: #000000;">            osw.close();<br></span><span style="color: #008080;">20</span>             osw = <span style="color: #0000ff;">new</span> OutputStreamWriter(<span style="color: #0000ff;">new</span> FileOutputStream(s,<span style="color: #0000ff;">true</span>),”GB2312”<span style="color: #000000;">);<br></span><span style="color: #008080;">21</span>             osw.write(“中国北京”<span style="color: #000000;">);<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">            System.out.println(osw.getEncoding());<br></span><span style="color: #008080;">23</span> <span style="color: #000000;">            osw.close();<br></span><span style="color: #008080;">24</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (FileNotFoundException e) {<br></span><span style="color: #008080;">25</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated catch block</span><br><span style="color: #008080;">26</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">27</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (IOException e) {<br></span><span style="color: #008080;">28</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated catch block</span><br><span style="color: #008080;">29</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">30</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">31</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">32</span>             <span style="color: #008000;">//</span><span style="color: #008000;">将字节流转为字符流</span><br><span style="color: #008080;">33</span>             InputStreamReader isr = <span style="color: #0000ff;">new</span> InputStreamReader(<span style="color: #0000ff;">new</span> FileInputStream(s),”GB2312”<span style="color: #000000;">);<br></span><span style="color: #008080;">34</span>             <span style="color: #0000ff;">int</span><span style="color: #000000;"> c;<br></span><span style="color: #008080;">35</span>             <span style="color: #0000ff;">while</span>((c=isr.read()) != -1<span style="color: #000000;">){<br></span><span style="color: #008080;">36</span>                 System.out.print((<span style="color: #0000ff;">char</span><span style="color: #000000;">)c);<br></span><span style="color: #008080;">37</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">38</span> <span style="color: #000000;">            System.out.println();<br></span><span style="color: #008080;">39</span> <span style="color: #000000;">            isr.close();<br></span><span style="color: #008080;">40</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (FileNotFoundException e) {<br></span><span style="color: #008080;">41</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated catch block</span><br><span style="color: #008080;">42</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">43</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (IOException e) {<br></span><span style="color: #008080;">44</span>             <span style="color: #008000;">//</span><span style="color: #008000;"> TODO Auto-generated catch block</span><br><span style="color: #008080;">45</span> <span style="color: #000000;">            e.printStackTrace();<br><br></span><span style="color: #008080;">46</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">47</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">48</span><br><span style="color: #008080;">49</span> }</pre><br></div>
 
-<p>&nbsp;</p>
-<p>二、FileReader和FileWriter</p>
+<p>&nbsp;<br><a id="more"></a><br>二、FileReader和FileWriter</p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.iotest;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileNotFoundException;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileReader;<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.FileWriter;<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.IOException;<br></span><span style="color: #008080;"> 7</span> <span style="color: #008000;">/<em></em></span><br><span style="color: #008080;"> 8</span> <span style="color: #008000;">  使用flush（）将流数据刷到目标里，这时流还存活着，还可以继续使用该流进行别的操作。<br></span><span style="color: #008080;"> 9</span> <span style="color: #008000;"> <em> close（）虽然也有flush（）的效果但是这时流已经死了，你如果想继续使用流的话就必须在此建立流<br></em></span><span style="color: #008080;">10</span>  <span style="color: #008000;">/</span><br><span style="color: #008080;">11</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> MutiplicationTable {<br></span><span style="color: #008080;">12</span><br><span style="color: #008080;">13</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> main(String[] args) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException {<br></span><span style="color: #008080;">14</span>         String s = “F:\shar\test\test5.txt”<span style="color: #000000;">;<br></span><span style="color: #008080;">15</span>         FileWriter fw = <span style="color: #0000ff;">new</span><span style="color: #000000;"> FileWriter(s);<br></span><span style="color: #008080;">16</span>         FileReader fr = <span style="color: #0000ff;">new</span><span style="color: #000000;"> FileReader(s);<br></span><span style="color: #008080;">17</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 1; i &lt;= 9; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;">18</span>             <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> j = 1; j &lt;= i; j++<span style="color: #000000;">) {<br></span><span style="color: #008080;">19</span>                 String str = i + “<em>“ + j + “=” + i</em>j + “ “<span style="color: #000000;">;<br></span><span style="color: #008080;">20</span> <span style="color: #000000;">                fw.write(str);<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">22</span>             fw.write(“\r\n”<span style="color: #000000;">);<br></span><span style="color: #008080;">23</span>             <span style="color: #008000;">/<em></em></span><span style="color: #008000;">flush是指强行将输出流中的数据写到文件里面去。如果写到这里的话就是一行一行的写入文件<br></span><span style="color: #008080;">24</span> <span style="color: #008000;">             最好每写完一部分就刷新一次，如果最后刷新的话可能会造成数据的丢失<br></span><span style="color: #008080;">25</span>              <span style="color: #008000;">*/</span><br><span style="color: #008080;">26</span> <span style="color: #000000;">            fw.flush();<br></span><span style="color: #008080;">27</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">28</span>         <span style="color: #008000;">//</span><span style="color: #008000;">如果又不写flush()又不写close()，则不会写入任何内容到文本里。只是写到了缓冲区<br></span><span style="color: #008080;">29</span>         <span style="color: #008000;">//</span><span style="color: #008000;">fw.flush(); 写到这里的话就是所有的内容一起写进文件<br></span><span style="color: #008080;">30</span>         <span style="color: #008000;">//</span><span style="color: #008000;">fw.close(); close之前会调用flush()<br></span><span style="color: #008080;">31</span>         <span style="color: #008000;">//</span><span style="color: #008000;">读字符输入流的数据</span><br><span style="color: #008080;">32</span>         <span style="color: #0000ff;">int</span><span style="color: #000000;"> c;<br></span><span style="color: #008080;">33</span>         <span style="color: #0000ff;">while</span> ((c=fr.read())!=-1<span style="color: #000000;">) {<br></span><span style="color: #008080;">34</span>             System.out.print((<span style="color: #0000ff;">char</span><span style="color: #000000;">)c);<br></span><span style="color: #008080;">35</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">36</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">37</span><br><span style="color: #008080;">38</span> }</pre><br></div>
 
 <p>&nbsp;</p>
@@ -221,9 +220,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2013/05/java-io-stream.html" data-id="ciiy5f4ul008rq1d0l2lwrrov" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2013/05/java-io-stream.html" data-id="ciiyffur8008ruwd0a6jziozp" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2013/05/java-io-stream.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2013/05/java-io-stream.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -235,7 +234,7 @@
 <nav id="article-nav">
   
     <a href="/2013/05/java-serialize.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           java笔记九：对象序列化与反序列化
@@ -245,7 +244,7 @@
   
   
     <a href="/2013/05/java-io-stream-buffer.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">java笔记七：IO流之字节流与字节缓冲流</div>
     </a>
   
@@ -258,7 +257,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-java-io-stream" data-title="java笔记八：IO流之字符流与字符缓冲流" data-url="http://liuling07.github.io/2013/05/java-io-stream.html"></div>
+  <div class="ds-thread" data-thread-key="post-java-io-stream" data-title="java笔记八：IO流之字符流与字符缓冲流" data-url="http://localhost:4000/2013/05/java-io-stream.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -357,7 +356,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -414,7 +413,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -422,7 +421,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

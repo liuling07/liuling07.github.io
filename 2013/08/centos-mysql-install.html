@@ -11,13 +11,13 @@
 2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS中安装MySQL数据库">
-<meta property="og:url" content="http://liuling07.github.io/2013/08/centos-mysql-install.html">
+<meta property="og:url" content="http://localhost:4000/2013/08/centos-mysql-install.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="1、首先下载MySQL的安装文件，我这里安装的是MySQL5.1.7版本的，
 　　下载链接：http://pan.baidu.com/share/link?shareid=255483056&amp;amp;uk=924063144
 　　　　　　&amp;nbsp;&amp;nbsp; http://pan.baidu.com/share/link?shareid=269901909&amp;amp;uk=924063144
 2">
-<meta property="og:updated_time" content="2016-01-03T04:02:44.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:07:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS中安装MySQL数据库">
 <meta name="twitter:description" content="1、首先下载MySQL的安装文件，我这里安装的是MySQL5.1.7版本的，
@@ -69,7 +69,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -90,7 +90,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -107,16 +107,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -187,8 +187,7 @@
 <p>　　　　　　&nbsp;&nbsp; <a href="http://pan.baidu.com/share/link?shareid=269901909&amp;uk=924063144" title="MySQL-server-5.1.7-0.i386.rpm" target="_blank" rel="external">http://pan.baidu.com/share/link?shareid=269901909&amp;uk=924063144</a></p>
 <p>2、安装MySQL数据库服务器</p>
 <p>　　进入安装包所在文件夹，执行命令 rpm -ivh MySQL-server-5.1.7-0.i386.rpm 安装MySQL服务器。</p>
-<p>　　如果报了与原先版本冲突的话，就执行rpm -qa|grep -i mysql命令，会显示已安装的Mysql版本,我的显示mysql-libs-5.1.61-4.el6.i686<br>这时如果有的话就强制删除：rpm -e –nodeps mysql-libs-5.1.61-4.el6.i686（因为有包依赖，所以要强制删除）</p>
-<p>我的报错提示如下：</p>
+<p>　　如果报了与原先版本冲突的话，就执行rpm -qa|grep -i mysql命令，会显示已安装的Mysql版本,我的显示mysql-libs-5.1.61-4.el6.i686<br>这时如果有的话就强制删除：rpm -e –nodeps mysql-libs-5.1.61-4.el6.i686（因为有包依赖，所以要强制删除）<br><a id="more"></a><br>我的报错提示如下：</p>
 <div class="cnblogs_code"><br><pre>MySQL-server-5.1.7-0<span style="color: #000000;">.i386.rpm<br>Preparing…                ########################################### [</span>100%<span style="color: #000000;">]<br>    file </span>/usr/share/mysql/charsets/README from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/Index.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/armscii8.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/ascii.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/cp1250.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/cp1251.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/cp1256.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/cp1257.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/cp850.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/cp852.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/cp866.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/dec8.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/geostd8.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/greek.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/hebrew.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/hp8.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/keybcs2.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/koi8r.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/koi8u.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/latin1.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/latin2.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/latin5.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/latin7.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/macce.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/macroman.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/charsets/swe7.xml from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/czech/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/danish/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/dutch/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/english/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/estonian/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/french/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/german/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/greek/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/hungarian/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/italian/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/japanese/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/korean/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/norwegian-ny/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/norwegian/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/polish/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/portuguese/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/romanian/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/russian/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/serbian/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/slovak/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/spanish/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/swedish/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4<span style="color: #000000;">.el6.i686<br>    file </span>/usr/share/mysql/ukrainian/errmsg.sys from install of MySQL-server-5.1.7-0.i386.rpm  conflicts with file from <span style="color: #0000ff;">package</span> mysql-libs-5.1.61-4.el6.i686</pre><br></div>
 
 <p>这时候再执行rpm -ivh MySQL-server-5.1.7-0.i386.rpm安装即可安装成功。<br>我这里安装成功了，但是mysql服务无法启动，总是启动失败，后来百度了一下，是因为selinux的原因，只要将selinux关闭就OK了。<br>关闭selinux：vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 然后重启<br>关闭selinux之后还是无法启动mysql服务，因为安装的mysql所有者是root，在安装mysql的时候会创建一个用户mysql，只要将/var/lib/mysql<br>的所有者改为mysql就OK了，执行命令chown -R mysql:mysql /var/lib/mysql<br>现在执行service mysql start终于可以启动mysql服务了。</p>
@@ -203,9 +202,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2013/08/centos-mysql-install.html" data-id="ciiy5f4xl00dnq1d04k9yf9gp" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2013/08/centos-mysql-install.html" data-id="ciiyffuuc00dnuwd0kslxjlf8" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2013/08/centos-mysql-install.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2013/08/centos-mysql-install.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
@@ -217,7 +216,7 @@
 <nav id="article-nav">
   
     <a href="/2013/09/java-10times-abc.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           Java多线程：用三个线程控制循环输出10次ABC
@@ -227,7 +226,7 @@
   
   
     <a href="/2013/08/hashmap-source.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">HashMap源码剖析</div>
     </a>
   
@@ -240,7 +239,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-centos-mysql-install" data-title="CentOS中安装MySQL数据库" data-url="http://liuling07.github.io/2013/08/centos-mysql-install.html"></div>
+  <div class="ds-thread" data-thread-key="post-centos-mysql-install" data-title="CentOS中安装MySQL数据库" data-url="http://localhost:4000/2013/08/centos-mysql-install.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -339,7 +338,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -396,7 +395,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -404,7 +403,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

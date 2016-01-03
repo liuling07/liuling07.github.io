@@ -9,11 +9,11 @@
 　　但是博主在做公司项目的时候，有个下载模块，因为可能同时下载好几个数据，所以用的listview展示所有正在下载的内容。因为下载进度要实时更新，所以要不停的调用notifyDateSetChanged刷新数据。这样会不停的重新绘制整个l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ListView实现Item局部刷新">
-<meta property="og:url" content="http://liuling07.github.io/2015/10/listview-partial-refresh.html">
+<meta property="og:url" content="http://localhost:4000/2015/10/listview-partial-refresh.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="&amp;nbsp;对于ListView数据的刷新大家都知道，改变Adapter的数据源，然后调用Adapter的notifyDateSetChanged()方法即可。
 　　但是博主在做公司项目的时候，有个下载模块，因为可能同时下载好几个数据，所以用的listview展示所有正在下载的内容。因为下载进度要实时更新，所以要不停的调用notifyDateSetChanged刷新数据。这样会不停的重新绘制整个l">
-<meta property="og:updated_time" content="2016-01-03T03:57:08.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:34:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ListView实现Item局部刷新">
 <meta name="twitter:description" content="&amp;nbsp;对于ListView数据的刷新大家都知道，改变Adapter的数据源，然后调用Adapter的notifyDateSetChanged()方法即可。
@@ -63,7 +63,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -84,7 +84,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -101,16 +101,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -178,7 +178,7 @@
                 
         <p>　　&nbsp;<span style="font-size: 15px;">对于ListView数据的刷新大家都知道，改变Adapter的数据源，然后调用Adapter的notifyDateSetChanged()方法即可。</span></p>
 <p><span style="font-size: 15px;">　　但是博主在做公司项目的时候，有个下载模块，因为可能同时下载好几个数据，所以用的listview展示所有正在下载的内容。因为下载进度要实时更新，所以要不停的调用notifyDateSetChanged刷新数据。这样会不停的重新绘制整个listview的界面，性能开销非常大。而且如果每个item有图片的话，每个item的图片都需要重新加载，就算图片做了内存缓存，刷新一下图片也会闪一下，不停的刷新就会导致各个item的图片不停的闪，体验一点都不好。</span></p>
-<p><span style="font-size: 15px;">　　那么对于上面问题，有没有解决办法呢？当然是有的。我们可以针对某一个item进行局部更新，而不影响其它没有修改的item。那么具体如何实现的呢？我们看下面的代码。</span></p>
+<p><span style="font-size: 15px;">　　那么对于上面问题，有没有解决办法呢？当然是有的。我们可以针对某一个item进行局部更新，而不影响其它没有修改的item。那么具体如何实现的呢？我们看下面的代码。</span><br><a id="more"></a></p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span> updateView(<span style="color: #0000ff;">int</span><span style="color: #000000;"> itemIndex) {<br></span><span style="color: #008080;"> 2</span>         <span style="color: #008000;">//</span><span style="color: #008000;">得到第一个可显示控件的位置，</span><br><span style="color: #008080;"> 3</span>         <span style="color: #0000ff;">int</span> visiblePosition =<span style="color: #000000;"> mListView.getFirstVisiblePosition();<br></span><span style="color: #008080;"> 4</span>         <span style="color: #008000;">//</span><span style="color: #008000;">只有当要更新的view在可见的位置时才更新，不可见时，跳过不更新</span><br><span style="color: #008080;"> 5</span>         <span style="color: #0000ff;">if</span> (itemIndex - visiblePosition &gt;= 0<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 6</span>             <span style="color: #008000;">//</span><span style="color: #008000;">得到要更新的item的view</span><br><span style="color: #008080;"> 7</span>             View view = mListView.getChildAt(itemIndex -<span style="color: #000000;"> visiblePosition);<br></span><span style="color: #008080;"> 8</span>             <span style="color: #008000;">//</span><span style="color: #008000;">调用adapter更新界面</span><br><span style="color: #008080;"> 9</span> <span style="color: #000000;">            mAdapter.updateView(view, itemIndex);<br></span><span style="color: #008080;">10</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">11</span>     }</pre><br></div>
 
 <p>　　<span style="font-size: 15px;">这个函数主要是根据传入的itemIndex来获取第itemIndex的数据所显示的view。itemIndex就是要修改的数据再List集合中的位置，比如我这里下载进度有更新，发了一个广播这里接收到了，需要修改该下载内容的进度条，广播接收器可以这么写：</span></p>
@@ -193,9 +193,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2015/10/listview-partial-refresh.html" data-id="ciiy5f4sj005qq1d04ily87h5" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2015/10/listview-partial-refresh.html" data-id="ciiyffup9005quwd0ygu9k14k" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2015/10/listview-partial-refresh.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2015/10/listview-partial-refresh.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li></ul>
@@ -207,7 +207,7 @@
 <nav id="article-nav">
   
     <a href="/2015/10/custom-camera.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           Android自定义相机拍照、图片裁剪的实现
@@ -217,7 +217,7 @@
   
   
     <a href="/2015/10/asynctask-multi-task-thread.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">AsyncTask实现多任务多线程断点续传下载</div>
     </a>
   
@@ -230,7 +230,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-listview-partial-refresh" data-title="ListView实现Item局部刷新" data-url="http://liuling07.github.io/2015/10/listview-partial-refresh.html"></div>
+  <div class="ds-thread" data-thread-key="post-listview-partial-refresh" data-title="ListView实现Item局部刷新" data-url="http://localhost:4000/2015/10/listview-partial-refresh.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -329,7 +329,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -386,7 +386,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -394,7 +394,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

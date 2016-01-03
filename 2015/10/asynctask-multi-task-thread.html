@@ -11,14 +11,14 @@
 　　这里模拟应用市场app下载实现了一个Demo，因为只有一个界面，所以没有将下载放到Service中，而是直接在Activity中创建。在正式的项目中，下载都是放到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AsyncTask实现多任务多线程断点续传下载">
-<meta property="og:url" content="http://liuling07.github.io/2015/10/asynctask-multi-task-thread.html">
+<meta property="og:url" content="http://localhost:4000/2015/10/asynctask-multi-task-thread.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="这篇博客是AsyncTask下载系列的最后一篇文章，前面写了关于断点续传的和多线程下载的博客，这篇是在前两篇的基础上面实现的，有兴趣的可以去看下。
 　　一、AsyncTask实现断点续传
 　　二、AsyncTask实现多线程断点续传
 　　这里模拟应用市场app下载实现了一个Demo，因为只有一个界面，所以没有将下载放到Service中，而是直接在Activity中创建。在正式的项目中，下载都是放到">
 <meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20151016210637601-2103512377.gif">
-<meta property="og:updated_time" content="2016-01-03T03:53:55.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:04:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AsyncTask实现多任务多线程断点续传下载">
 <meta name="twitter:description" content="这篇博客是AsyncTask下载系列的最后一篇文章，前面写了关于断点续传的和多线程下载的博客，这篇是在前两篇的基础上面实现的，有兴趣的可以去看下。
@@ -70,7 +70,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -91,7 +91,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -108,16 +108,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -186,8 +186,7 @@
         <p>　　<span style="font-size: 15px;">这篇博客是AsyncTask下载系列的最后一篇文章，前面写了关于断点续传的和多线程下载的博客，这篇是在前两篇的基础上面实现的，有兴趣的可以去看下。</span></p>
 <p><span style="font-size: 15px;">　　一、<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" target="_blank" rel="external">AsyncTask实现断点续传</a></span></p>
 <p><span style="font-size: 15px;">　　二、<a href="http://www.cnblogs.com/liuling/p/2015-10-13-01.html" title="http://www.cnblogs.com/liuling/p/2015-10-13-01.html" target="_blank" rel="external">AsyncTask实现多线程断点续传</a></span></p>
-<p><span style="font-size: 15px;">　　这里模拟应用市场app下载实现了一个Demo，因为只有一个界面，所以没有将下载放到Service中，而是直接在Activity中创建。在正式的项目中，下载都是放到Service中，然后通过BroadCast通知界面更新进度。<span style="line-height: 1.5;"><br></span></span></p>
-<p><span style="font-size: 15px;">　　上代码之前，先看下demo的运行效果图吧。</span></p>
+<p><span style="font-size: 15px;">　　这里模拟应用市场app下载实现了一个Demo，因为只有一个界面，所以没有将下载放到Service中，而是直接在Activity中创建。在正式的项目中，下载都是放到Service中，然后通过BroadCast通知界面更新进度。<span style="line-height: 1.5;"><br></span></span><br><a id="more"></a><br><span style="font-size: 15px;">　　上代码之前，先看下demo的运行效果图吧。</span></p>
 <p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20151016210637601-2103512377.gif" alt=""></p>
 <p>&nbsp;</p>
 <p>　　<span style="font-size: 15px;">下面我们看代码，这里每一个文件的下载定义一个Downloador来管理下载该文件的所有线程（暂停、下载等）。Downloador创建3个DownloadTask（这里定义每个文件分配3个线程下载）来下载该文件特定的起止位置。这里要通过文件的大小来计算每个线程所下载的起止位置，详细可以参考《<a href="http://www.cnblogs.com/liuling/p/2015-10-13-01.html" title="http://www.cnblogs.com/liuling/p/2015-10-13-01.html" target="_blank" rel="external">AsyncTask实现多线程断点续传</a>》。</span></p>
@@ -216,9 +215,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2015/10/asynctask-multi-task-thread.html" data-id="ciiy5f4xy00eaq1d0vcggywdr" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2015/10/asynctask-multi-task-thread.html" data-id="ciiyffuup00eauwd0q133tp9u" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2015/10/asynctask-multi-task-thread.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2015/10/asynctask-multi-task-thread.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AsyncTask/">AsyncTask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/断点续传/">断点续传</a></li></ul>
@@ -230,7 +229,7 @@
 <nav id="article-nav">
   
     <a href="/2015/10/listview-partial-refresh.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           ListView实现Item局部刷新
@@ -240,7 +239,7 @@
   
   
     <a href="/2015/10/customview-download-percent.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">Android中使用自定义View实现下载进度的显示</div>
     </a>
   
@@ -253,7 +252,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-asynctask-multi-task-thread" data-title="AsyncTask实现多任务多线程断点续传下载" data-url="http://liuling07.github.io/2015/10/asynctask-multi-task-thread.html"></div>
+  <div class="ds-thread" data-thread-key="post-asynctask-multi-task-thread" data-title="AsyncTask实现多任务多线程断点续传下载" data-url="http://localhost:4000/2015/10/asynctask-multi-task-thread.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -352,7 +351,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -409,7 +408,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -417,7 +416,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

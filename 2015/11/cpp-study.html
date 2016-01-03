@@ -8,10 +8,10 @@
   <meta name="description" content="最近由于公司部门调整，博主被安排去做游戏开发了，使用的是cocos2d游戏引擎，开发语言为C++。所以硬着头皮边熟悉cocos2d边学C++。对于写了多年Java的来说，看C++代码很坑爹有木有。但是作为Android工程师，C/C++还是有必要学的，因为Android系统源码大部分都是C写的。之前看过一段时间的Android源码，看到C++部分也是比较吃力，现在借此机会学学C++也是挺不错的。下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++学习随笔">
-<meta property="og:url" content="http://liuling07.github.io/2015/11/cpp-study.html">
+<meta property="og:url" content="http://localhost:4000/2015/11/cpp-study.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="最近由于公司部门调整，博主被安排去做游戏开发了，使用的是cocos2d游戏引擎，开发语言为C++。所以硬着头皮边熟悉cocos2d边学C++。对于写了多年Java的来说，看C++代码很坑爹有木有。但是作为Android工程师，C/C++还是有必要学的，因为Android系统源码大部分都是C写的。之前看过一段时间的Android源码，看到C++部分也是比较吃力，现在借此机会学学C++也是挺不错的。下">
-<meta property="og:updated_time" content="2016-01-03T05:42:09.000Z">
+<meta property="og:updated_time" content="2016-01-03T07:07:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++学习随笔">
 <meta name="twitter:description" content="最近由于公司部门调整，博主被安排去做游戏开发了，使用的是cocos2d游戏引擎，开发语言为C++。所以硬着头皮边熟悉cocos2d边学C++。对于写了多年Java的来说，看C++代码很坑爹有木有。但是作为Android工程师，C/C++还是有必要学的，因为Android系统源码大部分都是C写的。之前看过一段时间的Android源码，看到C++部分也是比较吃力，现在借此机会学学C++也是挺不错的。下">
@@ -60,7 +60,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -81,7 +81,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -98,16 +98,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -176,8 +176,7 @@
         <p>最近由于公司部门调整，博主被安排去做游戏开发了，使用的是cocos2d游戏引擎，开发语言为C++。所以硬着头皮边熟悉cocos2d边学C++。对于写了多年Java的来说，看C++代码很坑爹有木有。<br>但是作为Android工程师，C/C++还是有必要学的，因为Android系统源码大部分都是C写的。之前看过一段时间的Android源码，看到C++部分也是比较吃力，现在借此机会学学C++也是挺不错的。<br>下面简单记录在学习C++过程中遇到的一些不懂的东西（持续更新）。</p>
 <p><strong>std::nothrow</strong></p>
 <p>在内存不足时，new (std::nothrow)并不抛出异常，而是将指针置NULL。<br>如：auto layer = new (std::nothrow) FirstLayer();</p>
-<p><strong>auto</strong><br>auto是C++11的新特性，自动类型推断，用于从初始化表达式中推断出变量的数据类型，有点类似于js中的弱类型var。</p>
-<p><strong>#pragma once</strong><br>只要在头文件的最开始加入这条杂注，就能够保证头文件只被编译一次。但是是依赖编译器的，可以使用宏定义#ifndef</p>
+<p><strong>auto</strong><br>auto是C++11的新特性，自动类型推断，用于从初始化表达式中推断出变量的数据类型，有点类似于js中的弱类型var。<br><a id="more"></a><br><strong>#pragma once</strong><br>只要在头文件的最开始加入这条杂注，就能够保证头文件只被编译一次。但是是依赖编译器的，可以使用宏定义#ifndef</p>
 <p><strong>#ifndef，#define，#endif</strong><br>C/C++语言中的宏定义，通过宏定义避免文件多次编译</p>
 <p><strong>#if与if的区别</strong></p>
 <p>#endif//与#if对应<br>作为一个编译“开关”，比如：   </p>
@@ -196,9 +195,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2015/11/cpp-study.html" data-id="ciiy5f4x500czq1d03ebrqny3" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2015/11/cpp-study.html" data-id="ciiyffutp00czuwd0tej1b2tw" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2015/11/cpp-study.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2015/11/cpp-study.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
@@ -210,7 +209,7 @@
 <nav id="article-nav">
   
     <a href="/2015/11/max-allowed-packet.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
           MySQL导入数据报Got a packet bigger than‘max_allowed_packet’bytes错误的解决方法
@@ -220,7 +219,7 @@
   
   
     <a href="/2015/11/recyclerview-example.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">RecyclerView的使用</div>
     </a>
   
@@ -233,7 +232,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-cpp-study" data-title="C++学习随笔" data-url="http://liuling07.github.io/2015/11/cpp-study.html"></div>
+  <div class="ds-thread" data-thread-key="post-cpp-study" data-title="C++学习随笔" data-url="http://localhost:4000/2015/11/cpp-study.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -332,7 +331,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -389,7 +388,7 @@ var duoshuoQuery = {short_name:"liuling07"};
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -397,7 +396,7 @@ var duoshuoQuery = {short_name:"liuling07"};
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

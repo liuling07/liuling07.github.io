@@ -8,7 +8,7 @@
   <meta name="description" content="Hexo theme - Icarus">
 <meta property="og:type" content="website">
 <meta property="og:title" content="残剑博客">
-<meta property="og:url" content="http://liuling07.github.io/page/4/index.html">
+<meta property="og:url" content="http://localhost:4000/page/4/index.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="Hexo theme - Icarus">
 <meta name="twitter:card" content="summary">
@@ -59,7 +59,7 @@
       
       <div id="search-form-wrap">
         
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
         
       </div>
     </div>
@@ -80,7 +80,7 @@
         
         <td>
           
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://liuling07.github.io"></form>
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://localhost:4000"></form>
           
         </td>
       </tr>
@@ -97,16 +97,16 @@
       <h2 id="name">Lauren</h2>
       <h3 id="title">Android Developer</h3>
       <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">FOLLOW</a>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
         135
-        <span>posts</span>
+        <span>文章</span>
       </div>
       <div class="article-info-block">
         32
-        <span>tags</span>
+        <span>标签</span>
       </div>
     </div>
     
@@ -172,21 +172,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-                
         <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> 严重: Servlet /N002-1.0<span style="color: #000000;"> threw load() exception<br></span><span style="color: #008080;"> 2</span> <span style="color: #000000;">java.lang.ClassCastException: com.sun.proxy.$Proxy27 cannot be cast to com.bbk.n002.service.QuestionService<br></span><span style="color: #008080;"> 3</span>     at com.bbk.n002.servlet.CreateTaskQueueServlet.init(CreateTaskQueueServlet.java:28<span style="color: #000000;">)<br></span><span style="color: #008080;"> 4</span>     at javax.servlet.GenericServlet.init(GenericServlet.java:160<span style="color: #000000;">)<br></span><span style="color: #008080;"> 5</span>     at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1280<span style="color: #000000;">)<br></span><span style="color: #008080;"> 6</span>     at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1193<span style="color: #000000;">)<br></span><span style="color: #008080;"> 7</span>     at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:1088<span style="color: #000000;">)<br></span><span style="color: #008080;"> 8</span>     at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:5176<span style="color: #000000;">)<br></span><span style="color: #008080;"> 9</span>     at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5460<span style="color: #000000;">)<br></span><span style="color: #008080;">10</span>     at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150<span style="color: #000000;">)<br></span><span style="color: #008080;">11</span>     at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559<span style="color: #000000;">)<br></span><span style="color: #008080;">12</span>     at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549<span style="color: #000000;">)<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">    at java.util.concurrent.FutureTask.run(Unknown Source)<br></span><span style="color: #008080;">14</span> <span style="color: #000000;">    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)<br></span><span style="color: #008080;">15</span> <span style="color: #000000;">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)<br></span><span style="color: #008080;">16</span>     at java.lang.Thread.run(Unknown Source)</pre><br></div>
 
-<p>Spring的文档中这么写的：Spring AOP部分使用JDK动态代理或者CGLIB来为目标对象创建代理。如果被代理的目标实现了至少一个接口，则会使用JDK动态代理。所有该目标类型实现的接口都将被代理。若该目标对象没有实现任何接口，则创建一个CGLIB代理。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 所以，解决办法是，如果用JDK动态代理，就必须为被代理的目标实现一个接口（要注意的地方是：需要将ctx.getBean()方法的返回值用接口类型接收）；如果使用CGLIB强制代理，就必选事先将CGLIB包导入项目，设置beanNameAutoProxyCreator的proxyTargetClass属性为true。</p>
-<p>这里DeviceService实现了接口IDeviceService，所以会使用JDK动态代理，从而使(DeviceService) deviceService强制转换的时候报错（因为实现IDeviceService接口的代理类是属于DeviceService子类）。因此需要使用CGLIB强制代理。需要在springContext.xml中增加如下配置：</p>
-<p>[html][/html]</p>
-<p><aop:[asp](http: www.2cto.com="" kf="" web="" asp="" )ectj-autoproxy="" proxy-target-class="true">&nbsp;</aop:[asp](http:></p>
-<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+<p>Spring的文档中这么写的：Spring AOP部分使用JDK动态代理或者CGLIB来为目标对象创建代理。如果被代理的目标实现了至少一个接口，则会使用JDK动态代理。所有该目标类型实现的接口都将被代理。若该目标对象没有实现任何接口，则创建一个CGLIB代理。<br>
+        
+          <p class="article-more-link">
+            <a href="/2014/08/java-lang-classcastexception.html#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/08/java-lang-classcastexception.html" data-id="ciiy5f4ue008jq1d0tc25rcde" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/08/java-lang-classcastexception.html" data-id="ciiyffur4008juwd0rxpvtrdv" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/08/java-lang-classcastexception.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/08/java-lang-classcastexception.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
@@ -241,9 +240,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/04/shardedjedispool-demo.html" data-id="ciiy5f4q60024q1d0jxgv7lgr" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/04/shardedjedispool-demo.html" data-id="ciiyffumr0024uwd087dfbqip" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/04/shardedjedispool-demo.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/04/shardedjedispool-demo.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
@@ -290,8 +289,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-                
-        <p>consistent hashing&nbsp;算法早在&nbsp;1997&nbsp;年就在论文&nbsp;<strong><a href="http://portal.acm.org/citation.cfm?id=258660" target="_blank" rel="external">Consistent hashing and random trees</a>&nbsp;</strong>中被提出，目前在cache&nbsp;系统中应用越来越广泛；</p>
+        <p>consistent hashing&nbsp;算法早在&nbsp;1997&nbsp;年就在论文&nbsp;<strong><a href="http://portal.acm.org/citation.cfm?id=258660">Consistent hashing and random trees</a>&nbsp;</strong>中被提出，目前在cache&nbsp;系统中应用越来越广泛；</p>
 <h2 id="1_26nbsp_3B_u57FA_u672C_u573A_u666F"><a href="#1_26nbsp_3B_u57FA_u672C_u573A_u666F" class="headerlink" title="1&nbsp;基本场景"></a>1&nbsp;基本场景</h2><p>比如你有&nbsp;N&nbsp;个&nbsp;cache&nbsp;服务器（后面简称&nbsp;cache&nbsp;），那么如何将一个对象&nbsp;object&nbsp;映射到&nbsp;N&nbsp;个&nbsp;cache&nbsp;上呢，你很可能会采用类似下面的通用方法计算&nbsp;object&nbsp;的&nbsp;hash&nbsp;值，然后均匀的映射到到&nbsp;N&nbsp;个&nbsp;cache&nbsp;；</p>
 <p>hash(object)%N</p>
 <p>一切都运行正常，再考虑如下的两种情况；</p>
@@ -299,77 +297,18 @@
 <p>2&nbsp;由于访问加重，需要添加&nbsp;cache&nbsp;，这时候&nbsp;cache&nbsp;是&nbsp;N+1&nbsp;台，映射公式变成了&nbsp;hash(object)%(N+1)&nbsp;；</p>
 <p>1&nbsp;和&nbsp;2&nbsp;意味着什么？这意味着突然之间几乎所有的&nbsp;cache&nbsp;都失效了。对于服务器而言，这是一场灾难，洪水般的访问都会直接冲向后台服务器；</p>
 <p>再来考虑第三个问题，由于硬件能力越来越强，你可能想让后面添加的节点多做点活，显然上面的&nbsp;hash&nbsp;算法也做不到。</p>
-<p>&nbsp;&nbsp;有什么方法可以改变这个状况呢，这就是&nbsp;consistent hashing…</p>
-<h2 id="2_hash_26nbsp_3B_u7B97_u6CD5_u548C_u5355_u8C03_u6027"><a href="#2_hash_26nbsp_3B_u7B97_u6CD5_u548C_u5355_u8C03_u6027" class="headerlink" title="2 hash&nbsp;算法和单调性"></a>2 hash&nbsp;算法和单调性</h2><p>　　&nbsp;Hash&nbsp;算法的一个衡量指标是单调性（&nbsp;Monotonicity&nbsp;），定义如下：</p>
-<p>　　单调性是指如果已经有一些内容通过哈希分派到了相应的缓冲中，又有新的缓冲加入到系统中。哈希的结果应能够保证原有已分配的内容可以被映射到新的缓冲中去，而不会被映射到旧的缓冲集合中的其他缓冲区。</p>
-<p>容易看到，上面的简单&nbsp;hash&nbsp;算法&nbsp;hash(object)%N&nbsp;难以满足单调性要求。</p>
-<h2 id="3_consistent_hashing_26nbsp_3B_u7B97_u6CD5_u7684_u539F_u7406"><a href="#3_consistent_hashing_26nbsp_3B_u7B97_u6CD5_u7684_u539F_u7406" class="headerlink" title="3 consistent hashing&nbsp;算法的原理"></a>3 consistent hashing&nbsp;算法的原理</h2><p>consistent hashing&nbsp;是一种&nbsp;hash&nbsp;算法，简单的说，在移除&nbsp;/&nbsp;添加一个&nbsp;cache&nbsp;时，它能够尽可能小的改变已存在&nbsp;key&nbsp;映射关系，尽可能的满足单调性的要求。</p>
-<p>下面就来按照&nbsp;5&nbsp;个步骤简单讲讲&nbsp;consistent hashing&nbsp;算法的基本原理。</p>
-<h3 id="3-1_26nbsp_3B_u73AF_u5F62hash_26nbsp_3B_u7A7A_u95F4"><a href="#3-1_26nbsp_3B_u73AF_u5F62hash_26nbsp_3B_u7A7A_u95F4" class="headerlink" title="3.1&nbsp;环形hash&nbsp;空间"></a>3.1&nbsp;环形hash&nbsp;空间</h3><p>考虑通常的&nbsp;hash&nbsp;算法都是将&nbsp;value&nbsp;映射到一个&nbsp;32&nbsp;为的&nbsp;key&nbsp;值，也即是&nbsp;0~2^32-1&nbsp;次方的数值空间；我们可以将这个空间想象成一个首（&nbsp;0&nbsp;）尾（&nbsp;2^32-1&nbsp;）相接的圆环，如下面图&nbsp;1&nbsp;所示的那样。</p>
-<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/202352423226135.jpg" alt="">&nbsp;</p>
-<p>图&nbsp;1&nbsp;环形&nbsp;hash&nbsp;空间</p>
-<h3 id="3-2_26nbsp_3B_u628A_u5BF9_u8C61_u6620_u5C04_u5230hash_26nbsp_3B_u7A7A_u95F4"><a href="#3-2_26nbsp_3B_u628A_u5BF9_u8C61_u6620_u5C04_u5230hash_26nbsp_3B_u7A7A_u95F4" class="headerlink" title="3.2&nbsp;把对象映射到hash&nbsp;空间"></a>3.2&nbsp;把对象映射到hash&nbsp;空间</h3><p>接下来考虑&nbsp;4&nbsp;个对象&nbsp;object1~object4&nbsp;，通过&nbsp;hash&nbsp;函数计算出的&nbsp;hash&nbsp;值&nbsp;key&nbsp;在环上的分布如图&nbsp;2&nbsp;所示。</p>
-<p>hash(object1) = key1;</p>
-<p>&hellip; &hellip;</p>
-<p>hash(object4) = key4;</p>
-<p>&nbsp;<img src="http://www.liuling123.com/wp-content/uploads/2015/11/202352578697452.jpg" alt=""></p>
-<p>图&nbsp;2 4&nbsp;个对象的&nbsp;key&nbsp;值分布</p>
-<h3 id="3-3_26nbsp_3B_u628Acache_26nbsp_3B_u6620_u5C04_u5230hash_26nbsp_3B_u7A7A_u95F4"><a href="#3-3_26nbsp_3B_u628Acache_26nbsp_3B_u6620_u5C04_u5230hash_26nbsp_3B_u7A7A_u95F4" class="headerlink" title="3.3&nbsp;把cache&nbsp;映射到hash&nbsp;空间"></a>3.3&nbsp;把cache&nbsp;映射到hash&nbsp;空间</h3><p>Consistent hashing&nbsp;的基本思想就是将对象和&nbsp;cache&nbsp;都映射到同一个&nbsp;hash&nbsp;数值空间中，并且使用相同的&nbsp;hash算法。</p>
-<p>假设当前有&nbsp;A,B&nbsp;和&nbsp;C&nbsp;共&nbsp;3&nbsp;台&nbsp;cache&nbsp;，那么其映射结果将如图&nbsp;3&nbsp;所示，他们在&nbsp;hash&nbsp;空间中，以对应的&nbsp;hash&nbsp;值排列。</p>
-<p>hash(cache A) = key A;</p>
-<p>&hellip; &hellip;</p>
-<p>hash(cache C) = key C;</p>
-<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/202353098698386.jpg" alt="">&nbsp;</p>
-<p>图&nbsp;3 cache&nbsp;和对象的&nbsp;key&nbsp;值分布</p>
-<p>&nbsp;</p>
-<p>说到这里，顺便提一下&nbsp;cache&nbsp;的&nbsp;hash&nbsp;计算，一般的方法可以使用&nbsp;cache&nbsp;机器的&nbsp;IP&nbsp;地址或者机器名作为&nbsp;hash输入。</p>
-<h3 id="3-4_26nbsp_3B_u628A_u5BF9_u8C61_u6620_u5C04_u5230cache"><a href="#3-4_26nbsp_3B_u628A_u5BF9_u8C61_u6620_u5C04_u5230cache" class="headerlink" title="3.4&nbsp;把对象映射到cache"></a>3.4&nbsp;把对象映射到cache</h3><p>现在&nbsp;cache&nbsp;和对象都已经通过同一个&nbsp;hash&nbsp;算法映射到&nbsp;hash&nbsp;数值空间中了，接下来要考虑的就是如何将对象映射到&nbsp;cache&nbsp;上面了。</p>
-<p>在这个环形空间中，如果沿着顺时针方向从对象的&nbsp;key&nbsp;值出发，直到遇见一个&nbsp;cache&nbsp;，那么就将该对象存储在这个&nbsp;cache&nbsp;上，因为对象和&nbsp;cache&nbsp;的&nbsp;hash&nbsp;值是固定的，因此这个&nbsp;cache&nbsp;必然是唯一和确定的。这样不就找到了对象和&nbsp;cache&nbsp;的映射方法了吗？！</p>
-<p>依然继续上面的例子（参见图&nbsp;3&nbsp;），那么根据上面的方法，对象&nbsp;object1&nbsp;将被存储到&nbsp;cache A&nbsp;上；&nbsp;object2&nbsp;和object3&nbsp;对应到&nbsp;cache C&nbsp;；&nbsp;object4&nbsp;对应到&nbsp;cache B&nbsp;；</p>
-<h3 id="3-5_26nbsp_3B_u8003_u5BDFcache_26nbsp_3B_u7684_u53D8_u52A8"><a href="#3-5_26nbsp_3B_u8003_u5BDFcache_26nbsp_3B_u7684_u53D8_u52A8" class="headerlink" title="3.5&nbsp;考察cache&nbsp;的变动"></a>3.5&nbsp;考察cache&nbsp;的变动</h3><p>前面讲过，通过&nbsp;hash&nbsp;然后求余的方法带来的最大问题就在于不能满足单调性，当&nbsp;cache&nbsp;有所变动时，&nbsp;cache会失效，进而对后台服务器造成巨大的冲击，现在就来分析分析&nbsp;consistent hashing&nbsp;算法。</p>
-<p><strong>3.5.1&nbsp;**</strong>移除&nbsp;cache**</p>
-<p>考虑假设&nbsp;cache B&nbsp;挂掉了，根据上面讲到的映射方法，这时受影响的将仅是那些沿&nbsp;cache B&nbsp;逆时针遍历直到下一个&nbsp;cache&nbsp;（&nbsp;cache C&nbsp;）之间的对象，也即是本来映射到&nbsp;cache B&nbsp;上的那些对象。</p>
-<p>因此这里仅需要变动对象&nbsp;object4&nbsp;，将其重新映射到&nbsp;cache C&nbsp;上即可；参见图&nbsp;4&nbsp;。</p>
-<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/202353260415346.jpg" alt="">&nbsp;</p>
-<p>图&nbsp;4 Cache B&nbsp;被移除后的&nbsp;cache&nbsp;映射</p>
-<p><strong>3.5.2&nbsp;**</strong>添加&nbsp;cache**</p>
-<p>再考虑添加一台新的&nbsp;cache D&nbsp;的情况，假设在这个环形&nbsp;hash&nbsp;空间中，&nbsp;cache D&nbsp;被映射在对象&nbsp;object2&nbsp;和object3&nbsp;之间。这时受影响的将仅是那些沿&nbsp;cache D&nbsp;逆时针遍历直到下一个&nbsp;cache&nbsp;（&nbsp;cache B&nbsp;）之间的对象（它们是也本来映射到&nbsp;cache C&nbsp;上对象的一部分），将这些对象重新映射到&nbsp;cache D&nbsp;上即可。</p>
-<p>&nbsp;</p>
-<p>因此这里仅需要变动对象&nbsp;object2&nbsp;，将其重新映射到&nbsp;cache D&nbsp;上；参见图&nbsp;5&nbsp;。</p>
-<p>&nbsp;<img src="http://www.liuling123.com/wp-content/uploads/2015/11/202353366975023.jpg" alt=""></p>
-<p>图&nbsp;5&nbsp;添加&nbsp;cache D&nbsp;后的映射关系</p>
-<h2 id="4_26nbsp_3B_u865A_u62DF_u8282_u70B9"><a href="#4_26nbsp_3B_u865A_u62DF_u8282_u70B9" class="headerlink" title="4&nbsp;虚拟节点"></a>4&nbsp;虚拟节点</h2><p>考量&nbsp;Hash&nbsp;算法的另一个指标是平衡性&nbsp;(Balance)&nbsp;，定义如下：</p>
-<p>平衡性</p>
-<p>　　平衡性是指哈希的结果能够尽可能分布到所有的缓冲中去，这样可以使得所有的缓冲空间都得到利用。</p>
-<p>hash&nbsp;算法并不是保证绝对的平衡，如果&nbsp;cache&nbsp;较少的话，对象并不能被均匀的映射到&nbsp;cache&nbsp;上，比如在上面的例子中，仅部署&nbsp;cache A&nbsp;和&nbsp;cache C&nbsp;的情况下，在&nbsp;4&nbsp;个对象中，&nbsp;cache A&nbsp;仅存储了&nbsp;object1&nbsp;，而&nbsp;cache C&nbsp;则存储了object2&nbsp;、&nbsp;object3&nbsp;和&nbsp;object4&nbsp;；分布是很不均衡的。</p>
-<p>为了解决这种情况，&nbsp;consistent hashing&nbsp;引入了&ldquo;虚拟节点&rdquo;的概念，它可以如下定义：</p>
-<p>&ldquo;虚拟节点&rdquo;（&nbsp;virtual node&nbsp;）是实际节点在&nbsp;hash&nbsp;空间的复制品（&nbsp;replica&nbsp;），一实际个节点对应了若干个&ldquo;虚拟节点&rdquo;，这个对应个数也成为&ldquo;复制个数&rdquo;，&ldquo;虚拟节点&rdquo;在&nbsp;hash&nbsp;空间中以&nbsp;hash&nbsp;值排列。</p>
-<p>仍以仅部署&nbsp;cache A&nbsp;和&nbsp;cache C&nbsp;的情况为例，在图&nbsp;4&nbsp;中我们已经看到，&nbsp;cache&nbsp;分布并不均匀。现在我们引入虚拟节点，并设置&ldquo;复制个数&rdquo;为&nbsp;2&nbsp;，这就意味着一共会存在&nbsp;4&nbsp;个&ldquo;虚拟节点&rdquo;，&nbsp;cache A1, cache A2&nbsp;代表了cache A&nbsp;；&nbsp;cache C1, cache C2&nbsp;代表了&nbsp;cache C&nbsp;；假设一种比较理想的情况，参见图&nbsp;6&nbsp;。</p>
-<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/202353497445771.jpg" alt="">&nbsp;</p>
-<p>图&nbsp;6&nbsp;引入&ldquo;虚拟节点&rdquo;后的映射关系</p>
-<p>&nbsp;</p>
-<p>此时，对象到&ldquo;虚拟节点&rdquo;的映射关系为：</p>
-<p>objec1-&gt;cache A2&nbsp;；&nbsp;objec2-&gt;cache A1&nbsp;；&nbsp;objec3-&gt;cache C1&nbsp;；&nbsp;objec4-&gt;cache C2&nbsp;；</p>
-<p>因此对象&nbsp;object1&nbsp;和&nbsp;object2&nbsp;都被映射到了&nbsp;cache A&nbsp;上，而&nbsp;object3&nbsp;和&nbsp;object4&nbsp;映射到了&nbsp;cache C&nbsp;上；平衡性有了很大提高。</p>
-<p>引入&ldquo;虚拟节点&rdquo;后，映射关系就从&nbsp;{&nbsp;对象&nbsp;-&gt;&nbsp;节点&nbsp;}&nbsp;转换到了&nbsp;{&nbsp;对象&nbsp;-&gt;&nbsp;虚拟节点&nbsp;}&nbsp;。查询物体所在&nbsp;cache&nbsp;时的映射关系如图&nbsp;7&nbsp;所示。</p>
-<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/202353585888736.jpg" alt="">&nbsp;</p>
-<p>图&nbsp;7&nbsp;查询对象所在&nbsp;cache</p>
-<p>&nbsp;</p>
-<p>&ldquo;虚拟节点&rdquo;的&nbsp;hash&nbsp;计算可以采用对应节点的&nbsp;IP&nbsp;地址加数字后缀的方式。例如假设&nbsp;cache A&nbsp;的&nbsp;IP&nbsp;地址为202.168.14.241&nbsp;。</p>
-<p>引入&ldquo;虚拟节点&rdquo;前，计算&nbsp;cache A&nbsp;的&nbsp;hash&nbsp;值：</p>
-<p>Hash(&ldquo;202.168.14.241&rdquo;);</p>
-<p>引入&ldquo;虚拟节点&rdquo;后，计算&ldquo;虚拟节&rdquo;点&nbsp;cache A1&nbsp;和&nbsp;cache A2&nbsp;的&nbsp;hash&nbsp;值：</p>
-<p>Hash(&ldquo;202.168.14.241#1&rdquo;);&nbsp;&nbsp;// cache A1</p>
-<p>Hash(&ldquo;202.168.14.241#2&rdquo;);&nbsp;&nbsp;// cache A2</p>
-<p>&nbsp;</p>
-<p>转自：<a href="http://blog.csdn.net/sparkliang/article/details/5279393" title="http://blog.csdn.net/sparkliang/article/details/5279393" target="_blank" rel="external">http://blog.csdn.net/sparkliang/article/details/5279393</a></p>
-
+<p>&nbsp;&nbsp;有什么方法可以改变这个状况呢，这就是&nbsp;consistent hashing…<br>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/consistenthashing.html#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/04/consistenthashing.html" data-id="ciiy5f4xb00daq1d0y4xavs2u" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/04/consistenthashing.html" data-id="ciiyffutx00dauwd0aly0t6ks" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/04/consistenthashing.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/04/consistenthashing.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -416,23 +355,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-                
-        <p>使用Java操作Redis需要jedis-2.1.0.jar，下载地址：<a href="http://files.cnblogs.com/liuling/jedis-2.1.0.jar.zip" title="http://files.cnblogs.com/liuling/jedis-2.1.0.jar.zip" target="_blank" rel="external">http://files.cnblogs.com/liuling/jedis-2.1.0.jar.zip</a></p>
-<p>如果需要使用Redis连接池的话，还需commons-pool-1.5.4.jar，下载地址:<a href="http://files.cnblogs.com/liuling/commons-pool-1.5.4.jar.zip" title="http://files.cnblogs.com/liuling/commons-pool-1.5.4.jar.zip" target="_blank" rel="external">http://files.cnblogs.com/liuling/commons-pool-1.5.4.jar.zip</a></p>
-<div class="cnblogs_code"><br><pre><span style="color: #008080;">  1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.test;<br></span><span style="color: #008080;">  2</span><br><span style="color: #008080;">  3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.HashMap;<br></span><span style="color: #008080;">  4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Iterator;<br></span><span style="color: #008080;">  5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #008080;">  6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Map;<br></span><span style="color: #008080;">  7</span><br><span style="color: #008080;">  8</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.junit.Before;<br></span><span style="color: #008080;">  9</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> org.junit.Test;<br></span><span style="color: #008080;"> 10</span><br><span style="color: #008080;"> 11</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> redis.clients.jedis.Jedis;<br></span><span style="color: #008080;"> 12</span><br><span style="color: #008080;"> 13</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> TestRedis {<br></span><span style="color: #008080;"> 14</span>     <span style="color: #0000ff;">private</span><span style="color: #000000;"> Jedis jedis;<br></span><span style="color: #008080;"> 15</span><br><span style="color: #008080;"> 16</span> <span style="color: #000000;">    @Before<br></span><span style="color: #008080;"> 17</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> setup() {<br></span><span style="color: #008080;"> 18</span>         <span style="color: #008000;">//</span><span style="color: #008000;">连接redis服务器，192.168.0.100:6379</span><br><span style="color: #008080;"> 19</span>         jedis = <span style="color: #0000ff;">new</span> Jedis(“192.168.0.100”, 6379<span style="color: #000000;">);<br></span><span style="color: #008080;"> 20</span>         <span style="color: #008000;">//</span><span style="color: #008000;">权限认证</span><br><span style="color: #008080;"> 21</span>         jedis.auth(“admin”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 22</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 23</span><br><span style="color: #008080;"> 24</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;"> 25</span> <span style="color: #008000;">     <em> redis存储字符串<br></em></span><span style="color: #008080;"> 26</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 27</span> <span style="color: #000000;">    @Test<br></span><span style="color: #008080;"> 28</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> testString() {<br></span><span style="color: #008080;"> 29</span>         <span style="color: #008000;">//</span><span style="color: #008000;">—–添加数据———-  </span><br><span style="color: #008080;"> 30</span>         jedis.set(“name”,”xinxin”);<span style="color: #008000;">//</span><span style="color: #008000;">向key–&gt;name中放入了value–&gt;xinxin  </span><br><span style="color: #008080;"> 31</span>         System.out.println(jedis.get(“name”));<span style="color: #008000;">//</span><span style="color: #008000;">执行结果：xinxin  </span><br><span style="color: #008080;"> 32</span><br><span style="color: #008080;"> 33</span>         jedis.append(“name”, “ is my lover”); <span style="color: #008000;">//</span><span style="color: #008000;">拼接</span><br><span style="color: #008080;"> 34</span>         System.out.println(jedis.get(“name”<span style="color: #000000;">));<br></span><span style="color: #008080;"> 35</span><br><span style="color: #008080;"> 36</span>         jedis.del(“name”);  <span style="color: #008000;">//</span><span style="color: #008000;">删除某个键</span><br><span style="color: #008080;"> 37</span>         System.out.println(jedis.get(“name”<span style="color: #000000;">));<br></span><span style="color: #008080;"> 38</span>         <span style="color: #008000;">//</span><span style="color: #008000;">设置多个键值对</span><br><span style="color: #008080;"> 39</span>         jedis.mset(“name”,”liuling”,”age”,”23”,”qq”,”476777XXX”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 40</span>         jedis.incr(“age”); <span style="color: #008000;">//</span><span style="color: #008000;">进行加1操作</span><br><span style="color: #008080;"> 41</span>         System.out.println(jedis.get(“name”) + “-“ + jedis.get(“age”) + “-“ + jedis.get(“qq”<span style="color: #000000;">));<br></span><span style="color: #008080;"> 42</span><br><span style="color: #008080;"> 43</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 44</span><br><span style="color: #008080;"> 45</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;"> 46</span> <span style="color: #008000;">     <em> redis操作Map<br></em></span><span style="color: #008080;"> 47</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 48</span> <span style="color: #000000;">    @Test<br></span><span style="color: #008080;"> 49</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> testMap() {<br></span><span style="color: #008080;"> 50</span>         <span style="color: #008000;">//</span><span style="color: #008000;">—–添加数据———-  </span><br><span style="color: #008080;"> 51</span>         Map<string, string=""> map = <span style="color: #0000ff;">new</span> HashMap<string, string=""><span style="color: #000000;">();<br></span><span style="color: #008080;"> 52</span>         map.put(“name”, “xinxin”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 53</span>         map.put(“age”, “22”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 54</span>         map.put(“qq”, “123456”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 55</span>         jedis.hmset(“user”<span style="color: #000000;">,map);<br></span><span style="color: #008080;"> 56</span>         <span style="color: #008000;">//</span><span style="color: #008000;">取出user中的name，执行结果:[minxr]–&gt;注意结果是一个泛型的List<br></span><span style="color: #008080;"> 57</span>         <span style="color: #008000;">//</span><span style="color: #008000;">第一个参数是存入redis中map对象的key，后面跟的是放入map中的对象的key，后面的key可以跟多个，是可变参数  </span><br><span style="color: #008080;"> 58</span>         List<string> rsmap = jedis.hmget(“user”, “name”, “age”, “qq”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 59</span> <span style="color: #000000;">        System.out.println(rsmap);<br></span><span style="color: #008080;"> 60</span><br><span style="color: #008080;"> 61</span>         <span style="color: #008000;">//</span><span style="color: #008000;">删除map中的某个键值  </span><br><span style="color: #008080;"> 62</span>         jedis.hdel(“user”,”age”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 63</span>         System.out.println(jedis.hmget(“user”, “age”)); <span style="color: #008000;">//</span><span style="color: #008000;">因为删除了，所以返回的是null  </span><br><span style="color: #008080;"> 64</span>         System.out.println(jedis.hlen(“user”)); <span style="color: #008000;">//</span><span style="color: #008000;">返回key为user的键中存放的值的个数2 </span><br><span style="color: #008080;"> 65</span>         System.out.println(jedis.exists(“user”));<span style="color: #008000;">//</span><span style="color: #008000;">是否存在key为user的记录 返回true  </span><br><span style="color: #008080;"> 66</span>         System.out.println(jedis.hkeys(“user”));<span style="color: #008000;">//</span><span style="color: #008000;">返回map对象中的所有key  </span><br><span style="color: #008080;"> 67</span>         System.out.println(jedis.hvals(“user”));<span style="color: #008000;">//</span><span style="color: #008000;">返回map对象中的所有value </span><br><span style="color: #008080;"> 68</span><br><span style="color: #008080;"> 69</span>         Iterator<string> iter=jedis.hkeys(“user”<span style="color: #000000;">).iterator();<br></span><span style="color: #008080;"> 70</span>         <span style="color: #0000ff;">while</span><span style="color: #000000;"> (iter.hasNext()){<br></span><span style="color: #008080;"> 71</span>             String key =<span style="color: #000000;"> iter.next();<br></span><span style="color: #008080;"> 72</span>             System.out.println(key+”:”+jedis.hmget(“user”<span style="color: #000000;">,key));<br></span><span style="color: #008080;"> 73</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 74</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 75</span><br><span style="color: #008080;"> 76</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;"> 77</span> <span style="color: #008000;">     <em> jedis操作List<br></em></span><span style="color: #008080;"> 78</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;"> 79</span> <span style="color: #000000;">    @Test<br></span><span style="color: #008080;"> 80</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> testList(){<br></span><span style="color: #008080;"> 81</span>         <span style="color: #008000;">//</span><span style="color: #008000;">开始前，先移除所有的内容  </span><br><span style="color: #008080;"> 82</span>         jedis.del(“java framework”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 83</span>         System.out.println(jedis.lrange(“java framework”,0,-1<span style="color: #000000;">));<br></span><span style="color: #008080;"> 84</span>         <span style="color: #008000;">//</span><span style="color: #008000;">先向key java framework中存放三条数据  </span><br><span style="color: #008080;"> 85</span>         jedis.lpush(“java framework”,”spring”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 86</span>         jedis.lpush(“java framework”,”struts”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 87</span>         jedis.lpush(“java framework”,”hibernate”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 88</span>         <span style="color: #008000;">//</span><span style="color: #008000;">再取出所有数据jedis.lrange是按范围取出，<br></span><span style="color: #008080;"> 89</span>         <span style="color: #008000;">//</span><span style="color: #008000;"> 第一个是key，第二个是起始位置，第三个是结束位置，jedis.llen获取长度 -1表示取得所有  </span><br><span style="color: #008080;"> 90</span>         System.out.println(jedis.lrange(“java framework”,0,-1<span style="color: #000000;">));<br></span><span style="color: #008080;"> 91</span><br><span style="color: #008080;"> 92</span>         jedis.del(“java framework”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 93</span>         jedis.rpush(“java framework”,”spring”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 94</span>         jedis.rpush(“java framework”,”struts”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 95</span>         jedis.rpush(“java framework”,”hibernate”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 96</span>         System.out.println(jedis.lrange(“java framework”,0,-1<span style="color: #000000;">));<br></span><span style="color: #008080;"> 97</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 98</span><br><span style="color: #008080;"> 99</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">100</span> <span style="color: #008000;">     <em> jedis操作Set<br></em></span><span style="color: #008080;">101</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">102</span> <span style="color: #000000;">    @Test<br></span><span style="color: #008080;">103</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> testSet(){<br></span><span style="color: #008080;">104</span>         <span style="color: #008000;">//</span><span style="color: #008000;">添加  </span><br><span style="color: #008080;">105</span>         jedis.sadd(“user”,”liuling”<span style="color: #000000;">);<br></span><span style="color: #008080;">106</span>         jedis.sadd(“user”,”xinxin”<span style="color: #000000;">);<br></span><span style="color: #008080;">107</span>         jedis.sadd(“user”,”ling”<span style="color: #000000;">);<br></span><span style="color: #008080;">108</span>         jedis.sadd(“user”,”zhangxinxin”<span style="color: #000000;">);<br></span><span style="color: #008080;">109</span>         jedis.sadd(“user”,”who”<span style="color: #000000;">);<br></span><span style="color: #008080;">110</span>         <span style="color: #008000;">//</span><span style="color: #008000;">移除noname  </span><br><span style="color: #008080;">111</span>         jedis.srem(“user”,”who”<span style="color: #000000;">);<br></span><span style="color: #008080;">112</span>         System.out.println(jedis.smembers(“user”));<span style="color: #008000;">//</span><span style="color: #008000;">获取所有加入的value  </span><br><span style="color: #008080;">113</span>         System.out.println(jedis.sismember(“user”, “who”));<span style="color: #008000;">//</span><span style="color: #008000;">判断 who 是否是user集合的元素  </span><br><span style="color: #008080;">114</span>         System.out.println(jedis.srandmember(“user”<span style="color: #000000;">));<br></span><span style="color: #008080;">115</span>         System.out.println(jedis.scard(“user”));<span style="color: #008000;">//</span><span style="color: #008000;">返回集合的元素个数  </span><br><span style="color: #008080;">116</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">117</span><br><span style="color: #008080;">118</span> <span style="color: #000000;">    @Test<br></span><span style="color: #008080;">119</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> test() <span style="color: #0000ff;">throws</span><span style="color: #000000;"> InterruptedException {<br></span><span style="color: #008080;">120</span>         <span style="color: #008000;">//</span><span style="color: #008000;">jedis 排序<br></span><span style="color: #008080;">121</span>         <span style="color: #008000;">//</span><span style="color: #008000;">注意，此处的rpush和lpush是List的操作。是一个双向链表（但从表现来看的）  </span><br><span style="color: #008080;">122</span>         jedis.del(“a”);<span style="color: #008000;">//</span><span style="color: #008000;">先清除数据，再加入数据进行测试  </span><br><span style="color: #008080;">123</span>         jedis.rpush(“a”, “1”<span style="color: #000000;">);<br></span><span style="color: #008080;">124</span>         jedis.lpush(“a”,”6”<span style="color: #000000;">);<br></span><span style="color: #008080;">125</span>         jedis.lpush(“a”,”3”<span style="color: #000000;">);<br></span><span style="color: #008080;">126</span>         jedis.lpush(“a”,”9”<span style="color: #000000;">);<br></span><span style="color: #008080;">127</span>         System.out.println(jedis.lrange(“a”,0,-1));<span style="color: #008000;">//</span><span style="color: #008000;"> [9, 3, 6, 1]  </span><br><span style="color: #008080;">128</span>         System.out.println(jedis.sort(“a”)); <span style="color: #008000;">//</span><span style="color: #008000;">[1, 3, 6, 9]  </span><span style="color: #008000;">//</span><span style="color: #008000;">输入排序后结果  </span><br><span style="color: #008080;">129</span>         System.out.println(jedis.lrange(“a”,0,-1<span style="color: #000000;">));<br></span><span style="color: #008080;">130</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">131</span><br><span style="color: #008080;">132</span> <span style="color: #000000;">    @Test<br></span><span style="color: #008080;">133</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> testRedisPool() {<br></span><span style="color: #008080;">134</span>         RedisUtil.getJedis().set(“newname”, “中文测试”<span style="color: #000000;">);<br></span><span style="color: #008080;">135</span>         System.out.println(RedisUtil.getJedis().get(“newname”<span style="color: #000000;">));<br></span><span style="color: #008080;">136</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">137</span> }</string></string></string,></string,></pre><br></div>
-
-<p>&nbsp;</p>
-<p>Redis连接池：</p>
-<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.test;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> redis.clients.jedis.Jedis;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> redis.clients.jedis.JedisPool;<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> redis.clients.jedis.JedisPoolConfig;<br></span><span style="color: #008080;"> 6</span><br><span style="color: #008080;"> 7</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">final</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> RedisUtil {<br></span><span style="color: #008080;"> 8</span><br><span style="color: #008080;"> 9</span>     <span style="color: #008000;">//</span><span style="color: #008000;">Redis服务器IP</span><br><span style="color: #008080;">10</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String ADDR = “192.168.0.100”<span style="color: #000000;">;<br></span><span style="color: #008080;">11</span><br><span style="color: #008080;">12</span>     <span style="color: #008000;">//</span><span style="color: #008000;">Redis的端口号</span><br><span style="color: #008080;">13</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">int</span> PORT = 6379<span style="color: #000000;">;<br></span><span style="color: #008080;">14</span><br><span style="color: #008080;">15</span>     <span style="color: #008000;">//</span><span style="color: #008000;">访问密码</span><br><span style="color: #008080;">16</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> String AUTH = “admin”<span style="color: #000000;">;<br></span><span style="color: #008080;">17</span><br><span style="color: #008080;">18</span>     <span style="color: #008000;">//</span><span style="color: #008000;">可用连接实例的最大数目，默认值为8；<br></span><span style="color: #008080;">19</span>     <span style="color: #008000;">//</span><span style="color: #008000;">如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。</span><br><span style="color: #008080;">20</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">int</span> MAX_ACTIVE = 1024<span style="color: #000000;">;<br></span><span style="color: #008080;">21</span><br><span style="color: #008080;">22</span>     <span style="color: #008000;">//</span><span style="color: #008000;">控制一个pool最多有多少个状态为idle(空闲的)的jedis实例，默认值也是8。</span><br><span style="color: #008080;">23</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">int</span> MAX_IDLE = 200<span style="color: #000000;">;<br></span><span style="color: #008080;">24</span><br><span style="color: #008080;">25</span>     <span style="color: #008000;">//</span><span style="color: #008000;">等待可用连接的最大时间，单位毫秒，默认值为-1，表示永不超时。如果超过等待时间，则直接抛出JedisConnectionException；</span><br><span style="color: #008080;">26</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">int</span> MAX_WAIT = 10000<span style="color: #000000;">;<br></span><span style="color: #008080;">27</span><br><span style="color: #008080;">28</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">int</span> TIMEOUT = 10000<span style="color: #000000;">;<br></span><span style="color: #008080;">29</span><br><span style="color: #008080;">30</span>     <span style="color: #008000;">//</span><span style="color: #008000;">在borrow一个jedis实例时，是否提前进行validate操作；如果为true，则得到的jedis实例均是可用的；</span><br><span style="color: #008080;">31</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">boolean</span> TEST_ON_BORROW = <span style="color: #0000ff;">true</span><span style="color: #000000;">;<br></span><span style="color: #008080;">32</span><br><span style="color: #008080;">33</span>     <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> JedisPool jedisPool = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;">34</span><br><span style="color: #008080;">35</span>     <span style="color: #008000;">/<strong></strong></span><br><span style="color: #008080;">36</span> <span style="color: #008000;">     <em> 初始化Redis连接池<br></em></span><span style="color: #008080;">37</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">38</span>     <span style="color: #0000ff;">static</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">39</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">40</span>             JedisPoolConfig config = <span style="color: #0000ff;">new</span><span style="color: #000000;"> JedisPoolConfig();<br></span><span style="color: #008080;">41</span> <span style="color: #000000;">            config.setMaxActive(MAX_ACTIVE);<br></span><span style="color: #008080;">42</span> <span style="color: #000000;">            config.setMaxIdle(MAX_IDLE);<br></span><span style="color: #008080;">43</span> <span style="color: #000000;">            config.setMaxWait(MAX_WAIT);<br></span><span style="color: #008080;">44</span> <span style="color: #000000;">            config.setTestOnBorrow(TEST_ON_BORROW);<br></span><span style="color: #008080;">45</span>             jedisPool = <span style="color: #0000ff;">new</span><span style="color: #000000;"> JedisPool(config, ADDR, PORT, TIMEOUT, AUTH);<br></span><span style="color: #008080;">46</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">47</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">48</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">49</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">50</span><br><span style="color: #008080;">51</span>     <span style="color: #008000;">/</span><br><span style="color: #008080;">52</span> <span style="color: #008000;">     <em> 获取Jedis实例<br></em></span><span style="color: #008080;">53</span> <span style="color: #008000;">      </span><span style="color: #808080;">@return</span><br><span style="color: #008080;">54</span>      <span style="color: #008000;"><em>/</em></span><br><span style="color: #008080;">55</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">synchronized</span> <span style="color: #0000ff;">static</span><span style="color: #000000;"> Jedis getJedis() {<br></span><span style="color: #008080;">56</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">57</span>             <span style="color: #0000ff;">if</span> (jedisPool != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">58</span>                 Jedis resource =<span style="color: #000000;"> jedisPool.getResource();<br></span><span style="color: #008080;">59</span>                 <span style="color: #0000ff;">return</span><span style="color: #000000;"> resource;<br></span><span style="color: #008080;">60</span>             } <span style="color: #0000ff;">else</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">61</span>                 <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;">62</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">63</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">64</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">65</span>             <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;">66</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">67</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">68</span><br><span style="color: #008080;">69</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">70</span> <span style="color: #008000;">      释放jedis资源<br></span><span style="color: #008080;">71</span> <span style="color: #008000;">     <em> </em></span><span style="color: #808080;">@param</span><span style="color: #008000;"> jedis<br></span><span style="color: #008080;">72</span>      <span style="color: #008000;">/</span><br><span style="color: #008080;">73</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span> returnResource(<span style="color: #0000ff;">final</span><span style="color: #000000;"> Jedis jedis) {<br></span><span style="color: #008080;">74</span>         <span style="color: #0000ff;">if</span> (jedis != <span style="color: #0000ff;">null</span><span style="color: #000000;">) {<br></span><span style="color: #008080;">75</span> <span style="color: #000000;">            jedisPool.returnResource(jedis);<br></span><span style="color: #008080;">76</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">77</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">78</span> }</pre><br></div>
-
-<p>&nbsp;</p>
-
+        <p>使用Java操作Redis需要jedis-2.1.0.jar，下载地址：<a href="http://files.cnblogs.com/liuling/jedis-2.1.0.jar.zip" title="http://files.cnblogs.com/liuling/jedis-2.1.0.jar.zip">http://files.cnblogs.com/liuling/jedis-2.1.0.jar.zip</a></p>
+<p>如果需要使用Redis连接池的话，还需commons-pool-1.5.4.jar，下载地址:<a href="http://files.cnblogs.com/liuling/commons-pool-1.5.4.jar.zip" title="http://files.cnblogs.com/liuling/commons-pool-1.5.4.jar.zip">http://files.cnblogs.com/liuling/commons-pool-1.5.4.jar.zip</a><br>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/jedis-redis.html#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/04/jedis-redis.html" data-id="ciiy5f4ts007gq1d09389ds7b" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/04/jedis-redis.html" data-id="ciiyffuqb007guwd04csynxxl" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/04/jedis-redis.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/04/jedis-redis.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
@@ -479,7 +414,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-                
         <p><strong>连接操作相关的命令</strong></p>
 <ul>
 <li>quit：关闭连接（connection）</li>
@@ -497,95 +431,18 @@
 <li>info：提供服务器的信息和统计</li>
 <li>monitor：实时转储收到的请求</li>
 <li>slaveof：改变复制策略设置</li>
-<li>config：在运行时配置Redis服务器</li>
-</ul>
-<p><strong>对value操作的命令</strong></p>
-<ul>
-<li>exists(key)：确认一个key是否存在</li>
-<li>del(key)：删除一个key</li>
-<li>type(key)：返回值的类型</li>
-<li>keys(pattern)：返回满足给定pattern的所有key</li>
-<li>randomkey：随机返回key空间的一个</li>
-<li>keyrename(oldname,&nbsp;newname)：重命名key</li>
-<li>dbsize：返回当前数据库中key的数目</li>
-<li>expire：设定一个key的活动时间（s）</li>
-<li>ttl：获得一个key的活动时间</li>
-<li>select(index)：按索引查询</li>
-<li>move(key,&nbsp;dbindex)：移动当前数据库中的key到dbindex数据库</li>
-<li>flushdb：删除当前选择数据库中的所有key</li>
-<li>flushall：删除所有数据库中的所有key</li>
-</ul>
-<p><strong>对String操作的命令</strong></p>
-<ul>
-<li>set(key, value)：给数据库中名称为key的string赋予值value</li>
-<li>get(key)：返回数据库中名称为key的string的value</li>
-<li>getset(key, value)：给名称为key的string赋予上一次的value</li>
-<li>mget(key1, key2,&hellip;, key N)：返回库中多个string的value</li>
-<li>setnx(key, value)：添加string，名称为key，值为value</li>
-<li>setex(key,&nbsp;time,&nbsp;value)：向库中添加string，设定过期时间time</li>
-<li>mset(key N, value N)：批量设置多个string的值</li>
-<li>msetnx(key N, value N)：如果所有名称为key&nbsp;i的string都不存在</li>
-<li>incr(key)：名称为key的string增1操作</li>
-<li>incrby(key, integer)：名称为key的string增加integer</li>
-<li>decr(key)：名称为key的string减1操作</li>
-<li>decrby(key, integer)：名称为key的string减少integer</li>
-<li>append(key, value)：名称为key的string的值附加value</li>
-<li>substr(key, start, end)：返回名称为key的string的value的子串</li>
-</ul>
-<p><strong>对List操作的命令</strong></p>
-<ul>
-<li>rpush(key, value)：在名称为key的list尾添加一个值为value的元素</li>
-<li>lpush(key, value)：在名称为key的list头添加一个值为value的&nbsp;元素</li>
-<li>llen(key)：返回名称为key的list的长度</li>
-<li>lrange(key, start, end)：返回名称为key的list中start至end之间的元素</li>
-<li>ltrim(key, start, end)：截取名称为key的list</li>
-<li>lindex(key, index)：返回名称为key的list中index位置的元素</li>
-<li>lset(key, index, value)：给名称为key的list中index位置的元素赋值</li>
-<li>lrem(key, count, value)：删除count个key的list中值为value的元素</li>
-<li>lpop(key)：返回并删除名称为key的list中的首元素</li>
-<li>rpop(key)：返回并删除名称为key的list中的尾元素</li>
-<li>blpop(key1, key2,&hellip; key N, timeout)：lpop命令的block版本。</li>
-<li>brpop(key1, key2,&hellip; key N, timeout)：rpop的block版本。</li>
-<li>rpoplpush(srckey, dstkey)：返回并删除名称为srckey的list的尾元素，并将该元素添加到名称为dstkey的list的头部</li>
-</ul>
-<p><strong>对Set操作的命令</strong></p>
-<ul>
-<li>sadd(key, member)：向名称为key的set中添加元素member</li>
-<li>srem(key, member)&nbsp;：删除名称为key的set中的元素member</li>
-<li>spop(key)&nbsp;：随机返回并删除名称为key的set中一个元素</li>
-<li>smove(srckey, dstkey, member)&nbsp;：移到集合元素</li>
-<li>scard(key)&nbsp;：返回名称为key的set的基数</li>
-<li>sismember(key, member)&nbsp;：member是否是名称为key的set的元素</li>
-<li>sinter(key1, key2,&hellip;key N)&nbsp;：求交集</li>
-<li>sinterstore(dstkey, (keys))&nbsp;：求交集并将交集保存到dstkey的集合</li>
-<li>sunion(key1, (keys))&nbsp;：求并集</li>
-<li>sunionstore(dstkey, (keys))&nbsp;：求并集并将并集保存到dstkey的集合</li>
-<li>sdiff(key1, (keys))&nbsp;：求差集</li>
-<li>sdiffstore(dstkey, (keys))&nbsp;：求差集并将差集保存到dstkey的集合</li>
-<li>smembers(key)&nbsp;：返回名称为key的set的所有元素</li>
-<li>srandmember(key)&nbsp;：随机返回名称为key的set的一个元素</li>
-</ul>
-<p><strong>对Hash操作的命令</strong></p>
-<ul>
-<li>hset(key, field, value)：向名称为key的hash中添加元素field</li>
-<li>hget(key, field)：返回名称为key的hash中field对应的value</li>
-<li>hmget(key, (fields))：返回名称为key的hash中field&nbsp;i对应的value</li>
-<li>hmset(key, (fields))：向名称为key的hash中添加元素field&nbsp;</li>
-<li>hincrby(key, field, integer)：将名称为key的hash中field的value增加integer</li>
-<li>hexists(key, field)：名称为key的hash中是否存在键为field的域</li>
-<li>hdel(key, field)：删除名称为key的hash中键为field的域</li>
-<li>hlen(key)：返回名称为key的hash中元素个数</li>
-<li>hkeys(key)：返回名称为key的hash中所有键</li>
-<li>hvals(key)：返回名称为key的hash中所有键对应的value</li>
-<li>hgetall(key)：返回名称为key的hash中所有的键（field）及其对应的value</li>
-</ul>
-
+<li><p>config：在运行时配置Redis服务器</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/redis-command.html#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/04/redis-command.html" data-id="ciiy5f4qt0036q1d0f3byzwaf" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/04/redis-command.html" data-id="ciiyffunf0036uwd0153oukb2" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/04/redis-command.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/04/redis-command.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
@@ -632,64 +489,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-                
         <div style="width: 100%; height: 35px; background-color: #2eb1e8; line-height: 35px;"><span style="color: #ffffff; font-size: 16px;"><strong>一、何为Redis</strong></span></div>
 
-<p>　　<span style="font-size: 16px;">redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)和zset(有序集合)。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，redis支持各种不同方式的排序。与memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。Redis 是一个高性能的key-value数据库。 redis的出现，很大程度补偿了memcached这类keyvalue存储的不足，在部分场合可以对关系数据库起到很好的补充作用。</span></p>
-<div style="width: 100%; height: 35px; background-color: #2eb1e8; line-height: 35px;"><span style="color: #ffffff; font-size: 16px;"><strong>二、安装Redis</strong></span></div>
-
-<p><span style="font-size: 16px;"><strong>1、安装前环境说明</strong></span></p>
-<p><span style="font-size: 16px;">　　楼主使用的是CentOS 6.5版本的Linux系统，IP为192.168.0.100。虚拟机工具使用的是VirtualBox。</span></p>
-<p><span style="font-size: 16px;"><strong>2、下载Redis</strong></span></p>
-<p><span style="font-size: 16px;">　　Redis可以到官方网站上面进行下载：<a href="http://www.redis.io/download" target="_blank" rel="external">http://www.redis.io/download</a>，现在最新的稳定版已经到2.8了。</span></p>
-<p><span style="font-size: 16px;">　　这里使用的是redis-2.8.8.tar.gz。</span></p>
-<p><span style="font-size: 16px;"><strong>3、安装步骤</strong></span></p>
-<p><span style="font-size: 16px;">　　下载redis-2.8.8.tar.gz使用ftp上传到linux系统的/opt目录下。</span></p>
-<p><span style="font-size: 16px;">　　1）解压</span></p>
-<p><span style="font-size: 16px;">　　　　进入linux系统的/opt目录下，执行如下命令进行解压：tar -zxvf&nbsp;redis-2.8.8.tar.gz。</span></p>
-<p><span style="font-size: 16px;">　　　　解压之后会在当前目录下多出redis-2.8.8的文件夹，为了方便，我们将其改名：mv&nbsp;redis-2.8.8 redis。</span></p>
-<p><span style="font-size: 16px;">　　　　解压之后Redis的目录结构如下图所示：</span></p>
-<p><span style="font-size: 16px;"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/191557148074939.jpg" alt=""></span></p>
-<p><span style="font-size: 16px;">　　2）编译与安装</span></p>
-<p><span style="font-size: 16px;">　　进入Redis目录下的src目录下，执行make命令来编译Redis。当楼主执行编译命令的时候，编译失败了，报了&ldquo;/bin/sh: cc: command not found&rdquo;的错误。原来是楼主的linux系统木有装gcc，而Redis是C实现的，所以需要gcc来进行编译。在网上搜索之后，发现一篇帖子，按照帖子上面的步骤解决了楼主的问题，在此表示感谢！下面附上该帖子的连接：<a href="http://xueliang1yi.blog.163.com/blog/static/1145570162012102114635764/" target="_blank" rel="external">http://xueliang1yi.blog.163.com/blog/static/1145570162012102114635764/</a>，有遇到该问题的朋友可以参考一下。</span></p>
-<p><span style="font-size: 16px;">安装完gcc之后，依次执行如下命令即可完成Redis的安装：</span></p>
-<p><span style="font-size: 16px;">　　　　make</span></p>
-<p><span style="font-size: 16px;">　　　　make test &nbsp; &nbsp; //检查一下 看有没有问题</span></p>
-<p><span style="font-size: 16px;">　　　　make install</span></p>
-<p><span style="font-size: 16px;">　　安装完之后，会在src目录下生成几个可执行文件，分别是mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-dump redis-cli redis-sentinel redis-server。其中redis-server是启动Redis服务的，redis-cli是进入Redis客户端的。</span></p>
-<p><span style="font-size: 16px;">　　3）配置</span></p>
-<p><span style="font-size: 16px;">　　在Redis的根目录下面有一个配置文件redis.conf，该配置文件可以对Redis进行基本的配置，配置参数可以查看<a href="http://www.cnblogs.com/liuling/p/2014-4-19-01.html" target="_blank" rel="external">《Redis配置参数说明》</a>。楼主最开始只是简单的将daemonize参数设置为yes，目的是将Redis服务设置为后台开启，这样服务开启后就不会占用当前session了。</span></p>
-<p><span style="font-size: 16px;"><strong>4、测试</strong></span></p>
-<p><span style="font-size: 16px;"><strong>　　</strong>安装完之后，我们来对其进行测试。</span></p>
-<p><span style="font-size: 16px;">　　首先，为了方便起见，我们将src下的可执行命令全部移动到/usr/local/redis/bin/目录下，执行该命令：mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-dump redis-cli redis-sentinel redis-server /usr/local/redis/bin，然后将配置文件移动到/usr/local/redis/etc/目录下，执行该命令：mv redis.conf /usr/local/redis/etc/。</span></p>
-<p><span style="font-size: 16px;">　　进入/usr/local/redis/bin/目录下执行./redis-server /usr/local/redis/etc/redis.conf命令开启Redis服务。<span style="color: #ff0000;">注意：开启redis服务需要指定配置文件，如不指定配置文件则加载默认配置文件。</span></span></p>
-<p><span style="font-size: 16px;">　　开启之后我们执行netstat -tunpl | grep 6379命令来查看6379端口使用情况，如果出现下图情况，则说明6379端口已经被redis-server占用了，表示redis服务已经成功启动。</span></p>
-<p><span style="font-size: 16px;"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/191657106508620.jpg" alt=""></span></p>
-<p><span style="font-size: 16px;">　　然后执行./redis-cli进入redis客户端，然后进行简单的set、get操作来测试一下。</span></p>
-<p><span style="font-size: 16px;"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/191700306034200.jpg" alt=""></span></p>
-<p><span style="font-size: 16px;">　　好，到此Redis已经成功安装了。</span></p>
-<div style="width: 100%; height: 35px; background-color: #2eb1e8; line-height: 35px;"><span style="color: #ffffff; font-size: 16px;"><strong>三、Redis主从配置</strong></span></div>
-
-<p>&nbsp;　　<span style="font-size: 16px;">Redis的主从复制功能非常强大，一个master可以拥有多个slave，而一个slave又可以拥有多个slave，如此下去，形成了强大的多级服务器集群架构。下面楼主简单的进行一下配置。</span></p>
-<p><span style="font-size: 16px;">　　1、上面安装好的一个Redis作为master，然后使用VirtualBox的虚拟机克隆功能将刚刚那个linux系统克隆一份作为slave，并修改其IP为192.168.0.110。</span></p>
-<p><span style="font-size: 16px;">　　2、修改slave的redis配置文件：</span></p>
-<p><span style="font-size: 16px;">　　　　slaveof 192.168.0.100 6379&nbsp; (映射到主服务器上)</span></p>
-<p><span style="font-size: 16px;">　　　　如果master设置了验证密码，还需配置masterauth。楼主的master设置了验证密码为admin，所以配置masterauth admin。</span></p>
-<p><span style="font-size: 16px;">　　配置完之后启动slave的Redis服务，OK，主从配置完成。下面测试一下：</span></p>
-<p><span style="font-size: 16px;">　　在master和slave分别执行info命令，查看结果如下：</span></p>
-<p><span style="font-size: 16px;">　　master:</span></p>
-<p><span style="font-size: 16px;"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/191730374786356.png" alt=""></span></p>
-<p><span style="font-size: 16px;">　　slave：</span></p>
-<p><span style="font-size: 16px;"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/191733402605850.png" alt=""></span></p>
-<p><span style="font-size: 16px;">然后在master执行set age 24</span></p>
-<p><span style="font-size: 16px;">在slave执行get age，看是否能得到24，如果能够得到值则说明配置成功。</span></p>
-
+<p>　　<span style="font-size: 16px;">redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)和zset(有序集合)。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，redis支持各种不同方式的排序。与memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。Redis 是一个高性能的key-value数据库。 redis的出现，很大程度补偿了memcached这类keyvalue存储的不足，在部分场合可以对关系数据库起到很好的补充作用。</span><br>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/redis-install.html#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/04/redis-install.html" data-id="ciiy5f4qo002wq1d0wjkjv08t" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/04/redis-install.html" data-id="ciiyffunb002wuwd0hqr3barn" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/04/redis-install.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/04/redis-install.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
@@ -736,7 +549,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-                
         <p>1. Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>daemonize no</span></strong></p>
 <p>2. 当Redis以守护进程方式运行时，Redis默认会把pid写入/var/run/redis.pid文件，可以通过pidfile指定</p>
@@ -746,72 +558,18 @@
 <p>4. 绑定的主机地址</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>bind 127.0.0.1</span></strong></p>
 <p>5.当 客户端闲置多长时间后关闭连接，如果指定为0，表示关闭该功能</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>timeout 300</span></strong></p>
-<p>6. 指定日志记录级别，Redis总共支持四个级别：debug、verbose、notice、warning，默认为verbose</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>loglevel verbose</span></strong></p>
-<p>7. 日志记录方式，默认为标准输出，如果配置Redis为守护进程方式运行，而这里又配置为日志记录方式为标准输出，则日志将会发送给/dev/null</p>
-<p><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>logfile stdout</strong></p>
-<p>8. 设置数据库的数量，默认数据库为0，可以使用SELECT <dbid>命令在连接上指定数据库id</dbid></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>databases 16</span></strong></p>
-<p>9. 指定在多长时间内，有多少次更新操作，就将数据同步到数据文件，可以多个条件配合</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>save <seconds> <changes></changes></seconds></span></strong></p>
-<p>&nbsp;&nbsp;&nbsp; Redis默认配置文件中提供了三个条件：</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>save 900 1</span></strong></p>
-<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;<span>save 300 10</span></strong></p>
-<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;<span>save 60 10000</span></strong></p>
-<p>&nbsp;&nbsp;&nbsp; 分别表示900秒（15分钟）内有1个更改，300秒（5分钟）内有10个更改以及60秒内有10000个更改。</p>
-<p>&nbsp;</p>
-<p>10. 指定存储至本地数据库时是否压缩数据，默认为yes，Redis采用LZF压缩，如果为了节省CPU时间，可以关闭该选项，但会导致数据库文件变的巨大</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>rdbcompression yes</span></strong></p>
-<p>11. 指定本地数据库文件名，默认值为dump.rdb</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>dbfilename dump.rdb</span></strong></p>
-<p>12. 指定本地数据库存放目录</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>dir ./</span></strong></p>
-<p>13. 设置当本机为slav服务时，设置master服务的IP地址及端口，在Redis启动时，它会自动从master进行数据同步</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>slaveof <masterip> <masterport></masterport></masterip></span></strong></p>
-<p>14. 当master服务设置了密码保护时，slav服务连接master的密码</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>masterauth <master-password></master-password></span></strong></p>
-<p>15. 设置Redis连接密码，如果配置了连接密码，客户端在连接Redis时需要通过AUTH <password>命令提供密码，默认关闭</password></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>requirepass foobared</span></strong></p>
-<p>16. 设置同一时间最大客户端连接数，默认无限制，Redis可以同时打开的客户端连接数为Redis进程可以打开的最大文件描述符数，如果设置 maxclients 0，表示不作限制。当客户端连接数到达限制时，Redis会关闭新的连接并向客户端返回max number of clients reached错误信息</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>maxclients 128</span></strong></p>
-<p>17. 指定Redis最大内存限制，Redis在启动时会把数据加载到内存中，达到最大内存后，Redis会先尝试清除已到期或即将到期的Key，当此方法处理 后，仍然到达最大内存设置，将无法再进行写入操作，但仍然可以进行读取操作。Redis新的vm机制，会把Key存放内存，Value会存放在swap区</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>maxmemory <bytes></bytes></span></strong></p>
-<p>18. 指定是否在每次更新操作后进行日志记录，Redis在默认情况下是异步的把数据写入磁盘，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为 redis本身同步数据文件是按上面save条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认为no</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>appendonly no</span></strong></p>
-<p>19. 指定更新日志文件名，默认为appendonly.aof</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>appendfilename appendonly.aof</span></strong></p>
-<p>20. 指定更新日志条件，共有3个可选值：&nbsp;<br>&nbsp; &nbsp;&nbsp;<strong><span>no</span></strong>：表示等操作系统进行数据缓存同步到磁盘（快）&nbsp;<br>&nbsp; &nbsp;&nbsp;<strong><span>always</span></strong>：表示每次更新操作后手动调用fsync()将数据写到磁盘（慢，安全）&nbsp;<br>&nbsp; &nbsp;&nbsp;<strong><span>everysec</span></strong>：表示每秒同步一次（折衷，默认值）</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>appendfsync everysec</span></strong></p>
-<p>&nbsp;</p>
-<p>21. 指定是否启用虚拟内存机制，默认值为no，简单的介绍一下，VM机制将数据分页存放，由Redis将访问量较少的页即冷数据swap到磁盘上，访问多的页面由磁盘自动换出到内存中（在后面的文章我会仔细分析Redis的VM机制）</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>vm-enabled no</span></strong></p>
-<p>22. 虚拟内存文件路径，默认值为/tmp/redis.swap，不可多个Redis实例共享</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>vm-swap-file /tmp/redis.swap</span></strong></p>
-<p>23. 将所有大于vm-max-memory的数据存入虚拟内存,无论vm-max-memory设置多小,所有索引数据都是内存存储的(Redis的索引数据 就是keys),也就是说,当vm-max-memory设置为0的时候,其实是所有value都存在于磁盘。默认值为0</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>vm-max-memory 0</span></strong></p>
-<p>24. Redis swap文件分成了很多的page，一个对象可以保存在多个page上面，但一个page上不能被多个对象共享，vm-page-size是要根据存储的 数据大小来设定的，作者建议如果存储很多小对象，page大小最好设置为32或者64bytes；如果存储很大大对象，则可以使用更大的page，如果不 确定，就使用默认值</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>vm-page-size 32</span></strong></p>
-<p>25. 设置swap文件中的page数量，由于页表（一种表示页面空闲或使用的bitmap）是在放在内存中的，，在磁盘上每8个pages将消耗1byte的内存。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>vm-pages 134217728</span></strong></p>
-<p>26. 设置访问swap文件的线程数,最好不要超过机器的核数,如果设置为0,那么所有对swap文件的操作都是串行的，可能会造成比较长时间的延迟。默认值为4</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>vm-max-threads 4</span></strong></p>
-<p>27. 设置在向客户端应答时，是否把较小的包合并为一个包发送，默认为开启</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>glueoutputbuf yes</span></strong></p>
-<p>28. 指定在超过一定的数量或者最大的元素超过某一临界值时，采用一种特殊的哈希算法</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>hash-max-zipmap-entries 64</span></strong></p>
-<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;<span>hash-max-zipmap-value 512</span></strong></p>
-<p>29. 指定是否激活重置哈希，默认为开启（后面在介绍Redis的哈希算法时具体介绍）</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>activerehashing yes</span></strong></p>
-<p>30. 指定包含其它的配置文件，可以在同一主机上多个Redis实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>include /path/to/local.conf</span></strong></p>
-
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><span>timeout 300</span></strong><br>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/redis-config.html#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/04/redis-config.html" data-id="ciiy5f4qq0031q1d0dn56um1z" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/04/redis-config.html" data-id="ciiyffund0031uwd0bvjo6ii3" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/04/redis-config.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/04/redis-config.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
@@ -863,9 +621,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/04/centos6-5-update-yum.html" data-id="ciiy5f4xi00dkq1d0b6pfp8rp" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/04/centos6-5-update-yum.html" data-id="ciiyffuua00dkuwd0hoqtd99s" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/04/centos6-5-update-yum.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/04/centos6-5-update-yum.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -921,9 +679,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/03/org-hibernate-propertyaccessexception.html" data-id="ciiy5f4rg0043q1d01ezfbt8r" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/03/org-hibernate-propertyaccessexception.html" data-id="ciiyffuo40043uwd07tduon5m" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/03/org-hibernate-propertyaccessexception.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/03/org-hibernate-propertyaccessexception.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
@@ -970,21 +728,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-                
         <p>在使用SpringMVC绑定基本类型（如String,Integer等）参数时，应通过@RequestParam注解指定具体的参数名称，否则，当源代码在非debug模式下编译后，运行时会引发HandlerMethodInvocationException异常，这是因为只有在debug模式下编译，其参数名称才存储在编译好的代码中。 </p>
 <p>譬如下面的代码会引发异常： </p>
-<div class="dp-highlighter"><br><div class="bar"><br><div class="tools">Java代码 &nbsp;<a href="javascript:void(" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/spinner.gif" alt=""></a> “收藏这段代码”)</div><br></div><br></div><br><pre name="code" class="java">@RequestMapping(value = “/security/login”, method = RequestMethod.POST)<br>public ModelAndView login(@RequestParam String userName, @RequestParam String password,<br>    HttpServletRequest request) {<br>    ………………….<br><br>如果使用Eclipse编译不会在运行时出现异常，这是因为Eclipse默认是采用debug模式编译的，但是如果使用Ant通过javac任务编译的话就会出现异常，除非指定debug=&rdquo;true&rdquo;。出现的异常如同：<br><br></pre><br><br>org.springframework.web.util.NestedServletException: Request processing failed; nested exception is org.springframework.web.bind.annotation.support.HandlerMethodInvocationException:<br><br>Failed to invoke handler method [public org.springframework.web.servlet.ModelAndView com.mypackage.security.controller.LoginController.login(java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest)]; nested exception is java.lang.IllegalStateException: No parameter name specified for argument of type [java language=”.lang.String”][/java], and no parameter name information found in class file either.<br>org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:659)<br>……….<br><br>org.springframework.web.bind.annotation.support.HandlerMethodInvocationException: Failed to invoke handler method [public org.springframework.web.servlet.ModelAndView com.mypackage.security.controller.LoginController.login(java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest)]; nested exception is java.lang.IllegalStateException: No parameter name specified for argument of type [java language=”.lang.String”][/java], and no parameter name information found in class file either.<br>org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:171)<br>……….<br><br>java.lang.IllegalStateException: No parameter name specified for argument of type [java language=”.lang.String”][/java], and no parameter name information found in class file either.<br>org.springframework.web.bind.annotation.support.HandlerMethodInvoker.getRequiredParameterName(HandlerMethodInvoker.java:618)<br>……….<br><br><pre name="code" class="java"><br><br>最好的做法是通过@RequestParam注解指定具体的参数名称，如，上面的代码应该如此编写（注意@RequestParam部分）：<br></pre><br><div class="bar"><br><div class="tools">Java代码 &nbsp;<a href="javascript:void(" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/spinner.gif" alt=""></a> “收藏这段代码”)</div><br></div>
-
-<p><span><span class="annotation">@RequestMapping</span><span>(value&nbsp;=&nbsp;</span><span class="string">“/security/login”</span><span>,&nbsp;method&nbsp;=&nbsp;RequestMethod.POST)&nbsp; &nbsp;&nbsp;</span></span></p>
-<p><span class="keyword">public</span><span>&nbsp;ModelAndView&nbsp;login(</span><span class="annotation">@RequestParam</span><span>(</span><span class="string">“userName”</span><span>)&nbsp;String&nbsp;userName,&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="annotation">@RequestParam</span><span>(</span><span class="string">“password”</span><span>)&nbsp;String&nbsp;password,&nbsp;&nbsp;&nbsp;</span><span>HttpServletRequest&nbsp;request)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
-<p><span>&nbsp;&nbsp;&nbsp;………………….&nbsp;&nbsp;</span></p>
-
+<div class="dp-highlighter"><br><div class="bar"><br><div class="tools">Java代码 &nbsp;<a href="javascript:void("><img src="http://www.liuling123.com/wp-content/uploads/2015/11/spinner.gif" alt=""></a> “收藏这段代码”)</div><br></div><br></div><br><pre name="code" class="java">@RequestMapping(value = “/security/login”, method = RequestMethod.POST)<br>public ModelAndView login(@RequestParam String userName, @RequestParam String password,<br>    HttpServletRequest request) {<br>    ………………….<br><br>如果使用Eclipse编译不会在运行时出现异常，这是因为Eclipse默认是采用debug模式编译的，但是如果使用Ant通过javac任务编译的话就会出现异常，除非指定debug=&rdquo;true&rdquo;。出现的异常如同：<br><br></pre><br><br>
+        
+          <p class="article-more-link">
+            <a href="/2014/03/springmvc-requestprocessingfailed.html#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuling07.github.io/2014/03/springmvc-requestprocessingfailed.html" data-id="ciiy5f4pr001jq1d06iw5vp5h" class="article-share-link">Share</a>
+      <a data-url="http://localhost:4000/2014/03/springmvc-requestprocessingfailed.html" data-id="ciiyffumd001juwd0i96spg7j" class="article-share-link">分享到</a>
       
-        <a href="http://liuling07.github.io/2014/03/springmvc-requestprocessingfailed.html#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://localhost:4000/2014/03/springmvc-requestprocessingfailed.html#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
@@ -998,7 +755,7 @@
 
     
       <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
       </nav>
     </section>
       
@@ -1082,7 +839,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -1139,7 +896,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2000 - 2016 Lauren<br>
+      &copy; 2015 - 2016 Lauren<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -1147,7 +904,7 @@
     
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling07"};
+  var duoshuoQuery = {short_name:"liuling123"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
