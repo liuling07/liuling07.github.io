@@ -3,9 +3,9 @@
   <title><![CDATA[残剑博客]]></title>
   <subtitle><![CDATA[技术成长之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://localhost:4000/"/>
+  <link href="http://liuling123.com/"/>
   <updated>2016-01-03T06:52:47.000Z</updated>
-  <id>http://localhost:4000/</id>
+  <id>http://liuling123.com/</id>
   
   <author>
     <name><![CDATA[Lauren]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[Say bye to my 2015]]></title>
-    <link href="http://localhost:4000/2015/12/say-bye-to-my-2015.html"/>
-    <id>http://localhost:4000/2015/12/say-bye-to-my-2015.html</id>
+    <link href="http://liuling123.com/2015/12/say-bye-to-my-2015.html"/>
+    <id>http://liuling123.com/2015/12/say-bye-to-my-2015.html</id>
     <published>2015-12-25T09:25:10.000Z</published>
     <updated>2016-01-03T06:52:47.000Z</updated>
     <content type="html"><![CDATA[<h2 id="u6280_u672F_u6210_u957F"><a href="#u6280_u672F_u6210_u957F" class="headerlink" title="技术成长"></a><strong>技术成长</strong></h2><p>14年毕业后开始接触Android，到目前为止从事Android开发差不多一年半的时间，15年算是自己技术成长最大的一年吧。<br>上半年自己大部分精力都耗在云老师项目上，自己既要开发同时兼任项目负责人（这里要感谢老大认可，愿意给新人机会）。前前后后经历了四五次迭代，最终在3个Android新人（确切来说是两个）的努力下完成并上线了。遗憾的是项目不受公司重视，并且部门领导担心影响实体产品的销售而不愿推广。最后随着部门的解散该项目也夭折了，这当时对我来说是很令人伤心的事了。虽然项目夭折了，但是自己从中收获了不少。不仅是技术水平的提升，还收获了项目管理的经验。 </p>
@@ -44,14 +44,14 @@
     
     </summary>
     
-      <category term="人生感悟" scheme="http://localhost:4000/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/"/>
+      <category term="人生感悟" scheme="http://liuling123.com/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[MVP模式在Android项目中的使用]]></title>
-    <link href="http://localhost:4000/2015/12/mvp-pattern-android.html"/>
-    <id>http://localhost:4000/2015/12/mvp-pattern-android.html</id>
+    <link href="http://liuling123.com/2015/12/mvp-pattern-android.html"/>
+    <id>http://liuling123.com/2015/12/mvp-pattern-android.html</id>
     <published>2015-12-23T14:16:04.000Z</published>
     <updated>2016-01-03T07:35:27.000Z</updated>
     <content type="html"><![CDATA[<p> 以前在写项目的时候，没有过多考虑架构模式的问题，因为之前一直做J2EE开发，而J2EE都是采用MVC模式进行开发的，所以在搭建公司项目的时候，也是使用类似MVC的架构（严格来讲，之前的项目还算不上MVC模式，只是简单将网络请求与界面分离，然后通过Handle通知更新界面）。这种写法，在后面随着项目越来越大，Activty或者Fragment中代码也会越来越多，导致项目的维护变的越来越复杂。所以需要另外一种架构模式来解决这个问题，在网上浏览了一圈，发现适合Android开发的架构模式非MVP莫属了。</p>
@@ -99,20 +99,20 @@
     
     </summary>
     
-      <category term="MVP" scheme="http://localhost:4000/tags/MVP/"/>
+      <category term="MVP" scheme="http://liuling123.com/tags/MVP/"/>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="设计模式" scheme="http://localhost:4000/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://liuling123.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[【译文】Android M中Intent的解析]]></title>
-    <link href="http://localhost:4000/2015/12/intent-resolving-in-android-m.html"/>
-    <id>http://localhost:4000/2015/12/intent-resolving-in-android-m.html</id>
+    <link href="http://liuling123.com/2015/12/intent-resolving-in-android-m.html"/>
+    <id>http://liuling123.com/2015/12/intent-resolving-in-android-m.html</id>
     <published>2015-12-04T06:52:06.000Z</published>
     <updated>2016-01-03T07:29:56.000Z</updated>
     <content type="html"><![CDATA[<p>原文链接 : <a href="https://medium.com/google-developer-experts/intent-resolving-in-android-m-c17d39d27048#.n23z2g14e" target="_blank" rel="external">Intent Resolving in Android M</a><br>原文作者 : <a href="https://medium.com/@tasomaniac" target="_blank" rel="external">Said Tahsin Dane</a><br>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="external">开发技术前线 www.devtf.cn。未经允许，不得转载!</a><br>译者 : <a href="https://github.com/liuling07" target="_blank" rel="external">liuling07</a><br>校对者: <a href="https://github.com/desmond1121" target="_blank" rel="external">desmond1121</a><br>状态 : 完成</p>
@@ -149,18 +149,18 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="译文" scheme="http://localhost:4000/tags/%E8%AF%91%E6%96%87/"/>
+      <category term="译文" scheme="http://liuling123.com/tags/%E8%AF%91%E6%96%87/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[【译文】高性能ListViews]]></title>
-    <link href="http://localhost:4000/2015/12/performance-listviews.html"/>
-    <id>http://localhost:4000/2015/12/performance-listviews.html</id>
+    <link href="http://liuling123.com/2015/12/performance-listviews.html"/>
+    <id>http://liuling123.com/2015/12/performance-listviews.html</id>
     <published>2015-12-02T10:22:14.000Z</published>
     <updated>2016-01-03T07:37:23.000Z</updated>
     <content type="html"><![CDATA[<p>原文链接 : <a href="http://willowtreeapps.com/blog/performance-listviews/?utm_source=Android+Weekly&amp;utm_campaign=038d344835-Android_Weekly_178&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-038d344835-337955857" target="_blank" rel="external">Performance ListViews</a><br>原文作者 : <a href="http://willowtreeapps.com/blog/" target="_blank" rel="external">Brandon</a><br>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="external">开发技术前线 www.devtf.cn。未经允许，不得转载!</a><br>译者 : <a href="https://github.com/liuling07" target="_blank" rel="external">liuling07</a><br>校对者: <a href="https://github.com/desmond1121" target="_blank" rel="external">desmond1121</a><br>状态 : 完成</p>
@@ -179,18 +179,18 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="译文" scheme="http://localhost:4000/tags/%E8%AF%91%E6%96%87/"/>
+      <category term="译文" scheme="http://liuling123.com/tags/%E8%AF%91%E6%96%87/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Android带多选功能的PhotoPicker]]></title>
-    <link href="http://localhost:4000/2015/11/android-multi-photo-picker.html"/>
-    <id>http://localhost:4000/2015/11/android-multi-photo-picker.html</id>
+    <link href="http://liuling123.com/2015/11/android-multi-photo-picker.html"/>
+    <id>http://liuling123.com/2015/11/android-multi-photo-picker.html</id>
     <published>2015-11-21T07:46:03.000Z</published>
     <updated>2016-01-03T07:01:45.000Z</updated>
     <content type="html"><![CDATA[<p>最近利用闲碎的一些时间开发了一个Android库<a href="https://github.com/liuling07/PhotoPicker" target="_blank" rel="external">PhotoPicker</a>，前面一篇文章也介绍了，<a href="http://www.liuling123.com/2015/11/android-photo-picker.html" target="_blank" rel="external">Android高仿微信图片选择功能的PhotoPicker</a>，之前没有加入选择多张图片的功能，现在加上之后一个完整的PhotoPicker库终于算是完工了。</p>
@@ -206,20 +206,20 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="图片选择" scheme="http://localhost:4000/tags/%E5%9B%BE%E7%89%87%E9%80%89%E6%8B%A9/"/>
+      <category term="图片选择" scheme="http://liuling123.com/tags/%E5%9B%BE%E7%89%87%E9%80%89%E6%8B%A9/"/>
     
-      <category term="开源" scheme="http://localhost:4000/tags/%E5%BC%80%E6%BA%90/"/>
+      <category term="开源" scheme="http://liuling123.com/tags/%E5%BC%80%E6%BA%90/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Android高仿微信图片选择功能的PhotoPicker]]></title>
-    <link href="http://localhost:4000/2015/11/android-photo-picker.html"/>
-    <id>http://localhost:4000/2015/11/android-photo-picker.html</id>
+    <link href="http://liuling123.com/2015/11/android-photo-picker.html"/>
+    <id>http://liuling123.com/2015/11/android-photo-picker.html</id>
     <published>2015-11-15T12:25:01.000Z</published>
     <updated>2016-01-03T07:02:06.000Z</updated>
     <content type="html"><![CDATA[<p>类似于微信修改头像的功能基本上每个app都会有，以前公司开发的项目就有修改头像的功能，但是用的Android系统自带的图片选择器。用Android系统的图片选择器有个好处就是稳定，不会有什么问题。但也有它的缺点，比如不可定制，我们想要修改一下符合自己app的风格无法做到。</p>
@@ -241,20 +241,20 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="图片选择" scheme="http://localhost:4000/tags/%E5%9B%BE%E7%89%87%E9%80%89%E6%8B%A9/"/>
+      <category term="图片选择" scheme="http://liuling123.com/tags/%E5%9B%BE%E7%89%87%E9%80%89%E6%8B%A9/"/>
     
-      <category term="开源" scheme="http://localhost:4000/tags/%E5%BC%80%E6%BA%90/"/>
+      <category term="开源" scheme="http://liuling123.com/tags/%E5%BC%80%E6%BA%90/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[科学上网工具Lantern，轻松访问Google、Facebook等被墙网站]]></title>
-    <link href="http://localhost:4000/2015/11/lantern.html"/>
-    <id>http://localhost:4000/2015/11/lantern.html</id>
+    <link href="http://liuling123.com/2015/11/lantern.html"/>
+    <id>http://liuling123.com/2015/11/lantern.html</id>
     <published>2015-11-11T14:13:18.000Z</published>
     <updated>2016-01-03T03:00:03.000Z</updated>
     <content type="html"><![CDATA[<p>给大家推荐一个科学上网的工具，轻松就可以访问google、facebook等被墙的网站：<a href="https://github.com/liuling07/Lantern" target="_blank" rel="external">下载Lantern</a></p>
@@ -266,16 +266,16 @@
     <![CDATA[<p>给大家推荐一个科学上网的工具，轻松就可以访问google、facebook等被墙的网站：<a href="https://github.com/liuling07/Lantern" target="_blank" rel="external">下载Lantern</a></]]>
     </summary>
     
-      <category term="科学上网" scheme="http://localhost:4000/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+      <category term="科学上网" scheme="http://liuling123.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
-      <category term="其他技术" scheme="http://localhost:4000/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
+      <category term="其他技术" scheme="http://liuling123.com/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[MySQL导入数据报Got a packet bigger than‘max_allowed_packet’bytes错误的解决方法]]></title>
-    <link href="http://localhost:4000/2015/11/max-allowed-packet.html"/>
-    <id>http://localhost:4000/2015/11/max-allowed-packet.html</id>
+    <link href="http://liuling123.com/2015/11/max-allowed-packet.html"/>
+    <id>http://liuling123.com/2015/11/max-allowed-packet.html</id>
     <published>2015-11-11T13:00:54.000Z</published>
     <updated>2016-01-03T03:00:03.000Z</updated>
     <content type="html"><![CDATA[<p>   今天将博客的数据库进行了迁移，在执行sql脚本的时候报了Got a packet bigger than‘max_allowed_packet’bytes的错误，上网搜了一下，发现是由于max_allowed_packet的值设置过小的原因，知道原因就好办了，只需要将max_allowed_packet值设置大一点就OK了。<br>   通过终端进入mysql控制台，输入如下命令可以查看max_allowed_packet值的大小。<br>   show VARIABLES like ‘%max_allowed_packet%’;<br>显示的结果为：</p>
@@ -288,16 +288,16 @@
     <![CDATA[<p>   今天将博客的数据库进行了迁移，在执行sql脚本的时候报了Got a packet bigger than‘max_allowed_packet’bytes的错误，上网搜了一下，发现是由于max_allowed_packet的值设置过小的原因，知道原因就好办了，只需要将]]>
     </summary>
     
-      <category term="mysql" scheme="http://localhost:4000/tags/mysql/"/>
+      <category term="mysql" scheme="http://liuling123.com/tags/mysql/"/>
     
-      <category term="其他技术" scheme="http://localhost:4000/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
+      <category term="其他技术" scheme="http://liuling123.com/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[C++学习随笔]]></title>
-    <link href="http://localhost:4000/2015/11/cpp-study.html"/>
-    <id>http://localhost:4000/2015/11/cpp-study.html</id>
+    <link href="http://liuling123.com/2015/11/cpp-study.html"/>
+    <id>http://liuling123.com/2015/11/cpp-study.html</id>
     <published>2015-11-10T11:28:33.000Z</published>
     <updated>2016-01-03T07:07:40.000Z</updated>
     <content type="html"><![CDATA[<p>最近由于公司部门调整，博主被安排去做游戏开发了，使用的是cocos2d游戏引擎，开发语言为C++。所以硬着头皮边熟悉cocos2d边学C++。对于写了多年Java的来说，看C++代码很坑爹有木有。<br>但是作为Android工程师，C/C++还是有必要学的，因为Android系统源码大部分都是C写的。之前看过一段时间的Android源码，看到C++部分也是比较吃力，现在借此机会学学C++也是挺不错的。<br>下面简单记录在学习C++过程中遇到的一些不懂的东西（持续更新）。</p>
@@ -327,16 +327,16 @@
     
     </summary>
     
-      <category term="c++" scheme="http://localhost:4000/tags/c/"/>
+      <category term="c++" scheme="http://liuling123.com/tags/c/"/>
     
-      <category term="其他技术" scheme="http://localhost:4000/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
+      <category term="其他技术" scheme="http://liuling123.com/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[RecyclerView的使用]]></title>
-    <link href="http://localhost:4000/2015/11/recyclerview-example.html"/>
-    <id>http://localhost:4000/2015/11/recyclerview-example.html</id>
+    <link href="http://liuling123.com/2015/11/recyclerview-example.html"/>
+    <id>http://liuling123.com/2015/11/recyclerview-example.html</id>
     <published>2015-11-04T05:31:59.000Z</published>
     <updated>2016-01-03T07:38:20.000Z</updated>
     <content type="html"><![CDATA[<h1 id="u4EC0_u4E48_u662FRecyclerView"><a href="#u4EC0_u4E48_u662FRecyclerView" class="headerlink" title="什么是RecyclerView"></a>什么是RecyclerView</h1><pre><code>RecyclerView是Android 5.0 materials design中的组件之一，相应的还有CardView、Palette等。看名字我们就能看出一点端倪，没错，它主要的特点就是复用。我们知道，Listview中的Adapter中可以实现ViewHolder的复用。RecyclerView提供了一个耦合度更低的方式来复用ViewHolder，并且可以轻松的实现ListView、GridView以及瀑布流的效果。
@@ -364,16 +364,16 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Android自定义相机拍照、图片裁剪的实现]]></title>
-    <link href="http://localhost:4000/2015/10/custom-camera.html"/>
-    <id>http://localhost:4000/2015/10/custom-camera.html</id>
+    <link href="http://liuling123.com/2015/10/custom-camera.html"/>
+    <id>http://liuling123.com/2015/10/custom-camera.html</id>
     <published>2015-10-28T07:00:00.000Z</published>
     <updated>2016-01-03T07:09:29.000Z</updated>
     <content type="html"><![CDATA[<p>　　<span style="font-size: 15px;">最近项目里面又要加一个拍照搜题的功能，也就是用户对着不会做的题目拍一张照片，将照片的文字使用ocr识别出来，再调用题库搜索接口搜索出来展示给用户，类似于小猿搜题、学霸君等app。<br></span></p>
@@ -406,18 +406,18 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="camera" scheme="http://localhost:4000/tags/camera/"/>
+      <category term="camera" scheme="http://liuling123.com/tags/camera/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[ListView实现Item局部刷新]]></title>
-    <link href="http://localhost:4000/2015/10/listview-partial-refresh.html"/>
-    <id>http://localhost:4000/2015/10/listview-partial-refresh.html</id>
+    <link href="http://liuling123.com/2015/10/listview-partial-refresh.html"/>
+    <id>http://liuling123.com/2015/10/listview-partial-refresh.html</id>
     <published>2015-10-20T05:44:00.000Z</published>
     <updated>2016-01-03T07:34:56.000Z</updated>
     <content type="html"><![CDATA[<p>　　&nbsp;<span style="font-size: 15px;">对于ListView数据的刷新大家都知道，改变Adapter的数据源，然后调用Adapter的notifyDateSetChanged()方法即可。</span></p>
@@ -441,18 +441,18 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="布局" scheme="http://localhost:4000/tags/%E5%B8%83%E5%B1%80/"/>
+      <category term="布局" scheme="http://liuling123.com/tags/%E5%B8%83%E5%B1%80/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[AsyncTask实现多任务多线程断点续传下载]]></title>
-    <link href="http://localhost:4000/2015/10/asynctask-multi-task-thread.html"/>
-    <id>http://localhost:4000/2015/10/asynctask-multi-task-thread.html</id>
+    <link href="http://liuling123.com/2015/10/asynctask-multi-task-thread.html"/>
+    <id>http://liuling123.com/2015/10/asynctask-multi-task-thread.html</id>
     <published>2015-10-16T05:29:00.000Z</published>
     <updated>2016-01-03T07:04:37.000Z</updated>
     <content type="html"><![CDATA[<p>　　<span style="font-size: 15px;">这篇博客是AsyncTask下载系列的最后一篇文章，前面写了关于断点续传的和多线程下载的博客，这篇是在前两篇的基础上面实现的，有兴趣的可以去看下。</span></p>
@@ -492,22 +492,22 @@
     
     </summary>
     
-      <category term="AsyncTask" scheme="http://localhost:4000/tags/AsyncTask/"/>
+      <category term="AsyncTask" scheme="http://liuling123.com/tags/AsyncTask/"/>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="多线程" scheme="http://localhost:4000/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+      <category term="多线程" scheme="http://liuling123.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
-      <category term="断点续传" scheme="http://localhost:4000/tags/%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/"/>
+      <category term="断点续传" scheme="http://liuling123.com/tags/%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Android中使用自定义View实现下载进度的显示]]></title>
-    <link href="http://localhost:4000/2015/10/customview-download-percent.html"/>
-    <id>http://localhost:4000/2015/10/customview-download-percent.html</id>
+    <link href="http://liuling123.com/2015/10/customview-download-percent.html"/>
+    <id>http://liuling123.com/2015/10/customview-download-percent.html</id>
     <published>2015-10-15T02:09:00.000Z</published>
     <updated>2016-01-03T07:09:24.000Z</updated>
     <content type="html"><![CDATA[<p><span style="font-size: 15px;">　　一般有下载功能的应用都会有这样一个场景，需要一个图标来标识不同的状态。之前在公司的项目中写过一个，今天抽空来整理一下。</span></p>
@@ -544,18 +544,18 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="自定义控件" scheme="http://localhost:4000/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
+      <category term="自定义控件" scheme="http://liuling123.com/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Android中Parcelable接口的使用]]></title>
-    <link href="http://localhost:4000/2015/10/parcelable-example.html"/>
-    <id>http://localhost:4000/2015/10/parcelable-example.html</id>
+    <link href="http://liuling123.com/2015/10/parcelable-example.html"/>
+    <id>http://liuling123.com/2015/10/parcelable-example.html</id>
     <published>2015-10-13T22:46:00.000Z</published>
     <updated>2016-01-03T07:37:32.000Z</updated>
     <content type="html"><![CDATA[<p><span style="font-size: 15px;">　　在做开发的过程中，序列化是非常常见的。比如要将对象保存本地磁盘或者在网络上传输等。实现序列化有两种方式，一种是实现Serializable接口，第二种是实现Parcelable。</span></p>
@@ -600,16 +600,16 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[AsyncTask实现多线程断点续传]]></title>
-    <link href="http://localhost:4000/2015/10/asynctask-multithread-download.html"/>
-    <id>http://localhost:4000/2015/10/asynctask-multithread-download.html</id>
+    <link href="http://liuling123.com/2015/10/asynctask-multithread-download.html"/>
+    <id>http://liuling123.com/2015/10/asynctask-multithread-download.html</id>
     <published>2015-10-13T04:11:00.000Z</published>
     <updated>2016-01-03T07:04:53.000Z</updated>
     <content type="html"><![CDATA[<p>　　<span style="font-size: 15px;">前面一篇博客<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="AsyncTask实现断点续传" target="_blank" rel="external">《AsyncTask实现断点续传》</a>讲解了如何实现单线程下的断点续传，也就是一个文件只有一个线程进行下载。</span></p>
@@ -650,20 +650,20 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="多线程" scheme="http://localhost:4000/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+      <category term="多线程" scheme="http://liuling123.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
-      <category term="断点续传" scheme="http://localhost:4000/tags/%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/"/>
+      <category term="断点续传" scheme="http://liuling123.com/tags/%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[AsyncTask源码分析]]></title>
-    <link href="http://localhost:4000/2015/10/asynctask-source.html"/>
-    <id>http://localhost:4000/2015/10/asynctask-source.html</id>
+    <link href="http://liuling123.com/2015/10/asynctask-source.html"/>
+    <id>http://liuling123.com/2015/10/asynctask-source.html</id>
     <published>2015-10-10T08:19:00.000Z</published>
     <updated>2016-01-03T08:01:39.000Z</updated>
     <content type="html"><![CDATA[<p>关于AsyncTask的用法可以参看前面一篇博客<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="AsyncTask实现断点续传" target="_blank" rel="external">《AsyncTask实现断点续传》</a>，本文只解析AsyncTask的源代码。</p>
@@ -716,18 +716,18 @@
     
     </summary>
     
-      <category term="AsyncTask" scheme="http://localhost:4000/tags/AsyncTask/"/>
+      <category term="AsyncTask" scheme="http://liuling123.com/tags/AsyncTask/"/>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[AsyncTask实现断点续传]]></title>
-    <link href="http://localhost:4000/2015/10/asynctask-download.html"/>
-    <id>http://localhost:4000/2015/10/asynctask-download.html</id>
+    <link href="http://liuling123.com/2015/10/asynctask-download.html"/>
+    <id>http://liuling123.com/2015/10/asynctask-download.html</id>
     <published>2015-10-09T19:34:00.000Z</published>
     <updated>2016-01-03T07:06:31.000Z</updated>
     <content type="html"><![CDATA[<p>　　之前公司里面项目的下载模块都是使用xUtils提供的，最近看了下xUtils的源码，它里面也是使用AsyncTask来执行异步任务的，它的下载也包含了断点续传的功能。这里我自己也使用AsyncTask也实现了简单的断点续传的功能。</p>
@@ -754,20 +754,20 @@
     
     </summary>
     
-      <category term="AsyncTask" scheme="http://localhost:4000/tags/AsyncTask/"/>
+      <category term="AsyncTask" scheme="http://liuling123.com/tags/AsyncTask/"/>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="断点续传" scheme="http://localhost:4000/tags/%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/"/>
+      <category term="断点续传" scheme="http://liuling123.com/tags/%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Android布局优化之过度绘制]]></title>
-    <link href="http://localhost:4000/2015/10/overdraw.html"/>
-    <id>http://localhost:4000/2015/10/overdraw.html</id>
+    <link href="http://liuling123.com/2015/10/overdraw.html"/>
+    <id>http://liuling123.com/2015/10/overdraw.html</id>
     <published>2015-10-07T22:38:00.000Z</published>
     <updated>2016-01-03T07:37:40.000Z</updated>
     <content type="html"><![CDATA[<p>如果一个布局十分复杂，那么就需要来排查是否出现了过度绘制，如果出现了，那么很可能会造成刷新率下降，造成卡顿的现象。那么什么是过度绘制呢？过度绘制就是在同一个区域中叠加了多个控件。这就像小时候我们画画，白纸就是没有绘制的画板，如果我们画了一个房子，涂上了红色，又在上面画了窗户，图上了棕色，窗户上又画了蓝色的玻璃，这重重复的叠加就是过度绘制，在白纸上的结果是，过度绘制的区域纸会被水笔浸的比较湿，在手机上就会出现显示较慢。如果说这是感性的认识，那么我就引用下面一段话来理性的解释一下：</p>
@@ -816,20 +816,20 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="布局" scheme="http://localhost:4000/tags/%E5%B8%83%E5%B1%80/"/>
+      <category term="布局" scheme="http://liuling123.com/tags/%E5%B8%83%E5%B1%80/"/>
     
-      <category term="布局优化" scheme="http://localhost:4000/tags/%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96/"/>
+      <category term="布局优化" scheme="http://liuling123.com/tags/%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[【转】Android布局优化之ViewStub]]></title>
-    <link href="http://localhost:4000/2015/10/optimize-viewstub.html"/>
-    <id>http://localhost:4000/2015/10/optimize-viewstub.html</id>
+    <link href="http://liuling123.com/2015/10/optimize-viewstub.html"/>
+    <id>http://liuling123.com/2015/10/optimize-viewstub.html</id>
     <published>2015-10-07T20:26:00.000Z</published>
     <updated>2016-01-03T07:37:01.000Z</updated>
     <content type="html"><![CDATA[<p>ViewStub是Android布局优化中一个很不错的标签/控件，直接继承自View。虽然Android开发人员基本上都听说过，但是真正用的可能不多。</p>
@@ -864,13 +864,13 @@
     
     </summary>
     
-      <category term="android" scheme="http://localhost:4000/tags/android/"/>
+      <category term="android" scheme="http://liuling123.com/tags/android/"/>
     
-      <category term="布局" scheme="http://localhost:4000/tags/%E5%B8%83%E5%B1%80/"/>
+      <category term="布局" scheme="http://liuling123.com/tags/%E5%B8%83%E5%B1%80/"/>
     
-      <category term="布局优化" scheme="http://localhost:4000/tags/%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96/"/>
+      <category term="布局优化" scheme="http://liuling123.com/tags/%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96/"/>
     
-      <category term="Android" scheme="http://localhost:4000/categories/Android/"/>
+      <category term="Android" scheme="http://liuling123.com/categories/Android/"/>
     
   </entry>
   
