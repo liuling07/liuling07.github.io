@@ -28,7 +28,7 @@
 
 很不幸，Youtube音乐应用在我们国家不可使用，我尝试着通过各种盗版网站来获取该应用，但我仍然无法看到">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/1200/1*lEMS5RiBLGk3Q72FhXBwxA.gif">
-<meta property="og:updated_time" content="2016-01-03T14:05:41.000Z">
+<meta property="og:updated_time" content="2016-01-03T14:08:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【译文】AppBarLayout的越界滚动行为">
 <meta name="twitter:description" content="原文链接 : Overscroll AppBarLayout Behavior
@@ -210,6 +210,7 @@
 </blockquote>
 <p>很不幸，Youtube音乐应用在我们国家不可使用，我尝试着通过各种盗版网站来获取该应用，但我仍然无法看到在这个应用上发生了什么。感谢这位<a href="https://www.reddit.com/user/IanSan5653" target="_blank" rel="external">redditor</a>，在我的请求下，他在<a href="https://www.reddit.com/r/materialdesign" target="_blank" rel="external">/r/materialdesign</a>打开了一个<a href="https://www.reddit.com/r/MaterialDesign/comments/3slct5/youtube_music_has_tons_of_animations_and/" target="_blank" rel="external">thread</a>并且发表一段录制的视频，我才有机会看到这个行为。</p>
 <p><img src="https://cdn-images-1.medium.com/max/1200/1*lEMS5RiBLGk3Q72FhXBwxA.gif" alt="Youtube视频app的真实截图，可能的行为"></p>
+<a id="more"></a>
 <p>根据我所看到的，我首先想到的就是专辑封面是放到一个AppBarLayout里面，并且在滚动区域拖到边界的时候尺寸会发生变化。让我们假定这个猜想是正确的并且用“Behavior”这个术语表示它。依鄙人之见，如果我的猜想是正确的，谷歌应该会在Material Design文档的<a href="https://www.google.com/design/spec/patterns/scrolling-techniques.html" target="_blank" rel="external">滚动</a>部分提供一个越界滚动的使用说明。</p>
 <p>我们的目标就是保证AppBarLayout.Behavior的完整性，在此基础上再创建一个扩展的行为。因此：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class OverscrollScalingViewAppBarLayoutBehavior extends AppBarLayout.ScrollingViewBehavior</span><br></pre></td></tr></table></figure>
@@ -240,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/01/overscroll-appBarLayout-behavior.html" data-id="ciiym2gw2003q5dd0bmuvyzfp" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/01/overscroll-appBarLayout-behavior.html" data-id="ciiym6eyp003q5rd0p91vlxiu" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/01/overscroll-appBarLayout-behavior.html#ds-thread" class="article-comment-link">评论</a>
       
