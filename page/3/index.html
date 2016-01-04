@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Hexo theme - Icarus">
   
   
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-ico">
   
   
  <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
@@ -180,15 +180,15 @@
 <p>这里需要注意的是：<br>
         
           <p class="article-more-link">
-            <a href="/2015/10/optimize-viewstub.html#more">Read More</a>
+            <a href="/2015/10/optimize-viewstub.html#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/optimize-viewstub.html" data-id="ciiymv13z00486vd0htvxrs6g" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/optimize-viewstub.html" data-id="ciizy0u370048e5d0iwbsmog2" class="article-share-link">分享到</a>
       
-        <a href="http://www.liuling123.com/2015/10/optimize-viewstub.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://www.liuling123.com/2015/10/optimize-viewstub.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-optimize-viewstub" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局优化/">布局优化</a></li></ul>
@@ -239,15 +239,15 @@
 <div><span style="font-size: 16px;">　　这篇帖子先分析内存缓存是如何实现的。好吧开始进入正题。</span></div><br><div><span style="font-size: 16px;">　　BitmapUtils内存缓存的核心类LruMemoryCache，LruMemoryCache代码和v4包的LruCache一样，只是加了一个存储超期的处理，这里分析LruCache源码。LRU即Least Recently Used，近期最少使用算法。也就是当内存缓存达到设定的最大值时将内存缓存中近期最少使用的对象移除，有效的避免了OOM的出现。</span></div><br><div>&nbsp;</div><br><div><span style="font-size: 16px;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;讲到LruCache不得不提一下LinkedHashMap，因为LruCache中Lru算法的实现就是通过LinkedHashMap来实现的。LinkedHashMap继承于HashMap，它使用了一个双向链表来存储Map中的Entry顺序关系，这种顺序有两种，一种是LRU顺序，一种是插入顺序，这可以由其构造函数public LinkedHashMap(int initialCapacity,float loadFactor, boolean accessOrder)指定。所以，对于get、put、remove等操作，LinkedHashMap除了要做HashMap做的事情，还做些调整Entry顺序链表的工作。LruCache中将LinkedHashMap的顺序设置为LRU顺序来实现LRU缓存，每次调用get(也就是从内存缓存中取图片)，则将该对象移到链表的尾端。调用put插入新的对象也是存储在链表尾端，这样当内存缓存达到设定的最大值时，将链表头部的对象（近期最少用到的）移除。关于LinkedHashMap详解请前往<a href="http://www.cnblogs.com/children/archive/2012/10/02/2710624.html%E3%80%82">http://www.cnblogs.com/children/archive/2012/10/02/2710624.html。</a></span></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="font-size: 16px;">下面看下LruCache的源码，我都注释的很详细了。</span></span></div><br><div><br>
         
           <p class="article-more-link">
-            <a href="/2015/09/principle-lrucache.html#more">Read More</a>
+            <a href="/2015/09/principle-lrucache.html#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/principle-lrucache.html" data-id="ciiymv13200386vd0b6l1rgbu" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/09/principle-lrucache.html" data-id="ciizy0u2f0038e5d0wr9y11lc" class="article-share-link">分享到</a>
       
-        <a href="http://www.liuling123.com/2015/09/principle-lrucache.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://www.liuling123.com/2015/09/principle-lrucache.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-principle-lrucache" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LruCache/">LruCache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存缓存/">内存缓存</a></li></ul>
@@ -301,15 +301,15 @@
 <p>这种效果可以通过layer-lsit来实现，在drawable文件夹下面建一个xml文件，具体代码如下：<br>
         
           <p class="article-more-link">
-            <a href="/2015/09/layer-list-rounded-rectangle.html#more">Read More</a>
+            <a href="/2015/09/layer-list-rounded-rectangle.html#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html" data-id="ciiymv15o006d6vd0d5e7y1fn" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html" data-id="ciizy0u4j006de5d04cy6jds4" class="article-share-link">分享到</a>
       
-        <a href="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-layer-list-rounded-rectangle" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li></ul>
@@ -363,15 +363,15 @@
 <p>&nbsp;</p>
         
           <p class="article-more-link">
-            <a href="/2015/09/solution-crash-activity-back.html#more">Read More</a>
+            <a href="/2015/09/solution-crash-activity-back.html#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/solution-crash-activity-back.html" data-id="ciiymv122001u6vd0bkc511nv" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/09/solution-crash-activity-back.html" data-id="ciizy0u1p001ue5d03qi27blx" class="article-share-link">分享到</a>
       
-        <a href="http://www.liuling123.com/2015/09/solution-crash-activity-back.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://www.liuling123.com/2015/09/solution-crash-activity-back.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-solution-crash-activity-back" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
@@ -422,15 +422,15 @@
 <div>对刚从eclipse转Android Studio的童鞋来说，可能会遇到各种问题。下面方法可以简单快速的将github上的项目导入android studio并运行。</div><br><div>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;首先提一下，Android Studio是基于Gradle来构建项目的，这个与eclipse不同，所以想要熟练掌握Android Studio的用法，最好还是先熟悉Gradle。</div><br><div>这里只是介绍Android Studio如何导入工程，关于Gradle，可以自行百度。</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; 下面介绍Android Studio如何导入project。</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;<strong> 一、安装Android Sudio并新建project</strong></div><br><div>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;安装Android Studio后，创建Project，会自动下载Gradle。工程目录结构如下：</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;&nbsp;<img src="file:///C:/Users/Administrator/Documents/My%20Knowledge/temp/7f9dd589-ece7-48fa-a0e9-191d405b74f8.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150916183731633-1415692386.png" alt=""></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; <strong><br><br>
         
           <p class="article-more-link">
-            <a href="/2015/09/androidstudio-github-import.html#more">Read More</a>
+            <a href="/2015/09/androidstudio-github-import.html#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/androidstudio-github-import.html" data-id="ciiymv1bw00eq6vd0616yd88h" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/09/androidstudio-github-import.html" data-id="ciizy0u8z00eqe5d0f4na7qvl" class="article-share-link">分享到</a>
       
-        <a href="http://www.liuling123.com/2015/09/androidstudio-github-import.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://www.liuling123.com/2015/09/androidstudio-github-import.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-androidstudio-github-import" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android-studio/">android studio</a></li></ul>
@@ -486,15 +486,15 @@
 </blockquote>
         
           <p class="article-more-link">
-            <a href="/2015/09/sqlite-optimize.html#more">Read More</a>
+            <a href="/2015/09/sqlite-optimize.html#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/sqlite-optimize.html" data-id="ciiymv11i00106vd05xzn8mrq" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/09/sqlite-optimize.html" data-id="ciizy0u190010e5d0ukg3m551" class="article-share-link">分享到</a>
       
-        <a href="http://www.liuling123.com/2015/09/sqlite-optimize.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://www.liuling123.com/2015/09/sqlite-optimize.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-sqlite-optimize" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlite/">sqlite</a></li></ul>
@@ -544,15 +544,15 @@
         <div>1、在eclipse下创建android工程Hello并拷贝到&ldquo;<strong>源码目录/packages/experimental&rdquo;</strong>下面</div><br><div>&nbsp;</div><br><div>2、在Hello工程目录下面创建Android.mk文件，内容如下：</div><br><div><br><div><strong>LOCAL_PATH:= $(call my-dir)</strong></div><br><div><strong>include $(CLEAR_VARS)</strong></div><br><div><strong>LOCAL_MODULE_TAGS := optional</strong></div><br><div><strong>LOCAL_SRC_FILES := $(call all-subdir-java-files)</strong></div><br><div><strong>LOCAL_PACKAGE_NAME := Hello</strong></div><br><div><strong>include $(BUILD_PACKAGE)</strong></div><br></div><br><div>3、执行<strong>mmm&nbsp;**</strong>packages/experimental/Hello<strong>编译，注意：使用mmm命令前先执行</strong>. &nbsp;./build/envsetup.sh<strong></div><br><div>编译成功后，便可以在out/target/product/generic/system/app目录下看到Hello.apk文件了。</div><br><div>运行截图：</div><br><div><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180933584103177.jpg" alt=""></div><br><div>&nbsp;</div><br><div>运行完截图：</div><br><div><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180935394726300.jpg" alt="">&nbsp;</div><br><div>&nbsp;</div><br><div>4、重新打包系统镜像文件system.img：<br><div></strong>USER-NAME@MACHINE-NAME:~/Android$ make snod**<br>&nbsp;&nbsp; &nbsp;重新打包后的system.img文件就内置了Hello.apk文件了。</div><br><div>&nbsp;</div><br></div><br>
         
           <p class="article-more-link">
-            <a href="/2015/08/framework-compile-run.html#more">Read More</a>
+            <a href="/2015/08/framework-compile-run.html#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/framework-compile-run.html" data-id="ciiymv18z00ay6vd0obfau2mp" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/08/framework-compile-run.html" data-id="ciizy0u6v00aye5d01ugcfa6y" class="article-share-link">分享到</a>
       
-        <a href="http://www.liuling123.com/2015/08/framework-compile-run.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://www.liuling123.com/2015/08/framework-compile-run.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-framework-compile-run" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li></ul>
@@ -606,15 +606,15 @@
 <p>&nbsp;<br>
         
           <p class="article-more-link">
-            <a href="/2015/08/jni-demo.html#more">Read More</a>
+            <a href="/2015/08/jni-demo.html#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/jni-demo.html" data-id="ciiymv16c007a6vd0enams88z" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/08/jni-demo.html" data-id="ciizy0u50007ae5d0g0cvasok" class="article-share-link">分享到</a>
       
-        <a href="http://www.liuling123.com/2015/08/jni-demo.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://www.liuling123.com/2015/08/jni-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jni-demo" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
@@ -670,9 +670,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/javah-find-lib.html" data-id="ciiymv16n007p6vd0eey2tmoo" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/08/javah-find-lib.html" data-id="ciizy0u58007pe5d0p4kab6zw" class="article-share-link">分享到</a>
       
-        <a href="http://www.liuling123.com/2015/08/javah-find-lib.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://www.liuling123.com/2015/08/javah-find-lib.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-javah-find-lib" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
@@ -724,15 +724,15 @@
 </strong>如生成的库文件是&ldquo;.so文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-L$(SYSROOT)/usr/lib -llog<br>如生成的库文件是&ldquo;.a文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-llog<br>
         
           <p class="article-more-link">
-            <a href="/2015/08/jni-logcat.html#more">Read More</a>
+            <a href="/2015/08/jni-logcat.html#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/jni-logcat.html" data-id="ciiymv16900766vd0kp9ua38l" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/08/jni-logcat.html" data-id="ciizy0u4y0076e5d0e6euw4g3" class="article-share-link">分享到</a>
       
-        <a href="http://www.liuling123.com/2015/08/jni-logcat.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://www.liuling123.com/2015/08/jni-logcat.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jni-logcat" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
