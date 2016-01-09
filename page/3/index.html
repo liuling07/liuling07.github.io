@@ -101,11 +101,11 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        136
+        137
         <span>文章</span>
       </div>
       <div class="article-info-block">
-        32
+        33
         <span>标签</span>
       </div>
     </div>
@@ -138,6 +138,70 @@
 
       
       <section id="main">
+      <article id="post-overdraw" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/overdraw.html">Android布局优化之过度绘制</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/10/overdraw.html">
+      <time datetime="2015-10-07T22:38:00.000Z" itemprop="datePublished">2015-10-08</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果一个布局十分复杂，那么就需要来排查是否出现了过度绘制，如果出现了，那么很可能会造成刷新率下降，造成卡顿的现象。那么什么是过度绘制呢？过度绘制就是在同一个区域中叠加了多个控件。这就像小时候我们画画，白纸就是没有绘制的画板，如果我们画了一个房子，涂上了红色，又在上面画了窗户，图上了棕色，窗户上又画了蓝色的玻璃，这重重复的叠加就是过度绘制，在白纸上的结果是，过度绘制的区域纸会被水笔浸的比较湿，在手机上就会出现显示较慢。如果说这是感性的认识，那么我就引用下面一段话来理性的解释一下：</p>
+<blockquote>
+<p>1. 布局文件是一个xml文件，inflate布局文件其实就是解析xml，根据标签信息创建相应的布局对象并做关联。xml中的标签和属性设置越多，节点树的深度越深，在解析时要执行的判断逻辑、函数的嵌套和递归就越多，所以时间消耗越多；</p>
+<p>2. inflate操作只是布局影响的第一个环节，一个界面要显示出来，在requestLayout后还要执行一系列的measure、layout、draw的操作，每一步的执行时间都会受到布局本身的影响。而界面的最终显示是所有这些操作完成后才实现的，所以如果布局质量差，会增加每一步操作的时间成本，最终显示时间就会比较长。</p>
+</blockquote>
+<p>现在，我们就来说说如何查看是否有过度绘制，和如何避免它吧。</p>
+<p>&nbsp;<br>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/overdraw.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.liuling123.com/2015/10/overdraw.html" data-id="cij6mthjq003vb3d0bquqqd4z" class="article-share-link">分享到</a>
+      
+        <a href="http://www.liuling123.com/2015/10/overdraw.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-overdraw" data-count-type="comments"></span></a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局优化/">布局优化</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
       <article id="post-optimize-viewstub" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -186,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/optimize-viewstub.html" data-id="cij03k9be0048ibd0vrndi2f3" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/optimize-viewstub.html" data-id="cij6mthjy0049b3d0ckxwidww" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/10/optimize-viewstub.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-optimize-viewstub" data-count-type="comments"></span></a>
       
@@ -245,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/principle-lrucache.html" data-id="cij03k9an0038ibd0l9cts23r" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/09/principle-lrucache.html" data-id="cij6mthja0039b3d07d8k2t8r" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/09/principle-lrucache.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-principle-lrucache" data-count-type="comments"></span></a>
       
@@ -307,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html" data-id="cij03k9cq006dibd0b4twbwxn" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html" data-id="cij6mthkz006eb3d0er6embr6" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-layer-list-rounded-rectangle" data-count-type="comments"></span></a>
       
@@ -369,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/solution-crash-activity-back.html" data-id="cij03k99x001uibd01jbmkbkb" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/09/solution-crash-activity-back.html" data-id="cij6mthib001vb3d0mlyv1b4e" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/09/solution-crash-activity-back.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-solution-crash-activity-back" data-count-type="comments"></span></a>
       
@@ -428,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/androidstudio-github-import.html" data-id="cij03k9h300eqibd0hhbvagcp" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/09/androidstudio-github-import.html" data-id="cij6mthp500erb3d0ck96unuj" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/09/androidstudio-github-import.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-androidstudio-github-import" data-count-type="comments"></span></a>
       
@@ -492,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/sqlite-optimize.html" data-id="cij03k99i0010ibd0r48clycf" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/09/sqlite-optimize.html" data-id="cij6mthhw0011b3d0wtu0qpyp" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/09/sqlite-optimize.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-sqlite-optimize" data-count-type="comments"></span></a>
       
@@ -550,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/framework-compile-run.html" data-id="cij03k9f000ayibd0a0r0w96n" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/08/framework-compile-run.html" data-id="cij6mthna00azb3d0cj79b8l7" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/08/framework-compile-run.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-framework-compile-run" data-count-type="comments"></span></a>
       
@@ -612,7 +676,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/jni-demo.html" data-id="cij03k9d6007aibd0iwc51jtb" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/08/jni-demo.html" data-id="cij6mthlf007bb3d0z3no0k7m" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/08/jni-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jni-demo" data-count-type="comments"></span></a>
       
@@ -670,69 +734,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/javah-find-lib.html" data-id="cij03k9df007pibd047dv2zkn" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/08/javah-find-lib.html" data-id="cij6mthlm007qb3d0frv56193" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/08/javah-find-lib.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-javah-find-lib" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-jni-logcat" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/jni-logcat.html">JNI的native代码中打印日志到eclipse的logcat中</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/08/jni-logcat.html">
-      <time datetime="2015-08-05T00:52:00.000Z" itemprop="datePublished">2015-08-05</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1 添加ndk对log支持</strong><br>若需要添加ndk对log的支持，只需要通过以下2步即可实现。</p>
-<p><strong>1.1 修改Android.mk
-</strong>如生成的库文件是&ldquo;.so文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-L$(SYSROOT)/usr/lib -llog<br>如生成的库文件是&ldquo;.a文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-llog<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/08/jni-logcat.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/jni-logcat.html" data-id="cij03k9d50076ibd0m274w0lp" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/08/jni-logcat.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jni-logcat" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
@@ -757,6 +761,15 @@
     <h3 class="widget-title">最新博文</h3>
     <div class="widget">
       <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/EventBus-explain.html" class="title">EventBus使用详解</a></p>
+              <p class="item-date"><time datetime="2016-01-09T04:42:00.000Z" itemprop="datePublished">2016-01-09</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -794,15 +807,6 @@
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
-              <p class="item-title"><a href="/2015/12/performance-listviews.html" class="title">【译文】高性能ListViews</a></p>
-              <p class="item-date"><time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -812,7 +816,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">博文分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -821,7 +825,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
     </div>
   </div>
 
@@ -830,7 +834,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 

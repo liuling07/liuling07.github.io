@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术成长之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.liuling123.com/"/>
-  <updated>2016-01-03T14:08:49.000Z</updated>
+  <updated>2016-01-09T04:47:55.000Z</updated>
   <id>http://www.liuling123.com/</id>
   
   <author>
@@ -13,6 +13,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[EventBus使用详解]]></title>
+    <link href="http://www.liuling123.com/2016/01/EventBus-explain.html"/>
+    <id>http://www.liuling123.com/2016/01/EventBus-explain.html</id>
+    <published>2016-01-09T04:42:00.000Z</published>
+    <updated>2016-01-09T04:47:55.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>前言：EventBus出来已经有一段时间了，github上面也有很多开源项目中使用了EventBus。所以抽空学习顺便整理了一下。</p>
+</blockquote>
+<h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p><a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">EventBus</a>是针一款对Android的发布/订阅事件总线。它可以让我们很轻松的实现在Android各个组件之间传递消息，并且代码的可读性更好，耦合度更低。</p>
+<a id="more"></a>
+<h4 id="u5982_u4F55_u4F7F_u7528"><a href="#u5982_u4F55_u4F7F_u7528" class="headerlink" title="如何使用"></a>如何使用</h4><p>(1)首先需要定义一个消息类，该类可以不继承任何基类也不需要实现任何接口。如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class MessageEvent &#123;&#10;    ......&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>(2)在需要订阅事件的地方注册事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().register(this);</span><br></pre></td></tr></table></figure></p>
+<p>(3)产生事件，即发送消息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().post(messageEvent);</span><br></pre></td></tr></table></figure></p>
+<p>(4)处理消息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void onEvent(MessageEvent messageEvent) &#123;&#10;    ...&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>(5)取消消息订阅<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().unregister(this);</span><br></pre></td></tr></table></figure></p>
+<h4 id="u6709_u4F55_u4F18_u70B9"><a href="#u6709_u4F55_u4F18_u70B9" class="headerlink" title="有何优点"></a>有何优点</h4><p>采用消息发布/订阅的一个很大的优点就是代码的简洁性，并且能够有效地降低消息发布者和订阅者之间的耦合度。<br>举个例子，比如有两个界面，ActivityA和ActivityB，从ActivityA界面跳转到ActivityB界面后，ActivityB要给ActivityA发送一个消息，ActivityA收到消息后在界面上显示出来。我们最先想到的方法就是使用广播，使用广播实现此需求的代码如下：<br>首先需要在ActivityA中定义一个广播接收器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class MessageBroadcastReceiver extends BroadcastReceiver &#123;&#10;&#10;    @Override&#10;    public void onReceive(Context context, Intent intent) &#123;&#10;        mMessageView.setText(&#34;Message from SecondActivity:&#34; + intent.getStringExtra(&#34;message&#34;));&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>还需要在onCreate()方法中注册广播接收器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override&#10;protected void onCreate(Bundle savedInstanceState) &#123;&#10;    super.onCreate(savedInstanceState);&#10;    setContentView(R.layout.activity_main);&#10;    //&#27880;&#20876;&#20107;&#20214;&#10;    EventBus.getDefault().register(this);&#10;    //&#27880;&#20876;&#24191;&#25773;&#10;    IntentFilter intentFilter = new IntentFilter(&#34;message_broadcast&#34;);&#10;    mBroadcastReceiver = new MessageBroadcastReceiver();&#10;    registerReceiver(mBroadcastReceiver, intentFilter);&#10;    ......&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后在onDestory()方法中取消注册广播接收器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override&#10;protected void onDestroy() &#123;&#10;    super.onDestroy();&#10;    ......&#10;    //&#21462;&#28040;&#24191;&#25773;&#27880;&#20876;&#10;    unregisterReceiver(mBroadcastReceiver);&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后我们需要在ActivityB界面中发送广播消息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">findViewById(R.id.send_broadcast).setOnClickListener(new View.OnClickListener() &#123;&#10;    @Override&#10;    public void onClick(View v) &#123;&#10;        String message = mMessageET.getText().toString();&#10;        if(TextUtils.isEmpty(message)) &#123;&#10;            message = &#34;defaule message&#34;;&#10;        &#125;&#10;        Intent intent = new Intent();&#10;        intent.setAction(&#34;message_broadcast&#34;);&#10;        intent.putExtra(&#34;message&#34;, message);&#10;        sendBroadcast(intent);&#10;    &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>看着上面的实现代码，感觉也没什么不妥，挺好的！下面对比看下使用EventBus如何实现。<br>根据文章最前面所讲的EventBus使用步骤，首先我们需要定义一个消息事件类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class MessageEvent &#123;&#10;&#10;    private String message;&#10;&#10;    public MessageEvent(String message) &#123;&#10;        this.message = message;&#10;    &#125;&#10;&#10;    public String getMessage() &#123;&#10;        return message;&#10;    &#125;&#10;&#10;    public void setMessage(String message) &#123;&#10;        this.message = message;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在ActivityA界面中我们首先需要注册订阅事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override&#10;protected void onCreate(Bundle savedInstanceState) &#123;&#10;    super.onCreate(savedInstanceState);&#10;    setContentView(R.layout.activity_main);&#10;    //&#27880;&#20876;&#20107;&#20214;&#10;    EventBus.getDefault().register(this);&#10;    ......&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后在onDestory()方法中取消订阅：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override&#10;protected void onDestroy() &#123;&#10;    super.onDestroy();&#10;    //&#21462;&#28040;&#20107;&#20214;&#27880;&#20876;&#10;    EventBus.getDefault().unregister(this);&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然还要定义一个消息处理的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void onEvent(MessageEvent messageEvent) &#123;&#10;    mMessageView.setText(&#34;Message from SecondActivity:&#34; + messageEvent.getMessage());&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>至此，消息订阅者我们已经定义好了，我们还需要在ActivityB中发布消息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">findViewById(R.id.send).setOnClickListener(new View.OnClickListener() &#123;&#10;    @Override&#10;    public void onClick(View v) &#123;&#10;        String message = mMessageET.getText().toString();&#10;        if(TextUtils.isEmpty(message)) &#123;&#10;            message = &#34;defaule message&#34;;&#10;        &#125;&#10;        EventBus.getDefault().post(new MessageEvent(message));&#10;    &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>对比代码一看，有人会说了，这尼玛有什么区别嘛！说好的简洁呢？哥们，别着急嘛！我这里只是举了个简单的例子，仅仅从该例子来看，EventBus的优势没有体现出来。现在我将需求稍微改一下，ActivityA收到消息后，需要从网络服务器获取数据并将数据展示出来。如果食用广播，ActivityA中广播接收器代码应该这么写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class MessageBroadcastReceiver extends BroadcastReceiver &#123;&#10;&#10;    @Override&#10;    public void onReceive(Context context, Intent intent) &#123;&#10;        new Thread(new Runnable() &#123;&#10;            @Override&#10;            public void run() &#123;&#10;                //&#20174;&#26381;&#21153;&#22120;&#19978;&#33719;&#21462;&#25968;&#25454;&#10;                ......&#10;                runOnUiThread(new Runnable() &#123;&#10;                    @Override&#10;                    public void run() &#123;&#10;                        //&#23558;&#33719;&#21462;&#30340;&#25968;&#25454;&#23637;&#31034;&#22312;&#30028;&#38754;&#19978;&#10;                        ......&#10;                    &#125;&#10;                &#125;);&#10;            &#125;&#10;        &#125;).start();&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>看到这段代码，不知道你何感想，反正我是看着很不爽，缩进层次太多，完全违反了Clean Code的原则。那使用EventBus来实现又是什么样呢？我们看一下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void onEventBackgroundThread(MessageEvent messageEvent) &#123;&#10;    //&#20174;&#26381;&#21153;&#22120;&#19978;&#33719;&#21462;&#25968;&#25454;&#10;    ......&#10;    EventBus.getDefault().post(new ShowMessageEvent());&#10;&#125;&#10;&#10;public void onEventMainThread(ShowMessageEvent showMessageEvent) &#123;&#10;    //&#23558;&#33719;&#21462;&#30340;&#25968;&#25454;&#23637;&#31034;&#22312;&#30028;&#38754;&#19978;&#10;    ......&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对比一下以上两段代码就能很明显的感觉到EventBus的优势，代码简洁、层次清晰，大大提高了代码的可读性和可维护性。我这只是简单的加了一个小需求而已，随着业务越来越复杂，使用EventBus的优势愈加明显。</p>
+<h3 id="u5E38_u7528API_u4ECB_u7ECD"><a href="#u5E38_u7528API_u4ECB_u7ECD" class="headerlink" title="常用API介绍"></a>常用API介绍</h3><h4 id="onEventXXX_u7CFB_u5217_u4E8B_u4EF6"><a href="#onEventXXX_u7CFB_u5217_u4E8B_u4EF6" class="headerlink" title="onEventXXX系列事件"></a>onEventXXX系列事件</h4><p>在上面我们已经接触到了EventBus的几个onEventXXX系列方法了。那他们有什么区别呢？<br>在EventBus中的观察者通常有四种事件处理函数，分别是onEvent、onEventMainThread、onEventBackground与onEventAsync。</p>
+<ul>
+<li>onEvent：如果使用onEvent作为事件处理函数，那么该事件在哪个线程发布出来的，onEvent就会在这个线程中运行，也就是说发布事件和接收事件在同一个线程。在onEvent方法中尽量避免执行耗时操作，因为有可能会引起ANR。</li>
+<li>onEventMainThread：如果使用onEventMainThread作为事件处理函数，那么不论事件是在哪个线程中发布出来的，该事件处理函数都会在UI线程中执行。该方法可以用来更新UI，但是不能处理耗时操作。</li>
+<li>onEvnetBackground：如果使用onEventBackgrond作为事件处理函数，那么如果事件是在UI线程中发布出来的，那么该事件处理函数就会在新的线程中运行，如果事件本来就是子线程中发布出来的，那么该事件处理函数直接在发布事件的线程中执行。</li>
+<li>onEventAsync：使用这个函数作为事件处理函数，那么无论事件在哪个线程发布，该事件处理函数都会在新建的子线程中执行。</li>
+</ul>
+<p>为了验证以上四个方法，我写了个小例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void onEvent(MessageEvent messageEvent) &#123;&#10;    Log.e(&#34;onEvent&#34;, Thread.currentThread().getName());&#10;&#125;&#10;&#10;public void onEventMainThread(MessageEvent messageEvent) &#123;&#10;    Log.e(&#34;onEventMainThread&#34;, Thread.currentThread().getName());&#10;&#125;&#10;&#10;public void onEventBackgroundThread(MessageEvent messageEvent) &#123;&#10;    Log.e(&#34;onEventBackgroundThread&#34;, Thread.currentThread().getName());&#10;&#125;&#10;&#10;public void onEventAsync(MessageEvent messageEvent) &#123;&#10;    Log.e(&#34;onEventAsync&#34;, Thread.currentThread().getName());&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>分别使用上面四个方法订阅同一事件，打印他们运行所在的线程。首先我们在UI线程中发布一条MessageEvent的消息，看下日志打印结果是什么。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">findViewById(R.id.send).setOnClickListener(new View.OnClickListener() &#123;&#10;        @Override&#10;        public void onClick(View v) &#123;&#10;            Log.e(&#34;postEvent&#34;, Thread.currentThread().getName());&#10;            EventBus.getDefault().post(new MessageEvent());&#10;        &#125;&#10;    &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>打印结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2689-2689/com.lling.eventbusdemo E/postEvent&#65109; main&#10;2689-2689/com.lling.eventbusdemo E/onEvent&#65109; main&#10;2689-3064/com.lling.eventbusdemo E/onEventAsync&#65109; pool-1-thread-1&#10;2689-2689/com.lling.eventbusdemo E/onEventMainThread&#65109; main&#10;2689-3065/com.lling.eventbusdemo E/onEventBackgroundThread&#65109; pool-1-thread-2</span><br></pre></td></tr></table></figure></p>
+<p>从日志打印结果可以看出，如果在UI线程中发布事件，则onEvent也执行在UI线程，与发布事件的线程一致。onEventAsync执行在名字叫做pool-1-thread-1的新的线程中。onEventMainThread执行在UI线程。onEventBackgroundThread执行在名字叫做pool-1-thread-2的新的线程中。</p>
+<p>我们再看看在子线程中发布一条MessageEvent的消息时，会有什么样的结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">findViewById(R.id.send).setOnClickListener(new View.OnClickListener() &#123;&#10;        @Override&#10;        public void onClick(View v) &#123;&#10;            new Thread(new Runnable() &#123;&#10;                @Override&#10;                public void run() &#123;&#10;                    Log.e(&#34;postEvent&#34;, Thread.currentThread().getName());&#10;                    EventBus.getDefault().post(new MessageEvent());&#10;                &#125;&#10;            &#125;).start();&#10;        &#125;&#10;    &#125;);</span><br></pre></td></tr></table></figure>
+<p>打印结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3468-3945/com.lling.eventbusdemo E/postEvent&#65109; Thread-125&#10;3468-3945/com.lling.eventbusdemo E/onEvent&#65109; Thread-125&#10;3468-3945/com.lling.eventbusdemo E/onEventBackgroundThread&#65109; Thread-125&#10;3468-3946/com.lling.eventbusdemo E/onEventAsync&#65109; pool-1-thread-1&#10;3468-3468/com.lling.eventbusdemo E/onEventMainThread&#65109; main</span><br></pre></td></tr></table></figure></p>
+<p>从日志打印结果可以看出，如果在子线程中发布事件，则onEvent也执行在子线程，与发布事件的线程一致（都是Thread-125）。onEventBackgroundThread也与发布事件在同一线程执行。onEventAsync则在一个名叫pool-1-thread-1的新线程中执行。onEventMainThread还是在UI线程中执行。</p>
+<p>上面一个例子充分验证，onEventXXX系列方法执行所在的线程。</p>
+<h4 id="u9ECF_u6027_u4E8B_u4EF6"><a href="#u9ECF_u6027_u4E8B_u4EF6" class="headerlink" title="黏性事件"></a>黏性事件</h4><p>除了上面讲的普通事件外，EventBus还支持发送黏性事件。何为黏性事件呢？简单讲，就是在发送事件之后再订阅该事件也能收到该事件，跟黏性广播类似。具体用法如下：</p>
+<p>订阅黏性事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().registerSticky(StickyModeActivity.this);</span><br></pre></td></tr></table></figure></p>
+<p>发送黏性事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().postSticky(new MessageEvent(&#34;test&#34;));</span><br></pre></td></tr></table></figure></p>
+<p>处理消息事件以及取消订阅和上面方式相同。</p>
+<p>看个简单的黏性事件的例子，为了简单起见我这里就在一个Activity里演示了。</p>
+<p>Activity代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class StickyModeActivity extends AppCompatActivity &#123;&#10;&#10;    int index = 0;&#10;    @Override&#10;    protected void onCreate(Bundle savedInstanceState) &#123;&#10;        super.onCreate(savedInstanceState);&#10;        setContentView(R.layout.activity_sticky_mode);&#10;        findViewById(R.id.post).setOnClickListener(new View.OnClickListener() &#123;&#10;            @Override&#10;            public void onClick(View v) &#123;&#10;                EventBus.getDefault().postSticky(new MessageEvent(&#34;test&#34; + index++));&#10;            &#125;&#10;        &#125;);&#10;        findViewById(R.id.regist).setOnClickListener(new View.OnClickListener() &#123;&#10;            @Override&#10;            public void onClick(View v) &#123;&#10;                EventBus.getDefault().registerSticky(StickyModeActivity.this);&#10;            &#125;&#10;        &#125;);&#10;&#10;        findViewById(R.id.unregist).setOnClickListener(new View.OnClickListener() &#123;&#10;            @Override&#10;            public void onClick(View v) &#123;&#10;                EventBus.getDefault().unregister(StickyModeActivity.this);&#10;            &#125;&#10;        &#125;);&#10;&#10;    &#125;&#10;&#10;    public void onEvent(MessageEvent messageEvent) &#123;&#10;        Log.e(&#34;onEvent&#34;, messageEvent.getMessage());&#10;    &#125;&#10;&#10;    public void onEventMainThread(MessageEvent messageEvent) &#123;&#10;        Log.e(&#34;onEventMainThread&#34;, messageEvent.getMessage());&#10;    &#125;&#10;&#10;    public void onEventBackgroundThread(MessageEvent messageEvent) &#123;&#10;        Log.e(&#34;onEventBackgroundThread&#34;, messageEvent.getMessage());&#10;    &#125;&#10;&#10;    public void onEventAsync(MessageEvent messageEvent) &#123;&#10;        Log.e(&#34;onEventAsync&#34;, messageEvent.getMessage());&#10;    &#125;&#10;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>布局代码activity_sticky_mode.xml：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;LinearLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;&#10;    xmlns:tools=&#34;http://schemas.android.com/tools&#34; android:layout_width=&#34;match_parent&#34;&#10;    android:layout_height=&#34;match_parent&#34; android:paddingLeft=&#34;@dimen/activity_horizontal_margin&#34;&#10;    android:paddingRight=&#34;@dimen/activity_horizontal_margin&#34;&#10;    android:paddingTop=&#34;@dimen/activity_vertical_margin&#34;&#10;    android:paddingBottom=&#34;@dimen/activity_vertical_margin&#34;&#10;    android:orientation=&#34;vertical&#34;&#10;    tools:context=&#34;com.lling.eventbusdemo.StickyModeActivity&#34;&#62;&#10;&#10;    &#60;Button&#10;        android:id=&#34;@+id/post&#34;&#10;        android:layout_width=&#34;wrap_content&#34;&#10;        android:layout_height=&#34;wrap_content&#34;&#10;        android:text=&#34;Post&#34;/&#62;&#10;&#10;    &#60;Button&#10;        android:id=&#34;@+id/regist&#34;&#10;        android:layout_width=&#34;wrap_content&#34;&#10;        android:layout_height=&#34;wrap_content&#34;&#10;        android:text=&#34;Regist&#34;/&#62;&#10;&#10;    &#60;Button&#10;        android:id=&#34;@+id/unregist&#34;&#10;        android:layout_width=&#34;wrap_content&#34;&#10;        android:layout_height=&#34;wrap_content&#34;&#10;        android:text=&#34;UnRegist&#34;/&#62;&#10;&#10;&#60;/LinearLayout&#62;</span><br></pre></td></tr></table></figure></p>
+<p>代码很简单，界面上三个按钮，一个用来发送黏性事件，一个用来订阅事件，还有一个用来取消订阅的。首先在未订阅的情况下点击发送按钮发送一个黏性事件，然后点击订阅，会看到日志打印结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15246-15246/com.lling.eventbusdemo E/onEvent&#65109; test0&#10;15246-15391/com.lling.eventbusdemo E/onEventAsync&#65109; test0&#10;15246-15246/com.lling.eventbusdemo E/onEventMainThread&#65109; test0&#10;15246-15393/com.lling.eventbusdemo E/onEventBackgroundThread&#65109; test0</span><br></pre></td></tr></table></figure></p>
+<p>这就是粘性事件，能够收到订阅之前发送的消息。但是它只能收到最新的一次消息，比如说在未订阅之前已经发送了多条黏性消息了，然后再订阅只能收到最近的一条消息。这个我们可以验证一下，我们连续点击5次POST按钮发送5条黏性事件，然后再点击REGIST按钮订阅，打印结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6980-6980/com.lling.eventbusdemo E/onEvent&#65109; test4&#10;6980-6980/com.lling.eventbusdemo E/onEventMainThread&#65109; test4&#10;6980-7049/com.lling.eventbusdemo E/onEventAsync&#65109; test4&#10;6980-7048/com.lling.eventbusdemo E/onEventBackgroundThread&#65109; test4</span><br></pre></td></tr></table></figure></p>
+<p>由打印结果可以看出，确实是只收到最近的一条黏性事件。</p>
+<p>好了，EventBus的使用暂时分析到这里，例子代码<a href="https://github.com/liuling07/EventBusDemo" target="_blank" rel="external">从这里获取</a>。下一讲将讲解EventBus的源码。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote>
+<p>前言：EventBus出来已经有一段时间了，github上面也有很多开源项目中使用了EventBus。所以抽空学习顺便整理了一下。</p>
+</blockquote>
+<h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p><a href="https://github.com/greenrobot/EventBus">EventBus</a>是针一款对Android的发布/订阅事件总线。它可以让我们很轻松的实现在Android各个组件之间传递消息，并且代码的可读性更好，耦合度更低。</p>]]>
+    
+    </summary>
+    
+      <category term="EventBus" scheme="http://www.liuling123.com/tags/EventBus/"/>
+    
+      <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
+    
+      <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[【译文】AppBarLayout的越界滚动行为]]></title>
@@ -829,68 +901,6 @@
       <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
     
       <category term="断点续传" scheme="http://www.liuling123.com/tags/%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/"/>
-    
-      <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Android布局优化之过度绘制]]></title>
-    <link href="http://www.liuling123.com/2015/10/overdraw.html"/>
-    <id>http://www.liuling123.com/2015/10/overdraw.html</id>
-    <published>2015-10-07T22:38:00.000Z</published>
-    <updated>2016-01-03T07:37:40.000Z</updated>
-    <content type="html"><![CDATA[<p>如果一个布局十分复杂，那么就需要来排查是否出现了过度绘制，如果出现了，那么很可能会造成刷新率下降，造成卡顿的现象。那么什么是过度绘制呢？过度绘制就是在同一个区域中叠加了多个控件。这就像小时候我们画画，白纸就是没有绘制的画板，如果我们画了一个房子，涂上了红色，又在上面画了窗户，图上了棕色，窗户上又画了蓝色的玻璃，这重重复的叠加就是过度绘制，在白纸上的结果是，过度绘制的区域纸会被水笔浸的比较湿，在手机上就会出现显示较慢。如果说这是感性的认识，那么我就引用下面一段话来理性的解释一下：</p>
-<blockquote>
-<p>1. 布局文件是一个xml文件，inflate布局文件其实就是解析xml，根据标签信息创建相应的布局对象并做关联。xml中的标签和属性设置越多，节点树的深度越深，在解析时要执行的判断逻辑、函数的嵌套和递归就越多，所以时间消耗越多；</p>
-<p>2. inflate操作只是布局影响的第一个环节，一个界面要显示出来，在requestLayout后还要执行一系列的measure、layout、draw的操作，每一步的执行时间都会受到布局本身的影响。而界面的最终显示是所有这些操作完成后才实现的，所以如果布局质量差，会增加每一步操作的时间成本，最终显示时间就会比较长。</p>
-</blockquote>
-<p>现在，我们就来说说如何查看是否有过度绘制，和如何避免它吧。</p>
-<p>&nbsp;<br><a id="more"></a><br><strong>一、查看是否存在过度绘制</strong></p>
-<p>1. GPU过渡绘制:对于过度绘制的测试主要通过人工进行测试，也是发现应用过渡绘制的首选途径 .通过打开开发者选项中的 显示GPU过度绘制(魅族手机:设置&mdash;辅助功能&ndash;开发人员工具&ndash;硬件加速渲染&mdash;调试GPU过渡绘制&mdash; 显示过渡绘制区域.）来进行测试（PS：只有android4.2及以上的版本才具备此功能)</p>
-<p>1. 颜色标识: 从好到差:蓝-绿-淡红-红</p>
-<p>1. 蓝色1x过度绘制<br>2. 绿色2x过度绘制<br>3. 淡红色3x过度绘制<br>4. 红色超过4x过度绘制</p>
-<p>2. 验收标准:</p>
-<p>1. 控制过度绘制为2x<br>2. 不允许存在4x过度绘制<br>3. 不允许存在面积超过屏幕1/4区域的3x过度绘制（淡红色区域）</p>
-<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/061747014999623.png" alt=""></p>
-<p>从图中我们就可以看到，文字部分出现了绿色（因为和底部的蓝色叠加了，所以变成了黄绿色），在顶部开关部分出现了红色，也就是四层的过度绘制，这是需要避免的。但由于在屏幕上占的位置很小，所以可以酌情考虑。</p>
-<p>&nbsp;</p>
-<p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/061751006098571.png" alt=""></p>
-<p>上面面是小米商店的截屏，可以看见其中有大量的过度绘制区域，总结下来过度绘制较常见于文字区域。</p>
-<p>&nbsp;</p>
-<p><strong>二、避免过度绘制的方法</strong></p>
-<p>下面这段文字来自他人博客：</p>
-<blockquote>
-<p>作者：<a href="http://weibo.com/1315612820/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="个人微博" target="_blank" rel="external">Gracker</a><br>出处：<a href="http://www.androidperformance.com/" title="网站主页" target="_blank" rel="external">androidperformance.com</a><br>本文版权归作者所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。<br>打赏一下：&nbsp;<a href="http://weibo.com/p/1001603801588257955883?from=page_100505_profile&amp;wvr=6&amp;mod=wenzhangmod" target="_blank" rel="external">微博打赏</a></p>
-</blockquote>
-<p>1. 尽量多使用RelativeLayout和LinearLayout, 不要使用绝对布局AbsoluteLayout，</p>
-<p>1. 在布局<strong>层次一样的情况下</strong>， 建议使用LinearLayout代替RelativeLayout, 因为LinearLayout性能要稍高一点.<br>2. 在完成<strong>相对较复杂的布局时</strong>,建议使用<strong>RelativeLayout</strong>,RelativeLayout可以简单实现LinearLayout嵌套才能实现的布局.</p>
-<p>2. 将可复用的组件抽取出来并通过include标签使用；<br>3. 使用<strong>ViewStub</strong>标签来加载一些不常用的布局；<br>4. 动态地inflation view性能要比SetVisiblity性能要好.当然用<strong>VIewStub</strong>是最好的选择.<br>5. 使用<strong>merge</strong>标签减少布局的嵌套层次<br>6. 去掉多余的背景颜色</p>
-<p>7. 对于有多层背景颜色的Layout来说,留最上面一层的颜色即可,其他底层的颜色都可以去掉<br>8. 对于使用Selector当背景的Layout(比如ListView的Item,会使用Selector来标记点击,选择等不同的状态),可以将normal状态的color设置为&rdquo;@android:color/transparent&rdquo;,来解决对应的问题</p>
-<p>9. 内嵌使用包含layout_weight属性的LinearLayout会在绘制时<strong>花费昂贵的系统资源</strong>，因为每一个子组件都需要被测量两次。在使用ListView与GridView的时候，这个问题显的尤其重要，因为子组件会重复被创建.所以要尽量避免使用Layout_weight<br>10. 使得Layout宽而浅，而不是窄而深（在<strong>Hierarchy Viewer</strong>的Tree视图里面体现）</p>
-<p>&nbsp;</p>
-<p>上面提到的多个工具和技巧我都在之前的文章有所讲解了，在实际开发过程中需要多多思考，根据情况来使用不同的技巧。</p>
-<p>&nbsp;</p>
-<p>参考自：</p>
-<p><a href="http://www.androidperformance.com/android-performance-optimization-overdraw-1.html" target="_blank" rel="external">http://www.androidperformance.com/android-performance-optimization-overdraw-1.html</a></p>
-<p><a href="http://www.open-open.com/lib/view/open1421656495031.html" target="_blank" rel="external">http://www.open-open.com/lib/view/open1421656495031.html</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>如果一个布局十分复杂，那么就需要来排查是否出现了过度绘制，如果出现了，那么很可能会造成刷新率下降，造成卡顿的现象。那么什么是过度绘制呢？过度绘制就是在同一个区域中叠加了多个控件。这就像小时候我们画画，白纸就是没有绘制的画板，如果我们画了一个房子，涂上了红色，又在上面画了窗户，图上了棕色，窗户上又画了蓝色的玻璃，这重重复的叠加就是过度绘制，在白纸上的结果是，过度绘制的区域纸会被水笔浸的比较湿，在手机上就会出现显示较慢。如果说这是感性的认识，那么我就引用下面一段话来理性的解释一下：</p>
-<blockquote>
-<p>1. 布局文件是一个xml文件，inflate布局文件其实就是解析xml，根据标签信息创建相应的布局对象并做关联。xml中的标签和属性设置越多，节点树的深度越深，在解析时要执行的判断逻辑、函数的嵌套和递归就越多，所以时间消耗越多；</p>
-<p>2. inflate操作只是布局影响的第一个环节，一个界面要显示出来，在requestLayout后还要执行一系列的measure、layout、draw的操作，每一步的执行时间都会受到布局本身的影响。而界面的最终显示是所有这些操作完成后才实现的，所以如果布局质量差，会增加每一步操作的时间成本，最终显示时间就会比较长。</p>
-</blockquote>
-<p>现在，我们就来说说如何查看是否有过度绘制，和如何避免它吧。</p>
-<p>&nbsp;<br>]]>
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
-    
-      <category term="布局" scheme="http://www.liuling123.com/tags/%E5%B8%83%E5%B1%80/"/>
-    
-      <category term="布局优化" scheme="http://www.liuling123.com/tags/%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96/"/>
     
       <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
     
