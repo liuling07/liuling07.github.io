@@ -101,7 +101,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        137
+        138
         <span>文章</span>
       </div>
       <div class="article-info-block">
@@ -138,6 +138,67 @@
 
       
       <section id="main">
+      <article id="post-lock-producer-comsumer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/05/lock-producer-comsumer.html">使用Lock来实现生产者和消费者问题</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/05/lock-producer-comsumer.html">
+      <time datetime="2013-05-18T01:55:00.000Z" itemprop="datePublished">2013-05-18</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前面写过：<a href="http://www.cnblogs.com/liuling/archive/2013/04/17/syncnized.html">synchronize来实现生产者和消费者问题</a></p>
+<p>现在用Lock来实现它</p>
+<p><div class="cnblogs_code"></p>
+<p><pre><span style="color: #008080;">  1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.thread;<br></span><span style="color: #008080;">  2</span><br><span style="color: #008080;">  3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.LinkedList;<br></span><span style="color: #008080;">  4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.Condition;<br></span><span style="color: #008080;">  5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.Lock;<br></span><span style="color: #008080;">  6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.ReentrantLock;<br></span><span style="color: #008080;">  7</span><br><span style="color: #008080;">  8</span><br><span style="color: #008080;">  9</span> <span style="color: #008000;">/<em>*</span><br><span style="color: #008080;"> 10</span> <span style="color: #008000;"> </em> 使用Lock来实现生产者和消费者问题<br></span><span style="color: #008080;"> 11</span> <span style="color: #008000;"> <em><br></span><span style="color: #008080;"> 12</span> <span style="color: #008000;"> </em> </span><span style="color: #808080;">@author</span><span style="color: #008000;"> 刘玲<br></span><span style="color: #008080;"> 13</span> <span style="color: #008000;"> <em><br></span><span style="color: #008080;"> 14</span>  <span style="color: #008000;"></em>/</span><br><span style="color: #008080;"> 15</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ProducerConsumer {<br></span><span style="color: #008080;"> 16</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;"> 17</span>         Basket b = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Basket();<br></span><span style="color: #008080;"> 18</span>         Product p = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Product(b);<br></span><span style="color: #008080;"> 19</span>         Consumer c = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Consumer(b);<br></span><span style="color: #008080;"> 20</span>         Consumer c1 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Consumer(b);<br></span><span style="color: #008080;"> 21</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(p).start();<br></span><span style="color: #008080;"> 22</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(c).start();<br></span><span style="color: #008080;"> 23</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(c1).start();<br></span><span style="color: #008080;"> 24</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 25</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 26</span> <span style="color: #008000;">//</span><span style="color: #008000;">馒头</span><br><span style="color: #008080;"> 27</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ManTou{<br></span><span style="color: #008080;"> 28</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> id;<br></span><span style="color: #008080;"> 29</span>     <span style="color: #0000ff;">public</span> ManTou(<span style="color: #0000ff;">int</span><span style="color: #000000;"> id) {<br></span><span style="color: #008080;"> 30</span>         <span style="color: #0000ff;">this</span>.id =<span style="color: #000000;"> id;<br></span><span style="color: #008080;"> 31</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 32</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;"> 33</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> String toString() {<br></span><span style="color: #008080;"> 34</span>         <span style="color: #0000ff;">return</span> “ManTou”+<span style="color: #000000;">id;<br></span><span style="color: #008080;"> 35</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 36</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 37</span><br><span style="color: #008080;"> 38</span> <span style="color: #008000;">//</span><span style="color: #008000;">装馒头的篮子</span><br><span style="color: #008080;"> 39</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Basket{<br></span><span style="color: #008080;"> 40</span>     <span style="color: #0000ff;">int</span> max = 6<span style="color: #000000;">;<br></span><span style="color: #008080;"> 41</span>     LinkedList<ManTou> manTous = <span style="color: #0000ff;">new</span> LinkedList<ManTou><span style="color: #000000;">();<br></span><span style="color: #008080;"> 42</span>     Lock lock = <span style="color: #0000ff;">new</span> ReentrantLock(); <span style="color: #008000;">//</span><span style="color: #008000;">锁对象</span><br><span style="color: #008080;"> 43</span>     Condition full = lock.newCondition();  <span style="color: #008000;">//</span><span style="color: #008000;">用来监控篮子是否满的Condition实例</span><br><span style="color: #008080;"> 44</span>     Condition empty = lock.newCondition(); <span style="color: #008000;">//</span><span style="color: #008000;">用来监控篮子是否空的Condition实例<br></span><span style="color: #008080;"> 45</span>     <span style="color: #008000;">//</span><span style="color: #008000;">往篮子里面放馒头</span><br><span style="color: #008080;"> 46</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> push(ManTou m){<br></span><span style="color: #008080;"> 47</span> <span style="color: #000000;">        lock.lock();<br></span><span style="color: #008080;"> 48</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 49</span>             <span style="color: #0000ff;">while</span>(max ==<span style="color: #000000;"> manTous.size()){<br></span><span style="color: #008080;"> 50</span>                 System.out.println(“篮子是满的，待会儿再生产…”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 51</span> <span style="color: #000000;">                full.await();<br></span><span style="color: #008080;"> 52</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 53</span> <span style="color: #000000;">            manTous.add(m);<br></span><span style="color: #008080;"> 54</span> <span style="color: #000000;">            empty.signal();<br></span><span style="color: #008080;"> 55</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 56</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;"> 57</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{<br></span><span style="color: #008080;"> 58</span> <span style="color: #000000;">            lock.unlock();<br></span><span style="color: #008080;"> 59</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 60</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 61</span>     <span style="color: #008000;">//</span><span style="color: #008000;">往篮子里面取馒头</span><br><span style="color: #008080;"> 62</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> ManTou pop(){<br></span><span style="color: #008080;"> 63</span>         ManTou m = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 64</span> <span style="color: #000000;">        lock.lock();<br></span><span style="color: #008080;"> 65</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 66</span>             <span style="color: #0000ff;">while</span>(manTous.size() == 0<span style="color: #000000;">){<br></span><span style="color: #008080;"> 67</span>                 System.out.println(“篮子是空的，待会儿再吃…”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 68</span> <span style="color: #000000;">                empty.await();<br></span><span style="color: #008080;"> 69</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 70</span>             m =<span style="color: #000000;"> manTous.removeFirst();<br></span><span style="color: #008080;"> 71</span> <span style="color: #000000;">            full.signal();<br></span><span style="color: #008080;"> 72</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 73</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;"> 74</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{<br></span><span style="color: #008080;"> 75</span> <span style="color: #000000;">            lock.unlock();<br></span><span style="color: #008080;"> 76</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> m;<br></span><span style="color: #008080;"> 77</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 78</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 79</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 80</span> <span style="color: #008000;">//</span><span style="color: #008000;">生产者</span><br><span style="color: #008080;"> 81</span> <span style="color: #0000ff;">class</span> Product <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;"> 82</span> <span style="color: #000000;">    Basket basket;<br></span><span style="color: #008080;"> 83</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Product(Basket basket) {<br></span><span style="color: #008080;"> 84</span>         <span style="color: #0000ff;">this</span>.basket =<span style="color: #000000;"> basket;<br></span><span style="color: #008080;"> 85</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 86</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;"> 87</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; 40; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 88</span>             ManTou m = <span style="color: #0000ff;">new</span><span style="color: #000000;"> ManTou(i);<br></span><span style="color: #008080;"> 89</span> <span style="color: #000000;">            basket.push(m);<br></span><span style="color: #008080;"> 90</span>             System.out.println(“生产了”+<span style="color: #000000;">m);<br></span><span style="color: #008080;"> 91</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 92</span>                 Thread.sleep((<span style="color: #0000ff;">int</span>)(Math.random()<em>2000<span style="color: #000000;">));<br></span><span style="color: #008080;"> 93</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 94</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;"> 95</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 96</span><br><span style="color: #008080;"> 97</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 98</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 99</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">100</span><br><span style="color: #008080;">101</span> <span style="color: #008000;">//</span><span style="color: #008000;">消费者</span><br><span style="color: #008080;">102</span> <span style="color: #0000ff;">class</span> Consumer <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;">103</span> <span style="color: #000000;">    Basket basket;<br></span><span style="color: #008080;">104</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Consumer(Basket basket) {<br></span><span style="color: #008080;">105</span>         <span style="color: #0000ff;">this</span>.basket =<span style="color: #000000;"> basket;<br></span><span style="color: #008080;">106</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">107</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;">108</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; 20; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;">109</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">110</span>                 Thread.sleep((<span style="color: #0000ff;">int</span>)(Math.random()</em>2000<span style="color: #000000;">));<br></span><span style="color: #008080;">111</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">112</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;">113</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">114</span>             ManTou m =<span style="color: #000000;"> basket.pop();<br></span><span style="color: #008080;">115</span>             System.out.println(“消费了”+<span style="color: #000000;">m);<br></span><span style="color: #008080;">116</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">117</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">118</span> }</pre><br></div><br>
+        
+          <p class="article-more-link">
+            <a href="/2013/05/lock-producer-comsumer.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.liuling123.com/2013/05/lock-producer-comsumer.html" data-id="cijbfysn2005lxtd0v4r02upr" class="article-share-link">分享到</a>
+      
+        <a href="http://www.liuling123.com/2013/05/lock-producer-comsumer.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-lock-producer-comsumer" data-count-type="comments"></span></a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
       <article id="post-dynamic-compile" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -187,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/dynamic-compile.html" data-id="cij9ysfwd00bpd0d05jw11wrn" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/05/dynamic-compile.html" data-id="cijbfysq900bpxtd0mkbx42bs" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/05/dynamic-compile.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-dynamic-compile" data-count-type="comments"></span></a>
       
@@ -245,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/java-reflex.html" data-id="cij9ysfuj0083d0d04pzv3xy8" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/05/java-reflex.html" data-id="cijbfysod0083xtd03i2p4x5l" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/05/java-reflex.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-java-reflex" data-count-type="comments"></span></a>
       
@@ -304,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/java-serialize.html" data-id="cij9ysfuh0080d0d0sfbebbo3" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/05/java-serialize.html" data-id="cijbfysoc0080xtd0i3h1dxjp" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/05/java-serialize.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-java-serialize" data-count-type="comments"></span></a>
       
@@ -368,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/java-io-stream.html" data-id="cij9ysfut008qd0d06ctlk97f" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/05/java-io-stream.html" data-id="cijbfyson008qxtd05qctrynf" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/05/java-io-stream.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-java-io-stream" data-count-type="comments"></span></a>
       
@@ -438,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/java-io-stream-buffer.html" data-id="cij9ysfuu008td0d08ghv2nju" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/05/java-io-stream-buffer.html" data-id="cijbfysop008txtd0ro0iidc2" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/05/java-io-stream-buffer.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-java-io-stream-buffer" data-count-type="comments"></span></a>
       
@@ -496,7 +557,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/java-transient.html" data-id="cij9ysfue007ud0d01q5ghi6l" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/05/java-transient.html" data-id="cijbfyso8007uxtd0wrmi6dck" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/05/java-transient.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-java-transient" data-count-type="comments"></span></a>
       
@@ -555,7 +616,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/integer-int.html" data-id="cij9ysfv9009gd0d0rapudhnj" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/05/integer-int.html" data-id="cijbfysp3009gxtd0tkf8dd2g" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/05/integer-int.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-integer-int" data-count-type="comments"></span></a>
       
@@ -614,7 +675,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/class.html" data-id="cij9ysfx700dhd0d0fe9t5ylu" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/05/class.html" data-id="cijbfysr400dhxtd0swy2tsni" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/05/class.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-class" data-count-type="comments"></span></a>
       
@@ -678,73 +739,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/04/extends-assemble.html" data-id="cij9ysfw100bcd0d09l5vxa0a" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/04/extends-assemble.html" data-id="cijbfyspx00bcxtd0jzu7gp2s" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/04/extends-assemble.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-extends-assemble" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-stack" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/04/stack.html">利用栈实现迷宫的求解</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/04/stack.html">
-      <time datetime="2013-04-28T09:10:00.000Z" itemprop="datePublished">2013-04-28</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　问题描述：这时实验心理学中的一个典型的问题，心理学家吧一只老鼠从一个无顶的大盒子的入口处赶进迷宫。迷宫设置很多隔壁，对前进方向形成了许多障碍，心理学家在迷宫的唯一出口处放置了一块奶酪，吸引老鼠仔迷宫中寻找通路以到达出口。</p>
-<p>　　求解思想：回溯法是一种不断试探且及时纠正错误的搜索方法，下面的求解过程采用回溯法。从入口出发，按某一方向向前探索，若能走通（未走过的），即某处可以到达，则到达一个新点，否则试探下一个方向；若所有的方向均没有通路，则沿原路返回前一点，换下一个方向继续试探，直到所有可能的通路都搜索到，或找到一条通路，或无路可走又返回到入口点。这里可以用一个栈来实现，每走一步，将该位置压入栈中，若该点无路可走，则出栈返回上一位置。</p>
-<p>　　需要解决的四个问题：</p>
-<p>　　（1）表示迷宫的数据结构</p>
-<p>　　设迷宫为m行n列，利用数组maze[m][n]来表示一个迷宫，maze[i][j]=0或1，其中0表示通路，1表示不通。迷宫该数组四边都为1，代表迷宫四周都是墙。这样就可以保证每个点都有8个方向可以试探。</p>
-<p>　　入口为（1,1），出口为（6,8）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1,1,1,1,1,1,1,1,1,1&#10;1,0,1,1,1,0,1,1,1,1&#10;1,1,0,1,0,1,1,1,1,1&#10;1,0,1,0,0,0,0,0,1,1&#10;1,0,1,1,1,0,1,1,1,1&#10;1,1,0,0,1,1,0,0,0,1&#10;1,0,1,1,0,0,1,1,0,1&#10;1,1,1,1,1,1,1,1,1,1</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2013/04/stack.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/04/stack.html" data-id="cij9ysfqd000xd0d0o49obbww" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/04/stack.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-stack" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -769,6 +766,15 @@
     <h3 class="widget-title">最新博文</h3>
     <div class="widget">
       <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/EventBus-source.html" class="title">EventBus源码解析</a></p>
+              <p class="item-date"><time datetime="2016-01-12T13:29:00.000Z" itemprop="datePublished">2016-01-12</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -806,15 +812,6 @@
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
-              <p class="item-title"><a href="/2015/12/intent-resolving-in-android-m.html" class="title">【译文】Android M中Intent的解析</a></p>
-              <p class="item-date"><time datetime="2015-12-04T06:52:06.000Z" itemprop="datePublished">2015-12-04</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -824,7 +821,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">博文分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -833,7 +830,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 13.08px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
     </div>
   </div>
 
@@ -842,7 +839,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
