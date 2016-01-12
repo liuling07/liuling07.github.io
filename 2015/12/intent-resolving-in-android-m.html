@@ -182,7 +182,7 @@
 <h2 id="u8BD1_u6587_u8FDE_u63A5_uFF1AAndroid_M_u4E2DIntent_u7684_u89E3_u6790"><a href="#u8BD1_u6587_u8FDE_u63A5_uFF1AAndroid_M_u4E2DIntent_u7684_u89E3_u6790" class="headerlink" title="译文连接：Android M中Intent的解析"></a>译文连接：<a href="https://github.com/bboyfeiyu/android-tech-frontier/tree/master/others/Android-M中Intent的解析" target="_blank" rel="external">Android M中Intent的解析</a></h2><p>注意了！在Android 6.0中，“隐式Intent”的解析不能像之前版本那样正常工作了。这很有可能导致你的app不能正常使用。</p>
 <p>现在让我解释一下这个意料之中的问题以及为什么它不能正常使用： 最近，我正在开发一个小的开源项目，叫做“Open Link With”。希望不久后它能够在应用市场上架。</p>
 <p>我的这个app能够让你在其他app之间随意切换。当你给我分享一个链接的时候，我基本上可以根据这个链接查询出所有可以处理这个链接的Activity。然后我会模拟一个系统对话框让你切换app。<br><a id="more"></a><br><img src="https://cdn-images-1.medium.com/max/1600/1*rW8I8aCpJ2q8fnfKH_51_g.gif" alt="从已经打开的youtube的web页面切换到youtube应用" title="从已经打开的youtube的web页面切换到youtube应用"></p>
-<p>我一直都是使用下面的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&#60;ResolveInfo&#62; infos = packageManager&#10;        .queryIntentActivities(intent, MATCH_DEFAULT_ONLY);</span><br></pre></td></tr></table></figure></p>
+<p>我一直都是使用下面的方法：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">List&#60;ResolveInfo&#62; infos = packageManager&#10;        .queryIntentActivities(intent, MATCH_DEFAULT_ONLY);</span><br></pre></td></tr></table></figure></p>
 <p>这段代码几乎所有Android开发者都比较熟悉，并且我也相信大部分app都有用到这段代码。</p>
 <p>我的手机里有两个浏览器。“一个URL是Google+ 的Intent”期望得到一个具有3个ResolveInfo对象的列表（Google+应用以及两个浏览器）。</p>
 <p>好吧，并不是这样！</p>
@@ -192,7 +192,7 @@
 <p>在这种情况下，queryIntentActivities方法只会给开发者返回一个只有一个Activity的列表（此例子返回的是Google+）。</p>
 <p>虽然这是在意料之中的，但是应该在文档中注明，因为它与公共API相矛盾了。</p>
 <p>我研究了一下，发现了一个MATCH_ALL标志，文档表示，它将禁用所有的系统级过滤器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/**&#10; * Querying flag: if set and if the platform is doing any filtering of the results, then&#10; * the filtering will not happen. This is a synonym for saying that all results should&#10; * be returned.&#10; */&#10;public static final int MATCH_ALL = 0x00020000;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/**&#10; * Querying flag: if set and if the platform is doing any filtering of the results, then&#10; * the filtering will not happen. This is a synonym for saying that all results should&#10; * be returned.&#10; */&#10;public static final int MATCH_ALL = 0x00020000;</span><br></pre></td></tr></table></figure>
 <p>这对我来说没什么用。我打开源码（至少我有源码）并开始研究这个方法。</p>
 <p>它似乎优先考虑验证应用程序的域，不仅在它的内部系统，在公共API中也是如此。</p>
 <p>如果有一个验证应用程序的域，它不会返回任何其他东西。MATCH_ALL标志会移除一些系统过滤器，但是仅仅是在没有验证程序的情况下。</p>
@@ -207,7 +207,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/12/intent-resolving-in-android-m.html" data-id="cijbfysp2009cxtd026o8gwmu" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/12/intent-resolving-in-android-m.html" data-id="cijbgtdwt009cysd0rjz8lzpy" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/12/intent-resolving-in-android-m.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-intent-resolving-in-android-m" data-count-type="comments"></span></a>
       
