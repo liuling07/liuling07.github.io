@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术成长之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.liuling123.com/"/>
-  <updated>2016-01-12T13:38:36.000Z</updated>
+  <updated>2016-05-15T05:23:09.000Z</updated>
   <id>http://www.liuling123.com/</id>
   
   <author>
@@ -13,6 +13,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Android自动化反编译脚本]]></title>
+    <link href="http://www.liuling123.com/2016/05/auto-decompiler.html"/>
+    <id>http://www.liuling123.com/2016/05/auto-decompiler.html</id>
+    <published>2016-05-15T05:22:00.000Z</published>
+    <updated>2016-05-15T05:23:09.000Z</updated>
+    <content type="html"><![CDATA[<p>作为Android开发人员，在开发过程中经常会因为某个原因去反编译某个app。为了方便，这里特意整理了一个反编译的自动化脚本，只需一个命令就可以获取apk文件里面的资源文件，并使用jd－gui工具打开生成的jar文件。省去每次都要手动敲每个工具的命令，有时候忘记了某个命令还得上网搜索，很麻烦。</p>
+<p>这里只整理了Linux和Mac两个平台的自动化脚本，Win下的百度能搜索的到。</p>
+<h3 id="u6240_u9700_u8981_u7684_u5DE5_u5177"><a href="#u6240_u9700_u8981_u7684_u5DE5_u5177" class="headerlink" title="所需要的工具"></a>所需要的工具</h3><p>1）apktool，功能：反编译出apk所需要的资源文件和布局设置文件等，<br>下载地址：<a href="http://ibotpeaches.github.io/Apktool/install/" target="_blank" rel="external">http://ibotpeaches.github.io/Apktool/install/</a></p>
+<p>2）dex2jar，功能：反编译出jar文件，即apk的源程序文件的字节码，<br>下载地址：<a href="http://code.google.com/p/dex2jar/downloads/list" target="_blank" rel="external">http://code.google.com/p/dex2jar/downloads/list</a></p>
+<p>3）jd-gui 功能：查看反编译出来的jar文件<br>下载地址：<a href="http://jd.benow.ca/" target="_blank" rel="external">http://jd.benow.ca/</a></p>
+<p>这些工具我都整理好了，下面附了Linux和Mac平台的工具下载链接，并且包含了自动化脚本工具，可以直接下载使用。</p>
+<a id="more"></a>
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>自动化脚本：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/bin/sh  &#10;&#10;# will be decompiled file&#10;file_name=$1&#10;export NAME=$&#123;file_name%.apk&#125;&#10;export APK_TOOLS=$PWD/tools/apktool-2.1.1&#10;export DEX_JAR=$PWD/tools/dex2jar-0.0.9.15&#10;export JD_GUI=$PWD/tools/jd-gui-0.3.5.linux.i686&#10;&#10;#init  &#10;rm -rf tmp&#10;&#10;#apply apktool  &#10;cd $APK_TOOLS&#10;rm -rf ../../$NAME&#10;./apktool d -f ../../$&#123;file_name&#125;&#10;mv $NAME ../../&#10;&#10;#unzip  &#10;cd $APK_TOOLS/../..&#10;mkdir -p tmp&#10;cp $&#123;file_name&#125; tmp/$NANME.zip&#10;cd tmp&#10;unzip $NANME.zip&#10;cd ..&#10;cp ./tmp/$NANME/classes.dex $NAME&#10;&#10;#use dex2jar to get classes_dex2jar.jar  &#10;$DEX_JAR/dex2jar.sh $NAME/classes.dex&#10;rm -rf tmp&#10;&#10;#prepre open classes_dex2jar.jar&#10;$JD_GUI/jd-gui $NAME/classes_dex2jar.jar</span><br></pre></td></tr></table></figure></p>
+<p>Linux下反编译工具下载链接：<a href="http://download.csdn.net/detail/a476777389/9520707" target="_blank" rel="external">http://download.csdn.net/detail/a476777389/9520707</a></p>
+<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>自动化脚本：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/bin/sh  &#10;&#10;# will be decompiled file&#10;file_name=$1&#10;export NAME=$&#123;file_name%.apk&#125;&#10;export APK_TOOLS=$PWD/tools/apktool-2.1.1&#10;export DEX_JAR=$PWD/tools/dex2jar-0.0.9.15&#10;export JD_GUI=$PWD/tools/jd-gui-osx-1.4.0&#10;&#10;#init  &#10;rm -rf tmp&#10;#apply apktool  &#10;cd $APK_TOOLS&#10;rm -rf ../../$NAME&#10;./apktool d -f ../../$&#123;file_name&#125;&#10;mv $NAME ../../&#10;&#10;#unzip  &#10;cd $APK_TOOLS/../..&#10;mkdir -p tmp&#10;cp $&#123;file_name&#125; tmp/$NANME.zip&#10;cd tmp&#10;unzip $NANME.zip&#10;cd ..&#10;cp ./tmp/$NANME/classes.dex $NAME&#10;&#10;#use dex2jar to get classes_dex2jar.jar  &#10;$DEX_JAR/d2j-dex2jar.sh $NAME/classes.dex&#10;rm -rf tmp &#10;mv classes-dex2jar.jar $NAME&#10;&#10;#prepre open classes_dex2jar.jar&#10;open -a $JD_GUI/JD-GUI.app $NAME/classes-dex2jar.jar</span><br></pre></td></tr></table></figure></p>
+<p>Mac下反编译工具下载链接：<a href="http://download.csdn.net/detail/a476777389/9520676" target="_blank" rel="external">http://download.csdn.net/detail/a476777389/9520676</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>作为Android开发人员，在开发过程中经常会因为某个原因去反编译某个app。为了方便，这里特意整理了一个反编译的自动化脚本，只需一个命令就可以获取apk文件里面的资源文件，并使用jd－gui工具打开生成的jar文件。省去每次都要手动敲每个工具的命令，有时候忘记了某个命令还得上网搜索，很麻烦。</p>
+<p>这里只整理了Linux和Mac两个平台的自动化脚本，Win下的百度能搜索的到。</p>
+<h3 id="u6240_u9700_u8981_u7684_u5DE5_u5177"><a href="#u6240_u9700_u8981_u7684_u5DE5_u5177" class="headerlink" title="所需要的工具"></a>所需要的工具</h3><p>1）apktool，功能：反编译出apk所需要的资源文件和布局设置文件等，<br>下载地址：<a href="http://ibotpeaches.github.io/Apktool/install/">http://ibotpeaches.github.io/Apktool/install/</a></p>
+<p>2）dex2jar，功能：反编译出jar文件，即apk的源程序文件的字节码，<br>下载地址：<a href="http://code.google.com/p/dex2jar/downloads/list">http://code.google.com/p/dex2jar/downloads/list</a></p>
+<p>3）jd-gui 功能：查看反编译出来的jar文件<br>下载地址：<a href="http://jd.benow.ca/">http://jd.benow.ca/</a></p>
+<p>这些工具我都整理好了，下面附了Linux和Mac平台的工具下载链接，并且包含了自动化脚本工具，可以直接下载使用。</p>]]>
+    
+    </summary>
+    
+      <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
+    
+      <category term="反编译" scheme="http://www.liuling123.com/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    
+      <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[EventBus源码解析]]></title>
@@ -875,70 +911,6 @@
       <category term="多线程" scheme="http://www.liuling123.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
       <category term="断点续传" scheme="http://www.liuling123.com/tags/%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/"/>
-    
-      <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[AsyncTask源码分析]]></title>
-    <link href="http://www.liuling123.com/2015/10/asynctask-source.html"/>
-    <id>http://www.liuling123.com/2015/10/asynctask-source.html</id>
-    <published>2015-10-10T08:19:00.000Z</published>
-    <updated>2016-01-03T08:01:39.000Z</updated>
-    <content type="html"><![CDATA[<p>关于AsyncTask的用法可以参看前面一篇博客<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="AsyncTask实现断点续传" target="_blank" rel="external">《AsyncTask实现断点续传》</a>，本文只解析AsyncTask的源代码。</p>
-<p>AsyncTask.execute方法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public final AsyncTask&#60;Params, Progress, Result&#62; execute(Params... params) &#123;&#10;&#9;return executeOnExecutor(sDefaultExecutor, params);&#10;&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>execute方法里面直接调用了executeOnexecute方法。</p>
-<p>AsyncTask.executeOnexecute方法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public final AsyncTask&#60;Params, Progress, Result&#62; executeOnExecutor(Executor exec,&#10;            Params... params) &#123;&#10;    if (mStatus != Status.PENDING) &#123;&#10;        switch (mStatus) &#123;&#10;            case RUNNING:&#10;                throw new IllegalStateException(&#34;Cannot execute task:&#34;&#10;                        + &#34; the task is already running.&#34;);&#10;            case FINISHED:&#10;                throw new IllegalStateException(&#34;Cannot execute task:&#34;&#10;                        + &#34; the task has already been executed &#34;&#10;                        + &#34;(a task can be executed only once)&#34;);&#10;        &#125;&#10;    &#125;&#10;    mStatus = Status.RUNNING;&#10;    onPreExecute();&#10;    mWorker.mParams = params;&#10;    exec.execute(mFuture);&#10;    return this;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>3-13行是检测AsyncTask的状态，如果状态不为PENDING，则会抛异常，这也是为什么一个AsyncTask只能被执行一次的原因。14行将状态改为RUNNING，表示该任务正在运行。然后调用AsyncTask的onPreExecute()方法。</p>
-<p>由下面代码可以看出，AsyncTask有三种状态：PENDING（未运行）、RUNNING（正在运行）、FINISHED（已运行完毕）。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public enum Status &#123;&#10;    /**&#10;     * Indicates that the task has not been executed yet.&#10;     */&#10;    PENDING,&#10;    /**&#10;     * Indicates that the task is running.&#10;     */&#10;    RUNNING,&#10;    /**&#10;     * Indicates that &#123;@link AsyncTask#onPostExecute&#125; has finished.&#10;     */&#10;    FINISHED,&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>FutureTask代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class FutureTask&#60;V&#62; implements RunnableFuture&#60;V&#62; &#123;&#10;    ......&#10;    //&#26500;&#36896;&#26041;&#27861;&#20256;&#20837;&#19968;&#20010;Callable&#23545;&#35937;&#10;    public FutureTask(Callable&#60;V&#62; callable) &#123;&#10;        if (callable == null)&#10;            throw new NullPointerException();&#10;        this.callable = callable;&#10;        this.state = NEW;       // ensure visibility of callable&#10;    &#125;&#10;    public void run() &#123;&#10;        if (state != NEW ||&#10;            !UNSAFE.compareAndSwapObject(this, runnerOffset,&#10;                                         null, Thread.currentThread()))&#10;            return;&#10;        try &#123;&#10;            Callable&#60;V&#62; c = callable;&#10;            if (c != null &#38;&#38; state == NEW) &#123;&#10;                V result;&#10;                boolean ran;&#10;                try &#123;&#10;                    result = c.call();//&#36825;&#37324;&#35843;&#29992;&#20102;callable.call()&#26041;&#27861;&#10;                    ran = true;&#10;                &#125; catch (Throwable ex) &#123;&#10;                    result = null;&#10;                    ran = false;&#10;                    setException(ex);&#10;                &#125;&#10;                if (ran)&#10;                    set(result);&#10;            &#125;&#10;        &#125; finally &#123;&#10;            // runner must be non-null until state is settled to&#10;            // prevent concurrent calls to run()&#10;            runner = null;&#10;            // state must be re-read after nulling runner to prevent&#10;            // leaked interrupts&#10;            int s = state;&#10;            if (s &#62;= INTERRUPTING)&#10;                handlePossibleCancellationInterrupt(s);&#10;        &#125;&#10;    &#125;&#10;    ......&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>AsyncTask构造方法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public abstract class AsyncTask&#60;Params, Progress, Result&#62; &#123;&#10;    ......&#10;    /**&#10;     * Creates a new asynchronous task. This constructor must be invoked on the UI thread.&#10;     */&#10;    public AsyncTask() &#123;&#10;        mWorker = new WorkerRunnable&#60;Params, Result&#62;() &#123;&#10;            public Result call() throws Exception &#123;&#10;                mTaskInvoked.set(true);&#10;                Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);&#10;                //noinspection unchecked&#10;                return postResult(doInBackground(mParams));&#10;            &#125;&#10;        &#125;;&#10;        //&#21019;&#24314;FutureTask&#23545;&#35937;&#30340;&#26102;&#20505;&#20256;&#20837;&#20102;mWorker&#20316;&#20026;Callable&#10;        mFuture = new FutureTask&#60;Result&#62;(mWorker) &#123;&#10;            @Override&#10;            protected void done() &#123;&#10;                try &#123;&#10;                    postResultIfNotInvoked(get());&#10;                &#125; catch (InterruptedException e) &#123;&#10;                    android.util.Log.w(LOG_TAG, e);&#10;                &#125; catch (ExecutionException e) &#123;&#10;                    throw new RuntimeException(&#34;An error occured while executing doInBackground()&#34;,&#10;                            e.getCause());&#10;                &#125; catch (CancellationException e) &#123;&#10;                    postResultIfNotInvoked(null);&#10;                &#125;&#10;            &#125;&#10;        &#125;;&#10;    &#125;&#10;    ......&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>由FutureTask源码我们可以看出，run()方法里面调用了c.call()，而AsyncTask 中创建FutureTask的时候传入了mWorker，所以FutureTask.run()方法里面c.call()调用的是mWorker对象的call()方法，而AsyncTask里mWorker重写了call方法，即上面8-14行，所以c.call()会执行到mWorker.call()方法来。call方法里面11行将线程的优先级设置为后台线程，这样当多个线程并发后很多无关紧要的线程分配的CPU时间将会减少，有利于主线程的处理。</p>
-<p>接下来11行执行了doInBackground(mParams)方法，通常我们会重写该方法来实现业务逻辑操作。然后执行postResult方法，并且将结果返回给FutureTask（因为是FutureTask.run方法调用的此call方法，所以需要返回结果到FutureTask.run方法）。这里我们先看看postResult：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private Result postResult(Result result) &#123;&#10;    @SuppressWarnings(&#34;unchecked&#34;)&#10;    Message message = sHandler.obtainMessage(MESSAGE_POST_RESULT,&#10;            new AsyncTaskResult&#60;Result&#62;(this, result));&#10;    message.sendToTarget();&#10;    return result;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>这里的sHandler是InternalHandler对象。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private static class InternalHandler extends Handler &#123;&#10;    @SuppressWarnings(&#123;&#34;unchecked&#34;, &#34;RawUseOfParameterizedType&#34;&#125;)&#10;    @Override&#10;    public void handleMessage(Message msg) &#123;&#10;        AsyncTaskResult result = (AsyncTaskResult) msg.obj;&#10;        switch (msg.what) &#123;&#10;            case MESSAGE_POST_RESULT:&#10;                // There is only one result&#10;                result.mTask.finish(result.mData[0]);&#10;                break;&#10;            case MESSAGE_POST_PROGRESS:&#10;                result.mTask.onProgressUpdate(result.mData);&#10;                break;&#10;        &#125;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>由第9行代码可知最终会执行AsyncTask的finish方法，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private void finish(Result result) &#123;&#10;    if (isCancelled()) &#123;&#10;        onCancelled(result);&#10;    &#125; else &#123;&#10;        onPostExecute(result);&#10;    &#125;&#10;    mStatus = Status.FINISHED;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>finish的作用是如果task被取消了就执行onCancelled方法，如果没有被取消而是正常执行完毕，则执行onPostExecute方法（这也是为什么task被调用了cancel方法，不会执行onPostExecute的原因）。最后将task的状态标记为FINISHED。</p>
-<p>上面说到mWorker.call会将执行结果返回给FutureTask.run()方法并且继续往下执行，我们再次看看FutureTask.run方法（20-30行）：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">boolean ran;&#10;try &#123;&#10;     result = c.call();&#10;     ran = true;&#10;&#125; catch (Throwable ex) &#123;&#10;     result = null;&#10;     ran = false;&#10;     setException(ex);&#10;&#125;&#10;if (ran)&#10;     set(result);</span><br></pre></td></tr></table></figure>
-<p>由上面代码可以看到，执行完c.call后，会执行set(result)方法。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">protected void set(V v) &#123;&#10;    if (UNSAFE.compareAndSwapInt(this, stateOffset, NEW, COMPLETING)) &#123;&#10;        outcome = v;&#10;        UNSAFE.putOrderedInt(this, stateOffset, NORMAL); // final state&#10;        finishCompletion();&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>最终会执行finishCompletion()方法。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private void finishCompletion() &#123;&#10;    // assert state &#62; COMPLETING;&#10;    for (WaitNode q; (q = waiters) != null;) &#123;&#10;        if (UNSAFE.compareAndSwapObject(this, waitersOffset, q, null)) &#123;&#10;            for (;;) &#123;&#10;                Thread t = q.thread;&#10;                if (t != null) &#123;&#10;                    q.thread = null;&#10;                    LockSupport.unpark(t);&#10;                &#125;&#10;                WaitNode next = q.next;&#10;                if (next == null)&#10;                    break;&#10;                q.next = null; // unlink to help gc&#10;                q = next;&#10;            &#125;&#10;            break;&#10;        &#125;&#10;    &#125;&#10;    done();&#10;    callable = null;        // to reduce footprint&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>看到21行代码，会执行FutureTask的done()方法，而这个方法在AsyncTask构造函数中初始化FutureTask对象的时候被重写了。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mFuture = new FutureTask&#60;Result&#62;(mWorker) &#123;&#10;    @Override&#10;    protected void done() &#123;&#10;        try &#123;&#10;            postResultIfNotInvoked(get());&#10;        &#125; catch (InterruptedException e) &#123;&#10;            android.util.Log.w(LOG_TAG, e);&#10;        &#125; catch (ExecutionException e) &#123;&#10;            throw new RuntimeException(&#34;An error occured while executing doInBackground()&#34;,&#10;                    e.getCause());&#10;        &#125; catch (CancellationException e) &#123;&#10;            postResultIfNotInvoked(null);&#10;        &#125;&#10;    &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<p>这里主要是验证postResult是否被调用了，如果没有被调用着调用postResult函数，因为前面mWorker.call方法里面调用过了，所以这里不错操作。</p>
-<p>顺便提一下，在AsyncTask的doInBackground方法中如果需要更新UI的话，则调用AsyncTask的publishProgress方法即可：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">protected final void publishProgress(Progress... values) &#123;&#10;     if (!isCancelled()) &#123;&#10;         sHandler.obtainMessage(MESSAGE_POST_PROGRESS,&#10;                 new AsyncTaskResult&#60;Progress&#62;(this, values)).sendToTarget();&#10;     &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>publishProgress方法最终也会通过sHandler来调用AsyncTask的onProgressUpdate方法，一般我们如果需要获取进度的话都需要重写AsyncTask的onProgressUpdate。</p>
-<p>好了，AsyncTask的源码也分析完了。再次总结一下Asynctask使用的注意事项：</p>
-<ol>
-<li>异步任务的实例必须在UI线程中创建。</li>
-<li>execute(Params… params)方法必须在UI线程中调用。</li>
-<li>不要手动调用onPreExecute()，doInBackground(Params… params)，onProgressUpdate(Progress… values)，onPostExecute(Result result)这几个方法。</li>
-<li>不能在doInBackground(Params… params)中更改UI组件的信息。</li>
-<li>一个任务实例只能执行一次，如果执行第二次将会抛出异常。</li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>关于AsyncTask的用法可以参看前面一篇博客<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="AsyncTask实现断点续传">《AsyncTask实现断点续传》</a>，本文只解析AsyncTask的源代码。</p>
-<p>AsyncTask.execute方法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public final AsyncTask&#60;Params, Progress, Result&#62; execute(Params... params) &#123;&#10;&#9;return executeOnExecutor(sDefaultExecutor, params);&#10;&#125;</span><br></pre></td></tr></table></figure>]]>
-    
-    </summary>
-    
-      <category term="AsyncTask" scheme="http://www.liuling123.com/tags/AsyncTask/"/>
-    
-      <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
     
       <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
     
