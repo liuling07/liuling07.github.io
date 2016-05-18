@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术成长之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.liuling123.com/"/>
-  <updated>2016-05-18T13:12:48.000Z</updated>
+  <updated>2016-05-18T13:19:33.000Z</updated>
   <id>http://www.liuling123.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.liuling123.com/2016/05/android-studio-gradle-ndk-config.html"/>
     <id>http://www.liuling123.com/2016/05/android-studio-gradle-ndk-config.html</id>
     <published>2016-05-18T13:07:00.000Z</published>
-    <updated>2016-05-18T13:12:48.000Z</updated>
+    <updated>2016-05-18T13:19:33.000Z</updated>
     <content type="html"><![CDATA[<p>默认情况下，存在src/main/jni文件夹时，gradle生成脚本会执行ndk编译生成操作，但是，编译生成方式并不是像以前那样用ndk-build去处理Android.mk Application.mk等进行c/c++代码的编译链接，而是在临时文件路径中重新生成了一份新的mk文件，并以此作为ndk编译项目。</p>
 <p>如果我们想自己在jni目录下面建立Android.mk和Application.mk来进行编译，比如在so库中加入log打印功能，则需要在Android.mk中将log库编译到so文件，此时要怎么做呢？</p>
 <p>首先在项目gradle文件的android{}中添加如下代码：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sourceSets &#123;&#10;    main &#123;&#10;        jni.srcDirs = []   //&#23631;&#34109;gradle&#30340;jni&#29983;&#25104;&#36807;&#31243;&#10;        jniLibs.srcDir &#39;src/main/libs&#39;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
@@ -43,7 +43,7 @@
     
       <category term="jni" scheme="http://www.liuling123.com/tags/jni/"/>
     
-      <category term="JNI&amp;NDK" scheme="http://www.liuling123.com/categories/JNI-NDK/"/>
+      <category term="JNI&amp;amp;NDK" scheme="http://www.liuling123.com/categories/JNI-amp-NDK/"/>
     
   </entry>
   

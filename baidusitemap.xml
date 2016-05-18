@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.liuling123.com/2016/05/android-studio-gradle-ndk-config.html</loc>
-    <lastmod>2016-05-18T13:12:48.000Z</lastmod>
+    <lastmod>2016-05-18T13:19:33.000Z</lastmod>
     <data>
         <display>
         <title>Android Studio在Gradle中配置NDK编译，覆盖默认NDK编译</title>
@@ -20,7 +20,7 @@
          
            
              
-              <breadCrumb title="JNI&amp;NDK" url="http://www.liuling123.com/categories/JNI-NDK/"/>
+              <breadCrumb title="JNI&amp;amp;NDK" url="http://www.liuling123.com/categories/JNI-amp-NDK/"/>
           
         </display>
     </data>
