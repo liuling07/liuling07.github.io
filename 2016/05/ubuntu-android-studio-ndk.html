@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ubuntu下NDK编译环境搭建及在Android Studio中集成NDK | 残剑博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Ubuntu下NDK环境的搭建NDK下载首先需要下载NDK编译工具，目前官方最新的NDK版本是r11c，为了保证稳定性，我下的是r11b。
+能翻墙的可以从谷歌官网下载，地址为：https://developer.android.com/ndk/downloads/index.html
+不能翻墙的也可以从下面网站下载，该网站提供了Android开发各种工具的下载：http://www.android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu下NDK编译环境搭建及在Android Studio中集成NDK">
+<meta property="og:url" content="http://www.liuling123.com/2016/05/ubuntu-android-studio-ndk.html">
+<meta property="og:site_name" content="残剑博客">
+<meta property="og:description" content="Ubuntu下NDK环境的搭建NDK下载首先需要下载NDK编译工具，目前官方最新的NDK版本是r11c，为了保证稳定性，我下的是r11b。
+能翻墙的可以从谷歌官网下载，地址为：https://developer.android.com/ndk/downloads/index.html
+不能翻墙的也可以从下面网站下载，该网站提供了Android开发各种工具的下载：http://www.android">
+<meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fanddevtools_ndk_download.png">
+<meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fndk-build-setup-ok.png">
+<meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fas-so-output.png">
+<meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fas-so-output-option.png">
+<meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fjni-struts.png">
+<meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fjni-sample.png">
+<meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fdefault-mk.png">
+<meta property="og:updated_time" content="2016-05-31T14:27:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu下NDK编译环境搭建及在Android Studio中集成NDK">
+<meta name="twitter:description" content="Ubuntu下NDK环境的搭建NDK下载首先需要下载NDK编译工具，目前官方最新的NDK版本是r11c，为了保证稳定性，我下的是r11b。
+能翻墙的可以从谷歌官网下载，地址为：https://developer.android.com/ndk/downloads/index.html
+不能翻墙的也可以从下面网站下载，该网站提供了Android开发各种工具的下载：http://www.android">
+  
+  
+    <link rel="icon" href="favicon.ico" type="image/x-ico">
+  
+  
+ <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/.">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+        
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
+        
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/.">Home</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">Archives</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">Categories</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">Tags</a></td>
+        
+          <td><a class="main-nav-link" href="/about">About</a></td>
+        
+        <td>
+          
+            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
+          
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+      
+        <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="/css/images/protrait.jpg">
+      <h2 id="name">Lauren</h2>
+      <h3 id="title">Android Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <a id="follow" href="https://github.com/liuling07">关注我</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        141
+        <span>文章</span>
+      </div>
+      <div class="article-info-block">
+        35
+        <span>标签</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+          
+          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+          
+          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
+          
+          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
+          
+          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+          
+          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+          
+          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+          
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+</aside>
+
+      
+      <section id="main"><article id="post-ubuntu-android-studio-ndk" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ubuntu下NDK编译环境搭建及在Android Studio中集成NDK
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/05/ubuntu-android-studio-ndk.html">
+      <time datetime="2016-05-31T13:24:00.000Z" itemprop="datePublished">2016-05-31</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <h1 id="Ubuntu_u4E0BNDK_u73AF_u5883_u7684_u642D_u5EFA"><a href="#Ubuntu_u4E0BNDK_u73AF_u5883_u7684_u642D_u5EFA" class="headerlink" title="Ubuntu下NDK环境的搭建"></a>Ubuntu下NDK环境的搭建</h1><h2 id="NDK_u4E0B_u8F7D"><a href="#NDK_u4E0B_u8F7D" class="headerlink" title="NDK下载"></a>NDK下载</h2><p>首先需要下载NDK编译工具，目前官方最新的NDK版本是r11c，为了保证稳定性，我下的是r11b。</p>
+<p>能翻墙的可以从谷歌官网下载，地址为：<a href="https://developer.android.com/ndk/downloads/index.html" target="_blank" rel="external">https://developer.android.com/ndk/downloads/index.html</a></p>
+<p>不能翻墙的也可以从下面网站下载，该网站提供了Android开发各种工具的下载：<a href="http://www.androiddevtools.cn/index.html" target="_blank" rel="external">http://www.androiddevtools.cn/index.html</a></p>
+<a id="more"></a>
+<p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fanddevtools_ndk_download.png" alt=""></p>
+<h2 id="u914D_u7F6E_u73AF_u5883_u53D8_u91CF"><a href="#u914D_u7F6E_u73AF_u5883_u53D8_u91CF" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>将下载下来的文件进行解压，我这里解压到~/android/android-ndk-r11b。</p>
+<p>然后在~/.profile文件中加入如下内容，将NDK目录加入到PATH中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#set ndk environment&#10;export NDK_HOME=~/android/android-ndk-r11b&#10;export PATH=$PATH:$NDK_HOME</span><br></pre></td></tr></table></figure>
+<p>最后执行“source ~/.profile”使之生效。</p>
+<p>配置好环境变量之后，需要验证一下是否搭建成功，在命令行下输入ndk-build，有如下提示则表示搭建成功了。</p>
+<p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fndk-build-setup-ok.png" alt=""></p>
+<h1 id="u5728Android_Studio_u4E2D_u96C6_u6210NDK"><a href="#u5728Android_Studio_u4E2D_u96C6_u6210NDK" class="headerlink" title="在Android Studio中集成NDK"></a>在Android Studio中集成NDK</h1><h2 id="u521B_u5EFAAndroid_u9879_u76EE"><a href="#u521B_u5EFAAndroid_u9879_u76EE" class="headerlink" title="创建Android项目"></a>创建Android项目</h2><p>在Android Studio中创建一个Android工程，我这里创建一个名为NDKJNIDemo的工程。</p>
+<h2 id="u914D_u7F6Endk-dir"><a href="#u914D_u7F6Endk-dir" class="headerlink" title="配置ndk.dir"></a>配置ndk.dir</h2><p>在项目中的local.properties文件中添加如下代码来指定ndk的目录：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;ndk.dir=~/android/android-ndk-r11b</span><br></pre></td></tr></table></figure>
+<h2 id="u914D_u7F6Egradle_u7684ndk_u6A21_u5757"><a href="#u914D_u7F6Egradle_u7684ndk_u6A21_u5757" class="headerlink" title="配置gradle的ndk模块"></a>配置gradle的ndk模块</h2><p>在module的build.gradle文件的android.defaultConfig添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;ndk &#123;&#10;    moduleName &#34;NDKJNIDemo&#34;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>这里配置的moduleName就是编译生成so库的名字，比如这里生成的so库名字为“libNDKJNIDemo.so”。</p>
+<p>ndk还可以配置更多选项，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ndk &#123; &#10;    moduleName &#34;NDKJNIDemo&#34;&#10;    cFlags &#34;-DANDROID_NDK -D_DEBUG DNULL=0&#34;    // Define some macros&#10;    ldLibs &#34;EGL&#34;, &#34;GLESv3&#34;, &#34;dl&#34;, &#34;log&#34;        // Link with these libraries!&#10;    stl &#34;stlport_shared&#34;                       // Use shared stlport library&#10;    abiFilters &#34;armeabi&#34;, &#34;armeabi-v7a&#34;, &#34;x86&#34; // Set the platform&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u914D_u7F6E_u7F16_u8BD1_u5E73_u53F0_uFF08_u53EF_u9009_uFF09"><a href="#u914D_u7F6E_u7F16_u8BD1_u5E73_u53F0_uFF08_u53EF_u9009_uFF09" class="headerlink" title="配置编译平台（可选）"></a>配置编译平台（可选）</h2><p>Android Studio默认会编译所有平台下的so库。</p>
+<p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fas-so-output.png" alt=""></p>
+<p>如果你只想编译指定平台的so库，可以加入如下配置，在module的build.gradle文件的android中加入如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ndk &#123;&#10;      moduleName &#34;NDKJNIDemo&#34;&#10;      abiFilters &#34;armeabi&#34;, &#34;armeabi-v7a&#34;, &#34;x86&#34;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fas-so-output-option.png" alt=""></p>
+<h2 id="u521B_u5EFA_u5305_u542Bnative_u65B9_u6CD5_u7684_u7C7B"><a href="#u521B_u5EFA_u5305_u542Bnative_u65B9_u6CD5_u7684_u7C7B" class="headerlink" title="创建包含native方法的类"></a>创建包含native方法的类</h2><p>我这里创建了一个JniUtils类，并且创建了一个名为getStringFromC()的nativie方法，该方法作用就是简单的从JNI层返回一个字符串给Java层，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package com.liuling.ndkjnidemo;&#10;/**&#10; * Created by liuling on 16-5-16.&#10; */&#10;public class JniUtils &#123;&#10;    static &#123;&#10;        System.loadLibrary(&#34;NDKJNIDemo&#34;);//&#19982;build.gradle&#37324;&#38754;&#35774;&#32622;&#30340;so&#21517;&#23383;&#65292;&#24517;&#39035;&#19968;&#33268;&#10;    &#125;&#10;    public static native String getStringFromC();&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>这里得注意loadLibrary加载的so库的名字必须和上面第3步配置的moduleName保持一直，否则会报找不到库文件的异常。</p>
+<h2 id="u521B_u5EFAC/C++_u6E90_u4EE3_u7801"><a href="#u521B_u5EFAC/C++_u6E90_u4EE3_u7801" class="headerlink" title="创建C/C++源代码"></a>创建C/C++源代码</h2><h3 id="u751F_u6210_u5934_u6587_u4EF6"><a href="#u751F_u6210_u5934_u6587_u4EF6" class="headerlink" title="生成头文件"></a>生成头文件</h3><p>进入module/build/intermediates/classes/debug目录下，在命令行下使用javah生成头文件，我这里是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd app/build/intermediates/classes/debug&#10;javah -jni com.liuling.ndkjnidemo.JniUtils</span><br></pre></td></tr></table></figure>
+<p>完了之后会在module/build/intermediates/classes/debug目录下生成相应的头文件，我这里生成的是com_liuling_ndkjnidemo_JniUtils.h，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/* DO NOT EDIT THIS FILE - it is machine generated */&#10;#include &#60;jni.h&#62;&#10;#include &#60;string.h&#62;&#10;/* Header for class com_liuling_ndkjnidemo_JniUtils */&#10;#ifndef _Included_com_liuling_ndkjnidemo_JniUtils&#10;#define _Included_com_liuling_ndkjnidemo_JniUtils&#10;#ifdef __cplusplus&#10;extern &#34;C&#34; &#123;&#10;#endif&#10;/*&#10; * Class:     com_liuling_ndkjnidemo_JniUtils&#10; * Method:    getStringFormC&#10; * Signature: ()Ljava/lang/String;&#10; */&#10;JNIEXPORT jstring JNICALL Java_com_liuling_ndkjnidemo_JniUtils_getStringFromC&#10;  (JNIEnv *, jclass);&#10;#ifdef __cplusplus&#10;&#125;&#10;#endif&#10;#endif</span><br></pre></td></tr></table></figure>
+<h3 id="u521B_u5EFAjni_u76EE_u5F55"><a href="#u521B_u5EFAjni_u76EE_u5F55" class="headerlink" title="创建jni目录"></a>创建jni目录</h3><p>在module/src/main/下面新建jni目录，ndk会默认编译该目录下的源文件。目录结构如下图：</p>
+<p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fjni-struts.png" alt=""></p>
+<p>当然，你也可以自定义C/C++源代码目录，在module的build.gradle文件的android中添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sourceSets &#123;&#10;    main &#123;&#10;        jni.srcDirs &#39;src/main/jnisrc&#39;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u62F7_u8D1D_u5934_u6587_u4EF6_u5230C/C++_u6E90_u4EE3_u7801_u76EE_u5F55_u5E76_u521B_u5EFAC_u6E90_u6587_u4EF6"><a href="#u62F7_u8D1D_u5934_u6587_u4EF6_u5230C/C++_u6E90_u4EE3_u7801_u76EE_u5F55_u5E76_u521B_u5EFAC_u6E90_u6587_u4EF6" class="headerlink" title="拷贝头文件到C/C++源代码目录并创建C源文件"></a>拷贝头文件到C/C++源代码目录并创建C源文件</h3><p>将前面生成的头文件拷贝到C/C++源代码目录，并创建相应的C代码文件，我这里创建了com_liuling_ndkjnidemo_JniUtils.c，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &#34;com_liuling_ndkjnidemo_JniUtils.h&#34;&#10;/*&#10; * Class:     com_liuling_ndkjnidemo_JniUtils&#10; * Method:    getStringFormC&#10; * Signature: ()Ljava/lang/String;&#10; */&#10;JNIEXPORT jstring JNICALL Java_com_liuling_ndkjnidemo_JniUtils_getStringFromC&#10;        (JNIEnv *env, jclass obj) &#123;&#10;    return (jstring)(*env)-&#62; NewStringUTF(env, &#34;I am string from jni-jnisrc&#34;);&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>Java_com_liuling_ndkjnidemo_JniUtils_getStringFromC方法就是对应JniUtils里的native方法getStringFromC()。</p>
+<h2 id="u8FD0_u884C_u6548_u679C"><a href="#u8FD0_u884C_u6548_u679C" class="headerlink" title="运行效果"></a>运行效果</h2><p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fjni-sample.png" alt=""></p>
+<h1 id="Gradle_u914D_u7F6E_u8986_u76D6_u9ED8_u8BA4NDK_u7F16_u8BD1"><a href="#Gradle_u914D_u7F6E_u8986_u76D6_u9ED8_u8BA4NDK_u7F16_u8BD1" class="headerlink" title="Gradle配置覆盖默认NDK编译"></a>Gradle配置覆盖默认NDK编译</h1><p>大家会发现几个问题：</p>
+<ul>
+<li><p>为什么运行程序之后在main下面没找到so库呢？</p>
+</li>
+<li><p>为什么编译时不需要Android.mk文件呢？</p>
+</li>
+</ul>
+<p>默认情况下ndk将生成的so库放到了build下面去了，同时也会使用一个默认的Android.mk文件进行编译，如下图：</p>
+<p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/asndk%2Fdefault-mk.png" alt=""></p>
+<p>那我们能否覆盖默认的设置呢？答案时肯定的！</p>
+<p>首先在项目gradle文件的android{}中添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sourceSets &#123;&#10;    main &#123;&#10;        jni.srcDirs = []   //&#23631;&#34109;gradle&#30340;jni&#29983;&#25104;&#36807;&#31243;&#10;        jniLibs.srcDir &#39;src/main/libs&#39;  //&#25351;&#23450;&#24341;&#29992;so&#24211;&#30340;&#30446;&#24405;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在gradle文件最底部添加一个ndk编译task：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">task ndkBuild(type: Exec) &#123;&#10;    commandLine &#39;ndk-build&#39;, &#39;-C&#39;, file(&#39;src/main/jni&#39;).absolutePath&#10;&#125;&#10;tasks.withType(JavaCompile) &#123;&#10;    compileTask -&#62; compileTask.dependsOn ndkBuild&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：使用上述命令必须确定ndk的环境变量配置好了，也就是确定ndk的目录加到PATH中去了，否则该任务会执行失败。</p>
+<p>最后自己在jni目录下面建立Android.mk和Application.mk文件，直接点击AS上的运行就会先执行NDK编译的过程。</p>
+<p>Android.mk：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)&#10;local_c_includes := \&#10;&#9;$(NDK_PROJECT_PATH) \&#10;&#9;&#10;include $(CLEAR_VARS)&#10;# so&#24211;&#21517;&#23383;&#10;LOCAL_MODULE    := NDKJNIDemo &#10;LOCAL_SRC_FILES := com_liuling_ndkjnidemo_JniUtils.c&#10;# &#28155;&#21152;log&#27169;&#22359;&#10;LOCAL_LDLIBS    := -lm -llog&#10;include $(BUILD_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
+<p>Application.mk：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">APP_ABI := armeabi x86&#10;#&#20351;NDK&#25903;&#25345;string&#10;APP_STL := stlport_shared&#10;APP_STL := stlport_static</span><br></pre></td></tr></table></figure>
+<p>可以看到，默认情况下可以在gradle中的ndk中配置以上这些信息：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ndk &#123;&#10;    moduleName &#34;NDKJNIDemo&#34;&#10;    ldLibs &#34;log&#34;&#10;    stl &#34;stlport_shared&#34;&#10;    abiFilters &#34;armeabi&#34;, &#34;x86&#34; &#10;&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.liuling123.com/2016/05/ubuntu-android-studio-ndk.html" data-id="ciovivfev0000nod08ocdc1qv" class="article-share-link">分享到</a>
+      
+        <a href="http://www.liuling123.com/2016/05/ubuntu-android-studio-ndk.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-ubuntu-android-studio-ndk" data-count-type="comments"></span></a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NDK/">NDK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/android-studio-gradle-ndk-config.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Android Studio在Gradle中配置NDK编译，覆盖默认NDK编译</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-ubuntu-android-studio-ndk" data-title="Ubuntu下NDK编译环境搭建及在Android Studio中集成NDK" data-url="http://www.liuling123.com/2016/05/ubuntu-android-studio-ndk.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liuling123"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+  </section>
+
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新博文</h3>
+    <div class="widget">
+      <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+              <p class="item-title"><a href="/2016/05/ubuntu-android-studio-ndk.html" class="title">Ubuntu下NDK编译环境搭建及在Android Studio中集成NDK</a></p>
+              <p class="item-date"><time datetime="2016-05-31T13:24:00.000Z" itemprop="datePublished">2016-05-31</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+              <p class="item-title"><a href="/2016/05/android-studio-gradle-ndk-config.html" class="title">Android Studio在Gradle中配置NDK编译，覆盖默认NDK编译</a></p>
+              <p class="item-date"><time datetime="2016-05-18T13:07:00.000Z" itemprop="datePublished">2016-05-18</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/05/auto-decompiler.html" class="title">Android自动化反编译脚本</a></p>
+              <p class="item-date"><time datetime="2016-05-15T05:22:00.000Z" itemprop="datePublished">2016-05-15</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/EventBus-source.html" class="title">EventBus源码解析</a></p>
+              <p class="item-date"><time datetime="2016-01-12T13:29:00.000Z" itemprop="datePublished">2016-01-12</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Android/">Android</a></p>
+              <p class="item-title"><a href="/2016/01/EventBus-explain.html" class="title">EventBus使用详解</a></p>
+              <p class="item-date"><time datetime="2016-01-09T04:42:00.000Z" itemprop="datePublished">2016-01-09</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 10.77px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 14.62px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">博文归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.lcode.org">江清清技术专栏</a>
+          </li>
+        
+          <li>
+            <a target="_blank" href="http://www.93sec.cc">教程资源网</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 - 2016 Lauren<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> &nbsp;
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"liuling123"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+ <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
