@@ -179,33 +179,10 @@
         <div>1、在eclipse下创建android工程Hello并拷贝到&ldquo;<strong>源码目录/packages/experimental&rdquo;</strong>下面</div><br><div>&nbsp;</div><br><div>2、在Hello工程目录下面创建Android.mk文件，内容如下：</div><br><div><br><div><strong>LOCAL_PATH:= $(call my-dir)</strong></div><br><div><strong>include $(CLEAR_VARS)</strong></div><br><div><strong>LOCAL_MODULE_TAGS := optional</strong></div><br><div><strong>LOCAL_SRC_FILES := $(call all-subdir-java-files)</strong></div><br><div><strong>LOCAL_PACKAGE_NAME := Hello</strong></div><br><div><strong>include $(BUILD_PACKAGE)</strong></div><br></div><br><div>3、执行<strong>mmm&nbsp;**</strong>packages/experimental/Hello<strong>编译，注意：使用mmm命令前先执行</strong>. &nbsp;./build/envsetup.sh<strong></strong></div><br><div>编译成功后，便可以在out/target/product/generic/system/app目录下看到Hello.apk文件了。</div><br><div>运行截图：</div><br><div><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180933584103177.jpg" alt=""></div><br><div>&nbsp;</div><br><div>运行完截图：</div><br><div><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180935394726300.jpg" alt="">&nbsp;</div><br><div>&nbsp;</div><br><div>4、重新打包系统镜像文件system.img：<br><div>USER-NAME@MACHINE-NAME:~/Android$ make snod**<br>&nbsp;&nbsp; &nbsp;重新打包后的system.img文件就内置了Hello.apk文件了。</div><br><div>&nbsp;</div><br></div><br><a id="more"></a><br><div>5、运行Android模拟器：emulator</div><br><div><span style="color: #333333; font-family: Arial;">运行的模拟器系统里面就会附带Hello测试应用。如下图：</span></div><br><div><span style="color: #333333; font-family: Arial;"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180936089107708.jpg" alt=""></span></div>
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/framework-compile-run.html" data-id="ciozu4lh000bakud0kjurriy9" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/08/framework-compile-run.html" data-id="ciozvtoz600banfd0phorwd5g" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/08/framework-compile-run.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-framework-compile-run" data-count-type="comments"></span></a>
       
@@ -239,7 +216,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
   <section id="comments">

@@ -181,33 +181,10 @@
         
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/12/filter-jsp-messy-code.html" data-id="ciozu4lh600bjkud02k0bwhtl" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/12/filter-jsp-messy-code.html" data-id="ciozvtozb00bjnfd0v9pq8wov" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/12/filter-jsp-messy-code.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-filter-jsp-messy-code" data-count-type="comments"></span></a>
       
@@ -219,7 +196,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
 
@@ -262,33 +262,10 @@
         <div id="article_content" class="article_content"><br><br><strong>写cookie</strong><br><br>&nbsp; Cookie cookie = new Cookie(“username”, <span style="color: #ff0000;">java.net.URLEncoder.encode(username,”UTF-8”));<br></span>&nbsp;&nbsp; cookie.setMaxAge(50<em>60);//不设置的话，则cookies不写入硬盘,而是写在内存,只在当前页面有用,以秒为单位&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp; response.addCookie(cookie);<br><br><em>*读cookie</em></em><br><br>&nbsp;<br><br>Cookie cookies[] = request.getCookies();&nbsp;&nbsp;&nbsp;<br>&nbsp;if (cookies != null)&nbsp;&nbsp;&nbsp;<br>&nbsp;{&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; cookies.length; i++)&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (cookies[i].getName().equals(“username”))&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;username=<span style="color: #ff0000;">java.net.URLDecoder.decode(cookies[i].getValue().trim(),”UTF-8”);<br></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;<br>&nbsp;}&nbsp;<br><br>&nbsp;<br><br>总结：在保存到cookie的时候要用URLEncoder.encode(username,”UTF-8”))方法保存<br><br>读的时候要用URLDecoder.decode(cookies[i].getValue().trim(),”UTF-8”)方法来解码<br><br></div>
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/12/cookie-messy-code.html" data-id="ciozu4li900dikud0uxluekew" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/12/cookie-messy-code.html" data-id="ciozvtp0c00dinfd06sexd3du" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/12/cookie-messy-code.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-cookie-messy-code" data-count-type="comments"></span></a>
       
@@ -300,7 +277,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
 
@@ -351,33 +351,10 @@
 
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/11/tomcat-connectexception.html" data-id="ciozu4laz000ikud0p08k602l" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/11/tomcat-connectexception.html" data-id="ciozvtoth000infd0936ru3qk" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/11/tomcat-connectexception.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-tomcat-connectexception" data-count-type="comments"></span></a>
       
@@ -389,7 +366,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
 
@@ -433,33 +433,10 @@
 
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/08/span.html" data-id="ciozu4lbo001ykud0lt20nd5c" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/08/span.html" data-id="ciozvtou8001ynfd0zdt1674f" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/08/span.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-span" data-count-type="comments"></span></a>
       
@@ -471,7 +448,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
 
@@ -520,33 +520,10 @@
         
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/07/jsp-pages.html" data-id="ciozu4leq0075kud0a5xaxm0s" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/07/jsp-pages.html" data-id="ciozvtowz0075nfd0gpyhfkmp" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/07/jsp-pages.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jsp-pages" data-count-type="comments"></span></a>
       
@@ -558,7 +535,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
 
@@ -610,33 +610,10 @@
         
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/07/mvc.html" data-id="ciozu4lds005mkud0zc5a53df" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/07/mvc.html" data-id="ciozvtow9005mnfd0iaqg8x6d" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/07/mvc.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-mvc" data-count-type="comments"></span></a>
       
@@ -648,7 +625,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
 
@@ -696,33 +696,10 @@
         
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/07/jsp-demo.html" data-id="ciozu4let0078kud0xystn8dw" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/07/jsp-demo.html" data-id="ciozvtox20078nfd0kzmbdwy8" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/07/jsp-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jsp-demo" data-count-type="comments"></span></a>
       
@@ -734,7 +711,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
 
@@ -783,33 +783,10 @@
         
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/07/jsp-run-principle.html" data-id="ciozu4lep0072kud044uuyx39" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/07/jsp-run-principle.html" data-id="ciozvtowy0072nfd0uorik29w" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/07/jsp-run-principle.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jsp-run-principle" data-count-type="comments"></span></a>
       
@@ -821,7 +798,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
 
@@ -881,33 +881,10 @@
         
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/07/servlet-life.html" data-id="ciozu4lc3002qkud04lg7qm4y" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/07/servlet-life.html" data-id="ciozvtoum002qnfd0jd37xkl3" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/07/servlet-life.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-servlet-life" data-count-type="comments"></span></a>
       
@@ -919,7 +896,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
 
@@ -971,33 +971,10 @@
         
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/07/servlet-demo.html" data-id="ciozu4lc5002tkud0zxgipizx" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/07/servlet-demo.html" data-id="ciozvtouo002tnfd0m63q547t" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/07/servlet-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-servlet-demo" data-count-type="comments"></span></a>
       
@@ -1009,7 +986,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
 

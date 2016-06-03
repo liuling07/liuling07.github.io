@@ -202,33 +202,10 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package com.stack;&#10;&#10;import java.util.Stack;&#10;&#10;/**&#10; * &#29992;&#26632;&#26469;&#23454;&#29616;&#36855;&#23467;&#30340;&#27714;&#35299;&#10; * @author &#21016;&#29618;&#10; *&#10; */&#10;&#10;class Step&#123;&#10;    int x,y,d;&#10;    public Step(int x,int y,int d) &#123;&#10;        this.x = x;//&#27178;&#22352;&#26631;&#10;        this.y = y;//&#32437;&#22352;&#26631;&#10;        this.d = d;//&#26041;&#21521;&#10;    &#125;&#10;&#125;&#10;&#10;public class MazeTest &#123;&#10;&#10;    public static void main(String[] args) &#123;&#10;        // &#36855;&#23467;&#23450;&#20041;&#10;        int[][] maze = &#123;&#123;1,1,1,1,1,1,1,1,1,1&#125;,&#10;                        &#123;1,0,1,1,1,0,1,1,1,1&#125;,&#10;                        &#123;1,1,0,1,0,1,1,1,1,1&#125;,&#10;                        &#123;1,0,1,0,0,0,0,0,1,1&#125;,&#10;                        &#123;1,0,1,1,1,0,1,1,1,1&#125;,&#10;                        &#123;1,1,0,0,1,1,0,0,0,1&#125;,&#10;                        &#123;1,0,1,1,0,0,1,1,0,1&#125;,&#10;                        &#123;1,1,1,1,1,1,1,1,1,1&#125;&#125;;&#10;        int[][] move = &#123;&#123;0,1&#125;,&#123;1,1&#125;,&#123;1,0&#125;,&#123;1,-1&#125;,&#123;0,-1&#125;,&#123;-1,-1&#125;,&#123;-1,0&#125;,&#123;-1,1&#125;&#125;;&#10;        Stack&#60;Step&#62; s = new Stack&#60;Step&#62;();&#10;        int a = path(maze, move, s);&#10;        while(!s.isEmpty())&#123;&#10;            Step step = s.pop();&#10;            System.out.println(step.x+&#34;:&#34;+step.y);&#10;        &#125;&#10;    &#125;&#10;    public static int path(int[][] maze,int[][] move,Stack&#60;Step&#62; s)&#123;&#10;        Step temp = new Step(1,1,-1); //&#36215;&#28857;&#10;        s.push(temp);&#10;        while(!s.isEmpty())&#123;&#10;            //temp = s.pop(); &#36825;&#26679;&#20889;&#26159;&#26377;&#38382;&#39064;&#30340;&#65292;&#19981;&#33021;&#23558;&#20986;&#26632;&#30340;&#20803;&#32032;&#20316;&#20026;&#24403;&#21069;&#20301;&#32622;&#65292;&#24212;&#35813;&#23558;&#26632;&#39030;&#20803;&#32032;&#20316;&#20026;&#24403;&#21069;&#20301;&#32622;&#10;            s.pop();  //&#22914;&#26524;&#36335;&#36208;&#19981;&#36890;&#23601;&#20986;&#26632;&#10;            if(!s.isEmpty())&#123;&#10;                temp = s.peek();  //&#23558;&#26632;&#39030;&#20803;&#32032;&#35774;&#32622;&#20026;&#24403;&#21069;&#20301;&#32622;&#10;            &#125;&#10;            int x = temp.x;&#10;            int y = temp.y;&#10;            int d = temp.d+1;&#10;            while(d&#60;8)&#123;&#10;                int i = x + move[d][0];&#10;                int j = y + move[d][1];&#10;                if(maze[i][j] == 0)&#123;    //&#35813;&#28857;&#21487;&#36798;&#10;                    temp = new Step(i,j,d); //&#21040;&#36798;&#26032;&#28857;&#10;                    s.push(temp);&#10;                    x = i;&#10;                    y = j;&#10;                    maze[x][y] = -1;  //&#21040;&#36798;&#26032;&#28857;&#65292;&#26631;&#24535;&#24050;&#32463;&#21040;&#36798;&#10;                    if(x == 6 &#38;&#38; y == 1)&#123;&#10;                        return 1;  //&#21040;&#36798;&#20986;&#21475;&#65292;&#36855;&#23467;&#26377;&#36335;&#65292;&#36820;&#22238;1&#10;                    &#125;else&#123;&#10;                        d = 0;  //&#37325;&#26032;&#21021;&#22987;&#21270;&#26041;&#21521;&#10;                    &#125;&#10;                &#125;else&#123;&#10;                    d++; //&#25913;&#21464;&#26041;&#21521;&#10;                &#125;&#10;            &#125;&#10;        &#125;&#10;        return 0;&#10;    &#125;&#10;&#10;&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
-    <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
-  
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="164px" width="164px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="164px" width="164px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
+    
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/04/stack.html" data-id="ciozu4lba0016kud0wa0f1bwl" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/04/stack.html" data-id="ciozvtott0016nfd01tnxl6y4" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/04/stack.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-stack" data-count-type="comments"></span></a>
       
@@ -262,7 +239,30 @@
   
 </article>
 
+<! -- 添加捐赠图标 -->
+    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+           如果文章对您有帮助，请随意打赏支持！  
+        </span>
+      </div>  
+  
+    <!-- 支付宝打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.jpg" title="支付宝打赏" height="200px" width="200px">
+          </a> 
+      </div>
 
+    <!-- 微信打赏图案 -->
+      <div style="text-align:center">
+          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+          </a> 
+      </div>
+    </div>
+<! -- 添加捐赠图标 -->
 
 
   <section id="comments">
