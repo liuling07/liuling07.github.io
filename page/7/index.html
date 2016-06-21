@@ -101,7 +101,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        144
+        146
         <span>文章</span>
       </div>
       <div class="article-info-block">
@@ -138,6 +138,134 @@
 
       
       <section id="main">
+      <article id="post-list-concurrentmodificationexception" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/08/list-concurrentmodificationexception.html">使用迭代器遍历List的时候修改List报ConcurrentModificationException异常原因分析</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/08/list-concurrentmodificationexception.html">
+      <time datetime="2013-08-21T03:20:00.000Z" itemprop="datePublished">2013-08-21</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　　在使用Iterator来迭代遍历List的时候如果修改该List对象，则会报java.util.ConcurrentModificationException异常，下面看一个例子演示：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.others;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.ArrayList;<br></span><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Iterator;<br></span><span style="color: #008080;"> 5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #008080;"> 6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.CopyOnWriteArrayList;<br></span><span style="color: #008080;"> 7</span><br><span style="color: #008080;"> 8</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ArrayListTest {<br></span><span style="color: #008080;"> 9</span><br><span style="color: #008080;">10</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;">11</span>         List<String> list = <span style="color: #0000ff;">new</span> ArrayList<String><span style="color: #000000;">();<br></span><span style="color: #008080;">12</span>         <span style="color: #008000;">//</span><span style="color: #008000;">CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<String>();</span><br><span style="color: #008080;">13</span>         list.add(“a”<span style="color: #000000;">);<br></span><span style="color: #008080;">14</span>         list.add(“b”<span style="color: #000000;">);<br></span><span style="color: #008080;">15</span>         list.add(“c”<span style="color: #000000;">);<br></span><span style="color: #008080;">16</span>         list.add(“d”<span style="color: #000000;">);<br></span><span style="color: #008080;">17</span>         list.add(“e”<span style="color: #000000;">);<br></span><span style="color: #008080;">18</span>         Iterator iterator =<span style="color: #000000;"> list.iterator();<br></span><span style="color: #008080;">19</span>         <span style="color: #0000ff;">while</span><span style="color: #000000;">(iterator.hasNext()){<br></span><span style="color: #008080;">20</span>             String str =<span style="color: #000000;"> (String) iterator.next();<br></span><span style="color: #008080;">21</span>             <span style="color: #0000ff;">if</span>(str.equals(“c”<span style="color: #000000;">)){<br></span><span style="color: #008080;">22</span> <span style="color: #000000;">                list.remove(str);<br></span><span style="color: #008080;">23</span>             }<span style="color: #0000ff;">else</span><span style="color: #000000;">{<br></span><span style="color: #008080;">24</span> <span style="color: #000000;">                System.out.println(str);<br></span><span style="color: #008080;">25</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">26</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">27</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">28</span><br><span style="color: #008080;">29</span> }</pre><br></div><br>
+        
+          <p class="article-more-link">
+            <a href="/2013/08/list-concurrentmodificationexception.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    
+
+    <footer class="article-footer">
+      <a data-url="http://www.liuling123.com/2013/08/list-concurrentmodificationexception.html" data-id="cippghnbf006a2sd0awth606a" class="article-share-link">分享到</a>
+      
+        <a href="http://www.liuling123.com/2013/08/list-concurrentmodificationexception.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-list-concurrentmodificationexception" data-count-type="comments"></span></a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+    
+      <article id="post-reentrantreadwritelock" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/08/reentrantreadwritelock.html">ReentrantReadWriteLock读写锁的使用</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2013/08/reentrantreadwritelock.html">
+      <time datetime="2013-08-20T19:12:00.000Z" itemprop="datePublished">2013-08-21</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　　Lock比传统线程模型中的synchronized方式更加面向对象，与生活中的锁类似，锁本身也应该是一个对象。两个线程执行的代码片段要实现同步互斥的效果，它们必须用同一个Lock对象。</p>
+<p>　　读写锁：分为读锁和写锁，多个读锁不互斥，读锁与写锁互斥，这是由jvm自己控制的，你只要上好相应的锁即可。如果你的代码只读数据，可以很多人同时读，但不能同时写，那就上读锁；如果你的代码修改数据，只能有一个人在写，且不能同时读取，那就上写锁。总之，读的时候上读锁，写的时候上写锁！</p>
+<p>　　<span style="font: 14px/26px Arial; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">ReentrantReadWriteLock会使用两把锁来解决问题，一个读锁，一个写锁</span><br><span style="font: 14px/26px Arial; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">线程进入读锁的前提条件：</span><br><span style="font: 14px/26px Arial; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;&nbsp;&nbsp; 没有其他线程的写锁，</span><br><span style="font: 14px/26px Arial; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;&nbsp;&nbsp; 没有写请求或者有写请求，但调用线程和持有锁的线程是同一个</span></p>
+<p><span style="font: 14px/26px Arial; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">线程进入写锁的前提条件：</span><br><span style="font: 14px/26px Arial; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;&nbsp;&nbsp; 没有其他线程的读锁</span><br><span style="font: 14px/26px Arial; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;&nbsp;&nbsp; 没有其他线程的写锁</span></p>
+<p><span style="font: 14px/26px Arial; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><span style="font: 14px/25px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">到ReentrantReadWriteLock，首先要做的是与ReentrantLock划清界限。它和后者都是单独的实现，彼此之间没有继承或实现的关系。然后就是总结这个锁机制的特性了：&nbsp;</span><br><span style="font: 14px/25px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp; &nbsp; &nbsp;(a).重入方面其内部的WriteLock可以获取ReadLock，但是反过来ReadLock想要获得WriteLock则永远都不要想。&nbsp;</span><br><span style="font: 14px/25px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp; &nbsp; &nbsp;(b).WriteLock可以降级为ReadLock，顺序是：先获得WriteLock再获得ReadLock，然后释放WriteLock，这时候线程将保持Readlock的持有。反过来ReadLock想要升级为WriteLock则不可能，为什么？参看(a)，呵呵.&nbsp;</span><br><span style="font: 14px/25px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;&nbsp;&nbsp;&nbsp; (c).ReadLock可以被多个线程持有并且在作用时排斥任何的WriteLock，而WriteLock则是完全的互斥。这一特性最为重要，因为对于高读取频率而相对较低写入的数据结构，使用此类锁同步机制则可以提高并发量。&nbsp;</span><br><span style="font: 14px/25px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;&nbsp;&nbsp;&nbsp; (d).不管是ReadLock还是WriteLock都支持Interrupt，语义与ReentrantLock一致。&nbsp;</span><br><span style="font: 14px/25px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;&nbsp;&nbsp;&nbsp; (e).WriteLock支持Condition并且与ReentrantLock语义一致，而ReadLock则不能使用Condition，否则抛出UnsupportedOperationException异常。&nbsp;</span></span></p>
+<p><span style="font: 14px/26px Arial; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><span style="font: 14px/25px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">下面看一个读写锁的例子：</span></span><br>
+        
+          <p class="article-more-link">
+            <a href="/2013/08/reentrantreadwritelock.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    
+
+    <footer class="article-footer">
+      <a data-url="http://www.liuling123.com/2013/08/reentrantreadwritelock.html" data-id="cippghn8x00302sd0kcrf86b1" class="article-share-link">分享到</a>
+      
+        <a href="http://www.liuling123.com/2013/08/reentrantreadwritelock.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-reentrantreadwritelock" data-count-type="comments"></span></a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+    
       <article id="post-exchanger-demo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -184,7 +312,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/08/exchanger-demo.html" data-id="cipo3ixbj00bulmd0i3vpyzbl" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/08/exchanger-demo.html" data-id="cippghnfe00by2sd0mjo22uua" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/08/exchanger-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-exchanger-demo" data-count-type="comments"></span></a>
       
@@ -246,7 +374,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/08/cyclicbarrier-demo.html" data-id="cipo3ixc200cxlmd0jht5ll7b" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/08/cyclicbarrier-demo.html" data-id="cippghng500d12sd0z0w4izb8" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/08/cyclicbarrier-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-cyclicbarrier-demo" data-count-type="comments"></span></a>
       
@@ -312,7 +440,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/08/semaphore-demo.html" data-id="cipo3ix6i002wlmd0trk4i7gy" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/08/semaphore-demo.html" data-id="cippghn8v002w2sd0h58ez5wz" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/08/semaphore-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-semaphore-demo" data-count-type="comments"></span></a>
       
@@ -373,7 +501,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/08/countdownlatch-demo.html" data-id="cipo3ixcc00dilmd00d9bl2gu" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/08/countdownlatch-demo.html" data-id="cippghngk00dm2sd04wxnn296" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/08/countdownlatch-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-countdownlatch-demo" data-count-type="comments"></span></a>
       
@@ -434,7 +562,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/08/blockingqueue-demo.html" data-id="cipo3ixcs00ealmd08mil2zqt" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/08/blockingqueue-demo.html" data-id="cippghnh600ee2sd0gwxom851" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/08/blockingqueue-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-blockingqueue-demo" data-count-type="comments"></span></a>
       
@@ -499,7 +627,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/08/string-summarize.html" data-id="cipo3ix5j0013lmd00n7t1pdr" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/08/string-summarize.html" data-id="cippghn7o00132sd0227ji5i9" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/08/string-summarize.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-string-summarize" data-count-type="comments"></span></a>
       
@@ -562,7 +690,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/08/struts2-source.html" data-id="cipo3ix5e000wlmd0ohfc92t6" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/08/struts2-source.html" data-id="cippghn7i000w2sd0wkc0j4cq" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/08/struts2-source.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-struts2-source" data-count-type="comments"></span></a>
       
@@ -627,149 +755,12 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/08/shell.html" data-id="cipo3ix65002clmd0ixq04zk6" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/08/shell.html" data-id="cippghn8g002c2sd0zauxa1n6" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/08/shell.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-shell" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-    
-      <article id="post-hibernate-mysql-proceduce" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/07/hibernate-mysql-proceduce.html">hibernate调用mysql存储过程</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/07/hibernate-mysql-proceduce.html">
-      <time datetime="2013-07-29T00:08:00.000Z" itemprop="datePublished">2013-07-29</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　在mysql中创建两个存储过程，如下：</p>
-<p>1、根据id查找某条数据：</p>
-<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">CREATE</span> <span style="color: #0000ff;">PROCEDURE</span> <code>findEmpById</code>(<span style="color: #808080;">IN</span> id <span style="color: #0000ff;">INTEGER</span>(<span style="color: #800000; font-weight: bold;">11</span><span style="color: #000000;">))<br></span><span style="color: #008080;">2</span> <span style="color: #0000ff;">begin</span><br><span style="color: #008080;">3</span>      <span style="color: #0000ff;">select</span> <span style="color: #808080;">*</span> <span style="color: #0000ff;">from</span> emp <span style="color: #0000ff;">where</span> empId<span style="color: #808080;">=</span><span style="color: #000000;">id;<br></span><span style="color: #008080;">4</span> <span style="color: #0000ff;">end</span>;</pre><br></div><br>
-        
-          <p class="article-more-link">
-            <a href="/2013/07/hibernate-mysql-proceduce.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/07/hibernate-mysql-proceduce.html" data-id="cipo3ixao00a7lmd04obxw98d" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/07/hibernate-mysql-proceduce.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-hibernate-mysql-proceduce" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-    
-      <article id="post-page-cache" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/07/page-cache.html">页面的缓存与不缓存设置</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/07/page-cache.html">
-      <time datetime="2013-07-24T23:42:00.000Z" itemprop="datePublished">2013-07-25</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　HTML的HTTP协议头信息中控制着页面在几个地方的缓存信息，包括浏览器端，中间缓存服务器端(如：squid等)，Web服务器端。本文讨论头信息 中带缓存控制信息的HTML页面(JSP/Servlet生成好出来的也是HTML页面)在中间缓存服务器中的缓存情况。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HTTP协议中关于缓存的信息头关键字包括Cache-Control(HTTP1.1)，Pragma(HTTP1.0)，last-Modified，Expires等。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HTTP1.0中通过<strong><span style="color: #ff00ff;">Pragma</span> </strong> 控制页面缓存，可以设置：Pragma或no-cache。网上有非常多的文章说明如何控制不让浏览器或中间缓存服务器缓存页面，通常设置的值为no- cache，不过这个值不这么保险，通常还加上Expires置为0来达到目的。但是如我们刻意需要浏览器或缓存服务器缓存住我们的页面这个值则要设置为 Pragma。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HTTP1.1中启用<strong><span style="color: #ff00ff;">Cache-Control</span> </strong> 来控制页面的缓存与否，这里介绍几个常用的参数：</p>
-<ul>
-<li>no-cache，浏览器和缓存服务器都不应该缓存页面信息；</li>
-<li>public，浏览器和缓存服务器都可以缓存页面信息；</li>
-<li>no-store，请求和响应的信息都不应该被存储在对方的磁盘系统中；</li>
-<li>must-revalidate，对于客户机的每次请求，代理服务器必须想服务器验证缓存是否过时；</li>
-</ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Last-Modified只页面的最后生成时间，GMT格式；</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Expires过时期限值，GMT格式，指浏览器或缓存服务器在该时间点后必须从真正的服务器中获取新的页面信息；</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 上面两个值在JSP中设置值为字符型的GMT格式，无法生效，设置long类型才生效；</p>
-<p>&nbsp;<br>
-        
-          <p class="article-more-link">
-            <a href="/2013/07/page-cache.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/07/page-cache.html" data-id="cipo3ix770041lmd0cw3yvi1i" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/07/page-cache.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-page-cache" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
 
     </footer>
   </div>
@@ -792,6 +783,24 @@
     <h3 class="widget-title">最新博文</h3>
     <div class="widget">
       <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+              <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
+              <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+              <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
+              <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -820,24 +829,6 @@
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/05/ubuntu-android-studio-ndk.html" class="title">Ubuntu下NDK编译环境搭建及在Android Studio中集成NDK</a></p>
-              <p class="item-date"><time datetime="2016-05-31T13:24:00.000Z" itemprop="datePublished">2016-05-31</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/05/android-studio-gradle-ndk-config.html" class="title">Android Studio在Gradle中配置NDK编译，覆盖默认NDK编译</a></p>
-              <p class="item-date"><time datetime="2016-05-18T13:07:00.000Z" itemprop="datePublished">2016-05-18</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -847,7 +838,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">博文分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -856,7 +847,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
     </div>
   </div>
 
@@ -865,7 +856,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 

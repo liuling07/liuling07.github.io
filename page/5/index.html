@@ -101,7 +101,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        144
+        146
         <span>文章</span>
       </div>
       <div class="article-info-block">
@@ -138,6 +138,130 @@
 
       
       <section id="main">
+      <article id="post-android-mk" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/android-mk.html">Android.mk简介</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/08/android-mk.html">
+      <time datetime="2015-08-05T00:42:00.000Z" itemprop="datePublished">2015-08-05</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Framework/">Framework</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div>文章参照<span style="color: #003366;">：</span><a href="http://blog.sina.com.cn/s/blog_67d8d7060100q8un.html">http://blog.sina.com.cn/s/blog_67d8d7060100q8un.html</a></div><br><div><span style="color: #003366;">Android.mk文件是GNU Makefile的一小部分，它用来对Android程序进行编译。</span></div><br><div><span style="color: #003366;">因为所有的编译文件都在同一个 GNU MAKE 执行环境中进行执行，而Android.mk中所有的变量都是全局的。因此，您应尽量少声明变量，不要认为某些变量在解析过程中不会被定义。</span></div><br><div><span style="color: #003366;">一个Android.mk文件可以编译多个模块，</span><strong>每个模块属下列类型之一</strong><span style="color: #003366;">：</span></div><br><div><strong>1）APK程序</strong></div><br><div>&nbsp; 一般的Android程序，编译打包生成apk文件</div><br><div><strong>2）JAVA库</strong></div><br><div>&nbsp; java类库，编译打包生成jar文件</div><br><div><strong>3)C\C++应用程序</strong></div><br><div>&nbsp;可执行的C\C++应用程序</div><br><div><strong>4）C\C++静态库&nbsp;</strong></div><br><div>编译生成C\C++静态库，并打包成.a文件</div>
+        
+          <p class="article-more-link">
+            <a href="/2015/08/android-mk.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    
+
+    <footer class="article-footer">
+      <a data-url="http://www.liuling123.com/2015/08/android-mk.html" data-id="cippghnif00g72sd0ya8swuus" class="article-share-link">分享到</a>
+      
+        <a href="http://www.liuling123.com/2015/08/android-mk.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-android-mk" data-count-type="comments"></span></a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+    
+      <article id="post-java-lang-classcastexception" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/java-lang-classcastexception.html">java.lang.ClassCastException: com.sun.proxy.$Proxy27 cannot be cast to com.bbk.n002.service.QuestionService</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/08/java-lang-classcastexception.html">
+      <time datetime="2014-08-22T16:33:00.000Z" itemprop="datePublished">2014-08-23</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> 严重: Servlet /N002-1.0<span style="color: #000000;"> threw load() exception<br></span><span style="color: #008080;"> 2</span> <span style="color: #000000;">java.lang.ClassCastException: com.sun.proxy.$Proxy27 cannot be cast to com.bbk.n002.service.QuestionService<br></span><span style="color: #008080;"> 3</span>     at com.bbk.n002.servlet.CreateTaskQueueServlet.init(CreateTaskQueueServlet.java:28<span style="color: #000000;">)<br></span><span style="color: #008080;"> 4</span>     at javax.servlet.GenericServlet.init(GenericServlet.java:160<span style="color: #000000;">)<br></span><span style="color: #008080;"> 5</span>     at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1280<span style="color: #000000;">)<br></span><span style="color: #008080;"> 6</span>     at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1193<span style="color: #000000;">)<br></span><span style="color: #008080;"> 7</span>     at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:1088<span style="color: #000000;">)<br></span><span style="color: #008080;"> 8</span>     at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:5176<span style="color: #000000;">)<br></span><span style="color: #008080;"> 9</span>     at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5460<span style="color: #000000;">)<br></span><span style="color: #008080;">10</span>     at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150<span style="color: #000000;">)<br></span><span style="color: #008080;">11</span>     at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559<span style="color: #000000;">)<br></span><span style="color: #008080;">12</span>     at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549<span style="color: #000000;">)<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">    at java.util.concurrent.FutureTask.run(Unknown Source)<br></span><span style="color: #008080;">14</span> <span style="color: #000000;">    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)<br></span><span style="color: #008080;">15</span> <span style="color: #000000;">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)<br></span><span style="color: #008080;">16</span>     at java.lang.Thread.run(Unknown Source)</pre><br></div>
+
+<p>Spring的文档中这么写的：Spring AOP部分使用JDK动态代理或者CGLIB来为目标对象创建代理。如果被代理的目标实现了至少一个接口，则会使用JDK动态代理。所有该目标类型实现的接口都将被代理。若该目标对象没有实现任何接口，则创建一个CGLIB代理。<br>
+        
+          <p class="article-more-link">
+            <a href="/2014/08/java-lang-classcastexception.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    
+
+    <footer class="article-footer">
+      <a data-url="http://www.liuling123.com/2014/08/java-lang-classcastexception.html" data-id="cippghnda00912sd0f0rw7x9i" class="article-share-link">分享到</a>
+      
+        <a href="http://www.liuling123.com/2014/08/java-lang-classcastexception.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-java-lang-classcastexception" data-count-type="comments"></span></a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+    
       <article id="post-shardedjedispool-demo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -182,7 +306,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2014/04/shardedjedispool-demo.html" data-id="cipo3ix68002flmd06bbziw3p" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2014/04/shardedjedispool-demo.html" data-id="cippghn8j002f2sd0odzpu9ya" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2014/04/shardedjedispool-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-shardedjedispool-demo" data-count-type="comments"></span></a>
       
@@ -251,7 +375,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2014/04/consistenthashing.html" data-id="cipo3ixch00dplmd0t31bb2wx" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2014/04/consistenthashing.html" data-id="cippghngp00dt2sd0032bjgs4" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2014/04/consistenthashing.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-consistenthashing" data-count-type="comments"></span></a>
       
@@ -313,7 +437,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2014/04/jedis-redis.html" data-id="cipo3ix9f007ulmd0ox6hmrzb" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2014/04/jedis-redis.html" data-id="cippghncm007y2sd02k342z22" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2014/04/jedis-redis.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jedis-redis" data-count-type="comments"></span></a>
       
@@ -391,7 +515,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2014/04/redis-command.html" data-id="cipo3ix6q003elmd07jzgw96m" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2014/04/redis-command.html" data-id="cippghn95003e2sd08kf3qo64" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2014/04/redis-command.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-redis-command" data-count-type="comments"></span></a>
       
@@ -454,7 +578,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2014/04/redis-install.html" data-id="cipo3ix6l0034lmd0r1vfknyr" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2014/04/redis-install.html" data-id="cippghn9000342sd0h47pt26k" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2014/04/redis-install.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-redis-install" data-count-type="comments"></span></a>
       
@@ -524,7 +648,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2014/04/redis-config.html" data-id="cipo3ix6n0039lmd0fsjhkfib" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2014/04/redis-config.html" data-id="cippghn9200392sd0eqc776yt" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2014/04/redis-config.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-redis-config" data-count-type="comments"></span></a>
       
@@ -581,7 +705,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2014/04/centos6-5-update-yum.html" data-id="cipo3ixcm00dzlmd056jpae58" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2014/04/centos6-5-update-yum.html" data-id="cippghngw00e32sd0v1p4dumv" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2014/04/centos6-5-update-yum.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-centos6-5-update-yum" data-count-type="comments"></span></a>
       
@@ -642,137 +766,12 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2014/03/org-hibernate-propertyaccessexception.html" data-id="cipo3ix7e004flmd0hg78kosz" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2014/03/org-hibernate-propertyaccessexception.html" data-id="cippghna1004f2sd0esvkcpqb" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2014/03/org-hibernate-propertyaccessexception.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-org-hibernate-propertyaccessexception" data-count-type="comments"></span></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-    
-      <article id="post-springmvc-requestprocessingfailed" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/03/springmvc-requestprocessingfailed.html">Spring MVC报异常：org.springframework.web.util.NestedServletException: Request processing failed</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2014/03/springmvc-requestprocessingfailed.html">
-      <time datetime="2014-03-05T17:12:00.000Z" itemprop="datePublished">2014-03-06</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在使用SpringMVC绑定基本类型（如String,Integer等）参数时，应通过@RequestParam注解指定具体的参数名称，否则，当源代码在非debug模式下编译后，运行时会引发HandlerMethodInvocationException异常，这是因为只有在debug模式下编译，其参数名称才存储在编译好的代码中。 </p>
-<p>譬如下面的代码会引发异常： </p>
-<div class="dp-highlighter"><br><div class="bar"><br><div class="tools">Java代码 &nbsp;<a href="javascript:void("><img src="http://www.liuling123.com/wp-content/uploads/2015/11/spinner.gif" alt=""></a> “收藏这段代码”)</div><br></div><br></div><br><pre name="code" class="java">@RequestMapping(value = “/security/login”, method = RequestMethod.POST)<br>public ModelAndView login(@RequestParam String userName, @RequestParam String password,<br>    HttpServletRequest request) {<br>    ………………….<br><br>如果使用Eclipse编译不会在运行时出现异常，这是因为Eclipse默认是采用debug模式编译的，但是如果使用Ant通过javac任务编译的话就会出现异常，除非指定debug=&rdquo;true&rdquo;。出现的异常如同：<br><br></pre><br><br>
-        
-          <p class="article-more-link">
-            <a href="/2014/03/springmvc-requestprocessingfailed.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2014/03/springmvc-requestprocessingfailed.html" data-id="cipo3ix5t001plmd0z5rtjoux" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2014/03/springmvc-requestprocessingfailed.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-springmvc-requestprocessingfailed" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-    
-      <article id="post-springmvc-upload" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/03/springmvc-upload.html">Spring MVC实现上传文件报错解决方案</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2014/03/springmvc-upload.html">
-      <time datetime="2014-03-04T23:38:00.000Z" itemprop="datePublished">2014-03-05</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-                
-        <p>报错代码：</p>
-<div class="cnblogs_code"><br><pre>org.springframework.beans.BeanInstantiationException: Could not instantiate bean <span style="color: #0000ff;">class</span> [org.springframework.web.multipart.MultipartFile]: Specified <span style="color: #0000ff;">class</span> is an <span style="color: #0000ff;">interface</span><span style="color: #000000;"><br>    org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:</span>101<span style="color: #000000;">)<br>    org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveModelAttribute(HandlerMethodInvoker.java:</span>762<span style="color: #000000;">)<br>    org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveHandlerArguments(HandlerMethodInvoker.java:</span>356<span style="color: #000000;">)<br>    org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:</span>171<span style="color: #000000;">)<br>    org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.invokeHandlerMethod(AnnotationMethodHandlerAdapter.java:</span>426<span style="color: #000000;">)<br>    org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.handle(AnnotationMethodHandlerAdapter.java:</span>414<span style="color: #000000;">)<br>    org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:</span>790<span style="color: #000000;">)<br>    org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:</span>719<span style="color: #000000;">)<br>    org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:</span>644<span style="color: #000000;">)<br>    org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:</span>560<span style="color: #000000;">)<br>    javax.servlet.http.HttpServlet.service(HttpServlet.java:</span>646<span style="color: #000000;">)<br>    javax.servlet.http.HttpServlet.service(HttpServlet.java:</span>727<span style="color: #000000;">)<br>    org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:</span>52<span style="color: #000000;">)<br>    org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:</span>88<span style="color: #000000;">)<br>    org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:</span>76<span style="color: #000000;">)<br>    org.springframework.orm.hibernate3.support.OpenSessionInViewFilter.doFilterInternal(OpenSessionInViewFilter.java:</span>198<span style="color: #000000;">)<br>    org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:</span>76)</pre><br></div>
-
-<p>&nbsp;</p>
-<p>解决方案：在Controller的MultipartFile参数前面加上@RequestParam就解决了！</p>
-
-      
-    </div>
-    
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2014/03/springmvc-upload.html" data-id="cipo3ix5r001jlmd04m9axhe9" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2014/03/springmvc-upload.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-springmvc-upload" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
 
     </footer>
   </div>
@@ -795,6 +794,24 @@
     <h3 class="widget-title">最新博文</h3>
     <div class="widget">
       <ul id="recent-post" class="no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+              <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
+              <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+              <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
+              <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -823,24 +840,6 @@
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/05/ubuntu-android-studio-ndk.html" class="title">Ubuntu下NDK编译环境搭建及在Android Studio中集成NDK</a></p>
-              <p class="item-date"><time datetime="2016-05-31T13:24:00.000Z" itemprop="datePublished">2016-05-31</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/05/android-studio-gradle-ndk-config.html" class="title">Android Studio在Gradle中配置NDK编译，覆盖默认NDK编译</a></p>
-              <p class="item-date"><time datetime="2016-05-18T13:07:00.000Z" itemprop="datePublished">2016-05-18</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -850,7 +849,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">博文分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -859,7 +858,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 18.46px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 19.23px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
     </div>
   </div>
 
@@ -868,7 +867,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">博文归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">七月 2012</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
