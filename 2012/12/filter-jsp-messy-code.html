@@ -183,12 +183,44 @@
 <p>但是MyFilter里面在对任何页面过滤的时候，来了一个偷梁换柱：把原来客户端请求的request给换掉了，换成自己定义的一个request了，即内部类MyRequest，不过该类要继承一个类HttpServletRequestWrapper。</p>
 <p>在自定义的一个内部类MyRequest里面，实现了一个好强大的功能，就是重写了request的getParameter()方法。该方法里面即处理了post提交，又能处理get提交，返回的值就是处理后的值，所以该过滤器就能实现处理post和get提交的乱码问题！</p>
 
+        
+          <! -- 添加捐赠图标 -->
+          <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+            <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+              <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+                 如果文章对您有帮助，请随意打赏支持！  
+              </span>
+            </div>  
+        
+          <!-- 支付宝打赏图案 -->
+            <div style="text-align:center">
+                <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+                <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
+                </a> 
+            </div>
+
+          <!-- 微信打赏图案 -->
+            <div style="text-align:center">
+                <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+                <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+                </a> 
+            </div>
+          </div>  
+          <! -- 添加捐赠图标 -->
+          
+          <! -- 广告开始 -->
+
+          <! -- 广告结束 -->
+
+        
+        
       
     </div>
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2012/12/filter-jsp-messy-code.html" data-id="cipqyb08o00bvq0d0oa5vh6cf" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2012/12/filter-jsp-messy-code.html" data-id="cipqyrz0n00bvr1d0xaurgow0" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2012/12/filter-jsp-messy-code.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-filter-jsp-messy-code" data-count-type="comments"></span></a>
       
@@ -225,30 +257,7 @@
 
 
   <section id="comments">
-  <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
   
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
     <!-- 多说评论框 start -->
   <div class="ds-thread" data-thread-key="post-filter-jsp-messy-code" data-title="用过滤器来解决JSP中文乱码问题" data-url="http://www.liuling123.com/2012/12/filter-jsp-messy-code.html"></div>
 <!-- 多说评论框 end -->
@@ -411,7 +420,7 @@ var duoshuoQuery = {short_name:"liuling123"};
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2015 - 2016 Lauren<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> 粤ICP备15082212号-2 &nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> &nbsp;粤ICP备15082212号-2 &nbsp;
 
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 

@@ -185,12 +185,44 @@
 <p>那convertView又是什么呢？它可以让ListView跳过一些显示一行内容所需要的设置。如果某一行的视图不在屏幕中显示，我们可以重复使用这个视图来显示一个新行。当ListView刚开始显示的时候，一切都是正常的。既然没有视图可以被用来复用，convertView为空。视图也像前面版本一样被inflate，但是TextViews会被找到且它的引用被保存在一个ViewHolder中。然后我们可以调用setTag()方法将ViewHolder存储在视图中。正如修订过后的getView()方法中后半段代码所示，我们可以在视图中存储后面我们需要用到的数据。</p>
 <p>我们所做的更改可能看起来并没有太大的效果，但是随着布局越来越复杂并且数量也越来越多，效果将变得越来越明显。作为开发者，我最不想做的事就是开发一个用户体验很差的app。所以请记住，仅仅一个低水平的ListView都有可能让一个app死掉，我们一定得避免这种情况发生。</p>
 
+        
+          <! -- 添加捐赠图标 -->
+          <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+            <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+              <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+                 如果文章对您有帮助，请随意打赏支持！  
+              </span>
+            </div>  
+        
+          <!-- 支付宝打赏图案 -->
+            <div style="text-align:center">
+                <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+                <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
+                </a> 
+            </div>
+
+          <!-- 微信打赏图案 -->
+            <div style="text-align:center">
+                <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+                <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+                </a> 
+            </div>
+          </div>  
+          <! -- 添加捐赠图标 -->
+          
+          <! -- 广告开始 -->
+
+          <! -- 广告结束 -->
+
+        
+        
       
     </div>
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/12/performance-listviews.html" data-id="cipqyb03z003xq0d0lwpkpa3j" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/12/performance-listviews.html" data-id="cipqyryw3003xr1d0tef3t0u6" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/12/performance-listviews.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-performance-listviews" data-count-type="comments"></span></a>
       
@@ -227,30 +259,7 @@
 
 
   <section id="comments">
-  <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
   
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
     <!-- 多说评论框 start -->
   <div class="ds-thread" data-thread-key="post-performance-listviews" data-title="【译文】高性能ListViews" data-url="http://www.liuling123.com/2015/12/performance-listviews.html"></div>
 <!-- 多说评论框 end -->
@@ -413,7 +422,7 @@ var duoshuoQuery = {short_name:"liuling123"};
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2015 - 2016 Lauren<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> 粤ICP备15082212号-2 &nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> &nbsp;粤ICP备15082212号-2 &nbsp;
 
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 

@@ -198,12 +198,44 @@
       
                 
         <div id="cnblogs_post_body"><br><br>转：<a href="http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html" target="_blank" rel="external">http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html</a><br><br>今天主要和大家分享，如何搭建一个Web服务，做Android开发，不可避免会涉及到客户端开发，我们怎么样来实现一个服务端，怎么样来实现一个客户端，并相互传递数据。就算调用别人的服务时，也能知道大概是怎么样实现的。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WebService一般分为.Net版和Java版，今天我们主要来实现Java版的WebService，.Net版本的还是比较简单的。<br><br>&nbsp;&nbsp;&nbsp;&nbsp; 照例，轻松一笑：<br><br>&nbsp;&nbsp;&nbsp;&nbsp; 波音777是有史以来第一架完全在电脑虚拟现实中设计制造的飞机，所用的设备完全由IBM公司所提供。试飞前，波音公司的总裁非常热情的邀请IBM的技术主管去参加试飞，可那位主管却说道:&ldquo;啊，非常荣幸，可惜那天是我妻子的生日，所以…&rdquo;&nbsp;<br>波音公司的总载一听就生气了:&ldquo;胆小鬼，我还没告诉你试飞的日期呢!&rdquo;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649014549.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649055883.png" alt="1" title="1"></a><br><a id="more"></a><br><strong>&nbsp;&nbsp;&nbsp; 什么是WebServices？</strong><br><br>&nbsp;&nbsp;&nbsp; 它是一种构建应用程序的普遍模型,可以在任何支持网络通信的操作系统中实施运行;它是一种新的web应用程序分支，是自包含、自描述、模块化的应用，可以发布、定位、通过web调用。Web Service是一个应用组件,它逻辑性的为其他应用程序提供数据与服务.各应用程序通过网络协议和规定的一些标准数据格式（Http，XML，Soap)来访问Web Service,通过Web Service内部执行得到所需结果.Web Service可以执行从简单的请求到复杂商务处理的任何功能。一旦部署以后，其他Web Service应用程序可以发现并调用它部署的服务。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>关键的技术和规则</strong><br><br>&nbsp;&nbsp; 在构建和使用Web Service时,主要用到以下几个关键的技术和规则:<br><br>&nbsp;&nbsp;&nbsp;<span>1.XML</span>:描述数据的标准方法.<br><br>&nbsp;&nbsp;<span>2.SOAP</span>:表示信息交换的协议.<br><br>&nbsp;&nbsp;<span>3.WSDL</span>:Web服务描述语言.<br><br>&nbsp;&nbsp;&nbsp;<span>4.UDDI</span>:通用描述、发现与集成，它是一种独立于平台的，基于XML语言的用于在互联网上描述商务的协议。<br><br>&nbsp;&nbsp;&nbsp;<strong>XML</strong><br><br>&nbsp;&nbsp; 可扩展的标记语言(XML)是Web service平台中表示数据的基本格式。除了易于建立和易于分析外，<span>XML主要的优点在于它既是平台无关的，又是厂商无关的</span>。无关性是比技术优越性更重要的：软件厂商是不会选择一个由竞争对手所发明的技术的。<br><br><strong>&nbsp;&nbsp; SOAP</strong><br><br>&nbsp; SOAP是<span>web service的标准通信协议</span>，SOAP为simple object access protocoll的缩写，简单对象访问协议.&nbsp;<span>它是一种标准化的传输消息的XML消息格式</span>。<br><br><strong>&nbsp;&nbsp; WSDL</strong><br><br>&nbsp;&nbsp; WSDL的全称是web service Description Language,<span>是一种基于XML格式的关于web服务的描述语言</span>。其主要目的在于web service的提供者将自己的web服务的所有相关内容,如所提供的服务的传输方式，服务方法接口，接口参数，服务路径等，生成相应的完全文档，发布给使用者。使用者可以通过这个WSDL文档，创建相应的SOAP请求消息，通过HTTP传递给webservice提供者；web服务在完成服务请求后，将SOAP返回消息传回请求者，服务请求者再根据WSDL文档将SOAP返回消息解析成自己能够理解的内容。<br><br>&nbsp;&nbsp;<strong>UDDI</strong><br><br>&nbsp;&nbsp; 将web service进行UDDI注册发布,<span>UDDI是一种创建注册表服务的规范,以便大家将自己的web service进行注册发布供使用者查找.然而当服务提供者想将自己的web service向全世界公布</span>，以便外部找到其服务时，那么服务提供者可以将自己的web service注册到相应的UDDI商用注册网站，目前全球有IBM等4家UDDI商用注册网站。因为WSDL文件中已经给定了web service的地址URI，外部可以直接通过WSDL提供的URI进行相应的web service调用。所以UDDI并不是一个必需的web service组件，服务方完全可以不进行UDDI的注册。<br><br>&nbsp;&nbsp;<strong>创建并发布自己的WS</strong><br><br>&nbsp; 1 安装MyEclipse<br><br>&nbsp; 2 配置Tomcat<br><br>&nbsp;&nbsp; 打开MyEclipse<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/20111221164910838.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649134200.png" alt="2" title="2"></a><br><br>&nbsp;&nbsp; 菜单栏 &ndash;&gt; File &ndash;&gt; New &ndash;&gt; Web Service Project<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/20111221164917202.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649225158.png" alt="3" title="3"></a><br><br>&nbsp;&nbsp; 在这里，我们使用JAX-WS方式。<br><br>&nbsp;&nbsp;<strong>JAX-WS</strong><br><br>&nbsp; Jax-WS是Java1.6中才有的,新的WebService模式,基于注解的方式配置WebService,很类似Asp中的WebService,难度已经比Xfire方式的配置降低了很多.<br><br>&nbsp;&nbsp;&nbsp;<strong>REST(JAX-RS)</strong><br><br>&nbsp;&nbsp; 用的比较少<br><br>&nbsp;&nbsp;&nbsp;<strong>Xfire（已过时）</strong><br><br>&nbsp;&nbsp; 配置比较繁琐<br><br>&nbsp; 创建Service中的包及类库，实现自己的业务。<br><br>&nbsp; 我们创建的是一个用户管理系统，自然需要来管理用户。<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649269524.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649306016.png" alt="4" title="4"></a><br><br>&nbsp; 发布WS<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649326705.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649445517.png" alt="5" title="5"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649541590.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/20111221164957284.png" alt="6" title="6"></a><br><br>&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650015730.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650283553.png" alt="7" title="7"></a><br><br>&nbsp; 到此WS发布完成，接下来配置TomCat<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650319390.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/20111221165040381.png" alt="8" title="8"></a><br><br>&nbsp; 在弹出的窗体中依次展开 MyEclipse -&gt;Servers &ndash;&gt;Tomcat<br><br>&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650438726.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650498797.png" alt="9" title="9"></a><br><br>&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650516030.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650553328.png" alt="11" title="11"></a><br><br><a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650599887.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651058006.png" alt="12" title="12"></a><br><br>&nbsp; 对着项目右击添加库文件<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651102405.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651151048.png" alt="13" title="13"></a><br><br><a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651194758.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651239398.png" alt="14" title="14"></a><br><br><a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651439319.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651511290.png" alt="15" title="15"></a><br><br>&nbsp; 到此，所有步骤都以配置完毕 开始部署<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651541554.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651554751.png" alt="16" title="16"></a><br><br>&nbsp; 启动TomCat<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211652037528.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211652045086.png" alt="17" title="17"></a><br><br>&nbsp; 在工具栏中找到部署图标<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211652083040.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211652124026.png" alt="18" title="18"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211652163342.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211653584488.png" alt="19" title="19"></a><br><br>&nbsp; 部署完成，打开IE进行测试<br><br>&nbsp;&nbsp;<strong>创建客户端进行测试</strong><br><br><strong>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654036346.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654078411.png" alt="21" title="21"></a></strong><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654129529.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654185173.png" alt="22" title="22"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654273382.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654301760.png" alt="23" title="23"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654384570.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654439733.png" alt="24" title="24"></a><br><br>&nbsp;&nbsp; 此时，项目中将会生成WS所需的类库文件<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654506905.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654533364.png" alt="25" title="25"></a><br><br>&nbsp;&nbsp;&nbsp; 创建一个调用测试类<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654567565.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/20111221165505475.png" alt="27" title="27"></a><br><br>&nbsp; 到此，我们的WS就配置+测试完毕了。其实并不难，就算步骤比较多，比较繁琐，容易忘记，可以当一个备忘录吧，方便以后翻阅！<br><br></div>
+        
+          <! -- 添加捐赠图标 -->
+          <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
+            <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+              <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+                 如果文章对您有帮助，请随意打赏支持！  
+              </span>
+            </div>  
+        
+          <!-- 支付宝打赏图案 -->
+            <div style="text-align:center">
+                <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+                <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
+                </a> 
+            </div>
+
+          <!-- 微信打赏图案 -->
+            <div style="text-align:center">
+                <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+                <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+                </a> 
+            </div>
+          </div>  
+          <! -- 添加捐赠图标 -->
+          
+          <! -- 广告开始 -->
+
+          <! -- 广告结束 -->
+
+        
+        
       
     </div>
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/01/myeclipse-webservice.html" data-id="cipqyb04x005kq0d0x1dolz1s" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2013/01/myeclipse-webservice.html" data-id="cipqyryx0005kr1d07raad2fb" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2013/01/myeclipse-webservice.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-myeclipse-webservice" data-count-type="comments"></span></a>
       
@@ -240,30 +272,7 @@
 
 
   <section id="comments">
-  <! -- 添加捐赠图标 -->
-    <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin:18px;text-align:center">
-      <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-           如果文章对您有帮助，请随意打赏支持！  
-        </span>
-      </div>  
   
-    <!-- 支付宝打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
-          </a> 
-      </div>
-
-    <!-- 微信打赏图案 -->
-      <div style="text-align:center">
-          <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-          <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
-          </a> 
-      </div>
-    </div>
-<! -- 添加捐赠图标 -->
     <!-- 多说评论框 start -->
   <div class="ds-thread" data-thread-key="post-myeclipse-webservice" data-title="使用MyEclipse构建webService简单案例" data-url="http://www.liuling123.com/2013/01/myeclipse-webservice.html"></div>
 <!-- 多说评论框 end -->
@@ -426,7 +435,7 @@ var duoshuoQuery = {short_name:"liuling123"};
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2015 - 2016 Lauren<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> 粤ICP备15082212号-2 &nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> &nbsp;粤ICP备15082212号-2 &nbsp;
 
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 
