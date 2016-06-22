@@ -6,26 +6,26 @@
   <title>JNI崩溃问题定位 | 残剑博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一般native代码导致的崩溃问题，奔溃日志提示大概类似这样：
-Fatal signal 11 (SIGSEGV), code 1, fault addr 0x0 in tid 13261
+1Fatal signal 11 (SIGSEGV), code 1, fault addr 0x0 in tid 13261
 只有这样而没有详细的调用栈信息，这样我们开发者无法定位到JNI中到底哪一行导致程序崩掉的。根本无法定位问题所在，就更不用说解决问题了。
-好在NDK给开发者们提供了ndk-stack工具（在NDK根目录下），我们">
+好在NDK给开发者们提供了ndk-stack工具（在NDK根目录下），我">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JNI崩溃问题定位">
 <meta property="og:url" content="http://www.liuling123.com/2016/06/ndk-stack.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="一般native代码导致的崩溃问题，奔溃日志提示大概类似这样：
-Fatal signal 11 (SIGSEGV), code 1, fault addr 0x0 in tid 13261
+1Fatal signal 11 (SIGSEGV), code 1, fault addr 0x0 in tid 13261
 只有这样而没有详细的调用栈信息，这样我们开发者无法定位到JNI中到底哪一行导致程序崩掉的。根本无法定位问题所在，就更不用说解决问题了。
-好在NDK给开发者们提供了ndk-stack工具（在NDK根目录下），我们">
+好在NDK给开发者们提供了ndk-stack工具（在NDK根目录下），我">
 <meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/ndkstack.png">
 <meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/ndk-stack-jnicode.png">
 <meta property="og:updated_time" content="2016-06-20T14:06:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI崩溃问题定位">
 <meta name="twitter:description" content="一般native代码导致的崩溃问题，奔溃日志提示大概类似这样：
-Fatal signal 11 (SIGSEGV), code 1, fault addr 0x0 in tid 13261
+1Fatal signal 11 (SIGSEGV), code 1, fault addr 0x0 in tid 13261
 只有这样而没有详细的调用栈信息，这样我们开发者无法定位到JNI中到底哪一行导致程序崩掉的。根本无法定位问题所在，就更不用说解决问题了。
-好在NDK给开发者们提供了ndk-stack工具（在NDK根目录下），我们">
+好在NDK给开发者们提供了ndk-stack工具（在NDK根目录下），我">
   
   
     <link rel="icon" href="favicon.ico" type="image/x-ico">
@@ -185,21 +185,21 @@ Fatal signal 11 (SIGSEGV), code 1, fault addr 0x0 in tid 13261
       
                 
         <p>一般native代码导致的崩溃问题，奔溃日志提示大概类似这样：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fatal signal 11 (SIGSEGV), code 1, fault addr 0x0 in tid 13261</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fatal signal <span class="number">11</span> (SIGSEGV), code <span class="number">1</span>, fault addr <span class="number">0x0</span> in tid <span class="number">13261</span></span><br></pre></td></tr></table></figure>
 <p>只有这样而没有详细的调用栈信息，这样我们开发者无法定位到JNI中到底哪一行导致程序崩掉的。根本无法定位问题所在，就更不用说解决问题了。</p>
 <p>好在NDK给开发者们提供了ndk-stack工具（在NDK根目录下），我们可以通过ndk-stack工具来查看so库中崩溃的堆栈信息。</p>
 <h4 id="NDK_u7F16_u8BD1_u65F6_u5DF2DEBUG_u6A21_u5F0F_u7F16_u8BD1"><a href="#NDK_u7F16_u8BD1_u65F6_u5DF2DEBUG_u6A21_u5F0F_u7F16_u8BD1" class="headerlink" title="NDK编译时已DEBUG模式编译"></a>NDK编译时已DEBUG模式编译</h4><p>如果是使用命令行编译，则使用如下语句：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ndk-build clean all NDK_DEBUG=1</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ndk</span>-build clean <span class="literal">all</span> NDK_DEBUG=1</span><br></pre></td></tr></table></figure>
 <p>clean all 的意思是编译之前先清理全部上次编译生成的内容。NDK_DEBUG=1 意思是生成调试版本的文件。加了这个参数后 调试的时候能定位到源码行数。</p>
 <a id="more"></a>
 <p>如果是使用gradle，则写法如下（注意这里已经覆盖了gradle默认的NDK编译,详细请前往<a href="http://liuling123.com/2016/05/android-studio-gradle-ndk-config.html" target="_blank" rel="external">《Android Studio覆盖了gradle默认的NDK编译》</a>）：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">task ndkBuild(type: Exec) &#123;&#10;    commandLine &#39;ndk-build&#39;, &#39;-C&#39;, file(&#39;src/main/jni&#39;).absolutePath, &#39;clean&#39;,&#39;all&#39;, &#39;NDK_DEBUG=1&#39;&#10;&#125;&#10;tasks.withType(JavaCompile) &#123;&#10;    compileTask -&#62; compileTask.dependsOn ndkBuild&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">task</span> ndkBuild(type: Exec) &#123;</span><br><span class="line">    <span class="title">commandLine</span> <span class="string">'ndk-build'</span>, <span class="string">'-C'</span>, file(<span class="string">'src/main/jni'</span>).absolutePath, <span class="string">'clean'</span>,<span class="string">'all'</span>, <span class="string">'NDK_DEBUG=1'</span></span><br><span class="line">&#125;</span><br><span class="line">tasks.withType(JavaCompile) &#123;</span><br><span class="line">    <span class="title">compileTask</span> -&gt; compileTask.dependsOn ndkBuild</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后记得在AndroidManifest.xml设置debuggable为true ，在Application节点中。</p>
 <h4 id="ndk_u7F16_u8BD1so_u5E93_u5E76_u8FD0_u884C_u7A0B_u5E8F"><a href="#ndk_u7F16_u8BD1so_u5E93_u5E76_u8FD0_u884C_u7A0B_u5E8F" class="headerlink" title="ndk编译so库并运行程序"></a>ndk编译so库并运行程序</h4><p>前提是要搭建好NDK开发环境并在项目中集成NDK，不会的可以参考<a href="http://liuling123.com/2016/05/ubuntu-android-studio-ndk.html" target="_blank" rel="external">Ubuntu下NDK编译环境搭建及在Android Studio中集成NDK </a> 。</p>
 <p>为了演示，我这里先模拟一个错误：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">JNIEXPORT jstring JNICALL Java_com_liuling_ndkjnidemo_JniUtils_getStringFromC&#10;        (JNIEnv *env, jclass obj) &#123;&#10;    int * p = NULL;&#10;    *p = 1;    //&#36825;&#37324;&#20250;&#23548;&#33268;&#31243;&#24207;&#23849;&#28291;&#10;    return (jstring)(*env)-&#62; NewStringUTF(env, &#34;I am string from jni&#34;);&#10;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">JNIEXPORT jstring JNICALL <span class="title">Java_com_liuling_ndkjnidemo_JniUtils_getStringFromC</span></span><br><span class="line">        <span class="params">(JNIEnv *env, jclass obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> * p = <span class="literal">NULL</span>;</span><br><span class="line">    *p = <span class="number">1</span>;    <span class="comment">//这里会导致程序崩溃</span></span><br><span class="line">    <span class="keyword">return</span> (jstring)(*env)-&gt; NewStringUTF(env, <span class="string">"I am string from jni"</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="u4F7F_u7528ndk-stack_u5DE5_u5177_u5B9A_u4F4D_u5D29_u6E83_u4FE1_u606F"><a href="#u4F7F_u7528ndk-stack_u5DE5_u5177_u5B9A_u4F4D_u5D29_u6E83_u4FE1_u606F" class="headerlink" title="使用ndk-stack工具定位崩溃信息"></a>使用ndk-stack工具定位崩溃信息</h4><p>在命令行中执行如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb logcat | &#20320;&#30340;NDK&#25152;&#22312;&#30340;&#36335;&#24452;/ndk-stack -sym &#20320;&#30340;&#39033;&#30446;&#25152;&#22312;&#30340;&#36335;&#24452;/app/src/main/obj/local/armeabi</span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb logcat | 你的NDK所在的路径<span class="regexp">/ndk-stack -sym 你的项目所在的路径/</span>app<span class="regexp">/src/m</span>ain<span class="regexp">/obj/</span>local<span class="regexp">/armeabi</span></span><br></pre></td></tr></table></figure>
 <p>这里要确定，ndk编译后生成了”你的项目所在的路径/app/src/main/obj/local/armeabi”目录，也就是这个目录要存在。</p>
 <p>执行完这个命令之后，终端会阻塞在那，一旦程序崩溃，就会在终端打印出崩溃信息栈。如图所示：<br><img src="http://7xnqm4.com1.z0.glb.clouddn.com/ndkstack.png" alt=""></p>
 <p>从崩溃信息可以看出导致崩溃的代码是在com_liuling_ndkjnidemo_JniUtils.c中的13行。</p>
@@ -244,7 +244,7 @@ Fatal signal 11 (SIGSEGV), code 1, fault addr 0x0 in tid 13261
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/06/ndk-stack.html" data-id="cipqzwk7a005csld0od6hgddc" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/06/ndk-stack.html" data-id="cipr0i89i005cubd0ppg0nhkt" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/06/ndk-stack.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-ndk-stack" data-count-type="comments"></span></a>
       

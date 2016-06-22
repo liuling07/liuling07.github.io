@@ -174,7 +174,7 @@
       
                 
         <p>(1)首先使用lsusb命令，列出所有usb设备的VID、PID号。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;liuling@liuling-PC:~$ lsusb&#10;&#10;Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub&#10;&#10;Bus 001 Device 014: ID 2b0e:1768  &#10;&#10;Bus 001 Device 004: ID 0461:0010 Primax Electronics, Ltd HP Keyboard&#10;&#10;Bus 001 Device 003: ID 03f0:094a Hewlett-Packard &#10;&#10;Bus 001 Device 009: ID 046d:c053 Logitech, Inc. Laser Mouse&#10;&#10;Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub&#10;&#10;liuling@liuling-PC:~$</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">liuling@liuling-PC:~$ lsusb</span><br><span class="line">Bus <span class="number">002</span> Device <span class="number">001</span>: ID <span class="number">1</span>d6b:<span class="number">0003</span> Linux Foundation <span class="number">3.0</span> root hub</span><br><span class="line">Bus <span class="number">001</span> Device <span class="number">014</span>: ID <span class="number">2</span>b0e:<span class="number">1768</span>  </span><br><span class="line">Bus <span class="number">001</span> Device <span class="number">004</span>: ID <span class="number">0461</span>:<span class="number">0010</span> Primax Electronics, Ltd HP Keyboard</span><br><span class="line">Bus <span class="number">001</span> Device <span class="number">003</span>: ID <span class="number">03f</span>0:<span class="number">094</span>a Hewlett-Packard </span><br><span class="line">Bus <span class="number">001</span> Device <span class="number">009</span>: ID <span class="number">046</span>d:c053 Logitech, Inc. Laser Mouse</span><br><span class="line">Bus <span class="number">001</span> Device <span class="number">001</span>: ID <span class="number">1</span>d6b:<span class="number">0002</span> Linux Foundation <span class="number">2.0</span> root hub</span><br><span class="line">liuling@liuling-PC:~$</span><br></pre></td></tr></table></figure>
 <p>其中Bus 001 Device 014: ID 2b0e:1768为我插入的手机设备，可以看出VID为2b0e，PID为1768。</p>
 <p>(2)在用户的 home 目录下，寻找 .android 目录，如果没有就创建。在 .android 目录下新建一个文件，叫adb_usb.ini, 记住，后缀是 “ini” 哦；添加前面获得的 VID 到 adb_usb.ini 中，如 0xAAAA，注意要加上0x，因为是16进制的。</p>
 <p>(3)在 shell 中 分别输入 adb kill-server, adb start-server, adb devices；若能看到 devices 列出，那么就成功了。 </p>
@@ -186,7 +186,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/06/ubuntu-adb-devices.html" data-id="cipqzwk4s000isld0mytuxw54" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/06/ubuntu-adb-devices.html" data-id="cipr0i86z000iubd0zynri9kd" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/06/ubuntu-adb-devices.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-ubuntu-adb-devices" data-count-type="comments"></span></a>
       
@@ -236,8 +236,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="u5B57_u7B26_u6570_u7EC4_u4E0EjbyteArray"><a href="#u5B57_u7B26_u6570_u7EC4_u4E0EjbyteArray" class="headerlink" title="字符数组与jbyteArray"></a>字符数组与jbyteArray</h2><h4 id="jbyteArray_u8F6C_u5B57_u7B26_u6570_u7EC4"><a href="#jbyteArray_u8F6C_u5B57_u7B26_u6570_u7EC4" class="headerlink" title="jbyteArray转字符数组"></a>jbyteArray转字符数组</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int byteSize = (int) env-&#62;GetArrayLength(jbyteArrayData);  //jbyteArrayData&#26159;jbyteArray&#31867;&#22411;&#30340;&#25968;&#25454;&#10;unsigned char* data = new unsigned char[byteSize + 1];&#10;env-&#62;GetByteArrayRegion(jbyteArrayData, 0, byteSize, reinterpret_cast&#60;jbyte*&#62;(data));&#10;data[byteSize] = &#39;\0&#39;;</span><br></pre></td></tr></table></figure>
-<h4 id="u5B57_u7B26_u6570_u7EC4_u8F6CjbyteArray"><a href="#u5B57_u7B26_u6570_u7EC4_u8F6CjbyteArray" class="headerlink" title="字符数组转jbyteArray"></a>字符数组转jbyteArray</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jbyte *jb =  (jbyte*) data;   //data&#26159;&#23383;&#31526;&#25968;&#32452;&#31867;&#22411;&#10;jbyteArray jarray = env-&#62;NewByteArray(byteSize);   //byteSize&#26159;&#23383;&#31526;&#25968;&#32452;&#22823;&#23567;&#10;env-&#62;SetByteArrayRegion(jarray, 0, byteSize, jb);</span><br></pre></td></tr></table></figure>
+        <h2 id="u5B57_u7B26_u6570_u7EC4_u4E0EjbyteArray"><a href="#u5B57_u7B26_u6570_u7EC4_u4E0EjbyteArray" class="headerlink" title="字符数组与jbyteArray"></a>字符数组与jbyteArray</h2><h4 id="jbyteArray_u8F6C_u5B57_u7B26_u6570_u7EC4"><a href="#jbyteArray_u8F6C_u5B57_u7B26_u6570_u7EC4" class="headerlink" title="jbyteArray转字符数组"></a>jbyteArray转字符数组</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> byteSize = (<span class="keyword">int</span>) env-&gt;GetArrayLength(jbyteArrayData);  <span class="comment">//jbyteArrayData是jbyteArray类型的数据</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span>* data = <span class="keyword">new</span> <span class="keyword">unsigned</span> <span class="keyword">char</span>[byteSize + <span class="number">1</span>];</span><br><span class="line">env-&gt;GetByteArrayRegion(jbyteArrayData, <span class="number">0</span>, byteSize, <span class="keyword">reinterpret_cast</span>&lt;jbyte*&gt;(data));</span><br><span class="line">data[byteSize] = <span class="string">'\0'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="u5B57_u7B26_u6570_u7EC4_u8F6CjbyteArray"><a href="#u5B57_u7B26_u6570_u7EC4_u8F6CjbyteArray" class="headerlink" title="字符数组转jbyteArray"></a>字符数组转jbyteArray</h4><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jbyte *jb =  <span class="list">(<span class="keyword">jbyte*</span>)</span> data<span class="comment">;   //data是字符数组类型</span></span><br><span class="line">jbyteArray jarray = env-&gt;NewByteArray<span class="list">(<span class="keyword">byteSize</span>)</span><span class="comment">;   //byteSize是字符数组大小</span></span><br><span class="line">env-&gt;SetByteArrayRegion<span class="list">(<span class="keyword">jarray</span>, <span class="number">0</span>, byteSize, jb)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
             <a href="/2016/06/jni-type-change.html#more">阅读全文</a>
@@ -248,7 +248,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/06/jni-type-change.html" data-id="cipqzwk8k007msld0n8z59rmb" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/06/jni-type-change.html" data-id="cipr0i8av007mubd0ozivgf5y" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/06/jni-type-change.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jni-type-change" data-count-type="comments"></span></a>
       
@@ -299,11 +299,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>一般native代码导致的崩溃问题，奔溃日志提示大概类似这样：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Fatal signal 11 (SIGSEGV), code 1, fault addr 0x0 in tid 13261</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fatal signal <span class="number">11</span> (SIGSEGV), code <span class="number">1</span>, fault addr <span class="number">0x0</span> in tid <span class="number">13261</span></span><br></pre></td></tr></table></figure>
 <p>只有这样而没有详细的调用栈信息，这样我们开发者无法定位到JNI中到底哪一行导致程序崩掉的。根本无法定位问题所在，就更不用说解决问题了。</p>
 <p>好在NDK给开发者们提供了ndk-stack工具（在NDK根目录下），我们可以通过ndk-stack工具来查看so库中崩溃的堆栈信息。</p>
 <h4 id="NDK_u7F16_u8BD1_u65F6_u5DF2DEBUG_u6A21_u5F0F_u7F16_u8BD1"><a href="#NDK_u7F16_u8BD1_u65F6_u5DF2DEBUG_u6A21_u5F0F_u7F16_u8BD1" class="headerlink" title="NDK编译时已DEBUG模式编译"></a>NDK编译时已DEBUG模式编译</h4><p>如果是使用命令行编译，则使用如下语句：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ndk-build clean all NDK_DEBUG=1</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ndk</span>-build clean <span class="literal">all</span> NDK_DEBUG=1</span><br></pre></td></tr></table></figure>
 <p>clean all 的意思是编译之前先清理全部上次编译生成的内容。NDK_DEBUG=1 意思是生成调试版本的文件。加了这个参数后 调试的时候能定位到源码行数。</p>
         
           <p class="article-more-link">
@@ -315,7 +315,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/06/ndk-stack.html" data-id="cipqzwk7a005csld0od6hgddc" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/06/ndk-stack.html" data-id="cipr0i89i005cubd0ppg0nhkt" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/06/ndk-stack.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-ndk-stack" data-count-type="comments"></span></a>
       
@@ -377,7 +377,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/06/android_studio_kotlin.html" data-id="cipqzwkcy00fosld0smi6df4y" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/06/android_studio_kotlin.html" data-id="cipr0i8ez00foubd0z2n33gx7" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/06/android_studio_kotlin.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-android_studio_kotlin" data-count-type="comments"></span></a>
       
@@ -428,7 +428,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>​​默认情况下，使用JNI时与native对应的JNI函数名都是Java<em>包名(点替换为</em>)<em>类名</em>方法名，使用javah生成的头文件函数名就是这样的格式。这样的格式的so库被反汇编时很容易就找到对应的方法。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">JNIEXPORT jstring JNICALL Java_com_liuling_ndkjnidemo_JniUtils_getStringFromC&#10;        (JNIEnv *env, jclass obj) &#123;&#10;    return (jstring)(*env)-&#62; NewStringUTF(env, &#34;I am string from jni&#34;);&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JNIEXPORT jstring JNICALL Java_com_liuling_ndkjnidemo_JniUtils_getStringFromC</span><br><span class="line">        (JNIEnv *env, jclass obj) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">(jstring)(*env)</span>-&gt;</span> NewStringUTF(env, <span class="string">"I am string from jni"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面是简单的一个JNI方法，我们将生成的so库使用IDA工具进行反汇编之后就能看到如下的内容：</p>
 <p>在左边很容易就能找到Java_com_liuling_ndkjnidemo_JniUtils_getStringFromC这个方法：</p>
 <p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/somix%2Fmethod.png" alt=""></p>
@@ -443,7 +443,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/06/so_method_mix.html" data-id="cipqzwk5m002bsld0k6ky2xiz" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/06/so_method_mix.html" data-id="cipr0i87w002bubd0zh4vly32" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/06/so_method_mix.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-so_method_mix" data-count-type="comments"></span></a>
       
@@ -506,7 +506,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/05/ubuntu-android-studio-ndk.html" data-id="cipqzwk4p0009sld0i4fmqotx" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/05/ubuntu-android-studio-ndk.html" data-id="cipr0i86w0009ubd0pkpq0obp" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/05/ubuntu-android-studio-ndk.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-ubuntu-android-studio-ndk" data-count-type="comments"></span></a>
       
@@ -558,7 +558,7 @@
       
         <p>默认情况下，存在src/main/jni文件夹时，gradle生成脚本会执行ndk编译生成操作，但是，编译生成方式并不是像以前那样用ndk-build去处理Android.mk Application.mk等进行c/c++代码的编译链接，而是在临时文件路径中重新生成了一份新的mk文件，并以此作为ndk编译项目。</p>
 <p>如果我们想自己在jni目录下面建立Android.mk和Application.mk来进行编译，比如在so库中加入log打印功能，则需要在Android.mk中将log库编译到so文件，此时要怎么做呢？</p>
-<p>首先在项目gradle文件的android{}中添加如下代码：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sourceSets &#123;&#10;    main &#123;&#10;        jni.srcDirs = []   //&#23631;&#34109;gradle&#30340;jni&#29983;&#25104;&#36807;&#31243;&#10;        jniLibs.srcDir &#39;src/main/libs&#39;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先在项目gradle文件的android{}中添加如下代码：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sourceSets</span> &#123;</span><br><span class="line">    main &#123;</span><br><span class="line">        jni.srcDirs = []   <span class="comment">//屏蔽gradle的jni生成过程</span></span><br><span class="line">        jniLibs.srcDir <span class="string">'src/main/libs'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
         
           <p class="article-more-link">
             <a href="/2016/05/android-studio-gradle-ndk-config.html#more">阅读全文</a>
@@ -569,7 +569,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/05/android-studio-gradle-ndk-config.html" data-id="cipqzwkd100fusld0ipg6036m" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/05/android-studio-gradle-ndk-config.html" data-id="cipr0i8f200fuubd05jcecs9s" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/05/android-studio-gradle-ndk-config.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-android-studio-gradle-ndk-config" data-count-type="comments"></span></a>
       
@@ -635,7 +635,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/05/auto-decompiler.html" data-id="cipqzwkc900emsld0okstgwwf" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/05/auto-decompiler.html" data-id="cipr0i8ef00emubd0eog1v0hg" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/05/auto-decompiler.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-auto-decompiler" data-count-type="comments"></span></a>
       
@@ -689,7 +689,7 @@
 <p>前面一篇文章讲解了EventBus的使用，但是作为开发人员，不能只停留在仅仅会用的层面上，我们还需要弄清楚它的内部实现原理。所以本篇博文将分析EventBus的源码，看看究竟它是如何实现“发布/订阅”功能的。</p>
 <p>相关文章<br><a href="http://liuling123.com/2016/01/EventBus-explain.html">EventBus使用详解</a><br><a href="http://liuling123.com/2016/01/EventBus-source.html">EventBus源码解析</a></p>
 </blockquote>
-<h3 id="u4E8B_u4EF6_u6CE8_u518C"><a href="#u4E8B_u4EF6_u6CE8_u518C" class="headerlink" title="事件注册"></a>事件注册</h3><p>根据前一讲<a href="http://liuling123.com/2016/01/EventBus-explain.html">EventBus使用详解</a>我们已经知道EventBus使用首先是需要注册的，注册事件的代码如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">EventBus.getDefault().register(this);</span><br></pre></td></tr></table></figure></p>
+<h3 id="u4E8B_u4EF6_u6CE8_u518C"><a href="#u4E8B_u4EF6_u6CE8_u518C" class="headerlink" title="事件注册"></a>事件注册</h3><p>根据前一讲<a href="http://liuling123.com/2016/01/EventBus-explain.html">EventBus使用详解</a>我们已经知道EventBus使用首先是需要注册的，注册事件的代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().<span class="keyword">register</span>(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure></p>
         
           <p class="article-more-link">
             <a href="/2016/01/EventBus-source.html#more">阅读全文</a>
@@ -700,7 +700,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/01/EventBus-source.html" data-id="cipqzwkdb00ghsld0tan2y0qv" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/01/EventBus-source.html" data-id="cipr0i8fc00ghubd03tkdua5g" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/01/EventBus-source.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-EventBus-source" data-count-type="comments"></span></a>
       
@@ -765,7 +765,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/01/EventBus-explain.html" data-id="cipqzwkdd00gmsld070x6ileo" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/01/EventBus-explain.html" data-id="cipr0i8fe00gmubd0gwlqpgp3" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/01/EventBus-explain.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-EventBus-explain" data-count-type="comments"></span></a>
       

@@ -174,7 +174,7 @@
       
         <h1 id="u4EC0_u4E48_u662FRecyclerView"><a href="#u4EC0_u4E48_u662FRecyclerView" class="headerlink" title="什么是RecyclerView"></a>什么是RecyclerView</h1><pre><code>RecyclerView是Android 5.0 materials design中的组件之一，相应的还有CardView、Palette等。看名字我们就能看出一点端倪，没错，它主要的特点就是复用。我们知道，Listview中的Adapter中可以实现ViewHolder的复用。RecyclerView提供了一个耦合度更低的方式来复用ViewHolder，并且可以轻松的实现ListView、GridView以及瀑布流的效果。
 </code></pre><h1 id="RecyclerView_u7684_u7528_u6CD5"><a href="#RecyclerView_u7684_u7528_u6CD5" class="headerlink" title="RecyclerView的用法"></a>RecyclerView的用法</h1><pre><code>首先我们要gradle的依赖库中添加  compile &apos;com.android.support:recyclerview-v7:21.+&apos;  。如果是eclipse直接导入android-support-v7-recyclerview.jar就可以了。
-</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/**&#10;* &#35774;&#32622;Adapter&#10;*/&#10;mRecyclerView.setAdapter(mListAdapter);&#10;/**&#10;* &#35774;&#32622;&#24067;&#23616;&#31649;&#29702;&#22120;&#10;*/&#10;mRecyclerView.setLayoutManager(linearLayoutManager);&#10;/**&#10;* &#35774;&#32622;item&#20998;&#21106;&#32447;&#10;*/&#10;mRecyclerView.addItemDecoration(itemDecoration);&#10;/**&#10;* &#35774;&#32622;item&#21160;&#30011;&#10;*/&#10;mRecyclerView.setItemAnimator(new DefaultItemAnimator());</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span> 设置Adapter</span><br><span class="line"><span class="keyword">*</span>/</span><br><span class="line">mRecyclerView.setAdapter(mListAdapter);</span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span> 设置布局管理器</span><br><span class="line"><span class="keyword">*</span>/</span><br><span class="line">mRecyclerView.setLayoutManager(linearLayoutManager);</span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span> 设置item分割线</span><br><span class="line"><span class="keyword">*</span>/</span><br><span class="line">mRecyclerView.addItemDecoration(itemDecoration);</span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span> 设置item动画</span><br><span class="line"><span class="keyword">*</span>/</span><br><span class="line">mRecyclerView.setItemAnimator(new DefaultItemAnimator());</span><br></pre></td></tr></table></figure>
 <p>使用RecyclerView，基本上要上面四步。相比ListView只需设置Adapter而言，RecyclerView的使用看起来似乎要复杂一些。但是它的可定制性更高了，你可以自己定制自己的分割线样式或者是item的的动画。  </p>
         
           <p class="article-more-link">
@@ -186,7 +186,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/11/recyclerview-example.html" data-id="cipqzwk6e003nsld0ky4gecau" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/11/recyclerview-example.html" data-id="cipr0i88m003nubd063lm293t" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/11/recyclerview-example.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-recyclerview-example" data-count-type="comments"></span></a>
       
@@ -248,7 +248,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/custom-camera.html" data-id="cipqzwkbk00desld06eba263f" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/custom-camera.html" data-id="cipr0i8ds00deubd08mwqn598" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/10/custom-camera.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-custom-camera" data-count-type="comments"></span></a>
       
@@ -311,7 +311,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/listview-partial-refresh.html" data-id="cipqzwk7w006asld0tuwa6v43" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/listview-partial-refresh.html" data-id="cipr0i8a6006aubd0lcafbmap" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/10/listview-partial-refresh.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-listview-partial-refresh" data-count-type="comments"></span></a>
       
@@ -375,7 +375,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/asynctask-multi-task-thread.html" data-id="cipqzwkco00f2sld0hsm363zy" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/asynctask-multi-task-thread.html" data-id="cipr0i8eq00f2ubd0jl1ji08z" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/10/asynctask-multi-task-thread.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-asynctask-multi-task-thread" data-count-type="comments"></span></a>
       
@@ -441,7 +441,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/customview-download-percent.html" data-id="cipqzwkbi00d9sld0fpf57l6x" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/customview-download-percent.html" data-id="cipr0i8dq00d9ubd0oohnto0b" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/10/customview-download-percent.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-customview-download-percent" data-count-type="comments"></span></a>
       
@@ -516,7 +516,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/parcelable-example.html" data-id="cipqzwk6n0042sld0qaik05bw" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/parcelable-example.html" data-id="cipr0i88w0042ubd0jw7hxmue" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/10/parcelable-example.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-parcelable-example" data-count-type="comments"></span></a>
       
@@ -580,7 +580,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/asynctask-multithread-download.html" data-id="cipqzwkcl00ewsld03zazi7dm" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/asynctask-multithread-download.html" data-id="cipr0i8en00ewubd0vhk36ki5" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/10/asynctask-multithread-download.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-asynctask-multithread-download" data-count-type="comments"></span></a>
       
@@ -632,7 +632,7 @@
       
         <p>关于AsyncTask的用法可以参看前面一篇博客<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="AsyncTask实现断点续传">《AsyncTask实现断点续传》</a>，本文只解析AsyncTask的源代码。</p>
 <p>AsyncTask.execute方法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public final AsyncTask&#60;Params, Progress, Result&#62; execute(Params... params) &#123;&#10;&#9;return executeOnExecutor(sDefaultExecutor, params);&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> final AsyncTask&lt;<span class="keyword">Params</span>, Progress, Result&gt; execute(<span class="keyword">Params</span><span class="attribute">...</span> <span class="keyword">params</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> executeOnExecut<span class="subst">or</span>(sDefaultExecut<span class="subst">or</span>, <span class="keyword">params</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
             <a href="/2015/10/asynctask-source.html#more">阅读全文</a>
@@ -643,7 +643,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/asynctask-source.html" data-id="cipqzwkcc00ersld08q2rjkwq" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/asynctask-source.html" data-id="cipr0i8ei00erubd0kj6vou6k" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/10/asynctask-source.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-asynctask-source" data-count-type="comments"></span></a>
       
@@ -706,7 +706,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/asynctask-download.html" data-id="cipqzwkcq00f8sld0hkgeo38q" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/asynctask-download.html" data-id="cipr0i8es00f8ubd0p70ib2ia" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/10/asynctask-download.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-asynctask-download" data-count-type="comments"></span></a>
       
@@ -773,7 +773,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/overdraw.html" data-id="cipqzwk6t004csld0rec605sx" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/10/overdraw.html" data-id="cipr0i892004cubd0kitdhtky" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/10/overdraw.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-overdraw" data-count-type="comments"></span></a>
       

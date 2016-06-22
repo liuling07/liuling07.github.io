@@ -178,12 +178,12 @@
                 
         <p>默认情况下，存在src/main/jni文件夹时，gradle生成脚本会执行ndk编译生成操作，但是，编译生成方式并不是像以前那样用ndk-build去处理Android.mk Application.mk等进行c/c++代码的编译链接，而是在临时文件路径中重新生成了一份新的mk文件，并以此作为ndk编译项目。</p>
 <p>如果我们想自己在jni目录下面建立Android.mk和Application.mk来进行编译，比如在so库中加入log打印功能，则需要在Android.mk中将log库编译到so文件，此时要怎么做呢？</p>
-<p>首先在项目gradle文件的android{}中添加如下代码：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sourceSets &#123;&#10;    main &#123;&#10;        jni.srcDirs = []   //&#23631;&#34109;gradle&#30340;jni&#29983;&#25104;&#36807;&#31243;&#10;        jniLibs.srcDir &#39;src/main/libs&#39;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先在项目gradle文件的android{}中添加如下代码：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sourceSets</span> &#123;</span><br><span class="line">    main &#123;</span><br><span class="line">        jni.srcDirs = []   <span class="comment">//屏蔽gradle的jni生成过程</span></span><br><span class="line">        jniLibs.srcDir <span class="string">'src/main/libs'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>然后在gradle文件最底部添加一个ndk编译任务：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">task ndkBuild(type: Exec) &#123;&#10;    commandLine &#39;ndk-build&#39;, &#39;-C&#39;, file(&#39;src/main/jni&#39;).absolutePath&#10;&#125;&#10;tasks.withType(JavaCompile) &#123;&#10;    compileTask -&#62; compileTask.dependsOn ndkBuild&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">task</span> ndkBuild(type: Exec) &#123;</span><br><span class="line">    <span class="title">commandLine</span> <span class="string">'ndk-build'</span>, <span class="string">'-C'</span>, file(<span class="string">'src/main/jni'</span>).absolutePath</span><br><span class="line">&#125;</span><br><span class="line">tasks.withType(JavaCompile) &#123;</span><br><span class="line">    <span class="title">compileTask</span> -&gt; compileTask.dependsOn ndkBuild</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意：使用上述命令必须确定ndk的环境变量配置好了，也就是确定ndk的目录加到PATH中去了，否则该任务会执行失败。</p>
-<p>在MAC中不能直接使用ndk-build，会找不到命令，即使已经在～/.bash_profile中将ndk目录加入到PATH中了也一样。需要使用绝对路径，如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">commandLine &#39;/User/xxx/xxx/ndk-build&#39;, &#39;-C&#39;, file(&#39;src/main/jni&#39;).absolutePath</span><br></pre></td></tr></table></figure></p>
+<p>在MAC中不能直接使用ndk-build，会找不到命令，即使已经在～/.bash_profile中将ndk目录加入到PATH中了也一样。需要使用绝对路径，如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commandLine <span class="string">'/User/xxx/xxx/ndk-build'</span>, <span class="string">'-C'</span>, <span class="function"><span class="title">file</span><span class="params">(<span class="string">'src/main/jni'</span>)</span></span>.absolutePath</span><br></pre></td></tr></table></figure></p>
 <p>最后自己在jni目录下面建立Android.mk和Application.mk文件，直接点击AS上的运行就会先执行NDK编译的过程。</p>
 
         
@@ -223,7 +223,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/05/android-studio-gradle-ndk-config.html" data-id="cipqzwkd100fusld0ipg6036m" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/05/android-studio-gradle-ndk-config.html" data-id="cipr0i8f200fuubd05jcecs9s" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/05/android-studio-gradle-ndk-config.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-android-studio-gradle-ndk-config" data-count-type="comments"></span></a>
       

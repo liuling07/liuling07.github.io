@@ -6,18 +6,18 @@
   <title>Ubuntu下adb无法识别手机设备 | 残剑博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="(1)首先使用lsusb命令，列出所有usb设备的VID、PID号。
-&amp;#10;liuling@liuling-PC:~$ lsusb&amp;#10;&amp;#10;Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub&amp;#10;&amp;#10;Bus 001 Device 014: ID 2b0e:1768  &amp;#10;&amp;#10;Bus 001">
+12345678liuling@liuling-PC:~$ lsusbBus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hubBus 001 Device 014: ID 2b0e:1768  Bus 001 Device 004: ID 0461:0010 P">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu下adb无法识别手机设备">
 <meta property="og:url" content="http://www.liuling123.com/2016/06/ubuntu-adb-devices.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="(1)首先使用lsusb命令，列出所有usb设备的VID、PID号。
-&amp;#10;liuling@liuling-PC:~$ lsusb&amp;#10;&amp;#10;Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub&amp;#10;&amp;#10;Bus 001 Device 014: ID 2b0e:1768  &amp;#10;&amp;#10;Bus 001">
-<meta property="og:updated_time" content="2016-06-21T13:17:12.000Z">
+12345678liuling@liuling-PC:~$ lsusbBus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hubBus 001 Device 014: ID 2b0e:1768  Bus 001 Device 004: ID 0461:0010 P">
+<meta property="og:updated_time" content="2016-06-22T14:57:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下adb无法识别手机设备">
 <meta name="twitter:description" content="(1)首先使用lsusb命令，列出所有usb设备的VID、PID号。
-&amp;#10;liuling@liuling-PC:~$ lsusb&amp;#10;&amp;#10;Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub&amp;#10;&amp;#10;Bus 001 Device 014: ID 2b0e:1768  &amp;#10;&amp;#10;Bus 001">
+12345678liuling@liuling-PC:~$ lsusbBus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hubBus 001 Device 014: ID 2b0e:1768  Bus 001 Device 004: ID 0461:0010 P">
   
   
     <link rel="icon" href="favicon.ico" type="image/x-ico">
@@ -177,7 +177,7 @@
       
                 
         <p>(1)首先使用lsusb命令，列出所有usb设备的VID、PID号。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;liuling@liuling-PC:~$ lsusb&#10;&#10;Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub&#10;&#10;Bus 001 Device 014: ID 2b0e:1768  &#10;&#10;Bus 001 Device 004: ID 0461:0010 Primax Electronics, Ltd HP Keyboard&#10;&#10;Bus 001 Device 003: ID 03f0:094a Hewlett-Packard &#10;&#10;Bus 001 Device 009: ID 046d:c053 Logitech, Inc. Laser Mouse&#10;&#10;Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub&#10;&#10;liuling@liuling-PC:~$</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">liuling@liuling-PC:~$ lsusb</span><br><span class="line">Bus <span class="number">002</span> Device <span class="number">001</span>: ID <span class="number">1</span>d6b:<span class="number">0003</span> Linux Foundation <span class="number">3.0</span> root hub</span><br><span class="line">Bus <span class="number">001</span> Device <span class="number">014</span>: ID <span class="number">2</span>b0e:<span class="number">1768</span>  </span><br><span class="line">Bus <span class="number">001</span> Device <span class="number">004</span>: ID <span class="number">0461</span>:<span class="number">0010</span> Primax Electronics, Ltd HP Keyboard</span><br><span class="line">Bus <span class="number">001</span> Device <span class="number">003</span>: ID <span class="number">03f</span>0:<span class="number">094</span>a Hewlett-Packard </span><br><span class="line">Bus <span class="number">001</span> Device <span class="number">009</span>: ID <span class="number">046</span>d:c053 Logitech, Inc. Laser Mouse</span><br><span class="line">Bus <span class="number">001</span> Device <span class="number">001</span>: ID <span class="number">1</span>d6b:<span class="number">0002</span> Linux Foundation <span class="number">2.0</span> root hub</span><br><span class="line">liuling@liuling-PC:~$</span><br></pre></td></tr></table></figure>
 <p>其中Bus 001 Device 014: ID 2b0e:1768为我插入的手机设备，可以看出VID为2b0e，PID为1768。</p>
 <p>(2)在用户的 home 目录下，寻找 .android 目录，如果没有就创建。在 .android 目录下新建一个文件，叫adb_usb.ini, 记住，后缀是 “ini” 哦；添加前面获得的 VID 到 adb_usb.ini 中，如 0xAAAA，注意要加上0x，因为是16进制的。</p>
 <p>(3)在 shell 中 分别输入 adb kill-server, adb start-server, adb devices；若能看到 devices 列出，那么就成功了。 </p>
@@ -219,7 +219,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2016/06/ubuntu-adb-devices.html" data-id="cipqzwk4s000isld0mytuxw54" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2016/06/ubuntu-adb-devices.html" data-id="cipr0i86z000iubd0zynri9kd" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2016/06/ubuntu-adb-devices.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-ubuntu-adb-devices" data-count-type="comments"></span></a>
       

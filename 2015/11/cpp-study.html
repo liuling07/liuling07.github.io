@@ -185,11 +185,11 @@
 <p>#endif<br>假如编译时，确实满足条件，则生成的程序文件(.exe文件)中不会有执行代码2的。如果用普通if语句，生成的程序文件就会有执行代码2，这个区别看看生成文件大小就可以知道。如果你的条件在程序编译前就已经确定了，那就用#if；如果条件需要在程序运行过程中才能判断，则用if。</p>
 <p><strong>static_cast</strong><br>用法：static_cast &lt; type-id &gt; ( expression )<br>该运算符把expression转换为type-id类型，但没有运行时类型检查来保证转换的安全性。有点类似于Java中的强制转换。</p>
 <p><strong>string与int拼接</strong><br>1、stringstream拼接string与int</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">stringstream ss;&#10;ss &#60;&#60; &#34;old:&#34;&#60;&#60; GameOverScene::goldNum &#60;&#60; &#34;,distance:&#34; &#60;&#60; GameOverScene::distance;&#10;LabelTTF* goldAndDistanceLabel = LabelTTF::create(ss.str(), &#34;Arial&#34;, 30);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">stringstream</span> ss;</span><br><span class="line">ss &lt;&lt; <span class="string">"old:"</span>&lt;&lt; GameOverScene::goldNum &lt;&lt; <span class="string">",distance:"</span> &lt;&lt; GameOverScene::distance;</span><br><span class="line">LabelTTF* goldAndDistanceLabel = LabelTTF::create(ss.str(), <span class="string">"Arial"</span>, <span class="number">30</span>);</span><br></pre></td></tr></table></figure>
 <p>2、sprintf函数</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char countBuf[16] = &#34;&#34;;&#10;sprintf(countBuf, &#34;distance:%d&#34;, mDistance);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> countBuf[<span class="number">16</span>] = <span class="string">""</span>;</span><br><span class="line"><span class="built_in">sprintf</span>(countBuf, <span class="string">"distance:%d"</span>, mDistance);</span><br></pre></td></tr></table></figure>
 <p>3、std::to_string函数</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">string s = &#34;run0&#34; + std::to_string(i) + &#34;.png&#34;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s = <span class="string">"run0"</span> + <span class="built_in">std</span>::to_string(i) + <span class="string">".png"</span>;</span><br></pre></td></tr></table></figure>
 <p>安卓没有to_string这个函数，eclipse中编译出错，为了跨平台，尽量使用stringstream或者sprintf</p>
 
         
@@ -229,7 +229,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/11/cpp-study.html" data-id="cipqzwkbq00dmsld04ji2fa2q" class="article-share-link">分享到</a>
+      <a data-url="http://www.liuling123.com/2015/11/cpp-study.html" data-id="cipr0i8dx00dmubd0o7tmvo92" class="article-share-link">分享到</a>
       
         <a href="http://www.liuling123.com/2015/11/cpp-study.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-cpp-study" data-count-type="comments"></span></a>
       

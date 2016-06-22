@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://www.liuling123.com/2016/06/ubuntu-adb-devices.html</loc>
+    <lastmod>2016-06-22T14:57:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu下adb无法识别手机设备</title>
+        <pubTime>2016-06-21T13:14:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.liuling123.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.liuling123.com/2016/06/jni-type-change.html</loc>
     <lastmod>2016-06-21T13:19:40.000Z</lastmod>
     <data>
@@ -19,28 +41,6 @@
            
              
               <breadCrumb title="JNI&amp;amp;NDK" url="http://www.liuling123.com/categories/JNI-amp-NDK/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.liuling123.com/2016/06/ubuntu-adb-devices.html</loc>
-    <lastmod>2016-06-21T13:17:12.000Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu下adb无法识别手机设备</title>
-        <pubTime>2016-06-21T13:14:00.000Z</pubTime>
-        
-        <tag>android</tag>
-         
-        <tag>linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.liuling123.com/categories/Linux/"/>
           
         </display>
     </data>
