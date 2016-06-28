@@ -273,6 +273,37 @@
 <h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>自动化脚本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh  </span><br><span class="line"></span></span><br><span class="line"><span class="comment"># will be decompiled file</span></span><br><span class="line">file_name=<span class="variable">$1</span></span><br><span class="line"><span class="built_in">export</span> NAME=<span class="variable">$&#123;file_name%.apk&#125;</span></span><br><span class="line"><span class="built_in">export</span> APK_TOOLS=<span class="variable">$PWD</span>/tools/apktool-<span class="number">2.1</span>.<span class="number">1</span></span><br><span class="line"><span class="built_in">export</span> DEX_JAR=<span class="variable">$PWD</span>/tools/dex2jar-<span class="number">0.0</span>.<span class="number">9.15</span></span><br><span class="line"><span class="built_in">export</span> JD_GUI=<span class="variable">$PWD</span>/tools/jd-gui-osx-<span class="number">1.4</span>.<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#init  </span></span><br><span class="line">rm -rf tmp</span><br><span class="line"><span class="comment">#apply apktool  </span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$APK_TOOLS</span></span><br><span class="line">rm -rf ../../<span class="variable">$NAME</span></span><br><span class="line">./apktool d <span class="operator">-f</span> ../../<span class="variable">$&#123;file_name&#125;</span></span><br><span class="line">mv <span class="variable">$NAME</span> ../../</span><br><span class="line"></span><br><span class="line"><span class="comment">#unzip  </span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$APK_TOOLS</span>/../..</span><br><span class="line">mkdir -p tmp</span><br><span class="line">cp <span class="variable">$&#123;file_name&#125;</span> tmp/<span class="variable">$NANME</span>.zip</span><br><span class="line"><span class="built_in">cd</span> tmp</span><br><span class="line">unzip <span class="variable">$NANME</span>.zip</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">cp ./tmp/<span class="variable">$NANME</span>/classes.dex <span class="variable">$NAME</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#use dex2jar to get classes_dex2jar.jar  </span></span><br><span class="line"><span class="variable">$DEX_JAR</span>/d2j-dex2jar.sh <span class="variable">$NAME</span>/classes.dex</span><br><span class="line">rm -rf tmp </span><br><span class="line">mv classes-dex2jar.jar <span class="variable">$NAME</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#prepre open classes_dex2jar.jar</span></span><br><span class="line">open <span class="operator">-a</span> <span class="variable">$JD_GUI</span>/JD-GUI.app <span class="variable">$NAME</span>/classes-dex2jar.jar</span><br></pre></td></tr></table></figure></p>
 <p>Mac下反编译工具下载链接：<a href="http://download.csdn.net/detail/a476777389/9520676" target="_blank" rel="external">http://download.csdn.net/detail/a476777389/9520676</a></p>
 
+            
+              <! -- 添加捐赠图标 -->
+              <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin－top:38px;margin-bottom:18px;text-align:center">
+                <div id="donate_board" class="donate_bar center" style=" margin:12px;">
+                  <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+                  <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+                     如果文章对您有帮助，请随意打赏支持！  
+                  </span>
+                </div>  
+            
+              <!-- 支付宝打赏图案 -->
+                <div style="text-align:center">
+                    <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+                    <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
+                    </a> 
+                </div>
+
+              <!-- 微信打赏图案 -->
+                <div style="text-align:center">
+                    <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+                    <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+                    </a> 
+                </div>
+              </div>  
+              <! -- 添加捐赠图标 -->
+              
+              <! -- 广告开始 -->
+
+              <! -- 广告结束 -->
+
+            
         
         </div>
         <footer class="article-footer">
@@ -282,7 +313,7 @@
 
 </div>
 
-    <a data-url="http://www.liuling123.com/2016/05/auto-decompiler.html" data-id="cipzjrcay00emmsd0itkqcudh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.liuling123.com/2016/05/auto-decompiler.html" data-id="cipzk9zel00emnjd0yye2q9dq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

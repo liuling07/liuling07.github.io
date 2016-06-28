@@ -272,6 +272,37 @@
 <p>HttpJspBase这个类重写了HttpServlet的service方法，而没有重写doGet()或者doPost()(通过URL运行的默认是GET方式提交)，因为首先调用的是service方法，而这个方法里面又调用了_jspService()方法，HttpJspBase类中_jspService()方法是抽象方法，但是demo1_jsp这个类重写了这个方法，所以就调用了demo1_jsp类中的_jspService()方法。以上就足以证明，JSP就是servlet了。</p>
 <p>　　JSP中可以直接写HTML标签，又可以直接嵌入JAVA程序，java程序段写在&lt;% %&gt;或者&lt;%! %&gt;里面，但是写在&lt;% %&gt;和写在&lt;%! %&gt;里又有什么不同呢？&lt;%! %&gt;里面是定义变量或者函数用的，写在这里面的会定义成demo1_jsp类中的成员变量或成员函数。而写在&lt;% %&gt;里面的则在_jspService()方法里直接输出了。</p>
 
+            
+              <! -- 添加捐赠图标 -->
+              <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin－top:38px;margin-bottom:18px;text-align:center">
+                <div id="donate_board" class="donate_bar center" style=" margin:12px;">
+                  <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+                  <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+                     如果文章对您有帮助，请随意打赏支持！  
+                  </span>
+                </div>  
+            
+              <!-- 支付宝打赏图案 -->
+                <div style="text-align:center">
+                    <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+                    <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
+                    </a> 
+                </div>
+
+              <!-- 微信打赏图案 -->
+                <div style="text-align:center">
+                    <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+                    <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+                    </a> 
+                </div>
+              </div>  
+              <! -- 添加捐赠图标 -->
+              
+              <! -- 广告开始 -->
+
+              <! -- 广告结束 -->
+
+            
         
         </div>
         <footer class="article-footer">
@@ -281,7 +312,7 @@
 
 </div>
 
-    <a data-url="http://www.liuling123.com/2012/07/jsp-run-principle.html" data-id="cipzjrc78007amsd07ur4nhy1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.liuling123.com/2012/07/jsp-run-principle.html" data-id="cipzk9zas007anjd0adjalq6j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

@@ -266,6 +266,37 @@
 <p>并且重写activity的onActivityResult方法，处理返回结果。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@<span class="type">Override</span></span><br><span class="line">protected <span class="type">void</span> onActivityResult(<span class="type">int</span> requestCode, <span class="type">int</span> resultCode, <span class="type">Intent</span> data) &#123;</span><br><span class="line">    super.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    <span class="keyword">if</span>(requestCode == <span class="type">PICK_PHOTO</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(resultCode == <span class="type">RESULT_OK</span>)&#123;</span><br><span class="line">             <span class="type">ArrayList</span>&lt;<span class="type">String</span>&gt; <span class="literal">result</span> = data.getStringArrayListExtra(<span class="type">PhotoPickerActivity</span>.<span class="type">KEY_RESULT</span>);</span><br><span class="line">            //<span class="keyword">do</span> what you want to to.</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>源码地址：<a href="https://github.com/liuling07/PhotoPicker" target="_blank" rel="external">https://github.com/liuling07/PhotoPicker</a>，欢迎fork和star。</p>
 
+            
+              <! -- 添加捐赠图标 -->
+              <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin－top:38px;margin-bottom:18px;text-align:center">
+                <div id="donate_board" class="donate_bar center" style=" margin:12px;">
+                  <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+                  <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+                     如果文章对您有帮助，请随意打赏支持！  
+                  </span>
+                </div>  
+            
+              <!-- 支付宝打赏图案 -->
+                <div style="text-align:center">
+                    <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+                    <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
+                    </a> 
+                </div>
+
+              <!-- 微信打赏图案 -->
+                <div style="text-align:center">
+                    <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+                    <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+                    </a> 
+                </div>
+              </div>  
+              <! -- 添加捐赠图标 -->
+              
+              <! -- 广告开始 -->
+
+              <! -- 广告结束 -->
+
+            
         
         </div>
         <footer class="article-footer">
@@ -275,7 +306,7 @@
 
 </div>
 
-    <a data-url="http://www.liuling123.com/2015/11/android-multi-photo-picker.html" data-id="cipzjrcbw00g6msd00s411zed" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.liuling123.com/2015/11/android-multi-photo-picker.html" data-id="cipzk9zfl00g6njd0lxjf7d9a" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

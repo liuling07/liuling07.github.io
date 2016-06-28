@@ -281,6 +281,37 @@
 <p>　　它是通过Itr的对象的cursor与List对象的size值来判断是否还有未迭代的对象，当遍历完&ldquo;d”的时候cursor=4，删除&rdquo;d”的时候，List对象的size就会减1，size首先为5，后来变为4，这时候cursor和size是相等的，hasNext()方法返回的是false，就认为遍历结束了，所以删除以后没有进去执行next()方法了，就没有抛出异常了，当然”e”也没有输出来。</p>
 <p>　　为了避免这种异常，我们可以使用CopyOnWriteArrayList来代替ArrayList，CopyOnWriteArrayList支持并发访问，所以同时进行迭代和修改是没有问题的。</p>
 
+            
+              <! -- 添加捐赠图标 -->
+              <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin－top:38px;margin-bottom:18px;text-align:center">
+                <div id="donate_board" class="donate_bar center" style=" margin:12px;">
+                  <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+                  <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+                     如果文章对您有帮助，请随意打赏支持！  
+                  </span>
+                </div>  
+            
+              <!-- 支付宝打赏图案 -->
+                <div style="text-align:center">
+                    <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+                    <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
+                    </a> 
+                </div>
+
+              <!-- 微信打赏图案 -->
+                <div style="text-align:center">
+                    <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+                    <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+                    </a> 
+                </div>
+              </div>  
+              <! -- 添加捐赠图标 -->
+              
+              <! -- 广告开始 -->
+
+              <! -- 广告结束 -->
+
+            
         
         </div>
         <footer class="article-footer">
@@ -290,7 +321,7 @@
 
 </div>
 
-    <a data-url="http://www.liuling123.com/2013/08/list-concurrentmodificationexception.html" data-id="cipzjrc6n006emsd07erd72n7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.liuling123.com/2013/08/list-concurrentmodificationexception.html" data-id="cipzk9za9006enjd0www9dndg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
