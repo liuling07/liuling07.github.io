@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang=zh>
 <head>
-  <meta charset="utf-8">
-  
-  <title>残剑博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hexo theme - Icarus">
+    <meta charset="utf-8">
+    
+    <title>残剑博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Hexo theme - Icarus">
 <meta property="og:type" content="website">
 <meta property="og:title" content="残剑博客">
 <meta property="og:url" content="http://www.liuling123.com/page/3/index.html">
@@ -14,485 +14,916 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="残剑博客">
 <meta name="twitter:description" content="Hexo theme - Icarus">
-  
-  
-    <link rel="icon" href="favicon.ico" type="image/x-ico">
-  
-  
- <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
- <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
 
+    
 
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-  
+    
 
-  
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css" type="text/css">
 
-  
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css" type="text/css">
+    
+    
+    
+    
+
 </head>
 <body>
-  <div id="container">
-    <header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
-      
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/.">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categories">Categories</a>
-        
-          <a class="main-nav-link" href="/tags">Tags</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
-      
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
-          </div>
-        </nav>
-      
-      <div id="search-form-wrap">
-        
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-        
-      </div>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">残剑博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/protrait.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
-        
-          <td><a class="main-nav-link" href="/.">Home</a></td>
-        
-          <td><a class="main-nav-link" href="/archives">Archives</a></td>
-        
-          <td><a class="main-nav-link" href="/categories">Categories</a></td>
-        
-          <td><a class="main-nav-link" href="/tags">Tags</a></td>
-        
-          <td><a class="main-nav-link" href="/about">About</a></td>
-        
-        <td>
-          
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-          
-        </td>
-      </tr>
-    </table>
-  </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js" type="text/javascript"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 
-    <div class="outer">
-      
-        <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <img id="avatar" src="/css/images/protrait.jpg">
-      <h2 id="name">Lauren</h2>
-      <h3 id="title">Android Developer</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">关注我</a>
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/protrait.jpg" />
+            <h2 id="name">Lauren</h2>
+            <h3 id="title">Android Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/liuling07">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                146
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                36
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/liuling07" target="_blank" title="github" >
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo" >
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus" >
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow" >
+                            <i class="fa fa-stack-overflow"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter" >
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook" >
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" >
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
     </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        146
-        <span>文章</span>
-      </div>
-      <div class="article-info-block">
-        36
-        <span>标签</span>
-      </div>
-    </div>
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-          
-          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-          
-          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
-          
-          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
-          
-          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
-          
-          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-          
-          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
-          
-          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
-          
-        </tr>
-      </table>
-    </div>
-    
-    
-  </div>
 </aside>
 
-      
-      <section id="main">
-      <article id="post-recyclerview-example" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+            
+            <section id="main">
+    <article id="post-recyclerview-example" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/recyclerview-example.html">RecyclerView的使用</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/11/recyclerview-example.html">
-      <time datetime="2015-11-04T05:31:59.000Z" itemprop="datePublished">2015-11-04</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="u4EC0_u4E48_u662FRecyclerView"><a href="#u4EC0_u4E48_u662FRecyclerView" class="headerlink" title="什么是RecyclerView"></a>什么是RecyclerView</h1><pre><code>RecyclerView是Android 5.0 materials design中的组件之一，相应的还有CardView、Palette等。看名字我们就能看出一点端倪，没错，它主要的特点就是复用。我们知道，Listview中的Adapter中可以实现ViewHolder的复用。RecyclerView提供了一个耦合度更低的方式来复用ViewHolder，并且可以轻松的实现ListView、GridView以及瀑布流的效果。
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/11/recyclerview-example.html">RecyclerView的使用</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/11/recyclerview-example.html">
+            <time datetime="2015-11-04T05:31:59.000Z" itemprop="datePublished">2015-11-04</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="u4EC0_u4E48_u662FRecyclerView"><a href="#u4EC0_u4E48_u662FRecyclerView" class="headerlink" title="什么是RecyclerView"></a>什么是RecyclerView</h1><pre><code>RecyclerView是Android 5.0 materials design中的组件之一，相应的还有CardView、Palette等。看名字我们就能看出一点端倪，没错，它主要的特点就是复用。我们知道，Listview中的Adapter中可以实现ViewHolder的复用。RecyclerView提供了一个耦合度更低的方式来复用ViewHolder，并且可以轻松的实现ListView、GridView以及瀑布流的效果。
 </code></pre><h1 id="RecyclerView_u7684_u7528_u6CD5"><a href="#RecyclerView_u7684_u7528_u6CD5" class="headerlink" title="RecyclerView的用法"></a>RecyclerView的用法</h1><pre><code>首先我们要gradle的依赖库中添加  compile &apos;com.android.support:recyclerview-v7:21.+&apos;  。如果是eclipse直接导入android-support-v7-recyclerview.jar就可以了。
 </code></pre><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span> 设置Adapter</span><br><span class="line"><span class="keyword">*</span>/</span><br><span class="line">mRecyclerView.setAdapter(mListAdapter);</span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span> 设置布局管理器</span><br><span class="line"><span class="keyword">*</span>/</span><br><span class="line">mRecyclerView.setLayoutManager(linearLayoutManager);</span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span> 设置item分割线</span><br><span class="line"><span class="keyword">*</span>/</span><br><span class="line">mRecyclerView.addItemDecoration(itemDecoration);</span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span> 设置item动画</span><br><span class="line"><span class="keyword">*</span>/</span><br><span class="line">mRecyclerView.setItemAnimator(new DefaultItemAnimator());</span><br></pre></td></tr></table></figure>
-<p>使用RecyclerView，基本上要上面四步。相比ListView只需设置Adapter而言，RecyclerView的使用看起来似乎要复杂一些。但是它的可定制性更高了，你可以自己定制自己的分割线样式或者是item的的动画。  </p>
+<p>使用RecyclerView，基本上要上面四步。相比ListView只需设置Adapter而言，RecyclerView的使用看起来似乎要复杂一些。但是它的可定制性更高了，你可以自己定制自己的分割线样式或者是item的的动画。  </p></p>
+            <p class="article-more-link">
+                <a href="/2015/11/recyclerview-example.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/11/recyclerview-example.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/11/recyclerview-example.html" data-id="cipzhfvb7003njvd0jepui0og" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/11/recyclerview-example.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/11/recyclerview-example.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/11/recyclerview-example.html" data-id="cipy2b9ab003nkyd0fhft1z81" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/11/recyclerview-example.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-recyclerview-example" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-custom-camera" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-custom-camera" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/custom-camera.html">Android自定义相机拍照、图片裁剪的实现</a>
-    </h1>
-  
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/custom-camera.html">Android自定义相机拍照、图片裁剪的实现</a>
+        </h1>
+    
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/custom-camera.html">
-      <time datetime="2015-10-28T07:00:00.000Z" itemprop="datePublished">2015-10-28</time>
-    </a>
-  </div>
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/custom-camera.html">
+            <time datetime="2015-10-28T07:00:00.000Z" itemprop="datePublished">2015-10-28</time>
+        </a>
+    </div>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
 
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/camera/">camera</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　<span style="font-size: 15px;">最近项目里面又要加一个拍照搜题的功能，也就是用户对着不会做的题目拍一张照片，将照片的文字使用ocr识别出来，再调用题库搜索接口搜索出来展示给用户，类似于小猿搜题、学霸君等app。<br></span></p>
+<p>　　<span style="font-size: 15px;">其实Android提供Intent让我们打开系统的相机，但是系统相机跟自己app风格不搭，而且用起来体验不好。所以我使用了SDK提供的camera API自定义了一个相机，并且在相机界面上面添加了参考线，有助于用户将题目拍正，提高ocr的识别率。</span><br></p>
+            <p class="article-more-link">
+                <a href="/2015/10/custom-camera.html#more">阅读全文</a>
+            </p>
+        
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/10/custom-camera.html" data-id="cipzhfvgh00dejvd0675ajxza" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　<span style="font-size: 15px;">最近项目里面又要加一个拍照搜题的功能，也就是用户对着不会做的题目拍一张照片，将照片的文字使用ocr识别出来，再调用题库搜索接口搜索出来展示给用户，类似于小猿搜题、学霸君等app。<br></span></p>
-<p>　　<span style="font-size: 15px;">其实Android提供Intent让我们打开系统的相机，但是系统相机跟自己app风格不搭，而且用起来体验不好。所以我使用了SDK提供的camera API自定义了一个相机，并且在相机界面上面添加了参考线，有助于用户将题目拍正，提高ocr的识别率。</span><br>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/custom-camera.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2015/10/custom-camera.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/10/custom-camera.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/custom-camera.html" data-id="cipy2b9go00dekyd0ctw9yqhm" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/10/custom-camera.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-custom-camera" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/camera/">camera</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
-    
-      <article id="post-listview-partial-refresh" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-listview-partial-refresh" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/listview-partial-refresh.html">ListView实现Item局部刷新</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/listview-partial-refresh.html">
-      <time datetime="2015-10-20T05:44:00.000Z" itemprop="datePublished">2015-10-20</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　&nbsp;<span style="font-size: 15px;">对于ListView数据的刷新大家都知道，改变Adapter的数据源，然后调用Adapter的notifyDateSetChanged()方法即可。</span></p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/listview-partial-refresh.html">ListView实现Item局部刷新</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/listview-partial-refresh.html">
+            <time datetime="2015-10-20T05:44:00.000Z" itemprop="datePublished">2015-10-20</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/布局/">布局</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　&nbsp;<span style="font-size: 15px;">对于ListView数据的刷新大家都知道，改变Adapter的数据源，然后调用Adapter的notifyDateSetChanged()方法即可。</span></p>
 <p><span style="font-size: 15px;">　　但是博主在做公司项目的时候，有个下载模块，因为可能同时下载好几个数据，所以用的listview展示所有正在下载的内容。因为下载进度要实时更新，所以要不停的调用notifyDateSetChanged刷新数据。这样会不停的重新绘制整个listview的界面，性能开销非常大。而且如果每个item有图片的话，每个item的图片都需要重新加载，就算图片做了内存缓存，刷新一下图片也会闪一下，不停的刷新就会导致各个item的图片不停的闪，体验一点都不好。</span></p>
-<p><span style="font-size: 15px;">　　那么对于上面问题，有没有解决办法呢？当然是有的。我们可以针对某一个item进行局部更新，而不影响其它没有修改的item。那么具体如何实现的呢？我们看下面的代码。</span><br>
+<p><span style="font-size: 15px;">　　那么对于上面问题，有没有解决办法呢？当然是有的。我们可以针对某一个item进行局部更新，而不影响其它没有修改的item。那么具体如何实现的呢？我们看下面的代码。</span><br></p>
+            <p class="article-more-link">
+                <a href="/2015/10/listview-partial-refresh.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/10/listview-partial-refresh.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/10/listview-partial-refresh.html" data-id="cipzhfvcr006ajvd0w4nzmgbb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/10/listview-partial-refresh.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/10/listview-partial-refresh.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/listview-partial-refresh.html" data-id="cipy2b9c0006akyd099zfdzsw" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/10/listview-partial-refresh.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-listview-partial-refresh" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-asynctask-multi-task-thread" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-asynctask-multi-task-thread" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/asynctask-multi-task-thread.html">AsyncTask实现多任务多线程断点续传下载</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/asynctask-multi-task-thread.html">
-      <time datetime="2015-10-16T05:29:00.000Z" itemprop="datePublished">2015-10-16</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　<span style="font-size: 15px;">这篇博客是AsyncTask下载系列的最后一篇文章，前面写了关于断点续传的和多线程下载的博客，这篇是在前两篇的基础上面实现的，有兴趣的可以去看下。</span></p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/asynctask-multi-task-thread.html">AsyncTask实现多任务多线程断点续传下载</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/asynctask-multi-task-thread.html">
+            <time datetime="2015-10-16T05:29:00.000Z" itemprop="datePublished">2015-10-16</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/AsyncTask/">AsyncTask</a>, <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/多线程/">多线程</a>, <a class="tag-link" href="/tags/断点续传/">断点续传</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　<span style="font-size: 15px;">这篇博客是AsyncTask下载系列的最后一篇文章，前面写了关于断点续传的和多线程下载的博客，这篇是在前两篇的基础上面实现的，有兴趣的可以去看下。</span></p>
 <p><span style="font-size: 15px;">　　一、<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="http://www.cnblogs.com/liuling/p/2015-10-10-01.html">AsyncTask实现断点续传</a></span></p>
 <p><span style="font-size: 15px;">　　二、<a href="http://www.cnblogs.com/liuling/p/2015-10-13-01.html" title="http://www.cnblogs.com/liuling/p/2015-10-13-01.html">AsyncTask实现多线程断点续传</a></span></p>
-<p><span style="font-size: 15px;">　　这里模拟应用市场app下载实现了一个Demo，因为只有一个界面，所以没有将下载放到Service中，而是直接在Activity中创建。在正式的项目中，下载都是放到Service中，然后通过BroadCast通知界面更新进度。<span style="line-height: 1.5;"><br></span></span><br>
+<p><span style="font-size: 15px;">　　这里模拟应用市场app下载实现了一个Demo，因为只有一个界面，所以没有将下载放到Service中，而是直接在Activity中创建。在正式的项目中，下载都是放到Service中，然后通过BroadCast通知界面更新进度。<span style="line-height: 1.5;"><br></span></span><br></p>
+            <p class="article-more-link">
+                <a href="/2015/10/asynctask-multi-task-thread.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/10/asynctask-multi-task-thread.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/10/asynctask-multi-task-thread.html" data-id="cipzhfvhg00f2jvd0h1dc4uif" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/10/asynctask-multi-task-thread.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/10/asynctask-multi-task-thread.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/asynctask-multi-task-thread.html" data-id="cipy2b9i100f2kyd0tnroowjq" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/10/asynctask-multi-task-thread.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-asynctask-multi-task-thread" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AsyncTask/">AsyncTask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/断点续传/">断点续传</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-customview-download-percent" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-customview-download-percent" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/customview-download-percent.html">Android中使用自定义View实现下载进度的显示</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/customview-download-percent.html">
-      <time datetime="2015-10-15T02:09:00.000Z" itemprop="datePublished">2015-10-15</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><span style="font-size: 15px;">　　一般有下载功能的应用都会有这样一个场景，需要一个图标来标识不同的状态。之前在公司的项目中写过一个，今天抽空来整理一下。</span></p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/customview-download-percent.html">Android中使用自定义View实现下载进度的显示</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/customview-download-percent.html">
+            <time datetime="2015-10-15T02:09:00.000Z" itemprop="datePublished">2015-10-15</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/自定义控件/">自定义控件</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><span style="font-size: 15px;">　　一般有下载功能的应用都会有这样一个场景，需要一个图标来标识不同的状态。之前在公司的项目中写过一个，今天抽空来整理一下。</span></p>
 <p><span style="font-size: 15px;">　　一般下载都会有这么几种状态：未开始、等待、正在下载、下载结束，当然有时候会有下载出错的状态。等待状态是指用户点击开始下载，但是线程池中没有空闲的线程来处理该次下载，所以状态为等待。</span></p>
 <p><strong><span style="font-size: 15px;">效果图：</span></strong></p>
 <p><span style="font-size: 15px;"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20151015180126929-146101307.gif" alt=""></span></p>
 <p>&nbsp;</p>
-<p>&nbsp;<br>
+<p>&nbsp;<br></p>
+            <p class="article-more-link">
+                <a href="/2015/10/customview-download-percent.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/10/customview-download-percent.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/10/customview-download-percent.html" data-id="cipzhfvgf00d9jvd09jqwaij0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/10/customview-download-percent.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/10/customview-download-percent.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/customview-download-percent.html" data-id="cipy2b9gl00d9kyd0an6ktbrs" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/10/customview-download-percent.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-customview-download-percent" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自定义控件/">自定义控件</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-parcelable-example" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-parcelable-example" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/parcelable-example.html">Android中Parcelable接口的使用</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/parcelable-example.html">
-      <time datetime="2015-10-13T22:46:00.000Z" itemprop="datePublished">2015-10-14</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><span style="font-size: 15px;">　　在做开发的过程中，序列化是非常常见的。比如要将对象保存本地磁盘或者在网络上传输等。实现序列化有两种方式，一种是实现Serializable接口，第二种是实现Parcelable。</span></p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/parcelable-example.html">Android中Parcelable接口的使用</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/parcelable-example.html">
+            <time datetime="2015-10-13T22:46:00.000Z" itemprop="datePublished">2015-10-14</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><span style="font-size: 15px;">　　在做开发的过程中，序列化是非常常见的。比如要将对象保存本地磁盘或者在网络上传输等。实现序列化有两种方式，一种是实现Serializable接口，第二种是实现Parcelable。</span></p>
 <p><span style="font-size: 15px;"><strong>Serializable与Parcelable的区别</strong></span></p>
 <p><span style="font-size: 15px;">　　1、Serializable是JDK提供的接口，而Parcelable是Android SDK提供的。</span></p>
 <p><span style="font-size: 15px;">　　2、Serializable序列化是基于磁盘的，而Parcelable是基于内存的。在内存中读写肯定效率要高于磁盘，所以Android中跨进程传递对象都是使用Parcelable。</span></p>
@@ -506,464 +937,802 @@
 <p><span style="font-size: 15px;">&nbsp;&nbsp; 　　3.静态的Parcelable.Creator接口，本接口有两个方法：</span></p>
 <p><span style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;　　　　createFromParcel(Parcel in)&nbsp; 从Parcel容器中读取传递数据值，封装成Parcelable对象返回逻辑层。</span></p>
 <p><span style="font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;　　　　newArray(int size) 创建一个类型为T，长度为size的数组，仅一句话（return new T[size])即可。方法是供外部类反序列化本类数组使用。</span></p>
-<p>&nbsp;<br>
+<p>&nbsp;<br></p>
+            <p class="article-more-link">
+                <a href="/2015/10/parcelable-example.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/10/parcelable-example.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/10/parcelable-example.html" data-id="cipzhfvbg0042jvd0xxksl473" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/10/parcelable-example.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/10/parcelable-example.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/parcelable-example.html" data-id="cipy2b9an0042kyd0lf35iy2z" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/10/parcelable-example.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-parcelable-example" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-asynctask-multithread-download" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-asynctask-multithread-download" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/asynctask-multithread-download.html">AsyncTask实现多线程断点续传</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/asynctask-multithread-download.html">
-      <time datetime="2015-10-13T04:11:00.000Z" itemprop="datePublished">2015-10-13</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　<span style="font-size: 15px;">前面一篇博客<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="AsyncTask实现断点续传">《AsyncTask实现断点续传》</a>讲解了如何实现单线程下的断点续传，也就是一个文件只有一个线程进行下载。</span></p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/asynctask-multithread-download.html">AsyncTask实现多线程断点续传</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/asynctask-multithread-download.html">
+            <time datetime="2015-10-13T04:11:00.000Z" itemprop="datePublished">2015-10-13</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/多线程/">多线程</a>, <a class="tag-link" href="/tags/断点续传/">断点续传</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　<span style="font-size: 15px;">前面一篇博客<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="AsyncTask实现断点续传">《AsyncTask实现断点续传》</a>讲解了如何实现单线程下的断点续传，也就是一个文件只有一个线程进行下载。</span></p>
 <p><span style="font-size: 15px;">　 &nbsp; 对于大文件而言，使用多线程下载就会比单线程下载要快一些。多线程下载相比单线程下载要稍微复杂一点，本博文将详细讲解如何使用AsyncTask来实现多线程的断点续传下载。</span></p>
 <p><span style="font-size: 15px;"><strong>一、实现原理</strong></span></p>
-<p><span style="font-size: 15px;">　　多线程下载首先要通过每个文件总的下载线程数（我这里设定5个）来确定每个线程所负责下载的起止位置。</span><br>
+<p><span style="font-size: 15px;">　　多线程下载首先要通过每个文件总的下载线程数（我这里设定5个）来确定每个线程所负责下载的起止位置。</span><br></p>
+            <p class="article-more-link">
+                <a href="/2015/10/asynctask-multithread-download.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/10/asynctask-multithread-download.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/10/asynctask-multithread-download.html" data-id="cipzhfvhd00ewjvd0jtsf9hef" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/10/asynctask-multithread-download.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/10/asynctask-multithread-download.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/asynctask-multithread-download.html" data-id="cipy2b9hy00ewkyd0cok7tfld" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/10/asynctask-multithread-download.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-asynctask-multithread-download" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/断点续传/">断点续传</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-asynctask-source" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-asynctask-source" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/asynctask-source.html">AsyncTask源码分析</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/asynctask-source.html">
-      <time datetime="2015-10-10T08:19:00.000Z" itemprop="datePublished">2015-10-10</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>关于AsyncTask的用法可以参看前面一篇博客<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="AsyncTask实现断点续传">《AsyncTask实现断点续传》</a>，本文只解析AsyncTask的源代码。</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/asynctask-source.html">AsyncTask源码分析</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/asynctask-source.html">
+            <time datetime="2015-10-10T08:19:00.000Z" itemprop="datePublished">2015-10-10</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/AsyncTask/">AsyncTask</a>, <a class="tag-link" href="/tags/android/">android</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>关于AsyncTask的用法可以参看前面一篇博客<a href="http://www.cnblogs.com/liuling/p/2015-10-10-01.html" title="AsyncTask实现断点续传">《AsyncTask实现断点续传》</a>，本文只解析AsyncTask的源代码。</p>
 <p>AsyncTask.execute方法：</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> final AsyncTask&lt;<span class="keyword">Params</span>, Progress, Result&gt; execute(<span class="keyword">Params</span><span class="attribute">...</span> <span class="keyword">params</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> executeOnExecut<span class="subst">or</span>(sDefaultExecut<span class="subst">or</span>, <span class="keyword">params</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> final AsyncTask&lt;<span class="keyword">Params</span>, Progress, Result&gt; execute(<span class="keyword">Params</span><span class="attribute">...</span> <span class="keyword">params</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> executeOnExecut<span class="subst">or</span>(sDefaultExecut<span class="subst">or</span>, <span class="keyword">params</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+            <p class="article-more-link">
+                <a href="/2015/10/asynctask-source.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/10/asynctask-source.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/10/asynctask-source.html" data-id="cipzhfvh600erjvd0kycfhtdf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/10/asynctask-source.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/10/asynctask-source.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/asynctask-source.html" data-id="cipy2b9hq00erkyd0dncdsmzr" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/10/asynctask-source.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-asynctask-source" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AsyncTask/">AsyncTask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-asynctask-download" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-asynctask-download" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/asynctask-download.html">AsyncTask实现断点续传</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/asynctask-download.html">
-      <time datetime="2015-10-09T19:34:00.000Z" itemprop="datePublished">2015-10-10</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　之前公司里面项目的下载模块都是使用xUtils提供的，最近看了下xUtils的源码，它里面也是使用AsyncTask来执行异步任务的，它的下载也包含了断点续传的功能。这里我自己也使用AsyncTask也实现了简单的断点续传的功能。</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/asynctask-download.html">AsyncTask实现断点续传</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/asynctask-download.html">
+            <time datetime="2015-10-09T19:34:00.000Z" itemprop="datePublished">2015-10-10</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/AsyncTask/">AsyncTask</a>, <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/断点续传/">断点续传</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　之前公司里面项目的下载模块都是使用xUtils提供的，最近看了下xUtils的源码，它里面也是使用AsyncTask来执行异步任务的，它的下载也包含了断点续传的功能。这里我自己也使用AsyncTask也实现了简单的断点续传的功能。</p>
 <p>　　首先说一说AsyncTask吧，先来看看AsyncTask的定义：</p>
-<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">abstract</span> <span style="color: #0000ff;">class</span> AsyncTask<Params, Progress, Result> </pre><br></div><br>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">abstract</span> <span style="color: #0000ff;">class</span> AsyncTask<Params, Progress, Result> </pre><br></div><br></p>
+            <p class="article-more-link">
+                <a href="/2015/10/asynctask-download.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/10/asynctask-download.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/10/asynctask-download.html" data-id="cipzhfvhj00f8jvd0od49ketk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/10/asynctask-download.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/10/asynctask-download.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/asynctask-download.html" data-id="cipy2b9i400f8kyd04y733xrn" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/10/asynctask-download.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-asynctask-download" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AsyncTask/">AsyncTask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/断点续传/">断点续传</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-overdraw" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-overdraw" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/overdraw.html">Android布局优化之过度绘制</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/overdraw.html">
-      <time datetime="2015-10-07T22:38:00.000Z" itemprop="datePublished">2015-10-08</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如果一个布局十分复杂，那么就需要来排查是否出现了过度绘制，如果出现了，那么很可能会造成刷新率下降，造成卡顿的现象。那么什么是过度绘制呢？过度绘制就是在同一个区域中叠加了多个控件。这就像小时候我们画画，白纸就是没有绘制的画板，如果我们画了一个房子，涂上了红色，又在上面画了窗户，图上了棕色，窗户上又画了蓝色的玻璃，这重重复的叠加就是过度绘制，在白纸上的结果是，过度绘制的区域纸会被水笔浸的比较湿，在手机上就会出现显示较慢。如果说这是感性的认识，那么我就引用下面一段话来理性的解释一下：</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/overdraw.html">Android布局优化之过度绘制</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/overdraw.html">
+            <time datetime="2015-10-07T22:38:00.000Z" itemprop="datePublished">2015-10-08</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/布局/">布局</a>, <a class="tag-link" href="/tags/布局优化/">布局优化</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>如果一个布局十分复杂，那么就需要来排查是否出现了过度绘制，如果出现了，那么很可能会造成刷新率下降，造成卡顿的现象。那么什么是过度绘制呢？过度绘制就是在同一个区域中叠加了多个控件。这就像小时候我们画画，白纸就是没有绘制的画板，如果我们画了一个房子，涂上了红色，又在上面画了窗户，图上了棕色，窗户上又画了蓝色的玻璃，这重重复的叠加就是过度绘制，在白纸上的结果是，过度绘制的区域纸会被水笔浸的比较湿，在手机上就会出现显示较慢。如果说这是感性的认识，那么我就引用下面一段话来理性的解释一下：</p>
 <blockquote>
 <p>1. 布局文件是一个xml文件，inflate布局文件其实就是解析xml，根据标签信息创建相应的布局对象并做关联。xml中的标签和属性设置越多，节点树的深度越深，在解析时要执行的判断逻辑、函数的嵌套和递归就越多，所以时间消耗越多；</p>
 <p>2. inflate操作只是布局影响的第一个环节，一个界面要显示出来，在requestLayout后还要执行一系列的measure、layout、draw的操作，每一步的执行时间都会受到布局本身的影响。而界面的最终显示是所有这些操作完成后才实现的，所以如果布局质量差，会增加每一步操作的时间成本，最终显示时间就会比较长。</p>
 </blockquote>
 <p>现在，我们就来说说如何查看是否有过度绘制，和如何避免它吧。</p>
-<p>&nbsp;<br>
+<p>&nbsp;<br></p>
+            <p class="article-more-link">
+                <a href="/2015/10/overdraw.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/10/overdraw.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/10/overdraw.html" data-id="cipzhfvbo004cjvd0wco86ao6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/10/overdraw.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/10/overdraw.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/overdraw.html" data-id="cipy2b9av004ckyd0xezv70rn" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/10/overdraw.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-overdraw" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局优化/">布局优化</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <nav id="page-nav">
+    <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
-      </nav>
-    </section>
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新博文</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
-        
-          <li>
+    </nav>
+</section>
             
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
-              <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
-              <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
+                <aside id="sidebar">
+   
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
-              <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
-              <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
-              <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
-              <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
-              <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
-            </div>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新博文</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
+                            <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
+                            <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
+                            <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
+                            <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">博文分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">博文分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap widget-list">
-    <h3 class="widget-title">友情链接</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.lcode.org">江清清技术专栏</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.deanhan.cn">逐梦博客</a>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://blog.daimajia.com">代码家</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.trinea.cn">Trinea</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.aswifter.com">APP开发者</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.seoui.com">笑松小站</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.apkfuns.com">舞影凌风</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.ttfde.org">TTF的家园</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://rocko.xyz">Rocko&#39;s blog</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.lcode.org">江清清技术专栏</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.deanhan.cn">逐梦博客</a>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
 
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
-      
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 Lauren<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+             &nbsp;粤ICP备15082212号-2 &nbsp;
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
     </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2015 - 2016 Lauren<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> &nbsp;粤ICP备15082212号-2 &nbsp;
-
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-
-    </div>
-  </div>
 </footer>
+        
     
-
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling123"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
+    <script>
+    var disqus_config = function () {
+        
+        this.page.identifier = 'undefined';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '＃hexo-theme-icarus' + '.disqus.com/count.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
 
 
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    
 
 
- <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Custom Scripts -->
+<script src="/js/main.js" type="text/javascript"></script>
 
-
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-
-
-<script src="/js/script.js" type="text/javascript"></script>
-
-  </div>
+    </div>
 </body>
 </html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang=zh>
 <head>
-  <meta charset="utf-8">
-  
-  <title>残剑博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hexo theme - Icarus">
+    <meta charset="utf-8">
+    
+    <title>残剑博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Hexo theme - Icarus">
 <meta property="og:type" content="website">
 <meta property="og:title" content="残剑博客">
 <meta property="og:url" content="http://www.liuling123.com/page/4/index.html">
@@ -14,944 +14,1713 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="残剑博客">
 <meta name="twitter:description" content="Hexo theme - Icarus">
-  
-  
-    <link rel="icon" href="favicon.ico" type="image/x-ico">
-  
-  
- <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
- <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
 
+    
 
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-  
+    
 
-  
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css" type="text/css">
 
-  
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css" type="text/css">
+    
+    
+    
+    
+
 </head>
 <body>
-  <div id="container">
-    <header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
-      
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/.">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categories">Categories</a>
-        
-          <a class="main-nav-link" href="/tags">Tags</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
-      
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
-          </div>
-        </nav>
-      
-      <div id="search-form-wrap">
-        
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-        
-      </div>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">残剑博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/protrait.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
-        
-          <td><a class="main-nav-link" href="/.">Home</a></td>
-        
-          <td><a class="main-nav-link" href="/archives">Archives</a></td>
-        
-          <td><a class="main-nav-link" href="/categories">Categories</a></td>
-        
-          <td><a class="main-nav-link" href="/tags">Tags</a></td>
-        
-          <td><a class="main-nav-link" href="/about">About</a></td>
-        
-        <td>
-          
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-          
-        </td>
-      </tr>
-    </table>
-  </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js" type="text/javascript"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 
-    <div class="outer">
-      
-        <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <img id="avatar" src="/css/images/protrait.jpg">
-      <h2 id="name">Lauren</h2>
-      <h3 id="title">Android Developer</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">关注我</a>
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/protrait.jpg" />
+            <h2 id="name">Lauren</h2>
+            <h3 id="title">Android Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/liuling07">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                146
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                36
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/liuling07" target="_blank" title="github" >
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo" >
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus" >
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow" >
+                            <i class="fa fa-stack-overflow"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter" >
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook" >
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" >
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
     </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        146
-        <span>文章</span>
-      </div>
-      <div class="article-info-block">
-        36
-        <span>标签</span>
-      </div>
-    </div>
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-          
-          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-          
-          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
-          
-          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
-          
-          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
-          
-          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-          
-          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
-          
-          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
-          
-        </tr>
-      </table>
-    </div>
-    
-    
-  </div>
 </aside>
 
-      
-      <section id="main">
-      <article id="post-optimize-viewstub" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+            
+            <section id="main">
+    <article id="post-optimize-viewstub" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/optimize-viewstub.html">【转】Android布局优化之ViewStub</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/10/optimize-viewstub.html">
-      <time datetime="2015-10-07T20:26:00.000Z" itemprop="datePublished">2015-10-08</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ViewStub是Android布局优化中一个很不错的标签/控件，直接继承自View。虽然Android开发人员基本上都听说过，但是真正用的可能不多。</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/optimize-viewstub.html">【转】Android布局优化之ViewStub</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/optimize-viewstub.html">
+            <time datetime="2015-10-07T20:26:00.000Z" itemprop="datePublished">2015-10-08</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/布局/">布局</a>, <a class="tag-link" href="/tags/布局优化/">布局优化</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>ViewStub是Android布局优化中一个很不错的标签/控件，直接继承自View。虽然Android开发人员基本上都听说过，但是真正用的可能不多。</p>
 <p>ViewStub可以理解成一个非常轻量级的View，与其他的控件一样，有着自己的属性及特定的方法。当ViewStub使用在布局文件中时，当程序inflate布局文件时，ViewStub本身也会被解析，且占据内存控件，但是与其他控件相比，主要区别体现在以下几点：</p>
 <p>1.当布局文件inflate时，ViewStub控件虽然也占据内存，但是相相比于其他控件，ViewStub所占内存很小；</p>
 <p>2.布局文件inflate时，ViewStub主要是作为一个&ldquo;占位符&rdquo;的性质，放置于view tree中，且ViewStub本身是不可见的。ViewStub中有一个layout属性，指向ViewStub本身可能被替换掉的布局文件，在一定时机时，通过viewStub.inflate()完成此过程；</p>
 <p>3.ViewStub本身是不可见的，对ViewStub&nbsp;setVisibility(..)与其他控件不一样，ViewStub的setVisibility 成View.VISIBLE或INVISIBLE如果是首次使用，都会自动inflate其指向的布局文件，并替换ViewStub本身，再次使用则是相当于对其指向的布局文件设置可见性。</p>
-<p>这里需要注意的是：<br>
+<p>这里需要注意的是：<br></p>
+            <p class="article-more-link">
+                <a href="/2015/10/optimize-viewstub.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/10/optimize-viewstub.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/10/optimize-viewstub.html" data-id="cipzhfvbw004qjvd02drd15h3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/10/optimize-viewstub.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/10/optimize-viewstub.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/10/optimize-viewstub.html" data-id="cipy2b9b4004qkyd0qpcdgqg2" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/10/optimize-viewstub.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-optimize-viewstub" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局优化/">布局优化</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-principle-lrucache" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-principle-lrucache" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/principle-lrucache.html">内存缓存LruCache实现原理</a>
-    </h1>
-  
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/09/principle-lrucache.html">内存缓存LruCache实现原理</a>
+        </h1>
+    
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/09/principle-lrucache.html">
-      <time datetime="2015-09-24T02:35:00.000Z" itemprop="datePublished">2015-09-24</time>
-    </a>
-  </div>
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/09/principle-lrucache.html">
+            <time datetime="2015-09-24T02:35:00.000Z" itemprop="datePublished">2015-09-24</time>
+        </a>
+    </div>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
 
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/LruCache/">LruCache</a>, <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/内存缓存/">内存缓存</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　<span style="font-size: 16px;">自己项目中一直都是用的开源的xUtils框架，包括BitmapUtils、DbUtils、ViewUtils和HttpUtils四大模块，这四大模块都是项目中比较常用的。最近决定研究一下xUtils的源码，用了这么久总得知道它的实现原理吧。我是先从先从BitmapUtils模块开始的。BitmapUtils和大多数图片加载框架一样，都是基于内存-文件-网络三级缓存。也就是加载图片的时候首先从内存缓存中取，如果没有再从文件缓存中取，如果文件缓存没有取到，就从网络下载图片并且加入内存和文件缓存。</span></p>
+<div><span style="font-size: 16px;">　　这篇帖子先分析内存缓存是如何实现的。好吧开始进入正题。</span></div><br><div><span style="font-size: 16px;">　　BitmapUtils内存缓存的核心类LruMemoryCache，LruMemoryCache代码和v4包的LruCache一样，只是加了一个存储超期的处理，这里分析LruCache源码。LRU即Least Recently Used，近期最少使用算法。也就是当内存缓存达到设定的最大值时将内存缓存中近期最少使用的对象移除，有效的避免了OOM的出现。</span></div><br><div>&nbsp;</div><br><div><span style="font-size: 16px;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;讲到LruCache不得不提一下LinkedHashMap，因为LruCache中Lru算法的实现就是通过LinkedHashMap来实现的。LinkedHashMap继承于HashMap，它使用了一个双向链表来存储Map中的Entry顺序关系，这种顺序有两种，一种是LRU顺序，一种是插入顺序，这可以由其构造函数public LinkedHashMap(int initialCapacity,float loadFactor, boolean accessOrder)指定。所以，对于get、put、remove等操作，LinkedHashMap除了要做HashMap做的事情，还做些调整Entry顺序链表的工作。LruCache中将LinkedHashMap的顺序设置为LRU顺序来实现LRU缓存，每次调用get(也就是从内存缓存中取图片)，则将该对象移到链表的尾端。调用put插入新的对象也是存储在链表尾端，这样当内存缓存达到设定的最大值时，将链表头部的对象（近期最少用到的）移除。关于LinkedHashMap详解请前往<a href="http://www.cnblogs.com/children/archive/2012/10/02/2710624.html%E3%80%82">http://www.cnblogs.com/children/archive/2012/10/02/2710624.html。</a></span></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="font-size: 16px;">下面看下LruCache的源码，我都注释的很详细了。</span></span></div><br><div><br></p>
+            <p class="article-more-link">
+                <a href="/2015/09/principle-lrucache.html#more">阅读全文</a>
+            </p>
+        
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/09/principle-lrucache.html" data-id="cipzhfvbb003qjvd0dw8tldu0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　<span style="font-size: 16px;">自己项目中一直都是用的开源的xUtils框架，包括BitmapUtils、DbUtils、ViewUtils和HttpUtils四大模块，这四大模块都是项目中比较常用的。最近决定研究一下xUtils的源码，用了这么久总得知道它的实现原理吧。我是先从先从BitmapUtils模块开始的。BitmapUtils和大多数图片加载框架一样，都是基于内存-文件-网络三级缓存。也就是加载图片的时候首先从内存缓存中取，如果没有再从文件缓存中取，如果文件缓存没有取到，就从网络下载图片并且加入内存和文件缓存。</span></p>
-<div><span style="font-size: 16px;">　　这篇帖子先分析内存缓存是如何实现的。好吧开始进入正题。</span></div><br><div><span style="font-size: 16px;">　　BitmapUtils内存缓存的核心类LruMemoryCache，LruMemoryCache代码和v4包的LruCache一样，只是加了一个存储超期的处理，这里分析LruCache源码。LRU即Least Recently Used，近期最少使用算法。也就是当内存缓存达到设定的最大值时将内存缓存中近期最少使用的对象移除，有效的避免了OOM的出现。</span></div><br><div>&nbsp;</div><br><div><span style="font-size: 16px;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;讲到LruCache不得不提一下LinkedHashMap，因为LruCache中Lru算法的实现就是通过LinkedHashMap来实现的。LinkedHashMap继承于HashMap，它使用了一个双向链表来存储Map中的Entry顺序关系，这种顺序有两种，一种是LRU顺序，一种是插入顺序，这可以由其构造函数public LinkedHashMap(int initialCapacity,float loadFactor, boolean accessOrder)指定。所以，对于get、put、remove等操作，LinkedHashMap除了要做HashMap做的事情，还做些调整Entry顺序链表的工作。LruCache中将LinkedHashMap的顺序设置为LRU顺序来实现LRU缓存，每次调用get(也就是从内存缓存中取图片)，则将该对象移到链表的尾端。调用put插入新的对象也是存储在链表尾端，这样当内存缓存达到设定的最大值时，将链表头部的对象（近期最少用到的）移除。关于LinkedHashMap详解请前往<a href="http://www.cnblogs.com/children/archive/2012/10/02/2710624.html%E3%80%82">http://www.cnblogs.com/children/archive/2012/10/02/2710624.html。</a></span></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="font-size: 16px;">下面看下LruCache的源码，我都注释的很详细了。</span></span></div><br><div><br>
-        
-          <p class="article-more-link">
-            <a href="/2015/09/principle-lrucache.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2015/09/principle-lrucache.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/09/principle-lrucache.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/principle-lrucache.html" data-id="cipy2b9ah003qkyd0s2vqer5d" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/09/principle-lrucache.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-principle-lrucache" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LruCache/">LruCache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存缓存/">内存缓存</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
-    
-      <article id="post-layer-list-rounded-rectangle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-layer-list-rounded-rectangle" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/layer-list-rounded-rectangle.html">layer-list实现只有左、右和下边框的圆角矩形</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/09/layer-list-rounded-rectangle.html">
-      <time datetime="2015-09-23T00:27:00.000Z" itemprop="datePublished">2015-09-23</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>项目中需要实现如下效果的布局</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/09/layer-list-rounded-rectangle.html">layer-list实现只有左、右和下边框的圆角矩形</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/09/layer-list-rounded-rectangle.html">
+            <time datetime="2015-09-23T00:27:00.000Z" itemprop="datePublished">2015-09-23</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/布局/">布局</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>项目中需要实现如下效果的布局</p>
 <p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150923161859912-342474285.png" alt=""></p>
 <p>也就是一个左右下角带圆角，上方不带圆角的白色背景矩形，而且只有左、右和下边框，颜色为浅灰色。</p>
 <p>当然，切一个.9图片作为背景也能实现，但是能用代码实现的还是尽量用代码实现，因为图片过多一个消耗内存，另一个还增加apk大小。</p>
-<p>这种效果可以通过layer-lsit来实现，在drawable文件夹下面建一个xml文件，具体代码如下：<br>
+<p>这种效果可以通过layer-lsit来实现，在drawable文件夹下面建一个xml文件，具体代码如下：<br></p>
+            <p class="article-more-link">
+                <a href="/2015/09/layer-list-rounded-rectangle.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/09/layer-list-rounded-rectangle.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html" data-id="cipzhfvd7006zjvd0yjyqwliy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html" data-id="cipy2b9ce006zkyd0wavo2bt4" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/09/layer-list-rounded-rectangle.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-layer-list-rounded-rectangle" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局/">布局</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-solution-crash-activity-back" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-solution-crash-activity-back" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/solution-crash-activity-back.html">Activity后台运行一段时间回来crash问题的分析与解决</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/09/solution-crash-activity-back.html">
-      <time datetime="2015-09-20T19:25:00.000Z" itemprop="datePublished">2015-09-21</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近做项目的时候碰到一个棘手的问题，花了不少时间才找到原因并解决。特此记录这个被我踩过的坑，希望其他朋友遇到此问题不要调到这坑里去了。</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/09/solution-crash-activity-back.html">Activity后台运行一段时间回来crash问题的分析与解决</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/09/solution-crash-activity-back.html">
+            <time datetime="2015-09-20T19:25:00.000Z" itemprop="datePublished">2015-09-21</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/解决方案/">解决方案</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>最近做项目的时候碰到一个棘手的问题，花了不少时间才找到原因并解决。特此记录这个被我踩过的坑，希望其他朋友遇到此问题不要调到这坑里去了。</p>
 <p><strong>问题描述：</strong></p>
 <p>&nbsp; &nbsp; &nbsp; 1、背景：我的app中某个界面的Activity是继承FragmentActivity，因为此界面包含两个Fragment。这里我称为FragmentA和FragmentB吧。在Activity中有个刷新按钮，用来刷新ViewPager当前Fragment内容的刷新。点击Activity的刷新按钮之后，刷新按钮需要有简单的旋转动画，等Fragment里面的刷新结束之后，会使用getActivity通知Activity结束刷新按钮的刷新动画。以上就是我的业务场景，说简单点就是Fragment需要与它附属的Activity进行通信。</p>
 <p>　　2、问题：当应用程序运行到该Activity时，按Home键将该应用程序放置后台运行，去其他app转转。一段时间后，又回到该应用程序，还是在之前的那个Activity。这时我想刷新一下Fragment里面的内容，点击了Activity界面上的刷新按钮，结果程序crash了。</p>
-<p>&nbsp;</p>
+<p>&nbsp;</p></p>
+            <p class="article-more-link">
+                <a href="/2015/09/solution-crash-activity-back.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/09/solution-crash-activity-back.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/09/solution-crash-activity-back.html" data-id="cipzhfva40027jvd09p62oxyv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/09/solution-crash-activity-back.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/09/solution-crash-activity-back.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/solution-crash-activity-back.html" data-id="cipy2b99b0027kyd05kqvtcyv" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/09/solution-crash-activity-back.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-solution-crash-activity-back" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-androidstudio-github-import" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-androidstudio-github-import" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/androidstudio-github-import.html">Android Studio导入github下载的工程</a>
-    </h1>
-  
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/09/androidstudio-github-import.html">Android Studio导入github下载的工程</a>
+        </h1>
+    
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/09/androidstudio-github-import.html">
-      <time datetime="2015-09-16T02:42:00.000Z" itemprop="datePublished">2015-09-16</time>
-    </a>
-  </div>
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/09/androidstudio-github-import.html">
+            <time datetime="2015-09-16T02:42:00.000Z" itemprop="datePublished">2015-09-16</time>
+        </a>
+    </div>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
 
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/android-studio/">android studio</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>现在从github上面现在的项目大部分都是Android Studio工程，那么问题来了，从github上面down一个工程下来，怎么导入android studio呢？</p>
+<div>对刚从eclipse转Android Studio的童鞋来说，可能会遇到各种问题。下面方法可以简单快速的将github上的项目导入android studio并运行。</div><br><div>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;首先提一下，Android Studio是基于Gradle来构建项目的，这个与eclipse不同，所以想要熟练掌握Android Studio的用法，最好还是先熟悉Gradle。</div><br><div>这里只是介绍Android Studio如何导入工程，关于Gradle，可以自行百度。</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; 下面介绍Android Studio如何导入project。</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;<strong> 一、安装Android Sudio并新建project</strong></div><br><div>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;安装Android Studio后，创建Project，会自动下载Gradle。工程目录结构如下：</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;&nbsp;<img src="file:///C:/Users/Administrator/Documents/My%20Knowledge/temp/7f9dd589-ece7-48fa-a0e9-191d405b74f8.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150916183731633-1415692386.png" alt=""></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; <strong><br><br></p>
+            <p class="article-more-link">
+                <a href="/2015/09/androidstudio-github-import.html#more">阅读全文</a>
+            </p>
+        
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/09/androidstudio-github-import.html" data-id="cipzhfvhu00fjjvd0wegcthsl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>现在从github上面现在的项目大部分都是Android Studio工程，那么问题来了，从github上面down一个工程下来，怎么导入android studio呢？</p>
-<div>对刚从eclipse转Android Studio的童鞋来说，可能会遇到各种问题。下面方法可以简单快速的将github上的项目导入android studio并运行。</div><br><div>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;首先提一下，Android Studio是基于Gradle来构建项目的，这个与eclipse不同，所以想要熟练掌握Android Studio的用法，最好还是先熟悉Gradle。</div><br><div>这里只是介绍Android Studio如何导入工程，关于Gradle，可以自行百度。</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; 下面介绍Android Studio如何导入project。</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;<strong> 一、安装Android Sudio并新建project</strong></div><br><div>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;安装Android Studio后，创建Project，会自动下载Gradle。工程目录结构如下：</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp;&nbsp;<img src="file:///C:/Users/Administrator/Documents/My%20Knowledge/temp/7f9dd589-ece7-48fa-a0e9-191d405b74f8.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/420264-20150916183731633-1415692386.png" alt=""></div><br><div>&nbsp;</div><br><div><span style="font-family: 微软雅黑;">&nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; <strong><br><br>
-        
-          <p class="article-more-link">
-            <a href="/2015/09/androidstudio-github-import.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2015/09/androidstudio-github-import.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/09/androidstudio-github-import.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/androidstudio-github-import.html" data-id="cipy2b9ib00fjkyd03j1wkak1" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/09/androidstudio-github-import.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-androidstudio-github-import" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android-studio/">android studio</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
-    
-      <article id="post-sqlite-optimize" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-sqlite-optimize" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/sqlite-optimize.html">Android数据库大批量数据插入优化</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/09/sqlite-optimize.html">
-      <time datetime="2015-09-07T17:32:00.000Z" itemprop="datePublished">2015-09-08</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对比在android中批量插入数据的3中方式对比（各插入1W条数据所花费的时间）：</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/09/sqlite-optimize.html">Android数据库大批量数据插入优化</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/09/sqlite-optimize.html">
+            <time datetime="2015-09-07T17:32:00.000Z" itemprop="datePublished">2015-09-08</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/sqlite/">sqlite</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>对比在android中批量插入数据的3中方式对比（各插入1W条数据所花费的时间）：</p>
 <p><strong>1、 一个一个插入</strong></p>
 <p><div class="cnblogs_code"></p>
 <p><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> insert(SQLiteOpenHelper openHelper,<br></span><span style="color: #008080;"> 2</span> <span style="color: #000000;">            RemoteAppInfo appInfo) {<br></span><span style="color: #008080;"> 3</span>         <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> ==<span style="color: #000000;"> appInfo) {<br></span><span style="color: #008080;"> 4</span> <span style="color: #000000;">            returntrue;<br></span><span style="color: #008080;"> 5</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 6</span>         SQLiteDatabase db = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 7</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 8</span>             db =<span style="color: #000000;"> openHelper.getWritableDatabase();<br></span><span style="color: #008080;"> 9</span>             ContentValues values =<span style="color: #000000;"> appInfo.getContentValues();<br></span><span style="color: #008080;">10</span>             <span style="color: #0000ff;">return</span> -1 != db.insert(RemoteDBHelper.TABLE_APP_REMOTE, <span style="color: #0000ff;">null</span><span style="color: #000000;">,<br></span><span style="color: #008080;">11</span> <span style="color: #000000;">                    values);<br></span><span style="color: #008080;">12</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;">14</span>         } <span style="color: #0000ff;">finally</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">15</span>             <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> !=<span style="color: #000000;"> db) {<br></span><span style="color: #008080;">16</span> <span style="color: #000000;">                db.close();<br></span><span style="color: #008080;">17</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">18</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">19</span> <span style="color: #000000;">        returnfalse;<br></span><span style="color: #008080;">20</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">21</span><br><span style="color: #008080;">22</span><br><span style="color: #008080;">23</span>     <span style="color: #0000ff;">for</span><span style="color: #000000;"> (RemoteAppInfo remoteAppInfo : list) {<br></span><span style="color: #008080;">24</span> <span style="color: #000000;">          RemoteDBUtil.insert(helper, remoteAppInfo);<br></span><span style="color: #008080;">25</span>         }</pre><br></div></p>
 <blockquote>
 <p>耗时：106524ms,也就是106s</p>
-</blockquote>
+</blockquote></p>
+            <p class="article-more-link">
+                <a href="/2015/09/sqlite-optimize.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/09/sqlite-optimize.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/09/sqlite-optimize.html" data-id="cipzhfv9q001ejvd0ov3ksaje" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/09/sqlite-optimize.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/09/sqlite-optimize.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/09/sqlite-optimize.html" data-id="cipy2b98g001ekyd0mpj6bolt" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/09/sqlite-optimize.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-sqlite-optimize" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlite/">sqlite</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-framework-compile-run" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-framework-compile-run" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/framework-compile-run.html">framework中编译anroid工程并在模拟器上运行</a>
-    </h1>
-  
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/08/framework-compile-run.html">framework中编译anroid工程并在模拟器上运行</a>
+        </h1>
+    
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/08/framework-compile-run.html">
-      <time datetime="2015-08-17T17:38:00.000Z" itemprop="datePublished">2015-08-18</time>
-    </a>
-  </div>
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/08/framework-compile-run.html">
+            <time datetime="2015-08-17T17:38:00.000Z" itemprop="datePublished">2015-08-18</time>
+        </a>
+    </div>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Framework/">Framework</a>
-  </div>
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Framework/">Framework</a>
+    </div>
 
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/framework/">framework</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><div>1、在eclipse下创建android工程Hello并拷贝到&ldquo;<strong>源码目录/packages/experimental&rdquo;</strong>下面</div><br><div>&nbsp;</div><br><div>2、在Hello工程目录下面创建Android.mk文件，内容如下：</div><br><div><br><div><strong>LOCAL_PATH:= $(call my-dir)</strong></div><br><div><strong>include $(CLEAR_VARS)</strong></div><br><div><strong>LOCAL_MODULE_TAGS := optional</strong></div><br><div><strong>LOCAL_SRC_FILES := $(call all-subdir-java-files)</strong></div><br><div><strong>LOCAL_PACKAGE_NAME := Hello</strong></div><br><div><strong>include $(BUILD_PACKAGE)</strong></div><br></div><br><div>3、执行<strong>mmm&nbsp;**</strong>packages/experimental/Hello<strong>编译，注意：使用mmm命令前先执行</strong>. &nbsp;./build/envsetup.sh<strong></div><br><div>编译成功后，便可以在out/target/product/generic/system/app目录下看到Hello.apk文件了。</div><br><div>运行截图：</div><br><div><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180933584103177.jpg" alt=""></div><br><div>&nbsp;</div><br><div>运行完截图：</div><br><div><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180935394726300.jpg" alt="">&nbsp;</div><br><div>&nbsp;</div><br><div>4、重新打包系统镜像文件system.img：<br><div></strong>USER-NAME@MACHINE-NAME:~/Android$ make snod**<br>&nbsp;&nbsp; &nbsp;重新打包后的system.img文件就内置了Hello.apk文件了。</div><br><div>&nbsp;</div><br></div><br></p>
+            <p class="article-more-link">
+                <a href="/2015/08/framework-compile-run.html#more">阅读全文</a>
+            </p>
+        
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/08/framework-compile-run.html" data-id="cipzhfvfo00bmjvd0jqxtg9jx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div>1、在eclipse下创建android工程Hello并拷贝到&ldquo;<strong>源码目录/packages/experimental&rdquo;</strong>下面</div><br><div>&nbsp;</div><br><div>2、在Hello工程目录下面创建Android.mk文件，内容如下：</div><br><div><br><div><strong>LOCAL_PATH:= $(call my-dir)</strong></div><br><div><strong>include $(CLEAR_VARS)</strong></div><br><div><strong>LOCAL_MODULE_TAGS := optional</strong></div><br><div><strong>LOCAL_SRC_FILES := $(call all-subdir-java-files)</strong></div><br><div><strong>LOCAL_PACKAGE_NAME := Hello</strong></div><br><div><strong>include $(BUILD_PACKAGE)</strong></div><br></div><br><div>3、执行<strong>mmm&nbsp;**</strong>packages/experimental/Hello<strong>编译，注意：使用mmm命令前先执行</strong>. &nbsp;./build/envsetup.sh<strong></div><br><div>编译成功后，便可以在out/target/product/generic/system/app目录下看到Hello.apk文件了。</div><br><div>运行截图：</div><br><div><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180933584103177.jpg" alt=""></div><br><div>&nbsp;</div><br><div>运行完截图：</div><br><div><img src="http://www.liuling123.com/wp-content/uploads/2015/11/180935394726300.jpg" alt="">&nbsp;</div><br><div>&nbsp;</div><br><div>4、重新打包系统镜像文件system.img：<br><div></strong>USER-NAME@MACHINE-NAME:~/Android$ make snod**<br>&nbsp;&nbsp; &nbsp;重新打包后的system.img文件就内置了Hello.apk文件了。</div><br><div>&nbsp;</div><br></div><br>
-        
-          <p class="article-more-link">
-            <a href="/2015/08/framework-compile-run.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2015/08/framework-compile-run.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/08/framework-compile-run.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/framework-compile-run.html" data-id="cipy2b9fj00bmkyd0i7ilm4sf" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/08/framework-compile-run.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-framework-compile-run" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
-    
-      <article id="post-jni-demo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-jni-demo" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/jni-demo.html">简单JNI使用demo</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/08/jni-demo.html">
-      <time datetime="2015-08-07T02:26:00.000Z" itemprop="datePublished">2015-08-07</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>android中使用JNI的小例子，直接上代码。</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/08/jni-demo.html">简单JNI使用demo</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/08/jni-demo.html">
+            <time datetime="2015-08-07T02:26:00.000Z" itemprop="datePublished">2015-08-07</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/jni/">jni</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>android中使用JNI的小例子，直接上代码。</p>
 <p>首先是Java类JniClient，定义native方法，User实体类就不上代码了，就简单定义了三个属性，name、age、sex。</p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.example.ndkdemo;<br></span><span style="color: #008080;"> 2</span><br><span style="color: #008080;"> 3</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> JniClient {<br></span><span style="color: #008080;"> 4</span><br><span style="color: #008080;"> 5</span>     <span style="color: #008000;">/<strong></span><br><span style="color: #008080;"> 6</span> <span style="color: #008000;">     <em> 通过JNI简单输出字符串<br></span><span style="color: #008080;"> 7</span> <span style="color: #008000;">     </em> </span><span style="color: #808080;">@return</span><br><span style="color: #008080;"> 8</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;"> 9</span>     <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span><span style="color: #000000;"> String printStr();<br></span><span style="color: #008080;">10</span><br><span style="color: #008080;">11</span>     <span style="color: #008000;">/</strong></span><br><span style="color: #008080;">12</span> <span style="color: #008000;">     <em> 通过JNI简单进行整形加法操作<br></span><span style="color: #008080;">13</span> <span style="color: #008000;">     </em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> a<br></span><span style="color: #008080;">14</span> <span style="color: #008000;">     <em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> b<br></span><span style="color: #008080;">15</span> <span style="color: #008000;">     </em> </span><span style="color: #808080;">@return</span><br><span style="color: #008080;">16</span>      <span style="color: #008000;"><em>/</span><br><span style="color: #008080;">17</span>     <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span> <span style="color: #0000ff;">int</span> addInt(<span style="color: #0000ff;">int</span> a, <span style="color: #0000ff;">int</span><span style="color: #000000;"> b);<br></span><span style="color: #008080;">18</span><br><span style="color: #008080;">19</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">20</span> <span style="color: #008000;">     </em> 通过JNI输入JAVA对象信息<br></span><span style="color: #008080;">21</span> <span style="color: #008000;">     <em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> user<br></span><span style="color: #008080;">22</span> <span style="color: #008000;">     </em> </span><span style="color: #808080;">@return</span><br><span style="color: #008080;">23</span>      <span style="color: #008000;"><em>/</span><br><span style="color: #008080;">24</span>     <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span><span style="color: #000000;"> String printUser(User user);<br></span><span style="color: #008080;">25</span><br><span style="color: #008080;">26</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">27</span> <span style="color: #008000;">     </em> 通过JNI创建java对象<br></span><span style="color: #008080;">28</span> <span style="color: #008000;">     <em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> name<br></span><span style="color: #008080;">29</span> <span style="color: #008000;">     </em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> age<br></span><span style="color: #008080;">30</span> <span style="color: #008000;">     <em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> sex<br></span><span style="color: #008080;">31</span> <span style="color: #008000;">     </em> </span><span style="color: #808080;">@return</span><br><span style="color: #008080;">32</span>      <span style="color: #008000;"><em>/</span><br><span style="color: #008080;">33</span>     <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span> User newUser(String name, <span style="color: #0000ff;">int</span><span style="color: #000000;"> age, String sex);<br></span><span style="color: #008080;">34</span><br><span style="color: #008080;">35</span>     <span style="color: #008000;">/**</span><br><span style="color: #008080;">36</span> <span style="color: #008000;">     </em> 通过JNI调用无参构造函数创建java对象并且设置相应属性值<br></span><span style="color: #008080;">37</span> <span style="color: #008000;">     <em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> name<br></span><span style="color: #008080;">38</span> <span style="color: #008000;">     </em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> age<br></span><span style="color: #008080;">39</span> <span style="color: #008000;">     <em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> sex<br></span><span style="color: #008080;">40</span> <span style="color: #008000;">     </em> </span><span style="color: #808080;">@return</span><br><span style="color: #008080;">41</span>      <span style="color: #008000;">*/</span><br><span style="color: #008080;">42</span>     <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span> User newUserNoArgs(String name, <span style="color: #0000ff;">int</span><span style="color: #000000;"> age, String sex);<br></span><span style="color: #008080;">43</span> }</pre><br></div>
 
-<p>&nbsp;<br>
+<p>&nbsp;<br></p>
+            <p class="article-more-link">
+                <a href="/2015/08/jni-demo.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2015/08/jni-demo.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/08/jni-demo.html" data-id="cipzhfvdr007yjvd0o23zfvlh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/08/jni-demo.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/08/jni-demo.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/jni-demo.html" data-id="cipy2b9d2007ykyd035fgvz57" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/08/jni-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jni-demo" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-javah-find-lib" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-javah-find-lib" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/javah-find-lib.html">解决javah生成c头文件时找不到android类库的问题</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/08/javah-find-lib.html">
-      <time datetime="2015-08-05T02:26:00.000Z" itemprop="datePublished">2015-08-05</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        
+        
+            <header class="article-header">
                 
-        <div><strong>问题描述：</strong></div><br><div>cmd下面进入工程的bin/classes下面，执行 javah xxx.xxx.A 生成头文件，</div><br><div>一般来说都是可以成功执行的，但是如果xxx.xxx.A类里面引用了android类库里面的类的话，就会报异常，如下图：</div><br><div><br><div><img src="file:///C:/Users/Administrator/AppData/Local/YNote/data/qq30151A15E6E038A670248C336861EB12/6dcc07aa775b4f5f9640828e41a68e56/dy9ez8nthqtg.png" alt=""></div><br></div><br><div>上面因为引用了android.graphics.Bitmap，所以导致生成头文件失败。</div><br><div>&nbsp;<img src="file:///C:/Users/Administrator/AppData/Local/YNote/data/qq30151A15E6E038A670248C336861EB12/6dcc07aa775b4f5f9640828e41a68e56/dy9ez8nthqtg.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/051825381422804.png" alt=""></div><br><div>&nbsp;</div><br><div><strong>解决办法：</strong></div><br><div>执行javah命令的时候，可以指定classpath，将需要的jar包引入进去就可以了。如下</div><br><div>javah -classpath D:\ide\android-sdk\platforms\android-22\android.jar;. -jni&nbsp;&nbsp;javah xxx.xxx.A</div><br><div>这样就可以成功的编译了。</div><br><div>这里值得注意的是classpath后面一定要记得加上&ldquo;.&rdquo;，否则就找不到目标类了。</div><br><div><br><div><img src="file:///C:/Users/Administrator/AppData/Local/YNote/data/qq30151A15E6E038A670248C336861EB12/91d1350b2d694ab6970c6b4e16e3e9f3/j%60" alt="">~%5Baf7j7dp.png)</div>
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/08/javah-find-lib.html">解决javah生成c头文件时找不到android类库的问题</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/08/javah-find-lib.html">
+            <time datetime="2015-08-05T02:26:00.000Z" itemprop="datePublished">2015-08-05</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/jni/">jni</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <div><strong>问题描述：</strong></div><br><div>cmd下面进入工程的bin/classes下面，执行 javah xxx.xxx.A 生成头文件，</div><br><div>一般来说都是可以成功执行的，但是如果xxx.xxx.A类里面引用了android类库里面的类的话，就会报异常，如下图：</div><br><div><br><div><img src="file:///C:/Users/Administrator/AppData/Local/YNote/data/qq30151A15E6E038A670248C336861EB12/6dcc07aa775b4f5f9640828e41a68e56/dy9ez8nthqtg.png" alt=""></div><br></div><br><div>上面因为引用了android.graphics.Bitmap，所以导致生成头文件失败。</div><br><div>&nbsp;<img src="file:///C:/Users/Administrator/AppData/Local/YNote/data/qq30151A15E6E038A670248C336861EB12/6dcc07aa775b4f5f9640828e41a68e56/dy9ez8nthqtg.png" alt=""><img src="http://www.liuling123.com/wp-content/uploads/2015/11/051825381422804.png" alt=""></div><br><div>&nbsp;</div><br><div><strong>解决办法：</strong></div><br><div>执行javah命令的时候，可以指定classpath，将需要的jar包引入进去就可以了。如下</div><br><div>javah -classpath D:\ide\android-sdk\platforms\android-22\android.jar;. -jni&nbsp;&nbsp;javah xxx.xxx.A</div><br><div>这样就可以成功的编译了。</div><br><div>这里值得注意的是classpath后面一定要记得加上&ldquo;.&rdquo;，否则就找不到目标类了。</div><br><div><br><div><img src="file:///C:/Users/Administrator/AppData/Local/YNote/data/qq30151A15E6E038A670248C336861EB12/91d1350b2d694ab6970c6b4e16e3e9f3/j%60" alt="">~%5Baf7j7dp.png)</div>
 
 <p>&nbsp;<img src="http://www.liuling123.com/wp-content/uploads/2015/11/051825462362697.png" alt=""></p>
 <p></p></div><p></p>
 
         
-        
-      
-    </div>
-    
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/javah-find-lib.html" data-id="cipy2b9db008dkyd09diinckd" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/08/javah-find-lib.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-javah-find-lib" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-    
-      <article id="post-jni-logcat" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/jni-logcat.html">JNI的native代码中打印日志到eclipse的logcat中</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/08/jni-logcat.html">
-      <time datetime="2015-08-05T00:52:00.000Z" itemprop="datePublished">2015-08-05</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
-  </div>
-
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/08/javah-find-lib.html" data-id="cipzhfvdy008djvd0bz19fi76" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1 添加ndk对log支持</strong><br>若需要添加ndk对log的支持，只需要通过以下2步即可实现。</p>
-<p><strong>1.1 修改Android.mk
-</strong>如生成的库文件是&ldquo;.so文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-L$(SYSROOT)/usr/lib -llog<br>如生成的库文件是&ldquo;.a文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-llog<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/08/jni-logcat.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2015/08/javah-find-lib.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/08/javah-find-lib.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2015/08/jni-logcat.html" data-id="cipy2b9cz007ukyd00rixxv4s" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2015/08/jni-logcat.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jni-logcat" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jni/">jni</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
+    <article id="post-jni-logcat" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
     
-      <nav id="page-nav">
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/08/jni-logcat.html">JNI的native代码中打印日志到eclipse的logcat中</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/08/jni-logcat.html">
+            <time datetime="2015-08-05T00:52:00.000Z" itemprop="datePublished">2015-08-05</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/jni/">jni</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><strong>1 添加ndk对log支持</strong><br>若需要添加ndk对log的支持，只需要通过以下2步即可实现。</p>
+<p><strong>1.1 修改Android.mk
+</strong>如生成的库文件是&ldquo;.so文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-L$(SYSROOT)/usr/lib -llog<br>如生成的库文件是&ldquo;.a文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-llog<br></p>
+            <p class="article-more-link">
+                <a href="/2015/08/jni-logcat.html#more">阅读全文</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2015/08/jni-logcat.html" data-id="cipzhfvdp007ujvd0smqvpots" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/08/jni-logcat.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2015/08/jni-logcat.html">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
-      </nav>
-    </section>
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新博文</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
-        
-          <li>
+    </nav>
+</section>
             
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
-              <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
-              <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
+                <aside id="sidebar">
+   
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
-              <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
-              <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
-              <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
-              <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
-              <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
-            </div>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新博文</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
+                            <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
+                            <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
+                            <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
+                            <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">博文分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">博文分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap widget-list">
-    <h3 class="widget-title">友情链接</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.lcode.org">江清清技术专栏</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.deanhan.cn">逐梦博客</a>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://blog.daimajia.com">代码家</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.trinea.cn">Trinea</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.aswifter.com">APP开发者</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.seoui.com">笑松小站</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.apkfuns.com">舞影凌风</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.ttfde.org">TTF的家园</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://rocko.xyz">Rocko&#39;s blog</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.lcode.org">江清清技术专栏</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.deanhan.cn">逐梦博客</a>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
 
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
-      
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 Lauren<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+             &nbsp;粤ICP备15082212号-2 &nbsp;
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
     </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2015 - 2016 Lauren<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> &nbsp;粤ICP备15082212号-2 &nbsp;
-
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-
-    </div>
-  </div>
 </footer>
+        
     
-
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling123"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
+    <script>
+    var disqus_config = function () {
+        
+        this.page.identifier = 'undefined';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '＃hexo-theme-icarus' + '.disqus.com/count.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
 
 
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    
 
 
- <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Custom Scripts -->
+<script src="/js/main.js" type="text/javascript"></script>
 
-
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-
-
-<script src="/js/script.js" type="text/javascript"></script>
-
-  </div>
+    </div>
 </body>
 </html>

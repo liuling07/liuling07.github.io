@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang=zh>
 <head>
-  <meta charset="utf-8">
-  
-  <title>使用Lock来实现生产者和消费者问题 | 残剑博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前面写过：synchronize来实现生产者和消费者问题
+    <meta charset="utf-8">
+    
+    <title>使用Lock来实现生产者和消费者问题 | 残剑博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="前面写过：synchronize来实现生产者和消费者问题
 现在用Lock来实现它
 
   1 package com.thread;  2  3 import java.util.LinkedList;  4 import java.util.concurrent.locks.Condition;  5 import java.util.concurrent.locks.Lock;  6 impor">
@@ -24,435 +24,538 @@
 现在用Lock来实现它
 
   1 package com.thread;  2  3 import java.util.LinkedList;  4 import java.util.concurrent.locks.Condition;  5 import java.util.concurrent.locks.Lock;  6 impor">
-  
-  
-    <link rel="icon" href="favicon.ico" type="image/x-ico">
-  
-  
- <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
- <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
 
+    
 
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-  
+    
 
-  
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css" type="text/css">
 
-  
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css" type="text/css">
+    
+    
+    
+    
+
 </head>
 <body>
-  <div id="container">
-    <header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
-      
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/.">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categories">Categories</a>
-        
-          <a class="main-nav-link" href="/tags">Tags</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
-      
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
-          </div>
-        </nav>
-      
-      <div id="search-form-wrap">
-        
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-        
-      </div>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">残剑博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/protrait.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
-        
-          <td><a class="main-nav-link" href="/.">Home</a></td>
-        
-          <td><a class="main-nav-link" href="/archives">Archives</a></td>
-        
-          <td><a class="main-nav-link" href="/categories">Categories</a></td>
-        
-          <td><a class="main-nav-link" href="/tags">Tags</a></td>
-        
-          <td><a class="main-nav-link" href="/about">About</a></td>
-        
-        <td>
-          
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-          
-        </td>
-      </tr>
-    </table>
-  </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js" type="text/javascript"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 
-    <div class="outer">
-      
-        <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <img id="avatar" src="/css/images/protrait.jpg">
-      <h2 id="name">Lauren</h2>
-      <h3 id="title">Android Developer</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">关注我</a>
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/protrait.jpg" />
+            <h2 id="name">Lauren</h2>
+            <h3 id="title">Android Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/liuling07">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                146
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                36
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/liuling07" target="_blank" title="github" >
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo" >
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus" >
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow" >
+                            <i class="fa fa-stack-overflow"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter" >
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook" >
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" >
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
     </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        146
-        <span>文章</span>
-      </div>
-      <div class="article-info-block">
-        36
-        <span>标签</span>
-      </div>
-    </div>
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-          
-          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-          
-          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
-          
-          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
-          
-          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
-          
-          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-          
-          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
-          
-          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
-          
-        </tr>
-      </table>
-    </div>
-    
-    
-  </div>
 </aside>
 
-      
-      <section id="main"><article id="post-lock-producer-comsumer" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+            
+            <section id="main"><article id="post-lock-producer-comsumer" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 class="article-title" itemprop="name">
-      使用Lock来实现生产者和消费者问题
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/05/lock-producer-comsumer.html">
-      <time datetime="2013-05-18T01:55:00.000Z" itemprop="datePublished">2013-05-18</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        
+        
+            <header class="article-header">
                 
-        <p>前面写过：<a href="http://www.cnblogs.com/liuling/archive/2013/04/17/syncnized.html" target="_blank" rel="external">synchronize来实现生产者和消费者问题</a></p>
+    
+        <h1 class="article-title" itemprop="name">
+            使用Lock来实现生产者和消费者问题
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/05/lock-producer-comsumer.html">
+            <time datetime="2013-05-18T01:55:00.000Z" itemprop="datePublished">2013-05-18</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/多线程/">多线程</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>前面写过：<a href="http://www.cnblogs.com/liuling/archive/2013/04/17/syncnized.html" target="_blank" rel="external">synchronize来实现生产者和消费者问题</a></p>
 <p>现在用Lock来实现它</p>
 <p><div class="cnblogs_code"></div></p>
 <p><pre><span style="color: #008080;">  1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.thread;<br></span><span style="color: #008080;">  2</span><br><span style="color: #008080;">  3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.LinkedList;<br></span><span style="color: #008080;">  4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.Condition;<br></span><span style="color: #008080;">  5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.Lock;<br></span><span style="color: #008080;">  6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.ReentrantLock;<br></span><span style="color: #008080;">  7</span><br><span style="color: #008080;">  8</span><br><span style="color: #008080;">  9</span> <span style="color: #008000;">/<em>*</em></span><br><span style="color: #008080;"> 10</span> <span style="color: #008000;">  使用Lock来实现生产者和消费者问题<br></span><span style="color: #008080;"> 11</span> <span style="color: #008000;"> <em><br></em></span><span style="color: #008080;"> 12</span> <span style="color: #008000;">  </span><span style="color: #808080;">@author</span><span style="color: #008000;"> 刘玲<br></span><span style="color: #008080;"> 13</span> <span style="color: #008000;"> <em><br></em></span><span style="color: #008080;"> 14</span>  <span style="color: #008000;">/</span><br><span style="color: #008080;"> 15</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ProducerConsumer {<br></span><span style="color: #008080;"> 16</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;"> 17</span>         Basket b = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Basket();<br></span><span style="color: #008080;"> 18</span>         Product p = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Product(b);<br></span><span style="color: #008080;"> 19</span>         Consumer c = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Consumer(b);<br></span><span style="color: #008080;"> 20</span>         Consumer c1 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Consumer(b);<br></span><span style="color: #008080;"> 21</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(p).start();<br></span><span style="color: #008080;"> 22</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(c).start();<br></span><span style="color: #008080;"> 23</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(c1).start();<br></span><span style="color: #008080;"> 24</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 25</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 26</span> <span style="color: #008000;">//</span><span style="color: #008000;">馒头</span><br><span style="color: #008080;"> 27</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ManTou{<br></span><span style="color: #008080;"> 28</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> id;<br></span><span style="color: #008080;"> 29</span>     <span style="color: #0000ff;">public</span> ManTou(<span style="color: #0000ff;">int</span><span style="color: #000000;"> id) {<br></span><span style="color: #008080;"> 30</span>         <span style="color: #0000ff;">this</span>.id =<span style="color: #000000;"> id;<br></span><span style="color: #008080;"> 31</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 32</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;"> 33</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> String toString() {<br></span><span style="color: #008080;"> 34</span>         <span style="color: #0000ff;">return</span> “ManTou”+<span style="color: #000000;">id;<br></span><span style="color: #008080;"> 35</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 36</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 37</span><br><span style="color: #008080;"> 38</span> <span style="color: #008000;">//</span><span style="color: #008000;">装馒头的篮子</span><br><span style="color: #008080;"> 39</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Basket{<br></span><span style="color: #008080;"> 40</span>     <span style="color: #0000ff;">int</span> max = 6<span style="color: #000000;">;<br></span><span style="color: #008080;"> 41</span>     LinkedList<mantou> manTous = <span style="color: #0000ff;">new</span> LinkedList<mantou><span style="color: #000000;">();<br></span><span style="color: #008080;"> 42</span>     Lock lock = <span style="color: #0000ff;">new</span> ReentrantLock(); <span style="color: #008000;">//</span><span style="color: #008000;">锁对象</span><br><span style="color: #008080;"> 43</span>     Condition full = lock.newCondition();  <span style="color: #008000;">//</span><span style="color: #008000;">用来监控篮子是否满的Condition实例</span><br><span style="color: #008080;"> 44</span>     Condition empty = lock.newCondition(); <span style="color: #008000;">//</span><span style="color: #008000;">用来监控篮子是否空的Condition实例<br></span><span style="color: #008080;"> 45</span>     <span style="color: #008000;">//</span><span style="color: #008000;">往篮子里面放馒头</span><br><span style="color: #008080;"> 46</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> push(ManTou m){<br></span><span style="color: #008080;"> 47</span> <span style="color: #000000;">        lock.lock();<br></span><span style="color: #008080;"> 48</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 49</span>             <span style="color: #0000ff;">while</span>(max ==<span style="color: #000000;"> manTous.size()){<br></span><span style="color: #008080;"> 50</span>                 System.out.println(“篮子是满的，待会儿再生产…”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 51</span> <span style="color: #000000;">                full.await();<br></span><span style="color: #008080;"> 52</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 53</span> <span style="color: #000000;">            manTous.add(m);<br></span><span style="color: #008080;"> 54</span> <span style="color: #000000;">            empty.signal();<br></span><span style="color: #008080;"> 55</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 56</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;"> 57</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{<br></span><span style="color: #008080;"> 58</span> <span style="color: #000000;">            lock.unlock();<br></span><span style="color: #008080;"> 59</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 60</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 61</span>     <span style="color: #008000;">//</span><span style="color: #008000;">往篮子里面取馒头</span><br><span style="color: #008080;"> 62</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> ManTou pop(){<br></span><span style="color: #008080;"> 63</span>         ManTou m = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 64</span> <span style="color: #000000;">        lock.lock();<br></span><span style="color: #008080;"> 65</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 66</span>             <span style="color: #0000ff;">while</span>(manTous.size() == 0<span style="color: #000000;">){<br></span><span style="color: #008080;"> 67</span>                 System.out.println(“篮子是空的，待会儿再吃…”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 68</span> <span style="color: #000000;">                empty.await();<br></span><span style="color: #008080;"> 69</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 70</span>             m =<span style="color: #000000;"> manTous.removeFirst();<br></span><span style="color: #008080;"> 71</span> <span style="color: #000000;">            full.signal();<br></span><span style="color: #008080;"> 72</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 73</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;"> 74</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{<br></span><span style="color: #008080;"> 75</span> <span style="color: #000000;">            lock.unlock();<br></span><span style="color: #008080;"> 76</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> m;<br></span><span style="color: #008080;"> 77</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 78</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 79</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 80</span> <span style="color: #008000;">//</span><span style="color: #008000;">生产者</span><br><span style="color: #008080;"> 81</span> <span style="color: #0000ff;">class</span> Product <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;"> 82</span> <span style="color: #000000;">    Basket basket;<br></span><span style="color: #008080;"> 83</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Product(Basket basket) {<br></span><span style="color: #008080;"> 84</span>         <span style="color: #0000ff;">this</span>.basket =<span style="color: #000000;"> basket;<br></span><span style="color: #008080;"> 85</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 86</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;"> 87</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; 40; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 88</span>             ManTou m = <span style="color: #0000ff;">new</span><span style="color: #000000;"> ManTou(i);<br></span><span style="color: #008080;"> 89</span> <span style="color: #000000;">            basket.push(m);<br></span><span style="color: #008080;"> 90</span>             System.out.println(“生产了”+<span style="color: #000000;">m);<br></span><span style="color: #008080;"> 91</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 92</span>                 Thread.sleep((<span style="color: #0000ff;">int</span>)(Math.random()<em>2000<span style="color: #000000;">));<br></span><span style="color: #008080;"> 93</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 94</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;"> 95</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 96</span><br><span style="color: #008080;"> 97</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 98</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 99</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">100</span><br><span style="color: #008080;">101</span> <span style="color: #008000;">//</span><span style="color: #008000;">消费者</span><br><span style="color: #008080;">102</span> <span style="color: #0000ff;">class</span> Consumer <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;">103</span> <span style="color: #000000;">    Basket basket;<br></span><span style="color: #008080;">104</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Consumer(Basket basket) {<br></span><span style="color: #008080;">105</span>         <span style="color: #0000ff;">this</span>.basket =<span style="color: #000000;"> basket;<br></span><span style="color: #008080;">106</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">107</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;">108</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; 20; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;">109</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">110</span>                 Thread.sleep((<span style="color: #0000ff;">int</span>)(Math.random()</em>2000<span style="color: #000000;">));<br></span><span style="color: #008080;">111</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">112</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;">113</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">114</span>             ManTou m =<span style="color: #000000;"> basket.pop();<br></span><span style="color: #008080;">115</span>             System.out.println(“消费了”+<span style="color: #000000;">m);<br></span><span style="color: #008080;">116</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">117</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">118</span> }</mantou></mantou></pre><br><br><a id="more"></a><br>&nbsp;附：synchronize与Lock的区别</p>
 <p><strong>一、synchronized和lock的用法区别</strong><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">synchronized：在需要同步的对象中加入此控制，synchronized可以加在方法上，也可以加在特定代码块中，括号中表示需要锁的对象。</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">lock：需要显示指定起始位置和终止位置。一般使用ReentrantLock类做为锁，多个线程中必须要使用一个ReentrantLock类做为对象才能保证锁的生效。且在加锁和解锁处需要通过lock()和unlock()显示指出。所以一般会在finally块中写unlock()以防死锁。</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">用法区别比较简单，这里不赘述了，如果不懂的可以看看Java基本语法。</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><strong>二、synchronized和lock性能区别</strong><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">synchronized是托管给JVM执行的，而lock是java写的控制锁的代码。在Java1.5中，synchronize是性能低效的。因为这是一个重量级操作，需要调用操作接口，导致有可能加锁消耗的系统时间比加锁以外的操作还多。相比之下使用Java提供的Lock对象，性能更高一些。但是到了Java1.6，发生了变化。synchronize在语义上很清晰，可以进行很多优化，有适应自旋，锁消除，锁粗化，轻量级锁，偏向锁等等。导致在Java1.6上synchronize的性能并不比Lock差。官方也表示，他们也更支持synchronize，在未来的版本中还有优化余地。</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">说到这里，还是想提一下这2中机制的具体区别。据我所知，synchronized原始采用的是CPU悲观锁机制，即线程获得的是独占锁。独占锁意味着其他线程只能依靠阻塞来等待线程释放锁。而在CPU转换线程阻塞时会引起线程上下文切换，当有很多线程竞争锁的时候，会引起CPU频繁的上下文切换导致效率很低。</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">而Lock用的是乐观锁方式。所谓乐观锁就是，每次不加锁而是假设没有冲突而去完成某项操作，如果因为冲突失败就重试，直到成功为止。乐观锁实现的机制就是CAS操作（Compare and Swap）。我们可以进一步研究ReentrantLock的源代码，会发现其中比较重要的获得锁的一个方法是compareAndSetState。这里其实就是调用的CPU提供的特殊指令。</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">现代的CPU提供了指令，可以自动更新共享数据，而且能够检测到其他线程的干扰，而 compareAndSet() 就用这些代替了锁定。这个算法称作非阻塞算法，意思是一个线程的失败或者挂起不应该影响其他线程的失败或挂起的算法。</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">我也只是了解到这一步，具体到CPU的算法如果感兴趣的读者还可以在查阅下，如果有更好的解释也可以给我留言，我也学习下。</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><strong>三、synchronized和lock用途区别</strong><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">synchronized原语和ReentrantLock在一般情况下没有什么区别，但是在非常复杂的同步应用中，请考虑使用ReentrantLock，特别是遇到下面2种需求的时候。</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">&nbsp;</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">1.某个线程在等待一个锁的控制权的这段时间需要中断</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">2.需要分开处理一些wait-notify，ReentrantLock里面的Condition应用，能够控制notify哪个线程</span><br><span style="font: 14px/18px Arial, Tahoma, Verdana; color: #333333; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">3.具有公平锁功能，每个到来的线程都将排队等候</span></p>
 
         
-          <! -- 添加捐赠图标 -->
-          <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin－top:18px;margin-bottom:18px;text-align:center">
-            <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-              <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-              <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-                 如果文章对您有帮助，请随意打赏支持！  
-              </span>
-            </div>  
-        
-          <!-- 支付宝打赏图案 -->
-            <div style="text-align:center">
-                <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-                <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
-                </a> 
-            </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
-          <!-- 微信打赏图案 -->
-            <div style="text-align:center">
-                <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-                <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
-                </a> 
-            </div>
-          </div>  
-          <! -- 添加捐赠图标 -->
-          
-          <! -- 广告开始 -->
 
-          <! -- 广告结束 -->
 
-        
-        
-      
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/05/lock-producer-comsumer.html" data-id="cipzhfvco0066jvd034nm9d8v" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/05/lock-producer-comsumer.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/05/lock-producer-comsumer.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/lock-producer-comsumer.html" data-id="cipy2b9bx0066kyd0857qelpy" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/05/lock-producer-comsumer.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-lock-producer-comsumer" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
+        
 <nav id="article-nav">
-  
-    <a href="/2013/05/dynamic-proxy.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          动态代理的使用以及其实现机制
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2013/05/dynamic-compile.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">java笔记十一：动态编译</div>
-    </a>
-  
+    
+        <a href="/2013/05/dynamic-proxy.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    动态代理的使用以及其实现机制
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/05/dynamic-compile.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">java笔记十一：动态编译</div>
+        </a>
+    
 </nav>
 
 
-  
+    
 </article>
 
 
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
-  <section id="comments">
-  
-    <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-lock-producer-comsumer" data-title="使用Lock来实现生产者和消费者问题" data-url="http://www.liuling123.com/2013/05/lock-producer-comsumer.html"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"liuling123"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共JS代码 end -->
-  </section>
+    
+    </section>
 
 </section>
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新博文</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
-        
-          <li>
             
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
-              <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
-              <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
+                <aside id="sidebar">
+   
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
-              <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
-              <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
-              <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
-              <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
-              <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
-            </div>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新博文</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
+                            <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
+                            <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
+                            <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
+                            <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">博文分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">博文分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap widget-list">
-    <h3 class="widget-title">友情链接</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.lcode.org">江清清技术专栏</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.deanhan.cn">逐梦博客</a>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://blog.daimajia.com">代码家</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.trinea.cn">Trinea</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.aswifter.com">APP开发者</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.seoui.com">笑松小站</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.apkfuns.com">舞影凌风</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.ttfde.org">TTF的家园</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://rocko.xyz">Rocko&#39;s blog</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.lcode.org">江清清技术专栏</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.deanhan.cn">逐梦博客</a>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
 
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
-      
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 Lauren<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+             &nbsp;粤ICP备15082212号-2 &nbsp;
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
     </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2015 - 2016 Lauren<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> &nbsp;粤ICP备15082212号-2 &nbsp;
-
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-
-    </div>
-  </div>
 </footer>
+        
     
-
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling123"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://www.liuling123.com/2013/05/lock-producer-comsumer.html';
+        
+        this.page.identifier = 'lock-producer-comsumer';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '＃hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
 
 
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    
 
 
- <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Custom Scripts -->
+<script src="/js/main.js" type="text/javascript"></script>
 
-
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-
-
-<script src="/js/script.js" type="text/javascript"></script>
-
-  </div>
+    </div>
 </body>
 </html>

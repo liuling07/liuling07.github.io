@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang=zh>
 <head>
-  <meta charset="utf-8">
-  
-  <title>残剑博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hexo theme - Icarus">
+    <meta charset="utf-8">
+    
+    <title>残剑博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Hexo theme - Icarus">
 <meta property="og:type" content="website">
 <meta property="og:title" content="残剑博客">
 <meta property="og:url" content="http://www.liuling123.com/page/13/index.html">
@@ -14,934 +14,1703 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="残剑博客">
 <meta name="twitter:description" content="Hexo theme - Icarus">
-  
-  
-    <link rel="icon" href="favicon.ico" type="image/x-ico">
-  
-  
- <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
- <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
 
+    
 
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-  
+    
 
-  
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css" type="text/css">
 
-  
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css" type="text/css">
+    
+    
+    
+    
+
 </head>
 <body>
-  <div id="container">
-    <header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
-      
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/.">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categories">Categories</a>
-        
-          <a class="main-nav-link" href="/tags">Tags</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
-      
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
-          </div>
-        </nav>
-      
-      <div id="search-form-wrap">
-        
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-        
-      </div>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">残剑博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/protrait.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
-        
-          <td><a class="main-nav-link" href="/.">Home</a></td>
-        
-          <td><a class="main-nav-link" href="/archives">Archives</a></td>
-        
-          <td><a class="main-nav-link" href="/categories">Categories</a></td>
-        
-          <td><a class="main-nav-link" href="/tags">Tags</a></td>
-        
-          <td><a class="main-nav-link" href="/about">About</a></td>
-        
-        <td>
-          
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-          
-        </td>
-      </tr>
-    </table>
-  </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js" type="text/javascript"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 
-    <div class="outer">
-      
-        <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <img id="avatar" src="/css/images/protrait.jpg">
-      <h2 id="name">Lauren</h2>
-      <h3 id="title">Android Developer</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">关注我</a>
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/protrait.jpg" />
+            <h2 id="name">Lauren</h2>
+            <h3 id="title">Android Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/liuling07">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                146
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                36
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/liuling07" target="_blank" title="github" >
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo" >
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus" >
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow" >
+                            <i class="fa fa-stack-overflow"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter" >
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook" >
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" >
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
     </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        146
-        <span>文章</span>
-      </div>
-      <div class="article-info-block">
-        36
-        <span>标签</span>
-      </div>
-    </div>
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-          
-          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-          
-          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
-          
-          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
-          
-          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
-          
-          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-          
-          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
-          
-          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
-          
-        </tr>
-      </table>
-    </div>
-    
-    
-  </div>
 </aside>
 
-      
-      <section id="main">
-      <article id="post-jsp-staticize" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+            
+            <section id="main">
+    <article id="post-jsp-staticize" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/03/jsp-staticize.html">jsp静态化和伪静态化</a>
-    </h1>
-  
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/03/jsp-staticize.html">jsp静态化和伪静态化</a>
+        </h1>
+    
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/03/jsp-staticize.html">
-      <time datetime="2013-03-16T04:29:00.000Z" itemprop="datePublished">2013-03-16</time>
-    </a>
-  </div>
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/03/jsp-staticize.html">
+            <time datetime="2013-03-16T04:29:00.000Z" itemprop="datePublished">2013-03-16</time>
+        </a>
+    </div>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
 
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/web后端/">web后端</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><div><br><br>首先说说为什么要静态化。<br>对于现在的Web Application来说，动态页面是占有绝对高的地位的，正因为有了动态化，才有了现在Web的丰富多彩，但是如同所有别的事实一样，好处往往都是有 代价的。<br>为了产生出动态的效果，每一次对页面的请求都会要求服务器对页面进行编译或者执行，这些操作都很消耗系统资源。如果这期间还有和数据库的 通讯，那么代价将会更大。<br>如果一个页面在一定的时间内，其内容没有发生改变，那么就不必为每一次对它的访问进行一次&ldquo;新&rdquo;的编译或执行。我们可以 把它在这段没有发生改变的时间内的结果保存到一个静态的页面里面，然后每次访问这个页面时，就用刚才保存的静态页面进行回复。这样便能大大地减少系统资源 的消耗，并且提高对客户的响应速度。而这个过程就称之为页面静态化。<br></p>
+            <p class="article-more-link">
+                <a href="/2013/03/jsp-staticize.html#more">阅读全文</a>
+            </p>
+        
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/03/jsp-staticize.html" data-id="cipzhfvdb0077jvd0ppamxn6a" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div><br><br>首先说说为什么要静态化。<br>对于现在的Web Application来说，动态页面是占有绝对高的地位的，正因为有了动态化，才有了现在Web的丰富多彩，但是如同所有别的事实一样，好处往往都是有 代价的。<br>为了产生出动态的效果，每一次对页面的请求都会要求服务器对页面进行编译或者执行，这些操作都很消耗系统资源。如果这期间还有和数据库的 通讯，那么代价将会更大。<br>如果一个页面在一定的时间内，其内容没有发生改变，那么就不必为每一次对它的访问进行一次&ldquo;新&rdquo;的编译或执行。我们可以 把它在这段没有发生改变的时间内的结果保存到一个静态的页面里面，然后每次访问这个页面时，就用刚才保存的静态页面进行回复。这样便能大大地减少系统资源 的消耗，并且提高对客户的响应速度。而这个过程就称之为页面静态化。<br>
-        
-          <p class="article-more-link">
-            <a href="/2013/03/jsp-staticize.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2013/03/jsp-staticize.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/03/jsp-staticize.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/03/jsp-staticize.html" data-id="cipy2b9cj0077kyd07vqomnkl" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/03/jsp-staticize.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jsp-staticize" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
-    
-      <article id="post-jquery-ajax" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-jquery-ajax" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/02/jquery-ajax.html">详细解读Jquery各Ajax函数：$.get(),$.post(),$.ajax(),$.getJSON()</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/02/jquery-ajax.html">
-      <time datetime="2013-02-07T00:46:00.000Z" itemprop="datePublished">2013-02-07</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一，$.get(url,[data],[callback])</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/02/jquery-ajax.html">详细解读Jquery各Ajax函数：$.get(),$.post(),$.ajax(),$.getJSON()</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/02/jquery-ajax.html">
+            <time datetime="2013-02-07T00:46:00.000Z" itemprop="datePublished">2013-02-07</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/前端/">前端</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/前端/">前端</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>一，$.get(url,[data],[callback])</p>
 <p>说明：url为请求地址，data为请求数据的列表(是可选的，也可以将要传的参数写在url里面)，callback为请求成功后的回调函数，该函数接受两个参数，第一个为服务器返回的数据，第二个参数为服务器的状态，是可选参数。而其中，服务器返回数据的格式其实是字符串形势，并不是我们想要的json数据格式，在此引用只是为了对比说明。</p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> $.get(“data.php”,$(“#firstName.val()”),<span style="color: #0000ff;">function</span><span style="color: #000000;">(data){<br></span><span style="color: #008080;">2</span><br><span style="color: #008080;">3</span> 　　$(“#getResponse”).html(data); }<span style="color: #008000;">//</span><span style="color: #008000;">返回的data是字符串类型</span><br><span style="color: #008080;">4</span><br><span style="color: #008080;">5</span> );</pre><br></div>
 
-<p>&nbsp;<br>
+<p>&nbsp;<br></p>
+            <p class="article-more-link">
+                <a href="/2013/02/jquery-ajax.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/02/jquery-ajax.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/02/jquery-ajax.html" data-id="cipzhfvdj007jjvd0h3mkf547" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/02/jquery-ajax.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/02/jquery-ajax.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/02/jquery-ajax.html" data-id="cipy2b9ct007jkyd05wa4ct1o" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/02/jquery-ajax.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jquery-ajax" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-net-sf-json-jsonexception" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-net-sf-json-jsonexception" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/02/net-sf-json-jsonexception.html">net.sf.json.JSONException: There is a cycle in the hierarchy!错误解决方案</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/02/net-sf-json-jsonexception.html">
-      <time datetime="2013-02-07T00:22:00.000Z" itemprop="datePublished">2013-02-07</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　使用hibernate容易出现该问题，主要是由于pojo类属性存在级联关系。比如说员工和部门，在员工表里面有部门属性，而在部门表里面有个员工集合，这样就存在了嵌套引用的问题了，就会抛出这个异常。</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/02/net-sf-json-jsonexception.html">net.sf.json.JSONException: There is a cycle in the hierarchy!错误解决方案</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/02/net-sf-json-jsonexception.html">
+            <time datetime="2013-02-07T00:22:00.000Z" itemprop="datePublished">2013-02-07</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/web后端/">web后端</a>, <a class="tag-link" href="/tags/解决方案/">解决方案</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　使用hibernate容易出现该问题，主要是由于pojo类属性存在级联关系。比如说员工和部门，在员工表里面有部门属性，而在部门表里面有个员工集合，这样就存在了嵌套引用的问题了，就会抛出这个异常。</p>
 <p>　　解决方法很简单，在将每个对象转为json对象的时候用setExcludes函数将级联的属性去除掉就可以了，如下面：</p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #008000;">//</span><span style="color: #008000;">得到所有部门<br></span><span style="color: #008080;"> 2</span>     <span style="color: #008000;">//</span><span style="color: #008000;">返回json对象字符串</span><br><span style="color: #008080;"> 3</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> String getAllDep(){<br></span><span style="color: #008080;"> 4</span>         List list =<span style="color: #000000;"> deptDAO.findAll();<br></span><span style="color: #008080;"> 5</span>         JsonConfig config = <span style="color: #0000ff;">new</span><span style="color: #000000;"> JsonConfig();<br></span><span style="color: #008080;"> 6</span>         config.setExcludes(<span style="color: #0000ff;">new</span> String[]{“emps”});<span style="color: #008000;">//</span><span style="color: #008000;">除去emps属性</span><br><span style="color: #008080;"> 7</span>         String json =<span style="color: #000000;"> JSONArray.fromObject(list, config).toString();<br></span><span style="color: #008080;"> 8</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> json;<br></span><span style="color: #008080;"> 9</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">10</span><br><span style="color: #008080;">11</span>     <span style="color: #008000;">//</span><span style="color: #008000;">得到所有员工</span><br><span style="color: #008080;">12</span>     <span style="color: #0000ff;">public</span> String getAllEmp(<span style="color: #0000ff;">int</span><span style="color: #000000;"> id){<br></span><span style="color: #008080;">13</span>         List list = empDAO.findByProperty(“dept.deptId”<span style="color: #000000;">, id);<br></span><span style="color: #008080;">14</span>         JsonConfig config = <span style="color: #0000ff;">new</span><span style="color: #000000;"> JsonConfig();<br></span><span style="color: #008080;">15</span>         config.setExcludes(<span style="color: #0000ff;">new</span> String[]{“dept”});<span style="color: #008000;">//</span><span style="color: #008000;">除去dept属性</span><br><span style="color: #008080;">16</span>         String json =<span style="color: #000000;"> JSONArray.fromObject(list, config).toString();<br></span><span style="color: #008080;">17</span>         <span style="color: #0000ff;">return</span><span style="color: #000000;"> json;<br></span><span style="color: #008080;">18</span>     }</pre><br></div>
 
 <p>&nbsp;</p>
-<p>&nbsp;<br>
+<p>&nbsp;<br></p>
+            <p class="article-more-link">
+                <a href="/2013/02/net-sf-json-jsonexception.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/02/net-sf-json-jsonexception.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/02/net-sf-json-jsonexception.html" data-id="cipzhfvc50058jvd09p9xdcz2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/02/net-sf-json-jsonexception.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/02/net-sf-json-jsonexception.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/02/net-sf-json-jsonexception.html" data-id="cipy2b9be0058kyd0l27iebie" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/02/net-sf-json-jsonexception.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-net-sf-json-jsonexception" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-springmvc-use" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-springmvc-use" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/02/springmvc-use.html">使用springMVC的详细步骤</a>
-    </h1>
-  
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/02/springmvc-use.html">使用springMVC的详细步骤</a>
+        </h1>
+    
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/02/springmvc-use.html">
-      <time datetime="2013-02-06T20:27:00.000Z" itemprop="datePublished">2013-02-07</time>
-    </a>
-  </div>
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/02/springmvc-use.html">
+            <time datetime="2013-02-06T20:27:00.000Z" itemprop="datePublished">2013-02-07</time>
+        </a>
+    </div>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
 
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/web后端/">web后端</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　使用springMVC也可以代替struts2，当然只是代替业务分发的功能，struts2的一些其他功能它是没有的，不然要struts2有什么用。<br>　　下面我用springMVC代替struts2去整合hibernate实现简单的员工查询功能。<br>　　使用springMVC有两个配置文件需要配置，一个是applicationContext.xml、另一个是web.xml，在applicationContext.xml里面配置事务管理器以及属性注入等。web.xml里面要添加一个springMVC的servlet的注册和映射(DispatcherServlet)，这个servlet是springMVC的核心控制器，专门处理各个请求的，然后根据相应的参数分发给相应的业务控制器处理，业务控制器处理完之后就会返回一字符串给核心控制器，核心控制器再根据该字符串重定向或者转发到相应的页面。还必须给该核心控制器建一个配置文件，其形式为：核心控制器servlet名-servlet.xml,如springMVC-servlet.xml.该配置文件放在WEB-INF下面。<br>&nbsp;applicationContext.xml的内容如下：</p></p>
+            <p class="article-more-link">
+                <a href="/2013/02/springmvc-use.html#more">阅读全文</a>
+            </p>
+        
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/02/springmvc-use.html" data-id="cipzhfv9s001kjvd08rh84tnk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　使用springMVC也可以代替struts2，当然只是代替业务分发的功能，struts2的一些其他功能它是没有的，不然要struts2有什么用。<br>　　下面我用springMVC代替struts2去整合hibernate实现简单的员工查询功能。<br>　　使用springMVC有两个配置文件需要配置，一个是applicationContext.xml、另一个是web.xml，在applicationContext.xml里面配置事务管理器以及属性注入等。web.xml里面要添加一个springMVC的servlet的注册和映射(DispatcherServlet)，这个servlet是springMVC的核心控制器，专门处理各个请求的，然后根据相应的参数分发给相应的业务控制器处理，业务控制器处理完之后就会返回一字符串给核心控制器，核心控制器再根据该字符串重定向或者转发到相应的页面。还必须给该核心控制器建一个配置文件，其形式为：核心控制器servlet名-servlet.xml,如springMVC-servlet.xml.该配置文件放在WEB-INF下面。<br>&nbsp;applicationContext.xml的内容如下：</p>
-        
-          <p class="article-more-link">
-            <a href="/2013/02/springmvc-use.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2013/02/springmvc-use.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/02/springmvc-use.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/02/springmvc-use.html" data-id="cipy2b98k001kkyd0ixsmx2xy" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/02/springmvc-use.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-springmvc-use" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
-    
-      <article id="post-nosuchmethoderror-asm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-nosuchmethoderror-asm" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/02/nosuchmethoderror-asm.html">java.lang.NoSuchMethodError: org.objectweb.asm.ClassVisitor.visit(IILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V错误解决方案</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/02/nosuchmethoderror-asm.html">
-      <time datetime="2013-02-06T19:43:00.000Z" itemprop="datePublished">2013-02-07</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>解决方案：</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/02/nosuchmethoderror-asm.html">java.lang.NoSuchMethodError: org.objectweb.asm.ClassVisitor.visit(IILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V错误解决方案</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/02/nosuchmethoderror-asm.html">
+            <time datetime="2013-02-06T19:43:00.000Z" itemprop="datePublished">2013-02-07</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/web后端/">web后端</a>, <a class="tag-link" href="/tags/解决方案/">解决方案</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>解决方案：</p>
 <p>　　java.lang.NoSuchMethodError: org.objectweb.asm.ClassVisitor.visit(IILjava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V错误是hibernate+spring的一个金典的错误。这个问题主要是由于spring与hibernate导jar包的冲突问题，只要将asm-2.2.3.jar包给删掉就可以了。</p>
-<p>详细错误信息如下：<br>
+<p>详细错误信息如下：<br></p>
+            <p class="article-more-link">
+                <a href="/2013/02/nosuchmethoderror-asm.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/02/nosuchmethoderror-asm.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/02/nosuchmethoderror-asm.html" data-id="cipzhfvc40054jvd0ajr2b5ez" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/02/nosuchmethoderror-asm.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/02/nosuchmethoderror-asm.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/02/nosuchmethoderror-asm.html" data-id="cipy2b9bd0054kyd080mld75r" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/02/nosuchmethoderror-asm.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-nosuchmethoderror-asm" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方案/">解决方案</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-dom4j-xml" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-dom4j-xml" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/02/dom4j-xml.html">dom4j解析xml文件</a>
-    </h1>
-  
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/02/dom4j-xml.html">dom4j解析xml文件</a>
+        </h1>
+    
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/02/dom4j-xml.html">
-      <time datetime="2013-02-05T07:21:00.000Z" itemprop="datePublished">2013-02-05</time>
-    </a>
-  </div>
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/02/dom4j-xml.html">
+            <time datetime="2013-02-05T07:21:00.000Z" itemprop="datePublished">2013-02-05</time>
+        </a>
+    </div>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
 
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/web后端/">web后端</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>一、利用dom4j创建一个内容如下的xml文件SqlMapConfig.xml</p>
+<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">&lt;?</span><span style="color: #ff00ff;">xml version=”1.0” encoding=”UTF-8” </span><span style="color: #0000ff;">?&gt;</span><br><span style="color: #008080;"> 2</span> <span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE configuration PUBLIC “-//ibatis.apache.org//DTD Config 3.0//EN”<br></span><span style="color: #008080;"> 3</span> <span style="color: #ff00ff;">                       “ibatis-3-config.dtd”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">configuration</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 5</span>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">environments </span><span style="color: #ff0000;">default</span><span style="color: #0000ff;">=”development”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 6</span>       <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">environment </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">=”MySQL”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 7</span>          <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">transactionManager </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">=”JDBC”</span><span style="color: #0000ff;">&gt;</span>123<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">transactionManager</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 8</span>          <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">dataSource </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">=”POOLED”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 9</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”driver”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”com.mysql.jdbc.Driver”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">10</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”url”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”jdbc:mysql://127.0.0.1:3306/test”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">11</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”username”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”root”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">12</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”password”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”admin”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">13</span>          <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">dataSource</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">14</span>       <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">environment</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">15</span>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">environments</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">16</span><br><span style="color: #008080;">17</span>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">mappers</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">18</span>       <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">mapper </span><span style="color: #ff0000;">resource</span><span style="color: #0000ff;">=”com/pojo/sql/DepMap.xml”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">19</span>       <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">mapper </span><span style="color: #ff0000;">resource</span><span style="color: #0000ff;">=”com/pojo/sql/EmpMap.xml”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">20</span>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">mappers</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">21</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">configuration</span><span style="color: #0000ff;">&gt;</span></pre><br></div><br></p>
+            <p class="article-more-link">
+                <a href="/2013/02/dom4j-xml.html#more">阅读全文</a>
+            </p>
+        
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/02/dom4j-xml.html" data-id="cipzhfvg100cfjvd08mztjemv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、利用dom4j创建一个内容如下的xml文件SqlMapConfig.xml</p>
-<div class="cnblogs_code"><br><pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">&lt;?</span><span style="color: #ff00ff;">xml version=”1.0” encoding=”UTF-8” </span><span style="color: #0000ff;">?&gt;</span><br><span style="color: #008080;"> 2</span> <span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE configuration PUBLIC “-//ibatis.apache.org//DTD Config 3.0//EN”<br></span><span style="color: #008080;"> 3</span> <span style="color: #ff00ff;">                       “ibatis-3-config.dtd”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 4</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">configuration</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 5</span>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">environments </span><span style="color: #ff0000;">default</span><span style="color: #0000ff;">=”development”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 6</span>       <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">environment </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">=”MySQL”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 7</span>          <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">transactionManager </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">=”JDBC”</span><span style="color: #0000ff;">&gt;</span>123<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">transactionManager</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 8</span>          <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">dataSource </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">=”POOLED”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;"> 9</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”driver”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”com.mysql.jdbc.Driver”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">10</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”url”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”jdbc:mysql://127.0.0.1:3306/test”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">11</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”username”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”root”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">12</span>              <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”password”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”admin”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">13</span>          <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">dataSource</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">14</span>       <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">environment</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">15</span>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">environments</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">16</span><br><span style="color: #008080;">17</span>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">mappers</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">18</span>       <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">mapper </span><span style="color: #ff0000;">resource</span><span style="color: #0000ff;">=”com/pojo/sql/DepMap.xml”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">19</span>       <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">mapper </span><span style="color: #ff0000;">resource</span><span style="color: #0000ff;">=”com/pojo/sql/EmpMap.xml”</span><span style="color: #0000ff;">/&gt;</span><br><span style="color: #008080;">20</span>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">mappers</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #008080;">21</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">configuration</span><span style="color: #0000ff;">&gt;</span></pre><br></div><br>
-        
-          <p class="article-more-link">
-            <a href="/2013/02/dom4j-xml.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2013/02/dom4j-xml.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/02/dom4j-xml.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/02/dom4j-xml.html" data-id="cipy2b9g200cfkyd00whv312o" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/02/dom4j-xml.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-dom4j-xml" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
-    
-      <article id="post-design-partten-factory" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-design-partten-factory" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/02/design-partten-factory.html">抽象工厂之更换皮肤</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/02/design-partten-factory.html">
-      <time datetime="2013-02-04T01:43:00.000Z" itemprop="datePublished">2013-02-04</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　工厂工厂，顾名思义就是生产产品的加工厂。抽象工厂模式是所有形态的工厂模式中最为抽象和最具一般性的一种形态。抽象工厂模式是指当有多个抽象角色时，使用的一种工厂模式。抽象工厂模式可以向客户端提供一个接口，使客户端在不必指定产品的具体的情况下，创建多个产品族中的产品对象。</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/02/design-partten-factory.html">抽象工厂之更换皮肤</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/02/design-partten-factory.html">
+            <time datetime="2013-02-04T01:43:00.000Z" itemprop="datePublished">2013-02-04</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/设计模式/">设计模式</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　工厂工厂，顾名思义就是生产产品的加工厂。抽象工厂模式是所有形态的工厂模式中最为抽象和最具一般性的一种形态。抽象工厂模式是指当有多个抽象角色时，使用的一种工厂模式。抽象工厂模式可以向客户端提供一个接口，使客户端在不必指定产品的具体的情况下，创建多个产品族中的产品对象。</p>
 <p>　　工厂模式在实际应用中用的非常多，比如说大家用的QQ的换皮肤功能，就是应用工厂模式实现的。只要选中某个皮肤，整个界面风格都改变了，包括背景图、按钮、界面风格等。下面我就用工厂模式来实现简单的换皮肤功能。</p>
-<p>　　假如一套皮肤有背景图片、界面和按钮，这些我们叫做抽象产品，比如说背景图片有红色风格背景图片、蓝色风格背景图片，界面也有红色风格界面和蓝色风格界面，界面也一样。首先我们建立这些抽象产品：<br>
+<p>　　假如一套皮肤有背景图片、界面和按钮，这些我们叫做抽象产品，比如说背景图片有红色风格背景图片、蓝色风格背景图片，界面也有红色风格界面和蓝色风格界面，界面也一样。首先我们建立这些抽象产品：<br></p>
+            <p class="article-more-link">
+                <a href="/2013/02/design-partten-factory.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/02/design-partten-factory.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/02/design-partten-factory.html" data-id="cipzhfvga00cyjvd0s8pgi7ll" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/02/design-partten-factory.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/02/design-partten-factory.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/02/design-partten-factory.html" data-id="cipy2b9ge00cykyd00t0dgubj" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/02/design-partten-factory.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-design-partten-factory" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-struts-file-download" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-struts-file-download" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/02/struts-file-download.html">struts实现文件下载</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/02/struts-file-download.html">
-      <time datetime="2013-02-03T07:27:00.000Z" itemprop="datePublished">2013-02-03</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　今天学习了如何用struts实现文件下载的功能，可以将服务器的文件下载到客户端。</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/02/struts-file-download.html">struts实现文件下载</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/02/struts-file-download.html">
+            <time datetime="2013-02-03T07:27:00.000Z" itemprop="datePublished">2013-02-03</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/web后端/">web后端</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　今天学习了如何用struts实现文件下载的功能，可以将服务器的文件下载到客户端。</p>
 <p>　　其实不用struts也可以实现下载，可以直接用一个链接，href里面写文件的目录。如：</p>
 <div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <a href="/download/123.rar">123.rar</a></pre><br></div>
 
 <p>　　这种方法简单，不过它只能下载压缩文件，而其他一些文件如文本文件、图片等都会直接在页面上面显示出来而不会下载到客户端，所以此方法不可取。</p>
-<p>　　下面介绍另一种方法，也就是用struts实现文件的下载。首先，在WebRoot目录下面建一个文件夹download，可以将文件上传到这个目录下面。下载文件也从该目录下面下载。然后新建一个TestAction类,代码如下(struts的配置这里就不讲了)：</p>
+<p>　　下面介绍另一种方法，也就是用struts实现文件的下载。首先，在WebRoot目录下面建一个文件夹download，可以将文件上传到这个目录下面。下载文件也从该目录下面下载。然后新建一个TestAction类,代码如下(struts的配置这里就不讲了)：</p></p>
+            <p class="article-more-link">
+                <a href="/2013/02/struts-file-download.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/02/struts-file-download.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/02/struts-file-download.html" data-id="cipy2b9870013kyd012j93ipr" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/02/struts-file-download.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-struts-file-download" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-    
-      <article id="post-myeclipse-webservice" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/01/myeclipse-webservice.html">使用MyEclipse构建webService简单案例</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/01/myeclipse-webservice.html">
-      <time datetime="2013-01-31T07:08:00.000Z" itemprop="datePublished">2013-01-31</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
-
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/02/struts-file-download.html" data-id="cipzhfv9k0013jvd02u39a9mc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div id="cnblogs_post_body"><br><br>转：<a href="http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html">http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html</a><br><br>今天主要和大家分享，如何搭建一个Web服务，做Android开发，不可避免会涉及到客户端开发，我们怎么样来实现一个服务端，怎么样来实现一个客户端，并相互传递数据。就算调用别人的服务时，也能知道大概是怎么样实现的。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WebService一般分为.Net版和Java版，今天我们主要来实现Java版的WebService，.Net版本的还是比较简单的。<br><br>&nbsp;&nbsp;&nbsp;&nbsp; 照例，轻松一笑：<br><br>&nbsp;&nbsp;&nbsp;&nbsp; 波音777是有史以来第一架完全在电脑虚拟现实中设计制造的飞机，所用的设备完全由IBM公司所提供。试飞前，波音公司的总裁非常热情的邀请IBM的技术主管去参加试飞，可那位主管却说道:&ldquo;啊，非常荣幸，可惜那天是我妻子的生日，所以…&rdquo;&nbsp;<br>波音公司的总载一听就生气了:&ldquo;胆小鬼，我还没告诉你试飞的日期呢!&rdquo;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649014549.png"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649055883.png" alt="1" title="1"></a><br>
-        
-          <p class="article-more-link">
-            <a href="/2013/01/myeclipse-webservice.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2013/02/struts-file-download.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/02/struts-file-download.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/01/myeclipse-webservice.html" data-id="cipy2b9bl005kkyd0du9k04m9" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/01/myeclipse-webservice.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-myeclipse-webservice" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
-    
-      <article id="post-cronexpression-quartz-spring" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-myeclipse-webservice" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/01/cronexpression-quartz-spring.html">Quartz在Spring中动态设置cronExpression （spring设置动态定时任务）------转帖</a>
-    </h1>
-  
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/01/myeclipse-webservice.html">使用MyEclipse构建webService简单案例</a>
+        </h1>
+    
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/01/cronexpression-quartz-spring.html">
-      <time datetime="2013-01-31T06:14:00.000Z" itemprop="datePublished">2013-01-31</time>
-    </a>
-  </div>
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/01/myeclipse-webservice.html">
+            <time datetime="2013-01-31T07:08:00.000Z" itemprop="datePublished">2013-01-31</time>
+        </a>
+    </div>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
 
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/web后端/">web后端</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><div id="cnblogs_post_body"><br><br>转：<a href="http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html">http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html</a><br><br>今天主要和大家分享，如何搭建一个Web服务，做Android开发，不可避免会涉及到客户端开发，我们怎么样来实现一个服务端，怎么样来实现一个客户端，并相互传递数据。就算调用别人的服务时，也能知道大概是怎么样实现的。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WebService一般分为.Net版和Java版，今天我们主要来实现Java版的WebService，.Net版本的还是比较简单的。<br><br>&nbsp;&nbsp;&nbsp;&nbsp; 照例，轻松一笑：<br><br>&nbsp;&nbsp;&nbsp;&nbsp; 波音777是有史以来第一架完全在电脑虚拟现实中设计制造的飞机，所用的设备完全由IBM公司所提供。试飞前，波音公司的总裁非常热情的邀请IBM的技术主管去参加试飞，可那位主管却说道:&ldquo;啊，非常荣幸，可惜那天是我妻子的生日，所以…&rdquo;&nbsp;<br>波音公司的总载一听就生气了:&ldquo;胆小鬼，我还没告诉你试飞的日期呢!&rdquo;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649014549.png"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649055883.png" alt="1" title="1"></a><br></p>
+            <p class="article-more-link">
+                <a href="/2013/01/myeclipse-webservice.html#more">阅读全文</a>
+            </p>
+        
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/01/myeclipse-webservice.html" data-id="cipzhfvcc005kjvd0lk8fw3bf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div id="app-share-content"><br><div><span style="font-size: small;">什么是动态定时任务：是由客户制定生成的，服务端只知道该去执行什么任务，但任务的定时是不确定的（是由客户制定）。</span></div><br><div><span style="font-size: small;">这样总不能修改配置文件每定制个定时任务就增加一个<span>trigger吧，即便允许客户修改配置文件，但总需要重新启动web服务啊，研究了下Quartz在Spring中的动态定时，发现<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" ></span></span></div><br><div><span><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <property name="jobDetail" ref="schedulerJobDetail"/></span></span></div><br><div><span><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <property name="cronExpression"></span></span></div><br><div><span><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <value>0/10 <em> </em> <em> </em> ?</value></span></span></div><br><div><span><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </property></span></span></div><br><div><span style="font-size: small;"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>中<span style="color: red;">cronExpression是关键，如果可以动态设置<span style="color: red;">cronExpression</span>的值，也就说如果我们可以直接调用CronTriggerBean中设置<span style="color: red;">cronExpression</span>的方法，就可以顺利解决问题了。</span></span></div><br><div><span style="font-size: small;">熟悉<span>1的朋友可以跳过不看，下面2、3是动态定时任务的具体实现。</span></span></div><br>
-        
-          <p class="article-more-link">
-            <a href="/2013/01/cronexpression-quartz-spring.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2013/01/myeclipse-webservice.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/01/myeclipse-webservice.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/01/cronexpression-quartz-spring.html" data-id="cipy2b9gr00djkyd08v1bgw0l" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/01/cronexpression-quartz-spring.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-cronexpression-quartz-spring" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
+    <article id="post-cronexpression-quartz-spring" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
     
-      <nav id="page-nav">
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/01/cronexpression-quartz-spring.html">Quartz在Spring中动态设置cronExpression （spring设置动态定时任务）------转帖</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/01/cronexpression-quartz-spring.html">
+            <time datetime="2013-01-31T06:14:00.000Z" itemprop="datePublished">2013-01-31</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/web后端/">web后端</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><div id="app-share-content"><br><div><span style="font-size: small;">什么是动态定时任务：是由客户制定生成的，服务端只知道该去执行什么任务，但任务的定时是不确定的（是由客户制定）。</span></div><br><div><span style="font-size: small;">这样总不能修改配置文件每定制个定时任务就增加一个<span>trigger吧，即便允许客户修改配置文件，但总需要重新启动web服务啊，研究了下Quartz在Spring中的动态定时，发现<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" ></span></span></div><br><div><span><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <property name="jobDetail" ref="schedulerJobDetail"/></span></span></div><br><div><span><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <property name="cronExpression"></span></span></div><br><div><span><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <value>0/10 <em> </em> <em> </em> ?</value></span></span></div><br><div><span><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </property></span></span></div><br><div><span style="font-size: small;"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>中<span style="color: red;">cronExpression是关键，如果可以动态设置<span style="color: red;">cronExpression</span>的值，也就说如果我们可以直接调用CronTriggerBean中设置<span style="color: red;">cronExpression</span>的方法，就可以顺利解决问题了。</span></span></div><br><div><span style="font-size: small;">熟悉<span>1的朋友可以跳过不看，下面2、3是动态定时任务的具体实现。</span></span></div><br></p>
+            <p class="article-more-link">
+                <a href="/2013/01/cronexpression-quartz-spring.html#more">阅读全文</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/01/cronexpression-quartz-spring.html" data-id="cipzhfvgk00djjvd0anvtnnfr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/01/cronexpression-quartz-spring.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/01/cronexpression-quartz-spring.html">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/12/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/">下一页 &raquo;</a>
-      </nav>
-    </section>
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新博文</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
-        
-          <li>
+    </nav>
+</section>
             
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
-              <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
-              <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
+                <aside id="sidebar">
+   
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
-              <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
-              <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
-              <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
-              <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
-              <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
-            </div>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新博文</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
+                            <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
+                            <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
+                            <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
+                            <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">博文分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">博文分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap widget-list">
-    <h3 class="widget-title">友情链接</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.lcode.org">江清清技术专栏</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.deanhan.cn">逐梦博客</a>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://blog.daimajia.com">代码家</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.trinea.cn">Trinea</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.aswifter.com">APP开发者</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.seoui.com">笑松小站</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.apkfuns.com">舞影凌风</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.ttfde.org">TTF的家园</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://rocko.xyz">Rocko&#39;s blog</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.lcode.org">江清清技术专栏</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.deanhan.cn">逐梦博客</a>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
 
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
-      
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 Lauren<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+             &nbsp;粤ICP备15082212号-2 &nbsp;
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
     </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2015 - 2016 Lauren<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> &nbsp;粤ICP备15082212号-2 &nbsp;
-
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-
-    </div>
-  </div>
 </footer>
+        
     
-
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling123"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
+    <script>
+    var disqus_config = function () {
+        
+        this.page.identifier = 'undefined';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '＃hexo-theme-icarus' + '.disqus.com/count.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
 
 
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    
 
 
- <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Custom Scripts -->
+<script src="/js/main.js" type="text/javascript"></script>
 
-
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-
-
-<script src="/js/script.js" type="text/javascript"></script>
-
-  </div>
+    </div>
 </body>
 </html>

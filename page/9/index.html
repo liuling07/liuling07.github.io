@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang=zh>
 <head>
-  <meta charset="utf-8">
-  
-  <title>残剑博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hexo theme - Icarus">
+    <meta charset="utf-8">
+    
+    <title>残剑博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Hexo theme - Icarus">
 <meta property="og:type" content="website">
 <meta property="og:title" content="残剑博客">
 <meta property="og:url" content="http://www.liuling123.com/page/9/index.html">
@@ -14,167 +14,248 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="残剑博客">
 <meta name="twitter:description" content="Hexo theme - Icarus">
-  
-  
-    <link rel="icon" href="favicon.ico" type="image/x-ico">
-  
-  
- <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
- <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
 
+    
 
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-  
+    
 
-  
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css" type="text/css">
 
-  
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css" type="text/css">
+    
+    
+    
+    
+
 </head>
 <body>
-  <div id="container">
-    <header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
-      
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/.">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categories">Categories</a>
-        
-          <a class="main-nav-link" href="/tags">Tags</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
-      
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
-          </div>
-        </nav>
-      
-      <div id="search-form-wrap">
-        
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-        
-      </div>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">残剑博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/protrait.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
-        
-          <td><a class="main-nav-link" href="/.">Home</a></td>
-        
-          <td><a class="main-nav-link" href="/archives">Archives</a></td>
-        
-          <td><a class="main-nav-link" href="/categories">Categories</a></td>
-        
-          <td><a class="main-nav-link" href="/tags">Tags</a></td>
-        
-          <td><a class="main-nav-link" href="/about">About</a></td>
-        
-        <td>
-          
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-          
-        </td>
-      </tr>
-    </table>
-  </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js" type="text/javascript"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 
-    <div class="outer">
-      
-        <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <img id="avatar" src="/css/images/protrait.jpg">
-      <h2 id="name">Lauren</h2>
-      <h3 id="title">Android Developer</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">关注我</a>
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/protrait.jpg" />
+            <h2 id="name">Lauren</h2>
+            <h3 id="title">Android Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/liuling07">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                146
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                36
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/liuling07" target="_blank" title="github" >
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo" >
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus" >
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow" >
+                            <i class="fa fa-stack-overflow"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter" >
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook" >
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" >
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
     </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        146
-        <span>文章</span>
-      </div>
-      <div class="article-info-block">
-        36
-        <span>标签</span>
-      </div>
-    </div>
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-          
-          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-          
-          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
-          
-          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
-          
-          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
-          
-          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-          
-          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
-          
-          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
-          
-        </tr>
-      </table>
-    </div>
-    
-    
-  </div>
 </aside>
 
-      
-      <section id="main">
-      <article id="post-linux-64-32" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+            
+            <section id="main">
+    <article id="post-linux-64-32" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/06/linux-64-32.html">查看系统是64位还是32位</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/06/linux-64-32.html">
-      <time datetime="2013-06-07T04:22:00.000Z" itemprop="datePublished">2013-06-07</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        
+        
+            <header class="article-header">
                 
-        <p>查看系统是64位还是32位:</p>
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/06/linux-64-32.html">查看系统是64位还是32位</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/06/linux-64-32.html">
+            <time datetime="2013-06-07T04:22:00.000Z" itemprop="datePublished">2013-06-07</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/linux/">linux</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>查看系统是64位还是32位:</p>
 <p>0&gt;$ uname -m<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 若是i386 或 i686 则是32位kernel<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x86_64 则是 64位kernel</p>
 <p>1、getconf LONG_BIT or getconf WORD_BIT</p>
 <p>例如：</p>
@@ -186,777 +267,1465 @@
 <p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/2009081411423253.jpg" alt="如何查看Linux系统是64位还是32位  - 冷月夜2008 - 冷月夜2008的博客"></p>
 
         
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/06/linux-64-32.html" data-id="cipzhfvd5006wjvd0dduoo6zd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/06/linux-64-32.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/06/linux-64-32.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/06/linux-64-32.html" data-id="cipy2b9cc006wkyd0a6obctue" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/06/linux-64-32.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-linux-64-32" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-calltomaster-connection-refused" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-calltomaster-connection-refused" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/06/calltomaster-connection-refused.html">Call to master/192.168.137.101:9001 failed on connection exception: java.net.ConnectException: Connection refused</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/06/calltomaster-connection-refused.html">
-      <time datetime="2013-06-06T05:35:00.000Z" itemprop="datePublished">2013-06-06</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        
+        
+            <header class="article-header">
                 
-        <p>java.net.ConnectException: Call to master/192.168.137.101:9001 failed on connection exception: java.net.ConnectException: Connection refused<br>&nbsp;at org.apache.hadoop.ipc.Client.wrapException(Client.java:1099)<br>&nbsp;at org.apache.hadoop.ipc.Client.call(Client.java:1075)<br>&nbsp;at org.apache.hadoop.ipc.RPC$Invoker.invoke(RPC.java:225)<br>&nbsp;at org.apache.hadoop.mapred.$Proxy10.getProtocolVersion(Unknown Source)<br>&nbsp;at org.apache.hadoop.ipc.RPC.getProxy(RPC.java:396)<br>&nbsp;at org.apache.hadoop.ipc.RPC.getProxy(RPC.java:379)<br>&nbsp;at org.apache.hadoop.mapred.JobClient.createRPCProxy(JobClient.java:480)<br>&nbsp;at org.apache.hadoop.mapred.JobClient.init(JobClient.java:474)<br>&nbsp;at org.apache.hadoop.mapred.JobClient.<init>(JobClient.java:457)<br>&nbsp;at org.apache.hadoop.hive.ql.exec.ExecDriver.execute(ExecDriver.java:418)<br>&nbsp;at org.apache.hadoop.hive.ql.exec.MapRedTask.execute(MapRedTask.java:137)<br>&nbsp;at org.apache.hadoop.hive.ql.exec.Task.executeTask(Task.java:134)<br>&nbsp;at org.apache.hadoop.hive.ql.exec.TaskRunner.runSequential(TaskRunner.java:57)<br>&nbsp;at org.apache.hadoop.hive.ql.Driver.launchTask(Driver.java:1326)<br>&nbsp;at org.apache.hadoop.hive.ql.Driver.execute(Driver.java:1118)<br>&nbsp;at org.apache.hadoop.hive.ql.Driver.run(Driver.java:951)<br>&nbsp;at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:258)<br>&nbsp;at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:215)<br>&nbsp;at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:406)<br>&nbsp;at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:689)<br>&nbsp;at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:557)<br>&nbsp;at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>&nbsp;at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)<br>&nbsp;at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>&nbsp;at java.lang.reflect.Method.invoke(Method.java:601)<br>&nbsp;at org.apache.hadoop.util.RunJar.main(RunJar.java:156)<br>Caused by: java.net.ConnectException: Connection refused<br>&nbsp;at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)<br>&nbsp;at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:692)<br>&nbsp;at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)<br>&nbsp;at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:489)<br>&nbsp;at org.apache.hadoop.ipc.Client$Connection.setupConnection(Client.java:434)<br>&nbsp;at org.apache.hadoop.ipc.Client$Connection.setupIOstreams(Client.java:560)<br>&nbsp;at org.apache.hadoop.ipc.Client$Connection.access$2000(Client.java:184)<br>&nbsp;at org.apache.hadoop.ipc.Client.getConnection(Client.java:1206)<br>&nbsp;at org.apache.hadoop.ipc.Client.call(Client.java:1050)<br>&nbsp;… 24 more<br>Job Submission failed with exception ‘java.net.ConnectException(Call to master/192.168.137.101:9001 failed on connection exception: java.net.ConnectException: Connection refused)’<br>FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.MapRedTask</init></p>
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/06/calltomaster-connection-refused.html">Call to master/192.168.137.101:9001 failed on connection exception: java.net.ConnectException: Connection refused</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/06/calltomaster-connection-refused.html">
+            <time datetime="2013-06-06T05:35:00.000Z" itemprop="datePublished">2013-06-06</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/hadoop/">hadoop</a>, <a class="tag-link" href="/tags/web后端/">web后端</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>java.net.ConnectException: Call to master/192.168.137.101:9001 failed on connection exception: java.net.ConnectException: Connection refused<br>&nbsp;at org.apache.hadoop.ipc.Client.wrapException(Client.java:1099)<br>&nbsp;at org.apache.hadoop.ipc.Client.call(Client.java:1075)<br>&nbsp;at org.apache.hadoop.ipc.RPC$Invoker.invoke(RPC.java:225)<br>&nbsp;at org.apache.hadoop.mapred.$Proxy10.getProtocolVersion(Unknown Source)<br>&nbsp;at org.apache.hadoop.ipc.RPC.getProxy(RPC.java:396)<br>&nbsp;at org.apache.hadoop.ipc.RPC.getProxy(RPC.java:379)<br>&nbsp;at org.apache.hadoop.mapred.JobClient.createRPCProxy(JobClient.java:480)<br>&nbsp;at org.apache.hadoop.mapred.JobClient.init(JobClient.java:474)<br>&nbsp;at org.apache.hadoop.mapred.JobClient.<init>(JobClient.java:457)<br>&nbsp;at org.apache.hadoop.hive.ql.exec.ExecDriver.execute(ExecDriver.java:418)<br>&nbsp;at org.apache.hadoop.hive.ql.exec.MapRedTask.execute(MapRedTask.java:137)<br>&nbsp;at org.apache.hadoop.hive.ql.exec.Task.executeTask(Task.java:134)<br>&nbsp;at org.apache.hadoop.hive.ql.exec.TaskRunner.runSequential(TaskRunner.java:57)<br>&nbsp;at org.apache.hadoop.hive.ql.Driver.launchTask(Driver.java:1326)<br>&nbsp;at org.apache.hadoop.hive.ql.Driver.execute(Driver.java:1118)<br>&nbsp;at org.apache.hadoop.hive.ql.Driver.run(Driver.java:951)<br>&nbsp;at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:258)<br>&nbsp;at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:215)<br>&nbsp;at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:406)<br>&nbsp;at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:689)<br>&nbsp;at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:557)<br>&nbsp;at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>&nbsp;at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)<br>&nbsp;at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>&nbsp;at java.lang.reflect.Method.invoke(Method.java:601)<br>&nbsp;at org.apache.hadoop.util.RunJar.main(RunJar.java:156)<br>Caused by: java.net.ConnectException: Connection refused<br>&nbsp;at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)<br>&nbsp;at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:692)<br>&nbsp;at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)<br>&nbsp;at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:489)<br>&nbsp;at org.apache.hadoop.ipc.Client$Connection.setupConnection(Client.java:434)<br>&nbsp;at org.apache.hadoop.ipc.Client$Connection.setupIOstreams(Client.java:560)<br>&nbsp;at org.apache.hadoop.ipc.Client$Connection.access$2000(Client.java:184)<br>&nbsp;at org.apache.hadoop.ipc.Client.getConnection(Client.java:1206)<br>&nbsp;at org.apache.hadoop.ipc.Client.call(Client.java:1050)<br>&nbsp;… 24 more<br>Job Submission failed with exception ‘java.net.ConnectException(Call to master/192.168.137.101:9001 failed on connection exception: java.net.ConnectException: Connection refused)’<br>FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.MapRedTask</init></p>
 <p>&nbsp;</p>
 <p>解决方案：执行命令./hadoop namenode -format</p>
 
         
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/06/calltomaster-connection-refused.html" data-id="cipzhfvgz00eejvd0rpyejpob" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/06/calltomaster-connection-refused.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/06/calltomaster-connection-refused.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/06/calltomaster-connection-refused.html" data-id="cipy2b9hh00eekyd04xx8f6i2" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/06/calltomaster-connection-refused.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-calltomaster-connection-refused" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-linux-command" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-linux-command" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/06/linux-command.html">Linux中常用命令</a>
-    </h1>
-  
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/06/linux-command.html">Linux中常用命令</a>
+        </h1>
+    
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/06/linux-command.html">
-      <time datetime="2013-06-05T00:14:00.000Z" itemprop="datePublished">2013-06-05</time>
-    </a>
-  </div>
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/06/linux-command.html">
+            <time datetime="2013-06-05T00:14:00.000Z" itemprop="datePublished">2013-06-05</time>
+        </a>
+    </div>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
 
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/linux/">linux</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><div id="a790" class="con"><br><div id="content"><br><br><strong>一、Linux下常用命令：文件与目录操作</strong><br>basename：从文件名中去掉路径和扩展名<br>cd：切换当前工作目录到指定目录<br>chgrp：改变文件所属组<br>chmod：改变文件的权限<br>chown：改变文件的所有者和组<br>cp：复制文件或目录<br>dd：复制文件并转换文件内容<br>file：确定文件类型<br>find：在指定目录下查找文件并执行指定的操作<br>ln：创建文件链接<br>locate/slocate：快速定位文件的路径<br>ls/dir/vdir：显示目录内容<br>mkdir：创建目录<br>mv：移动或重命名文件<br>pwd：显示当前工作目录<br>rename：重命名文件<br>rm：删除文件或目录<br>rmdir：删除空目录<br>touch：修改文件的时间属性<br>updatedb：创建或更新slocate数据库<br>whereis：显示指令程序、源代码和man手册页<br>which：显示指令的绝对路径<br></p>
+            <p class="article-more-link">
+                <a href="/2013/06/linux-command.html#more">阅读全文</a>
+            </p>
+        
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/06/linux-command.html" data-id="cipzhfvd2006tjvd0yjw0vlyx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div id="a790" class="con"><br><div id="content"><br><br><strong>一、Linux下常用命令：文件与目录操作</strong><br>basename：从文件名中去掉路径和扩展名<br>cd：切换当前工作目录到指定目录<br>chgrp：改变文件所属组<br>chmod：改变文件的权限<br>chown：改变文件的所有者和组<br>cp：复制文件或目录<br>dd：复制文件并转换文件内容<br>file：确定文件类型<br>find：在指定目录下查找文件并执行指定的操作<br>ln：创建文件链接<br>locate/slocate：快速定位文件的路径<br>ls/dir/vdir：显示目录内容<br>mkdir：创建目录<br>mv：移动或重命名文件<br>pwd：显示当前工作目录<br>rename：重命名文件<br>rm：删除文件或目录<br>rmdir：删除空目录<br>touch：修改文件的时间属性<br>updatedb：创建或更新slocate数据库<br>whereis：显示指令程序、源代码和man手册页<br>which：显示指令的绝对路径<br>
-        
-          <p class="article-more-link">
-            <a href="/2013/06/linux-command.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2013/06/linux-command.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/06/linux-command.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/06/linux-command.html" data-id="cipy2b9ca006tkyd0gohp05fg" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/06/linux-command.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-linux-command" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
-    
-      <article id="post-virtualbox-centos-network" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-virtualbox-centos-network" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/06/virtualbox-centos-network.html">virtualbox虚拟机上安装centOS的网络配置</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/06/virtualbox-centos-network.html">
-      <time datetime="2013-06-03T07:06:00.000Z" itemprop="datePublished">2013-06-03</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　最近接触hadoop，需要在在Linux上面开发，所以我装了一个virtualbox虚拟机，在该虚拟机上面安装了一个centOS系统。linux系统是装好了，但是网络配置却另人头疼。我主要是想让宿主机和虚拟机能够互相访问。</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/06/virtualbox-centos-network.html">virtualbox虚拟机上安装centOS的网络配置</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/06/virtualbox-centos-network.html">
+            <time datetime="2013-06-03T07:06:00.000Z" itemprop="datePublished">2013-06-03</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/linux/">linux</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　最近接触hadoop，需要在在Linux上面开发，所以我装了一个virtualbox虚拟机，在该虚拟机上面安装了一个centOS系统。linux系统是装好了，但是网络配置却另人头疼。我主要是想让宿主机和虚拟机能够互相访问。</p>
 <p>　　然后我就百度了一下，根据百度的结果一步一步的配置。</p>
 <p>　　安装virtualbox之后它会在宿主机上面安装一个虚拟网卡，如图</p>
 <p>　　<img src="http://www.liuling123.com/wp-content/uploads/2015/11/03223024-0039d1288826493ea4bc290cd562b0cb.jpg" alt=""></p>
 <p>双击它，查看详情，信息如图所示</p>
 <p><img src="http://www.liuling123.com/wp-content/uploads/2015/11/03223147-ba39b13682814ee5a012c316a51254ad.jpg" alt=""></p>
 <p>　　在虚拟机上面配置网络我使用的是host-only方式，当然也可以使用桥接的方式，至于他们的区别，网上很多。虚拟机上面主要是使用这块虚拟网卡作为网关。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 进入centOS系统后主要有三个文件需要配置：</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 进入centOS系统后主要有三个文件需要配置：</p></p>
+            <p class="article-more-link">
+                <a href="/2013/06/virtualbox-centos-network.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/06/virtualbox-centos-network.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/06/virtualbox-centos-network.html" data-id="cipzhfv8y0004jvd0cgglwcwv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/06/virtualbox-centos-network.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/06/virtualbox-centos-network.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/06/virtualbox-centos-network.html" data-id="cipy2b97f0004kyd055e9fynz" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/06/virtualbox-centos-network.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-virtualbox-centos-network" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-asm-java-multi-extends" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-asm-java-multi-extends" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/05/asm-java-multi-extends.html">使用 ASM 实现 Java 语言的“多重继承”</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/05/asm-java-multi-extends.html">
-      <time datetime="2013-05-31T05:50:00.000Z" itemprop="datePublished">2013-05-31</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><span class="atitle" style="font-size: 1.5em; font-weight: bold;">问题的提出</span></p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/05/asm-java-multi-extends.html">使用 ASM 实现 Java 语言的“多重继承”</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/05/asm-java-multi-extends.html">
+            <time datetime="2013-05-31T05:50:00.000Z" itemprop="datePublished">2013-05-31</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><span class="atitle" style="font-size: 1.5em; font-weight: bold;">问题的提出</span></p>
 <p><span style="font-size: 14px;">在大部分情况下，需要多重继承往往意味着糟糕的设计。但在处理一些遗留项目的时候，多重继承可能是我们能做出的选择中代价最小的。由于 Java 语言本身不支持多重继承，这常常会给我们带来麻烦，最后的结果可能就是大量的重复代码。本文试图使用 ASM 框架来解决这一问题。在扩展类的功能的同时，不产生任何重复代码。</span></p>
-<p><span style="font-size: 14px;">考虑如下的实际情况：有一组类，名为 SubClass1、SubClass2、SubClass3 和 SubClass4，它们共同继承了同一个父类 SuperClass。现在，我们需要这组类中的一部分，例如 SubClass1 和 SubClass2，这两个类还要实现另外两个接口，它们分别为：IFibonacciComputer 和 ITimeRetriever。然而，这两个接口已经有了各自的实现类 FibonacciComputer 和 TimeRetriever。并且这两个类的实现逻辑就是我们想要的，我们不想做任何改动，只希望在 SubClass1 和 SubClass2 两个类中包含这些实现逻辑。</span><br>
+<p><span style="font-size: 14px;">考虑如下的实际情况：有一组类，名为 SubClass1、SubClass2、SubClass3 和 SubClass4，它们共同继承了同一个父类 SuperClass。现在，我们需要这组类中的一部分，例如 SubClass1 和 SubClass2，这两个类还要实现另外两个接口，它们分别为：IFibonacciComputer 和 ITimeRetriever。然而，这两个接口已经有了各自的实现类 FibonacciComputer 和 TimeRetriever。并且这两个类的实现逻辑就是我们想要的，我们不想做任何改动，只希望在 SubClass1 和 SubClass2 两个类中包含这些实现逻辑。</span><br></p>
+            <p class="article-more-link">
+                <a href="/2013/05/asm-java-multi-extends.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/05/asm-java-multi-extends.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/05/asm-java-multi-extends.html" data-id="cipzhfvhp00fdjvd0bp0e2d0p" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/05/asm-java-multi-extends.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/05/asm-java-multi-extends.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/asm-java-multi-extends.html" data-id="cipy2b9i700fdkyd00zi62qid" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/05/asm-java-multi-extends.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-asm-java-multi-extends" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-java-asm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-java-asm" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/05/java-asm.html">关于java字节码框架ASM的学习</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/05/java-asm.html">
-      <time datetime="2013-05-24T08:19:00.000Z" itemprop="datePublished">2013-05-24</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　一、什么是ASM</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/05/java-asm.html">关于java字节码框架ASM的学习</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/05/java-asm.html">
+            <time datetime="2013-05-24T08:19:00.000Z" itemprop="datePublished">2013-05-24</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　一、什么是ASM</p>
 <p>　　ASM是一个java字节码操纵框架，它能被用来动态生成类或者增强既有类的功能。ASM 可以直接产生二进制 class&nbsp;文件，也可以在类被加载入 Java 虚拟机之前动态改变类行为。Java class 被存储在严格格式定义的 .class文件里，这些类文件拥有足够的元数据来解析类中的所有元素：类名称、方法、属性以及 Java 字节码（指令）。ASM从类文件中读入信息后，能够改变类行为，分析类信息，甚至能够根据用户要求生成新类。</p>
-<p>　　使用ASM框架需要导入asm的jar包，<span style="color: #ff0000;">下载链接：</span><a href="http://files.cnblogs.com/liuling/asm-3.2.rar">asm-3.2.jar</a>。<br>
+<p>　　使用ASM框架需要导入asm的jar包，<span style="color: #ff0000;">下载链接：</span><a href="http://files.cnblogs.com/liuling/asm-3.2.rar">asm-3.2.jar</a>。<br></p>
+            <p class="article-more-link">
+                <a href="/2013/05/java-asm.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/05/java-asm.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/05/java-asm.html" data-id="cipzhfveq009sjvd0x246toze" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/05/java-asm.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/05/java-asm.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/java-asm.html" data-id="cipy2b9ed009skyd0dtebxra6" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/05/java-asm.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-java-asm" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-aop-cglib" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-aop-cglib" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/05/aop-cglib.html">AOP的另一种实现----cglib</a>
-    </h1>
-  
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/05/aop-cglib.html">AOP的另一种实现----cglib</a>
+        </h1>
+    
 
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/05/aop-cglib.html">
-      <time datetime="2013-05-21T07:16:00.000Z" itemprop="datePublished">2013-05-21</time>
-    </a>
-  </div>
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/05/aop-cglib.html">
+            <time datetime="2013-05-21T07:16:00.000Z" itemprop="datePublished">2013-05-21</time>
+        </a>
+    </div>
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
-  </div>
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    </div>
 
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　大家都知道，动态代理能够实现AOP，但是它有一个缺点，就是所有被代理的对象必须实现一个接口，否则就会报异常。那么如果被代理对象没有实现接口那该如何实现AOP呢？当然是能的，使用<span style="font: 14px/25.2px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">CGlib</span>就可以实现。<br></p>
+            <p class="article-more-link">
+                <a href="/2013/05/aop-cglib.html#more">阅读全文</a>
+            </p>
+        
         </div>
-      </header>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/05/aop-cglib.html" data-id="cipzhfvhr00fgjvd0ax62muaw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　大家都知道，动态代理能够实现AOP，但是它有一个缺点，就是所有被代理的对象必须实现一个接口，否则就会报异常。那么如果被代理对象没有实现接口那该如何实现AOP呢？当然是能的，使用<span style="font: 14px/25.2px Helvetica, Tahoma, Arial, sans-serif; text-align: left; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">CGlib</span>就可以实现。<br>
-        
-          <p class="article-more-link">
-            <a href="/2013/05/aop-cglib.html#more">阅读全文</a>
-          </p>
-        
-      
+        <a href="http://www.liuling123.com/2013/05/aop-cglib.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/05/aop-cglib.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/aop-cglib.html" data-id="cipy2b9i900fgkyd0b58q7sn2" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/05/aop-cglib.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-aop-cglib" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
 
-
-    
-      <article id="post-dynamic-proxy" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-dynamic-proxy" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/05/dynamic-proxy.html">动态代理的使用以及其实现机制</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/05/dynamic-proxy.html">
-      <time datetime="2013-05-20T23:38:00.000Z" itemprop="datePublished">2013-05-21</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　<span style="font-size: 16px;"><strong>一、动态代理的使用</strong></span></p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/05/dynamic-proxy.html">动态代理的使用以及其实现机制</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/05/dynamic-proxy.html">
+            <time datetime="2013-05-20T23:38:00.000Z" itemprop="datePublished">2013-05-21</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/web后端/">web后端</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　<span style="font-size: 16px;"><strong>一、动态代理的使用</strong></span></p>
 <p><span style="font: 14px/19px Verdana, Geneva, Arial, Helvetica, sans-serif; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">　　动态代理可以提供对另一个对象的访问，同时隐藏实际对象的具体事实。代理一般会实现它所表示的实际对象的接口。代理可以访问实际对象，但是延迟实现实际对象的部分功能，实际对象实现系统的实际功能，代理对象对客户隐藏了实际对象。客户不知道它是与代理打交道还是与实际对象打交道。</span></p>
 <p><span style="font: 14px/19px Verdana, Geneva, Arial, Helvetica, sans-serif; color: #000000; text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; float: none; display: inline !important; white-space: normal; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; background-color: #ffffff; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;">　　动态代理主要包含以下角色：</span></p>
 <p><em>　　动态代理类</em>（以下简称为<em>代理类</em>）是一个实现在创建类时在运行时指定的接口列表的类，该类具有下面描述的行为。</p>
 <p>　　<em>代理接口</em> 是代理类实现的一个接口。</p>
-<p><em>　　代理实例</em> 是代理类的一个实例。<br>
+<p><em>　　代理实例</em> 是代理类的一个实例。<br></p>
+            <p class="article-more-link">
+                <a href="/2013/05/dynamic-proxy.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/05/dynamic-proxy.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/05/dynamic-proxy.html" data-id="cipzhfvfy00c8jvd0byzp4uug" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/05/dynamic-proxy.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/05/dynamic-proxy.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/dynamic-proxy.html" data-id="cipy2b9fy00c8kyd0ntnpu7r2" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/05/dynamic-proxy.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-dynamic-proxy" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-lock-producer-comsumer" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-lock-producer-comsumer" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/05/lock-producer-comsumer.html">使用Lock来实现生产者和消费者问题</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/05/lock-producer-comsumer.html">
-      <time datetime="2013-05-18T01:55:00.000Z" itemprop="datePublished">2013-05-18</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前面写过：<a href="http://www.cnblogs.com/liuling/archive/2013/04/17/syncnized.html">synchronize来实现生产者和消费者问题</a></p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/05/lock-producer-comsumer.html">使用Lock来实现生产者和消费者问题</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/05/lock-producer-comsumer.html">
+            <time datetime="2013-05-18T01:55:00.000Z" itemprop="datePublished">2013-05-18</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/多线程/">多线程</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>前面写过：<a href="http://www.cnblogs.com/liuling/archive/2013/04/17/syncnized.html">synchronize来实现生产者和消费者问题</a></p>
 <p>现在用Lock来实现它</p>
 <p><div class="cnblogs_code"></p>
-<p><pre><span style="color: #008080;">  1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.thread;<br></span><span style="color: #008080;">  2</span><br><span style="color: #008080;">  3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.LinkedList;<br></span><span style="color: #008080;">  4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.Condition;<br></span><span style="color: #008080;">  5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.Lock;<br></span><span style="color: #008080;">  6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.ReentrantLock;<br></span><span style="color: #008080;">  7</span><br><span style="color: #008080;">  8</span><br><span style="color: #008080;">  9</span> <span style="color: #008000;">/<em>*</span><br><span style="color: #008080;"> 10</span> <span style="color: #008000;"> </em> 使用Lock来实现生产者和消费者问题<br></span><span style="color: #008080;"> 11</span> <span style="color: #008000;"> <em><br></span><span style="color: #008080;"> 12</span> <span style="color: #008000;"> </em> </span><span style="color: #808080;">@author</span><span style="color: #008000;"> 刘玲<br></span><span style="color: #008080;"> 13</span> <span style="color: #008000;"> <em><br></span><span style="color: #008080;"> 14</span>  <span style="color: #008000;"></em>/</span><br><span style="color: #008080;"> 15</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ProducerConsumer {<br></span><span style="color: #008080;"> 16</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;"> 17</span>         Basket b = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Basket();<br></span><span style="color: #008080;"> 18</span>         Product p = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Product(b);<br></span><span style="color: #008080;"> 19</span>         Consumer c = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Consumer(b);<br></span><span style="color: #008080;"> 20</span>         Consumer c1 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Consumer(b);<br></span><span style="color: #008080;"> 21</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(p).start();<br></span><span style="color: #008080;"> 22</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(c).start();<br></span><span style="color: #008080;"> 23</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(c1).start();<br></span><span style="color: #008080;"> 24</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 25</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 26</span> <span style="color: #008000;">//</span><span style="color: #008000;">馒头</span><br><span style="color: #008080;"> 27</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ManTou{<br></span><span style="color: #008080;"> 28</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> id;<br></span><span style="color: #008080;"> 29</span>     <span style="color: #0000ff;">public</span> ManTou(<span style="color: #0000ff;">int</span><span style="color: #000000;"> id) {<br></span><span style="color: #008080;"> 30</span>         <span style="color: #0000ff;">this</span>.id =<span style="color: #000000;"> id;<br></span><span style="color: #008080;"> 31</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 32</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;"> 33</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> String toString() {<br></span><span style="color: #008080;"> 34</span>         <span style="color: #0000ff;">return</span> “ManTou”+<span style="color: #000000;">id;<br></span><span style="color: #008080;"> 35</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 36</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 37</span><br><span style="color: #008080;"> 38</span> <span style="color: #008000;">//</span><span style="color: #008000;">装馒头的篮子</span><br><span style="color: #008080;"> 39</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Basket{<br></span><span style="color: #008080;"> 40</span>     <span style="color: #0000ff;">int</span> max = 6<span style="color: #000000;">;<br></span><span style="color: #008080;"> 41</span>     LinkedList<ManTou> manTous = <span style="color: #0000ff;">new</span> LinkedList<ManTou><span style="color: #000000;">();<br></span><span style="color: #008080;"> 42</span>     Lock lock = <span style="color: #0000ff;">new</span> ReentrantLock(); <span style="color: #008000;">//</span><span style="color: #008000;">锁对象</span><br><span style="color: #008080;"> 43</span>     Condition full = lock.newCondition();  <span style="color: #008000;">//</span><span style="color: #008000;">用来监控篮子是否满的Condition实例</span><br><span style="color: #008080;"> 44</span>     Condition empty = lock.newCondition(); <span style="color: #008000;">//</span><span style="color: #008000;">用来监控篮子是否空的Condition实例<br></span><span style="color: #008080;"> 45</span>     <span style="color: #008000;">//</span><span style="color: #008000;">往篮子里面放馒头</span><br><span style="color: #008080;"> 46</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> push(ManTou m){<br></span><span style="color: #008080;"> 47</span> <span style="color: #000000;">        lock.lock();<br></span><span style="color: #008080;"> 48</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 49</span>             <span style="color: #0000ff;">while</span>(max ==<span style="color: #000000;"> manTous.size()){<br></span><span style="color: #008080;"> 50</span>                 System.out.println(“篮子是满的，待会儿再生产…”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 51</span> <span style="color: #000000;">                full.await();<br></span><span style="color: #008080;"> 52</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 53</span> <span style="color: #000000;">            manTous.add(m);<br></span><span style="color: #008080;"> 54</span> <span style="color: #000000;">            empty.signal();<br></span><span style="color: #008080;"> 55</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 56</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;"> 57</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{<br></span><span style="color: #008080;"> 58</span> <span style="color: #000000;">            lock.unlock();<br></span><span style="color: #008080;"> 59</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 60</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 61</span>     <span style="color: #008000;">//</span><span style="color: #008000;">往篮子里面取馒头</span><br><span style="color: #008080;"> 62</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> ManTou pop(){<br></span><span style="color: #008080;"> 63</span>         ManTou m = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 64</span> <span style="color: #000000;">        lock.lock();<br></span><span style="color: #008080;"> 65</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 66</span>             <span style="color: #0000ff;">while</span>(manTous.size() == 0<span style="color: #000000;">){<br></span><span style="color: #008080;"> 67</span>                 System.out.println(“篮子是空的，待会儿再吃…”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 68</span> <span style="color: #000000;">                empty.await();<br></span><span style="color: #008080;"> 69</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 70</span>             m =<span style="color: #000000;"> manTous.removeFirst();<br></span><span style="color: #008080;"> 71</span> <span style="color: #000000;">            full.signal();<br></span><span style="color: #008080;"> 72</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 73</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;"> 74</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{<br></span><span style="color: #008080;"> 75</span> <span style="color: #000000;">            lock.unlock();<br></span><span style="color: #008080;"> 76</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> m;<br></span><span style="color: #008080;"> 77</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 78</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 79</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 80</span> <span style="color: #008000;">//</span><span style="color: #008000;">生产者</span><br><span style="color: #008080;"> 81</span> <span style="color: #0000ff;">class</span> Product <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;"> 82</span> <span style="color: #000000;">    Basket basket;<br></span><span style="color: #008080;"> 83</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Product(Basket basket) {<br></span><span style="color: #008080;"> 84</span>         <span style="color: #0000ff;">this</span>.basket =<span style="color: #000000;"> basket;<br></span><span style="color: #008080;"> 85</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 86</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;"> 87</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; 40; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 88</span>             ManTou m = <span style="color: #0000ff;">new</span><span style="color: #000000;"> ManTou(i);<br></span><span style="color: #008080;"> 89</span> <span style="color: #000000;">            basket.push(m);<br></span><span style="color: #008080;"> 90</span>             System.out.println(“生产了”+<span style="color: #000000;">m);<br></span><span style="color: #008080;"> 91</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 92</span>                 Thread.sleep((<span style="color: #0000ff;">int</span>)(Math.random()<em>2000<span style="color: #000000;">));<br></span><span style="color: #008080;"> 93</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 94</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;"> 95</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 96</span><br><span style="color: #008080;"> 97</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 98</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 99</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">100</span><br><span style="color: #008080;">101</span> <span style="color: #008000;">//</span><span style="color: #008000;">消费者</span><br><span style="color: #008080;">102</span> <span style="color: #0000ff;">class</span> Consumer <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;">103</span> <span style="color: #000000;">    Basket basket;<br></span><span style="color: #008080;">104</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Consumer(Basket basket) {<br></span><span style="color: #008080;">105</span>         <span style="color: #0000ff;">this</span>.basket =<span style="color: #000000;"> basket;<br></span><span style="color: #008080;">106</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">107</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;">108</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; 20; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;">109</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">110</span>                 Thread.sleep((<span style="color: #0000ff;">int</span>)(Math.random()</em>2000<span style="color: #000000;">));<br></span><span style="color: #008080;">111</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">112</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;">113</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">114</span>             ManTou m =<span style="color: #000000;"> basket.pop();<br></span><span style="color: #008080;">115</span>             System.out.println(“消费了”+<span style="color: #000000;">m);<br></span><span style="color: #008080;">116</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">117</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">118</span> }</pre><br></div><br>
+<p><pre><span style="color: #008080;">  1</span> <span style="color: #0000ff;">package</span><span style="color: #000000;"> com.thread;<br></span><span style="color: #008080;">  2</span><br><span style="color: #008080;">  3</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.LinkedList;<br></span><span style="color: #008080;">  4</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.Condition;<br></span><span style="color: #008080;">  5</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.Lock;<br></span><span style="color: #008080;">  6</span> <span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.concurrent.locks.ReentrantLock;<br></span><span style="color: #008080;">  7</span><br><span style="color: #008080;">  8</span><br><span style="color: #008080;">  9</span> <span style="color: #008000;">/<em>*</span><br><span style="color: #008080;"> 10</span> <span style="color: #008000;"> </em> 使用Lock来实现生产者和消费者问题<br></span><span style="color: #008080;"> 11</span> <span style="color: #008000;"> <em><br></span><span style="color: #008080;"> 12</span> <span style="color: #008000;"> </em> </span><span style="color: #808080;">@author</span><span style="color: #008000;"> 刘玲<br></span><span style="color: #008080;"> 13</span> <span style="color: #008000;"> <em><br></span><span style="color: #008080;"> 14</span>  <span style="color: #008000;"></em>/</span><br><span style="color: #008080;"> 15</span> <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ProducerConsumer {<br></span><span style="color: #008080;"> 16</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args) {<br></span><span style="color: #008080;"> 17</span>         Basket b = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Basket();<br></span><span style="color: #008080;"> 18</span>         Product p = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Product(b);<br></span><span style="color: #008080;"> 19</span>         Consumer c = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Consumer(b);<br></span><span style="color: #008080;"> 20</span>         Consumer c1 = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Consumer(b);<br></span><span style="color: #008080;"> 21</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(p).start();<br></span><span style="color: #008080;"> 22</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(c).start();<br></span><span style="color: #008080;"> 23</span>         <span style="color: #0000ff;">new</span><span style="color: #000000;"> Thread(c1).start();<br></span><span style="color: #008080;"> 24</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 25</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 26</span> <span style="color: #008000;">//</span><span style="color: #008000;">馒头</span><br><span style="color: #008080;"> 27</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> ManTou{<br></span><span style="color: #008080;"> 28</span>     <span style="color: #0000ff;">int</span><span style="color: #000000;"> id;<br></span><span style="color: #008080;"> 29</span>     <span style="color: #0000ff;">public</span> ManTou(<span style="color: #0000ff;">int</span><span style="color: #000000;"> id) {<br></span><span style="color: #008080;"> 30</span>         <span style="color: #0000ff;">this</span>.id =<span style="color: #000000;"> id;<br></span><span style="color: #008080;"> 31</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 32</span> <span style="color: #000000;">    @Override<br></span><span style="color: #008080;"> 33</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> String toString() {<br></span><span style="color: #008080;"> 34</span>         <span style="color: #0000ff;">return</span> “ManTou”+<span style="color: #000000;">id;<br></span><span style="color: #008080;"> 35</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 36</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 37</span><br><span style="color: #008080;"> 38</span> <span style="color: #008000;">//</span><span style="color: #008000;">装馒头的篮子</span><br><span style="color: #008080;"> 39</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Basket{<br></span><span style="color: #008080;"> 40</span>     <span style="color: #0000ff;">int</span> max = 6<span style="color: #000000;">;<br></span><span style="color: #008080;"> 41</span>     LinkedList<ManTou> manTous = <span style="color: #0000ff;">new</span> LinkedList<ManTou><span style="color: #000000;">();<br></span><span style="color: #008080;"> 42</span>     Lock lock = <span style="color: #0000ff;">new</span> ReentrantLock(); <span style="color: #008000;">//</span><span style="color: #008000;">锁对象</span><br><span style="color: #008080;"> 43</span>     Condition full = lock.newCondition();  <span style="color: #008000;">//</span><span style="color: #008000;">用来监控篮子是否满的Condition实例</span><br><span style="color: #008080;"> 44</span>     Condition empty = lock.newCondition(); <span style="color: #008000;">//</span><span style="color: #008000;">用来监控篮子是否空的Condition实例<br></span><span style="color: #008080;"> 45</span>     <span style="color: #008000;">//</span><span style="color: #008000;">往篮子里面放馒头</span><br><span style="color: #008080;"> 46</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> push(ManTou m){<br></span><span style="color: #008080;"> 47</span> <span style="color: #000000;">        lock.lock();<br></span><span style="color: #008080;"> 48</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 49</span>             <span style="color: #0000ff;">while</span>(max ==<span style="color: #000000;"> manTous.size()){<br></span><span style="color: #008080;"> 50</span>                 System.out.println(“篮子是满的，待会儿再生产…”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 51</span> <span style="color: #000000;">                full.await();<br></span><span style="color: #008080;"> 52</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 53</span> <span style="color: #000000;">            manTous.add(m);<br></span><span style="color: #008080;"> 54</span> <span style="color: #000000;">            empty.signal();<br></span><span style="color: #008080;"> 55</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 56</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;"> 57</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{<br></span><span style="color: #008080;"> 58</span> <span style="color: #000000;">            lock.unlock();<br></span><span style="color: #008080;"> 59</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 60</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 61</span>     <span style="color: #008000;">//</span><span style="color: #008000;">往篮子里面取馒头</span><br><span style="color: #008080;"> 62</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> ManTou pop(){<br></span><span style="color: #008080;"> 63</span>         ManTou m = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 64</span> <span style="color: #000000;">        lock.lock();<br></span><span style="color: #008080;"> 65</span>         <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 66</span>             <span style="color: #0000ff;">while</span>(manTous.size() == 0<span style="color: #000000;">){<br></span><span style="color: #008080;"> 67</span>                 System.out.println(“篮子是空的，待会儿再吃…”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 68</span> <span style="color: #000000;">                empty.await();<br></span><span style="color: #008080;"> 69</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 70</span>             m =<span style="color: #000000;"> manTous.removeFirst();<br></span><span style="color: #008080;"> 71</span> <span style="color: #000000;">            full.signal();<br></span><span style="color: #008080;"> 72</span>         } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 73</span> <span style="color: #000000;">            e.printStackTrace();<br></span><span style="color: #008080;"> 74</span>         }<span style="color: #0000ff;">finally</span><span style="color: #000000;">{<br></span><span style="color: #008080;"> 75</span> <span style="color: #000000;">            lock.unlock();<br></span><span style="color: #008080;"> 76</span>             <span style="color: #0000ff;">return</span><span style="color: #000000;"> m;<br></span><span style="color: #008080;"> 77</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 78</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 79</span> <span style="color: #000000;">}<br></span><span style="color: #008080;"> 80</span> <span style="color: #008000;">//</span><span style="color: #008000;">生产者</span><br><span style="color: #008080;"> 81</span> <span style="color: #0000ff;">class</span> Product <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;"> 82</span> <span style="color: #000000;">    Basket basket;<br></span><span style="color: #008080;"> 83</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Product(Basket basket) {<br></span><span style="color: #008080;"> 84</span>         <span style="color: #0000ff;">this</span>.basket =<span style="color: #000000;"> basket;<br></span><span style="color: #008080;"> 85</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 86</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;"> 87</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; 40; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 88</span>             ManTou m = <span style="color: #0000ff;">new</span><span style="color: #000000;"> ManTou(i);<br></span><span style="color: #008080;"> 89</span> <span style="color: #000000;">            basket.push(m);<br></span><span style="color: #008080;"> 90</span>             System.out.println(“生产了”+<span style="color: #000000;">m);<br></span><span style="color: #008080;"> 91</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;"> 92</span>                 Thread.sleep((<span style="color: #0000ff;">int</span>)(Math.random()<em>2000<span style="color: #000000;">));<br></span><span style="color: #008080;"> 93</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;"> 94</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;"> 95</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;"> 96</span><br><span style="color: #008080;"> 97</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;"> 98</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;"> 99</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">100</span><br><span style="color: #008080;">101</span> <span style="color: #008000;">//</span><span style="color: #008000;">消费者</span><br><span style="color: #008080;">102</span> <span style="color: #0000ff;">class</span> Consumer <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Runnable{<br></span><span style="color: #008080;">103</span> <span style="color: #000000;">    Basket basket;<br></span><span style="color: #008080;">104</span>     <span style="color: #0000ff;">public</span><span style="color: #000000;"> Consumer(Basket basket) {<br></span><span style="color: #008080;">105</span>         <span style="color: #0000ff;">this</span>.basket =<span style="color: #000000;"> basket;<br></span><span style="color: #008080;">106</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">107</span>     <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> run() {<br></span><span style="color: #008080;">108</span>         <span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; 20; i++<span style="color: #000000;">) {<br></span><span style="color: #008080;">109</span>             <span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">110</span>                 Thread.sleep((<span style="color: #0000ff;">int</span>)(Math.random()</em>2000<span style="color: #000000;">));<br></span><span style="color: #008080;">111</span>             } <span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InterruptedException e) {<br></span><span style="color: #008080;">112</span> <span style="color: #000000;">                e.printStackTrace();<br></span><span style="color: #008080;">113</span> <span style="color: #000000;">            }<br></span><span style="color: #008080;">114</span>             ManTou m =<span style="color: #000000;"> basket.pop();<br></span><span style="color: #008080;">115</span>             System.out.println(“消费了”+<span style="color: #000000;">m);<br></span><span style="color: #008080;">116</span> <span style="color: #000000;">        }<br></span><span style="color: #008080;">117</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">118</span> }</pre><br></div><br></p>
+            <p class="article-more-link">
+                <a href="/2013/05/lock-producer-comsumer.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/05/lock-producer-comsumer.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/05/lock-producer-comsumer.html" data-id="cipzhfvco0066jvd034nm9d8v" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/05/lock-producer-comsumer.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/05/lock-producer-comsumer.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/lock-producer-comsumer.html" data-id="cipy2b9bx0066kyd0857qelpy" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/05/lock-producer-comsumer.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-lock-producer-comsumer" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <article id="post-dynamic-compile" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+    <article id="post-dynamic-compile" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/05/dynamic-compile.html">java笔记十一：动态编译</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/05/dynamic-compile.html">
-      <time datetime="2013-05-09T06:55:00.000Z" itemprop="datePublished">2013-05-09</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
-  </div>
-
-        </div>
-      </header>
+        
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　JDK6.0推出了动态编译的新功能，能够在程序中动态的写一个类，再对之进行编译。编译成class文件后就可以通过类加载方式把动态编译的类加载到内存中。当然也能通过RunTime类调用javac命令来动态编译。</p>
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/05/dynamic-compile.html">java笔记十一：动态编译</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/05/dynamic-compile.html">
+            <time datetime="2013-05-09T06:55:00.000Z" itemprop="datePublished">2013-05-09</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　JDK6.0推出了动态编译的新功能，能够在程序中动态的写一个类，再对之进行编译。编译成class文件后就可以通过类加载方式把动态编译的类加载到内存中。当然也能通过RunTime类调用javac命令来动态编译。</p>
 <p>　　动态编译类的主要步骤：</p>
 <p>　　①、写一个字符串，这个字符串就是要编译的类的全部内容。</p>
 <p>　　②、通过输出流，把该字符串的内容写到工程下面指定的包中。</p>
 <p>　　③、对创建的java文件进行编译。</p>
 <p>　　　　动态编译涉及的类有JavaCompiler、StandardJavaFileManager，具体如何编译看下面的例子。</p>
-<p>　　④、把编译后的字节码加载到内存，然后对其进行操作。<br>
+<p>　　④、把编译后的字节码加载到内存，然后对其进行操作。<br></p>
+            <p class="article-more-link">
+                <a href="/2013/05/dynamic-compile.html#more">阅读全文</a>
+            </p>
         
-          <p class="article-more-link">
-            <a href="/2013/05/dynamic-compile.html#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/05/dynamic-compile.html" data-id="cipzhfvg000ccjvd0rwx2j66d" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/05/dynamic-compile.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/05/dynamic-compile.html">评论</a>
     
 
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/05/dynamic-compile.html" data-id="cipy2b9g000cckyd0hxtxzv4z" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/05/dynamic-compile.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-dynamic-compile" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
+        </footer>
+    </div>
+    
 </article>
 
 
 
-
-    
-      <nav id="page-nav">
+    <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/8/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/10/">下一页 &raquo;</a>
-      </nav>
-    </section>
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新博文</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
-        
-          <li>
+    </nav>
+</section>
             
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
-              <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
-              <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
+                <aside id="sidebar">
+   
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
-              <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
-              <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
-              <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
-              <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
-              <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
-            </div>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新博文</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
+                            <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
+                            <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
+                            <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
+                            <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">博文分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">博文分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap widget-list">
-    <h3 class="widget-title">友情链接</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.lcode.org">江清清技术专栏</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.deanhan.cn">逐梦博客</a>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://blog.daimajia.com">代码家</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.trinea.cn">Trinea</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.aswifter.com">APP开发者</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.seoui.com">笑松小站</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.apkfuns.com">舞影凌风</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.ttfde.org">TTF的家园</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://rocko.xyz">Rocko&#39;s blog</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.lcode.org">江清清技术专栏</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.deanhan.cn">逐梦博客</a>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
 
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
-      
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 Lauren<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+             &nbsp;粤ICP备15082212号-2 &nbsp;
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
     </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2015 - 2016 Lauren<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> &nbsp;粤ICP备15082212号-2 &nbsp;
-
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-
-    </div>
-  </div>
 </footer>
+        
     
-
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling123"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
+    <script>
+    var disqus_config = function () {
+        
+        this.page.identifier = 'undefined';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '＃hexo-theme-icarus' + '.disqus.com/count.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
 
 
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    
 
 
- <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Custom Scripts -->
+<script src="/js/main.js" type="text/javascript"></script>
 
-
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-
-
-<script src="/js/script.js" type="text/javascript"></script>
-
-  </div>
+    </div>
 </body>
 </html>

@@ -1,468 +1,548 @@
 <!DOCTYPE html>
-<html>
+<html lang=zh>
 <head>
-  <meta charset="utf-8">
-  
-  <title>使用MyEclipse构建webService简单案例 | 残剑博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="转：http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html今天主要和大家分享，如何搭建一个Web服务，做Android开发，不可避免会涉及到客户端开发，我们怎么样来实现一个服务端，怎么样来实现一个客户端，并相互传递数据。就算调用别人的服务时，也能知道大概是怎么样实现的。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;">
+    <meta charset="utf-8">
+    
+    <title>使用MyEclipse构建webService简单案例 | 残剑博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="转：http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html今天主要和大家分享，如何搭建一个Web服务，做Android开发，不可避免会涉及到客户端开发，我们怎么样来实现一个服务端，怎么样来实现一个客户端，并相互传递数据。就算调用别人的服务时，也能知道大概是怎么样实现的。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用MyEclipse构建webService简单案例">
 <meta property="og:url" content="http://www.liuling123.com/2013/01/myeclipse-webservice.html">
 <meta property="og:site_name" content="残剑博客">
 <meta property="og:description" content="转：http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html今天主要和大家分享，如何搭建一个Web服务，做Android开发，不可避免会涉及到客户端开发，我们怎么样来实现一个服务端，怎么样来实现一个客户端，并相互传递数据。就算调用别人的服务时，也能知道大概是怎么样实现的。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;">
 <meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649055883.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649134200.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649225158.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649306016.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649445517.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/20111221164957284.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650283553.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/20111221165040381.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650498797.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650553328.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651058006.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651151048.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651239398.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651511290.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651554751.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211652045086.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211652124026.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211653584488.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654078411.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654185173.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654301760.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654439733.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654533364.png">
-<meta property="og:image" content="http://www.liuling123.com/wp-content/uploads/2015/11/20111221165505475.png">
 <meta property="og:updated_time" content="2016-01-03T07:35:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用MyEclipse构建webService简单案例">
 <meta name="twitter:description" content="转：http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html今天主要和大家分享，如何搭建一个Web服务，做Android开发，不可避免会涉及到客户端开发，我们怎么样来实现一个服务端，怎么样来实现一个客户端，并相互传递数据。就算调用别人的服务时，也能知道大概是怎么样实现的。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;">
-  
-  
-    <link rel="icon" href="favicon.ico" type="image/x-ico">
-  
-  
- <link href='//fonts.lug.ustc.edu.cn/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
- <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
 
+    
 
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-  
+    
 
-  
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css" type="text/css">
 
-  
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css" type="text/css">
+    
+    
+    
+    
+
 </head>
 <body>
-  <div id="container">
-    <header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">残剑博客</span></a>
-      
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/.">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categories">Categories</a>
-        
-          <a class="main-nav-link" href="/tags">Tags</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
-      
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/css/images/protrait.jpg"><i class="fa fa-caret-down"></i></a>
-          </div>
-        </nav>
-      
-      <div id="search-form-wrap">
-        
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-        
-      </div>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">残剑博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/protrait.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
-        
-          <td><a class="main-nav-link" href="/.">Home</a></td>
-        
-          <td><a class="main-nav-link" href="/archives">Archives</a></td>
-        
-          <td><a class="main-nav-link" href="/categories">Categories</a></td>
-        
-          <td><a class="main-nav-link" href="/tags">Tags</a></td>
-        
-          <td><a class="main-nav-link" href="/about">About</a></td>
-        
-        <td>
-          
-            <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://www.liuling123.com"></form>
-          
-        </td>
-      </tr>
-    </table>
-  </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js" type="text/javascript"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 
-    <div class="outer">
-      
-        <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <img id="avatar" src="/css/images/protrait.jpg">
-      <h2 id="name">Lauren</h2>
-      <h3 id="title">Android Developer</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
-      <a id="follow" href="https://github.com/liuling07">关注我</a>
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/protrait.jpg" />
+            <h2 id="name">Lauren</h2>
+            <h3 id="title">Android Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/liuling07">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                146
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                36
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/liuling07" target="_blank" title="github" >
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo" >
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus" >
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow" >
+                            <i class="fa fa-stack-overflow"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter" >
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook" >
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" >
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
     </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        146
-        <span>文章</span>
-      </div>
-      <div class="article-info-block">
-        36
-        <span>标签</span>
-      </div>
-    </div>
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-          
-          <td><a href="https://github.com/liuling07" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-          
-          <td><a href="http://weibo.com/LaurenLiuling/" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
-          
-          <td><a href="https://plus.google.com/u/0/107098505138563589748/" target="_blank" title="google-plus"><i class="fa fa-google-plus"></i></a></td>
-          
-          <td><a href="http://stackoverflow.com/users/5629327/lauren-liuling" target="_blank" title="stack-overflow"><i class="fa fa-stack-overflow"></i></a></td>
-          
-          <td><a href="https://twitter.com/lauren_liuLing/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-          
-          <td><a href="https://www.facebook.com/lauren.liuling/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
-          
-          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
-          
-        </tr>
-      </table>
-    </div>
-    
-    
-  </div>
 </aside>
 
-      
-      <section id="main"><article id="post-myeclipse-webservice" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
+            
+            <section id="main"><article id="post-myeclipse-webservice" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 class="article-title" itemprop="name">
-      使用MyEclipse构建webService简单案例
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/01/myeclipse-webservice.html">
-      <time datetime="2013-01-31T07:08:00.000Z" itemprop="datePublished">2013-01-31</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        
+        
+            <header class="article-header">
                 
-        <div id="cnblogs_post_body"><br><br>转：<a href="http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html" target="_blank" rel="external">http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html</a><br><br>今天主要和大家分享，如何搭建一个Web服务，做Android开发，不可避免会涉及到客户端开发，我们怎么样来实现一个服务端，怎么样来实现一个客户端，并相互传递数据。就算调用别人的服务时，也能知道大概是怎么样实现的。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WebService一般分为.Net版和Java版，今天我们主要来实现Java版的WebService，.Net版本的还是比较简单的。<br><br>&nbsp;&nbsp;&nbsp;&nbsp; 照例，轻松一笑：<br><br>&nbsp;&nbsp;&nbsp;&nbsp; 波音777是有史以来第一架完全在电脑虚拟现实中设计制造的飞机，所用的设备完全由IBM公司所提供。试飞前，波音公司的总裁非常热情的邀请IBM的技术主管去参加试飞，可那位主管却说道:&ldquo;啊，非常荣幸，可惜那天是我妻子的生日，所以…&rdquo;&nbsp;<br>波音公司的总载一听就生气了:&ldquo;胆小鬼，我还没告诉你试飞的日期呢!&rdquo;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649014549.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649055883.png" alt="1" title="1"></a><br><a id="more"></a><br><strong>&nbsp;&nbsp;&nbsp; 什么是WebServices？</strong><br><br>&nbsp;&nbsp;&nbsp; 它是一种构建应用程序的普遍模型,可以在任何支持网络通信的操作系统中实施运行;它是一种新的web应用程序分支，是自包含、自描述、模块化的应用，可以发布、定位、通过web调用。Web Service是一个应用组件,它逻辑性的为其他应用程序提供数据与服务.各应用程序通过网络协议和规定的一些标准数据格式（Http，XML，Soap)来访问Web Service,通过Web Service内部执行得到所需结果.Web Service可以执行从简单的请求到复杂商务处理的任何功能。一旦部署以后，其他Web Service应用程序可以发现并调用它部署的服务。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>关键的技术和规则</strong><br><br>&nbsp;&nbsp; 在构建和使用Web Service时,主要用到以下几个关键的技术和规则:<br><br>&nbsp;&nbsp;&nbsp;<span>1.XML</span>:描述数据的标准方法.<br><br>&nbsp;&nbsp;<span>2.SOAP</span>:表示信息交换的协议.<br><br>&nbsp;&nbsp;<span>3.WSDL</span>:Web服务描述语言.<br><br>&nbsp;&nbsp;&nbsp;<span>4.UDDI</span>:通用描述、发现与集成，它是一种独立于平台的，基于XML语言的用于在互联网上描述商务的协议。<br><br>&nbsp;&nbsp;&nbsp;<strong>XML</strong><br><br>&nbsp;&nbsp; 可扩展的标记语言(XML)是Web service平台中表示数据的基本格式。除了易于建立和易于分析外，<span>XML主要的优点在于它既是平台无关的，又是厂商无关的</span>。无关性是比技术优越性更重要的：软件厂商是不会选择一个由竞争对手所发明的技术的。<br><br><strong>&nbsp;&nbsp; SOAP</strong><br><br>&nbsp; SOAP是<span>web service的标准通信协议</span>，SOAP为simple object access protocoll的缩写，简单对象访问协议.&nbsp;<span>它是一种标准化的传输消息的XML消息格式</span>。<br><br><strong>&nbsp;&nbsp; WSDL</strong><br><br>&nbsp;&nbsp; WSDL的全称是web service Description Language,<span>是一种基于XML格式的关于web服务的描述语言</span>。其主要目的在于web service的提供者将自己的web服务的所有相关内容,如所提供的服务的传输方式，服务方法接口，接口参数，服务路径等，生成相应的完全文档，发布给使用者。使用者可以通过这个WSDL文档，创建相应的SOAP请求消息，通过HTTP传递给webservice提供者；web服务在完成服务请求后，将SOAP返回消息传回请求者，服务请求者再根据WSDL文档将SOAP返回消息解析成自己能够理解的内容。<br><br>&nbsp;&nbsp;<strong>UDDI</strong><br><br>&nbsp;&nbsp; 将web service进行UDDI注册发布,<span>UDDI是一种创建注册表服务的规范,以便大家将自己的web service进行注册发布供使用者查找.然而当服务提供者想将自己的web service向全世界公布</span>，以便外部找到其服务时，那么服务提供者可以将自己的web service注册到相应的UDDI商用注册网站，目前全球有IBM等4家UDDI商用注册网站。因为WSDL文件中已经给定了web service的地址URI，外部可以直接通过WSDL提供的URI进行相应的web service调用。所以UDDI并不是一个必需的web service组件，服务方完全可以不进行UDDI的注册。<br><br>&nbsp;&nbsp;<strong>创建并发布自己的WS</strong><br><br>&nbsp; 1 安装MyEclipse<br><br>&nbsp; 2 配置Tomcat<br><br>&nbsp;&nbsp; 打开MyEclipse<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/20111221164910838.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649134200.png" alt="2" title="2"></a><br><br>&nbsp;&nbsp; 菜单栏 &ndash;&gt; File &ndash;&gt; New &ndash;&gt; Web Service Project<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/20111221164917202.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649225158.png" alt="3" title="3"></a><br><br>&nbsp;&nbsp; 在这里，我们使用JAX-WS方式。<br><br>&nbsp;&nbsp;<strong>JAX-WS</strong><br><br>&nbsp; Jax-WS是Java1.6中才有的,新的WebService模式,基于注解的方式配置WebService,很类似Asp中的WebService,难度已经比Xfire方式的配置降低了很多.<br><br>&nbsp;&nbsp;&nbsp;<strong>REST(JAX-RS)</strong><br><br>&nbsp;&nbsp; 用的比较少<br><br>&nbsp;&nbsp;&nbsp;<strong>Xfire（已过时）</strong><br><br>&nbsp;&nbsp; 配置比较繁琐<br><br>&nbsp; 创建Service中的包及类库，实现自己的业务。<br><br>&nbsp; 我们创建的是一个用户管理系统，自然需要来管理用户。<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649269524.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649306016.png" alt="4" title="4"></a><br><br>&nbsp; 发布WS<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649326705.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649445517.png" alt="5" title="5"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649541590.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/20111221164957284.png" alt="6" title="6"></a><br><br>&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650015730.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650283553.png" alt="7" title="7"></a><br><br>&nbsp; 到此WS发布完成，接下来配置TomCat<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650319390.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/20111221165040381.png" alt="8" title="8"></a><br><br>&nbsp; 在弹出的窗体中依次展开 MyEclipse -&gt;Servers &ndash;&gt;Tomcat<br><br>&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650438726.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650498797.png" alt="9" title="9"></a><br><br>&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650516030.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650553328.png" alt="11" title="11"></a><br><br><a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650599887.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651058006.png" alt="12" title="12"></a><br><br>&nbsp; 对着项目右击添加库文件<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651102405.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651151048.png" alt="13" title="13"></a><br><br><a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651194758.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651239398.png" alt="14" title="14"></a><br><br><a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651439319.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651511290.png" alt="15" title="15"></a><br><br>&nbsp; 到此，所有步骤都以配置完毕 开始部署<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651541554.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651554751.png" alt="16" title="16"></a><br><br>&nbsp; 启动TomCat<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211652037528.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211652045086.png" alt="17" title="17"></a><br><br>&nbsp; 在工具栏中找到部署图标<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211652083040.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211652124026.png" alt="18" title="18"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211652163342.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211653584488.png" alt="19" title="19"></a><br><br>&nbsp; 部署完成，打开IE进行测试<br><br>&nbsp;&nbsp;<strong>创建客户端进行测试</strong><br><br><strong>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654036346.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654078411.png" alt="21" title="21"></a></strong><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654129529.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654185173.png" alt="22" title="22"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654273382.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654301760.png" alt="23" title="23"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654384570.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654439733.png" alt="24" title="24"></a><br><br>&nbsp;&nbsp; 此时，项目中将会生成WS所需的类库文件<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654506905.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654533364.png" alt="25" title="25"></a><br><br>&nbsp;&nbsp;&nbsp; 创建一个调用测试类<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654567565.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/20111221165505475.png" alt="27" title="27"></a><br><br>&nbsp; 到此，我们的WS就配置+测试完毕了。其实并不难，就算步骤比较多，比较繁琐，容易忘记，可以当一个备忘录吧，方便以后翻阅！<br><br></div>
-        
-          <! -- 添加捐赠图标 -->
-          <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin－top:18px;margin-bottom:18px;text-align:center">
-            <div id="donate_board" class="donate_bar center" style="text-align:center; margin:12px;">
-              <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
-              <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
-                 如果文章对您有帮助，请随意打赏支持！  
-              </span>
-            </div>  
-        
-          <!-- 支付宝打赏图案 -->
-            <div style="text-align:center">
-                <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
-                <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
-                </a> 
-            </div>
+    
+        <h1 class="article-title" itemprop="name">
+            使用MyEclipse构建webService简单案例
+        </h1>
+    
 
-          <!-- 微信打赏图案 -->
-            <div style="text-align:center">
-                <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
-                <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
-                </a> 
-            </div>
-          </div>  
-          <! -- 添加捐赠图标 -->
-          
-          <! -- 广告开始 -->
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/01/myeclipse-webservice.html">
+            <time datetime="2013-01-31T07:08:00.000Z" itemprop="datePublished">2013-01-31</time>
+        </a>
+    </div>
 
-          <! -- 广告结束 -->
 
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/web后端/">web后端</a>
+    </div>
+
+                </div>
+            </header>
         
+        <div class="article-entry" itemprop="articleBody">
         
-      
+            
+            <div id="cnblogs_post_body"><br><br>转：<a href="http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html" target="_blank" rel="external">http://www.cnblogs.com/jasoncc/archive/2011/12/22/2296052.html</a><br><br>今天主要和大家分享，如何搭建一个Web服务，做Android开发，不可避免会涉及到客户端开发，我们怎么样来实现一个服务端，怎么样来实现一个客户端，并相互传递数据。就算调用别人的服务时，也能知道大概是怎么样实现的。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WebService一般分为.Net版和Java版，今天我们主要来实现Java版的WebService，.Net版本的还是比较简单的。<br><br>&nbsp;&nbsp;&nbsp;&nbsp; 照例，轻松一笑：<br><br>&nbsp;&nbsp;&nbsp;&nbsp; 波音777是有史以来第一架完全在电脑虚拟现实中设计制造的飞机，所用的设备完全由IBM公司所提供。试飞前，波音公司的总裁非常热情的邀请IBM的技术主管去参加试飞，可那位主管却说道:&ldquo;啊，非常荣幸，可惜那天是我妻子的生日，所以…&rdquo;&nbsp;<br>波音公司的总载一听就生气了:&ldquo;胆小鬼，我还没告诉你试飞的日期呢!&rdquo;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649014549.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649055883.png" alt="1" title="1"></a><br><a id="more"></a><br><strong>&nbsp;&nbsp;&nbsp; 什么是WebServices？</strong><br><br>&nbsp;&nbsp;&nbsp; 它是一种构建应用程序的普遍模型,可以在任何支持网络通信的操作系统中实施运行;它是一种新的web应用程序分支，是自包含、自描述、模块化的应用，可以发布、定位、通过web调用。Web Service是一个应用组件,它逻辑性的为其他应用程序提供数据与服务.各应用程序通过网络协议和规定的一些标准数据格式（Http，XML，Soap)来访问Web Service,通过Web Service内部执行得到所需结果.Web Service可以执行从简单的请求到复杂商务处理的任何功能。一旦部署以后，其他Web Service应用程序可以发现并调用它部署的服务。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>关键的技术和规则</strong><br><br>&nbsp;&nbsp; 在构建和使用Web Service时,主要用到以下几个关键的技术和规则:<br><br>&nbsp;&nbsp;&nbsp;<span>1.XML</span>:描述数据的标准方法.<br><br>&nbsp;&nbsp;<span>2.SOAP</span>:表示信息交换的协议.<br><br>&nbsp;&nbsp;<span>3.WSDL</span>:Web服务描述语言.<br><br>&nbsp;&nbsp;&nbsp;<span>4.UDDI</span>:通用描述、发现与集成，它是一种独立于平台的，基于XML语言的用于在互联网上描述商务的协议。<br><br>&nbsp;&nbsp;&nbsp;<strong>XML</strong><br><br>&nbsp;&nbsp; 可扩展的标记语言(XML)是Web service平台中表示数据的基本格式。除了易于建立和易于分析外，<span>XML主要的优点在于它既是平台无关的，又是厂商无关的</span>。无关性是比技术优越性更重要的：软件厂商是不会选择一个由竞争对手所发明的技术的。<br><br><strong>&nbsp;&nbsp; SOAP</strong><br><br>&nbsp; SOAP是<span>web service的标准通信协议</span>，SOAP为simple object access protocoll的缩写，简单对象访问协议.&nbsp;<span>它是一种标准化的传输消息的XML消息格式</span>。<br><br><strong>&nbsp;&nbsp; WSDL</strong><br><br>&nbsp;&nbsp; WSDL的全称是web service Description Language,<span>是一种基于XML格式的关于web服务的描述语言</span>。其主要目的在于web service的提供者将自己的web服务的所有相关内容,如所提供的服务的传输方式，服务方法接口，接口参数，服务路径等，生成相应的完全文档，发布给使用者。使用者可以通过这个WSDL文档，创建相应的SOAP请求消息，通过HTTP传递给webservice提供者；web服务在完成服务请求后，将SOAP返回消息传回请求者，服务请求者再根据WSDL文档将SOAP返回消息解析成自己能够理解的内容。<br><br>&nbsp;&nbsp;<strong>UDDI</strong><br><br>&nbsp;&nbsp; 将web service进行UDDI注册发布,<span>UDDI是一种创建注册表服务的规范,以便大家将自己的web service进行注册发布供使用者查找.然而当服务提供者想将自己的web service向全世界公布</span>，以便外部找到其服务时，那么服务提供者可以将自己的web service注册到相应的UDDI商用注册网站，目前全球有IBM等4家UDDI商用注册网站。因为WSDL文件中已经给定了web service的地址URI，外部可以直接通过WSDL提供的URI进行相应的web service调用。所以UDDI并不是一个必需的web service组件，服务方完全可以不进行UDDI的注册。<br><br>&nbsp;&nbsp;<strong>创建并发布自己的WS</strong><br><br>&nbsp; 1 安装MyEclipse<br><br>&nbsp; 2 配置Tomcat<br><br>&nbsp;&nbsp; 打开MyEclipse<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/20111221164910838.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649134200.png" alt="2" title="2"></a><br><br>&nbsp;&nbsp; 菜单栏 &ndash;&gt; File &ndash;&gt; New &ndash;&gt; Web Service Project<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/20111221164917202.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649225158.png" alt="3" title="3"></a><br><br>&nbsp;&nbsp; 在这里，我们使用JAX-WS方式。<br><br>&nbsp;&nbsp;<strong>JAX-WS</strong><br><br>&nbsp; Jax-WS是Java1.6中才有的,新的WebService模式,基于注解的方式配置WebService,很类似Asp中的WebService,难度已经比Xfire方式的配置降低了很多.<br><br>&nbsp;&nbsp;&nbsp;<strong>REST(JAX-RS)</strong><br><br>&nbsp;&nbsp; 用的比较少<br><br>&nbsp;&nbsp;&nbsp;<strong>Xfire（已过时）</strong><br><br>&nbsp;&nbsp; 配置比较繁琐<br><br>&nbsp; 创建Service中的包及类库，实现自己的业务。<br><br>&nbsp; 我们创建的是一个用户管理系统，自然需要来管理用户。<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649269524.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649306016.png" alt="4" title="4"></a><br><br>&nbsp; 发布WS<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649326705.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211649445517.png" alt="5" title="5"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211649541590.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/20111221164957284.png" alt="6" title="6"></a><br><br>&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650015730.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650283553.png" alt="7" title="7"></a><br><br>&nbsp; 到此WS发布完成，接下来配置TomCat<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650319390.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/20111221165040381.png" alt="8" title="8"></a><br><br>&nbsp; 在弹出的窗体中依次展开 MyEclipse -&gt;Servers &ndash;&gt;Tomcat<br><br>&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650438726.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650498797.png" alt="9" title="9"></a><br><br>&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650516030.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211650553328.png" alt="11" title="11"></a><br><br><a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211650599887.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651058006.png" alt="12" title="12"></a><br><br>&nbsp; 对着项目右击添加库文件<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651102405.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651151048.png" alt="13" title="13"></a><br><br><a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651194758.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651239398.png" alt="14" title="14"></a><br><br><a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651439319.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651511290.png" alt="15" title="15"></a><br><br>&nbsp; 到此，所有步骤都以配置完毕 开始部署<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211651541554.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211651554751.png" alt="16" title="16"></a><br><br>&nbsp; 启动TomCat<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211652037528.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211652045086.png" alt="17" title="17"></a><br><br>&nbsp; 在工具栏中找到部署图标<br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211652083040.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211652124026.png" alt="18" title="18"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211652163342.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211653584488.png" alt="19" title="19"></a><br><br>&nbsp; 部署完成，打开IE进行测试<br><br>&nbsp;&nbsp;<strong>创建客户端进行测试</strong><br><br><strong>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654036346.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654078411.png" alt="21" title="21"></a></strong><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654129529.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654185173.png" alt="22" title="22"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654273382.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654301760.png" alt="23" title="23"></a><br><br>&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654384570.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654439733.png" alt="24" title="24"></a><br><br>&nbsp;&nbsp; 此时，项目中将会生成WS所需的类库文件<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654506905.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/201112211654533364.png" alt="25" title="25"></a><br><br>&nbsp;&nbsp;&nbsp; 创建一个调用测试类<br><br>&nbsp;&nbsp;&nbsp;<a href="http://images.cnblogs.com/cnblogs_com/jasoncc/201112/201112211654567565.png" target="_blank" rel="external"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/20111221165505475.png" alt="27" title="27"></a><br><br>&nbsp; 到此，我们的WS就配置+测试完毕了。其实并不难，就算步骤比较多，比较繁琐，容易忘记，可以当一个备忘录吧，方便以后翻阅！<br><br></div>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.liuling123.com/2013/01/myeclipse-webservice.html" data-id="cipzhfvcc005kjvd0lk8fw3bf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/01/myeclipse-webservice.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://www.liuling123.com/2013/01/myeclipse-webservice.html">评论</a>
+    
+
+        </footer>
     </div>
     
-
-    <footer class="article-footer">
-      <a data-url="http://www.liuling123.com/2013/01/myeclipse-webservice.html" data-id="cipy2b9bl005kkyd0du9k04m9" class="article-share-link">分享到</a>
-      
-        <a href="http://www.liuling123.com/2013/01/myeclipse-webservice.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-myeclipse-webservice" data-count-type="comments"></span></a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web后端/">web后端</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
+        
 <nav id="article-nav">
-  
-    <a href="/2013/02/struts-file-download.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          struts实现文件下载
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2013/01/cronexpression-quartz-spring.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">Quartz在Spring中动态设置cronExpression （spring设置动态定时任务）------转帖</div>
-    </a>
-  
+    
+        <a href="/2013/02/struts-file-download.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    struts实现文件下载
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/01/cronexpression-quartz-spring.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Quartz在Spring中动态设置cronExpression （spring设置动态定时任务）------转帖</div>
+        </a>
+    
 </nav>
 
 
-  
+    
 </article>
 
 
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
-  <section id="comments">
-  
-    <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-myeclipse-webservice" data-title="使用MyEclipse构建webService简单案例" data-url="http://www.liuling123.com/2013/01/myeclipse-webservice.html"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"liuling123"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共JS代码 end -->
-  </section>
+    
+    </section>
 
 </section>
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新博文</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
-        
-          <li>
             
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
-              <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
-              <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
+                <aside id="sidebar">
+   
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
-              <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
-              <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
-              <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
-              <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-              <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
-              <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
-            </div>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新博文</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Linux/">Linux</a></p>
+                            <p class="item-title"><a href="/2016/06/ubuntu-adb-devices.html" class="title">Ubuntu下adb无法识别手机设备</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T13:14:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/jni-type-change.html" class="title">JNI与C/C++数据类型的转换</a></p>
+                            <p class="item-date"><time datetime="2016-06-21T12:52:00.000Z" itemprop="datePublished">2016-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/ndk-stack.html" class="title">JNI崩溃问题定位</a></p>
+                            <p class="item-date"><time datetime="2016-06-20T13:37:00.000Z" itemprop="datePublished">2016-06-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Kotlin/">Kotlin</a></p>
+                            <p class="item-title"><a href="/2016/06/android_studio_kotlin.html" class="title">初次尝试Kotlin</a></p>
+                            <p class="item-date"><time datetime="2016-06-13T14:27:00.000Z" itemprop="datePublished">2016-06-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
+                            <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
+                            <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">博文分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">博文分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+        </div>
     </div>
-  </div>
 
-  
     
-  <div class="widget-wrap widget-list">
-    <h3 class="widget-title">友情链接</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a target="_blank" href="http://blog.daimajia.com">代码家</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.trinea.cn">Trinea</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="https://www.aswifter.com">APP开发者</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://blog.seoui.com">笑松小站</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.apkfuns.com">舞影凌风</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.ttfde.org">TTF的家园</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://rocko.xyz">Rocko&#39;s blog</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.lcode.org">江清清技术专栏</a>
-          </li>
-        
-          <li>
-            <a target="_blank" href="http://www.deanhan.cn">逐梦博客</a>
-          </li>
-        
-      </ul>
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://blog.daimajia.com">代码家</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.trinea.cn">Trinea</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.aswifter.com">APP开发者</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://blog.seoui.com">笑松小站</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.apkfuns.com">舞影凌风</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.ttfde.org">TTF的家园</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://rocko.xyz">Rocko&#39;s blog</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.lcode.org">江清清技术专栏</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.deanhan.cn">逐梦博客</a>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
 
 
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
-      
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 Lauren<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+             &nbsp;粤ICP备15082212号-2 &nbsp;
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
     </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2015 - 2016 Lauren<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a> &nbsp;粤ICP备15082212号-2 &nbsp;
-
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256697778'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256697778%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-
-    </div>
-  </div>
 </footer>
+        
     
-
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"liuling123"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://www.liuling123.com/2013/01/myeclipse-webservice.html';
+        
+        this.page.identifier = 'myeclipse-webservice';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '＃hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
 
 
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    
 
 
- <script src="//ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Custom Scripts -->
+<script src="/js/main.js" type="text/javascript"></script>
 
-
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-
-
-<script src="/js/script.js" type="text/javascript"></script>
-
-  </div>
+    </div>
 </body>
 </html>
