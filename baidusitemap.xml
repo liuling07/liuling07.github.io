@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.liuling123.com/2016/07/git-note.html</loc>
+    <lastmod>2016-07-05T13:42:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>git使用小记</title>
+        <pubTime>2016-07-05T13:41:00.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="版本控制" url="http://www.liuling123.com/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.liuling123.com/2016/06/ubuntu-adb-devices.html</loc>
     <lastmod>2016-06-22T14:57:35.000Z</lastmod>
     <data>
@@ -2896,46 +2916,6 @@
 
     
   <url>
-    <loc>http://www.liuling123.com/2015/11/max-allowed-packet.html</loc>
-    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL导入数据报Got a packet bigger than‘max_allowed_packet’bytes错误的解决方法</title>
-        <pubTime>2015-11-11T13:00:54.000Z</pubTime>
-        
-        <tag>mysql</tag>
-         
-         
-           
-             
-              <breadCrumb title="其他技术" url="http://www.liuling123.com/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.liuling123.com/2012/08/span.html</loc>
-    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>span 换行与不换行</title>
-        <pubTime>2012-08-20T20:28:00.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://www.liuling123.com/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.liuling123.com/2013/06/linux-64-32.html</loc>
     <lastmod>2016-01-03T03:00:03.000Z</lastmod>
     <data>
@@ -2949,30 +2929,6 @@
            
              
               <breadCrumb title="Linux" url="http://www.liuling123.com/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.liuling123.com/2014/03/springmvc-upload.html</loc>
-    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>Spring MVC实现上传文件报错解决方案</title>
-        <pubTime>2014-03-04T23:38:00.000Z</pubTime>
-        
-        <tag>spring</tag>
-         
-        <tag>web后端</tag>
-         
-        <tag>解决方案</tag>
-         
-         
-           
-             
-              <breadCrumb title="后端" url="http://www.liuling123.com/categories/%E5%90%8E%E7%AB%AF/"/>
           
         </display>
     </data>
@@ -3015,6 +2971,30 @@
            
              
               <breadCrumb title="JNI&amp;amp;NDK" url="http://www.liuling123.com/categories/JNI-amp-NDK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.liuling123.com/2014/03/springmvc-upload.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>Spring MVC实现上传文件报错解决方案</title>
+        <pubTime>2014-03-04T23:38:00.000Z</pubTime>
+        
+        <tag>spring</tag>
+         
+        <tag>web后端</tag>
+         
+        <tag>解决方案</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://www.liuling123.com/categories/%E5%90%8E%E7%AB%AF/"/>
           
         </display>
     </data>
@@ -3075,6 +3055,46 @@
            
              
               <breadCrumb title="后端" url="http://www.liuling123.com/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.liuling123.com/2012/08/span.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>span 换行与不换行</title>
+        <pubTime>2012-08-20T20:28:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://www.liuling123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.liuling123.com/2015/11/max-allowed-packet.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL导入数据报Got a packet bigger than‘max_allowed_packet’bytes错误的解决方法</title>
+        <pubTime>2015-11-11T13:00:54.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="其他技术" url="http://www.liuling123.com/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
           
         </display>
     </data>

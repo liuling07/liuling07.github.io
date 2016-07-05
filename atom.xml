@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术成长之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.liuling123.com/"/>
-  <updated>2016-06-22T14:57:35.000Z</updated>
+  <updated>2016-07-05T13:42:39.000Z</updated>
   <id>http://www.liuling123.com/</id>
   
   <author>
@@ -13,6 +13,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[git使用小记]]></title>
+    <link href="http://www.liuling123.com/2016/07/git-note.html"/>
+    <id>http://www.liuling123.com/2016/07/git-note.html</id>
+    <published>2016-07-05T13:41:00.000Z</published>
+    <updated>2016-07-05T13:42:39.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="git_u5728_u56E2_u961F_u9879_u76EE_u4E2D_u7684_u4F7F_u7528_u6D41_u7A0B"><a href="#git_u5728_u56E2_u961F_u9879_u76EE_u4E2D_u7684_u4F7F_u7528_u6D41_u7A0B" class="headerlink" title="git在团队项目中的使用流程"></a>git在团队项目中的使用流程</h2><p>1.首先从一个git远程仓库中clone项目到本地<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">仓库地址</span></span><br></pre></td></tr></table></figure></p>
+<p>2.创建开发分支<br>一般我们写代码不会在master分支上面写，而是新建一个分支<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="tag">b</span> test</span><br></pre></td></tr></table></figure></p>
+<p>3.在test分支上面进行代码修改，比如完成某一项功能的开发</p>
+<p>4.修改完之后提交代码到test分支<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">"your comment"</span></span></span><br></pre></td></tr></table></figure></p>
+<p>5.review代码（非必需）<br>在test分支上面开发完某一个功能之后，建议自己review一下修改的代码，通过与master分支进行对比</p>
+<p>6.切换到master分支<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="literal">master</span></span><br></pre></td></tr></table></figure></p>
+<p>7.更新master分支<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull (将本地<span class="literal">master</span>与服务器最新代码保持一致)</span><br></pre></td></tr></table></figure></p>
+<p>8.重新切换到test分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="built_in">test</span></span><br></pre></td></tr></table></figure></p>
+<p>9.将master代码更新到test分支<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">merge</span> <span class="keyword">master</span>(将<span class="keyword">master</span>分支合并到当前分支)</span></span><br></pre></td></tr></table></figure></p>
+<p>10.处理完冲突之后将test分支提交到服务器<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">push </span>origin 分支名</span><br></pre></td></tr></table></figure></p>
+<p>11.提交Merge Request<br>提交Merge Request之后代码审核组同事会对提交的代码进行审核，没问题则会同意合并请求，将test分支的代码合并到master分支</p>
+<a id="more"></a>
+<h2 id="git_u4F7F_u7528_u5C0F_u6280_u5DE7"><a href="#git_u4F7F_u7528_u5C0F_u6280_u5DE7" class="headerlink" title="git使用小技巧"></a>git使用小技巧</h2><h3 id="stash_u7684_u4F7F_u7528"><a href="#stash_u7684_u4F7F_u7528" class="headerlink" title="stash的使用"></a>stash的使用</h3><p>有时候有这样一个场景：你在本地某一个分支上面开发某一个功能，这时候有一个紧急bug需要处理，而当前功能没有开发完你不想提交，不提交又无法切换分支。这时候就可以用stash命令来暂存当前代码。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">add </span>.</span><br><span class="line"><span class="label">git</span> stash</span><br></pre></td></tr></table></figure></p>
+<p>这时候你修改的代码都会暂存到一个类似于栈的容器中，代码会恢复到最后一次提交的位置。<br>可以执行git stash list查看是否暂存栈的列表。</p>
+<p>暂存代码之后就可以切换分支了，这时候你可以切换到别的分支修复bug，完了之后切换到该分支，执行下面命令进行恢复<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash <span class="keyword">pop</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="blame_u7684_u4F7F_u7528"><a href="#blame_u7684_u4F7F_u7528" class="headerlink" title="blame的使用"></a>blame的使用</h3><p>有时候我们在修改别人代码的时候，想要查看某个文件具体某一行是谁写的，可以使用blame（责备的意思，用来追究责任）<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">blame </span>文件</span><br></pre></td></tr></table></figure></p>
+<p>执行上面命令之后，每一行都会显示具体是谁提交的，并且可以用翻页键进行翻页。</p>
+<h3 id="git_u547D_u4EE4_u522B_u540D_u8BBE_u7F6E"><a href="#git_u547D_u4EE4_u522B_u540D_u8BBE_u7F6E" class="headerlink" title="git命令别名设置"></a>git命令别名设置</h3><p>是否觉得敲git命令有点麻烦？肯定的，我也这么觉得。<br>我们可以在 ~/.gitconfig 文件里面进行别名设置，即加上下面这几行<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="preprocessor">alias</span>]</span><br><span class="line">  st = status</span><br><span class="line">  ci = commit</span><br><span class="line">  <span class="keyword">br </span>= <span class="keyword">branch</span><br><span class="line"></span>  co = checkout</span><br><span class="line">  df = diff</span><br></pre></td></tr></table></figure></p>
+<p>别名可以根据自己习惯设置。</p>
+<h2 id="u5E38_u7528git_u547D_u4EE4"><a href="#u5E38_u7528git_u547D_u4EE4" class="headerlink" title="常用git命令"></a>常用git命令</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">git branch -r/-a              查看远程分支/本地和远程分支</span><br><span class="line">git checkout 分支名            切换分支</span><br><span class="line">git checkout -b 分支名         新建并切换到新建的分支</span><br><span class="line">git branch -d 分支名           删除本地分支</span><br><span class="line">git pull                      更新本地分支到最新</span><br><span class="line">git <span class="operator"><span class="keyword">merge</span> 分支名               合并某个分支到当前分支</span><br><span class="line">git diff                      查看当前没有<span class="keyword">add</span>的内容修改</span><br><span class="line">git diff <span class="comment">--cached             查看已经add，没有commit的改动</span></span><br><span class="line">git diff <span class="keyword">HEAD</span>                 是上面两个命令的合并</span><br><span class="line">git <span class="keyword">log</span> <span class="comment">--oneline --number    显示log，每个log显示一行，显示number条</span></span><br><span class="line">git <span class="keyword">add</span> .                     将修改的代码添加到暂存区</span><br><span class="line">git push origin 分支名         将指定分支推送到服务器</span><br><span class="line">git <span class="keyword">status</span>                   查看哪些修改已加入暂存区待提交，哪些修改未加入暂存区</span><br><span class="line">git <span class="keyword">reset</span> <span class="keyword">HEAD</span> 文件名         取消某文件的暂存</span></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="git_u5728_u56E2_u961F_u9879_u76EE_u4E2D_u7684_u4F7F_u7528_u6D41_u7A0B"><a href="#git_u5728_u56E2_u961F_u9879_u76EE_u4E2D_u7684_u4F7F_u7528_u6D41_u7A0B" class="headerlink" title="git在团队项目中的使用流程"></a>git在团队项目中的使用流程</h2><p>1.首先从一个git远程仓库中clone项目到本地<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">仓库地址</span></span><br></pre></td></tr></table></figure></p>
+<p>2.创建开发分支<br>一般我们写代码不会在master分支上面写，而是新建一个分支<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="tag">b</span> test</span><br></pre></td></tr></table></figure></p>
+<p>3.在test分支上面进行代码修改，比如完成某一项功能的开发</p>
+<p>4.修改完之后提交代码到test分支<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">"your comment"</span></span></span><br></pre></td></tr></table></figure></p>
+<p>5.review代码（非必需）<br>在test分支上面开发完某一个功能之后，建议自己review一下修改的代码，通过与master分支进行对比</p>
+<p>6.切换到master分支<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="literal">master</span></span><br></pre></td></tr></table></figure></p>
+<p>7.更新master分支<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull (将本地<span class="literal">master</span>与服务器最新代码保持一致)</span><br></pre></td></tr></table></figure></p>
+<p>8.重新切换到test分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="built_in">test</span></span><br></pre></td></tr></table></figure></p>
+<p>9.将master代码更新到test分支<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">merge</span> <span class="keyword">master</span>(将<span class="keyword">master</span>分支合并到当前分支)</span></span><br></pre></td></tr></table></figure></p>
+<p>10.处理完冲突之后将test分支提交到服务器<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">push </span>origin 分支名</span><br></pre></td></tr></table></figure></p>
+<p>11.提交Merge Request<br>提交Merge Request之后代码审核组同事会对提交的代码进行审核，没问题则会同意合并请求，将test分支的代码合并到master分支</p>]]>
+    
+    </summary>
+    
+      <category term="git" scheme="http://www.liuling123.com/tags/git/"/>
+    
+      <category term="版本控制" scheme="http://www.liuling123.com/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Ubuntu下adb无法识别手机设备]]></title>
@@ -860,45 +907,6 @@
     </summary>
     
       <category term="mysql" scheme="http://www.liuling123.com/tags/mysql/"/>
-    
-      <category term="其他技术" scheme="http://www.liuling123.com/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[C++学习随笔]]></title>
-    <link href="http://www.liuling123.com/2015/11/cpp-study.html"/>
-    <id>http://www.liuling123.com/2015/11/cpp-study.html</id>
-    <published>2015-11-10T11:28:33.000Z</published>
-    <updated>2016-01-03T07:07:40.000Z</updated>
-    <content type="html"><![CDATA[<p>最近由于公司部门调整，博主被安排去做游戏开发了，使用的是cocos2d游戏引擎，开发语言为C++。所以硬着头皮边熟悉cocos2d边学C++。对于写了多年Java的来说，看C++代码很坑爹有木有。<br>但是作为Android工程师，C/C++还是有必要学的，因为Android系统源码大部分都是C写的。之前看过一段时间的Android源码，看到C++部分也是比较吃力，现在借此机会学学C++也是挺不错的。<br>下面简单记录在学习C++过程中遇到的一些不懂的东西（持续更新）。</p>
-<p><strong>std::nothrow</strong></p>
-<p>在内存不足时，new (std::nothrow)并不抛出异常，而是将指针置NULL。<br>如：auto layer = new (std::nothrow) FirstLayer();</p>
-<p><strong>auto</strong><br>auto是C++11的新特性，自动类型推断，用于从初始化表达式中推断出变量的数据类型，有点类似于js中的弱类型var。<br><a id="more"></a><br><strong>#pragma once</strong><br>只要在头文件的最开始加入这条杂注，就能够保证头文件只被编译一次。但是是依赖编译器的，可以使用宏定义#ifndef</p>
-<p><strong>#ifndef，#define，#endif</strong><br>C/C++语言中的宏定义，通过宏定义避免文件多次编译</p>
-<p><strong>#if与if的区别</strong></p>
-<p>#endif//与#if对应<br>作为一个编译“开关”，比如：   </p>
-<p>#if(条件满足)<br>  执行代码1   </p>
-<p>#else<br>  执行代码2   </p>
-<p>#endif<br>假如编译时，确实满足条件，则生成的程序文件(.exe文件)中不会有执行代码2的。如果用普通if语句，生成的程序文件就会有执行代码2，这个区别看看生成文件大小就可以知道。如果你的条件在程序编译前就已经确定了，那就用#if；如果条件需要在程序运行过程中才能判断，则用if。</p>
-<p><strong>static_cast</strong><br>用法：static_cast &lt; type-id &gt; ( expression )<br>该运算符把expression转换为type-id类型，但没有运行时类型检查来保证转换的安全性。有点类似于Java中的强制转换。</p>
-<p><strong>string与int拼接</strong><br>1、stringstream拼接string与int</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">stringstream</span> ss;</span><br><span class="line">ss &lt;&lt; <span class="string">"old:"</span>&lt;&lt; GameOverScene::goldNum &lt;&lt; <span class="string">",distance:"</span> &lt;&lt; GameOverScene::distance;</span><br><span class="line">LabelTTF* goldAndDistanceLabel = LabelTTF::create(ss.str(), <span class="string">"Arial"</span>, <span class="number">30</span>);</span><br></pre></td></tr></table></figure>
-<p>2、sprintf函数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> countBuf[<span class="number">16</span>] = <span class="string">""</span>;</span><br><span class="line"><span class="built_in">sprintf</span>(countBuf, <span class="string">"distance:%d"</span>, mDistance);</span><br></pre></td></tr></table></figure>
-<p>3、std::to_string函数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s = <span class="string">"run0"</span> + <span class="built_in">std</span>::to_string(i) + <span class="string">".png"</span>;</span><br></pre></td></tr></table></figure>
-<p>安卓没有to_string这个函数，eclipse中编译出错，为了跨平台，尽量使用stringstream或者sprintf</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>最近由于公司部门调整，博主被安排去做游戏开发了，使用的是cocos2d游戏引擎，开发语言为C++。所以硬着头皮边熟悉cocos2d边学C++。对于写了多年Java的来说，看C++代码很坑爹有木有。<br>但是作为Android工程师，C/C++还是有必要学的，因为Android系统源码大部分都是C写的。之前看过一段时间的Android源码，看到C++部分也是比较吃力，现在借此机会学学C++也是挺不错的。<br>下面简单记录在学习C++过程中遇到的一些不懂的东西（持续更新）。</p>
-<p><strong>std::nothrow</strong></p>
-<p>在内存不足时，new (std::nothrow)并不抛出异常，而是将指针置NULL。<br>如：auto layer = new (std::nothrow) FirstLayer();</p>
-<p><strong>auto</strong><br>auto是C++11的新特性，自动类型推断，用于从初始化表达式中推断出变量的数据类型，有点类似于js中的弱类型var。<br>]]>
-    
-    </summary>
-    
-      <category term="c++" scheme="http://www.liuling123.com/tags/c/"/>
     
       <category term="其他技术" scheme="http://www.liuling123.com/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
     

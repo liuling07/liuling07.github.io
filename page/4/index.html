@@ -149,11 +149,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                146
+                147
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                36
+                37
                 <span>标签</span>
             </div>
         </div>
@@ -214,6 +214,112 @@
 
             
             <section id="main">
+    <article id="post-overdraw" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/10/overdraw.html">Android布局优化之过度绘制</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/overdraw.html">
+            <time datetime="2015-10-07T22:38:00.000Z" itemprop="datePublished">2015-10-08</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/布局/">布局</a>, <a class="tag-link" href="/tags/布局优化/">布局优化</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>如果一个布局十分复杂，那么就需要来排查是否出现了过度绘制，如果出现了，那么很可能会造成刷新率下降，造成卡顿的现象。那么什么是过度绘制呢？过度绘制就是在同一个区域中叠加了多个控件。这就像小时候我们画画，白纸就是没有绘制的画板，如果我们画了一个房子，涂上了红色，又在上面画了窗户，图上了棕色，窗户上又画了蓝色的玻璃，这重重复的叠加就是过度绘制，在白纸上的结果是，过度绘制的区域纸会被水笔浸的比较湿，在手机上就会出现显示较慢。如果说这是感性的认识，那么我就引用下面一段话来理性的解释一下：</p>
+<blockquote>
+<p>1. 布局文件是一个xml文件，inflate布局文件其实就是解析xml，根据标签信息创建相应的布局对象并做关联。xml中的标签和属性设置越多，节点树的深度越深，在解析时要执行的判断逻辑、函数的嵌套和递归就越多，所以时间消耗越多；</p>
+<p>2. inflate操作只是布局影响的第一个环节，一个界面要显示出来，在requestLayout后还要执行一系列的measure、layout、draw的操作，每一步的执行时间都会受到布局本身的影响。而界面的最终显示是所有这些操作完成后才实现的，所以如果布局质量差，会增加每一步操作的时间成本，最终显示时间就会比较长。</p>
+</blockquote>
+<p>现在，我们就来说说如何查看是否有过度绘制，和如何避免它吧。</p>
+<p>&nbsp;<br></p>
+            <p class="article-more-link">
+                <a href="/2015/10/overdraw.html#more">阅读全文</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+        <a href="http://www.liuling123.com/2015/10/overdraw.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-overdraw" data-count-type="comments"></span></a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-optimize-viewstub" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1142,108 +1248,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
 
 
-    <article id="post-jni-logcat" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2015/08/jni-logcat.html">JNI的native代码中打印日志到eclipse的logcat中</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2015/08/jni-logcat.html">
-            <time datetime="2015-08-05T00:52:00.000Z" itemprop="datePublished">2015-08-05</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/jni/">jni</a>
-    </div>
-
-                </div>
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><strong>1 添加ndk对log支持</strong><br>若需要添加ndk对log的支持，只需要通过以下2步即可实现。</p>
-<p><strong>1.1 修改Android.mk
-</strong>如生成的库文件是&ldquo;.so文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-L$(SYSROOT)/usr/lib -llog<br>如生成的库文件是&ldquo;.a文件&rdquo;，则在Android.mk中添加如下内容：<br>LOCAL_LDLIBS:=-llog<br></p>
-            <p class="article-more-link">
-                <a href="/2015/08/jni-logcat.html#more">阅读全文</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-    <div class="bdsharebuttonbox">
-    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
-    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
-    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
-</div>
-<script>
-window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-<style>
-    .bdshare_popup_box {
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .bdshare-button-style0-16 a,
-    .bdshare-button-style0-16 .bds_more {
-        padding-left: 20px;
-        margin: 6px 10px 6px 0;
-    }
-    .bdshare_dialog_list a,
-    .bdshare_popup_list a,
-    .bdshare_popup_bottom a {
-        font-family: 'Microsoft Yahei';
-    }
-    .bdshare_popup_top {
-        display: none;
-    }
-    .bdshare_popup_bottom {
-        height: auto;
-        padding: 5px;
-    }
-</style>
-
-
-</div>
-
-            
-    
-        <a href="http://www.liuling123.com/2015/08/jni-logcat.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-jni-logcat" data-count-type="comments"></span></a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
     </nav>
@@ -1256,6 +1260,15 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         <h3 class="widget-title">最新博文</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/版本控制/">版本控制</a></p>
+                            <p class="item-title"><a href="/2016/07/git-note.html" class="title">git使用小记</a></p>
+                            <p class="item-date"><time datetime="2016-07-05T13:41:00.000Z" itemprop="datePublished">2016-07-05</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1293,15 +1306,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a></p>
-                            <p class="item-title"><a href="/2016/06/so_method_mix.html" class="title">so库中JNI方法混淆</a></p>
-                            <p class="item-date"><time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1311,7 +1315,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap">
         <h3 class="widget-title">博文分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Framework/">Framework</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生感悟/">人生感悟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他技术/">其他技术</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构和算法/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/版本控制/">版本控制</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -1320,7 +1324,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
+            <a href="/tags/AsyncTask/" style="font-size: 11.54px;">AsyncTask</a> <a href="/tags/EventBus/" style="font-size: 10.77px;">EventBus</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LruCache/" style="font-size: 10px;">LruCache</a> <a href="/tags/MVP/" style="font-size: 10px;">MVP</a> <a href="/tags/NDK/" style="font-size: 11.54px;">NDK</a> <a href="/tags/NoSQL/" style="font-size: 13.08px;">NoSQL</a> <a href="/tags/android/" style="font-size: 19.23px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/camera/" style="font-size: 10px;">camera</a> <a href="/tags/framework/" style="font-size: 10.77px;">framework</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hadoop/" style="font-size: 14.62px;">hadoop</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jni/" style="font-size: 16.15px;">jni</a> <a href="/tags/linux/" style="font-size: 16.15px;">linux</a> <a href="/tags/mysql/" style="font-size: 11.54px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.08px;">redis</a> <a href="/tags/spring/" style="font-size: 10.77px;">spring</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/web后端/" style="font-size: 18.46px;">web后端</a> <a href="/tags/内存缓存/" style="font-size: 10px;">内存缓存</a> <a href="/tags/前端/" style="font-size: 13.85px;">前端</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/反编译/" style="font-size: 10px;">反编译</a> <a href="/tags/图片选择/" style="font-size: 10.77px;">图片选择</a> <a href="/tags/多线程/" style="font-size: 17.69px;">多线程</a> <a href="/tags/布局/" style="font-size: 12.31px;">布局</a> <a href="/tags/布局优化/" style="font-size: 10.77px;">布局优化</a> <a href="/tags/开源/" style="font-size: 10.77px;">开源</a> <a href="/tags/断点续传/" style="font-size: 11.54px;">断点续传</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/自定义控件/" style="font-size: 10px;">自定义控件</a> <a href="/tags/解决方案/" style="font-size: 16.92px;">解决方案</a> <a href="/tags/设计模式/" style="font-size: 15.38px;">设计模式</a> <a href="/tags/译文/" style="font-size: 11.54px;">译文</a>
         </div>
     </div>
 
