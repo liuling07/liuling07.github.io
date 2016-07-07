@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.liuling123.com/2016/07/influence-reading-notes.html</loc>
+    <lastmod>2016-07-07T14:05:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>《影响力》读书笔记（一）</title>
+        <pubTime>2016-07-07T14:00:00.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="http://www.liuling123.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.liuling123.com/2016/07/git-note.html</loc>
     <lastmod>2016-07-05T13:42:39.000Z</lastmod>
     <data>
@@ -2916,19 +2936,19 @@
 
     
   <url>
-    <loc>http://www.liuling123.com/2013/06/linux-64-32.html</loc>
+    <loc>http://www.liuling123.com/2013/04/java-open-application.html</loc>
     <lastmod>2016-01-03T03:00:03.000Z</lastmod>
     <data>
         <display>
-        <title>查看系统是64位还是32位</title>
-        <pubTime>2013-06-07T04:22:00.000Z</pubTime>
+        <title>java打开本地应用程序</title>
+        <pubTime>2013-04-10T05:58:00.000Z</pubTime>
         
-        <tag>linux</tag>
+        <tag>java</tag>
          
          
            
              
-              <breadCrumb title="Linux" url="http://www.liuling123.com/categories/Linux/"/>
+              <breadCrumb title="Java基础" url="http://www.liuling123.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
           
         </display>
     </data>
@@ -2956,21 +2976,19 @@
 
     
   <url>
-    <loc>http://www.liuling123.com/2015/08/javah-find-lib.html</loc>
+    <loc>http://www.liuling123.com/2013/06/linux-64-32.html</loc>
     <lastmod>2016-01-03T03:00:03.000Z</lastmod>
     <data>
         <display>
-        <title>解决javah生成c头文件时找不到android类库的问题</title>
-        <pubTime>2015-08-05T02:26:00.000Z</pubTime>
+        <title>查看系统是64位还是32位</title>
+        <pubTime>2013-06-07T04:22:00.000Z</pubTime>
         
-        <tag>android</tag>
-         
-        <tag>jni</tag>
+        <tag>linux</tag>
          
          
            
              
-              <breadCrumb title="JNI&amp;amp;NDK" url="http://www.liuling123.com/categories/JNI-amp-NDK/"/>
+              <breadCrumb title="Linux" url="http://www.liuling123.com/categories/Linux/"/>
           
         </display>
     </data>
@@ -2995,26 +3013,6 @@
            
              
               <breadCrumb title="后端" url="http://www.liuling123.com/categories/%E5%90%8E%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.liuling123.com/2012/12/div-center.html</loc>
-    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>绝对定位的div的居中方法，下面的写法兼容IE系列浏览器和火狐浏览器。</title>
-        <pubTime>2012-12-23T18:07:00.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://www.liuling123.com/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>
@@ -3062,12 +3060,12 @@
 
     
   <url>
-    <loc>http://www.liuling123.com/2012/08/span.html</loc>
+    <loc>http://www.liuling123.com/2012/12/div-center.html</loc>
     <lastmod>2016-01-03T03:00:03.000Z</lastmod>
     <data>
         <display>
-        <title>span 换行与不换行</title>
-        <pubTime>2012-08-20T20:28:00.000Z</pubTime>
+        <title>绝对定位的div的居中方法，下面的写法兼容IE系列浏览器和火狐浏览器。</title>
+        <pubTime>2012-12-23T18:07:00.000Z</pubTime>
         
         <tag>前端</tag>
          
@@ -3075,6 +3073,28 @@
            
              
               <breadCrumb title="前端" url="http://www.liuling123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.liuling123.com/2015/08/javah-find-lib.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>解决javah生成c头文件时找不到android类库的问题</title>
+        <pubTime>2015-08-05T02:26:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>jni</tag>
+         
+         
+           
+             
+              <breadCrumb title="JNI&amp;amp;NDK" url="http://www.liuling123.com/categories/JNI-amp-NDK/"/>
           
         </display>
     </data>
@@ -3146,19 +3166,19 @@
 
     
   <url>
-    <loc>http://www.liuling123.com/2013/04/java-open-application.html</loc>
+    <loc>http://www.liuling123.com/2012/08/span.html</loc>
     <lastmod>2016-01-03T03:00:03.000Z</lastmod>
     <data>
         <display>
-        <title>java打开本地应用程序</title>
-        <pubTime>2013-04-10T05:58:00.000Z</pubTime>
+        <title>span 换行与不换行</title>
+        <pubTime>2012-08-20T20:28:00.000Z</pubTime>
         
-        <tag>java</tag>
+        <tag>前端</tag>
          
          
            
              
-              <breadCrumb title="Java基础" url="http://www.liuling123.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+              <breadCrumb title="前端" url="http://www.liuling123.com/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>
