@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术成长之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.liuling123.com/"/>
-  <updated>2016-07-07T14:05:48.000Z</updated>
+  <updated>2016-10-08T13:19:29.000Z</updated>
   <id>http://www.liuling123.com/</id>
   
   <author>
@@ -13,6 +13,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[《影响力》读书笔记（二）]]></title>
+    <link href="http://www.liuling123.com/2016/07/influence-reading-notes2.html"/>
+    <id>http://www.liuling123.com/2016/07/influence-reading-notes2.html</id>
+    <published>2016-07-26T13:09:00.000Z</published>
+    <updated>2016-10-08T13:19:29.000Z</updated>
+    <content type="html"><![CDATA[<p>《影响力》后半部分笔记整理如下：</p>
+<p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/%E3%80%8A%E5%BD%B1%E5%93%8D%E5%8A%9B%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02.png" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>《影响力》后半部分笔记整理如下：</p>
+<p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/%E3%80%8A%E5%BD%B1%E5%93%8D%E5%8A%9B%E3%80%8B%E8%AF%BB%E4%B9%A6%E]]>
+    </summary>
+    
+      <category term="读书笔记" scheme="http://www.liuling123.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="读书笔记" scheme="http://www.liuling123.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[《影响力》读书笔记（一）]]></title>
@@ -886,27 +906,6 @@
       <category term="开源" scheme="http://www.liuling123.com/tags/%E5%BC%80%E6%BA%90/"/>
     
       <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[科学上网工具Lantern，轻松访问Google、Facebook等被墙网站]]></title>
-    <link href="http://www.liuling123.com/2015/11/lantern.html"/>
-    <id>http://www.liuling123.com/2015/11/lantern.html</id>
-    <published>2015-11-11T14:13:18.000Z</published>
-    <updated>2016-01-03T03:00:03.000Z</updated>
-    <content type="html"><![CDATA[<p>给大家推荐一个科学上网的工具，轻松就可以访问google、facebook等被墙的网站：<a href="https://github.com/liuling07/Lantern" target="_blank" rel="external">下载Lantern</a></p>
-<p>下载lantern.exe.fbd文件，将.fbd后缀去掉，双击运行即可。可能360会阻止运行，要点击允许。</p>
-<p>如下图：<br><a href="http://www.liuling123.com/wp-content/uploads/2015/11/QQ图片20151111215158.png"><img src="http://www.liuling123.com/wp-content/uploads/2015/11/QQ图片20151111215158-300x129.png" alt="科学上网工具"></a></p>
-<p>该工具只能用于PC端浏览器浏览被墙网站，一般查资料够用了。如果需要玩游戏或者其他用途，建议还是买VPN。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>给大家推荐一个科学上网的工具，轻松就可以访问google、facebook等被墙的网站：<a href="https://github.com/liuling07/Lantern" target="_blank" rel="external">下载Lantern</a></]]>
-    </summary>
-    
-      <category term="科学上网" scheme="http://www.liuling123.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    
-      <category term="其他技术" scheme="http://www.liuling123.com/categories/%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
