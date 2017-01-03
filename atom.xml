@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术成长之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.liuling123.com/"/>
-  <updated>2016-10-11T05:25:07.000Z</updated>
+  <updated>2017-01-03T13:41:38.000Z</updated>
   <id>http://www.liuling123.com/</id>
   
   <author>
@@ -13,6 +13,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[2016年小结]]></title>
+    <link href="http://www.liuling123.com/2016/12/2016-summarize.html"/>
+    <id>http://www.liuling123.com/2016/12/2016-summarize.html</id>
+    <published>2016-12-31T13:22:00.000Z</published>
+    <updated>2017-01-03T13:41:38.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="16_u5E74_u5927_u4E8B_u8BB0"><a href="#16_u5E74_u5927_u4E8B_u8BB0" class="headerlink" title="16年大事记"></a><strong>16年大事记</strong></h3><ul>
+<li>和老婆订婚并扯证了，从此加入已婚人士行列</li>
+<li>6年的爱情终于有了结晶，家里添了新成员，自己也升级做爸爸了</li>
+<li>人生中第一次跳槽，找到了一家目前而言还比较满意的公司</li>
+<li>自己家和老丈人家都盖了新房，过年无论去自己家还是老婆家都有新房住了</li>
+<li>3月份第一次参加了深圳百公里毅行，走了不到70公里</li>
+<li>开始使用随手记记账，并且接触了理财</li>
+<li>入手了一个kindle，开启阅读之旅（后面附书单）</li>
+</ul>
+<h3 id="17_u5E74_u5C55_u671B"><a href="#17_u5E74_u5C55_u671B" class="headerlink" title="17年展望"></a><strong>17年展望</strong></h3><ul>
+<li>踏实提升自己的技术实力，争取在公司能够扛起更多的责任</li>
+<li>继续坚持定期更新博客</li>
+<li>目前唯一的锻炼项目是篮球，属于激烈运动。为了增强体质，还得适当的参加些有氧运动。17年准备养成跑步的习惯，一周慢跑一到两次</li>
+<li>在长沙买一套属于自己的房子</li>
+<li>坚持看书的习惯，适当输出读书笔记</li>
+<li>毕业两年多了还没有和老婆去旅行，17年一定要带老婆去旅行一次</li>
+<li>今年的百公里争取走完全程</li>
+</ul>
+<h3 id="u9644_uFF1A_u8BFB_u4E66_u6E05_u5355"><a href="#u9644_uFF1A_u8BFB_u4E66_u6E05_u5355" class="headerlink" title="附：读书清单"></a><strong>附：读书清单</strong></h3><h4 id="2016_u5E74_u5DF2_u8BFB_u4E66_u5355"><a href="#2016_u5E74_u5DF2_u8BFB_u4E66_u5355" class="headerlink" title="2016年已读书单"></a>2016年已读书单</h4><p>《Android群英传》<br>《软技能－代码之外的生存指南》<br>《把时间当朋友》<br>《影响力》<br>《穷爸爸富爸爸》<br>《牛奶可乐经济学》<br>《MBA教不了你的创富课》<br>《寻路中国》<br>《看见》<br>《嫌疑人x的献身》<br>《白夜行》<br>《解忧杂货店》<br>《摆渡人》<br>《追风筝的人》<br>《偷影子的人》<br>《活着》<br>《围城》<br>《人生》<br>《孙子兵法》</p>
+<h4 id="2017_u5E74_u5F85_u8BFB_u4E66_u5355"><a href="#2017_u5E74_u5F85_u8BFB_u4E66_u5355" class="headerlink" title="2017年待读书单"></a>2017年待读书单</h4><p>《巨人的陨落》（已读55%）<br>《经济学原理》 （已读30%）<br>《经济学通识》 （已读40%）<br>《生活中的经济学》<br>《大败局1、2》<br>《腾讯传》<br>《百年孤独》<br>《瓦尔登湖》<br>《如何说孩子才会听，如何听孩子才会说》<br>《爱在左，管教在右》<br>《战争论》<br>《精进》<br>……</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="16_u5E74_u5927_u4E8B_u8BB0"><a href="#16_u5E74_u5927_u4E8B_u8BB0" class="headerlink" title="16年大事记"></a><strong>16年大事记</strong></h3>]]>
+    </summary>
+    
+      <category term="人生感悟" scheme="http://www.liuling123.com/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Jenkins+Gradle实现Android自动化构建]]></title>
@@ -879,35 +914,6 @@
       <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
     
       <category term="译文" scheme="http://www.liuling123.com/tags/%E8%AF%91%E6%96%87/"/>
-    
-      <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Android带多选功能的PhotoPicker]]></title>
-    <link href="http://www.liuling123.com/2015/11/android-multi-photo-picker.html"/>
-    <id>http://www.liuling123.com/2015/11/android-multi-photo-picker.html</id>
-    <published>2015-11-21T07:46:03.000Z</published>
-    <updated>2016-01-03T07:01:45.000Z</updated>
-    <content type="html"><![CDATA[<p>最近利用闲碎的一些时间开发了一个Android库<a href="https://github.com/liuling07/PhotoPicker" target="_blank" rel="external">PhotoPicker</a>，前面一篇文章也介绍了，<a href="http://www.liuling123.com/2015/11/android-photo-picker.html">Android高仿微信图片选择功能的PhotoPicker</a>，之前没有加入选择多张图片的功能，现在加上之后一个完整的PhotoPicker库终于算是完工了。</p>
-<h2 id="u52A8_u6001_u6548_u679C_u56FE"><a href="#u52A8_u6001_u6548_u679C_u56FE" class="headerlink" title="动态效果图"></a><strong>动态效果图</strong></h2><p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/photo-picker-sample.gif?watermark/1/image/aHR0cDovLzd4bnFtNC5jb20xLnowLmdsYi5jbG91ZGRuLmNvbS93YXRlcm1hcmsucG5n/dissolve/50/gravity/SouthEast" alt="Android带多选功能的PhotoPicker示例图片" title="Android带多选功能的PhotoPicker示例图片"></p>
-<a id="more"></a>
-<h2 id="u4F7F_u7528_u65B9_u6CD5"><a href="#u4F7F_u7528_u65B9_u6CD5" class="headerlink" title="使用方法"></a><strong>使用方法</strong></h2><p>引入PhotoPicker库，在需要使用图片选择功能的地方添加如下代码：<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="type">intent</span> = new <span class="type">Intent</span>(MainActivity.this, PhotoPickerActivity.<span class="keyword">class</span>);</span><br><span class="line"><span class="type">intent</span>.putExtra(PhotoPickerActivity.EXTRA_SHOW_CAMERA, showCamera);</span><br><span class="line"><span class="type">intent</span>.putExtra(PhotoPickerActivity.EXTRA_SELECT_MODE, selectedMode);</span><br><span class="line"><span class="type">intent</span>.putExtra(PhotoPickerActivity.EXTRA_MAX_MUN, maxNum);</span><br><span class="line">startActivityForResult(<span class="type">intent</span>, PICK_PHOTO);</span><br></pre></td></tr></table></figure></p>
-<p>并且重写activity的onActivityResult方法，处理返回结果。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@<span class="type">Override</span></span><br><span class="line">protected <span class="type">void</span> onActivityResult(<span class="type">int</span> requestCode, <span class="type">int</span> resultCode, <span class="type">Intent</span> data) &#123;</span><br><span class="line">    super.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    <span class="keyword">if</span>(requestCode == <span class="type">PICK_PHOTO</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(resultCode == <span class="type">RESULT_OK</span>)&#123;</span><br><span class="line">             <span class="type">ArrayList</span>&lt;<span class="type">String</span>&gt; <span class="literal">result</span> = data.getStringArrayListExtra(<span class="type">PhotoPickerActivity</span>.<span class="type">KEY_RESULT</span>);</span><br><span class="line">            //<span class="keyword">do</span> what you want to to.</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>源码地址：<a href="https://github.com/liuling07/PhotoPicker" target="_blank" rel="external">https://github.com/liuling07/PhotoPicker</a>，欢迎fork和star。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>最近利用闲碎的一些时间开发了一个Android库<a href="https://github.com/liuling07/PhotoPicker">PhotoPicker</a>，前面一篇文章也介绍了，<a href="http://www.liuling123.com/2015/11/android-photo-picker.html">Android高仿微信图片选择功能的PhotoPicker</a>，之前没有加入选择多张图片的功能，现在加上之后一个完整的PhotoPicker库终于算是完工了。</p>
-<h2 id="u52A8_u6001_u6548_u679C_u56FE"><a href="#u52A8_u6001_u6548_u679C_u56FE" class="headerlink" title="动态效果图"></a><strong>动态效果图</strong></h2><p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/photo-picker-sample.gif?watermark/1/image/aHR0cDovLzd4bnFtNC5jb20xLnowLmdsYi5jbG91ZGRuLmNvbS93YXRlcm1hcmsucG5n/dissolve/50/gravity/SouthEast" alt="Android带多选功能的PhotoPicker示例图片" title="Android带多选功能的PhotoPicker示例图片"></p>]]>
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
-    
-      <category term="图片选择" scheme="http://www.liuling123.com/tags/%E5%9B%BE%E7%89%87%E9%80%89%E6%8B%A9/"/>
-    
-      <category term="开源" scheme="http://www.liuling123.com/tags/%E5%BC%80%E6%BA%90/"/>
     
       <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
     

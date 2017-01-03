@@ -4,6 +4,24 @@
 
     
   <url>
+    <loc>http://www.liuling123.com/2016/12/2016-summarize.html</loc>
+    <lastmod>2017-01-03T13:41:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>2016年小结</title>
+        <pubTime>2016-12-31T13:22:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="人生感悟" url="http://www.liuling123.com/categories/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.liuling123.com/2016/10/jenkins-gradle-auto-build.html</loc>
     <lastmod>2016-10-11T05:25:07.000Z</lastmod>
     <data>
@@ -2980,125 +2998,19 @@
 
     
   <url>
-    <loc>http://www.liuling123.com/2015/08/javah-find-lib.html</loc>
+    <loc>http://www.liuling123.com/2013/04/java-open-application.html</loc>
     <lastmod>2016-01-03T03:00:03.000Z</lastmod>
     <data>
         <display>
-        <title>解决javah生成c头文件时找不到android类库的问题</title>
-        <pubTime>2015-08-05T02:26:00.000Z</pubTime>
+        <title>java打开本地应用程序</title>
+        <pubTime>2013-04-10T05:58:00.000Z</pubTime>
         
-        <tag>android</tag>
-         
-        <tag>jni</tag>
+        <tag>java</tag>
          
          
            
              
-              <breadCrumb title="JNI&amp;amp;NDK" url="http://www.liuling123.com/categories/JNI-amp-NDK/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.liuling123.com/2012/08/span.html</loc>
-    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>span 换行与不换行</title>
-        <pubTime>2012-08-20T20:28:00.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://www.liuling123.com/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.liuling123.com/2013/06/linux-64-32.html</loc>
-    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>查看系统是64位还是32位</title>
-        <pubTime>2013-06-07T04:22:00.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.liuling123.com/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.liuling123.com/2014/03/springmvc-upload.html</loc>
-    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>Spring MVC实现上传文件报错解决方案</title>
-        <pubTime>2014-03-04T23:38:00.000Z</pubTime>
-        
-        <tag>spring</tag>
-         
-        <tag>web后端</tag>
-         
-        <tag>解决方案</tag>
-         
-         
-           
-             
-              <breadCrumb title="后端" url="http://www.liuling123.com/categories/%E5%90%8E%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.liuling123.com/2012/12/div-center.html</loc>
-    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>绝对定位的div的居中方法，下面的写法兼容IE系列浏览器和火狐浏览器。</title>
-        <pubTime>2012-12-23T18:07:00.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="http://www.liuling123.com/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.liuling123.com/2014/04/centos6-5-update-yum.html</loc>
-    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>CentOS6.5中修改yum源</title>
-        <pubTime>2014-04-14T07:40:00.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.liuling123.com/categories/Linux/"/>
+              <breadCrumb title="Java基础" url="http://www.liuling123.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
           
         </display>
     </data>
@@ -3126,6 +3038,48 @@
 
     
   <url>
+    <loc>http://www.liuling123.com/2013/06/linux-64-32.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>查看系统是64位还是32位</title>
+        <pubTime>2013-06-07T04:22:00.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.liuling123.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.liuling123.com/2015/08/javah-find-lib.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>解决javah生成c头文件时找不到android类库的问题</title>
+        <pubTime>2015-08-05T02:26:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>jni</tag>
+         
+         
+           
+             
+              <breadCrumb title="JNI&amp;amp;NDK" url="http://www.liuling123.com/categories/JNI-amp-NDK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.liuling123.com/2012/12/cookie-messy-code.html</loc>
     <lastmod>2016-01-03T03:00:03.000Z</lastmod>
     <data>
@@ -3134,6 +3088,70 @@
         <pubTime>2012-12-16T21:09:00.000Z</pubTime>
         
         <tag>web后端</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://www.liuling123.com/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.liuling123.com/2014/04/centos6-5-update-yum.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS6.5中修改yum源</title>
+        <pubTime>2014-04-14T07:40:00.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.liuling123.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.liuling123.com/2012/08/span.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>span 换行与不换行</title>
+        <pubTime>2012-08-20T20:28:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://www.liuling123.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.liuling123.com/2014/03/springmvc-upload.html</loc>
+    <lastmod>2016-01-03T03:00:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>Spring MVC实现上传文件报错解决方案</title>
+        <pubTime>2014-03-04T23:38:00.000Z</pubTime>
+        
+        <tag>spring</tag>
+         
+        <tag>web后端</tag>
+         
+        <tag>解决方案</tag>
          
          
            
@@ -3210,19 +3228,19 @@
 
     
   <url>
-    <loc>http://www.liuling123.com/2013/04/java-open-application.html</loc>
+    <loc>http://www.liuling123.com/2012/12/div-center.html</loc>
     <lastmod>2016-01-03T03:00:03.000Z</lastmod>
     <data>
         <display>
-        <title>java打开本地应用程序</title>
-        <pubTime>2013-04-10T05:58:00.000Z</pubTime>
+        <title>绝对定位的div的居中方法，下面的写法兼容IE系列浏览器和火狐浏览器。</title>
+        <pubTime>2012-12-23T18:07:00.000Z</pubTime>
         
-        <tag>java</tag>
+        <tag>前端</tag>
          
          
            
              
-              <breadCrumb title="Java基础" url="http://www.liuling123.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+              <breadCrumb title="前端" url="http://www.liuling123.com/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>
