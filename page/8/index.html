@@ -149,7 +149,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                151
+                152
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -214,6 +214,111 @@
 
             
             <section id="main">
+    <article id="post-semaphore-demo" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/08/semaphore-demo.html">Semaphore的使用</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/08/semaphore-demo.html">
+            <time datetime="2013-08-20T07:20:00.000Z" itemprop="datePublished">2013-08-20</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/多线程/">多线程</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>　　Semaphore也是一个线程同步的辅助类，可以维护当前访问自身的线程个数，并提供了同步机制。使用Semaphore可以控制同时访问资源的线程个数，例如，实现一个文件允许的并发访问数。</p>
+<p><strong>Semaphore的主要方法摘要：</strong></p>
+<p>　　void acquire()<code>**:**从此信号量获取一个许可，在提供一个许可前一直将线程阻塞，否则线程被中断。</code></p>
+<p>　　void release():释放一个许可，将其返回给信号量。</p>
+<p>　　int availablePermits():返回此信号量中当前可用的许可数。</p>
+<p>　　boolean hasQueuedThreads():查询是否有线程正在等待获取。<br></p>
+            <p class="article-more-link">
+                <a href="/2013/08/semaphore-demo.html#more">阅读全文</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+        <a href="http://www.liuling123.com/2013/08/semaphore-demo.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-semaphore-demo" data-count-type="comments"></span></a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-countdownlatch-demo" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1148,110 +1253,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
 
 
-    <article id="post-hdfs-pathfilter" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2013/06/hdfs-pathfilter.html">HDFS中PathFilter类</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2013/06/hdfs-pathfilter.html">
-            <time datetime="2013-06-18T06:04:00.000Z" itemprop="datePublished">2013-06-18</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/hadoop/">hadoop</a>, <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/web后端/">web后端</a>
-    </div>
-
-                </div>
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>　　在单个操作中处理一批文件，这是很常见的需求。比如说处理日志的MapReduce作业可能需要分析一个月内包含在大量目录中的日志文件。在一个表达式中使用通配符在匹配多个文件时比较方便的，无需列举每个文件和目录来指定输入。hadoop为执行通配提供了两个FIleSystem方法：</p>
-<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span> <span style="color: #0000ff;">public</span> FileStatus[] globStatus(Path pathPattern) <span style="color: #0000ff;">throw</span><span style="color: #000000;"> IOException<br></span><span style="color: #008080;">2</span> <span style="color: #0000ff;">public</span> FileStatus[] globStatus(Path pathPattern, PathFilter filter) <span style="color: #0000ff;">throw</span> IOException</pre><br></div>
-
-<p>　　globStatus()方法返回与路径想匹配的所有文件的FileStatus对象数组，并按路径排序。hadoop所支持的通配符与Unix bash相同。</p>
-<p>　　第二个方法传了一个PathFilter对象作为参数，PathFilter可以进一步对匹配进行限制。PathFilter是一个接口，里面只有一个方法accept(Path path)。<br></p>
-            <p class="article-more-link">
-                <a href="/2013/06/hdfs-pathfilter.html#more">阅读全文</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-    <div class="bdsharebuttonbox">
-    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
-    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
-    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
-</div>
-<script>
-window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-<style>
-    .bdshare_popup_box {
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .bdshare-button-style0-16 a,
-    .bdshare-button-style0-16 .bds_more {
-        padding-left: 20px;
-        margin: 6px 10px 6px 0;
-    }
-    .bdshare_dialog_list a,
-    .bdshare_popup_list a,
-    .bdshare_popup_bottom a {
-        font-family: 'Microsoft Yahei';
-    }
-    .bdshare_popup_top {
-        display: none;
-    }
-    .bdshare_popup_bottom {
-        height: auto;
-        padding: 5px;
-    }
-</style>
-
-
-</div>
-
-            
-    
-        <a href="http://www.liuling123.com/2013/06/hdfs-pathfilter.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-hdfs-pathfilter" data-count-type="comments"></span></a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/7/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/">下一页 &raquo;</a>
     </nav>
@@ -1264,6 +1265,15 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         <h3 class="widget-title">最新博文</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/02/transparent-status-bar.html" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-02-18T05:29:45.000Z" itemprop="datePublished">2017-02-18</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1298,15 +1308,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                             <p class="item-category"><a class="article-category-link" href="/categories/读书笔记/">读书笔记</a></p>
                             <p class="item-title"><a href="/2016/07/influence-reading-notes.html" class="title">《影响力》读书笔记（一）</a></p>
                             <p class="item-date"><time datetime="2016-07-07T14:00:00.000Z" itemprop="datePublished">2016-07-07</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/版本控制/">版本控制</a></p>
-                            <p class="item-title"><a href="/2016/07/git-note.html" class="title">git使用小记</a></p>
-                            <p class="item-date"><time datetime="2016-07-05T13:41:00.000Z" itemprop="datePublished">2016-07-05</time></p>
                         </div>
                     </li>
                 

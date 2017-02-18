@@ -149,7 +149,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                151
+                152
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -214,6 +214,111 @@
 
             
             <section id="main">
+    <article id="post-so_method_mix" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/06/so_method_mix.html">so库中JNI方法混淆</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/06/so_method_mix.html">
+            <time datetime="2016-06-02T14:51:00.000Z" itemprop="datePublished">2016-06-02</time>
+        </a>
+    </div>
+
+
+                    
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JNI-amp-NDK/">JNI&amp;NDK</a>
+    </div>
+
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/NDK/">NDK</a>, <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/jni/">jni</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>​​默认情况下，使用JNI时与native对应的JNI函数名都是Java<em>包名(点替换为</em>)<em>类名</em>方法名，使用javah生成的头文件函数名就是这样的格式。这样的格式的so库被反汇编时很容易就找到对应的方法。</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JNIEXPORT jstring JNICALL Java_com_liuling_ndkjnidemo_JniUtils_getStringFromC</span><br><span class="line">        (JNIEnv *env, jclass obj) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">(jstring)(*env)</span>-&gt;</span> NewStringUTF(env, <span class="string">"I am string from jni"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面是简单的一个JNI方法，我们将生成的so库使用IDA工具进行反汇编之后就能看到如下的内容：</p>
+<p>在左边很容易就能找到Java_com_liuling_ndkjnidemo_JniUtils_getStringFromC这个方法：</p>
+<p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/somix%2Fmethod.png" alt=""></p>
+<p>双击该方法就能看到该方法反汇编之后的内容，这里返回的字符串”I am string from jni”就暴露出来了，如果是一些敏感信息比如一些key之类的东西，这样就存在着风险。</p></p>
+            <p class="article-more-link">
+                <a href="/2016/06/so_method_mix.html#more">阅读全文</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+        <a href="http://www.liuling123.com/2016/06/so_method_mix.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-so_method_mix" data-count-type="comments"></span></a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-ubuntu-android-studio-ndk" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1142,108 +1247,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
 
 
-    <article id="post-performance-listviews" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2015/12/performance-listviews.html">【译文】高性能ListViews</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2015/12/performance-listviews.html">
-            <time datetime="2015-12-02T10:22:14.000Z" itemprop="datePublished">2015-12-02</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Android/">Android</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/译文/">译文</a>
-    </div>
-
-                </div>
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>原文链接 : <a href="http://willowtreeapps.com/blog/performance-listviews/?utm_source=Android+Weekly&amp;utm_campaign=038d344835-Android_Weekly_178&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-038d344835-337955857">Performance ListViews</a><br>原文作者 : <a href="http://willowtreeapps.com/blog/">Brandon</a><br>译文出自 : <a href="http://www.devtf.cn">开发技术前线 www.devtf.cn。未经允许，不得转载!</a><br>译者 : <a href="https://github.com/liuling07">liuling07</a><br>校对者: <a href="https://github.com/desmond1121">desmond1121</a><br>状态 : 完成</p>
-<h2 id="u8BD1_u6587_u8FDE_u63A5_uFF1A_u9AD8_u6027_u80FDListViews"><a href="#u8BD1_u6587_u8FDE_u63A5_uFF1A_u9AD8_u6027_u80FDListViews" class="headerlink" title="译文连接：高性能ListViews"></a>译文连接：<a href="https://github.com/bboyfeiyu/android-tech-frontier/blob/master/androidweekly/高性能ListViews/高性能ListViews.md">高性能ListViews</a></h2><p>列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示列表数据的方式，它非常高效，因为它重用视图而不是每一行出现在屏幕上都重新创建。在RecyclerView出现之前，我们可以使用ListView，即使到了现在，ListView也是广泛的被开发者所使用。虽然ListView也是可以回收视图的，但它也一直都是Android中最容易被错误使用的一个控件。我们知道在此之前这个话题已经被写过无数遍了，但是今天我还是要在博客中提出来，因为我们仍然发现很多app在错误的使用它们。</p>
-<p>关于ListView中ArrayAdapter的用法，标准的新手写法是这样子的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public View getView(int position, View convertView, ViewGroup parent) &#123;</span><br><span class="line"> </span><br><span class="line">    LayoutInflater inflater = (LayoutInflater) context</span><br><span class="line">            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</span><br><span class="line">    View rowView = inflater.inflate(R.layout.view_<span class="built_in">test</span>_row, parent, <span class="literal">false</span>);</span><br><span class="line"> </span><br><span class="line">    TextView <span class="built_in">test</span>Name = (TextView)rowView.findViewById(R.id.text_view_<span class="built_in">test</span>_name);</span><br><span class="line">    TextView <span class="built_in">test</span>Desc = (TextView)rowView.findViewById(R.id.text_view_<span class="built_in">test</span>_desc);</span><br><span class="line"> </span><br><span class="line">    //modify TextViews, <span class="keyword">in</span> some arbitrary way</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">return</span> rowView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></p>
-            <p class="article-more-link">
-                <a href="/2015/12/performance-listviews.html#more">阅读全文</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-    <div class="bdsharebuttonbox">
-    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
-    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
-    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
-</div>
-<script>
-window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-<style>
-    .bdshare_popup_box {
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .bdshare-button-style0-16 a,
-    .bdshare-button-style0-16 .bds_more {
-        padding-left: 20px;
-        margin: 6px 10px 6px 0;
-    }
-    .bdshare_dialog_list a,
-    .bdshare_popup_list a,
-    .bdshare_popup_bottom a {
-        font-family: 'Microsoft Yahei';
-    }
-    .bdshare_popup_top {
-        display: none;
-    }
-    .bdshare_popup_bottom {
-        height: auto;
-        padding: 5px;
-    }
-</style>
-
-
-</div>
-
-            
-    
-        <a href="http://www.liuling123.com/2015/12/performance-listviews.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-performance-listviews" data-count-type="comments"></span></a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
     </nav>
@@ -1256,6 +1259,15 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         <h3 class="widget-title">最新博文</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/02/transparent-status-bar.html" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-02-18T05:29:45.000Z" itemprop="datePublished">2017-02-18</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1290,15 +1302,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                             <p class="item-category"><a class="article-category-link" href="/categories/读书笔记/">读书笔记</a></p>
                             <p class="item-title"><a href="/2016/07/influence-reading-notes.html" class="title">《影响力》读书笔记（一）</a></p>
                             <p class="item-date"><time datetime="2016-07-07T14:00:00.000Z" itemprop="datePublished">2016-07-07</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/版本控制/">版本控制</a></p>
-                            <p class="item-title"><a href="/2016/07/git-note.html" class="title">git使用小记</a></p>
-                            <p class="item-date"><time datetime="2016-07-05T13:41:00.000Z" itemprop="datePublished">2016-07-05</time></p>
                         </div>
                     </li>
                 
