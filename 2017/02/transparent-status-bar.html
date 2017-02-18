@@ -14,7 +14,7 @@
 <meta property="og:description" content="Android4.4以前的版本，状态栏都是一块黑色的，个人认为还是比较丑的。自4.4开始，Android已经支持透明状态栏了（俗称沉浸式状态栏）。个人认为支持沉浸式状态栏的app逼格还是比较高的，为了紧跟潮流，我们项目中也准备加入沉浸式状态栏。在实现沉浸式状态栏的过程中踩了不少的坑，特此记录下来。
 如何实现状态栏Android 4.4以上实现方式Android 4.4版本提供了FLAG_TRANS">
 <meta property="og:image" content="http://7xnqm4.com1.z0.glb.clouddn.com/transparent-status-bar/tool-bar-enter-status-bar.png">
-<meta property="og:updated_time" content="2017-02-18T05:34:24.000Z">
+<meta property="og:updated_time" content="2017-02-18T05:36:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="沉浸式状态栏实现及遇到的坑">
 <meta name="twitter:description" content="Android4.4以前的版本，状态栏都是一块黑色的，个人认为还是比较丑的。自4.4开始，Android已经支持透明状态栏了（俗称沉浸式状态栏）。个人认为支持沉浸式状态栏的app逼格还是比较高的，为了紧跟潮流，我们项目中也准备加入沉浸式状态栏。在实现沉浸式状态栏的过程中踩了不少的坑，特此记录下来。
@@ -261,7 +261,9 @@
             
             <p>Android4.4以前的版本，状态栏都是一块黑色的，个人认为还是比较丑的。自4.4开始，Android已经支持透明状态栏了（俗称沉浸式状态栏）。个人认为支持沉浸式状态栏的app逼格还是比较高的，为了紧跟潮流，我们项目中也准备加入沉浸式状态栏。在实现沉浸式状态栏的过程中踩了不少的坑，特此记录下来。</p>
 <h3 id="u5982_u4F55_u5B9E_u73B0_u72B6_u6001_u680F"><a href="#u5982_u4F55_u5B9E_u73B0_u72B6_u6001_u680F" class="headerlink" title="如何实现状态栏"></a>如何实现状态栏</h3><h5 id="Android_4-4_u4EE5_u4E0A_u5B9E_u73B0_u65B9_u5F0F"><a href="#Android_4-4_u4EE5_u4E0A_u5B9E_u73B0_u65B9_u5F0F" class="headerlink" title="Android 4.4以上实现方式"></a>Android 4.4以上实现方式</h5><p>Android 4.4版本提供了FLAG_TRANSLUCENT_STATUS，在Activity中加入此flag，可以设置状态栏透明。代码如下：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Build.<span class="keyword">VERSION</span>.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</span><br><span class="line">    <span class="keyword">Window</span> <span class="keyword">window</span> = getWindow();</span><br><span class="line">    <span class="comment">// Translucent status bar</span></span><br><span class="line">    <span class="keyword">window</span>.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>仅仅设置FLAG_TRANSLUCENT_STATUS，你会发现界面上的ToolBar会跑到状态栏上面去，如下图:<br><a id="more"></a><br><img src="http://7xnqm4.com1.z0.glb.clouddn.com/transparent-status-bar/tool-bar-enter-status-bar.png" alt=""></p>
+<p>仅仅设置FLAG_TRANSLUCENT_STATUS，你会发现界面上的ToolBar会跑到状态栏上面去，如下图: </p>
+<a id="more"></a>
+<p><img src="http://7xnqm4.com1.z0.glb.clouddn.com/transparent-status-bar/tool-bar-enter-status-bar.png" alt=""></p>
 <p>通常我们会使用fitsSystemWindows属性来解决此问题。</p>
 <ul>
 <li>fitSystemWindows官方描述:<br>Boolean internal attribute to adjust view layout based on system windows such as the status bar. If true, adjusts the padding of this view to leave space for the system windows. Will only take effect if this view is in a non-embedded activity. </li>
