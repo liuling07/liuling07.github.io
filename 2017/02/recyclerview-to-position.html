@@ -3,17 +3,18 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档: 2016/7 | 残剑博客</title>
+    <title>RecyclerView定位到具体position | 残剑博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Hexo theme - Icarus">
-<meta property="og:type" content="website">
-<meta property="og:title" content="残剑博客">
-<meta property="og:url" content="http://www.liuling123.com/archives/2016/07/index.html">
+    <meta name="description" content="RecyclerView是Android开发中经常遇到的一个控件，在使用RecyclerView的时候，直接滑动到某个position的位置的需求也经常碰到。遇到这个需求了，我们就会去找RecyclerView是否有类似于ListView中的smoothScrollToPosition的方法。在代码中一敲，果然有，兴奋的运行调试。运行之后就开始沮丧了，怎么效果和期待的不一样的，甚至有时候调用smo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RecyclerView定位到具体position">
+<meta property="og:url" content="http://www.liuling123.com/2017/02/recyclerview-to-position.html">
 <meta property="og:site_name" content="残剑博客">
-<meta property="og:description" content="Hexo theme - Icarus">
+<meta property="og:description" content="RecyclerView是Android开发中经常遇到的一个控件，在使用RecyclerView的时候，直接滑动到某个position的位置的需求也经常碰到。遇到这个需求了，我们就会去找RecyclerView是否有类似于ListView中的smoothScrollToPosition的方法。在代码中一敲，果然有，兴奋的运行调试。运行之后就开始沮丧了，怎么效果和期待的不一样的，甚至有时候调用smo">
+<meta property="og:updated_time" content="2017-02-21T12:49:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="残剑博客">
-<meta name="twitter:description" content="Hexo theme - Icarus">
+<meta name="twitter:title" content="RecyclerView定位到具体position">
+<meta name="twitter:description" content="RecyclerView是Android开发中经常遇到的一个控件，在使用RecyclerView的时候，直接滑动到某个position的位置的需求也经常碰到。遇到这个需求了，我们就会去找RecyclerView是否有类似于ListView中的smoothScrollToPosition的方法。在代码中一敲，果然有，兴奋的运行调试。运行之后就开始沮丧了，怎么效果和期待的不一样的，甚至有时候调用smo">
     
 
     
@@ -213,20 +214,16 @@
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2016</h1>
-            </div>
+            <section id="main"><article id="post-recyclerview-to-position" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/07/influence-reading-notes2.html">《影响力》读书笔记（二）</a>
+        <h1 class="article-title" itemprop="name">
+            RecyclerView定位到具体position
         </h1>
     
 
@@ -234,8 +231,8 @@
                     
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/07/influence-reading-notes2.html">
-            <time datetime="2016-07-26T13:09:00.000Z" itemprop="datePublished">2016-07-26</time>
+        <a href="/2017/02/recyclerview-to-position.html">
+            <time datetime="2017-02-21T12:49:03.000Z" itemprop="datePublished">2017-02-21</time>
         </a>
     </div>
 
@@ -243,92 +240,189 @@
                     
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+        <a class="article-category-link" href="/categories/Android/">Android</a>
     </div>
 
                     
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/读书笔记/">读书笔记</a>
+        <a class="tag-link" href="/tags/android/">android</a>
     </div>
 
                 </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/07/influence-reading-notes.html">《影响力》读书笔记（一）</a>
-        </h1>
-    
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>RecyclerView是Android开发中经常遇到的一个控件，在使用RecyclerView的时候，直接滑动到某个position的位置的需求也经常碰到。<br>遇到这个需求了，我们就会去找RecyclerView是否有类似于ListView中的smoothScrollToPosition的方法。在代码中一敲，果然有，兴奋的运行调试。运行之后就开始沮丧了，怎么效果和期待的不一样的，甚至有时候调用smoothScrollToPosition方法根本没有任何动静。<br>这可咋整？只能到网上找找资料了，经过一番搜索，发现原来RecyclerView的smoothScrollToPosition方法是有坑的。</p>
+<h3 id="u901A_u8FC7LayoutManager_u7684srcollToPositionWithOffset_u65B9_u6CD5_u8FDB_u884C_u5B9A_u4F4D"><a href="#u901A_u8FC7LayoutManager_u7684srcollToPositionWithOffset_u65B9_u6CD5_u8FDB_u884C_u5B9A_u4F4D" class="headerlink" title="通过LayoutManager的srcollToPositionWithOffset方法进行定位"></a>通过LayoutManager的srcollToPositionWithOffset方法进行定位</h3><p>当然，直接定位的话，如下方式可以实现，而且定位相当精准。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过LayoutManager的srcollToPositionWithOffset方法进行定位</span></span><br><span class="line"></span><br><span class="line">mLayoutManager.scrollToPositionWithOffset(position, <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>但是，它比较粗暴，直接定位过去了，而不是滑动过去。当然，如果你的产品经理能够接受这个效果那也就不需要这么折腾了。<br>然而，这么粗暴的体验，几乎没有哪个产品能够接受的。所以不得不继续寻找体验更好的方式。</p>
+<a id="more"></a>
+<h3 id="u901A_u8FC7smoothScrollToPosition_u7ED3_u5408smoothScrollBy_u5B9E_u73B0"><a href="#u901A_u8FC7smoothScrollToPosition_u7ED3_u5408smoothScrollBy_u5B9E_u73B0" class="headerlink" title="通过smoothScrollToPosition结合smoothScrollBy实现"></a>通过smoothScrollToPosition结合smoothScrollBy实现</h3><p>重新回到RecyclerView的smoothScrollToPosition方法。<br>它的滚动分三种情况：</p>
+<ul>
+<li>要定位position在第一个可见项之前<br>这种情况调用smoothScrollToPosition能够平滑的滚动到指定位置，并且置顶。</li>
+<li>要定位position在第一个可见项之后，并且在最后一个可见项之前<br>这种情况调用smoothScrollToPosition，没有任何反应，因为RecyclerView认为要定位的项已经在屏幕中了。</li>
+<li>要定位position在最后一个可见项之后<br>这种情况调用smoothScrollToPosition，会有滑动但是定位不准确，通常情况下，只要要定位的position下的item出现在屏幕上就停止了，也就是说，item会在屏幕最下端。</li>
+</ul>
+<p>瞬间感觉RecyclerView好坑爹！</p>
+<p>那如何解决呢？</p>
+<p>既然知道RecyclerView的smoothScrollToPosition方法分为上面三种情况了，我们可以针对不同情况做不同的处理。</p>
+<p>代码如下：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> mShouldScroll;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> mToPosition;</span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">smoothMoveToPosition</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> firstItem = mPhotosRV.getChildLayoutPosition(mPhotosRV.getChildAt(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">int</span> lastItem = mPhotosRV.getChildLayoutPosition(mPhotosRV.getChildAt(mPhotosRV.getChildCount() -<span class="number">1</span>));</span><br><span class="line">    <span class="keyword">if</span> (position &lt; firstItem ) &#123;</span><br><span class="line">        <span class="comment">// 如果要跳转的位置在第一个可见项之前，则smoothScrollToPosition可以直接跳转</span></span><br><span class="line">        mPhotosRV.smoothScrollToPosition(position);</span><br><span class="line">    &#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(position &lt;= lastItem)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 如果要跳转的位置在第一个可见项之后，且在最后一个可见项之前</span></span><br><span class="line">        <span class="comment">// smoothScrollToPosition根本不会动，此时调用smoothScrollBy来滑动到指定位置</span></span><br><span class="line">        <span class="keyword">int</span> movePosition = position - firstItem;</span><br><span class="line">        <span class="keyword">if</span> (movePosition &gt;= <span class="number">0</span> &amp;&amp; movePosition &lt; mPhotosRV.getChildCount()) &#123;</span><br><span class="line">            <span class="keyword">int</span> top = mPhotosRV.getChildAt(movePosition).getTop();</span><br><span class="line">            mPhotosRV.smoothScrollBy(<span class="number">0</span>, top);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果要跳转的位置在最后可见项之后，则先调用smoothScrollToPosition将要跳转的位置滚动到可见位置</span></span><br><span class="line">        <span class="comment">// 再通过onScrollStateChanged控制再次调用smoothMoveToPosition，进入上一个控制语句</span></span><br><span class="line">        mPhotosRV.smoothScrollToPosition(position);</span><br><span class="line">        mShouldScroll = <span class="keyword">true</span>;</span><br><span class="line">        mToPosition = position;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> RecyclerView.OnScrollListener mOnScrollListener = <span class="keyword">new</span> RecyclerView.OnScrollListener() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> newState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onScrollStateChanged(recyclerView, newState);</span><br><span class="line">        <span class="keyword">if</span> (newState == RecyclerView.SCROLL_STATE_IDLE) &#123;</span><br><span class="line">            mAutoScrolling = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (mShouldScroll) &#123;</span><br><span class="line">                mShouldScroll = <span class="keyword">false</span>;</span><br><span class="line">                smoothMoveToPosition(mToPosition);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这种解决方法的原理就是，判断需要定位的position所在的位置。</p>
+<ul>
+<li>如果要跳转的位置在第一个可见项之前，则直接调用smoothScrollToPosition跳转。</li>
+<li>如果要跳转的位置在第一个可见项之后，且在最后一个可见项之前，通过计算要跳转的item的top，然后在使用smoothScrollBy进行跳转</li>
+<li>如果要跳转的位置在最后一个可见项之后，则先调用一下smoothScrollToPosition，让要跳转的item位于屏幕可见范围之内，然后再通过smoothScrollBy进行跳转</li>
+</ul>
+<p>这样能够精准的定位了，不过有一个小小的缺点，就是如果是上面第三种情况，就会出现滑动一下再滑动一下的现象，不是很连贯，但也还是能够接受，毕竟比起直接定位那样粗暴的体验还是要好的多。<br>如果有更好的RecyclerView定位方式，欢迎探讨。</p>
+<p>参考：<a href="http://blog.csdn.net/tyzlmjj/article/details/49227601" target="_blank" rel="external">http://blog.csdn.net/tyzlmjj/article/details/49227601</a></p>
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/influence-reading-notes.html">
-            <time datetime="2016-07-07T14:00:00.000Z" itemprop="datePublished">2016-07-07</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/读书笔记/">读书笔记</a>
-    </div>
-
+            
+              <! -- 添加捐赠图标 -->
+              <div class ="post-donate" style="border-top:1px solid #f0f0f0;margin－top:38px;margin-bottom:18px;text-align:center">
+                <div id="donate_board" class="donate_bar center" style=" margin:12px;">
+                  <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+                  <span class="donate_txt" style="font-size:16px; font-weight:bolder;">
+                     如果文章对您有帮助，请随意打赏支持！  
+                  </span>
+                </div>  
+            
+              <!-- 支付宝打赏图案 -->
+                <div style="text-align:center">
+                    <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏"   style="float:left;margin-right:8px;text-align:center">
+                    <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Falipay.png" title="支付宝打赏" height="200px" width="200px">
+                    </a> 
                 </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/07/git-note.html">git使用小记</a>
-        </h1>
-    
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/git-note.html">
-            <time datetime="2016-07-05T13:41:00.000Z" itemprop="datePublished">2016-07-05</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/版本控制/">版本控制</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/git/">git</a>
-    </div>
-
+              <!-- 微信打赏图案 -->
+                <div style="text-align:center">
+                    <a href="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" >
+                    <img src="http://7xnqm4.com1.z0.glb.clouddn.com/pay%2Fweipay.png" title="微信打赏" height="200px" width="200px">
+                    </a> 
                 </div>
-            </div>
+              </div>  
+              <! -- 添加捐赠图标 -->
+              
+              <! -- 广告开始 -->
+
+              <! -- 广告结束 -->
+
+            
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
 </div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+        <a href="http://www.liuling123.com/2017/02/recyclerview-to-position.html#ds-thread" class="article-comment-link"><span class="ds-thread-count" data-thread-key="post-recyclerview-to-position" data-count-type="comments"></span></a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/02/transparent-status-bar.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">沉浸式状态栏实现及遇到的坑</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="post-recyclerview-to-position" data-title="RecyclerView定位到具体position" data-url="http://www.liuling123.com/2017/02/recyclerview-to-position.html"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">

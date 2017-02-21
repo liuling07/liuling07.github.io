@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术成长之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.liuling123.com/"/>
-  <updated>2017-02-18T05:36:35.000Z</updated>
+  <updated>2017-02-21T12:49:55.000Z</updated>
   <id>http://www.liuling123.com/</id>
   
   <author>
@@ -15,11 +15,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[RecyclerView定位到具体position]]></title>
+    <link href="http://www.liuling123.com/2017/02/recyclerview-to-position.html"/>
+    <id>http://www.liuling123.com/2017/02/recyclerview-to-position.html</id>
+    <published>2017-02-21T12:49:03.000Z</published>
+    <updated>2017-02-21T12:49:55.000Z</updated>
+    <content type="html"><![CDATA[<p>RecyclerView是Android开发中经常遇到的一个控件，在使用RecyclerView的时候，直接滑动到某个position的位置的需求也经常碰到。<br>遇到这个需求了，我们就会去找RecyclerView是否有类似于ListView中的smoothScrollToPosition的方法。在代码中一敲，果然有，兴奋的运行调试。运行之后就开始沮丧了，怎么效果和期待的不一样的，甚至有时候调用smoothScrollToPosition方法根本没有任何动静。<br>这可咋整？只能到网上找找资料了，经过一番搜索，发现原来RecyclerView的smoothScrollToPosition方法是有坑的。</p>
+<h3 id="u901A_u8FC7LayoutManager_u7684srcollToPositionWithOffset_u65B9_u6CD5_u8FDB_u884C_u5B9A_u4F4D"><a href="#u901A_u8FC7LayoutManager_u7684srcollToPositionWithOffset_u65B9_u6CD5_u8FDB_u884C_u5B9A_u4F4D" class="headerlink" title="通过LayoutManager的srcollToPositionWithOffset方法进行定位"></a>通过LayoutManager的srcollToPositionWithOffset方法进行定位</h3><p>当然，直接定位的话，如下方式可以实现，而且定位相当精准。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过LayoutManager的srcollToPositionWithOffset方法进行定位</span></span><br><span class="line"></span><br><span class="line">mLayoutManager.scrollToPositionWithOffset(position, <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>但是，它比较粗暴，直接定位过去了，而不是滑动过去。当然，如果你的产品经理能够接受这个效果那也就不需要这么折腾了。<br>然而，这么粗暴的体验，几乎没有哪个产品能够接受的。所以不得不继续寻找体验更好的方式。</p>
+<a id="more"></a>
+<h3 id="u901A_u8FC7smoothScrollToPosition_u7ED3_u5408smoothScrollBy_u5B9E_u73B0"><a href="#u901A_u8FC7smoothScrollToPosition_u7ED3_u5408smoothScrollBy_u5B9E_u73B0" class="headerlink" title="通过smoothScrollToPosition结合smoothScrollBy实现"></a>通过smoothScrollToPosition结合smoothScrollBy实现</h3><p>重新回到RecyclerView的smoothScrollToPosition方法。<br>它的滚动分三种情况：</p>
+<ul>
+<li>要定位position在第一个可见项之前<br>这种情况调用smoothScrollToPosition能够平滑的滚动到指定位置，并且置顶。</li>
+<li>要定位position在第一个可见项之后，并且在最后一个可见项之前<br>这种情况调用smoothScrollToPosition，没有任何反应，因为RecyclerView认为要定位的项已经在屏幕中了。</li>
+<li>要定位position在最后一个可见项之后<br>这种情况调用smoothScrollToPosition，会有滑动但是定位不准确，通常情况下，只要要定位的position下的item出现在屏幕上就停止了，也就是说，item会在屏幕最下端。</li>
+</ul>
+<p>瞬间感觉RecyclerView好坑爹！</p>
+<p>那如何解决呢？</p>
+<p>既然知道RecyclerView的smoothScrollToPosition方法分为上面三种情况了，我们可以针对不同情况做不同的处理。</p>
+<p>代码如下：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> mShouldScroll;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> mToPosition;</span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">smoothMoveToPosition</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> firstItem = mPhotosRV.getChildLayoutPosition(mPhotosRV.getChildAt(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">int</span> lastItem = mPhotosRV.getChildLayoutPosition(mPhotosRV.getChildAt(mPhotosRV.getChildCount() -<span class="number">1</span>));</span><br><span class="line">    <span class="keyword">if</span> (position &lt; firstItem ) &#123;</span><br><span class="line">        <span class="comment">// 如果要跳转的位置在第一个可见项之前，则smoothScrollToPosition可以直接跳转</span></span><br><span class="line">        mPhotosRV.smoothScrollToPosition(position);</span><br><span class="line">    &#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(position &lt;= lastItem)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 如果要跳转的位置在第一个可见项之后，且在最后一个可见项之前</span></span><br><span class="line">        <span class="comment">// smoothScrollToPosition根本不会动，此时调用smoothScrollBy来滑动到指定位置</span></span><br><span class="line">        <span class="keyword">int</span> movePosition = position - firstItem;</span><br><span class="line">        <span class="keyword">if</span> (movePosition &gt;= <span class="number">0</span> &amp;&amp; movePosition &lt; mPhotosRV.getChildCount()) &#123;</span><br><span class="line">            <span class="keyword">int</span> top = mPhotosRV.getChildAt(movePosition).getTop();</span><br><span class="line">            mPhotosRV.smoothScrollBy(<span class="number">0</span>, top);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果要跳转的位置在最后可见项之后，则先调用smoothScrollToPosition将要跳转的位置滚动到可见位置</span></span><br><span class="line">        <span class="comment">// 再通过onScrollStateChanged控制再次调用smoothMoveToPosition，进入上一个控制语句</span></span><br><span class="line">        mPhotosRV.smoothScrollToPosition(position);</span><br><span class="line">        mShouldScroll = <span class="keyword">true</span>;</span><br><span class="line">        mToPosition = position;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> RecyclerView.OnScrollListener mOnScrollListener = <span class="keyword">new</span> RecyclerView.OnScrollListener() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> newState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onScrollStateChanged(recyclerView, newState);</span><br><span class="line">        <span class="keyword">if</span> (newState == RecyclerView.SCROLL_STATE_IDLE) &#123;</span><br><span class="line">            mAutoScrolling = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (mShouldScroll) &#123;</span><br><span class="line">                mShouldScroll = <span class="keyword">false</span>;</span><br><span class="line">                smoothMoveToPosition(mToPosition);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这种解决方法的原理就是，判断需要定位的position所在的位置。</p>
+<ul>
+<li>如果要跳转的位置在第一个可见项之前，则直接调用smoothScrollToPosition跳转。</li>
+<li>如果要跳转的位置在第一个可见项之后，且在最后一个可见项之前，通过计算要跳转的item的top，然后在使用smoothScrollBy进行跳转</li>
+<li>如果要跳转的位置在最后一个可见项之后，则先调用一下smoothScrollToPosition，让要跳转的item位于屏幕可见范围之内，然后再通过smoothScrollBy进行跳转</li>
+</ul>
+<p>这样能够精准的定位了，不过有一个小小的缺点，就是如果是上面第三种情况，就会出现滑动一下再滑动一下的现象，不是很连贯，但也还是能够接受，毕竟比起直接定位那样粗暴的体验还是要好的多。<br>如果有更好的RecyclerView定位方式，欢迎探讨。</p>
+<p>参考：<a href="http://blog.csdn.net/tyzlmjj/article/details/49227601" target="_blank" rel="external">http://blog.csdn.net/tyzlmjj/article/details/49227601</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>RecyclerView是Android开发中经常遇到的一个控件，在使用RecyclerView的时候，直接滑动到某个position的位置的需求也经常碰到。<br>遇到这个需求了，我们就会去找RecyclerView是否有类似于ListView中的smoothScrollToPosition的方法。在代码中一敲，果然有，兴奋的运行调试。运行之后就开始沮丧了，怎么效果和期待的不一样的，甚至有时候调用smoothScrollToPosition方法根本没有任何动静。<br>这可咋整？只能到网上找找资料了，经过一番搜索，发现原来RecyclerView的smoothScrollToPosition方法是有坑的。</p>
+<h3 id="u901A_u8FC7LayoutManager_u7684srcollToPositionWithOffset_u65B9_u6CD5_u8FDB_u884C_u5B9A_u4F4D"><a href="#u901A_u8FC7LayoutManager_u7684srcollToPositionWithOffset_u65B9_u6CD5_u8FDB_u884C_u5B9A_u4F4D" class="headerlink" title="通过LayoutManager的srcollToPositionWithOffset方法进行定位"></a>通过LayoutManager的srcollToPositionWithOffset方法进行定位</h3><p>当然，直接定位的话，如下方式可以实现，而且定位相当精准。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过LayoutManager的srcollToPositionWithOffset方法进行定位</span></span><br><span class="line"></span><br><span class="line">mLayoutManager.scrollToPositionWithOffset(position, <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>但是，它比较粗暴，直接定位过去了，而不是滑动过去。当然，如果你的产品经理能够接受这个效果那也就不需要这么折腾了。<br>然而，这么粗暴的体验，几乎没有哪个产品能够接受的。所以不得不继续寻找体验更好的方式。</p>]]>
+    
+    </summary>
+    
+      <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
+    
+      <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[沉浸式状态栏实现及遇到的坑]]></title>
     <link href="http://www.liuling123.com/2017/02/transparent-status-bar.html"/>
     <id>http://www.liuling123.com/2017/02/transparent-status-bar.html</id>
     <published>2017-02-18T05:22:00.000Z</published>
-    <updated>2017-02-18T05:36:35.000Z</updated>
+    <updated>2017-02-21T12:51:29.000Z</updated>
     <content type="html"><![CDATA[<p>Android4.4以前的版本，状态栏都是一块黑色的，个人认为还是比较丑的。自4.4开始，Android已经支持透明状态栏了（俗称沉浸式状态栏）。个人认为支持沉浸式状态栏的app逼格还是比较高的，为了紧跟潮流，我们项目中也准备加入沉浸式状态栏。在实现沉浸式状态栏的过程中踩了不少的坑，特此记录下来。</p>
 <h3 id="u5982_u4F55_u5B9E_u73B0_u72B6_u6001_u680F"><a href="#u5982_u4F55_u5B9E_u73B0_u72B6_u6001_u680F" class="headerlink" title="如何实现状态栏"></a>如何实现状态栏</h3><h5 id="Android_4-4_u4EE5_u4E0A_u5B9E_u73B0_u65B9_u5F0F"><a href="#Android_4-4_u4EE5_u4E0A_u5B9E_u73B0_u65B9_u5F0F" class="headerlink" title="Android 4.4以上实现方式"></a>Android 4.4以上实现方式</h5><p>Android 4.4版本提供了FLAG_TRANSLUCENT_STATUS，在Activity中加入此flag，可以设置状态栏透明。代码如下：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Build.<span class="keyword">VERSION</span>.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</span><br><span class="line">    <span class="keyword">Window</span> <span class="keyword">window</span> = getWindow();</span><br><span class="line">    <span class="comment">// Translucent status bar</span></span><br><span class="line">    <span class="keyword">window</span>.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>仅仅设置FLAG_TRANSLUCENT_STATUS，你会发现界面上的ToolBar会跑到状态栏上面去，如下图: </p>
@@ -85,7 +127,7 @@
     
       <category term="沉浸式状态栏" scheme="http://www.liuling123.com/tags/%E6%B2%89%E6%B5%B8%E5%BC%8F%E7%8A%B6%E6%80%81%E6%A0%8F/"/>
     
-      <category term="android" scheme="http://www.liuling123.com/categories/android/"/>
+      <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
     
   </entry>
   
@@ -911,54 +953,6 @@
       <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
     
       <category term="设计模式" scheme="http://www.liuling123.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-      <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[【译文】Android M中Intent的解析]]></title>
-    <link href="http://www.liuling123.com/2015/12/intent-resolving-in-android-m.html"/>
-    <id>http://www.liuling123.com/2015/12/intent-resolving-in-android-m.html</id>
-    <published>2015-12-04T06:52:06.000Z</published>
-    <updated>2016-01-03T07:29:56.000Z</updated>
-    <content type="html"><![CDATA[<p>原文链接 : <a href="https://medium.com/google-developer-experts/intent-resolving-in-android-m-c17d39d27048#.n23z2g14e" target="_blank" rel="external">Intent Resolving in Android M</a><br>原文作者 : <a href="https://medium.com/@tasomaniac" target="_blank" rel="external">Said Tahsin Dane</a><br>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="external">开发技术前线 www.devtf.cn。未经允许，不得转载!</a><br>译者 : <a href="https://github.com/liuling07" target="_blank" rel="external">liuling07</a><br>校对者: <a href="https://github.com/desmond1121" target="_blank" rel="external">desmond1121</a><br>状态 : 完成</p>
-<h2 id="u8BD1_u6587_u8FDE_u63A5_uFF1AAndroid_M_u4E2DIntent_u7684_u89E3_u6790"><a href="#u8BD1_u6587_u8FDE_u63A5_uFF1AAndroid_M_u4E2DIntent_u7684_u89E3_u6790" class="headerlink" title="译文连接：Android M中Intent的解析"></a>译文连接：<a href="https://github.com/bboyfeiyu/android-tech-frontier/tree/master/others/Android-M中Intent的解析" target="_blank" rel="external">Android M中Intent的解析</a></h2><p>注意了！在Android 6.0中，“隐式Intent”的解析不能像之前版本那样正常工作了。这很有可能导致你的app不能正常使用。</p>
-<p>现在让我解释一下这个意料之中的问题以及为什么它不能正常使用： 最近，我正在开发一个小的开源项目，叫做“Open Link With”。希望不久后它能够在应用市场上架。</p>
-<p>我的这个app能够让你在其他app之间随意切换。当你给我分享一个链接的时候，我基本上可以根据这个链接查询出所有可以处理这个链接的Activity。然后我会模拟一个系统对话框让你切换app。<br><a id="more"></a><br><img src="https://cdn-images-1.medium.com/max/1600/1*rW8I8aCpJ2q8fnfKH_51_g.gif" alt="从已经打开的youtube的web页面切换到youtube应用" title="从已经打开的youtube的web页面切换到youtube应用"></p>
-<p>我一直都是使用下面的方法：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List<span class="tag">&lt;<span class="title">ResolveInfo</span>&gt;</span> infos = packageManager</span><br><span class="line">        .queryIntentActivities(intent, MATCH_DEFAULT_ONLY);</span><br></pre></td></tr></table></figure></p>
-<p>这段代码几乎所有Android开发者都比较熟悉，并且我也相信大部分app都有用到这段代码。</p>
-<p>我的手机里有两个浏览器。“一个URL是Google+ 的Intent”期望得到一个具有3个ResolveInfo对象的列表（Google+应用以及两个浏览器）。</p>
-<p>好吧，并不是这样！</p>
-<p>欢迎来到Android 6.0！</p>
-<p>Android 6.0引进了应用关联。系统主要通过你的web页面来认证，并且自动使用你的app来打开这些URL，而不会向你做任何请求。或者你可以到系统设置，选择“应用程序”，然后点击一个应用，再点击“默认打开方式”，然后设置“用这个应用打开”，就可以每次都使用这个应用打开。</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*MVZbYKhwu-7qnyGAFWuNsw.png" alt="Android 6.0的应用默认设置页面" title="Android 6.0的应用默认设置页面"></p>
-<p>在这种情况下，queryIntentActivities方法只会给开发者返回一个只有一个Activity的列表（此例子返回的是Google+）。</p>
-<p>虽然这是在意料之中的，但是应该在文档中注明，因为它与公共API相矛盾了。</p>
-<p>我研究了一下，发现了一个MATCH_ALL标志，文档表示，它将禁用所有的系统级过滤器。</p>
-<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Querying flag: <span class="keyword">if</span> <span class="keyword">set</span> <span class="keyword">and</span> <span class="keyword">if</span> the platform <span class="keyword">is</span> doing any filtering <span class="keyword">of</span> the results, <span class="keyword">then</span></span><br><span class="line"> * the filtering will <span class="keyword">not</span> happen. This <span class="keyword">is</span> a synonym <span class="keyword">for</span> saying that all results should</span><br><span class="line"> * be returned.</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> final int MATCH_ALL = <span class="number">0x00020000</span>;</span><br></pre></td></tr></table></figure>
-<p>这对我来说没什么用。我打开源码（至少我有源码）并开始研究这个方法。</p>
-<p>它似乎优先考虑验证应用程序的域，不仅在它的内部系统，在公共API中也是如此。</p>
-<p>如果有一个验证应用程序的域，它不会返回任何其他东西。MATCH_ALL标志会移除一些系统过滤器，但是仅仅是在没有验证程序的情况下。</p>
-<p>对于这个问题，我找不到任何可变通的措施。它只是排除浏览器应用，即使他们的IntentFilters匹配。</p>
-<p>之所以没有可变通的措施，是因为他是一个内部组件（我们无法访问），Android SDK通过IPC使用AIDL与它进行通信。</p>
-<p>大部分开发者使用这个方法来判断是否至少有一个Activity来处理隐式的Intent。在大多数情况下，列表中第一项就是你想要的。</p>
-<p>在花了几个小时搞明白到底发生了什么之后，我尝试寻找一个我认为每个人都应该知道的解决方案。</p>
-<p>在Android 6.0中，改动的地方很多。实际上谷歌提供了一些改变清单，在清单中你能看到到底有哪些改变。我认为还有很多类似上面的一些没有在清单中列出的改变，而这些改动很有可能导致你的应用无法正常运行。</p>
-<p>所以如果你使用PackageManager的方法，你一定得小心，并且认真检查。</p>
-<p>感谢此文的校对者：<a href="https://twitter.com/yagmurdalman" target="_blank" rel="external">Yağmur Dalman</a>、<a href="https://medium.com/u/9706138c9bfb" target="_blank" rel="external">Sebastiano Poggi</a>、<a href="https://medium.com/u/73761c65c602" target="_blank" rel="external">Salim KAYABAŞI</a>、<a href="https://medium.com/u/24a0490cd588" target="_blank" rel="external">Hasan Keklik</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>原文链接 : <a href="https://medium.com/google-developer-experts/intent-resolving-in-android-m-c17d39d27048#.n23z2g14e">Intent Resolving in Android M</a><br>原文作者 : <a href="https://medium.com/@tasomaniac">Said Tahsin Dane</a><br>译文出自 : <a href="http://www.devtf.cn">开发技术前线 www.devtf.cn。未经允许，不得转载!</a><br>译者 : <a href="https://github.com/liuling07">liuling07</a><br>校对者: <a href="https://github.com/desmond1121">desmond1121</a><br>状态 : 完成</p>
-<h2 id="u8BD1_u6587_u8FDE_u63A5_uFF1AAndroid_M_u4E2DIntent_u7684_u89E3_u6790"><a href="#u8BD1_u6587_u8FDE_u63A5_uFF1AAndroid_M_u4E2DIntent_u7684_u89E3_u6790" class="headerlink" title="译文连接：Android M中Intent的解析"></a>译文连接：<a href="https://github.com/bboyfeiyu/android-tech-frontier/tree/master/others/Android-M中Intent的解析">Android M中Intent的解析</a></h2><p>注意了！在Android 6.0中，“隐式Intent”的解析不能像之前版本那样正常工作了。这很有可能导致你的app不能正常使用。</p>
-<p>现在让我解释一下这个意料之中的问题以及为什么它不能正常使用： 最近，我正在开发一个小的开源项目，叫做“Open Link With”。希望不久后它能够在应用市场上架。</p>
-<p>我的这个app能够让你在其他app之间随意切换。当你给我分享一个链接的时候，我基本上可以根据这个链接查询出所有可以处理这个链接的Activity。然后我会模拟一个系统对话框让你切换app。<br>]]>
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.liuling123.com/tags/android/"/>
-    
-      <category term="译文" scheme="http://www.liuling123.com/tags/%E8%AF%91%E6%96%87/"/>
     
       <category term="Android" scheme="http://www.liuling123.com/categories/Android/"/>
     
